@@ -100,8 +100,8 @@ os monstros correspondentes, respeitando o filtro de jogo ativo.
 
 - Monstro sem nenhuma parte quebrável ou sem habitat fixo (ex.: monstros de arena/eventos):
   a seção correspondente informa explicitamente "nenhuma" em vez de ficar vazia ou sumir.
-- Monstro sem fraquezas elementais relevantes (todas as eficácias baixas): a seção mostra todos
-  os elementos sem destacar nenhum como mais eficaz.
+- Monstro sem fraquezas elementais relevantes (nenhum elemento com eficácia de 2 estrelas ou
+  mais): a seção mostra todos os elementos sem destacar nenhum como mais eficaz.
 - Monstro imune a um elemento: a imunidade é mostrada de forma distinta de "pouco eficaz".
 - Monstro com estados em que um elemento passa de pouco eficaz para muito eficaz: a nota geral e
   a nota do estado aparecem juntas, sem que uma sobrescreva a outra.
@@ -143,7 +143,9 @@ os monstros correspondentes, respeitando o filtro de jogo ativo.
   classificação (ex.: Wyvern Voadora), fraquezas elementais, habitats, partes quebráveis e
   materiais obtidos.
 - **FR-008**: As fraquezas elementais DEVEM cobrir Fogo, Água, Raio, Gelo e Dragão, cada uma com
-  um nível de eficácia em escala comum a todos os jogos, distinguindo imunidade.
+  um nível de eficácia em escala comum a todos os jogos, distinguindo imunidade. São destacados
+  como mais eficazes os elementos com a maior nota geral, somente se essa nota for de 2 estrelas
+  ou mais; empates destacam todos os empatados.
 - **FR-008a**: Todo monstro DEVE ter uma nota geral por elemento. Monstros cuja fraqueza muda
   conforme o estado ou forma (ex.: "Enfurecido", "Espinhos endurecidos") PODEM ter, além da nota
   geral, notas por estado nomeado; nesse caso, a tela de detalhe DEVE mostrar a nota geral em
@@ -172,10 +174,12 @@ os monstros correspondentes, respeitando o filtro de jogo ativo.
   o usuário DEVE ser informado da falha.
 - **FR-018**: O app DEVE funcionar em celular (Android), tablet, navegador web e desktop
   Windows, com as mesmas funcionalidades em todas as plataformas.
-- **FR-019**: Em telas estreitas (celular em retrato), lista e detalhe DEVEM ser telas separadas
-  com navegação entre elas; em telas largas (tablet em paisagem, web e desktop), lista e detalhe
-  DEVEM ser exibidos lado a lado, e selecionar um monstro atualiza o painel de detalhe sem sair
-  da lista.
+- **FR-019**: O layout DEVE ser escolhido pela largura disponível da janela, não pelo tipo de
+  aparelho. Abaixo de uma largura mínima (referência: largura típica de um tablet em paisagem;
+  valor exato definido no plano), lista e detalhe DEVEM ser telas separadas com navegação entre
+  elas — isso inclui celulares em qualquer orientação e tablets em retrato estreitos. A partir
+  dessa largura (tipicamente tablet em paisagem, web e desktop), lista e detalhe DEVEM ser
+  exibidos lado a lado, e selecionar um monstro atualiza o painel de detalhe sem sair da lista.
 - **FR-020**: Ao redimensionar a janela (web/desktop) ou girar o aparelho, o app DEVE alternar
   entre os dois layouts preservando o monstro selecionado, o filtro e a busca.
 - **FR-021**: O app DEVE oferecer uma configuração "Idioma dos nomes do jogo" com as opções
