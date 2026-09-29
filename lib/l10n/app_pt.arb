@@ -1,0 +1,7 @@
+{
+  "@@locale": "pt",
+  "appTitle": "MH Wiki",
+  "@appTitle": {
+    "description": "Application title"
+  }
+}
