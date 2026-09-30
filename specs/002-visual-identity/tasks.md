@@ -24,19 +24,19 @@ Existing 001 tests must keep passing (FR-012, SC-006); tests that find widgets b
 
 ## Phase 1: Setup
 
-- [ ] T001 [P] Download from the google/fonts GitHub repository (`ofl/cinzel/Cinzel[wght].ttf`, `ofl/cinzel/OFL.txt`, `ofl/alegreyasans/AlegreyaSans-Regular.ttf`, `-Medium.ttf`, `-Bold.ttf`, `ofl/alegreyasans/OFL.txt`) into `assets/fonts/cinzel/` and `assets/fonts/alegreya_sans/`
-- [ ] T002 Declare fonts in `pubspec.yaml` (family `Cinzel` → variable file; family `AlegreyaSans` → Regular 400, Medium 500, Bold 700) and asset folders `assets/images/monsters/world_iceborne/`, `assets/images/monsters/rise_sunbreak/`, `assets/images/monsters/wilds/` (create them); run `flutter pub get`
+- [X] T001 [P] Download from the google/fonts GitHub repository (`ofl/cinzel/Cinzel[wght].ttf`, `ofl/cinzel/OFL.txt`, `ofl/alegreyasans/AlegreyaSans-Regular.ttf`, `-Medium.ttf`, `-Bold.ttf`, `ofl/alegreyasans/OFL.txt`) into `assets/fonts/cinzel/` and `assets/fonts/alegreya_sans/`
+- [X] T002 Declare fonts in `pubspec.yaml` (family `Cinzel` → variable file; family `AlegreyaSans` → Regular 400, Medium 500, Bold 700) and asset folders `assets/images/monsters/world_iceborne/`, `assets/images/monsters/rise_sunbreak/`, `assets/images/monsters/wilds/` (create them); run `flutter pub get`
 
 ---
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
-- [ ] T003 [P] Widget test: `MhWikiApp` renders with `ThemeData.brightness == Brightness.dark` and background `#16120E` both when `platformBrightness` is light and dark (`tester.platformDispatcher.platformBrightnessTestValue`) in `test/app/app_theme_test.dart`
-- [ ] T004 [P] Create color tokens (background, panel, borders, gold variants, text, muted, text-on-gold, five element colors per data-model.md) in `lib/core/presentation/theme/hunter_palette.dart`
-- [ ] T005 Create `buildHunterTheme()` (dark `ColorScheme` from the palette; `textTheme` with `AlegreyaSans` body and `Cinzel` titles using `fontVariations` `wght`; AppBar, Card, Chip, Radio, SegmentedButton, SnackBar, ProgressIndicator, InputDecoration themes; square corners) in `lib/core/presentation/theme/hunter_theme.dart`
-- [ ] T006 Use only the hunter theme with `themeMode: ThemeMode.dark` (remove light/dark seed themes) in `lib/app/app.dart` (makes T003 pass)
-- [ ] T007 [P] Create `HunterPanel` (panel fill, 1 px border, square corners, 16 px padding, optional Cinzel uppercase heading with `Semantics(header: true)`) in `lib/core/presentation/widgets/hunter_panel.dart` and `OrnamentHeader` (line — title — line) in `lib/core/presentation/widgets/ornament_header.dart`
-- [ ] T008 Run `flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`; commit
+- [X] T003 [P] Widget test: `MhWikiApp` renders with `ThemeData.brightness == Brightness.dark` and background `#16120E` both when `platformBrightness` is light and dark (`tester.platformDispatcher.platformBrightnessTestValue`) in `test/app/app_theme_test.dart`
+- [X] T004 [P] Create color tokens (background, panel, borders, gold variants, text, muted, text-on-gold, five element colors per data-model.md) in `lib/core/presentation/theme/hunter_palette.dart`
+- [X] T005 Create `buildHunterTheme()` (dark `ColorScheme` from the palette; `textTheme` with `AlegreyaSans` body and `Cinzel` titles using `fontVariations` `wght`; AppBar, Card, Chip, Radio, SegmentedButton, SnackBar, ProgressIndicator, InputDecoration themes; square corners) in `lib/core/presentation/theme/hunter_theme.dart`
+- [X] T006 Use only the hunter theme with `themeMode: ThemeMode.dark` (remove light/dark seed themes) in `lib/app/app.dart` (makes T003 pass)
+- [X] T007 [P] Create `HunterPanel` (panel fill, 1 px border, square corners, 16 px padding, optional Cinzel uppercase heading with `Semantics(header: true)`) in `lib/core/presentation/widgets/hunter_panel.dart` and `OrnamentHeader` (line — title — line) in `lib/core/presentation/widgets/ornament_header.dart`
+- [X] T008 Run `flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`; commit
 
 **Checkpoint**: theme applied app-wide (colors/fonts), existing tests green.
 
