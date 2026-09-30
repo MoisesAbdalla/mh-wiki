@@ -191,8 +191,8 @@ then Rise (Phase 6), then World (Phase 7).
 
 ## Phase 8: Polish & Cross-Cutting Concerns
 
-- [ ] T038 Measure the app size (`flutter build apk --release --analyze-size` or the Windows build folder) and the list-open time on a phone. Record both in `specs/004-all-large-monsters/research.md` (R6 results).
-- [ ] T039 SC-002 spot check: 10 new monsters per game compared with their `sources`. Fix data only in `tool/data/` and rebuild.
+- [X] T038 Measure the app size (`flutter build apk --release --analyze-size` or the Windows build folder) and the list-open time on a phone. Record both in `specs/004-all-large-monsters/research.md` (R6 results).
+- [X] T039 SC-002 spot check: 10 new monsters per game compared with their `sources`. Fix data only in `tool/data/` and rebuild.
 
 ---
 

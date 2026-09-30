@@ -14,6 +14,14 @@ import 'package:mh_wiki/features/monsters/presentation/views/widgets/monster_det
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
+  /// A game tab by its spoken name; the tabs are logos since 005.
+  Finder gameTab(String name) => find.descendant(
+    of: find.byType(GameTabs),
+    matching: find.byWidgetPredicate(
+      (w) => w is Semantics && w.properties.label == name,
+    ),
+  );
+
   testWidgets('browse, filter, search and open a monster', (tester) async {
     final dependencies = await AppDependencies.create();
     final settings = dependencies.createSettingsController();
@@ -27,10 +35,10 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    await tester.tap(
-      find.descendant(of: find.byType(GameTabs), matching: find.text('Wilds')),
-    );
+    await tester.tap(gameTab('Monster Hunter Wilds'));
     await tester.pumpAndSettle();
+    // Desktop runs do not register the test keyboard by default.
+    if (!tester.testTextInput.isRegistered) tester.testTextInput.register();
     await tester.enterText(find.byType(TextField), 'rath');
     await tester.pumpAndSettle();
 
@@ -65,5 +73,44 @@ void main() {
 
     expect(monsters.query.text, 'rath');
     expect(monsters.query.game, Game.wilds);
+  });
+
+  // 004 T038 / SC-004: time to load every dataset and show the list, and to
+  // switch games, on the real bundled data. Printed for research R6.
+  testWidgets('list opening and game switch times', (tester) async {
+    final total = Stopwatch()..start();
+    final dependencies = await AppDependencies.create();
+    final settings = dependencies.createSettingsController();
+    final monsters = dependencies.createMonsterListController();
+    linkNameLanguage(settings: settings, monsters: monsters);
+    await settings.load();
+    final load = Stopwatch()..start();
+    await monsters.load();
+    load.stop();
+    await tester.pumpWidget(
+      MhWikiApp(monsterListController: monsters, settingsController: settings),
+    );
+    await tester.pumpAndSettle();
+    total.stop();
+    expect(find.byType(GameTabs), findsOneWidget);
+
+    final switches = <String, int>{};
+    for (final name in [
+      'Monster Hunter World: Iceborne',
+      'Monster Hunter Rise: Sunbreak',
+      'Monster Hunter Wilds',
+    ]) {
+      final watch = Stopwatch()..start();
+      await tester.tap(gameTab(name));
+      await tester.pumpAndSettle();
+      switches[name] = watch.elapsedMilliseconds;
+    }
+
+    // ignore: avoid_print
+    print(
+      'T038 datasets load: ${load.elapsedMilliseconds} ms; '
+      'list on screen: ${total.elapsedMilliseconds} ms; switches: $switches',
+    );
+    expect(total.elapsedMilliseconds, lessThan(1000));
   });
 }
