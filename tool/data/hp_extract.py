@@ -10,7 +10,7 @@ Rules (research R1/R2, refined during implementation):
 - minQuest = lowest HP after dropping values under 80% of the rank median
   (multi-monster/special quest variants).
 """
-import html, json, os, re, statistics, sys
+import glob, html, json, os, re, statistics, sys
 
 import kiranico_world
 import macaron
@@ -39,6 +39,37 @@ def min_quest(values):
         return None
     med = statistics.median(values)
     return min(v for v in values if v >= 0.8 * med)
+
+
+_MHWI_QUESTS = None
+
+
+def mhwi_quests():
+    """{normalized quest name: (target names, categories)} from the Monster
+    Hunter Wiki quest pages cached by roster_world.py ("Goal Icons")."""
+    global _MHWI_QUESTS
+    if _MHWI_QUESTS is None:
+        _MHWI_QUESTS = {}
+        for f in sorted(glob.glob('wiki_mhwi_quest_text_*.json')):
+            for p in json.load(open(f, encoding='utf8'))['query']['pages'].values():
+                text = p['revisions'][0]['slots']['main']['*']
+                goals = re.search(r'\|Goal Icons\s*=(.*)', text)
+                targets = re.findall(r'\{\{(?:IconPickerUniversal|IPUClassic\w*)\|MHWI\|([^|}]+)',
+                                     goals.group(1)) if goals else []
+                cats = set(re.findall(r'\[\[Category:MHWI ([^\]]+?) Quests\]\]', text))
+                _MHWI_QUESTS[quest_key(p['title'].removesuffix(' (MHWI Quest)'))] = (targets, cats)
+    return _MHWI_QUESTS
+
+
+def quest_key(name):
+    return re.sub(r'[^a-z0-9]', '', html.unescape(name).lower())
+
+
+# Arena-like quests with fixed, unusual HP; event quests are normal hunts.
+# Special assignments (sieges, story set pieces) count only when a rank has
+# no other quest, e.g. Zorah Magdaros.
+EXCLUDED = {'Arena', 'Challenge'}
+SPECIAL = {'Special'}
 
 
 def world_version(entry):
@@ -77,20 +108,35 @@ def world(slug, name=None):
         m = re.match(r'(Low|High|Master) Rank .*? (\d[\d,]*) x', clean(tr))
         if m:
             exp.setdefault(m.group(1).lower(), []).append(num(m.group(2)))
-    quests = {}
+    # Regular quests per rank, single-target ones apart: World lowers each
+    # monster's HP in multi-target quests (004 T039 follow-up). Targets and
+    # quest types come from the wiki quest pages; quests missing there fall
+    # back to the name filter of 003.
+    tiers = ({}, {}, {})  # this monster as the only target / other regular / special
     for tr in re.findall(r'<tr.*?</tr>', section(page, 'Quest'), re.S):
         m = re.match(r'(M?)★(\d+) (.*?) (\d[\d,]*) x', clean(tr))
-        if not m or re.search(r'Arena|Challenge|Event', m.group(3)):
+        if not m:
             continue
+        info = mhwi_quests().get(quest_key(m.group(3)))
+        if info is None:
+            if re.search(r'Arena|Challenge|Event', m.group(3)):
+                continue
+            tier = 1
+        elif info[1] & EXCLUDED:
+            continue
+        elif info[1] & SPECIAL:
+            tier = 2
+        else:
+            tier = 0 if [t.strip() for t in info[0]] == [name] else 1
         stars = int(m.group(2))
         rank = 'master' if m.group(1) else ('low' if stars <= 5 else 'high')
-        quests.setdefault(rank, []).append(num(m.group(4)))
+        tiers[tier].setdefault(rank, []).append(num(m.group(4)))
     out = []
     for rank in ('low', 'high', 'master'):
         if rank in exp:
             out.append({'rank': rank, 'solo': min(exp[rank]), 'basis': 'expedition'})
-        elif rank in quests:
-            out.append({'rank': rank, 'solo': min_quest(quests[rank]), 'basis': 'minQuest'})
+        elif values := next((t[rank] for t in tiers if rank in t), None):
+            out.append({'rank': rank, 'solo': min_quest(values), 'basis': 'minQuest'})
     return out
 
 
@@ -137,7 +183,7 @@ for tr in re.findall(r'<tr.*?</tr>', open('wl_quests_full.html', encoding='utf8'
     mons = [clean(d) for d in re.findall(r'<div>(.*?)</div>', tds[2], re.S)]
     hps = [num(clean(d).replace('HP', '')) for d in re.findall(r'<div>(.*?)</div>', tds[3], re.S)]
     for name, hp in zip(mons, hps):
-        WILDS_ROWS.append((name, int(m.group(2)), hp))
+        WILDS_ROWS.append((name, int(m.group(2)), hp, len(mons)))
 
 
 # Tempered hunts, arch-tempered quests and the free title update / collab
@@ -162,10 +208,14 @@ def blog_hp():
 
 
 def wilds(slug, name):
-    vals = {}
-    for n, stars, hp in WILDS_ROWS:
+    # Quests where the monster is alone first: multi-monster quests lower
+    # each one's HP (004 T039 follow-up).
+    single, multi = {}, {}
+    for n, stars, hp, count in WILDS_ROWS:
         if n == name:
-            vals.setdefault('low' if stars <= 3 else 'high', []).append(hp)
+            rank = 'low' if stars <= 3 else 'high'
+            (single if count == 1 else multi).setdefault(rank, []).append(hp)
+    vals = {r: single.get(r) or multi[r] for r in {**multi, **single}}
     if not vals and slug in blog_hp():
         FROM_BLOG[slug] = blog_hp()[slug]
         return [{'rank': 'high', 'solo': min(hp for _, hp in FROM_BLOG[slug][1]),

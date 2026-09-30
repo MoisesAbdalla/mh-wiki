@@ -148,6 +148,16 @@ void main() {
     );
   });
 
+  test('HP prefers quests where the monster hunts alone (004 T039)', () async {
+    int hp(List<Monster> monsters, String slug) =>
+        monsters.singleWhere((m) => m.id.slug == slug).huntingInfo.hp.last.solo;
+    // Silver Rathalos: 15,000 was a two-target quest; its solo hunts are 21,000.
+    expect(hp(await load(Game.worldIceborne), 'silver-rathalos'), 21000);
+    // Lala Barina: 9,000 was a multi-monster quest; 10,080 matches the
+    // macarongamemo table too.
+    expect(hp(await load(Game.wilds), 'lala-barina'), 10080);
+  });
+
   group('full roster (004)', () {
     /// Slugs of `tool/data/rosters/<game>.json`; empty until the game's
     /// phase builds it.

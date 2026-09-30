@@ -259,10 +259,28 @@ party factors, item reactions) are reused unchanged unless stated.
   `…_%28MHRS%29`, because `build_rise.py` / `build_wilds.py` and `items_extract.py` wrote the URL
   differently. The builders now quote it the same way. A rebuild changed only those duplicate
   sources.
-- **Observation** (003 rule, not an error): World bases without Master Rank expeditions use the
-  lowest regular quest HP, which can be a multi-monster quest. Silver Rathalos shows "a partir de
-  15.000" from a two-monster quest, while its single hunts are 21.000. The tempered versions of
-  005 prefer single-monster quests; the bases do not.
+- **Observation → rule refined** (003 minQuest, approved by the user on 2026-09-30):
+  - World bases without Master Rank expeditions used the lowest regular quest HP, which could come
+    from a multi-target quest. Silver Rathalos showed "a partir de 15.000" from a two-target
+    quest, while its single hunts are 21.000.
+  - **World** (`hp_extract.world`): quests are sorted into tiers.
+    1. The monster is the only target. Targets come from the Monster Hunter Wiki quest page's
+       `Goal Icons`, which matches 1,423 of 1,430 Kiranico quest links.
+    2. Other regular quests.
+    3. Special assignments (sieges, e.g. Zorah Magdaros), used only when nothing else exists.
+    Arena and challenge quests (wiki categories) stay out. Event quests now count, because they
+    are normal hunts. The Kiranico quest page's monster list is **not** used: it lists every large
+    monster in the area, not the targets.
+  - **Wilds** (`hp_extract.wilds`): quests where the monster is the only one in Kiranico's quest
+    list come first.
+  - **Changes**:
+    - World: Silver Rathalos and Gold Rathian MR 15,000 → 21,000; Lunastra HR 8,686 → 12,470;
+      Ruiner Nergigante MR 25,900 → 27,380.
+    - Wilds: Guardian Fulgur Anjanath HR 11,250 → 15,000; Balahara LR 4,400 → 5,148; Lala Barina
+      HR 9,000 → 10,080. With this, the macarongamemo table matches Kiranico for 13 of 13
+      monsters (Lala Barina was the one difference).
+  - **Rise** keeps the 003 rule. Its Kiranico monster pages do not say who else is in a quest,
+    so the same refinement would need the quest pages or the wiki's MHRS quest pages.
 
 
 ## R7. Thumbnails
