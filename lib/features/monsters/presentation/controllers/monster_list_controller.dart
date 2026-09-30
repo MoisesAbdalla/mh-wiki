@@ -8,6 +8,7 @@ import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_query.dart';
 import 'package:mh_wiki/features/monsters/domain/usecases/filter_monsters.dart';
 import 'package:mh_wiki/features/monsters/domain/usecases/get_monster_by_id.dart';
+import 'package:mh_wiki/features/monsters/domain/usecases/get_monster_versions.dart';
 import 'package:mh_wiki/features/monsters/domain/usecases/load_monster_catalog.dart';
 import 'package:mh_wiki/features/monsters/presentation/models/monster_list_state.dart';
 
@@ -20,12 +21,14 @@ final class MonsterListController extends ChangeNotifier {
     required this._loadCatalog,
     required this._filterMonsters,
     required this._getMonsterById,
+    required this._getMonsterVersions,
     NameLanguage language = NameLanguage.ptBr,
   }) : _query = MonsterQuery(language: language);
 
   final LoadMonsterCatalog _loadCatalog;
   final FilterMonsters _filterMonsters;
   final GetMonsterById _getMonsterById;
+  final GetMonsterVersions _getMonsterVersions;
 
   MonsterListState _state = const MonsterListLoading();
   List<Monster> _monsters = const [];
@@ -45,6 +48,17 @@ final class MonsterListController extends ChangeNotifier {
     return switch (_getMonsterById(_monsters, id)) {
       Success(:final value) => value,
       Err() => null,
+    };
+  }
+
+  /// The selected monster's base followed by its versions, for the detail's
+  /// version selector (004 FR-006a); empty when nothing is selected.
+  List<Monster> get selectedVersions {
+    final id = _selectedId;
+    if (id == null) return const [];
+    return switch (_getMonsterVersions(_monsters, id)) {
+      Success(:final value) => value,
+      Err() => const [],
     };
   }
 

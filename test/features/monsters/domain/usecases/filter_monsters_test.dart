@@ -3,6 +3,7 @@ import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_query.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_section.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/version_kind.dart';
 import 'package:mh_wiki/features/monsters/domain/usecases/filter_monsters.dart';
 
 import '../../../../fakes/monster_fixtures.dart';
@@ -143,6 +144,71 @@ void main() {
 
     test('no match gives no sections', () {
       expect(filter(searchable, const MonsterQuery(text: 'zzz')), isEmpty);
+    });
+  });
+
+  group('versions (004)', () {
+    final rathalos = buildMonster(slug: 'rathalos', en: 'Rathalos');
+    final arch = buildVersion(
+      rathalos,
+      VersionKind.archTempered,
+      slug: 'arch-tempered-rathalos',
+      en: 'Arch-Tempered Rathalos',
+      ptBr: 'Rathalos Arquitemperado',
+    );
+    final tempered = buildVersion(
+      rathalos,
+      VersionKind.tempered,
+      slug: 'tempered-rathalos',
+      en: 'Tempered Rathalos',
+      ptBr: 'Rathalos Temperado',
+    );
+    final anjanath = buildMonster(slug: 'anjanath', en: 'Anjanath');
+    final all = [arch, anjanath, tempered, rathalos];
+
+    test('versions are grouped under their base, in kind order', () {
+      final entries = filter(all, const MonsterQuery()).single.entries;
+      expect(entries.map((e) => e.base.id.slug), ['anjanath', 'rathalos']);
+      expect(entries.last.versions.map((v) => v.id.slug), [
+        'tempered-rathalos',
+        'arch-tempered-rathalos',
+      ]);
+      expect(entries.last.matchedVersion, isNull);
+      expect(entries.last.target, rathalos);
+    });
+
+    test('a query matching only a version returns its base entry', () {
+      final entry = filter(
+        all,
+        const MonsterQuery(text: 'arquitemperado'),
+      ).single.entries.single;
+      expect(entry.base, rathalos);
+      expect(entry.matchedVersion, arch);
+      expect(entry.target, arch);
+      expect(entry.versions, hasLength(2));
+    });
+
+    test('a query matching the base has no matched version', () {
+      final entry = filter(
+        all,
+        const MonsterQuery(text: 'rathalos'),
+      ).single.entries.single;
+      expect(entry.matchedVersion, isNull);
+    });
+
+    test('version search ignores accents and case', () {
+      final entries = filter(
+        all,
+        const MonsterQuery(text: 'TÉMPERED'),
+      ).single.entries;
+      expect(entries.single.matchedVersion, tempered);
+    });
+
+    test('the game filter still applies to versions', () {
+      expect(
+        filter(all, const MonsterQuery(text: 'temper', game: Game.wilds)),
+        isEmpty,
+      );
     });
   });
 }

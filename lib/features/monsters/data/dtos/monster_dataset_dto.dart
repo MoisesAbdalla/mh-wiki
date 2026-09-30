@@ -11,6 +11,7 @@ import 'package:mh_wiki/features/monsters/domain/entities/item_reaction.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/party_hp_factors.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/rank_hp.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/source_ref.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/version_kind.dart';
 
 const supportedSchemaVersion = 1;
 
@@ -64,21 +65,56 @@ final class MonsterDatasetDto {
         ? _partyFactors(root.object('partyHpFactors'))
         : null;
 
-    final monsters = <MonsterDto>[];
+    final readers = root.objects('monsters');
     final slugs = <String>{};
-    for (final reader in root.objects('monsters')) {
-      final monster = MonsterDto.fromJson(
-        reader,
-        game: expectedGame,
-        habitatIds: habitats.keys.toSet(),
-        materialIds: materials.keys.toSet(),
-        itemIds: {for (final i in huntingItems) i.id},
-      );
-      if (!slugs.add(monster.slug)) {
-        reader.fail('duplicate monster slug "${monster.slug}"');
-      }
-      monsters.add(monster);
+    for (final reader in readers) {
+      final slug = _slug(reader, 'slug');
+      if (!slugs.add(slug)) reader.fail('duplicate monster slug "$slug"');
     }
+
+    MonsterDto parseMonster(JsonReader reader, {MonsterDto? base}) =>
+        MonsterDto.fromJson(
+          reader,
+          game: expectedGame,
+          habitatIds: habitats.keys.toSet(),
+          materialIds: materials.keys.toSet(),
+          itemIds: {for (final i in huntingItems) i.id},
+          base: base,
+        );
+
+    // Bases first, so each version can be validated against its base
+    // (feature 004, data-model.md); the file order is kept in the result.
+    final bases = <String, MonsterDto>{};
+    for (final reader in readers) {
+      if (!reader.has('versionOf')) {
+        final monster = parseMonster(reader);
+        bases[monster.slug] = monster;
+      }
+    }
+    final bySlug = {...bases};
+    final kindsByBase = <String, Set<VersionKind>>{};
+    for (final reader in readers) {
+      if (!reader.has('versionOf')) continue;
+      final baseSlug = _slug(reader, 'versionOf');
+      final base = bases[baseSlug];
+      if (base == null) {
+        reader.fail(
+          readers.any((r) => r.json['slug'] == baseSlug)
+              ? 'version base "$baseSlug" is itself a version'
+              : 'unknown version base "$baseSlug"',
+        );
+      }
+      final monster = parseMonster(reader, base: base);
+      if (!kindsByBase
+          .putIfAbsent(baseSlug, () => {})
+          .add(monster.versionKind!)) {
+        reader.fail(
+          'duplicate ${monster.versionKind!.name} version of "$baseSlug"',
+        );
+      }
+      bySlug[monster.slug] = monster;
+    }
+    final monsters = [for (final r in readers) bySlug[r.json['slug']]!];
 
     return MonsterDatasetDto(
       game: expectedGame,
@@ -243,75 +279,133 @@ final class MonsterDto {
     required this.sources,
     this.hp = const [],
     this.reactions = const [],
+    this.versionOf,
+    this.versionKind,
   });
 
+  /// Parses one monster. A version ([base] given) may omit the sections it
+  /// inherits; those fields are then `null` (004 research R3).
   factory MonsterDto.fromJson(
     JsonReader reader, {
     required Game game,
     required Set<String> habitatIds,
     required Set<String> materialIds,
     Set<String> itemIds = const {},
+    MonsterDto? base,
   }) {
     final slug = _slug(reader, 'slug');
     final monster = JsonReader(reader.json, '${reader.path}($slug)');
+    final isVersion = base != null;
 
-    final weaknesses = monster.object('weaknesses');
-    final states = _uniqueById(
-      weaknesses.optionalObjects('states').map(WeaknessStateDto.fromJson),
-      monster,
-      'weakness state',
-    );
-
-    final monsterHabitats = monster.strings('habitatIds');
-    for (final id in monsterHabitats) {
-      if (!habitatIds.contains(id)) monster.fail('unknown habitatId "$id"');
+    final VersionKind? kind;
+    if (isVersion) {
+      if (!monster.has('versionKind')) {
+        monster.fail('a version requires "versionKind"');
+      }
+      kind = monster.enumValue('versionKind', VersionKind.values);
+      if (!kind.isAllowedIn(game)) {
+        monster.fail(
+          'version kind "${kind.name}" does not exist in '
+          '${game.datasetKey}',
+        );
+      }
+    } else {
+      if (monster.has('versionKind')) {
+        monster.fail('"versionKind" requires "versionOf"');
+      }
+      kind = null;
     }
-    if (monsterHabitats.toSet().length != monsterHabitats.length) {
-      monster.fail('duplicate habitatIds');
+
+    // Absent sections of a version are inherited (null here).
+    bool present(String key) => !isVersion || monster.has(key);
+
+    final weaknesses = present('weaknesses')
+        ? monster.object('weaknesses')
+        : null;
+    final states = weaknesses == null
+        ? null
+        : _uniqueById(
+            weaknesses.optionalObjects('states').map(WeaknessStateDto.fromJson),
+            monster,
+            'weakness state',
+          );
+
+    final monsterHabitats = present('habitatIds')
+        ? monster.strings('habitatIds')
+        : null;
+    if (monsterHabitats != null) {
+      for (final id in monsterHabitats) {
+        if (!habitatIds.contains(id)) monster.fail('unknown habitatId "$id"');
+      }
+      if (monsterHabitats.toSet().length != monsterHabitats.length) {
+        monster.fail('duplicate habitatIds');
+      }
     }
 
-    final parts = _uniqueById(
-      monster.objects('parts').map(PartDto.fromJson),
-      monster,
-      'part',
-    );
+    final parts = present('parts')
+        ? _uniqueById(
+            monster.objects('parts').map(PartDto.fromJson),
+            monster,
+            'part',
+          )
+        : null;
+    final effectivePartIds =
+        parts?.keys.toSet() ?? {for (final p in base!.parts!) p.id};
+
+    final hp = _rankHp(monster, game);
+    final drops = [
+      for (final drop in monster.objects('drops'))
+        DropDto.fromJson(
+          drop,
+          game: game,
+          materialIds: materialIds,
+          partIds: effectivePartIds,
+        ),
+    ];
+    if (isVersion && hp.isEmpty && drops.isEmpty) {
+      monster.fail('a version needs its own "hp" or "drops"');
+    }
 
     return MonsterDto(
       slug: slug,
       name: _localized(monster.object('name')),
-      classification: _localized(monster.object('classification')),
+      classification: present('classification')
+          ? _localized(monster.object('classification'))
+          : null,
       image: monster.optionalString('image'),
-      general: _elementMap(weaknesses.object('general')),
-      states: states.values.toList(),
+      general: weaknesses == null
+          ? null
+          : _elementMap(weaknesses.object('general')),
+      states: states?.values.toList(),
       habitatIds: monsterHabitats,
-      parts: parts.values.toList(),
-      drops: [
-        for (final drop in monster.objects('drops'))
-          DropDto.fromJson(
-            drop,
-            game: game,
-            materialIds: materialIds,
-            partIds: parts.keys.toSet(),
-          ),
-      ],
+      parts: parts?.values.toList(),
+      drops: drops,
       sources: _sources(monster),
-      hp: _rankHp(monster, game),
-      reactions: _reactions(monster, itemIds),
+      hp: hp,
+      reactions: present('itemReactions') ? _reactions(monster, itemIds) : null,
+      versionOf: base?.slug,
+      versionKind: kind,
     );
   }
 
   final String slug;
   final LocalizedText name;
-  final LocalizedText classification;
   final String? image;
-  final Map<ElementType, Effectiveness> general;
-  final List<WeaknessStateDto> states;
-  final List<String> habitatIds;
-  final List<PartDto> parts;
   final List<DropDto> drops;
   final List<SourceRef> sources;
   final List<RankHp> hp;
-  final List<ItemReaction> reactions;
+
+  // Always set for base monsters; `null` in a version means "inherited".
+  final LocalizedText? classification;
+  final Map<ElementType, Effectiveness>? general;
+  final List<WeaknessStateDto>? states;
+  final List<String>? habitatIds;
+  final List<PartDto>? parts;
+  final List<ItemReaction>? reactions;
+
+  /// Base monster slug and kind when this entry is a version (feature 004).
+  final String? versionOf;
+  final VersionKind? versionKind;
 }
 
 List<HuntingItem> _huntingItems(JsonReader root) {

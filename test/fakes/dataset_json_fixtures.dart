@@ -145,3 +145,43 @@ Map<String, Object?> withHuntingInfo(Map<String, Object?> dataset) {
   ];
   return dataset;
 }
+
+/// Adds a version of the first monster (feature 004): by default a World
+/// tempered Rathalos with its own HP and one drop, inheriting every other
+/// section.
+Map<String, Object?> withVersion(
+  Map<String, Object?> dataset, {
+  String slug = 'tempered-rathalos',
+  String versionOf = 'rathalos',
+  String kind = 'tempered',
+}) {
+  dataset['monsters'] = <Object?>[
+    ...dataset['monsters']! as List<Object?>,
+    <String, Object?>{
+      'slug': slug,
+      'versionOf': versionOf,
+      'versionKind': kind,
+      'name': {'en': 'Tempered Rathalos', 'ptBr': 'Rathalos Temperado'},
+      'hp': <Object?>[
+        {'rank': 'high', 'solo': 9000, 'basis': 'minQuest'},
+      ],
+      'drops': <Object?>[
+        {
+          'materialId': 'rathalos-ruby',
+          'rank': 'high',
+          'method': 'breakPart',
+          'partId': 'head',
+          'ratePercent': 5,
+        },
+      ],
+      'sources': <Object?>[
+        {'name': 'Test source', 'url': 'https://example.com/tempered'},
+      ],
+    },
+  ];
+  return dataset;
+}
+
+/// The last monster map of a dataset (the version added by [withVersion]).
+Map<String, Object?> lastMonster(Map<String, Object?> dataset) =>
+    (dataset['monsters']! as List<Object?>).last! as Map<String, Object?>;

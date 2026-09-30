@@ -8,6 +8,8 @@ import 'package:mh_wiki/core/presentation/widgets/monster_image.dart';
 import 'package:mh_wiki/core/presentation/widgets/ornament_header.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/monster_entry.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/monsters/presentation/models/monster_list_state.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/game_filter_bar.dart';
@@ -146,16 +148,18 @@ class _LoadedList extends StatelessWidget {
                               ),
                             ),
                           SliverList.builder(
-                            itemCount: section.monsters.length,
-                            itemBuilder: (context, index) => _MonsterTile(
-                              monster: section.monsters[index],
-                              language: language,
-                              selected:
-                                  highlightSelection &&
-                                  section.monsters[index].id ==
-                                      state.selectedId,
-                              onTap: onSelect,
-                            ),
+                            itemCount: section.entries.length,
+                            itemBuilder: (context, index) {
+                              final entry = section.entries[index];
+                              return _MonsterTile(
+                                entry: entry,
+                                language: language,
+                                selected:
+                                    highlightSelection &&
+                                    _isInFamily(entry, state.selectedId),
+                                onTap: onSelect,
+                              );
+                            },
                           ),
                         ],
                       ),
@@ -167,15 +171,20 @@ class _LoadedList extends StatelessWidget {
   }
 }
 
+/// A row is selected when its base or one of its versions is (004).
+bool _isInFamily(MonsterEntry entry, MonsterId? selected) =>
+    selected != null &&
+    (entry.base.id == selected || entry.versions.any((v) => v.id == selected));
+
 class _MonsterTile extends StatelessWidget {
   const _MonsterTile({
-    required this.monster,
+    required this.entry,
     required this.language,
     required this.selected,
     required this.onTap,
   });
 
-  final Monster monster;
+  final MonsterEntry entry;
   final NameLanguage language;
   final bool selected;
   final ValueChanged<Monster> onTap;
@@ -183,6 +192,7 @@ class _MonsterTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final monster = entry.base;
     return Padding(
       padding: const EdgeInsets.fromLTRB(12, 3, 12, 3),
       child: Material(
@@ -191,7 +201,7 @@ class _MonsterTile extends StatelessWidget {
           color: selected ? HunterPalette.gold : HunterPalette.borderSubtle,
         ),
         child: InkWell(
-          onTap: () => onTap(monster),
+          onTap: () => onTap(entry.target),
           child: Semantics(
             selected: selected,
             button: true,

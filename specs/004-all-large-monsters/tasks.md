@@ -44,7 +44,7 @@ then Rise (Phase 6), then World (Phase 7).
 
 **Purpose**: versions in the model, data and use cases. Every game phase needs them.
 
-- [ ] T003 [P] DTO tests in `test/features/monsters/data/dtos/monster_dataset_dto_test.dart`, with fixtures in `test/fakes/dataset_json_fixtures.dart` (`withVersion(...)`).
+- [X] T003 [P] DTO tests in `test/features/monsters/data/dtos/monster_dataset_dto_test.dart`, with fixtures in `test/fakes/dataset_json_fixtures.dart` (`withVersion(...)`).
   - A version with `versionOf`/`versionKind` parses.
   - A version may omit `weaknesses`, `parts`, `habitatIds`, `itemReactions` and `classification`; a base may not.
   - Rejected:
@@ -54,35 +54,35 @@ then Rise (Phase 6), then World (Phase 7).
     - two versions of the same kind for one base;
     - a version with neither `hp` nor `drops`;
     - a drop `partId` not in the effective (inherited) parts.
-- [ ] T004 [P] Mapper tests in `test/features/monsters/data/dtos/monster_dataset_mapper_test.dart`.
+- [X] T004 [P] Mapper tests in `test/features/monsters/data/dtos/monster_dataset_mapper_test.dart`.
   - A version inherits weaknesses, parts, habitats, reactions and classification from its base.
   - `inheritedSections` lists exactly the omitted sections.
   - `hp` and `drops` are never taken from the base.
   - `versionOf` and `versionKind` are set.
-- [ ] T005 [P] Create the domain types in `lib/features/monsters/domain/entities/`:
+- [X] T005 [P] Create the domain types in `lib/features/monsters/domain/entities/`:
   - `version_kind.dart`: `VersionKind` enum in data-model order, plus the per-game allowed set as a pure-Dart map keyed by `Game`;
   - `monster_section_kind.dart`;
   - `monster_entry.dart`: `MonsterEntry` (base, versions, matchedVersion, `target`).
   - In `monster.dart`, add `versionOf`, `versionKind`, `inheritedSections` (default empty) and `isVersion`.
-- [ ] T006 Extend the DTO and mapper (makes T003/T004 pass): `lib/features/monsters/data/dtos/monster_dataset_dto.dart` (version fields, optional sections for versions, all rules of T003), `lib/features/monsters/data/dtos/monster_dataset_mapper.dart` (inheritance, research R3).
-- [ ] T007 [P] Use-case tests in `test/features/monsters/domain/usecases/filter_monsters_test.dart` and `test/features/monsters/domain/usecases/get_monster_versions_test.dart`.
+- [X] T006 Extend the DTO and mapper (makes T003/T004 pass): `lib/features/monsters/data/dtos/monster_dataset_dto.dart` (version fields, optional sections for versions, all rules of T003), `lib/features/monsters/data/dtos/monster_dataset_mapper.dart` (inheritance, research R3).
+- [X] T007 [P] Use-case tests in `test/features/monsters/domain/usecases/filter_monsters_test.dart` and `test/features/monsters/domain/usecases/get_monster_versions_test.dart`.
   - Versions are grouped under their base; entries are sorted by base name in the selected language.
   - A query matching only a version returns the base entry with `matchedVersion`.
   - A query matching the base has no `matchedVersion`.
   - Accents and case are ignored.
   - The game filter still applies.
   - `GetMonsterVersions` returns base + versions in kind order, given any member id.
-- [ ] T008 Implement the use cases (makes T007 pass).
+- [X] T008 Implement the use cases (makes T007 pass).
   - `lib/features/monsters/domain/entities/monster_section.dart` holds `List<MonsterEntry>`.
   - `lib/features/monsters/domain/usecases/filter_monsters.dart`: grouping, plus normalized names precomputed once per catalog. Use a pure-Dart index built by the use case and cached by catalog identity.
   - New `lib/features/monsters/domain/usecases/get_monster_versions.dart`.
   - Wire it in `lib/app/di/app_dependencies.dart`.
-- [ ] T009 [P] Controller tests in `test/features/monsters/presentation/controllers/monster_list_controller_test.dart`.
+- [X] T009 [P] Controller tests in `test/features/monsters/presentation/controllers/monster_list_controller_test.dart`.
   - `select(versionId)` exposes `selectedMonster` as the version and `selectedVersions` as base + versions.
   - Language change keeps the selected version.
-- [ ] T010 Update `lib/features/monsters/presentation/controllers/monster_list_controller.dart` (inject `GetMonsterVersions`, expose `selectedVersions`) and `lib/features/monsters/presentation/models/monster_list_state.dart`. Adapt `lib/features/monsters/presentation/views/widgets/monster_list_pane.dart` to render entries: tapping selects `entry.target.id`. Makes T009 pass.
-- [ ] T011 Document `versionOf` / `versionKind` and the optional sections of versions in `specs/001-monster-wiki/contracts/monster-dataset.schema.json` (schema stays v1).
-- [ ] T012 Run the gates (`flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`) and commit. Update existing tests that built `MonsterSection` with monsters.
+- [X] T010 Update `lib/features/monsters/presentation/controllers/monster_list_controller.dart` (inject `GetMonsterVersions`, expose `selectedVersions`) and `lib/features/monsters/presentation/models/monster_list_state.dart`. Adapt `lib/features/monsters/presentation/views/widgets/monster_list_pane.dart` to render entries: tapping selects `entry.target.id`. Makes T009 pass.
+- [X] T011 Document `versionOf` / `versionKind` and the optional sections of versions in `specs/001-monster-wiki/contracts/monster-dataset.schema.json` (schema stays v1).
+- [X] T012 Run the gates (`flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`) and commit. Update existing tests that built `MonsterSection` with monsters.
 
 **Checkpoint**: the app works as before with the current 30 monsters. Versions are supported end to end in data and domain.
 
