@@ -182,7 +182,6 @@ class _MonsterTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
     final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.fromLTRB(12, 3, 12, 3),
@@ -216,10 +215,9 @@ class _MonsterTile extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          l10n.monsterSubtitle(
-                            l10n.gameName(monster.id.game),
-                            monster.classification.resolve(language),
-                          ),
+                          // The game is already shown by the section header or
+                          // the active tab (002 US2).
+                          monster.classification.resolve(language),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: textTheme.bodyMedium?.copyWith(

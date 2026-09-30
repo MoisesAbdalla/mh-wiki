@@ -117,9 +117,9 @@ Existing 001 tests must keep passing (FR-012, SC-006); tests that find widgets b
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T036 Run the accessibility suite (`test/features/monsters/presentation/views/accessibility_test.dart`: 200% text, tap targets, `textContrastGuideline`) and fix any failure
-- [ ] T037 [P] Update README (theme, fonts and icons credits with licenses/sources)
-- [ ] T038 Final gates (`flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`), `flutter build web --release --no-web-resources-cdn`; commit
+- [X] T036 Run the accessibility suite (`test/features/monsters/presentation/views/accessibility_test.dart`: 200% text, tap targets, `textContrastGuideline`) and fix any failure
+- [X] T037 [P] Update README (theme, fonts and icons credits with licenses/sources)
+- [X] T038 Final gates (`flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`), `flutter build web --release --no-web-resources-cdn`; commit
 - [ ] T039 Manual quickstart scenarios 1–9 on Windows (`flutter run -d windows`), comparing with prototype A
 
 ---

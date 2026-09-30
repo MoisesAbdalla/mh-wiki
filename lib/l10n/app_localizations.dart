@@ -142,12 +142,6 @@ abstract class AppLocalizations {
   /// **'Selecione um monstro'**
   String get selectMonster;
 
-  /// No description provided for @monsterSubtitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'{game} · {classification}'**
-  String monsterSubtitle(String game, String classification);
-
   /// No description provided for @sectionWeaknesses.
   ///
   /// In pt, this message translates to:

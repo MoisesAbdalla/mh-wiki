@@ -56,10 +56,7 @@ void main() {
     await pumpPage(tester);
 
     expect(find.text('Monster 00'), findsOneWidget);
-    expect(
-      find.text('Monster Hunter World: Iceborne · Flying Wyvern'),
-      findsWidgets,
-    );
+    expect(find.text('Flying Wyvern'), findsWidgets);
     expect(find.byIcon(Icons.pets), findsWidgets);
   });
 

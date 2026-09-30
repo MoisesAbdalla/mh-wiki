@@ -4,9 +4,14 @@ import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/monsters_page.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/monster_detail_view.dart';
+import 'package:mh_wiki/features/settings/domain/usecases/load_settings.dart';
+import 'package:mh_wiki/features/settings/domain/usecases/set_name_language.dart';
+import 'package:mh_wiki/features/settings/presentation/settings_controller.dart';
+import 'package:mh_wiki/features/settings/presentation/settings_page.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
 import '../../../../fakes/controllers.dart';
+import '../../../../fakes/fake_settings_repository.dart';
 import '../../../../fakes/fake_monster_repository.dart';
 import '../../../../fakes/monster_fixtures.dart';
 import '../../../../helpers/pump_app.dart';
@@ -86,5 +91,31 @@ void main() {
     await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
     await expectLater(tester, meetsGuideline(textContrastGuideline));
     controller.dispose();
+  });
+
+  testWidgets('detail and settings meet text contrast (002 SC-003)', (
+    tester,
+  ) async {
+    setWindowSize(tester, const Size(400, 2000));
+    await pumpApp(
+      tester,
+      Scaffold(
+        body: MonsterDetailView(
+          monster: richMonster(),
+          language: NameLanguage.ptBr,
+        ),
+      ),
+    );
+    await expectLater(tester, meetsGuideline(textContrastGuideline));
+
+    final repo = FakeSettingsRepository();
+    final settings = SettingsController(
+      loadSettings: LoadSettings(repo),
+      setNameLanguage: SetNameLanguage(repo),
+    );
+    await pumpApp(tester, SettingsPage(controller: settings));
+    await expectLater(tester, meetsGuideline(textContrastGuideline));
+    await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+    settings.dispose();
   });
 }

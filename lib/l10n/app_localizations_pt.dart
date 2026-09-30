@@ -36,11 +36,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get selectMonster => 'Selecione um monstro';
 
   @override
-  String monsterSubtitle(String game, String classification) {
-    return '$game · $classification';
-  }
-
-  @override
   String get sectionWeaknesses => 'Fraquezas elementais';
 
   @override

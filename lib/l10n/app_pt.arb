@@ -12,13 +12,6 @@
   "failedGamesBanner": "Não foi possível carregar os dados de: {games}",
   "@failedGamesBanner": { "placeholders": { "games": { "type": "String" } } },
   "selectMonster": "Selecione um monstro",
-  "monsterSubtitle": "{game} · {classification}",
-  "@monsterSubtitle": {
-    "placeholders": {
-      "game": { "type": "String" },
-      "classification": { "type": "String" }
-    }
-  },
 
   "sectionWeaknesses": "Fraquezas elementais",
   "sectionHabitat": "Habitat",
