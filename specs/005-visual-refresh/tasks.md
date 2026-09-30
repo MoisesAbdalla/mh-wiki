@@ -126,26 +126,26 @@ US2).
 **Independent Test**: quickstart checks 3 (weaknesses), 4, 6, 7 and 11 (weakness and HP
 semantics); `weakness_section`, `primary_weakness_badge` and `hp_section` tests pass.
 
-- [ ] T022 [P] [US2] Unit tests in `test/features/monsters/domain/entities/weakness_profile_test.dart` for `ranked`:
+- [X] T022 [P] [US2] Unit tests in `test/features/monsters/domain/entities/weakness_profile_test.dart` for `ranked`:
   - order high → none, immune last;
   - ties in the order fire, water, thunder, ice, dragon;
   - missing elements count as none;
   - `best` only for `mostEffective` (≥ 2 stars, ties included);
   - states ranked with no `best`.
-- [ ] T023 [US2] Add `lib/features/monsters/domain/entities/ranked_weakness.dart` and `WeaknessProfile.ranked` (and ranking of state values) in `weakness_profile.dart`, so `T022` passes. In `monster_list_pane.dart`, `_WeaknessBadge` becomes an `ElementIcon` in the element colour plus the element name, with no border; update `test/features/monsters/presentation/views/primary_weakness_badge_test.dart`.
-- [ ] T024 [P] [US2] Rewrite `test/features/monsters/presentation/views/widgets/weakness_section_test.dart` with semantics-based finders:
+- [X] T023 [US2] Add `lib/features/monsters/domain/entities/ranked_weakness.dart` and `WeaknessProfile.ranked` (and ranking of state values) in `weakness_profile.dart`, so `T022` passes. In `monster_list_pane.dart`, `_WeaknessBadge` becomes an `ElementIcon` in the element colour plus the element name, with no border; update `test/features/monsters/presentation/views/primary_weakness_badge_test.dart`.
+- [X] T024 [P] [US2] Rewrite `test/features/monsters/presentation/views/widgets/weakness_section_test.dart` with semantics-based finders:
   - Rathalos order Dragão, Raio, Água, Gelo, Fogo;
   - "Melhor" only on the best rows (two on a tie, none without ≥ 2 stars);
   - immunity read as "sem efeito";
   - each row's semantics "<elemento>, N de 3 estrelas[, melhor fraqueza]";
   - state rows with no stamp.
-- [ ] T025 [US2] Rewrite `lib/features/monsters/presentation/views/widgets/weakness_section.dart` as ruled rows from `profile.ranked`, per the contract:
+- [X] T025 [US2] Rewrite `lib/features/monsters/presentation/views/widgets/weakness_section.dart` as ruled rows from `profile.ranked`, per the contract:
   - `ElementIcon` 20 dp in the element colour and the name (bold when best);
   - a "Melhor" stamp widget (`notebookTitle(11)`, gold, 1.5 dp gold border, −3°);
   - `StarRating`, or immunity text;
   - state blocks under captions.
   Restyle `lib/core/presentation/widgets/star_rating.dart` (filled `text`, empty `textDisabled`, gold when highlighted). Remove `WeaknessCell` and `_ElementGrid`, so `T024` passes.
-- [ ] T026 [P] [US2] Extend `test/features/monsters/presentation/views/widgets/hp_section_test.dart`:
+- [X] T026 [P] [US2] Extend `test/features/monsters/presentation/views/widgets/hp_section_test.dart`:
   - rank tabs only with more than one rank;
   - single rank shown as the section note;
   - the solo value with "a partir de" for `minQuest`;
@@ -153,7 +153,7 @@ semantics); `weakness_section`, `primary_weakness_badge` and `hp_section` tests 
   - only the solo value without party factors;
   - "HP desconhecido" with no ruler;
   - values listed under the ruler at 200 % text, with no overflow at 320 dp.
-- [ ] T027 [US2] Create `lib/features/monsters/presentation/views/widgets/hp_ruler.dart`. It draws the axis, the gold solo tick, the 2-player tick, the 3–4 span and the labelled values with `notebookNumber(13)`, and switches to a list when the text scale is above 1.3 or the width below 300. Rewrite `hp_section.dart` as a stateful `NotebookSection`:
+- [X] T027 [US2] Create `lib/features/monsters/presentation/views/widgets/hp_ruler.dart`. It draws the axis, the gold solo tick, the 2-player tick, the 3–4 span and the labelled values with `notebookNumber(13)`, and switches to a list when the text scale is above 1.3 or the width below 300. Rewrite `hp_section.dart` as a stateful `NotebookSection`:
   - rank `UnderlineTabs`;
   - solo value `notebookNumber(40, bold)` plus "solo"/"a partir de";
   - the `HpRuler` wrapped in `ExcludeSemantics` under a `Semantics` label;

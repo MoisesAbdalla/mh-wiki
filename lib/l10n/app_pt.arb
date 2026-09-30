@@ -103,6 +103,7 @@
       "more": { "type": "String" }
     }
   },
+  "hpFromLabel": "a partir de",
   "hpUnknown": "HP desconhecido",
   "unknown": "Desconhecido",
   "visionLabel": "Visão",

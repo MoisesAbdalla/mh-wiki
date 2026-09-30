@@ -226,6 +226,9 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get hpFromLabel => 'a partir de';
+
+  @override
   String get hpUnknown => 'HP desconhecido';
 
   @override

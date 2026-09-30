@@ -13,6 +13,8 @@ import 'package:mh_wiki/features/monsters/presentation/views/widgets/weakness_se
 import '../../../../../fakes/monster_fixtures.dart';
 import '../../../../../helpers/pump_app.dart';
 
+/// 005 US2: weaknesses as ruled rows, best → worst, element symbol + stars,
+/// the best one in gold with a "Melhor" stamp (FR-010, FR-011).
 void main() {
   Future<void> pump(WidgetTester tester, WeaknessProfile profile) =>
       pumpSection(
@@ -20,44 +22,89 @@ void main() {
         WeaknessSection(profile: profile, language: NameLanguage.ptBr),
       );
 
-  testWidgets('shows the five elements with star semantics', (tester) async {
+  /// Element names of the general rows, top to bottom.
+  List<ElementType> order(WidgetTester tester) {
+    final rows = tester.widgetList<WeaknessRow>(find.byType(WeaknessRow));
+    return [for (final r in rows.where((r) => !r.inState)) r.weakness.element];
+  }
+
+  testWidgets('rows go from best to worst, immune last', (tester) async {
+    setWindowSize(tester, const Size(400, 1200));
+    await pump(tester, richMonster().weaknesses);
+
+    expect(order(tester), [
+      ElementType.dragon,
+      ElementType.thunder,
+      ElementType.water,
+      ElementType.ice,
+      ElementType.fire,
+    ]);
+    final tops = [
+      for (final row in find.byType(WeaknessRow).evaluate().take(5))
+        tester.getTopLeft(find.byWidget(row.widget)).dy,
+    ];
+    expect(tops, orderedEquals([...tops]..sort()));
+  });
+
+  testWidgets('each row has the element symbol and star semantics', (
+    tester,
+  ) async {
     final handle = tester.ensureSemantics();
     await pump(tester, richMonster().weaknesses);
 
     expect(find.text('Fraquezas elementais'), findsOneWidget);
-    for (final name in ['Fogo', 'Água', 'Raio', 'Gelo', 'Dragão']) {
-      expect(find.text(name), findsWidgets);
+    for (final row in find.byType(WeaknessRow).evaluate().take(5)) {
+      expect(
+        find.descendant(
+          of: find.byWidget(row.widget),
+          matching: find.byType(ElementIcon),
+        ),
+        findsOneWidget,
+      );
     }
-    expect(find.bySemanticsLabel('Dragão: 3 de 3'), findsOneWidget);
+    expect(
+      find.bySemanticsLabel('Dragão: 3 de 3, melhor fraqueza'),
+      findsOneWidget,
+    );
     expect(find.bySemanticsLabel('Raio: 2 de 3'), findsOneWidget);
     expect(find.bySemanticsLabel('Fogo: imune'), findsOneWidget);
     handle.dispose();
   });
 
-  testWidgets('immune is shown with its own badge, distinct from 0 stars', (
-    tester,
-  ) async {
+  testWidgets('immunity is text, distinct from 0 stars', (tester) async {
     await pump(tester, richMonster().weaknesses);
     expect(find.text('Imune'), findsOneWidget);
   });
 
-  testWidgets('highlights only the most effective elements', (tester) async {
+  testWidgets('only the best row has the stamp and gold stars', (tester) async {
     await pump(tester, richMonster().weaknesses);
 
+    expect(find.text('Melhor'), findsOneWidget);
     final highlighted = tester
         .widgetList<StarRating>(find.byType(StarRating))
         .where((r) => r.highlighted);
-    expect(highlighted, hasLength(1));
     expect(highlighted.single.effectiveness, Effectiveness.high);
   });
 
-  testWidgets('highlights nothing when no element reaches 2 stars', (
-    tester,
-  ) async {
+  testWidgets('tied best elements are all stamped', (tester) async {
+    await pump(
+      tester,
+      WeaknessProfile(
+        general: weaknesses(
+          water: Effectiveness.medium,
+          ice: Effectiveness.medium,
+        ),
+      ),
+    );
+    expect(find.text('Melhor'), findsNWidgets(2));
+  });
+
+  testWidgets('no stamp when no element reaches 2 stars', (tester) async {
     await pump(
       tester,
       WeaknessProfile(general: weaknesses(fire: Effectiveness.low)),
     );
+    expect(find.text('Melhor'), findsNothing);
     expect(
       tester
           .widgetList<StarRating>(find.byType(StarRating))
@@ -66,11 +113,12 @@ void main() {
     );
   });
 
-  testWidgets('shows a block per named state only when states exist', (
+  testWidgets('a block per named state, ranked, without a stamp', (
     tester,
   ) async {
     await pump(tester, richMonster().weaknesses);
     expect(find.text('Enfurecido'), findsOneWidget);
+    expect(find.text('Melhor'), findsOneWidget, reason: 'general row only');
 
     await pump(tester, WeaknessProfile(general: weaknesses()));
     expect(find.text('Enfurecido'), findsNothing);
@@ -94,47 +142,14 @@ void main() {
     expect(find.text('Charged'), findsOneWidget);
   });
 
-  group('grid layout (002 FR-006)', () {
-    testWidgets('five cells side by side, each with its element icon', (
-      tester,
-    ) async {
-      setWindowSize(tester, const Size(400, 900));
-      await pump(tester, richMonster().weaknesses);
+  testWidgets('320 dp with 200% text does not overflow', (tester) async {
+    setWindowSize(tester, const Size(320, 1600));
+    tester.platformDispatcher.textScaleFactorTestValue = 2;
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
 
-      final cells = find.byType(WeaknessCell);
-      // General row only: the state block adds five more below it.
-      final general = [for (var i = 0; i < 5; i++) cells.at(i)];
-      final rows = general.map((c) => tester.getTopLeft(c).dy).toSet();
-      expect(rows, hasLength(1));
-      for (final cell in general) {
-        expect(
-          find.descendant(of: cell, matching: find.byType(ElementIcon)),
-          findsOneWidget,
-        );
-      }
-    });
+    await pump(tester, richMonster().weaknesses);
 
-    testWidgets('the most effective cell is framed', (tester) async {
-      setWindowSize(tester, const Size(400, 900));
-      await pump(tester, richMonster().weaknesses);
-
-      final framed = tester
-          .widgetList<WeaknessCell>(find.byType(WeaknessCell))
-          .where((c) => c.highlighted);
-      expect(framed.single.element, ElementType.dragon);
-    });
-
-    testWidgets('narrow screen with 200% text does not overflow (U1)', (
-      tester,
-    ) async {
-      setWindowSize(tester, const Size(320, 1400));
-      tester.platformDispatcher.textScaleFactorTestValue = 2;
-      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
-
-      await pump(tester, richMonster().weaknesses);
-
-      expect(tester.takeException(), isNull);
-      expect(find.byType(WeaknessCell), findsNWidgets(10));
-    });
+    expect(tester.takeException(), isNull);
+    expect(find.byType(WeaknessRow), findsNWidgets(10));
   });
 }

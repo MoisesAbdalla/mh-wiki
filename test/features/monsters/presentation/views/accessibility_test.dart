@@ -57,8 +57,17 @@ void main() {
     );
     // Scroll through every section (HP and hunting items included, 003);
     // any overflow fails the test.
-    await tester.scrollUntilVisible(find.text('Fonte: Fextralife'), 300);
-    await tester.scrollUntilVisible(find.text('Cápsula de Grito'), 300);
+    final page = find.byType(Scrollable).first;
+    await tester.scrollUntilVisible(
+      find.text('Fonte: Fextralife'),
+      300,
+      scrollable: page,
+    );
+    await tester.scrollUntilVisible(
+      find.text('Cápsula de Grito'),
+      300,
+      scrollable: page,
+    );
     expect(tester.takeException(), isNull);
     // The page scrolls vertically; the version tabs scroll sideways (005).
     await tester.scrollUntilVisible(

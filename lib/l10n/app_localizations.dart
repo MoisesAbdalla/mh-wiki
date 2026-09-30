@@ -484,6 +484,12 @@ abstract class AppLocalizations {
   /// **'HP solo {solo}; 2 caçadores {two}; 3 a 4 caçadores {more}'**
   String hpRulerSemantics(String solo, String two, String more);
 
+  /// No description provided for @hpFromLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'a partir de'**
+  String get hpFromLabel;
+
   /// No description provided for @hpUnknown.
   ///
   /// In pt, this message translates to:
