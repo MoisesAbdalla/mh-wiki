@@ -1,0 +1,7272 @@
+{
+  "schemaVersion": 1,
+  "game": "rise_sunbreak",
+  "generatedAt": "2026-09-29",
+  "sources": [
+    {
+      "name": "Kiranico (MH Rise: Sunbreak)",
+      "url": "https://mhrise.kiranico.com/",
+      "notes": "Database ver. 16.0.0. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X)."
+    },
+    {
+      "name": "Monster Hunter Wiki",
+      "url": "https://monsterhunterwiki.org/",
+      "notes": "Locales, classification and broken-part names."
+    }
+  ],
+  "habitats": [
+    {
+      "id": "shrine-ruins",
+      "name": {
+        "en": "Shrine Ruins"
+      }
+    },
+    {
+      "id": "frost-islands",
+      "name": {
+        "en": "Frost Islands"
+      }
+    },
+    {
+      "id": "sandy-plains",
+      "name": {
+        "en": "Sandy Plains"
+      }
+    },
+    {
+      "id": "flooded-forest",
+      "name": {
+        "en": "Flooded Forest"
+      }
+    },
+    {
+      "id": "lava-caverns",
+      "name": {
+        "en": "Lava Caverns"
+      }
+    },
+    {
+      "id": "jungle",
+      "name": {
+        "en": "Jungle"
+      }
+    },
+    {
+      "id": "citadel",
+      "name": {
+        "en": "Citadel"
+      }
+    },
+    {
+      "id": "forlorn-arena",
+      "name": {
+        "en": "Forlorn Arena"
+      }
+    },
+    {
+      "id": "infernal-springs",
+      "name": {
+        "en": "Infernal Springs"
+      }
+    }
+  ],
+  "materials": [
+    {
+      "id": "beast-gem",
+      "name": {
+        "en": "Beast Gem",
+        "ptBr": "Gema Feroz"
+      }
+    },
+    {
+      "id": "bird-wyvern-gem",
+      "name": {
+        "en": "Bird Wyvern Gem",
+        "ptBr": "Gema Serpássaro"
+      }
+    },
+    {
+      "id": "bloody-parasite",
+      "name": {
+        "en": "Bloody Parasite",
+        "ptBr": "Parasita Sangrento"
+      }
+    },
+    {
+      "id": "bubblefoam",
+      "name": {
+        "en": "Bubblefoam",
+        "ptBr": "Bolhas"
+      }
+    },
+    {
+      "id": "bubblefoam-plus",
+      "name": {
+        "en": "Bubblefoam+",
+        "ptBr": "Bolhas+"
+      }
+    },
+    {
+      "id": "conflagrant-sac",
+      "name": {
+        "en": "Conflagrant Sac",
+        "ptBr": "Glândula Conflagrante"
+      }
+    },
+    {
+      "id": "distilled-bubblefoam",
+      "name": {
+        "en": "Distilled Bubblefoam",
+        "ptBr": "Espuma Destilada"
+      }
+    },
+    {
+      "id": "dragon-treasure",
+      "name": {
+        "en": "Dragon Treasure",
+        "ptBr": "Tes. de Dragão"
+      }
+    },
+    {
+      "id": "fey-wyvern-gem",
+      "name": {
+        "en": "Fey Wyvern Gem",
+        "ptBr": "Gema Feérica de Serpe"
+      }
+    },
+    {
+      "id": "flame-sac",
+      "name": {
+        "en": "Flame Sac",
+        "ptBr": "Glân. de Chama"
+      }
+    },
+    {
+      "id": "fulgurbug",
+      "name": {
+        "en": "Fulgurbug",
+        "ptBr": "Fulgurinseto"
+      }
+    },
+    {
+      "id": "gold-rajang-pelt",
+      "name": {
+        "en": "Gold Rajang Pelt",
+        "ptBr": "Pele Dou. Rajang"
+      }
+    },
+    {
+      "id": "gold-rajang-pelt-plus",
+      "name": {
+        "en": "Gold Rajang Pelt+",
+        "ptBr": "Pel. Dour. Rajang+"
+      }
+    },
+    {
+      "id": "great-izuchi-grindtail",
+      "name": {
+        "en": "Great Izuchi Grindtail",
+        "ptBr": "Cauda Trit. G. Izuchi"
+      }
+    },
+    {
+      "id": "great-izuchi-hide",
+      "name": {
+        "en": "Great Izuchi Hide",
+        "ptBr": "Couro G. Izuchi"
+      }
+    },
+    {
+      "id": "great-izuchi-hide-plus",
+      "name": {
+        "en": "Great Izuchi Hide+",
+        "ptBr": "Couro G. Izuchi+"
+      }
+    },
+    {
+      "id": "great-izuchi-pelt",
+      "name": {
+        "en": "Great Izuchi Pelt",
+        "ptBr": "Pele G. Izuchi"
+      }
+    },
+    {
+      "id": "great-izuchi-pelt-plus",
+      "name": {
+        "en": "Great Izuchi Pelt+",
+        "ptBr": "Pele G. Izuchi+"
+      }
+    },
+    {
+      "id": "great-izuchi-tail",
+      "name": {
+        "en": "Great Izuchi Tail",
+        "ptBr": "Cauda G. Izuchi"
+      }
+    },
+    {
+      "id": "great-izuchi-tail-plus",
+      "name": {
+        "en": "Great Izuchi Tail+",
+        "ptBr": "Cauda G. Izuchi+"
+      }
+    },
+    {
+      "id": "great-izuchi-thickfur",
+      "name": {
+        "en": "Great Izuchi Thickfur",
+        "ptBr": "Pelodenso G. Izuchi"
+      }
+    },
+    {
+      "id": "great-izuchi-thickhide",
+      "name": {
+        "en": "Great Izuchi Thickhide",
+        "ptBr": "Courogrosso G. Izuchi"
+      }
+    },
+    {
+      "id": "great-stoutbone",
+      "name": {
+        "en": "Great Stoutbone",
+        "ptBr": "Grande Osso Duro"
+      }
+    },
+    {
+      "id": "inferno-sac",
+      "name": {
+        "en": "Inferno Sac",
+        "ptBr": "Glân. Infernal"
+      }
+    },
+    {
+      "id": "large-beast-gem",
+      "name": {
+        "en": "Large Beast Gem",
+        "ptBr": "Gema Fera Grande"
+      }
+    },
+    {
+      "id": "large-beast-tear",
+      "name": {
+        "en": "Large Beast Tear",
+        "ptBr": "Lágrima Gd. Fera"
+      }
+    },
+    {
+      "id": "large-wyvern-gem",
+      "name": {
+        "en": "Large Wyvern Gem",
+        "ptBr": "Gema Grande de Serpe"
+      }
+    },
+    {
+      "id": "large-wyvern-tear",
+      "name": {
+        "en": "Large Wyvern Tear",
+        "ptBr": "Lág. Gr. Serpe"
+      }
+    },
+    {
+      "id": "magna-ascended-blade",
+      "name": {
+        "en": "Magna Ascended Blade",
+        "ptBr": "Lâm. Asc. Magnamalo"
+      }
+    },
+    {
+      "id": "magna-ghostprism",
+      "name": {
+        "en": "Magna Ghostprism",
+        "ptBr": "Prismalma Magna."
+      }
+    },
+    {
+      "id": "magna-soulprism",
+      "name": {
+        "en": "Magna Soulprism",
+        "ptBr": "Prismalma Magna."
+      }
+    },
+    {
+      "id": "magnamalo-blade",
+      "name": {
+        "en": "Magnamalo Blade",
+        "ptBr": "Lâm. Magnamalo"
+      }
+    },
+    {
+      "id": "magnamalo-blade-plus",
+      "name": {
+        "en": "Magnamalo Blade+",
+        "ptBr": "Lâm. Magnamalo+"
+      }
+    },
+    {
+      "id": "magnamalo-bladeshell",
+      "name": {
+        "en": "Magnamalo Bladeshell",
+        "ptBr": "Cascolâm. Magna"
+      }
+    },
+    {
+      "id": "magnamalo-cortex",
+      "name": {
+        "en": "Magnamalo Cortex",
+        "ptBr": "Córtex Magnamalo"
+      }
+    },
+    {
+      "id": "magnamalo-hellhorn",
+      "name": {
+        "en": "Magnamalo Hellhorn",
+        "ptBr": "Chifrinferno Magna"
+      }
+    },
+    {
+      "id": "magnamalo-horn",
+      "name": {
+        "en": "Magnamalo Horn",
+        "ptBr": "Chif. Magnamalo"
+      }
+    },
+    {
+      "id": "magnamalo-horn-plus",
+      "name": {
+        "en": "Magnamalo Horn+",
+        "ptBr": "Chif. Magnamalo+"
+      }
+    },
+    {
+      "id": "magnamalo-orb",
+      "name": {
+        "en": "Magnamalo Orb",
+        "ptBr": "Orbe Magnamalo"
+      }
+    },
+    {
+      "id": "magnamalo-plate",
+      "name": {
+        "en": "Magnamalo Plate",
+        "ptBr": "Placa Magnamalo"
+      }
+    },
+    {
+      "id": "magnamalo-scale",
+      "name": {
+        "en": "Magnamalo Scale",
+        "ptBr": "Escama Magnamalo"
+      }
+    },
+    {
+      "id": "magnamalo-scale-plus",
+      "name": {
+        "en": "Magnamalo Scale+",
+        "ptBr": "Esc. Magnamalo+"
+      }
+    },
+    {
+      "id": "magnamalo-scute",
+      "name": {
+        "en": "Magnamalo Scute",
+        "ptBr": "Gr. Esc. Magnamalo"
+      }
+    },
+    {
+      "id": "magnamalo-scute-plus",
+      "name": {
+        "en": "Magnamalo Scute+",
+        "ptBr": "Gr. Esc. Magnamalo+"
+      }
+    },
+    {
+      "id": "magnamalo-shard",
+      "name": {
+        "en": "Magnamalo Shard",
+        "ptBr": "Frag. Magnamalo"
+      }
+    },
+    {
+      "id": "magnamalo-shell",
+      "name": {
+        "en": "Magnamalo Shell",
+        "ptBr": "Casco Magnamalo"
+      }
+    },
+    {
+      "id": "magnamalo-shell-plus",
+      "name": {
+        "en": "Magnamalo Shell+",
+        "ptBr": "Casco Magnamalo+"
+      }
+    },
+    {
+      "id": "magnamalo-soulprism-plus",
+      "name": {
+        "en": "Magnamalo Soulprism+",
+        "ptBr": "Prismalma Magnamalo"
+      }
+    },
+    {
+      "id": "magnamalo-speartail",
+      "name": {
+        "en": "Magnamalo Speartail",
+        "ptBr": "Caudalança Magnamalo"
+      }
+    },
+    {
+      "id": "magnamalo-tail",
+      "name": {
+        "en": "Magnamalo Tail",
+        "ptBr": "Cauda Magnamalo"
+      }
+    },
+    {
+      "id": "malzeno-bloodstone",
+      "name": {
+        "en": "Malzeno Bloodstone",
+        "ptBr": "Pedrasangue Malzeno"
+      }
+    },
+    {
+      "id": "malzeno-cortex",
+      "name": {
+        "en": "Malzeno Cortex",
+        "ptBr": "Córtex Malzeno"
+      }
+    },
+    {
+      "id": "malzeno-fellwing",
+      "name": {
+        "en": "Malzeno Fellwing",
+        "ptBr": "Tenebrasa Malzeno"
+      }
+    },
+    {
+      "id": "malzeno-hardfang",
+      "name": {
+        "en": "Malzeno Hardfang",
+        "ptBr": "Presadura Malzeno"
+      }
+    },
+    {
+      "id": "malzeno-hardhorn",
+      "name": {
+        "en": "Malzeno Hardhorn",
+        "ptBr": "Chifroduro Malzeno"
+      }
+    },
+    {
+      "id": "malzeno-shard",
+      "name": {
+        "en": "Malzeno Shard",
+        "ptBr": "Frag. Malzeno"
+      }
+    },
+    {
+      "id": "malzeno-tail",
+      "name": {
+        "en": "Malzeno Tail",
+        "ptBr": "Cauda Malzeno"
+      }
+    },
+    {
+      "id": "mizutsune-claw",
+      "name": {
+        "en": "Mizutsune Claw",
+        "ptBr": "Garra Mizutsune"
+      }
+    },
+    {
+      "id": "mizutsune-claw-plus",
+      "name": {
+        "en": "Mizutsune Claw+",
+        "ptBr": "Garra Mizutsune+"
+      }
+    },
+    {
+      "id": "mizutsune-fin",
+      "name": {
+        "en": "Mizutsune Fin",
+        "ptBr": "Barbatana Mizu."
+      }
+    },
+    {
+      "id": "mizutsune-fin-plus",
+      "name": {
+        "en": "Mizutsune Fin+",
+        "ptBr": "Barb. Mizutsune+"
+      }
+    },
+    {
+      "id": "mizutsune-hardclaw",
+      "name": {
+        "en": "Mizutsune Hardclaw",
+        "ptBr": "Garrígida Mizutsune"
+      }
+    },
+    {
+      "id": "mizutsune-mantle",
+      "name": {
+        "en": "Mizutsune Mantle",
+        "ptBr": "Manto Mizutsune"
+      }
+    },
+    {
+      "id": "mizutsune-plate",
+      "name": {
+        "en": "Mizutsune Plate",
+        "ptBr": "Placa Mizutsune"
+      }
+    },
+    {
+      "id": "mizutsune-purplefell",
+      "name": {
+        "en": "Mizutsune Purplefell",
+        "ptBr": "Cerda Roxa Mizutsune"
+      }
+    },
+    {
+      "id": "mizutsune-purplefur",
+      "name": {
+        "en": "Mizutsune Purplefur",
+        "ptBr": "Pelorroxo Mizutsune"
+      }
+    },
+    {
+      "id": "mizutsune-purplefur-plus",
+      "name": {
+        "en": "Mizutsune Purplefur+",
+        "ptBr": "Pelorroxo Mizutsune+"
+      }
+    },
+    {
+      "id": "mizutsune-scale",
+      "name": {
+        "en": "Mizutsune Scale",
+        "ptBr": "Escama Mizutsune"
+      }
+    },
+    {
+      "id": "mizutsune-scale-plus",
+      "name": {
+        "en": "Mizutsune Scale+",
+        "ptBr": "Esc. Mizutsune+"
+      }
+    },
+    {
+      "id": "mizutsune-shard",
+      "name": {
+        "en": "Mizutsune Shard",
+        "ptBr": "Frag. Mizutsune"
+      }
+    },
+    {
+      "id": "mizutsune-silkfin",
+      "name": {
+        "en": "Mizutsune Silkfin",
+        "ptBr": "Barb. Seda Mizutsune"
+      }
+    },
+    {
+      "id": "mizutsune-tail",
+      "name": {
+        "en": "Mizutsune Tail",
+        "ptBr": "Cauda Mizutsune"
+      }
+    },
+    {
+      "id": "mizutsune-water-orb",
+      "name": {
+        "en": "Mizutsune Water Orb",
+        "ptBr": "Orbe d'Água Mizutsune"
+      }
+    },
+    {
+      "id": "monster-bone-l",
+      "name": {
+        "en": "Monster Bone L",
+        "ptBr": "Osso de Mons. G"
+      }
+    },
+    {
+      "id": "monster-bone-plus",
+      "name": {
+        "en": "Monster Bone+",
+        "ptBr": "Osso de Monstro+"
+      }
+    },
+    {
+      "id": "monster-bone-s",
+      "name": {
+        "en": "Monster Bone S",
+        "ptBr": "Osso de Mons. P"
+      }
+    },
+    {
+      "id": "monster-hardbone",
+      "name": {
+        "en": "Monster Hardbone",
+        "ptBr": "Osso Duro Mons."
+      }
+    },
+    {
+      "id": "monster-keenbone",
+      "name": {
+        "en": "Monster Keenbone",
+        "ptBr": "Incisivo Mons."
+      }
+    },
+    {
+      "id": "monster-toughbone",
+      "name": {
+        "en": "Monster Toughbone",
+        "ptBr": "Vigorosso Monstro"
+      }
+    },
+    {
+      "id": "old-dragon-treasure",
+      "name": {
+        "en": "Old Dragon Treasure",
+        "ptBr": "Tesouro Dragão Antigo"
+      }
+    },
+    {
+      "id": "purple-magna-orb",
+      "name": {
+        "en": "Purple Magna Orb",
+        "ptBr": "Magna Orbe Roxo"
+      }
+    },
+    {
+      "id": "purple-mizutsune-tail",
+      "name": {
+        "en": "Purple Mizutsune Tail",
+        "ptBr": "Caudarroxa Mizutsune"
+      }
+    },
+    {
+      "id": "rajang-blackfur",
+      "name": {
+        "en": "Rajang Blackfur",
+        "ptBr": "Peliça Rajang"
+      }
+    },
+    {
+      "id": "rajang-claw-plus",
+      "name": {
+        "en": "Rajang Claw+",
+        "ptBr": "Garra Rajang+"
+      }
+    },
+    {
+      "id": "rajang-fang-plus",
+      "name": {
+        "en": "Rajang Fang+",
+        "ptBr": "Presa Rajang+"
+      }
+    },
+    {
+      "id": "rajang-hardclaw",
+      "name": {
+        "en": "Rajang Hardclaw",
+        "ptBr": "Garrígida Rajang"
+      }
+    },
+    {
+      "id": "rajang-hardfang",
+      "name": {
+        "en": "Rajang Hardfang",
+        "ptBr": "Presadura Rajang"
+      }
+    },
+    {
+      "id": "rajang-hardhorn",
+      "name": {
+        "en": "Rajang Hardhorn",
+        "ptBr": "Chifroduro Rajang"
+      }
+    },
+    {
+      "id": "rajang-horn-plus",
+      "name": {
+        "en": "Rajang Horn+",
+        "ptBr": "Chifre Rajang+"
+      }
+    },
+    {
+      "id": "rajang-tail",
+      "name": {
+        "en": "Rajang Tail",
+        "ptBr": "Cauda Rajang"
+      }
+    },
+    {
+      "id": "rajang-wildpelt",
+      "name": {
+        "en": "Rajang Wildpelt",
+        "ptBr": "Pelicabrava Rajang"
+      }
+    },
+    {
+      "id": "rath-marrow",
+      "name": {
+        "en": "Rath Marrow",
+        "ptBr": "Tutano Rath"
+      }
+    },
+    {
+      "id": "rath-medulla",
+      "name": {
+        "en": "Rath Medulla",
+        "ptBr": "Medula Rath"
+      }
+    },
+    {
+      "id": "rath-wingripper",
+      "name": {
+        "en": "Rath Wingripper",
+        "ptBr": "Asarrasgo Rath"
+      }
+    },
+    {
+      "id": "rath-wingtalon",
+      "name": {
+        "en": "Rath Wingtalon",
+        "ptBr": "Garrasa de Rath"
+      }
+    },
+    {
+      "id": "rath-wingtalon-plus",
+      "name": {
+        "en": "Rath Wingtalon+",
+        "ptBr": "Garrasa de Rath+"
+      }
+    },
+    {
+      "id": "rathalos-carapace",
+      "name": {
+        "en": "Rathalos Carapace",
+        "ptBr": "Carapaça Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-cortex",
+      "name": {
+        "en": "Rathalos Cortex",
+        "ptBr": "Córtex Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-fellwing",
+      "name": {
+        "en": "Rathalos Fellwing",
+        "ptBr": "Tenebrasa Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-lash",
+      "name": {
+        "en": "Rathalos Lash",
+        "ptBr": "Relho Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-mantle",
+      "name": {
+        "en": "Rathalos Mantle",
+        "ptBr": "Manto Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-plate",
+      "name": {
+        "en": "Rathalos Plate",
+        "ptBr": "Placa Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-ruby",
+      "name": {
+        "en": "Rathalos Ruby",
+        "ptBr": "Rubi de Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-scale",
+      "name": {
+        "en": "Rathalos Scale",
+        "ptBr": "Escama Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-scale-plus",
+      "name": {
+        "en": "Rathalos Scale+",
+        "ptBr": "Escama Rathalos+"
+      }
+    },
+    {
+      "id": "rathalos-shard",
+      "name": {
+        "en": "Rathalos Shard",
+        "ptBr": "Frag. Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-shell",
+      "name": {
+        "en": "Rathalos Shell",
+        "ptBr": "Casco Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-tail",
+      "name": {
+        "en": "Rathalos Tail",
+        "ptBr": "Cauda Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-webbing",
+      "name": {
+        "en": "Rathalos Webbing",
+        "ptBr": "Memb. Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-wing",
+      "name": {
+        "en": "Rathalos Wing",
+        "ptBr": "Asa Rathalos"
+      }
+    },
+    {
+      "id": "rathian-carapace",
+      "name": {
+        "en": "Rathian Carapace",
+        "ptBr": "Carapaça Rathian"
+      }
+    },
+    {
+      "id": "rathian-cortex",
+      "name": {
+        "en": "Rathian Cortex",
+        "ptBr": "Córtex Rathian"
+      }
+    },
+    {
+      "id": "rathian-mantle",
+      "name": {
+        "en": "Rathian Mantle",
+        "ptBr": "Manto Rathian"
+      }
+    },
+    {
+      "id": "rathian-plate",
+      "name": {
+        "en": "Rathian Plate",
+        "ptBr": "Placa Rathian"
+      }
+    },
+    {
+      "id": "rathian-ruby",
+      "name": {
+        "en": "Rathian Ruby",
+        "ptBr": "Rubi de Rathian"
+      }
+    },
+    {
+      "id": "rathian-scale",
+      "name": {
+        "en": "Rathian Scale",
+        "ptBr": "Escama Rathian"
+      }
+    },
+    {
+      "id": "rathian-scale-plus",
+      "name": {
+        "en": "Rathian Scale+",
+        "ptBr": "Escama Rathian+"
+      }
+    },
+    {
+      "id": "rathian-shard",
+      "name": {
+        "en": "Rathian Shard",
+        "ptBr": "Frag. Rathian"
+      }
+    },
+    {
+      "id": "rathian-shell",
+      "name": {
+        "en": "Rathian Shell",
+        "ptBr": "Casco Rathian"
+      }
+    },
+    {
+      "id": "rathian-spike",
+      "name": {
+        "en": "Rathian Spike",
+        "ptBr": "Cravo Rathian"
+      }
+    },
+    {
+      "id": "rathian-spike-plus",
+      "name": {
+        "en": "Rathian Spike+",
+        "ptBr": "Cravo Rathian+"
+      }
+    },
+    {
+      "id": "rathian-surspike",
+      "name": {
+        "en": "Rathian Surspike",
+        "ptBr": "Venospinho Rathian"
+      }
+    },
+    {
+      "id": "rathian-weave",
+      "name": {
+        "en": "Rathian Weave",
+        "ptBr": "Malha Rathian"
+      }
+    },
+    {
+      "id": "rathian-webbing",
+      "name": {
+        "en": "Rathian Webbing",
+        "ptBr": "Membrana Rathian"
+      }
+    },
+    {
+      "id": "screamer-sac",
+      "name": {
+        "en": "Screamer Sac",
+        "ptBr": "Glân. Vocal"
+      }
+    },
+    {
+      "id": "solid-bone",
+      "name": {
+        "en": "Solid Bone",
+        "ptBr": "Osso Sólido"
+      }
+    },
+    {
+      "id": "tigrex-carapace",
+      "name": {
+        "en": "Tigrex Carapace",
+        "ptBr": "Carapaça Tigrex"
+      }
+    },
+    {
+      "id": "tigrex-claw",
+      "name": {
+        "en": "Tigrex Claw",
+        "ptBr": "Garra Tigrex"
+      }
+    },
+    {
+      "id": "tigrex-claw-plus",
+      "name": {
+        "en": "Tigrex Claw+",
+        "ptBr": "Garra Tigrex+"
+      }
+    },
+    {
+      "id": "tigrex-cortex",
+      "name": {
+        "en": "Tigrex Cortex",
+        "ptBr": "Córtex Tigrex"
+      }
+    },
+    {
+      "id": "tigrex-fang",
+      "name": {
+        "en": "Tigrex Fang",
+        "ptBr": "Presa Tigrex"
+      }
+    },
+    {
+      "id": "tigrex-fang-plus",
+      "name": {
+        "en": "Tigrex Fang+",
+        "ptBr": "Presa Tigrex+"
+      }
+    },
+    {
+      "id": "tigrex-hardclaw",
+      "name": {
+        "en": "Tigrex Hardclaw",
+        "ptBr": "Garrígida Tigrex"
+      }
+    },
+    {
+      "id": "tigrex-hardfang",
+      "name": {
+        "en": "Tigrex Hardfang",
+        "ptBr": "Presadura Tigrex"
+      }
+    },
+    {
+      "id": "tigrex-lash",
+      "name": {
+        "en": "Tigrex Lash",
+        "ptBr": "Relho Tigrex"
+      }
+    },
+    {
+      "id": "tigrex-mantle",
+      "name": {
+        "en": "Tigrex Mantle",
+        "ptBr": "Manto Tigrex"
+      }
+    },
+    {
+      "id": "tigrex-maw",
+      "name": {
+        "en": "Tigrex Maw",
+        "ptBr": "Mandíbula Tigrex"
+      }
+    },
+    {
+      "id": "tigrex-scale",
+      "name": {
+        "en": "Tigrex Scale",
+        "ptBr": "Escama Tigrex"
+      }
+    },
+    {
+      "id": "tigrex-scale-plus",
+      "name": {
+        "en": "Tigrex Scale+",
+        "ptBr": "Escama Tigrex+"
+      }
+    },
+    {
+      "id": "tigrex-scalp",
+      "name": {
+        "en": "Tigrex Scalp",
+        "ptBr": "Escalpo Tigrex"
+      }
+    },
+    {
+      "id": "tigrex-shard",
+      "name": {
+        "en": "Tigrex Shard",
+        "ptBr": "Frag. Tigrex"
+      }
+    },
+    {
+      "id": "tigrex-shell",
+      "name": {
+        "en": "Tigrex Shell",
+        "ptBr": "Casco Tigrex"
+      }
+    },
+    {
+      "id": "tigrex-tail",
+      "name": {
+        "en": "Tigrex Tail",
+        "ptBr": "Cauda Tigrex"
+      }
+    },
+    {
+      "id": "violet-mizu-fin",
+      "name": {
+        "en": "Violet Mizu Fin",
+        "ptBr": "Barb. Mizu Viol."
+      }
+    },
+    {
+      "id": "violet-mizu-hardclaw",
+      "name": {
+        "en": "Violet Mizu Hardclaw",
+        "ptBr": "Gar. Mizu Viol."
+      }
+    },
+    {
+      "id": "violet-mizu-mantle",
+      "name": {
+        "en": "Violet Mizu Mantle",
+        "ptBr": "Manto Mizu Viol."
+      }
+    },
+    {
+      "id": "violet-mizu-shard",
+      "name": {
+        "en": "Violet Mizu Shard",
+        "ptBr": "Frag. Mizu Viol."
+      }
+    },
+    {
+      "id": "violet-mizu-tail",
+      "name": {
+        "en": "Violet Mizu Tail",
+        "ptBr": "Cauda Mizu Viol."
+      }
+    },
+    {
+      "id": "violet-mizu-whitefell",
+      "name": {
+        "en": "Violet Mizu Whitefell",
+        "ptBr": "Brancura Mizu Viol."
+      }
+    },
+    {
+      "id": "white-synovial-fluid",
+      "name": {
+        "en": "White Synovial Fluid",
+        "ptBr": "Fluido Sinovial Branco"
+      }
+    },
+    {
+      "id": "wyvern-gem",
+      "name": {
+        "en": "Wyvern Gem",
+        "ptBr": "Gema de Serpe"
+      }
+    },
+    {
+      "id": "wyvern-tear",
+      "name": {
+        "en": "Wyvern Tear",
+        "ptBr": "Lágrima Serpe"
+      }
+    },
+    {
+      "id": "zinogre-carapace",
+      "name": {
+        "en": "Zinogre Carapace",
+        "ptBr": "Carapaça Zinogre"
+      }
+    },
+    {
+      "id": "zinogre-claw",
+      "name": {
+        "en": "Zinogre Claw",
+        "ptBr": "Garra Zinogre"
+      }
+    },
+    {
+      "id": "zinogre-claw-plus",
+      "name": {
+        "en": "Zinogre Claw+",
+        "ptBr": "Garra Zinogre+"
+      }
+    },
+    {
+      "id": "zinogre-cortex",
+      "name": {
+        "en": "Zinogre Cortex",
+        "ptBr": "Córtex Zinogre"
+      }
+    },
+    {
+      "id": "zinogre-deathly-shocker",
+      "name": {
+        "en": "Zinogre Deathly Shocker",
+        "ptBr": "Eletrif. Letal Zin."
+      }
+    },
+    {
+      "id": "zinogre-electrofur",
+      "name": {
+        "en": "Zinogre Electrofur",
+        "ptBr": "Eletropelo Zinogre"
+      }
+    },
+    {
+      "id": "zinogre-electrofur-plus",
+      "name": {
+        "en": "Zinogre Electrofur+",
+        "ptBr": "Eletropelo Zinogre+"
+      }
+    },
+    {
+      "id": "zinogre-hardclaw",
+      "name": {
+        "en": "Zinogre Hardclaw",
+        "ptBr": "Garrígida Zinogre"
+      }
+    },
+    {
+      "id": "zinogre-hardhorn",
+      "name": {
+        "en": "Zinogre Hardhorn",
+        "ptBr": "Chifroduro Zinogre"
+      }
+    },
+    {
+      "id": "zinogre-horn",
+      "name": {
+        "en": "Zinogre Horn",
+        "ptBr": "Chifre Zinogre"
+      }
+    },
+    {
+      "id": "zinogre-horn-plus",
+      "name": {
+        "en": "Zinogre Horn+",
+        "ptBr": "Chifre Zinogre+"
+      }
+    },
+    {
+      "id": "zinogre-jasper",
+      "name": {
+        "en": "Zinogre Jasper",
+        "ptBr": "Jasper Zinogre"
+      }
+    },
+    {
+      "id": "zinogre-lash",
+      "name": {
+        "en": "Zinogre Lash",
+        "ptBr": "Relho Zinogre"
+      }
+    },
+    {
+      "id": "zinogre-plate",
+      "name": {
+        "en": "Zinogre Plate",
+        "ptBr": "Placa Zinogre"
+      }
+    },
+    {
+      "id": "zinogre-shell",
+      "name": {
+        "en": "Zinogre Shell",
+        "ptBr": "Casco Zinogre"
+      }
+    },
+    {
+      "id": "zinogre-shocker",
+      "name": {
+        "en": "Zinogre Shocker",
+        "ptBr": "Elet. Zinogre"
+      }
+    },
+    {
+      "id": "zinogre-shocker-plus",
+      "name": {
+        "en": "Zinogre Shocker+",
+        "ptBr": "Elet. Zinogre+"
+      }
+    },
+    {
+      "id": "zinogre-shockfur",
+      "name": {
+        "en": "Zinogre Shockfur",
+        "ptBr": "Pelochoque Zino."
+      }
+    },
+    {
+      "id": "zinogre-skymerald",
+      "name": {
+        "en": "Zinogre Skymerald",
+        "ptBr": "Esmeraltiva Zinogre"
+      }
+    },
+    {
+      "id": "zinogre-tail",
+      "name": {
+        "en": "Zinogre Tail",
+        "ptBr": "Cauda Zinogre"
+      }
+    }
+  ],
+  "monsters": [
+    {
+      "slug": "great-izuchi",
+      "name": {
+        "en": "Great Izuchi",
+        "ptBr": "Grande Izuchi"
+      },
+      "classification": {
+        "en": "Bird Wyvern"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "low",
+          "water": "medium",
+          "thunder": "high",
+          "ice": "low",
+          "dragon": "low"
+        }
+      },
+      "habitatIds": [
+        "shrine-ruins",
+        "frost-islands"
+      ],
+      "parts": [
+        {
+          "id": "head",
+          "name": {
+            "en": "Head",
+            "ptBr": "Cabeça"
+          },
+          "severable": false
+        },
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "great-izuchi-hide",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "great-izuchi-pelt",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 36.0
+        },
+        {
+          "materialId": "great-izuchi-tail",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "screamer-sac",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 26.0
+        },
+        {
+          "materialId": "monster-bone-s",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "great-izuchi-hide",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 43.0
+        },
+        {
+          "materialId": "great-izuchi-pelt",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "screamer-sac",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 24.0
+        },
+        {
+          "materialId": "great-izuchi-hide",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 26.0
+        },
+        {
+          "materialId": "great-izuchi-pelt",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 39.0
+        },
+        {
+          "materialId": "great-izuchi-tail",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "screamer-sac",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "screamer-sac",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "great-izuchi-pelt",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "great-izuchi-tail",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "great-izuchi-hide",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "great-izuchi-hide",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "great-izuchi-pelt",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "great-izuchi-hide-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "great-izuchi-pelt-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 39.0
+        },
+        {
+          "materialId": "great-izuchi-tail-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "screamer-sac",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "monster-bone-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "bird-wyvern-gem",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "great-izuchi-hide-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 44.0
+        },
+        {
+          "materialId": "great-izuchi-pelt-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "screamer-sac",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "bird-wyvern-gem",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "great-izuchi-hide-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "great-izuchi-pelt-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 39.0
+        },
+        {
+          "materialId": "great-izuchi-tail-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "screamer-sac",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "bird-wyvern-gem",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "screamer-sac",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 65.0
+        },
+        {
+          "materialId": "great-izuchi-pelt-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 32.0
+        },
+        {
+          "materialId": "bird-wyvern-gem",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "great-izuchi-tail-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "great-izuchi-hide-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "great-izuchi-hide-plus",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 29.0
+        },
+        {
+          "materialId": "great-izuchi-pelt-plus",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "bird-wyvern-gem",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "great-izuchi-thickhide",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "great-izuchi-thickfur",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 42.0
+        },
+        {
+          "materialId": "great-izuchi-grindtail",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "screamer-sac",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "monster-hardbone",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "fey-wyvern-gem",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "great-izuchi-thickhide",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 43.0
+        },
+        {
+          "materialId": "great-izuchi-thickfur",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "screamer-sac",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "bird-wyvern-gem",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "fey-wyvern-gem",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "great-izuchi-thickhide",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "great-izuchi-thickfur",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "great-izuchi-grindtail",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "screamer-sac",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "bird-wyvern-gem",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 6.0
+        },
+        {
+          "materialId": "fey-wyvern-gem",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "screamer-sac",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 65.0
+        },
+        {
+          "materialId": "great-izuchi-thickfur",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 32.0
+        },
+        {
+          "materialId": "fey-wyvern-gem",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "great-izuchi-grindtail",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "great-izuchi-thickhide",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "great-izuchi-thickhide",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "great-izuchi-thickfur",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "bird-wyvern-gem",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "fey-wyvern-gem",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 30.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Kiranico (MH Rise: Sunbreak)",
+          "url": "https://mhrise.kiranico.com/data/monsters/1681174536",
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Great_Izuchi_(MHRS)",
+          "notes": "Locales and named broken-part rewards, matched to Kiranico BodyPart groups by identical item/rate sets."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Great_Izuchi",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "rathian",
+      "name": {
+        "en": "Rathian",
+        "ptBr": "Rathian"
+      },
+      "classification": {
+        "en": "Flying Wyvern"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "none",
+          "water": "low",
+          "thunder": "medium",
+          "ice": "low",
+          "dragon": "high"
+        }
+      },
+      "habitatIds": [
+        "shrine-ruins",
+        "sandy-plains",
+        "flooded-forest",
+        "lava-caverns",
+        "jungle"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "head",
+          "name": {
+            "en": "Head",
+            "ptBr": "Cabeça"
+          },
+          "severable": false
+        },
+        {
+          "id": "wing",
+          "name": {
+            "en": "Wing",
+            "ptBr": "Asa"
+          },
+          "severable": false
+        },
+        {
+          "id": "back",
+          "name": {
+            "en": "Back",
+            "ptBr": "Costas"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "rathian-scale",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 14.0
+        },
+        {
+          "materialId": "rathian-shell",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "rathian-webbing",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 19.0
+        },
+        {
+          "materialId": "rathian-spike",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "flame-sac",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "monster-bone-l",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "rathian-scale",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 38.0
+        },
+        {
+          "materialId": "rathian-shell",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 26.0
+        },
+        {
+          "materialId": "rathian-webbing",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "rathian-spike",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "flame-sac",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "rathian-spike",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 40.0
+        },
+        {
+          "materialId": "rathian-scale",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "rath-marrow",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathian-scale",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "rathian-shell",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 34.0
+        },
+        {
+          "materialId": "rath-wingtalon",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 14.0
+        },
+        {
+          "materialId": "rath-marrow",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "flame-sac",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathian-scale",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 60.0
+        },
+        {
+          "materialId": "rathian-shell",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 36.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "rath-wingtalon",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "rathian-webbing",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "rathian-shell",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 29.0
+        },
+        {
+          "materialId": "rathian-spike",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "rathian-scale",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 45.0
+        },
+        {
+          "materialId": "rathian-spike",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "rathian-scale-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 14.0
+        },
+        {
+          "materialId": "rathian-carapace",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 31.0
+        },
+        {
+          "materialId": "rathian-webbing",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rathian-spike-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "inferno-sac",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "monster-keenbone",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "rathian-scale-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 43.0
+        },
+        {
+          "materialId": "rathian-carapace",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 31.0
+        },
+        {
+          "materialId": "rathian-spike-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "inferno-sac",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "rathian-spike-plus",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 40.0
+        },
+        {
+          "materialId": "rathian-scale-plus",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "rath-marrow",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathian-scale-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rathian-carapace",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "rath-wingtalon-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "rath-marrow",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "inferno-sac",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathian-scale-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 60.0
+        },
+        {
+          "materialId": "rathian-carapace",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rath-wingtalon-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "rathian-webbing",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "rathian-carapace",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 26.0
+        },
+        {
+          "materialId": "rathian-spike-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "rathian-scale-plus",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 42.0
+        },
+        {
+          "materialId": "rathian-spike-plus",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "rathian-plate",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rathian-shard",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 14.0
+        },
+        {
+          "materialId": "rathian-cortex",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "rathian-weave",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "rathian-surspike",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "conflagrant-sac",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "monster-toughbone",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathian-mantle",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "rathian-shard",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 41.0
+        },
+        {
+          "materialId": "rathian-cortex",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rathian-surspike",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "conflagrant-sac",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathian-mantle",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "rathian-surspike",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 42.0
+        },
+        {
+          "materialId": "rathian-shard",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathian-mantle",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathian-shard",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 14.0
+        },
+        {
+          "materialId": "rathian-cortex",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "rath-wingripper",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "conflagrant-sac",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathian-mantle",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathian-shard",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 60.0
+        },
+        {
+          "materialId": "rathian-cortex",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathian-mantle",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rath-wingripper",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "rathian-weave",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "rathian-cortex",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 24.0
+        },
+        {
+          "materialId": "rathian-surspike",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "rathian-mantle",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "rathian-shard",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 42.0
+        },
+        {
+          "materialId": "rathian-surspike",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "rathian-ruby",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathian-mantle",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 35.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Kiranico (MH Rise: Sunbreak)",
+          "url": "https://mhrise.kiranico.com/data/monsters/366824395",
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Rathian_(MHRS)",
+          "notes": "Locales and named broken-part rewards, matched to Kiranico BodyPart groups by identical item/rate sets."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Rathian",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "rathalos",
+      "name": {
+        "en": "Rathalos",
+        "ptBr": "Rathalos"
+      },
+      "classification": {
+        "en": "Flying Wyvern"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "none",
+          "water": "low",
+          "thunder": "medium",
+          "ice": "low",
+          "dragon": "high"
+        }
+      },
+      "habitatIds": [
+        "shrine-ruins",
+        "lava-caverns",
+        "citadel"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "head",
+          "name": {
+            "en": "Head",
+            "ptBr": "Cabeça"
+          },
+          "severable": false
+        },
+        {
+          "id": "wing",
+          "name": {
+            "en": "Wing",
+            "ptBr": "Asa"
+          },
+          "severable": false
+        },
+        {
+          "id": "back",
+          "name": {
+            "en": "Back",
+            "ptBr": "Costas"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "rathalos-scale",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "rathalos-shell",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 31.0
+        },
+        {
+          "materialId": "rathalos-webbing",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "rathalos-tail",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "flame-sac",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 14.0
+        },
+        {
+          "materialId": "rath-marrow",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "rathalos-scale",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 38.0
+        },
+        {
+          "materialId": "rathalos-shell",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 24.0
+        },
+        {
+          "materialId": "rathalos-webbing",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "flame-sac",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rath-marrow",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "rathalos-scale",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "rathalos-tail",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "rath-marrow",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathalos-shell",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rathalos-webbing",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "rathalos-tail",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 19.0
+        },
+        {
+          "materialId": "rath-wingtalon",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 14.0
+        },
+        {
+          "materialId": "rath-marrow",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathalos-scale",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 66.0
+        },
+        {
+          "materialId": "rathalos-shell",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "rath-wingtalon",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 75.0
+        },
+        {
+          "materialId": "rathalos-webbing",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "rathalos-shell",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 68.0
+        },
+        {
+          "materialId": "rath-marrow",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "rathalos-scale",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 37.0
+        },
+        {
+          "materialId": "rath-wingtalon",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "rathalos-scale-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "rathalos-carapace",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "rathalos-wing",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "inferno-sac",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "rath-marrow",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "rathalos-scale-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 36.0
+        },
+        {
+          "materialId": "rathalos-carapace",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 24.0
+        },
+        {
+          "materialId": "rathalos-wing",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 19.0
+        },
+        {
+          "materialId": "inferno-sac",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "rathalos-scale-plus",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "rathalos-tail",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 60.0
+        },
+        {
+          "materialId": "rath-marrow",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathalos-carapace",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 32.0
+        },
+        {
+          "materialId": "rathalos-wing",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "rathalos-tail",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rath-wingtalon-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 14.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathalos-scale-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 63.0
+        },
+        {
+          "materialId": "rathalos-carapace",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 26.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "rath-wingtalon-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "rathalos-wing",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rathalos-carapace",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 45.0
+        },
+        {
+          "materialId": "rath-marrow",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "rathalos-scale-plus",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 34.0
+        },
+        {
+          "materialId": "rath-wingtalon-plus",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rathalos-plate",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "rathalos-shard",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "rathalos-cortex",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 31.0
+        },
+        {
+          "materialId": "rathalos-fellwing",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "conflagrant-sac",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "rathalos-lash",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathalos-mantle",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "rathalos-shard",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 36.0
+        },
+        {
+          "materialId": "rathalos-cortex",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 24.0
+        },
+        {
+          "materialId": "rathalos-fellwing",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 19.0
+        },
+        {
+          "materialId": "conflagrant-sac",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathalos-mantle",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "rathalos-lash",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "rathalos-shard",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathalos-mantle",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathalos-cortex",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 32.0
+        },
+        {
+          "materialId": "rathalos-fellwing",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "rathalos-lash",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rath-wingripper",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 14.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathalos-mantle",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathalos-shard",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 64.0
+        },
+        {
+          "materialId": "rathalos-cortex",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 26.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathalos-mantle",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rath-wingripper",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "rathalos-fellwing",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rathalos-cortex",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 62.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathalos-mantle",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathalos-shard",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 34.0
+        },
+        {
+          "materialId": "rath-wingripper",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathalos-mantle",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 40.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Kiranico (MH Rise: Sunbreak)",
+          "url": "https://mhrise.kiranico.com/data/monsters/381074408",
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Rathalos_(MHRS)",
+          "notes": "Locales and named broken-part rewards, matched to Kiranico BodyPart groups by identical item/rate sets."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Rathalos",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "tigrex",
+      "name": {
+        "en": "Tigrex",
+        "ptBr": "Tigrex"
+      },
+      "classification": {
+        "en": "Flying Wyvern"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "low",
+          "water": "low",
+          "thunder": "high",
+          "ice": "low",
+          "dragon": "low"
+        }
+      },
+      "habitatIds": [
+        "frost-islands",
+        "sandy-plains",
+        "lava-caverns",
+        "citadel"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "head",
+          "name": {
+            "en": "Head",
+            "ptBr": "Cabeça"
+          },
+          "severable": false
+        },
+        {
+          "id": "claw",
+          "name": {
+            "en": "Claw"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "tigrex-shell",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "tigrex-scale",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "tigrex-claw",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "tigrex-fang",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "tigrex-tail",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 9.0
+        },
+        {
+          "materialId": "tigrex-scalp",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "tigrex-scale",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 45.0
+        },
+        {
+          "materialId": "tigrex-shell",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "tigrex-claw",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 32.0
+        },
+        {
+          "materialId": "tigrex-scalp",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "tigrex-tail",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "tigrex-scale",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "tigrex-shell",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 37.0
+        },
+        {
+          "materialId": "tigrex-scale",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "tigrex-fang",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "tigrex-tail",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "tigrex-scalp",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "tigrex-fang",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 60.0
+        },
+        {
+          "materialId": "tigrex-shell",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "tigrex-scalp",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "tigrex-claw",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "tigrex-scale",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "tigrex-scale",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 40.0
+        },
+        {
+          "materialId": "tigrex-claw",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "tigrex-carapace",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "tigrex-scale-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 32.0
+        },
+        {
+          "materialId": "tigrex-claw-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "tigrex-fang-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "tigrex-scalp",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "tigrex-maw",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "wyvern-gem",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "tigrex-scale-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 42.0
+        },
+        {
+          "materialId": "tigrex-carapace",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "tigrex-claw-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "tigrex-scalp",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "tigrex-maw",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "tigrex-tail",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "tigrex-scale-plus",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "wyvern-gem",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "tigrex-carapace",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 34.0
+        },
+        {
+          "materialId": "tigrex-scale-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "tigrex-fang-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "tigrex-tail",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "tigrex-scalp",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "tigrex-maw",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "tigrex-fang-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 60.0
+        },
+        {
+          "materialId": "tigrex-carapace",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "tigrex-scalp",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "tigrex-maw",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "tigrex-claw-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "tigrex-scale-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "tigrex-scale-plus",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 39.0
+        },
+        {
+          "materialId": "tigrex-claw-plus",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "wyvern-gem",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 40.0
+        },
+        {
+          "materialId": "tigrex-cortex",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "tigrex-shard",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 32.0
+        },
+        {
+          "materialId": "tigrex-hardclaw",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "tigrex-hardfang",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "tigrex-lash",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "large-wyvern-gem",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "tigrex-mantle",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "tigrex-shard",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 42.0
+        },
+        {
+          "materialId": "tigrex-cortex",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 19.0
+        },
+        {
+          "materialId": "tigrex-hardclaw",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "tigrex-maw",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "tigrex-mantle",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "tigrex-lash",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "tigrex-shard",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "tigrex-mantle",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "tigrex-cortex",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "tigrex-shard",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "tigrex-hardfang",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "tigrex-lash",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "tigrex-maw",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "tigrex-mantle",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "tigrex-hardfang",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 60.0
+        },
+        {
+          "materialId": "tigrex-cortex",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "tigrex-maw",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "tigrex-mantle",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "tigrex-hardclaw",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "tigrex-shard",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "tigrex-shard",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 39.0
+        },
+        {
+          "materialId": "tigrex-hardclaw",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "tigrex-mantle",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 50.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Kiranico (MH Rise: Sunbreak)",
+          "url": "https://mhrise.kiranico.com/data/monsters/808327178",
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Tigrex_(MHRS)",
+          "notes": "Locales and named broken-part rewards, matched to Kiranico BodyPart groups by identical item/rate sets."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Tigrex",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "zinogre",
+      "name": {
+        "en": "Zinogre",
+        "ptBr": "Zinogre"
+      },
+      "classification": {
+        "en": "Fanged Wyvern"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "low",
+          "water": "medium",
+          "thunder": "none",
+          "ice": "high",
+          "dragon": "none"
+        }
+      },
+      "habitatIds": [
+        "shrine-ruins",
+        "flooded-forest",
+        "citadel",
+        "jungle"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "head",
+          "name": {
+            "en": "Head",
+            "ptBr": "Cabeça"
+          },
+          "severable": false
+        },
+        {
+          "id": "foreleg",
+          "name": {
+            "en": "Foreleg",
+            "ptBr": "Perna Dianteira"
+          },
+          "severable": false
+        },
+        {
+          "id": "back",
+          "name": {
+            "en": "Back",
+            "ptBr": "Costas"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "zinogre-shell",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "zinogre-shockfur",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 31.0
+        },
+        {
+          "materialId": "zinogre-shocker",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "zinogre-tail",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "fulgurbug",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "zinogre-plate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "zinogre-shell",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 34.0
+        },
+        {
+          "materialId": "zinogre-shockfur",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "zinogre-shocker",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "zinogre-claw",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "zinogre-plate",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "zinogre-tail",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "zinogre-shell",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "zinogre-plate",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "zinogre-shell",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "zinogre-shockfur",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 29.0
+        },
+        {
+          "materialId": "zinogre-shocker",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "zinogre-tail",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "zinogre-horn",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "zinogre-plate",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "zinogre-horn",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 97.0
+        },
+        {
+          "materialId": "zinogre-plate",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "zinogre-claw",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "foreleg",
+          "ratePercent": 90.0
+        },
+        {
+          "materialId": "zinogre-shocker",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "foreleg",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "zinogre-shocker",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "zinogre-shockfur",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "zinogre-shell",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 29.0
+        },
+        {
+          "materialId": "fulgurbug",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "zinogre-plate",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "zinogre-carapace",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "zinogre-electrofur",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "zinogre-shocker-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "zinogre-tail",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "fulgurbug",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "zinogre-plate",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "zinogre-jasper",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "zinogre-carapace",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "zinogre-electrofur",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 24.0
+        },
+        {
+          "materialId": "zinogre-shocker-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "zinogre-claw-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "zinogre-plate",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "zinogre-jasper",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "zinogre-tail",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "zinogre-carapace",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "zinogre-plate",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "zinogre-jasper",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "zinogre-carapace",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "zinogre-electrofur",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 29.0
+        },
+        {
+          "materialId": "zinogre-shocker-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "zinogre-tail",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "zinogre-horn-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "zinogre-plate",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "zinogre-jasper",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "zinogre-horn-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 90.0
+        },
+        {
+          "materialId": "zinogre-plate",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "zinogre-jasper",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "zinogre-claw-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "foreleg",
+          "ratePercent": 90.0
+        },
+        {
+          "materialId": "zinogre-shocker-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "foreleg",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "zinogre-shocker-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "zinogre-electrofur",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "zinogre-carapace",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 31.0
+        },
+        {
+          "materialId": "fulgurbug",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "zinogre-plate",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "zinogre-jasper",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "zinogre-cortex",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "zinogre-electrofur-plus",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "zinogre-deathly-shocker",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "zinogre-lash",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "fulgurbug",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "zinogre-jasper",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "zinogre-skymerald",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "zinogre-cortex",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "zinogre-electrofur-plus",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 24.0
+        },
+        {
+          "materialId": "zinogre-deathly-shocker",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "zinogre-hardclaw",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "zinogre-jasper",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "zinogre-skymerald",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "zinogre-lash",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "zinogre-cortex",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "zinogre-jasper",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "zinogre-skymerald",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "zinogre-cortex",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "zinogre-electrofur-plus",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 29.0
+        },
+        {
+          "materialId": "zinogre-deathly-shocker",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "zinogre-lash",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "zinogre-hardhorn",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "zinogre-jasper",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "zinogre-skymerald",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "zinogre-hardhorn",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 92.0
+        },
+        {
+          "materialId": "zinogre-jasper",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "zinogre-skymerald",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "zinogre-hardclaw",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "foreleg",
+          "ratePercent": 90.0
+        },
+        {
+          "materialId": "zinogre-deathly-shocker",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "foreleg",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "zinogre-deathly-shocker",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "zinogre-electrofur-plus",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "zinogre-cortex",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 31.0
+        },
+        {
+          "materialId": "fulgurbug",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "zinogre-jasper",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "zinogre-skymerald",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 40.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Kiranico (MH Rise: Sunbreak)",
+          "url": "https://mhrise.kiranico.com/data/monsters/1432800563",
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Zinogre_(MHRS)",
+          "notes": "Locales and named broken-part rewards, matched to Kiranico BodyPart groups by identical item/rate sets."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Zinogre",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "mizutsune",
+      "name": {
+        "en": "Mizutsune",
+        "ptBr": "Mizutsune"
+      },
+      "classification": {
+        "en": "Leviathan"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "none",
+          "water": "none",
+          "thunder": "high",
+          "ice": "low",
+          "dragon": "high"
+        }
+      },
+      "habitatIds": [
+        "shrine-ruins",
+        "frost-islands",
+        "flooded-forest",
+        "jungle"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "head",
+          "name": {
+            "en": "Head",
+            "ptBr": "Cabeça"
+          },
+          "severable": false
+        },
+        {
+          "id": "claw",
+          "name": {
+            "en": "Claw"
+          },
+          "severable": false
+        },
+        {
+          "id": "dorsal-fin",
+          "name": {
+            "en": "Dorsal Fin",
+            "ptBr": "Barbatana Dorsal"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "mizutsune-scale",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "mizutsune-purplefur",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 31.0
+        },
+        {
+          "materialId": "mizutsune-claw",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "bubblefoam",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 24.0
+        },
+        {
+          "materialId": "mizutsune-tail",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "mizutsune-scale",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 39.0
+        },
+        {
+          "materialId": "mizutsune-purplefur",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 26.0
+        },
+        {
+          "materialId": "mizutsune-claw",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "bubblefoam",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "mizutsune-tail",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "mizutsune-purplefur",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "mizutsune-scale",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "mizutsune-purplefur",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "mizutsune-fin",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 32.0
+        },
+        {
+          "materialId": "bubblefoam",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 14.0
+        },
+        {
+          "materialId": "mizutsune-tail",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "mizutsune-fin",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 65.0
+        },
+        {
+          "materialId": "bubblefoam",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 32.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "mizutsune-claw",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "mizutsune-purplefur",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "mizutsune-purplefur",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 68.0
+        },
+        {
+          "materialId": "bubblefoam",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "mizutsune-fin",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "dorsal-fin",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "mizutsune-purplefur",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "dorsal-fin",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "bubblefoam",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "mizutsune-scale",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 19.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "mizutsune-scale-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 19.0
+        },
+        {
+          "materialId": "mizutsune-purplefur-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 31.0
+        },
+        {
+          "materialId": "mizutsune-claw-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "bubblefoam-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "mizutsune-tail",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "mizutsune-scale-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 38.0
+        },
+        {
+          "materialId": "mizutsune-purplefur-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "mizutsune-claw-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "bubblefoam-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "mizutsune-tail",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 75.0
+        },
+        {
+          "materialId": "mizutsune-purplefur-plus",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "mizutsune-scale-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "mizutsune-purplefur-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "mizutsune-claw-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "bubblefoam-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "mizutsune-tail",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "mizutsune-fin-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 60.0
+        },
+        {
+          "materialId": "bubblefoam-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "mizutsune-claw-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "mizutsune-purplefur-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "mizutsune-purplefur-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 65.0
+        },
+        {
+          "materialId": "bubblefoam-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "mizutsune-fin-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "dorsal-fin",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "mizutsune-purplefur-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "dorsal-fin",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "bubblefoam-plus",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "mizutsune-scale-plus",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "mizutsune-plate",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "mizutsune-shard",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 19.0
+        },
+        {
+          "materialId": "mizutsune-purplefell",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 31.0
+        },
+        {
+          "materialId": "mizutsune-hardclaw",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "distilled-bubblefoam",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "purple-mizutsune-tail",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "mizutsune-mantle",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "mizutsune-shard",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 38.0
+        },
+        {
+          "materialId": "mizutsune-purplefell",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "mizutsune-hardclaw",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "distilled-bubblefoam",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "mizutsune-mantle",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "purple-mizutsune-tail",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "mizutsune-purplefell",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "mizutsune-mantle",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "mizutsune-shard",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "mizutsune-purplefell",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "mizutsune-hardclaw",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "distilled-bubblefoam",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "purple-mizutsune-tail",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "mizutsune-mantle",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "mizutsune-silkfin",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 60.0
+        },
+        {
+          "materialId": "distilled-bubblefoam",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "mizutsune-mantle",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "mizutsune-hardclaw",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "mizutsune-purplefell",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "mizutsune-purplefell",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 65.0
+        },
+        {
+          "materialId": "distilled-bubblefoam",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "mizutsune-mantle",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "mizutsune-silkfin",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "dorsal-fin",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "mizutsune-purplefell",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "dorsal-fin",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "distilled-bubblefoam",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "mizutsune-shard",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "mizutsune-water-orb",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "mizutsune-mantle",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 40.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Kiranico (MH Rise: Sunbreak)",
+          "url": "https://mhrise.kiranico.com/data/monsters/1251979832",
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Mizutsune_(MHRS)",
+          "notes": "Locales and named broken-part rewards, matched to Kiranico BodyPart groups by identical item/rate sets."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Mizutsune",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "violet-mizutsune",
+      "name": {
+        "en": "Violet Mizutsune",
+        "ptBr": "Mizutsune Violeta"
+      },
+      "classification": {
+        "en": "Leviathan"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "none",
+          "water": "low",
+          "thunder": "high",
+          "ice": "high",
+          "dragon": "none"
+        }
+      },
+      "habitatIds": [
+        "forlorn-arena",
+        "infernal-springs"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "head",
+          "name": {
+            "en": "Head",
+            "ptBr": "Cabeça"
+          },
+          "severable": false
+        },
+        {
+          "id": "claw",
+          "name": {
+            "en": "Claw"
+          },
+          "severable": false
+        },
+        {
+          "id": "dorsal-fin",
+          "name": {
+            "en": "Dorsal Fin",
+            "ptBr": "Barbatana Dorsal"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "violet-mizu-shard",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "violet-mizu-whitefell",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 34.0
+        },
+        {
+          "materialId": "violet-mizu-hardclaw",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "white-synovial-fluid",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 24.0
+        },
+        {
+          "materialId": "violet-mizu-tail",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "violet-mizu-mantle",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "violet-mizu-shard",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 39.0
+        },
+        {
+          "materialId": "violet-mizu-whitefell",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 26.0
+        },
+        {
+          "materialId": "violet-mizu-hardclaw",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "white-synovial-fluid",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "violet-mizu-mantle",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "violet-mizu-tail",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "violet-mizu-whitefell",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "violet-mizu-mantle",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "violet-mizu-shard",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "violet-mizu-whitefell",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "violet-mizu-hardclaw",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "white-synovial-fluid",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "violet-mizu-tail",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "violet-mizu-mantle",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "violet-mizu-fin",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 60.0
+        },
+        {
+          "materialId": "white-synovial-fluid",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 37.0
+        },
+        {
+          "materialId": "violet-mizu-mantle",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "violet-mizu-hardclaw",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "violet-mizu-whitefell",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "claw",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "violet-mizu-whitefell",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 65.0
+        },
+        {
+          "materialId": "white-synovial-fluid",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "violet-mizu-mantle",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "violet-mizu-fin",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "dorsal-fin",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "violet-mizu-whitefell",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "dorsal-fin",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "white-synovial-fluid",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 40.0
+        },
+        {
+          "materialId": "violet-mizu-shard",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 19.0
+        },
+        {
+          "materialId": "violet-mizu-mantle",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 40.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Kiranico (MH Rise: Sunbreak)",
+          "url": "https://mhrise.kiranico.com/data/monsters/1061157944",
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Violet_Mizutsune_(MHRS)",
+          "notes": "Locales and named broken-part rewards, matched to Kiranico BodyPart groups by identical item/rate sets."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Violet_Mizutsune",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "magnamalo",
+      "name": {
+        "en": "Magnamalo",
+        "ptBr": "Magnamalo"
+      },
+      "classification": {
+        "en": "Fanged Wyvern"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "none",
+          "water": "high",
+          "thunder": "medium",
+          "ice": "low",
+          "dragon": "none"
+        }
+      },
+      "habitatIds": [
+        "shrine-ruins",
+        "frost-islands",
+        "lava-caverns"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "head",
+          "name": {
+            "en": "Head",
+            "ptBr": "Cabeça"
+          },
+          "severable": false
+        },
+        {
+          "id": "armblade",
+          "name": {
+            "en": "Armblade",
+            "ptBr": "Lâmina Braçal"
+          },
+          "severable": false
+        },
+        {
+          "id": "back",
+          "name": {
+            "en": "Back",
+            "ptBr": "Costas"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "magnamalo-scale",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "magnamalo-shell",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 29.0
+        },
+        {
+          "materialId": "magnamalo-blade",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "magnamalo-scute",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "magnamalo-tail",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "magna-ghostprism",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "magnamalo-plate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "magnamalo-scale",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 36.0
+        },
+        {
+          "materialId": "magnamalo-shell",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "magnamalo-blade",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "magna-ghostprism",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 26.0
+        },
+        {
+          "materialId": "magnamalo-plate",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "magnamalo-tail",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "magnamalo-scale",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "magnamalo-shell",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 37.0
+        },
+        {
+          "materialId": "magnamalo-horn",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 26.0
+        },
+        {
+          "materialId": "magnamalo-scute",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 19.0
+        },
+        {
+          "materialId": "magnamalo-tail",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "magnamalo-plate",
+          "rank": "low",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "magnamalo-horn",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 97.0
+        },
+        {
+          "materialId": "magnamalo-plate",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "magnamalo-blade",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "armblade",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "magnamalo-scale",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "armblade",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "magnamalo-scute",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "magna-ghostprism",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "magna-ghostprism",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "magnamalo-scale",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 19.0
+        },
+        {
+          "materialId": "magnamalo-plate",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "low",
+          "method": "droppedMaterial",
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "magnamalo-scale-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "magnamalo-shell-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "magnamalo-blade-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "magnamalo-scute-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "magna-soulprism",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "magnamalo-plate",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "purple-magna-orb",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "magnamalo-scale-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 34.0
+        },
+        {
+          "materialId": "magnamalo-shell-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "magnamalo-blade-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "magna-soulprism",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 26.0
+        },
+        {
+          "materialId": "magnamalo-plate",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "purple-magna-orb",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "magnamalo-tail",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 75.0
+        },
+        {
+          "materialId": "magnamalo-scale-plus",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "magnamalo-plate",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "purple-magna-orb",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "magnamalo-shell-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "magnamalo-horn-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "magnamalo-scute-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "magnamalo-tail",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 14.0
+        },
+        {
+          "materialId": "magnamalo-plate",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "purple-magna-orb",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "magnamalo-horn-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 92.0
+        },
+        {
+          "materialId": "magnamalo-plate",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "purple-magna-orb",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "magnamalo-blade-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "armblade",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "magnamalo-scale-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "armblade",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "magnamalo-scute-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "magna-soulprism",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "magna-soulprism",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "magnamalo-scale-plus",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "magnamalo-plate",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "purple-magna-orb",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "magnamalo-shard",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "magnamalo-cortex",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "magna-ascended-blade",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "magnamalo-bladeshell",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "magnamalo-speartail",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 6.0
+        },
+        {
+          "materialId": "magnamalo-soulprism-plus",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "purple-magna-orb",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "magnamalo-orb",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "magnamalo-shard",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "magnamalo-cortex",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "magna-ascended-blade",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "magnamalo-soulprism-plus",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "purple-magna-orb",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "magnamalo-orb",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 2.0
+        },
+        {
+          "materialId": "magnamalo-speartail",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "magnamalo-shard",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "purple-magna-orb",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "magnamalo-orb",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "magnamalo-cortex",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "magnamalo-hellhorn",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "magnamalo-bladeshell",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "magnamalo-speartail",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 14.0
+        },
+        {
+          "materialId": "purple-magna-orb",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "magnamalo-orb",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "magnamalo-hellhorn",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 92.0
+        },
+        {
+          "materialId": "purple-magna-orb",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "magnamalo-orb",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "magna-ascended-blade",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "armblade",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "magnamalo-shard",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "armblade",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "magnamalo-bladeshell",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "magnamalo-soulprism-plus",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "back",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "magnamalo-soulprism-plus",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "magnamalo-shard",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "purple-magna-orb",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "magnamalo-orb",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "large-wyvern-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 40.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Kiranico (MH Rise: Sunbreak)",
+          "url": "https://mhrise.kiranico.com/data/monsters/1921564947",
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Magnamalo_(MHRS)",
+          "notes": "Locales and named broken-part rewards, matched to Kiranico BodyPart groups by identical item/rate sets."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Magnamalo",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "rajang",
+      "name": {
+        "en": "Rajang",
+        "ptBr": "Rajang"
+      },
+      "classification": {
+        "en": "Fanged Beast"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "none",
+          "water": "none",
+          "thunder": "none",
+          "ice": "high",
+          "dragon": "none"
+        }
+      },
+      "habitatIds": [
+        "shrine-ruins",
+        "frost-islands",
+        "sandy-plains",
+        "flooded-forest",
+        "lava-caverns",
+        "jungle",
+        "citadel"
+      ],
+      "parts": [
+        {
+          "id": "one-horn",
+          "name": {
+            "en": "One Horn"
+          },
+          "severable": false
+        },
+        {
+          "id": "both-horns",
+          "name": {
+            "en": "Both Horns"
+          },
+          "severable": false
+        },
+        {
+          "id": "arm",
+          "name": {
+            "en": "Arm"
+          },
+          "severable": false
+        },
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "rajang-blackfur",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "rajang-claw-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 19.0
+        },
+        {
+          "materialId": "rajang-fang-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "rajang-tail",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "gold-rajang-pelt",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "beast-gem",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "great-stoutbone",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "rajang-blackfur",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 37.0
+        },
+        {
+          "materialId": "rajang-claw-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "rajang-fang-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "gold-rajang-pelt",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "beast-gem",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 6.0
+        },
+        {
+          "materialId": "rajang-blackfur",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "rajang-claw-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "rajang-fang-plus",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "rajang-tail",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "gold-rajang-pelt",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "beast-gem",
+          "rank": "high",
+          "method": "capture",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "rajang-horn-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "one-horn",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "gold-rajang-pelt",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "one-horn",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rajang-horn-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "both-horns",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "rajang-claw-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "arm",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "rajang-blackfur",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "arm",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rajang-tail",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 90.0
+        },
+        {
+          "materialId": "gold-rajang-pelt",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "rajang-blackfur",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 39.0
+        },
+        {
+          "materialId": "gold-rajang-pelt",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "beast-gem",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "large-beast-tear",
+          "rank": "high",
+          "method": "droppedMaterial",
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "rajang-wildpelt",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "rajang-hardclaw",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "rajang-hardfang",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 29.0
+        },
+        {
+          "materialId": "gold-rajang-pelt-plus",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "large-beast-gem",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "solid-bone",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rajang-wildpelt",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 37.0
+        },
+        {
+          "materialId": "rajang-hardclaw",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "rajang-hardfang",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "gold-rajang-pelt-plus",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "large-beast-gem",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 6.0
+        },
+        {
+          "materialId": "rajang-wildpelt",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "rajang-hardclaw",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 26.0
+        },
+        {
+          "materialId": "rajang-hardfang",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "gold-rajang-pelt-plus",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "large-beast-gem",
+          "rank": "master",
+          "method": "capture",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "rajang-hardhorn",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "one-horn",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "gold-rajang-pelt-plus",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "one-horn",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rajang-hardhorn",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "both-horns",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "rajang-hardclaw",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "arm",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "rajang-wildpelt",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "arm",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rajang-tail",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "gold-rajang-pelt-plus",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rajang-wildpelt",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 39.0
+        },
+        {
+          "materialId": "gold-rajang-pelt-plus",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "large-beast-gem",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "large-beast-tear",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 50.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Kiranico (MH Rise: Sunbreak)",
+          "url": "https://mhrise.kiranico.com/data/monsters/243411229",
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Rajang_(MHRS)",
+          "notes": "Locales and named broken-part rewards, matched to Kiranico BodyPart groups by identical item/rate sets."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Rajang",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "malzeno",
+      "name": {
+        "en": "Malzeno",
+        "ptBr": "Malzeno"
+      },
+      "classification": {
+        "en": "Elder Dragon"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "low",
+          "water": "none",
+          "thunder": "none",
+          "ice": "low",
+          "dragon": "high"
+        }
+      },
+      "habitatIds": [
+        "shrine-ruins",
+        "lava-caverns",
+        "citadel"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "horn",
+          "name": {
+            "en": "Horn"
+          },
+          "severable": false
+        },
+        {
+          "id": "wing",
+          "name": {
+            "en": "Wing",
+            "ptBr": "Asa"
+          },
+          "severable": false
+        },
+        {
+          "id": "foreleg",
+          "name": {
+            "en": "Foreleg",
+            "ptBr": "Perna Dianteira"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "malzeno-cortex",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "malzeno-shard",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 29.0
+        },
+        {
+          "materialId": "malzeno-hardfang",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "bloody-parasite",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "malzeno-tail",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "malzeno-bloodstone",
+          "rank": "master",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "malzeno-cortex",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 37.0
+        },
+        {
+          "materialId": "malzeno-shard",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "malzeno-hardfang",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "malzeno-fellwing",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "malzeno-bloodstone",
+          "rank": "master",
+          "method": "carve",
+          "ratePercent": 1.0
+        },
+        {
+          "materialId": "malzeno-tail",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "malzeno-cortex",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "malzeno-bloodstone",
+          "rank": "master",
+          "method": "tailCarve",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "malzeno-hardhorn",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "horn",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "malzeno-hardfang",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "horn",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "malzeno-bloodstone",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "horn",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "malzeno-fellwing",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 85.0
+        },
+        {
+          "materialId": "malzeno-cortex",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "wing",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "malzeno-cortex",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "foreleg",
+          "ratePercent": 70.0
+        },
+        {
+          "materialId": "bloody-parasite",
+          "rank": "master",
+          "method": "breakPart",
+          "partId": "foreleg",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "malzeno-cortex",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "bloody-parasite",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "malzeno-bloodstone",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "dragon-treasure",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "old-dragon-treasure",
+          "rank": "master",
+          "method": "droppedMaterial",
+          "ratePercent": 40.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Kiranico (MH Rise: Sunbreak)",
+          "url": "https://mhrise.kiranico.com/data/monsters/50943022",
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Malzeno_(MHRS)",
+          "notes": "Locales and named broken-part rewards, matched to Kiranico BodyPart groups by identical item/rate sets."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Malzeno",
+          "notes": "Classification."
+        }
+      ]
+    }
+  ]
+}

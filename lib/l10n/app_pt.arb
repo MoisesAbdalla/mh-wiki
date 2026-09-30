@@ -1,0 +1,82 @@
+{
+  "@@locale": "pt",
+  "appTitle": "MH Wiki",
+  "@appTitle": { "description": "Application title" },
+
+  "gameWorldIceborne": "Monster Hunter World: Iceborne",
+  "gameRiseSunbreak": "Monster Hunter Rise: Sunbreak",
+  "gameWilds": "Monster Hunter Wilds",
+
+  "loadFailed": "Não foi possível carregar os dados dos monstros.",
+  "retry": "Tentar novamente",
+  "failedGamesBanner": "Não foi possível carregar os dados de: {games}",
+  "@failedGamesBanner": { "placeholders": { "games": { "type": "String" } } },
+  "selectMonster": "Selecione um monstro",
+  "monsterSubtitle": "{game} · {classification}",
+  "@monsterSubtitle": {
+    "placeholders": {
+      "game": { "type": "String" },
+      "classification": { "type": "String" }
+    }
+  },
+
+  "sectionWeaknesses": "Fraquezas elementais",
+  "sectionHabitat": "Habitat",
+  "sectionParts": "Partes quebráveis",
+  "sectionMaterials": "Materiais",
+  "weaknessByState": "Variações por estado",
+
+  "elementFire": "Fogo",
+  "elementWater": "Água",
+  "elementThunder": "Raio",
+  "elementIce": "Gelo",
+  "elementDragon": "Dragão",
+  "immune": "Imune",
+  "starsSemantics": "{element}: {stars} de 3",
+  "@starsSemantics": {
+    "placeholders": {
+      "element": { "type": "String" },
+      "stars": { "type": "int" }
+    }
+  },
+  "immuneSemantics": "{element}: imune",
+  "@immuneSemantics": { "placeholders": { "element": { "type": "String" } } },
+
+  "noHabitat": "Nenhum habitat fixo",
+  "noParts": "Nenhuma parte quebrável",
+  "severable": "Cortável",
+
+  "noMaterials": "Nenhum material registrado",
+  "rankLow": "Baixo",
+  "rankHigh": "Alto",
+  "rankMaster": "Mestre",
+  "rarity": "Raridade {value}",
+  "@rarity": { "placeholders": { "value": { "type": "int" } } },
+  "methodCarve": "Entalhe",
+  "methodTailCarve": "Entalhe da cauda",
+  "methodCapture": "Captura",
+  "methodBreakPart": "Quebrar: {part}",
+  "@methodBreakPart": { "placeholders": { "part": { "type": "String" } } },
+  "methodQuestReward": "Recompensa de missão",
+  "methodDroppedMaterial": "Material caído",
+  "rateUnknown": "Taxa desconhecida",
+
+  "filterAll": "Todos",
+  "filterWorldIceborne": "World: Iceborne",
+  "filterRiseSunbreak": "Rise: Sunbreak",
+  "filterWilds": "Wilds",
+  "gameFilterLabel": "Filtrar por jogo",
+  "noResults": "Nenhum monstro encontrado",
+  "activeFiltersHint": "Há filtros ativos.",
+  "clearFilters": "Limpar filtros",
+
+  "searchHint": "Buscar monstro",
+  "clearSearch": "Limpar busca",
+
+  "settingsTitle": "Configurações",
+  "nameLanguageTitle": "Idioma dos nomes do jogo",
+  "nameLanguageDescription": "Nomes de monstros, materiais, habitats e partes. O restante do app continua em português.",
+  "nameLanguagePtBr": "Português (Brasil)",
+  "nameLanguageEn": "English",
+  "saveFailed": "Não foi possível salvar a preferência"
+}

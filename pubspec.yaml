@@ -1,0 +1,32 @@
+name: mh_wiki
+description: "Offline wiki of large monsters from MH World: Iceborne, Rise: Sunbreak and Wilds."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.3
+  shared_preferences: ^2.5.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/data/world_iceborne/
+    - assets/data/rise_sunbreak/
+    - assets/data/wilds/
