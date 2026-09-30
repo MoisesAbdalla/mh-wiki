@@ -12,6 +12,11 @@
       "name": "Kiranico (MH Wilds)",
       "url": "https://mhwilds.kiranico.com/",
       "notes": "pt-BR names, hitzones. Stars = best elemental hitzone over all parts, wounds excluded: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (same rule as the Rise dataset, calibrated on World Rathalos)."
+    },
+    {
+      "name": "Monster Hunter Wiki (icons)",
+      "url": "https://monsterhunterwiki.org/",
+      "notes": "Hunter's-notes icons: Special:FilePath/MHWilds-<Name>_Icon.webp, converted to 256x256 WebP. Capcom artwork, used locally in a personal study project."
     }
   ],
   "habitats": [
@@ -1142,7 +1147,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Chatacabra",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/wilds/chatacabra.webp"
     },
     {
       "slug": "doshaguma",
@@ -1414,7 +1420,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Doshaguma",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/wilds/doshaguma.webp"
     },
     {
       "slug": "rey-dau",
@@ -1757,7 +1764,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Rey_Dau",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/wilds/rey-dau.webp"
     },
     {
       "slug": "uth-duna",
@@ -2137,7 +2145,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Uth_Duna",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/wilds/uth-duna.webp"
     },
     {
       "slug": "nu-udra",
@@ -2425,7 +2434,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Nu_Udra",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/wilds/nu-udra.webp"
     },
     {
       "slug": "jin-dahaad",
@@ -2848,7 +2858,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Jin_Dahaad",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/wilds/jin-dahaad.webp"
     },
     {
       "slug": "rathalos",
@@ -3054,7 +3065,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Rathalos",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/wilds/rathalos.webp"
     },
     {
       "slug": "guardian-rathalos",
@@ -3403,7 +3415,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Guardian_Rathalos",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/wilds/guardian-rathalos.webp"
     },
     {
       "slug": "gore-magala",
@@ -3627,7 +3640,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Gore_Magala",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/wilds/gore-magala.webp"
     },
     {
       "slug": "arkveld",
@@ -3854,7 +3868,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Arkveld",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/wilds/arkveld.webp"
     }
   ]
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
+import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
+import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
 import 'package:mh_wiki/core/presentation/widgets/monster_image.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/habitat_section.dart';
@@ -34,26 +36,36 @@ class MonsterDetailView extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Row(
             children: [
-              MonsterImage(asset: monster.imageAsset, size: 88),
+              MonsterImage(
+                asset: monster.imageAsset,
+                size: 104,
+                emphasized: true,
+              ),
               const SizedBox(width: 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      monster.name.resolve(language),
-                      style: textTheme.headlineSmall,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
+                      l10n.gameName(monster.id.game).toUpperCase(),
+                      style: hunterDisplay(
+                        size: 11,
+                        color: HunterPalette.textMuted,
+                      ),
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      l10n.gameName(monster.id.game),
-                      style: textTheme.labelLarge,
+                      monster.name.resolve(language),
+                      style: hunterDisplay(size: 26, letterSpacing: 1),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
+                    const SizedBox(height: 2),
                     Text(
                       monster.classification.resolve(language),
-                      style: textTheme.bodyMedium,
+                      style: textTheme.bodyLarge?.copyWith(
+                        color: HunterPalette.textMuted,
+                      ),
                     ),
                   ],
                 ),

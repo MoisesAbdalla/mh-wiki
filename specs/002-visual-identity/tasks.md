@@ -50,16 +50,16 @@ Existing 001 tests must keep passing (FR-012, SC-006); tests that find widgets b
 
 ### Tests (write first, must fail) ⚠️
 
-- [ ] T009 [P] [US1] Extend `test/features/monsters/data/real_datasets_test.dart`: every monster has `imageAsset` and the asset loads through `rootBundle` (SC-001)
-- [ ] T010 [P] [US1] Widget test `MonsterImage`: with an asset → `Image` inside a gold frame; `asset == null` → styled marker (no `Image`); asset that fails to load → marker via `errorBuilder` in `test/core/presentation/widgets/monster_image_test.dart`
+- [X] T009 [P] [US1] Extend `test/features/monsters/data/real_datasets_test.dart`: every monster has `imageAsset` and the asset loads through `rootBundle` (SC-001)
+- [X] T010 [P] [US1] Widget test `MonsterImage`: with an asset → `Image` inside a gold frame; `asset == null` → styled marker (no `Image`); asset that fails to load → marker via `errorBuilder` in `test/core/presentation/widgets/monster_image_test.dart`
 
 ### Implementation
 
-- [ ] T011 [US1] In a scratchpad script (not shipped): download the 30 icons from `https://monsterhunterwiki.org/wiki/Special:FilePath/<file>` (research R1 naming; `Great_Jagras`, `Pink_Rathian`, `Violet_Mizutsune`, `Guardian_Rathalos`, `Rey_Dau`, `Uth_Duna`, `Nu_Udra`, `Jin_Dahaad`, `Gore_Magala`, …), convert to 256×256 WebP with alpha (Pillow), write to `assets/images/monsters/<game>/<slug>.webp`; fail loudly on any 404
-- [ ] T012 [US1] Add `image` to every monster and a "Monster Hunter Wiki (icons)" entry to `sources` in `assets/data/world_iceborne/monsters.json`, `assets/data/rise_sunbreak/monsters.json`, `assets/data/wilds/monsters.json` (makes T009 pass)
-- [ ] T013 [US1] Restyle `MonsterImage` (gold frame `#8A6A33`, dark fill, `cacheWidth`, styled marker with a monster silhouette icon for null/error) in `lib/core/presentation/widgets/monster_image.dart` (makes T010 pass)
-- [ ] T014 [US1] Detail header: 104 dp thumbnail with double gold frame, name in Cinzel, classification, game label in `lib/features/monsters/presentation/views/widgets/monster_detail_view.dart`
-- [ ] T015 [US1] Run gates; commit
+- [X] T011 [US1] In a scratchpad script (not shipped): download the 30 icons from `https://monsterhunterwiki.org/wiki/Special:FilePath/<file>` (research R1 naming; `Great_Jagras`, `Pink_Rathian`, `Violet_Mizutsune`, `Guardian_Rathalos`, `Rey_Dau`, `Uth_Duna`, `Nu_Udra`, `Jin_Dahaad`, `Gore_Magala`, …), convert to 256×256 WebP with alpha (Pillow), write to `assets/images/monsters/<game>/<slug>.webp`; fail loudly on any 404
+- [X] T012 [US1] Add `image` to every monster and a "Monster Hunter Wiki (icons)" entry to `sources` in `assets/data/world_iceborne/monsters.json`, `assets/data/rise_sunbreak/monsters.json`, `assets/data/wilds/monsters.json` (makes T009 pass)
+- [X] T013 [US1] Restyle `MonsterImage` (gold frame `#8A6A33`, dark fill, `cacheWidth`, styled marker with a monster silhouette icon for null/error) in `lib/core/presentation/widgets/monster_image.dart` (makes T010 pass)
+- [X] T014 [US1] Detail header: 104 dp thumbnail with double gold frame, name in Cinzel, classification, game label in `lib/features/monsters/presentation/views/widgets/monster_detail_view.dart`
+- [X] T015 [US1] Run gates; commit
 
 **Checkpoint**: MVP — every monster recognizable by its icon.
 
