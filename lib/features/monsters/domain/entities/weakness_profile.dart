@@ -22,4 +22,15 @@ final class WeaknessProfile {
         if (entry.value == best) entry.key,
     };
   }
+
+  /// The weakness shown on list items (002 FR-005): the first element of
+  /// [mostEffective] in the order fire, water, thunder, ice, dragon; `null`
+  /// when nothing reaches 2 stars.
+  ElementType? get primaryWeakness {
+    final best = mostEffective;
+    for (final element in ElementType.values) {
+      if (best.contains(element)) return element;
+    }
+    return null;
+  }
 }

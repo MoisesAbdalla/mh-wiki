@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/effectiveness.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
-/// 0–3 stars, or an "Imune" badge, with an accessible label such as
-/// "Fogo: 3 de 3" / "Gelo: imune".
+/// ★ to ★★★, ✕ for 0 stars, or an "Imune" tag, with an accessible label
+/// such as "Fogo: 3 de 3" / "Gelo: imune". Immunity stays visually distinct
+/// from 0 stars.
 class StarRating extends StatelessWidget {
   const StarRating({
     required this.elementName,
@@ -19,7 +21,6 @@ class StarRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final scheme = Theme.of(context).colorScheme;
     final isImmune = effectiveness == Effectiveness.immune;
     final label = isImmune
         ? l10n.immuneSemantics(elementName)
@@ -27,23 +28,33 @@ class StarRating extends StatelessWidget {
 
     final Widget visual;
     if (isImmune) {
-      visual = Chip(
-        label: Text(l10n.immune),
-        visualDensity: VisualDensity.compact,
-        avatar: const Icon(Icons.block, size: 16),
+      visual = Container(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+        decoration: BoxDecoration(
+          border: Border.all(color: HunterPalette.textMuted),
+        ),
+        child: Text(
+          l10n.immune,
+          style: const TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w700,
+            color: HunterPalette.textMuted,
+          ),
+        ),
+      );
+    } else if (effectiveness.stars == 0) {
+      visual = const Text(
+        '✕',
+        style: TextStyle(fontSize: 15, color: HunterPalette.textMuted),
       );
     } else {
-      final color = highlighted ? scheme.primary : scheme.tertiary;
-      visual = Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          for (var i = 0; i < 3; i++)
-            Icon(
-              i < effectiveness.stars ? Icons.star : Icons.star_border,
-              size: 22,
-              color: i < effectiveness.stars ? color : scheme.outline,
-            ),
-        ],
+      visual = Text(
+        '★' * effectiveness.stars,
+        style: TextStyle(
+          fontSize: 15,
+          letterSpacing: 1,
+          color: highlighted ? HunterPalette.goldBright : HunterPalette.gold,
+        ),
       );
     }
 

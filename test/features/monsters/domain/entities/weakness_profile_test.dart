@@ -59,4 +59,36 @@ void main() {
     expect(Effectiveness.none.stars, 0);
     expect(Effectiveness.immune.stars, 0);
   });
+
+  group('WeaknessProfile.primaryWeakness (002 FR-005)', () {
+    test('is the single most effective element', () {
+      final profile = WeaknessProfile(
+        general: weaknesses(
+          dragon: Effectiveness.high,
+          thunder: Effectiveness.medium,
+        ),
+      );
+      expect(profile.primaryWeakness, ElementType.dragon);
+    });
+
+    test(
+      'a tie picks the first in fire, water, thunder, ice, dragon order',
+      () {
+        final profile = WeaknessProfile(
+          general: weaknesses(
+            ice: Effectiveness.high,
+            water: Effectiveness.high,
+          ),
+        );
+        expect(profile.primaryWeakness, ElementType.water);
+      },
+    );
+
+    test('is null when nothing reaches 2 stars', () {
+      final profile = WeaknessProfile(
+        general: weaknesses(fire: Effectiveness.low),
+      );
+      expect(profile.primaryWeakness, isNull);
+    });
+  });
 }

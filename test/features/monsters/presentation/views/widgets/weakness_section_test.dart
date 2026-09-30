@@ -1,8 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
+import 'package:mh_wiki/core/presentation/widgets/element_icon.dart';
 import 'package:mh_wiki/core/presentation/widgets/star_rating.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/effectiveness.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/weakness_profile.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/weakness_state.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/weakness_section.dart';
@@ -89,5 +92,49 @@ void main() {
       ),
     );
     expect(find.text('Charged'), findsOneWidget);
+  });
+
+  group('grid layout (002 FR-006)', () {
+    testWidgets('five cells side by side, each with its element icon', (
+      tester,
+    ) async {
+      setWindowSize(tester, const Size(400, 900));
+      await pump(tester, richMonster().weaknesses);
+
+      final cells = find.byType(WeaknessCell);
+      // General row only: the state block adds five more below it.
+      final general = [for (var i = 0; i < 5; i++) cells.at(i)];
+      final rows = general.map((c) => tester.getTopLeft(c).dy).toSet();
+      expect(rows, hasLength(1));
+      for (final cell in general) {
+        expect(
+          find.descendant(of: cell, matching: find.byType(ElementIcon)),
+          findsOneWidget,
+        );
+      }
+    });
+
+    testWidgets('the most effective cell is framed', (tester) async {
+      setWindowSize(tester, const Size(400, 900));
+      await pump(tester, richMonster().weaknesses);
+
+      final framed = tester
+          .widgetList<WeaknessCell>(find.byType(WeaknessCell))
+          .where((c) => c.highlighted);
+      expect(framed.single.element, ElementType.dragon);
+    });
+
+    testWidgets('narrow screen with 200% text does not overflow (U1)', (
+      tester,
+    ) async {
+      setWindowSize(tester, const Size(320, 1400));
+      tester.platformDispatcher.textScaleFactorTestValue = 2;
+      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+
+      await pump(tester, richMonster().weaknesses);
+
+      expect(tester.takeException(), isNull);
+      expect(find.byType(WeaknessCell), findsNWidgets(10));
+    });
   });
 }

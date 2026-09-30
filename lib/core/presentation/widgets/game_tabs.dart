@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
@@ -56,8 +58,11 @@ class HunterTabs<T> extends StatelessWidget {
             textScale > 1.4 || constraints.maxWidth < options.length * 72
             ? (options.length / 2).ceil()
             : options.length;
-        final width =
-            (constraints.maxWidth - _gap * (perRow - 1)) / perRow - 0.01;
+        // Clamped: during route transitions the width can be ~0.
+        final width = math.max(
+          0.0,
+          (constraints.maxWidth - _gap * (perRow - 1)) / perRow - 0.01,
+        );
         return Wrap(
           spacing: _gap,
           runSpacing: _gap,

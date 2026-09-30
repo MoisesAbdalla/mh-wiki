@@ -74,8 +74,46 @@ class MonsterDetailView extends StatelessWidget {
           ),
         ),
         WeaknessSection(profile: monster.weaknesses, language: language),
-        HabitatSection(habitats: monster.habitats, language: language),
-        PartsSection(parts: monster.parts, language: language),
+        LayoutBuilder(
+          builder: (context, constraints) {
+            final habitat = HabitatSection(
+              habitats: monster.habitats,
+              language: language,
+              margin: EdgeInsets.zero,
+            );
+            final parts = PartsSection(
+              parts: monster.parts,
+              language: language,
+              margin: EdgeInsets.zero,
+            );
+            // Side by side from 360 dp of content (002 FR-008).
+            if (constraints.maxWidth - 32 < 360) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 6,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [habitat, const SizedBox(height: 12), parts],
+                ),
+              );
+            }
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+              child: IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Expanded(child: habitat),
+                    const SizedBox(width: 12),
+                    Expanded(child: parts),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
         MaterialsSection(monster: monster, language: language),
       ],
     );

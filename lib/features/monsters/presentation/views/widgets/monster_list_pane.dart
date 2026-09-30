@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
+import 'package:mh_wiki/core/presentation/widgets/element_icon.dart';
 import 'package:mh_wiki/core/presentation/widgets/hunter_panel.dart';
 import 'package:mh_wiki/core/presentation/widgets/monster_image.dart';
 import 'package:mh_wiki/core/presentation/widgets/ornament_header.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/monsters/presentation/models/monster_list_state.dart';
@@ -227,11 +229,45 @@ class _MonsterTile extends StatelessWidget {
                       ],
                     ),
                   ),
+                  if (monster.weaknesses.primaryWeakness case final weak?)
+                    _WeaknessBadge(element: weak),
                 ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// Primary weakness on the list item (002 FR-005).
+class _WeaknessBadge extends StatelessWidget {
+  const _WeaknessBadge({required this.element});
+
+  final ElementType element;
+
+  @override
+  Widget build(BuildContext context) {
+    final color = elementColor(element);
+    return Container(
+      margin: const EdgeInsets.only(left: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+      decoration: BoxDecoration(border: Border.all(color: color)),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ElementIcon(element: element, size: 16),
+          const SizedBox(width: 4),
+          Text(
+            AppLocalizations.of(context).elementName(element),
+            style: TextStyle(
+              color: color,
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ],
       ),
     );
   }

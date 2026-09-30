@@ -98,20 +98,20 @@ Existing 001 tests must keep passing (FR-012, SC-006); tests that find widgets b
 
 ### Tests (write first, must fail) ⚠️
 
-- [ ] T025 [P] [US3] Unit test `WeaknessProfile.primaryWeakness` (single max; tie → first in fire, water, thunder, ice, dragon order; below 2★ → null) in `test/features/monsters/domain/entities/weakness_profile_test.dart`
-- [ ] T026 [P] [US3] Widget test list tile: shows primary weakness name + `ElementIcon` in the element color; no badge when null in `test/features/monsters/presentation/views/primary_weakness_badge_test.dart`
-- [ ] T027 [P] [US3] Update `test/features/monsters/presentation/views/widgets/weakness_section_test.dart`: five cells in one row (same `dy`), `ElementIcon` per cell, highlighted cell framed; keep existing semantics/immune/state assertions
-- [ ] T028 [P] [US3] Widget test: Habitat and Parts side by side at 400 dp (same `dy`), stacked at 320 dp; "Cortável" tag present in `test/features/monsters/presentation/views/widgets/habitat_parts_layout_test.dart`
+- [X] T025 [P] [US3] Unit test `WeaknessProfile.primaryWeakness` (single max; tie → first in fire, water, thunder, ice, dragon order; below 2★ → null) in `test/features/monsters/domain/entities/weakness_profile_test.dart`
+- [X] T026 [P] [US3] Widget test list tile: shows primary weakness name + `ElementIcon` in the element color; no badge when null in `test/features/monsters/presentation/views/primary_weakness_badge_test.dart`
+- [X] T027 [P] [US3] Update `test/features/monsters/presentation/views/widgets/weakness_section_test.dart`: five cells in one row (same `dy`), `ElementIcon` per cell, highlighted cell framed; keep existing semantics/immune/state assertions
+- [X] T028 [P] [US3] Widget test: Habitat and Parts side by side at 400 dp (same `dy`), stacked at 320 dp; "Cortável" tag present in `test/features/monsters/presentation/views/widgets/habitat_parts_layout_test.dart`
 
 ### Implementation
 
-- [ ] T029 [US3] Add `primaryWeakness` to `lib/features/monsters/domain/entities/weakness_profile.dart` (makes T025 pass)
-- [ ] T030 [P] [US3] Create `ElementIcon` (`CustomPainter` with flame, drop, bolt, snowflake, four-point star paths; color from palette) and `elementColor(ElementType)` in `lib/core/presentation/widgets/element_icon.dart`
-- [ ] T031 [US3] Primary weakness badge in list tiles in `lib/features/monsters/presentation/views/widgets/monster_list_pane.dart` (makes T026 pass)
-- [ ] T032 [US3] Rewrite `WeaknessSection` as a 5-column grid (icon, name, stars/✕/Imune; highlighted cells framed) keeping state blocks, in `lib/features/monsters/presentation/views/widgets/weakness_section.dart`; adapt `StarRating` in `lib/core/presentation/widgets/star_rating.dart` (makes T027 pass)
-- [ ] T033 [US3] Habitat/Parts side-by-side (`LayoutBuilder`, ≥360 dp) and gold "Cortável" tag in `monster_detail_view.dart`, `habitat_section.dart`, `parts_section.dart` (makes T028 pass)
-- [ ] T034 [US3] Materials rank selector in tab style; rates in gold in `lib/features/monsters/presentation/views/widgets/materials_section.dart`
-- [ ] T035 [US3] Run gates; commit
+- [X] T029 [US3] Add `primaryWeakness` to `lib/features/monsters/domain/entities/weakness_profile.dart` (makes T025 pass)
+- [X] T030 [P] [US3] Create `ElementIcon` (`CustomPainter` with flame, drop, bolt, snowflake, four-point star paths; color from palette) and `elementColor(ElementType)` in `lib/core/presentation/widgets/element_icon.dart`
+- [X] T031 [US3] Primary weakness badge in list tiles in `lib/features/monsters/presentation/views/widgets/monster_list_pane.dart` (makes T026 pass)
+- [X] T032 [US3] Rewrite `WeaknessSection` as a 5-column grid (icon, name, stars/✕/Imune; highlighted cells framed) keeping state blocks, in `lib/features/monsters/presentation/views/widgets/weakness_section.dart`; adapt `StarRating` in `lib/core/presentation/widgets/star_rating.dart` (makes T027 pass)
+- [X] T033 [US3] Habitat/Parts side-by-side (`LayoutBuilder`, ≥360 dp) and gold "Cortável" tag in `monster_detail_view.dart`, `habitat_section.dart`, `parts_section.dart` (makes T028 pass)
+- [X] T034 [US3] Materials rank selector in tab style; rates in gold in `lib/features/monsters/presentation/views/widgets/materials_section.dart`
+- [X] T035 [US3] Run gates; commit
 
 ---
 
