@@ -76,7 +76,7 @@ then Rise (Phase 6), then World (Phase 7).
   - `lib/features/monsters/domain/entities/monster_section.dart` holds `List<MonsterEntry>`.
   - `lib/features/monsters/domain/usecases/filter_monsters.dart`: grouping, plus normalized names precomputed once per catalog. Use a pure-Dart index built by the use case and cached by catalog identity.
   - New `lib/features/monsters/domain/usecases/get_monster_versions.dart`.
-  - Wire it in `lib/app/app_dependencies.dart`.
+  - Wire it in `lib/app/di/app_dependencies.dart`.
 - [ ] T009 [P] Controller tests in `test/features/monsters/presentation/controllers/monster_list_controller_test.dart`.
   - `select(versionId)` exposes `selectedMonster` as the version and `selectedVersions` as base + versions.
   - Language change keeps the selected version.
