@@ -248,6 +248,32 @@ void main() {
       expect(reyDau.huntingInfo.hp.single.solo, 20500); // ★7 ♦3
     });
 
+    test('Rise: subspecies own rows, Apex/Risen/Afflicted versions', () async {
+      final monsters = await load(Game.riseSunbreak);
+      Monster bySlug(String slug) =>
+          monsters.singleWhere((m) => m.id.slug == slug);
+
+      expect(bySlug('silver-rathalos').isVersion, isFalse);
+      expect(bySlug('primordial-malzeno').isVersion, isFalse);
+      final kinds = {
+        for (final v in monsters.where((m) => m.versionOf?.slug == 'rathalos'))
+          v.versionKind,
+      };
+      expect(kinds, {VersionKind.apex, VersionKind.afflicted});
+      expect(bySlug('risen-teostra').versionKind, VersionKind.risen);
+
+      // Afflicted: HP of "Anomaly Research: Rathalos", afflicted materials.
+      final afflicted = bySlug('afflicted-rathalos');
+      final hp = afflicted.huntingInfo.hp.single;
+      expect((hp.rank, hp.solo), (Rank.master, 88200));
+      expect(
+        afflicted.drops.map((d) => d.material.name.en),
+        everyElement(startsWith('Afflicted')),
+      );
+      // Apex: its own 8★ Gathering Hub hunt, not the "Advanced:" arena quest.
+      expect(bySlug('apex-rathalos').huntingInfo.hp.single.solo, 20400);
+    });
+
     test(
       'Wilds bases missing on Kiranico take the ♦3 HP of the table',
       () async {
