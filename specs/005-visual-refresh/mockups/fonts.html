@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MH Wiki — fontes de título</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Grenze:wght@600;700;800&family=League+Gothic&family=IM+Fell+English+SC&family=Averia+Serif+Libre:wght@700&family=Alegreya+SC:wght@700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #171411; --ink: #ebe3d2; --ink-2: #a89d88; --ink-3: #6f6555; --rule: #342d25; --shu: #e0603f; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0d0b; color: var(--ink); font: 15px/1.5 "Atkinson Hyperlegible", sans-serif; padding: 28px 16px 60px; }
+  h1 { max-width: 1240px; margin: 0 auto 6px; font: 700 24px "Atkinson Hyperlegible"; }
+  .lead { max-width: 1240px; margin: 0 auto 22px; color: var(--ink-2); font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 22px; max-width: 1240px; margin: 0 auto; }
+  .card { background: var(--bg); border-radius: 20px; padding: 20px 22px 24px; }
+  .tag { font-size: 12px; color: var(--ink-2); display: flex; justify-content: space-between; margin-bottom: 14px; }
+  .tag b { color: var(--shu); font-weight: 700; }
+  .name { font-size: 58px; line-height: .9; }
+  .name2 { font-size: 34px; line-height: 1; margin-top: 10px; color: var(--ink-2); }
+  .tabs { display: flex; gap: 18px; margin: 16px 0 18px; border-bottom: 1px solid var(--rule); font-size: 19px; }
+  .tabs span { padding: 4px 0 7px; color: var(--ink-2); }
+  .tabs span.on { color: var(--ink); box-shadow: inset 0 -2px 0 var(--shu); }
+  .sec { display: flex; gap: 10px; align-items: baseline; font-size: 22px; margin-bottom: 6px; }
+  .sec i { font-style: normal; color: var(--shu); }
+  .hp { font-size: 50px; line-height: 1; font-variant-numeric: tabular-nums; }
+  .hp small { font: 400 13px "Atkinson Hyperlegible"; color: var(--ink-2); margin-left: 8px; }
+  .body { font-size: 14px; color: var(--ink-2); margin-top: 12px; }
+  .verdict { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--ink-2); }
+  .verdict b { color: var(--ink); }
+
+  .f-bs  { font-family: "Big Shoulders Display"; font-weight: 800; text-transform: uppercase; }
+  .f-gr  { font-family: "Grenze"; font-weight: 700; }
+  .f-lg  { font-family: "League Gothic"; text-transform: uppercase; letter-spacing: .01em; }
+  .f-fell{ font-family: "IM Fell English SC"; }
+  .f-av  { font-family: "Averia Serif Libre"; font-weight: 700; }
+  .f-asc { font-family: "Alegreya SC"; font-weight: 800; }
+</style>
+</head>
+<body>
+<h1>Fonte de título: comparação</h1>
+<p class="lead">Mesmo trecho do detalhe em cada fonte. O texto corrido continua em Atkinson Hyperlegible em todas. Teste também os acentos: “Wyvern Voadora”, “Ação”, “Dragão Ancião”.</p>
+
+<div class="grid">
+  <section class="card">
+    <div class="tag"><span>Atual do mockup</span><b>Big Shoulders Display</b></div>
+    <div class="name f-bs">Rathalos</div>
+    <div class="name2 f-bs">Dragão Ancião</div>
+    <div class="tabs f-bs"><span class="on">World</span><span>Rise</span><span>Wilds</span></div>
+    <div class="sec f-bs"><i>1</i>Fraquezas</div>
+    <div class="hp f-bs">6.565<small>solo · High Rank</small></div>
+    <p class="body">Visão: enxerga · Cápsula de lampejo: afeta</p>
+    <p class="verdict"><b>Forte e muito legível</b>, mas é de placa industrial de cidade. Passa “esporte / tech”, não bestiário.</p>
+  </section>
+
+  <section class="card">
+    <div class="tag"><span>Minha recomendação</span><b>Grenze</b></div>
+    <div class="name f-gr">Rathalos</div>
+    <div class="name2 f-gr">Dragão Ancião</div>
+    <div class="tabs f-gr"><span class="on">World</span><span>Rise</span><span>Wilds</span></div>
+    <div class="sec f-gr"><i>1</i>Fraquezas</div>
+    <div class="hp f-gr">6.565<small>solo · High Rank</small></div>
+    <p class="body">Visão: enxerga · Cápsula de lampejo: afeta</p>
+    <p class="verdict"><b>Serifa estreita com cortes em cunha</b>, entre o medieval e o manuscrito. Tem cara de guilda e bestiário sem virar fonte “de RPG”. Ainda é estreita, então nomes longos (Arch-Tempered Nergigante) cabem.</p>
+  </section>
+
+  <section class="card">
+    <div class="tag"><span>Alternativa</span><b>Alegreya SC</b></div>
+    <div class="name f-asc">Rathalos</div>
+    <div class="name2 f-asc">Dragão Ancião</div>
+    <div class="tabs f-asc"><span class="on">World</span><span>Rise</span><span>Wilds</span></div>
+    <div class="sec f-asc"><i>1</i>Fraquezas</div>
+    <div class="hp f-asc">6.565<small>solo · High Rank</small></div>
+    <p class="body">Visão: enxerga · Cápsula de lampejo: afeta</p>
+    <p class="verdict"><b>Versalete caligráfica</b>, clima de livro antigo e caderno de pesquisa. Mais larga: nomes longos quebram em duas linhas no celular.</p>
+  </section>
+
+  <section class="card">
+    <div class="tag"><span>Alternativa</span><b>IM Fell English SC</b></div>
+    <div class="name f-fell">Rathalos</div>
+    <div class="name2 f-fell">Dragão Ancião</div>
+    <div class="tabs f-fell"><span class="on">World</span><span>Rise</span><span>Wilds</span></div>
+    <div class="sec f-fell"><i>1</i>Fraquezas</div>
+    <div class="hp f-fell">6.565<small>solo · High Rank</small></div>
+    <p class="body">Visão: enxerga · Cápsula de lampejo: afeta</p>
+    <p class="verdict"><b>Tipo de impressão antiga</b>, com imperfeições de tinta. A mais “prancha de naturalista”. Só tem um peso e números menos firmes para o HP.</p>
+  </section>
+
+  <section class="card">
+    <div class="tag"><span>Alternativa</span><b>League Gothic</b></div>
+    <div class="name f-lg">Rathalos</div>
+    <div class="name2 f-lg">Dragão Ancião</div>
+    <div class="tabs f-lg"><span class="on">World</span><span>Rise</span><span>Wilds</span></div>
+    <div class="sec f-lg"><i>1</i>Fraquezas</div>
+    <div class="hp f-lg">6.565<small>solo · High Rank</small></div>
+    <p class="body">Visão: enxerga · Cápsula de lampejo: afeta</p>
+    <p class="verdict"><b>Gótica condensada clássica</b>, de cartaz antigo. Mais elegante que a Big Shoulders, mas no mesmo território “pôster”.</p>
+  </section>
+
+  <section class="card">
+    <div class="tag"><span>Alternativa</span><b>Averia Serif Libre</b></div>
+    <div class="name f-av">Rathalos</div>
+    <div class="name2 f-av">Dragão Ancião</div>
+    <div class="tabs f-av"><span class="on">World</span><span>Rise</span><span>Wilds</span></div>
+    <div class="sec f-av"><i>1</i>Fraquezas</div>
+    <div class="hp f-av">6.565<small>solo · High Rank</small></div>
+    <p class="body">Visão: enxerga · Cápsula de lampejo: afeta</p>
+    <p class="verdict"><b>Bordas macias, meio desgastadas</b>, como anotação à mão de caçador. Mais orgânica e informal; a menos “séria” das opções.</p>
+  </section>
+</div>
+</body>
+</html>
