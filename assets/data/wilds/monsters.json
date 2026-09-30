@@ -2733,25 +2733,6 @@
       }
     }
   ],
-  "partyHpFactors": {
-    "2": {
-      "min": 1.6,
-      "max": 1.6
-    },
-    "3": {
-      "min": 2.0,
-      "max": 2.0
-    },
-    "4": {
-      "min": 2.4,
-      "max": 2.4
-    },
-    "source": {
-      "name": "Kiranico (MH Wilds)",
-      "url": "https://mhwilds.kiranico.com/data/quests",
-      "notes": "Per-player HP of quest pages (game data): x1.6 / x2.0 / x2.4 for 2 / 3 / 4 hunters, same in Low and High Rank."
-    }
-  },
   "huntingItems": [
     {
       "id": "flash",
@@ -2789,6 +2770,25 @@
       }
     }
   ],
+  "partyHpFactors": {
+    "2": {
+      "min": 1.6,
+      "max": 1.6
+    },
+    "3": {
+      "min": 2.0,
+      "max": 2.0
+    },
+    "4": {
+      "min": 2.4,
+      "max": 2.4
+    },
+    "source": {
+      "name": "Kiranico (MH Wilds)",
+      "url": "https://mhwilds.kiranico.com/data/quests",
+      "notes": "Per-player HP of quest pages (game data): x1.6 / x2.0 / x2.4 for 2 / 3 / 4 hunters, same in Low and High Rank."
+    }
+  },
   "monsters": [
     {
       "slug": "rathian",
@@ -7312,7 +7312,7 @@
       "hp": [
         {
           "rank": "high",
-          "solo": 11250,
+          "solo": 15000,
           "basis": "minQuest"
         }
       ],
@@ -8814,7 +8814,7 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 4400,
+          "solo": 5148,
           "basis": "minQuest"
         },
         {
@@ -9823,7 +9823,7 @@
         },
         {
           "rank": "high",
-          "solo": 9000,
+          "solo": 10080,
           "basis": "minQuest"
         }
       ],

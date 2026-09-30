@@ -5035,25 +5035,6 @@
       }
     }
   ],
-  "partyHpFactors": {
-    "2": {
-      "min": 1.5,
-      "max": 1.5
-    },
-    "3": {
-      "min": 2.2,
-      "max": 2.6
-    },
-    "4": {
-      "min": 2.2,
-      "max": 2.6
-    },
-    "source": {
-      "name": "Fextralife",
-      "url": "https://monsterhunterworld.wiki.fextralife.com/Multiplayer",
-      "notes": "Multiplayer HP scaling: about 150% for 2 hunters, about 220%-260% for 3-4. Applied to the solo reference HP; shown as an approximation."
-    }
-  },
   "huntingItems": [
     {
       "id": "flash",
@@ -5091,6 +5072,25 @@
       }
     }
   ],
+  "partyHpFactors": {
+    "2": {
+      "min": 1.5,
+      "max": 1.5
+    },
+    "3": {
+      "min": 2.2,
+      "max": 2.6
+    },
+    "4": {
+      "min": 2.2,
+      "max": 2.6
+    },
+    "source": {
+      "name": "Fextralife",
+      "url": "https://monsterhunterworld.wiki.fextralife.com/Multiplayer",
+      "notes": "Multiplayer HP scaling: about 150% for 2 hunters, about 220%-260% for 3-4. Applied to the solo reference HP; shown as an approximation."
+    }
+  },
   "monsters": [
     {
       "slug": "acidic-glavenus",
@@ -14281,7 +14281,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 15000,
+          "solo": 21000,
           "basis": "minQuest"
         }
       ],
@@ -19302,7 +19302,7 @@
       "hp": [
         {
           "rank": "high",
-          "solo": 8686,
+          "solo": 12470,
           "basis": "minQuest"
         },
         {
@@ -26168,7 +26168,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 25900,
+          "solo": 27380,
           "basis": "minQuest"
         }
       ],
@@ -28612,7 +28612,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 15000,
+          "solo": 21000,
           "basis": "minQuest"
         }
       ],
@@ -33584,18 +33584,6 @@
           "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Sonic: infobox noEffect, item table affects."
         }
       ],
-      "hp": [
-        {
-          "rank": "low",
-          "solo": 12000,
-          "basis": "minQuest"
-        },
-        {
-          "rank": "high",
-          "solo": 24240,
-          "basis": "minQuest"
-        }
-      ],
       "itemReactions": [
         {
           "item": "flash",
@@ -33614,7 +33602,19 @@
           "effect": "noEffect"
         }
       ],
-      "image": "assets/images/monsters/world_iceborne/zorah-magdaros.webp"
+      "image": "assets/images/monsters/world_iceborne/zorah-magdaros.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 12000,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 24240,
+          "basis": "minQuest"
+        }
+      ]
     },
     {
       "slug": "arch-tempered-kirin",
