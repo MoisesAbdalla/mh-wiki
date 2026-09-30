@@ -185,7 +185,7 @@ then Rise (Phase 6), then World (Phase 7).
 - [X] T034 [US1] Run `tool/data/build.py world_iceborne` for the roster (weakness stars from mhw-db.com as in 001) and update `assets/data/world_iceborne/monsters.json`, keeping the 10 original entries.
 - [X] T035 [US2] Run HP (expeditions / quests, 003 R1) and items extraction for World; update the dataset.
 - [X] T036 [US3] Run `fetch_icons.py world_iceborne`.
-- [ ] T037 [US1] Extend `real_datasets_test.dart` for World (roster coverage, SC-003, `noHp` set, SC-006). Run the gates, `flutter build windows --release`, update the README, commit, push. The user runs the manual checks, then merge to `main`.
+- [X] T037 [US1] Extend `real_datasets_test.dart` for World (roster coverage, SC-003, `noHp` set, SC-006). Run the gates, `flutter build windows --release`, update the README, commit, push. The user runs the manual checks, then merge to `main`.
 
 ---
 
