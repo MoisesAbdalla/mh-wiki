@@ -14054,6 +14054,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Rathian_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★5 13,500, ★5 16,200, ★5 19,350); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 13500,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/rathian.webp"
@@ -14255,6 +14267,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Rathalos_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★6 16,200, ★6 18,450, ★6 21,375); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 16200,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/rathalos.webp"
@@ -14429,6 +14453,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Gravios_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★6 19,800, ★6 22,550, ★6 26,125); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 19800,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/gravios.webp"
@@ -14585,6 +14621,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Yian_Kut-Ku_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★5 11,440, ★5 13,680, ★5 16,340, ★9 34,960); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 11440,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/yian-kut-ku.webp"
@@ -14750,6 +14798,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Gypceros_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★5 12,600, ★5 15,120, ★5 18,060); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 12600,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/gypceros.webp"
@@ -14960,6 +15020,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Congalala_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★5 15,000, ★5 18,000, ★5 21,500); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 15000,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/congalala.webp"
@@ -15152,6 +15224,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Blangonga_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★6 16,200, ★6 18,450, ★6 21,375, ★9 36,720); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 16200,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/blangonga.webp"
@@ -15525,6 +15609,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Nerscylla_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★5 13,200, ★5 15,840, ★5 18,920); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 13200,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/nerscylla.webp"
@@ -15699,6 +15795,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Gore_Magala_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★7 20,910, ★7 24,225, ★7 26,520); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 20910,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/gore-magala.webp"
@@ -16083,6 +16191,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Mizutsune_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★8 19,800, ★8 22,550, ★8 26,125); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 19800,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/mizutsune.webp"
@@ -16257,6 +16377,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Guardian_Fulgur_Anjanath_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★6 18,000, ★6 20,500, ★6 23,750, ★9 40,800); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 18000,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/guardian-fulgur-anjanath.webp"
@@ -16476,6 +16608,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Guardian_Ebony_Odogaron_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★6 18,000, ★6 20,500, ★6 23,750); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 18000,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/guardian-ebony-odogaron.webp"
@@ -16704,6 +16848,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Doshaguma_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★6 17,280, ★6 19,680, ★6 22,800, ★9 38,400); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 17280,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/doshaguma.webp"
@@ -16895,6 +17051,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Balahara_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★5 13,200, ★5 15,840, ★5 18,920); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 13200,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/balahara.webp"
@@ -17105,6 +17273,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Chatacabra_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★5 12,000, ★5 14,400, ★5 17,200); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 12000,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/chatacabra.webp"
@@ -17315,6 +17495,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Quematrice_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★5 12,000, ★5 14,400, ★5 17,200); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 12000,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/quematrice.webp"
@@ -17525,6 +17717,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Lala_Barina_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★5 12,000, ★5 14,400, ★5 17,200); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 12000,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/lala-barina.webp"
@@ -17726,6 +17930,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Rompopolo_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★5 13,500, ★5 16,200, ★5 19,350); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 13500,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/rompopolo.webp"
@@ -17936,6 +18152,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Rey_Dau_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★7 20,500, ★7 23,750, ★7 26,000); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 20500,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/rey-dau.webp"
@@ -18155,6 +18383,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Uth_Duna_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★7 22,550, ★7 26,125, ★7 28,600); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 22550,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/uth-duna.webp"
@@ -18374,6 +18614,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Nu_Udra_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★7 21,525, ★7 24,938, ★7 27,300); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 21525,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/nu-udra.webp"
@@ -18602,6 +18854,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Ajarakan_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★6 18,720, ★6 21,320, ★6 24,700, ★9 41,600); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 18720,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/ajarakan.webp"
@@ -18766,6 +19030,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Arkveld_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★8 24,700, ★8 27,040, ★8 29,120); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 24700,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/arkveld.webp"
@@ -18966,6 +19242,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Hirabami_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★5 13,500, ★5 16,200, ★5 19,350); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 13500,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/hirabami.webp"
@@ -19113,6 +19401,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Jin_Dahaad_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★7 30,340, ★7 35,150, ★7 38,480); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 30340,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/jin-dahaad.webp"
@@ -19350,6 +19650,18 @@
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Xu_Wu_(MHWilds)",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: 歴戦 (tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★6 16,200, ★6 18,450, ★6 21,375); the lowest is shown. Kiranico does not list these hunts."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 16200,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/xu-wu.webp"
@@ -19504,7 +19816,7 @@
         {
           "name": "まかろんのゲームメモ (MHWilds monster HP)",
           "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
-          "notes": "HP: arch-tempered (歴戦王) rows, middle of the 5 size variations (★10 79,923); the lowest is shown. Kiranico does not list these quests."
+          "notes": "HP: 歴戦王 (arch-tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★10 79,923); the lowest is shown. Kiranico does not list these hunts."
         }
       ],
       "hp": [
@@ -19589,7 +19901,7 @@
         {
           "name": "まかろんのゲームメモ (MHWilds monster HP)",
           "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
-          "notes": "HP: arch-tempered (歴戦王) rows, middle of the 5 size variations (★9 65,120, ★10 73,593); the lowest is shown. Kiranico does not list these quests."
+          "notes": "HP: 歴戦王 (arch-tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★9 65,120, ★10 73,593); the lowest is shown. Kiranico does not list these hunts."
         }
       ],
       "hp": [
@@ -19664,7 +19976,7 @@
         {
           "name": "まかろんのゲームメモ (MHWilds monster HP)",
           "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
-          "notes": "HP: arch-tempered (歴戦王) rows, middle of the 5 size variations (★9 47,250, ★10 66,977); the lowest is shown. Kiranico does not list these quests."
+          "notes": "HP: 歴戦王 (arch-tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★9 47,250, ★10 66,977); the lowest is shown. Kiranico does not list these hunts."
         }
       ],
       "hp": [
@@ -19754,7 +20066,7 @@
         {
           "name": "まかろんのゲームメモ (MHWilds monster HP)",
           "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
-          "notes": "HP: arch-tempered (歴戦王) rows, middle of the 5 size variations (★8 35,550, ★10 54,675); the lowest is shown. Kiranico does not list these quests."
+          "notes": "HP: 歴戦王 (arch-tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★8 35,550, ★10 54,675); the lowest is shown. Kiranico does not list these hunts."
         }
       ],
       "hp": [
@@ -19849,7 +20161,7 @@
         {
           "name": "まかろんのゲームメモ (MHWilds monster HP)",
           "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
-          "notes": "HP: arch-tempered (歴戦王) rows, middle of the 5 size variations (★8 49,500, ★10 77,517); the lowest is shown. Kiranico does not list these quests."
+          "notes": "HP: 歴戦王 (arch-tempered) rows, strength levels ♦3-♦5, middle of the 5 size variations (★8 49,500, ★10 77,517); the lowest is shown. Kiranico does not list these hunts."
         }
       ],
       "hp": [

@@ -114,8 +114,13 @@ party factors, item reactions) are reused unchanged unless stated.
     shows its lowest quest HP (basis `minQuest`, the 003 rule); the ★10 value is in the source
     note. Rey Dau ★8 35,550 / ★10 54,675; Uth Duna ★8 49,500 / ★10 77,517; Nu Udra ★9 47,250 /
     ★10 66,977; Jin Dahaad ★9 65,120 / ★10 73,593; Arkveld ★10 79,923.
-  - Tempered HP stays unknown. It depends on the hunt's star (★5–9) and strength level, and the
-    table has gaps at ★8–9. A range would need a change to the HP model.
+  - Tempered HP (added on 2026-09-30 at the user's request): from the same table's 歴戦 rows
+    (per hunt star ★5–9 and strength level ♦3–♦5). Each tempered version shows its lowest value
+    (basis `minQuest`, e.g. Tempered Rey Dau 20,500 at ★7 ♦3), and every value is listed in its
+    source note. Lagiacrus, Seregios, Gogmazios and Zoh Shia have empty tempered rows, so their
+    tempered versions keep "HP desconhecido".
+  - `tool/data/macaron.py` parses the table. It matches the Japanese names to slugs through the
+    Kiranico Japanese monster pages.
   - The icon is the base icon (R7). All other sections are inherited from the base.
   - "Certificate γ" gets its own id (`-gamma`). Before, it collided with "Certificate".
 - **Frenzied**: none. The wiki only mentions frenzy quest names.

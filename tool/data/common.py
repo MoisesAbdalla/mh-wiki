@@ -8,11 +8,14 @@ import json
 import os
 import re
 import sys
+import time
+import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
 CACHE = os.path.join(HERE, '.cache')
 GAMES = ('world_iceborne', 'rise_sunbreak', 'wilds')
+UA = {'User-Agent': 'Mozilla/5.0 (mh-wiki data curation; personal study project)'}
 
 os.makedirs(CACHE, exist_ok=True)
 os.chdir(CACHE)
@@ -42,6 +45,17 @@ def roster(game):
 
 def clean(text):
     return html.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', text))).strip()
+
+
+def fetch(url, cache):
+    """The page at [url], read from / written to the cache file [cache]."""
+    if os.path.exists(cache):
+        return open(cache, encoding='utf8').read()
+    req = urllib.request.Request(url, headers=UA)
+    data = urllib.request.urlopen(req, timeout=60).read().decode('utf8')
+    open(cache, 'w', encoding='utf8').write(data)
+    time.sleep(1.2)
+    return data
 
 
 def load_dataset(game):

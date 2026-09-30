@@ -31,6 +31,10 @@ const noHp = <String>{
   'omega-planetes',
 };
 
+/// Wilds bases whose tempered rows are empty in the macarongamemo table
+/// (004 research R4): their tempered version has no HP.
+const noTemperedHp = <String>{'lagiacrus', 'seregios', 'gogmazios', 'zoh-shia'};
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   final datasource = AssetMonsterDatasource(rootBundle);
@@ -229,6 +233,24 @@ void main() {
         containsAll(['Rey Dau Plate', 'Rey Dau Certificate γ']),
       );
       expect(reyDau.huntingInfo.hp.single.solo, 35550); // ★8 A Silent Flash
+    });
+
+    test('Wilds tempered versions have the lowest tempered HP', () async {
+      final monsters = await load(Game.wilds);
+      for (final m in monsters.where(
+        (m) => m.versionKind == VersionKind.tempered,
+      )) {
+        if (noTemperedHp.contains(m.versionOf!.slug)) {
+          expect(m.huntingInfo.hp, isEmpty, reason: '${m.id}');
+          continue;
+        }
+        final hp = m.huntingInfo.hp.single;
+        expect((hp.rank, hp.basis), (Rank.high, HpBasis.minQuest));
+      }
+      final reyDau = monsters.singleWhere(
+        (m) => m.id.slug == 'tempered-rey-dau',
+      );
+      expect(reyDau.huntingInfo.hp.single.solo, 20500); // ★7 ♦3
     });
   });
 
