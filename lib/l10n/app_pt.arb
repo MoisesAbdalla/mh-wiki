@@ -71,5 +71,12 @@
   "clearFilters": "Limpar filtros",
 
   "searchHint": "Buscar monstro",
-  "clearSearch": "Limpar busca"
+  "clearSearch": "Limpar busca",
+
+  "settingsTitle": "Configurações",
+  "nameLanguageTitle": "Idioma dos nomes do jogo",
+  "nameLanguageDescription": "Nomes de monstros, materiais, habitats e partes. O restante do app continua em português.",
+  "nameLanguagePtBr": "Português (Brasil)",
+  "nameLanguageEn": "English",
+  "saveFailed": "Não foi possível salvar a preferência"
 }

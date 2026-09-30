@@ -82,6 +82,14 @@ final class MonsterListController extends ChangeNotifier {
     _emit();
   }
 
+  /// Re-sorts names in the new language keeping filters and selection
+  /// (FR-022, FR-025).
+  void onLanguageChanged(NameLanguage language) {
+    if (language == _query.language) return;
+    _query = _query.copyWith(language: language);
+    _emit();
+  }
+
   void select(MonsterId id) {
     _selectedId = id;
     _emit();

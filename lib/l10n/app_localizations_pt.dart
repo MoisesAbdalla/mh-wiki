@@ -161,4 +161,23 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get clearSearch => 'Limpar busca';
+
+  @override
+  String get settingsTitle => 'Configurações';
+
+  @override
+  String get nameLanguageTitle => 'Idioma dos nomes do jogo';
+
+  @override
+  String get nameLanguageDescription =>
+      'Nomes de monstros, materiais, habitats e partes. O restante do app continua em português.';
+
+  @override
+  String get nameLanguagePtBr => 'Português (Brasil)';
+
+  @override
+  String get nameLanguageEn => 'English';
+
+  @override
+  String get saveFailed => 'Não foi possível salvar a preferência';
 }

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/core/domain/failure.dart';
 import 'package:mh_wiki/core/domain/game.dart';
+import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/monsters/presentation/models/monster_list_state.dart';
@@ -187,5 +188,32 @@ void main() {
       expect(state.query.text, isEmpty);
       expect(state.sections, hasLength(2));
     });
+  });
+
+  group('name language (FR-025)', () {
+    test(
+      'onLanguageChanged re-sorts by the new language and keeps state',
+      () async {
+        repository.monsters = [
+          buildMonster(slug: 'a', en: 'Zinogre', ptBr: 'Alfa'),
+          buildMonster(slug: 'b', en: 'Anjanath', ptBr: 'Beta'),
+        ];
+        await controller.load();
+        controller
+          ..setSearchText('a')
+          ..select(const MonsterId(Game.worldIceborne, 'a'));
+
+        controller.onLanguageChanged(NameLanguage.en);
+
+        final state = controller.state as MonsterListLoaded;
+        expect(state.sections.single.monsters.map((m) => m.id.slug), [
+          'b',
+          'a',
+        ]);
+        expect(state.query.text, 'a');
+        expect(state.selectedId, const MonsterId(Game.worldIceborne, 'a'));
+        expect(controller.language, NameLanguage.en);
+      },
+    );
   });
 }

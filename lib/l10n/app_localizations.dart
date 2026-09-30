@@ -375,6 +375,42 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Limpar busca'**
   String get clearSearch;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Configurações'**
+  String get settingsTitle;
+
+  /// No description provided for @nameLanguageTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Idioma dos nomes do jogo'**
+  String get nameLanguageTitle;
+
+  /// No description provided for @nameLanguageDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nomes de monstros, materiais, habitats e partes. O restante do app continua em português.'**
+  String get nameLanguageDescription;
+
+  /// No description provided for @nameLanguagePtBr.
+  ///
+  /// In pt, this message translates to:
+  /// **'Português (Brasil)'**
+  String get nameLanguagePtBr;
+
+  /// No description provided for @nameLanguageEn.
+  ///
+  /// In pt, this message translates to:
+  /// **'English'**
+  String get nameLanguageEn;
+
+  /// No description provided for @saveFailed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível salvar a preferência'**
+  String get saveFailed;
 }
 
 class _AppLocalizationsDelegate

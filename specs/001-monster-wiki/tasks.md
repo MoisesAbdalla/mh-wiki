@@ -189,19 +189,19 @@ instantly; sorting follows the language. Affects US1–US3 views.
 
 ### Tests (write first, must fail) ⚠️
 
-- [ ] T071 [P] Unit test `SharedPrefsSettingsRepository` with `SharedPreferences.setMockInitialValues`: nothing stored → `ptBr`; save `en` then load → `en`; unknown stored value → `ptBr` in `test/features/settings/data/shared_prefs_settings_repository_test.dart`
-- [ ] T072 [P] Unit test `SettingsController` constructed with real use cases (`LoadSettings`, `SetNameLanguage`) wrapping `FakeSettingsRepository` (`test/fakes/fake_settings_repository.dart`): `load`; `setNameLanguage` updates immediately and notifies; save failure keeps in-memory choice and exposes transient error in `test/features/settings/presentation/settings_controller_test.dart`
-- [ ] T073 [P] Extend `MonsterListController` tests: `onLanguageChanged(en)` re-sorts sections by English name (FR-025) and keeps filters/selection in `test/features/monsters/presentation/controllers/monster_list_controller_test.dart`
-- [ ] T074 [P] Widget test: switching to English in `SettingsPage` changes names on list and detail without restart; pt-BR missing → English shown; search finds by both names regardless of setting in `test/features/settings/presentation/name_language_flow_test.dart`
+- [X] T071 [P] Unit test `SharedPrefsSettingsRepository` with `SharedPreferences.setMockInitialValues`: nothing stored → `ptBr`; save `en` then load → `en`; unknown stored value → `ptBr` in `test/features/settings/data/shared_prefs_settings_repository_test.dart`
+- [X] T072 [P] Unit test `SettingsController` constructed with real use cases (`LoadSettings`, `SetNameLanguage`) wrapping `FakeSettingsRepository` (`test/fakes/fake_settings_repository.dart`): `load`; `setNameLanguage` updates immediately and notifies; save failure keeps in-memory choice and exposes transient error in `test/features/settings/presentation/settings_controller_test.dart`
+- [X] T073 [P] Extend `MonsterListController` tests: `onLanguageChanged(en)` re-sorts sections by English name (FR-025) and keeps filters/selection in `test/features/monsters/presentation/controllers/monster_list_controller_test.dart`
+- [X] T074 [P] Widget test: switching to English in `SettingsPage` changes names on list and detail without restart; pt-BR missing → English shown; search finds by both names regardless of setting in `test/features/settings/presentation/name_language_flow_test.dart`
 
 ### Implementation
 
-- [ ] T075 [P] Implement `AppSettings`, `SettingsRepository` interface, `LoadSettings`, `SetNameLanguage` in `lib/features/settings/domain/app_settings.dart`, `lib/features/settings/domain/settings_repository.dart`, `lib/features/settings/domain/usecases/load_settings.dart`, `lib/features/settings/domain/usecases/set_name_language.dart`
-- [ ] T076 Implement `SharedPrefsSettingsRepository` (key `name_language`, values `ptBr`/`en`, errors → `PreferenceStorageFailure`) in `lib/features/settings/data/shared_prefs_settings_repository.dart` (makes T071 pass)
-- [ ] T077 Implement `SettingsController` (constructor takes only `LoadSettings` and `SetNameLanguage`; no repository import — Principle II) in `lib/features/settings/presentation/settings_controller.dart` (makes T072 pass)
-- [ ] T078 Add `onLanguageChanged` to `MonsterListController` in `lib/features/monsters/presentation/controllers/monster_list_controller.dart` (makes T073 pass)
-- [ ] T079 Add strings ("Configurações", "Idioma dos nomes do jogo", "Português (Brasil)", "English", "Não foi possível salvar a preferência") to `lib/l10n/app_pt.arb`; implement `SettingsPage` (radio options, snackbar on failure) in `lib/features/settings/presentation/settings_page.dart`; add settings action to the `MonstersPage` app bar
-- [ ] T080 Wire settings in `lib/app/di/app_dependencies.dart` (await `SharedPreferences.getInstance()` / `LoadSettings` before `runApp` in `lib/main.dart`), listen to `SettingsController` to call `MonsterListController.onLanguageChanged`, and pass `settings.nameLanguage` into every `LocalizedText.resolve` call in list/detail widgets (makes T074 pass)
+- [X] T075 [P] Implement `AppSettings`, `SettingsRepository` interface, `LoadSettings`, `SetNameLanguage` in `lib/features/settings/domain/app_settings.dart`, `lib/features/settings/domain/settings_repository.dart`, `lib/features/settings/domain/usecases/load_settings.dart`, `lib/features/settings/domain/usecases/set_name_language.dart`
+- [X] T076 Implement `SharedPrefsSettingsRepository` (key `name_language`, values `ptBr`/`en`, errors → `PreferenceStorageFailure`) in `lib/features/settings/data/shared_prefs_settings_repository.dart` (makes T071 pass)
+- [X] T077 Implement `SettingsController` (constructor takes only `LoadSettings` and `SetNameLanguage`; no repository import — Principle II) in `lib/features/settings/presentation/settings_controller.dart` (makes T072 pass)
+- [X] T078 Add `onLanguageChanged` to `MonsterListController` in `lib/features/monsters/presentation/controllers/monster_list_controller.dart` (makes T073 pass)
+- [X] T079 Add strings ("Configurações", "Idioma dos nomes do jogo", "Português (Brasil)", "English", "Não foi possível salvar a preferência") to `lib/l10n/app_pt.arb`; implement `SettingsPage` (radio options, snackbar on failure) in `lib/features/settings/presentation/settings_page.dart`; add settings action to the `MonstersPage` app bar
+- [X] T080 Wire settings in `lib/app/di/app_dependencies.dart` (await `SharedPreferences.getInstance()` / `LoadSettings` before `runApp` in `lib/main.dart`), listen to `SettingsController` to call `MonsterListController.onLanguageChanged`, and pass `settings.nameLanguage` into every `LocalizedText.resolve` call in list/detail widgets (makes T074 pass)
 - [ ] T081 Run gates and quickstart scenarios 5 and 6; commit
 
 **Checkpoint**: all functional requirements implemented.
