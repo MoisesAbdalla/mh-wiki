@@ -2991,8 +2991,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Rathian_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Rathian_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -3008,11 +3008,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Rathian_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -3249,8 +3244,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Rathalos_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Rathalos_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -3266,11 +3261,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Rathalos_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -3652,8 +3642,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Guardian_Rathalos_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Guardian_Rathalos_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -3669,11 +3659,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Guardian_Rathalos_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -3995,8 +3980,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Gravios_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Gravios_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -4012,11 +3997,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Gravios_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -4322,8 +4302,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Yian_Kut-Ku_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Yian_Kut-Ku_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect; Sonic: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -4339,11 +4319,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Yian_Kut-Ku_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect; Sonic: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -4660,8 +4635,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Gypceros_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Gypceros_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -4677,11 +4652,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Gypceros_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "hp": [
@@ -4977,8 +4947,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Congalala_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Congalala_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -4994,11 +4964,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Congalala_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -5184,8 +5149,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Blangonga_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Blangonga_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -5201,11 +5166,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Blangonga_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -5449,8 +5409,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Lagiacrus_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Lagiacrus_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -5466,11 +5426,6 @@
           "name": "まかろんのゲームメモ (MHWilds monster HP)",
           "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
           "notes": "HP: normal-individual row at strength ♦3, the level of quest targets, middle of the 5 size variations (★6 20,160). Kiranico does not list these hunts."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Lagiacrus_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -5804,8 +5759,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Nerscylla_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Nerscylla_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -5821,11 +5776,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Nerscylla_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -6085,8 +6035,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Gore_Magala_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Gore_Magala_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -6102,11 +6052,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Gore_Magala_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "hp": [
@@ -6381,8 +6326,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Seregios_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Seregios_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -6398,11 +6343,6 @@
           "name": "まかろんのゲームメモ (MHWilds monster HP)",
           "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
           "notes": "HP: normal-individual row at strength ♦3, the level of quest targets, middle of the 5 size variations (★6 19,800). Kiranico does not list these hunts."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Seregios_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -6802,8 +6742,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Gogmazios_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Gogmazios_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -6814,11 +6754,6 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Gogmazios",
           "notes": "Classification."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Gogmazios_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "itemReactions": [
@@ -7069,8 +7004,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Mizutsune_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Mizutsune_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -7086,11 +7021,6 @@
           "name": "まかろんのゲームメモ (MHWilds monster HP)",
           "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
           "notes": "HP: normal-individual row at strength ♦3, the level of quest targets, middle of the 5 size variations (★5 16,500). Kiranico does not list these hunts."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Mizutsune_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -7360,8 +7290,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Guardian_Fulgur_Anjanath_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Guardian_Fulgur_Anjanath_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -7377,11 +7307,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Guardian_Fulgur_Anjanath_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -7810,8 +7735,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Guardian_Ebony_Odogaron_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Guardian_Ebony_Odogaron_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -7827,11 +7752,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Guardian_Ebony_Odogaron_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -8131,8 +8051,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Doshaguma_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Doshaguma_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -8148,11 +8068,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Doshaguma_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -8511,8 +8426,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Guardian_Doshaguma_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Guardian_Doshaguma_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -8528,11 +8443,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Guardian_Doshaguma_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -8882,8 +8792,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Balahara_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Balahara_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect; Sonic: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -8899,11 +8809,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Balahara_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect; Sonic: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -9175,8 +9080,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Chatacabra_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Chatacabra_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -9192,11 +9097,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Chatacabra_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -9529,8 +9429,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Quematrice_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Quematrice_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -9546,11 +9446,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Quematrice_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -9901,8 +9796,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Lala_Barina_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Lala_Barina_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -9918,11 +9813,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Lala_Barina_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -10303,8 +10193,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Rompopolo_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Rompopolo_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -10320,11 +10210,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Rompopolo_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -10703,8 +10588,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Rey_Dau_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Rey_Dau_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -10720,11 +10605,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Rey_Dau_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -11132,8 +11012,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Uth_Duna_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Uth_Duna_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -11149,11 +11029,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Uth_Duna_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -11477,8 +11352,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Nu_Udra_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Nu_Udra_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -11494,11 +11369,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Nu_Udra_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "hp": [
@@ -11855,8 +11725,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Ajarakan_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Ajarakan_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -11872,11 +11742,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Ajarakan_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -12139,8 +12004,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Arkveld_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Arkveld_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -12156,11 +12021,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Arkveld_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -12234,8 +12094,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Guardian_Arkveld_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Guardian_Arkveld_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -12251,11 +12111,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Guardian_Arkveld_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "hp": [
@@ -12563,8 +12418,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Hirabami_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Hirabami_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -12580,11 +12435,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Hirabami_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -13043,8 +12893,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Jin_Dahaad_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Jin_Dahaad_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -13060,11 +12910,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Jin_Dahaad_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "hp": [
@@ -13432,8 +13277,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Xu_Wu_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Xu_Wu_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -13449,11 +13294,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Xu_Wu_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "hp": [
@@ -13857,8 +13697,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Zoh_Shia_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Zoh_Shia_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -13874,11 +13714,6 @@
           "name": "Kiranico (MH Wilds) - quests",
           "url": "https://mhwilds.kiranico.com/data/quests",
           "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Zoh_Shia_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "hp": [
@@ -13926,8 +13761,8 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Omega_Planetes_(MHWilds)",
-          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+          "url": "https://monsterhunterwiki.org/wiki/Omega_Planetes_%28MHWilds%29",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded. Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         },
         {
           "name": "Kiranico (MH Wilds)",
@@ -13943,11 +13778,6 @@
           "name": "まかろんのゲームメモ (MHWilds monster HP)",
           "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
           "notes": "HP: normal-individual row at strength ♦3, the level of quest targets, middle of the 5 size variations (★8 90,020). Kiranico does not list these hunts."
-        },
-        {
-          "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Omega_Planetes_%28MHWilds%29",
-          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "hp": [
@@ -14100,7 +13930,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Rathian_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Rathian_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -14313,7 +14143,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Rathalos_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Rathalos_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -14499,7 +14329,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Gravios_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Gravios_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -14667,7 +14497,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Yian_Kut-Ku_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Yian_Kut-Ku_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -14844,7 +14674,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Gypceros_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Gypceros_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -15066,7 +14896,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Congalala_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Congalala_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -15270,7 +15100,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Blangonga_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Blangonga_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -15455,7 +15285,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Lagiacrus_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Lagiacrus_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         }
       ],
@@ -15655,7 +15485,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Nerscylla_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Nerscylla_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -15841,7 +15671,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Gore_Magala_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Gore_Magala_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -16026,7 +15856,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Seregios_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Seregios_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         }
       ],
@@ -16064,7 +15894,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Gogmazios_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Gogmazios_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         }
       ],
@@ -16237,7 +16067,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Mizutsune_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Mizutsune_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -16423,7 +16253,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Guardian_Fulgur_Anjanath_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Guardian_Fulgur_Anjanath_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -16654,7 +16484,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Guardian_Ebony_Odogaron_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Guardian_Ebony_Odogaron_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -16894,7 +16724,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Doshaguma_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Doshaguma_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -17097,7 +16927,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Balahara_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Balahara_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -17319,7 +17149,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Chatacabra_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Chatacabra_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -17541,7 +17371,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Quematrice_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Quematrice_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -17763,7 +17593,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Lala_Barina_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Lala_Barina_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -17976,7 +17806,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Rompopolo_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Rompopolo_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -18198,7 +18028,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Rey_Dau_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Rey_Dau_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -18429,7 +18259,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Uth_Duna_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Uth_Duna_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -18660,7 +18490,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Nu_Udra_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Nu_Udra_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -18900,7 +18730,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Ajarakan_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Ajarakan_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -19076,7 +18906,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Arkveld_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Arkveld_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -19288,7 +19118,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Hirabami_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Hirabami_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -19447,7 +19277,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Jin_Dahaad_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Jin_Dahaad_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -19696,7 +19526,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Xu_Wu_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Xu_Wu_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         },
         {
@@ -19780,7 +19610,7 @@
       "sources": [
         {
           "name": "Monster Hunter Wiki (MHWilds)",
-          "url": "https://monsterhunterwiki.org/wiki/Zoh_Shia_(MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Zoh_Shia_%28MHWilds%29",
           "notes": "Tempered drop groups of the base page (\"Extra Rewards (Tempered)\", \"Tempered Wound Destruction Rewards\"). Weaknesses, parts, habitats, item reactions and classification are the base's (not listed separately)."
         }
       ],

@@ -6,7 +6,7 @@ Sources:
   (used to name Kiranico's "BodyPart N" groups by identical item/rate sets),
   locales; base pages give the classification.
 """
-import collections, datetime, json, os, re, urllib.error
+import collections, datetime, json, os, re, urllib.error, urllib.parse
 from common import HERE, REPO, clean, dataset_path, fetch  # noqa: F401  (sets cwd to the cache)
 
 OUT = dataset_path('rise_sunbreak')
@@ -237,7 +237,9 @@ def build():
         }
         if wiki:
             monster['sources'].append(
-                {'name': 'Monster Hunter Wiki (MHRS)', 'url': f'{MHWIKI}{wname}_(MHRS)',
+                {'name': 'Monster Hunter Wiki (MHRS)',
+                 # Quoted like items_extract.py, so both steps share one source.
+                 'url': MHWIKI + urllib.parse.quote(f'{wname}_(MHRS)'),
                  'notes': 'Locales and named broken-part rewards, matched to Kiranico BodyPart groups by '
                           'identical item/rate sets.'
                           + (f' Unmatched groups not shown: {", ".join(unnamed)}.' if unnamed else '')})

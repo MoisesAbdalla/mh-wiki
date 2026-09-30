@@ -6,7 +6,7 @@ Sources:
   <Name> base page: classification.
 - Kiranico MH Wilds: pt-BR names (monster, parts, items) and hitzones (stars rule).
 """
-import datetime, html, json, os, re, time, urllib.request
+import datetime, html, json, os, re, time, urllib.parse, urllib.request
 from common import REPO, dataset_path  # noqa: E402,F401  (sets cwd to the cache)
 
 UA = {'User-Agent': 'Mozilla/5.0 (mh-wiki data curation; personal study project)'}
@@ -179,7 +179,9 @@ def tempered_version(entry, materials):
         'name': {'en': entry['name']},
         'drops': list(final.values()),
         'sources': [
-            {'name': 'Monster Hunter Wiki (MHWilds)', 'url': f'{MHWIKI}{wname}_(MHWilds)',
+            {'name': 'Monster Hunter Wiki (MHWilds)',
+             # Quoted like items_extract.py, so both steps share one source.
+             'url': MHWIKI + urllib.parse.quote(f'{wname}_(MHWilds)'),
              'notes': 'Tempered drop groups of the base page ("Extra Rewards (Tempered)", '
                       '"Tempered Wound Destruction Rewards"). Weaknesses, parts, habitats, item '
                       'reactions and classification are the base\'s (not listed separately).'},
@@ -322,7 +324,9 @@ def build():
             'parts': list(parts.values()),
             'drops': list(final.values()),
             'sources': [
-                {'name': 'Monster Hunter Wiki (MHWilds)', 'url': f'{MHWIKI}{wname}_(MHWilds)',
+                {'name': 'Monster Hunter Wiki (MHWilds)',
+             # Quoted like items_extract.py, so both steps share one source.
+             'url': MHWIKI + urllib.parse.quote(f'{wname}_(MHWilds)'),
                  'notes': 'Drop tables per rank (carves, tail carves, hunt/capture rewards, named part '
                           'breaks, wound destruction) and locales. Rotten carves, investigations and '
                           'tempered extras excluded.'},

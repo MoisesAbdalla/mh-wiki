@@ -243,6 +243,28 @@ party factors, item reactions) are reused unchanged unless stated.
 - A phone measurement remains open: run the same integration test with `flutter drive -d
   <device> --profile` when a device is connected.
 
+### SC-002 spot check (T039, 2026-09-30)
+
+- **Sample**: 10 new entries per game, drawn with a fixed seed (39) among those with drops and
+  HP. Bases and versions are mixed: tempered, arch-tempered, afflicted, Apex and guardian.
+- **Method**: one drop rate and the HP of each entry were compared with the **live** source page
+  (Kiranico or the Monster Hunter Wiki, downloaded again, not the pipeline cache), read from the
+  raw page text. The macarongamemo table was also downloaded again.
+- **Result**: 30 of 30 match (World 10, Rise 10, Wilds 10). Details worth keeping:
+  - An automatic summary of the Banbaro page gave 25 % for Banbaro Lash. The raw page shows that
+    25 % belongs to "Investigation Reward (Gold)", which is out of scope. "Hunt Banbaro" is 16 %,
+    as in the app.
+  - Rompopolo's Toxin Sac is 40 % for both back and tail breaks, as in the app.
+- **Fixed**: in Rise and Wilds, every monster listed its wiki page twice, as `…_(MHRS)` and
+  `…_%28MHRS%29`, because `build_rise.py` / `build_wilds.py` and `items_extract.py` wrote the URL
+  differently. The builders now quote it the same way. A rebuild changed only those duplicate
+  sources.
+- **Observation** (003 rule, not an error): World bases without Master Rank expeditions use the
+  lowest regular quest HP, which can be a multi-monster quest. Silver Rathalos shows "a partir de
+  15.000" from a two-monster quest, while its single hunts are 21.000. The tempered versions of
+  005 prefer single-monster quests; the bases do not.
+
+
 ## R7. Thumbnails
 
 - Same source and conversion as feature 002 (Monster Hunter Wiki hunter's-notes icons, 256 px
