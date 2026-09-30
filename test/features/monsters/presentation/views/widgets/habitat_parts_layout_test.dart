@@ -9,7 +9,7 @@ import '../../../../../helpers/pump_app.dart';
 /// 002 FR-008: Habitat and Parts side by side when wide enough.
 void main() {
   Future<void> pumpDetail(WidgetTester tester, double width) async {
-    setWindowSize(tester, Size(width, 1600));
+    setWindowSize(tester, Size(width, 3000));
     await pumpApp(
       tester,
       Scaffold(

@@ -76,5 +76,23 @@
   "appSubtitle": "Caderno do Caçador",
   "sectionTitleWorldIceborne": "World : Iceborne",
   "sectionTitleRiseSunbreak": "Rise : Sunbreak",
-  "sectionTitleWilds": "Wilds"
+  "sectionTitleWilds": "Wilds",
+
+  "sectionHp": "HP",
+  "sectionHuntingItems": "Itens de caça",
+  "hpSolo": "Solo",
+  "hpParty": "Grupo (aprox.)",
+  "hpFrom": "a partir de {value}",
+  "@hpFrom": { "placeholders": { "value": { "type": "String" } } },
+  "hpHunters": "{count} caçadores",
+  "@hpHunters": { "placeholders": { "count": { "type": "int" } } },
+  "sourceLabel": "Fonte: {name}",
+  "@sourceLabel": { "placeholders": { "name": { "type": "String" } } },
+  "hpUnknown": "HP desconhecido",
+  "unknown": "Desconhecido",
+  "visionLabel": "Visão",
+  "visionSees": "Enxerga",
+  "effectAffects": "Afeta",
+  "effectNoEffect": "Não afeta",
+  "effectConditional": "Afeta com condição"
 }

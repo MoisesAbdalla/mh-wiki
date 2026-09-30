@@ -53,7 +53,11 @@ void main() {
         ),
       ),
     );
-    // Scroll through every section; any overflow fails the test.
+    // Scroll through every section (HP and hunting items included, 003);
+    // any overflow fails the test.
+    await tester.scrollUntilVisible(find.text('Fonte: Fextralife'), 300);
+    await tester.scrollUntilVisible(find.text('Cápsula de Grito'), 300);
+    expect(tester.takeException(), isNull);
     await tester.scrollUntilVisible(find.text('Materiais'), 300);
     expect(tester.takeException(), isNull);
 
@@ -96,7 +100,7 @@ void main() {
   testWidgets('detail and settings meet text contrast (002 SC-003)', (
     tester,
   ) async {
-    setWindowSize(tester, const Size(400, 2000));
+    setWindowSize(tester, const Size(400, 3200));
     await pumpApp(
       tester,
       Scaffold(

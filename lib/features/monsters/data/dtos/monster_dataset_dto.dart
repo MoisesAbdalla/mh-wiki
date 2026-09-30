@@ -6,6 +6,10 @@ import 'package:mh_wiki/features/monsters/data/dtos/json_reader.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/drop_method.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/effectiveness.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/hunting_item.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/item_reaction.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/party_hp_factors.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/rank_hp.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/source_ref.dart';
 
 const supportedSchemaVersion = 1;
@@ -21,6 +25,8 @@ final class MonsterDatasetDto {
     required this.habitats,
     required this.materials,
     required this.monsters,
+    this.huntingItems = const [],
+    this.partyFactors,
   });
 
   /// Throws [UnsupportedSchemaVersionException] for rule 1 and
@@ -53,6 +59,11 @@ final class MonsterDatasetDto {
       'material',
     );
 
+    final huntingItems = _huntingItems(root);
+    final partyFactors = root.has('partyHpFactors')
+        ? _partyFactors(root.object('partyHpFactors'))
+        : null;
+
     final monsters = <MonsterDto>[];
     final slugs = <String>{};
     for (final reader in root.objects('monsters')) {
@@ -61,6 +72,7 @@ final class MonsterDatasetDto {
         game: expectedGame,
         habitatIds: habitats.keys.toSet(),
         materialIds: materials.keys.toSet(),
+        itemIds: {for (final i in huntingItems) i.id},
       );
       if (!slugs.add(monster.slug)) {
         reader.fail('duplicate monster slug "${monster.slug}"');
@@ -74,6 +86,8 @@ final class MonsterDatasetDto {
       habitats: habitats,
       materials: materials,
       monsters: monsters,
+      huntingItems: huntingItems,
+      partyFactors: partyFactors,
     );
   }
 
@@ -82,6 +96,12 @@ final class MonsterDatasetDto {
   final Map<String, NamedDto> habitats;
   final Map<String, MaterialDto> materials;
   final List<MonsterDto> monsters;
+
+  /// Optional (feature 003): the game's hunting items.
+  final List<HuntingItem> huntingItems;
+
+  /// Optional (feature 003): party HP factors; `null` when undocumented.
+  final PartyHpFactors? partyFactors;
 }
 
 final class NamedDto {
@@ -221,6 +241,8 @@ final class MonsterDto {
     required this.parts,
     required this.drops,
     required this.sources,
+    this.hp = const [],
+    this.reactions = const [],
   });
 
   factory MonsterDto.fromJson(
@@ -228,6 +250,7 @@ final class MonsterDto {
     required Game game,
     required Set<String> habitatIds,
     required Set<String> materialIds,
+    Set<String> itemIds = const {},
   }) {
     final slug = _slug(reader, 'slug');
     final monster = JsonReader(reader.json, '${reader.path}($slug)');
@@ -272,6 +295,8 @@ final class MonsterDto {
           ),
       ],
       sources: _sources(monster),
+      hp: _rankHp(monster, game),
+      reactions: _reactions(monster, itemIds),
     );
   }
 
@@ -285,6 +310,95 @@ final class MonsterDto {
   final List<PartDto> parts;
   final List<DropDto> drops;
   final List<SourceRef> sources;
+  final List<RankHp> hp;
+  final List<ItemReaction> reactions;
+}
+
+List<HuntingItem> _huntingItems(JsonReader root) {
+  final items = <HuntingItem>[];
+  final ids = <String>{};
+  for (final reader in root.optionalObjects('huntingItems')) {
+    final id = reader.string('id');
+    if (!HuntingItem.knownIds.contains(id)) {
+      reader.fail('unknown hunting item "$id"');
+    }
+    if (!ids.add(id)) reader.fail('duplicate hunting item "$id"');
+    items.add(HuntingItem(id: id, name: _localized(reader.object('name'))));
+  }
+  return items;
+}
+
+PartyHpFactors _partyFactors(JsonReader reader) {
+  final factors = <int, FactorRange>{};
+  for (final key in reader.json.keys) {
+    if (key == 'source') continue;
+    final players = int.tryParse(key);
+    if (players == null || players < 2 || players > 4) {
+      reader.fail('party factor key "$key" must be 2, 3 or 4');
+    }
+    final range = reader.object(key);
+    final min = range.number('min').toDouble();
+    final max = range.number('max').toDouble();
+    if (min <= 0 || min > max) range.fail('factor must satisfy 0 < min <= max');
+    factors[players] = FactorRange(min, max);
+  }
+  final source = reader.object('source');
+  return PartyHpFactors(
+    factors: factors,
+    source: SourceRef(
+      name: source.string('name'),
+      url: _url(source),
+      notes: source.optionalString('notes'),
+    ),
+  );
+}
+
+List<RankHp> _rankHp(JsonReader monster, Game game) {
+  final result = <RankHp>[];
+  final ranks = <Rank>{};
+  for (final reader in monster.optionalObjects('hp')) {
+    final rank = reader.enumValue('rank', Rank.values);
+    if (!game.allowedRanks.contains(rank)) {
+      reader.fail('rank "${rank.name}" does not exist in ${game.datasetKey}');
+    }
+    if (!ranks.add(rank)) reader.fail('duplicate hp rank "${rank.name}"');
+    final solo = reader.number('solo');
+    if (solo is! int || solo <= 0) {
+      reader.fail('"solo" must be a positive integer');
+    }
+    result.add(
+      RankHp(
+        rank: rank,
+        solo: solo,
+        basis: reader.enumValue('basis', HpBasis.values),
+      ),
+    );
+  }
+  result.sort((a, b) => a.rank.index.compareTo(b.rank.index));
+  return result;
+}
+
+List<ItemReaction> _reactions(JsonReader monster, Set<String> itemIds) {
+  final result = <ItemReaction>[];
+  for (final reader in monster.optionalObjects('itemReactions')) {
+    final item = reader.string('item');
+    if (!itemIds.contains(item)) {
+      reader.fail('reaction item "$item" is not a dataset hunting item');
+    }
+    final effect = reader.enumValue('effect', ReactionEffect.values);
+    final detail = reader.optionalObject('detail');
+    if (effect == ReactionEffect.conditional && detail == null) {
+      reader.fail('a conditional reaction requires "detail"');
+    }
+    result.add(
+      ItemReaction(
+        item: item,
+        effect: effect,
+        detail: detail == null ? null : _localized(detail),
+      ),
+    );
+  }
+  return result;
 }
 
 String _slug(JsonReader reader, String key) {

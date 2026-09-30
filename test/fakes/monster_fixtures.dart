@@ -6,10 +6,15 @@ import 'package:mh_wiki/features/monsters/domain/entities/drop_method.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/effectiveness.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/habitat.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/hunting_info.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/hunting_item.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/item_reaction.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/material_drop.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_material.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/party_hp_factors.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/rank_hp.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/source_ref.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/weakness_profile.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/weakness_state.dart';
@@ -64,6 +69,7 @@ Monster buildMonster({
   List<BreakablePart> parts = const [],
   List<MaterialDrop> drops = const [],
   String? imageAsset,
+  HuntingInfo huntingInfo = const HuntingInfo(),
 }) => Monster(
   id: MonsterId(game, slug),
   name: LocalizedText(en: en, ptBr: ptBr),
@@ -79,6 +85,7 @@ Monster buildMonster({
   parts: parts,
   drops: drops,
   sources: const [SourceRef(name: 'Test', url: 'https://example.com')],
+  huntingInfo: huntingInfo,
 );
 
 extension MonsterTestCopy on Monster {
@@ -95,8 +102,61 @@ extension MonsterTestCopy on Monster {
     parts: parts,
     drops: drops,
     sources: sources,
+    huntingInfo: huntingInfo,
   );
 }
+
+/// Hunting info exercising the 003 edge cases: an expedition and a
+/// "a partir de" HP, factor ranges, every reaction status and a long detail.
+const richHuntingInfo = HuntingInfo(
+  hp: [
+    RankHp(rank: Rank.low, solo: 4908, basis: HpBasis.expedition),
+    RankHp(rank: Rank.master, solo: 20800, basis: HpBasis.minQuest),
+  ],
+  partyFactors: PartyHpFactors(
+    factors: {
+      2: FactorRange(1.5, 1.5),
+      3: FactorRange(2.2, 2.6),
+      4: FactorRange(2.2, 2.6),
+    },
+    source: SourceRef(name: 'Fextralife', url: 'https://example.com'),
+  ),
+  items: [
+    HuntingItem(
+      id: 'flash',
+      name: LocalizedText(en: 'Flash Pod', ptBr: 'Cápsula de Lampejo'),
+    ),
+    HuntingItem(
+      id: 'sonic',
+      name: LocalizedText(en: 'Screamer Pod', ptBr: 'Cápsula de Grito'),
+    ),
+    HuntingItem(
+      id: 'dung',
+      name: LocalizedText(en: 'Dung Pod', ptBr: 'Cápsula de Esterco'),
+    ),
+    HuntingItem(
+      id: 'pitfallTrap',
+      name: LocalizedText(en: 'Pitfall Trap', ptBr: 'Armadilha de Poço'),
+    ),
+  ],
+  reactions: [
+    ItemReaction(
+      item: 'flash',
+      effect: ReactionEffect.affects,
+      detail: LocalizedText(en: 'Lasts 20 s', ptBr: 'Dura 20 s'),
+    ),
+    ItemReaction(
+      item: 'sonic',
+      effect: ReactionEffect.conditional,
+      detail: LocalizedText(
+        en: 'Only while burrowed: it is stunned as if in a Pitfall Trap',
+        ptBr:
+            'Só quando está enterrado: fica preso como numa Armadilha de Poço',
+      ),
+    ),
+    ItemReaction(item: 'dung', effect: ReactionEffect.noEffect),
+  ],
+);
 
 /// A monster exercising every detail edge case: states, immunity, severable
 /// part, break-part drop, unknown rate and an `other` method.
@@ -109,6 +169,7 @@ Monster richMonster({Game game = Game.worldIceborne}) {
   );
   return buildMonster(
     game: game,
+    huntingInfo: richHuntingInfo,
     general: weaknesses(
       fire: Effectiveness.immune,
       dragon: Effectiveness.high,

@@ -94,3 +94,54 @@ Map<String, Object?> validDatasetJson({String game = 'world_iceborne'}) => {
 /// Shorthand to reach the first monster map inside a dataset map.
 Map<String, Object?> firstMonster(Map<String, Object?> dataset) =>
     (dataset['monsters']! as List<Object?>).first! as Map<String, Object?>;
+
+/// Adds the optional hunting-info fields (feature 003) to a dataset map.
+Map<String, Object?> withHuntingInfo(Map<String, Object?> dataset) {
+  dataset['partyHpFactors'] = <String, Object?>{
+    '2': {'min': 1.5, 'max': 1.5},
+    '3': {'min': 2.2, 'max': 2.6},
+    '4': {'min': 2.2, 'max': 2.6},
+    'source': {'name': 'Fextralife', 'url': 'https://example.com/multiplayer'},
+  };
+  dataset['huntingItems'] = <Object?>[
+    {
+      'id': 'flash',
+      'name': {'en': 'Flash Pod'},
+    },
+    {
+      'id': 'sonic',
+      'name': {'en': 'Screamer Pod'},
+    },
+    {
+      'id': 'dung',
+      'name': {'en': 'Dung Pod'},
+    },
+    {
+      'id': 'pitfallTrap',
+      'name': {'en': 'Pitfall Trap', 'ptBr': 'Armadilha de Fosso'},
+    },
+    {
+      'id': 'shockTrap',
+      'name': {'en': 'Shock Trap'},
+    },
+  ];
+  final monster = firstMonster(dataset);
+  monster['hp'] = <Object?>[
+    {'rank': 'low', 'solo': 4908, 'basis': 'expedition'},
+    {'rank': 'high', 'solo': 6565, 'basis': 'minQuest'},
+  ];
+  monster['itemReactions'] = <Object?>[
+    {
+      'item': 'flash',
+      'effect': 'affects',
+      'detail': {'en': 'Duration: 20 s', 'ptBr': 'Duração: 20 s'},
+    },
+    {'item': 'sonic', 'effect': 'noEffect'},
+    {
+      'item': 'dung',
+      'effect': 'conditional',
+      'detail': {'en': '50% chance to flee'},
+    },
+  ];
+  return dataset;
+}

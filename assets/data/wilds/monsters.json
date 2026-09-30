@@ -912,6 +912,62 @@
       }
     }
   ],
+  "partyHpFactors": {
+    "2": {
+      "min": 1.6,
+      "max": 1.6
+    },
+    "3": {
+      "min": 2.0,
+      "max": 2.0
+    },
+    "4": {
+      "min": 2.4,
+      "max": 2.4
+    },
+    "source": {
+      "name": "Kiranico (MH Wilds)",
+      "url": "https://mhwilds.kiranico.com/data/quests",
+      "notes": "Per-player HP of quest pages (game data): x1.6 / x2.0 / x2.4 for 2 / 3 / 4 hunters, same in Low and High Rank."
+    }
+  },
+  "huntingItems": [
+    {
+      "id": "flash",
+      "name": {
+        "en": "Flash Pod",
+        "ptBr": "Cápsula de Lampejo"
+      }
+    },
+    {
+      "id": "sonic",
+      "name": {
+        "en": "Screamer Pod",
+        "ptBr": "Cápsula de Grito"
+      }
+    },
+    {
+      "id": "dung",
+      "name": {
+        "en": "Dung Pod",
+        "ptBr": "Cápsula de Esterco"
+      }
+    },
+    {
+      "id": "pitfallTrap",
+      "name": {
+        "en": "Pitfall Trap",
+        "ptBr": "Armadilha de Poço"
+      }
+    },
+    {
+      "id": "shockTrap",
+      "name": {
+        "en": "Shock Trap",
+        "ptBr": "Armadilha de Choque"
+      }
+    }
+  ],
   "monsters": [
     {
       "slug": "chatacabra",
@@ -1146,9 +1202,65 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Chatacabra",
           "notes": "Classification."
+        },
+        {
+          "name": "Kiranico (MH Wilds) - quests",
+          "url": "https://mhwilds.kiranico.com/data/quests",
+          "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Chatacabra_%28MHWilds%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
-      "image": "assets/images/monsters/wilds/chatacabra.webp"
+      "image": "assets/images/monsters/wilds/chatacabra.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 4000,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 10080,
+          "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects"
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
+        }
+      ]
     },
     {
       "slug": "doshaguma",
@@ -1419,9 +1531,65 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Doshaguma",
           "notes": "Classification."
+        },
+        {
+          "name": "Kiranico (MH Wilds) - quests",
+          "url": "https://mhwilds.kiranico.com/data/quests",
+          "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Doshaguma_%28MHWilds%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
-      "image": "assets/images/monsters/wilds/doshaguma.webp"
+      "image": "assets/images/monsters/wilds/doshaguma.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 5616,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 14400,
+          "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects"
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
+        }
+      ]
     },
     {
       "slug": "rey-dau",
@@ -1763,9 +1931,57 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Rey_Dau",
           "notes": "Classification."
+        },
+        {
+          "name": "Kiranico (MH Wilds) - quests",
+          "url": "https://mhwilds.kiranico.com/data/quests",
+          "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Rey_Dau_%28MHWilds%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
-      "image": "assets/images/monsters/wilds/rey-dau.webp"
+      "image": "assets/images/monsters/wilds/rey-dau.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 7250,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 18000,
+          "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects"
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        }
+      ]
     },
     {
       "slug": "uth-duna",
@@ -2144,9 +2360,65 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Uth_Duna",
           "notes": "Classification."
+        },
+        {
+          "name": "Kiranico (MH Wilds) - quests",
+          "url": "https://mhwilds.kiranico.com/data/quests",
+          "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Uth_Duna_%28MHWilds%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
-      "image": "assets/images/monsters/wilds/uth-duna.webp"
+      "image": "assets/images/monsters/wilds/uth-duna.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 7975,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 19800,
+          "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects"
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
+        }
+      ]
     },
     {
       "slug": "nu-udra",
@@ -2433,9 +2705,65 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Nu_Udra",
           "notes": "Classification."
+        },
+        {
+          "name": "Kiranico (MH Wilds) - quests",
+          "url": "https://mhwilds.kiranico.com/data/quests",
+          "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Nu_Udra_%28MHWilds%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
-      "image": "assets/images/monsters/wilds/nu-udra.webp"
+      "image": "assets/images/monsters/wilds/nu-udra.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 9450,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 18900,
+          "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "noEffect"
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
+        }
+      ]
     },
     {
       "slug": "jin-dahaad",
@@ -2857,9 +3185,49 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Jin_Dahaad",
           "notes": "Classification."
+        },
+        {
+          "name": "Kiranico (MH Wilds) - quests",
+          "url": "https://mhwilds.kiranico.com/data/quests",
+          "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Jin_Dahaad_%28MHWilds%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
-      "image": "assets/images/monsters/wilds/jin-dahaad.webp"
+      "image": "assets/images/monsters/wilds/jin-dahaad.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 13320,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 26640,
+          "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects"
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
+        }
+      ]
     },
     {
       "slug": "rathalos",
@@ -3064,9 +3432,60 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Rathalos",
           "notes": "Classification."
+        },
+        {
+          "name": "Kiranico (MH Wilds) - quests",
+          "url": "https://mhwilds.kiranico.com/data/quests",
+          "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Rathalos_%28MHWilds%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
-      "image": "assets/images/monsters/wilds/rathalos.webp"
+      "image": "assets/images/monsters/wilds/rathalos.webp",
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 13500,
+          "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects"
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
+        }
+      ]
     },
     {
       "slug": "guardian-rathalos",
@@ -3414,9 +3833,57 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Guardian_Rathalos",
           "notes": "Classification."
+        },
+        {
+          "name": "Kiranico (MH Wilds) - quests",
+          "url": "https://mhwilds.kiranico.com/data/quests",
+          "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Guardian_Rathalos_%28MHWilds%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
-      "image": "assets/images/monsters/wilds/guardian-rathalos.webp"
+      "image": "assets/images/monsters/wilds/guardian-rathalos.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 9000,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 15000,
+          "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects"
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
+        }
+      ]
     },
     {
       "slug": "gore-magala",
@@ -3639,9 +4106,60 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Gore_Magala",
           "notes": "Classification."
+        },
+        {
+          "name": "Kiranico (MH Wilds) - quests",
+          "url": "https://mhwilds.kiranico.com/data/quests",
+          "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Gore_Magala_%28MHWilds%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
-      "image": "assets/images/monsters/wilds/gore-magala.webp"
+      "image": "assets/images/monsters/wilds/gore-magala.webp",
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 18360,
+          "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "noEffect"
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
+        }
+      ]
     },
     {
       "slug": "arkveld",
@@ -3867,9 +4385,60 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Arkveld",
           "notes": "Classification."
+        },
+        {
+          "name": "Kiranico (MH Wilds) - quests",
+          "url": "https://mhwilds.kiranico.com/data/quests",
+          "notes": "HP: lowest solo HP of the Assignments/Optional quests per rank (1-3 stars LR, 4+ HR)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Arkveld_%28MHWilds%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
-      "image": "assets/images/monsters/wilds/arkveld.webp"
+      "image": "assets/images/monsters/wilds/arkveld.webp",
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 21320,
+          "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects"
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
+        }
+      ]
     }
   ]
 }

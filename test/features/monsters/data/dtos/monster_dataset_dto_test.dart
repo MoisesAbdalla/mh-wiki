@@ -7,6 +7,8 @@ import 'package:mh_wiki/features/monsters/data/dtos/monster_dataset_mapper.dart'
 import 'package:mh_wiki/features/monsters/domain/entities/drop_method.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/effectiveness.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/item_reaction.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/rank_hp.dart';
 
 import '../../../../fakes/dataset_json_fixtures.dart';
 
@@ -149,5 +151,101 @@ void main() {
     final json = validDatasetJson();
     firstMonster(json)['name'] = 'Rathalos';
     expectFormatError(json);
+  });
+
+  group('hunting info (003)', () {
+    Map<String, Object?> hunting() => withHuntingInfo(validDatasetJson());
+
+    List<Object?> listOf(Map<String, Object?> m, String key) =>
+        m[key]! as List<Object?>;
+
+    Map<String, Object?> itemAt(List<Object?> list, int i) =>
+        list[i]! as Map<String, Object?>;
+
+    test('datasets without the optional fields still parse', () {
+      final monster = MonsterDatasetMapper.toMonsters(parse(validDatasetJson()))
+          .single;
+      expect(monster.huntingInfo.hp, isEmpty);
+      expect(monster.huntingInfo.items, isEmpty);
+      expect(monster.huntingInfo.partyFactors, isNull);
+    });
+
+    test('valid hunting info parses and maps', () {
+      final info = MonsterDatasetMapper.toMonsters(parse(hunting()))
+          .single
+          .huntingInfo;
+
+      expect(info.hp.map((h) => (h.rank, h.solo, h.basis)), [
+        (Rank.low, 4908, HpBasis.expedition),
+        (Rank.high, 6565, HpBasis.minQuest),
+      ]);
+      expect(info.partyFactors!.factorFor(3)!.max, 2.6);
+      expect(info.partyFactors!.source.name, 'Fextralife');
+      expect(info.items.map((i) => i.id), [
+        'flash',
+        'sonic',
+        'dung',
+        'pitfallTrap',
+        'shockTrap',
+      ]);
+      expect(info.reactionFor('flash').effect, ReactionEffect.affects);
+      expect(info.reactionFor('flash').detail?.ptBr, 'Duração: 20 s');
+      expect(info.reactionFor('dung').effect, ReactionEffect.conditional);
+    });
+
+    test('duplicate hp rank is rejected', () {
+      final json = hunting();
+      itemAt(listOf(firstMonster(json), 'hp'), 1)['rank'] = 'low';
+      expectFormatError(json);
+    });
+
+    test('hp rank not allowed for the game is rejected', () {
+      final json = withHuntingInfo(validDatasetJson(game: 'wilds'));
+      firstMonster(json)['drops'] = <Object?>[];
+      itemAt(listOf(firstMonster(json), 'hp'), 1)['rank'] = 'master';
+      expectFormatError(json, game: Game.wilds);
+    });
+
+    test('solo hp must be positive', () {
+      final json = hunting();
+      itemAt(listOf(firstMonster(json), 'hp'), 0)['solo'] = 0;
+      expectFormatError(json);
+    });
+
+    test('reaction item must be a dataset hunting item', () {
+      final json = hunting();
+      itemAt(listOf(firstMonster(json), 'itemReactions'), 0)['item'] =
+          'barrelBomb';
+      expectFormatError(json);
+    });
+
+    test('conditional reaction requires a detail', () {
+      final json = hunting();
+      itemAt(listOf(firstMonster(json), 'itemReactions'), 2).remove('detail');
+      expectFormatError(json);
+    });
+
+    test('party factors must have 0 < min <= max and keys 2 to 4', () {
+      final badRange = hunting();
+      (badRange['partyHpFactors']! as Map<String, Object?>)['2'] = {
+        'min': 2.0,
+        'max': 1.5,
+      };
+      expectFormatError(badRange);
+
+      final zero = hunting();
+      (zero['partyHpFactors']! as Map<String, Object?>)['3'] = {
+        'min': 0,
+        'max': 1,
+      };
+      expectFormatError(zero);
+
+      final badKey = hunting();
+      (badKey['partyHpFactors']! as Map<String, Object?>)['5'] = {
+        'min': 3,
+        'max': 3,
+      };
+      expectFormatError(badKey);
+    });
   });
 }

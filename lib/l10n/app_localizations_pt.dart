@@ -187,4 +187,52 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get sectionTitleWilds => 'Wilds';
+
+  @override
+  String get sectionHp => 'HP';
+
+  @override
+  String get sectionHuntingItems => 'Itens de caça';
+
+  @override
+  String get hpSolo => 'Solo';
+
+  @override
+  String get hpParty => 'Grupo (aprox.)';
+
+  @override
+  String hpFrom(String value) {
+    return 'a partir de $value';
+  }
+
+  @override
+  String hpHunters(int count) {
+    return '$count caçadores';
+  }
+
+  @override
+  String sourceLabel(String name) {
+    return 'Fonte: $name';
+  }
+
+  @override
+  String get hpUnknown => 'HP desconhecido';
+
+  @override
+  String get unknown => 'Desconhecido';
+
+  @override
+  String get visionLabel => 'Visão';
+
+  @override
+  String get visionSees => 'Enxerga';
+
+  @override
+  String get effectAffects => 'Afeta';
+
+  @override
+  String get effectNoEffect => 'Não afeta';
+
+  @override
+  String get effectConditional => 'Afeta com condição';
 }

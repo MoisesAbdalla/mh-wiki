@@ -1,6 +1,7 @@
 import 'package:mh_wiki/features/monsters/data/dtos/monster_dataset_dto.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/breakable_part.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/habitat.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/hunting_info.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/material_drop.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
@@ -52,6 +53,12 @@ abstract final class MonsterDatasetMapper {
               ),
           ],
           sources: m.sources,
+          huntingInfo: HuntingInfo(
+            hp: m.hp,
+            partyFactors: dataset.partyFactors,
+            items: dataset.huntingItems,
+            reactions: m.reactions,
+          ),
         ),
     ];
   }

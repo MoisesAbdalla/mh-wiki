@@ -2,6 +2,7 @@ import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/breakable_part.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/habitat.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/hunting_info.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/material_drop.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/material_drop_group.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
@@ -20,6 +21,7 @@ final class Monster {
     required this.drops,
     required this.sources,
     this.imageAsset,
+    this.huntingInfo = const HuntingInfo(),
   });
 
   final MonsterId id;
@@ -33,6 +35,9 @@ final class Monster {
 
   /// `null` means the UI shows a generic placeholder.
   final String? imageAsset;
+
+  /// HP and hunting-item reactions (feature 003); empty when unknown.
+  final HuntingInfo huntingInfo;
 
   /// Drops grouped by rank (low → high → master), then by material in order
   /// of first appearance. Ranks without drops are omitted.
