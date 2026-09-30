@@ -224,6 +224,25 @@ party factors, item reactions) are reused unchanged unless stated.
 - Verified by a performance test with a synthetic catalog of 300 entries (extends the existing
   bulk fixture `copyForTest`).
 
+### R6 results (T038, 2026-09-30, after the 005 visual refresh)
+
+- **Size**: release APK for arm64 (`flutter build apk --release --analyze-size
+  --target-platform android-arm64`) is **24.9 MB**:
+  - `lib/` (Flutter engine and AOT Dart code): 17.1 MB;
+  - images: 6.6 MB (monster icons 6.5 MB, game logos 0.1 MB);
+  - fonts: 0.33 MB;
+  - datasets: 0.15 MB compressed (2.8 MB of JSON on disk).
+  The estimate above (4 MB JSON, 6–8 MB icons) holds; the JSON compresses about 19×.
+- **Time**: measured by `integration_test/app_test.dart` ("list opening and game switch times")
+  on the real Windows app in profile mode (`flutter drive -d windows --profile`), because no
+  phone was connected:
+  - load of the three datasets: 43 ms;
+  - list on screen from start: 150 ms (SC-004 target ≤ 1 s);
+  - switching games: about 420 ms until everything settles, including the 220 ms fade of 005.
+    The new list starts drawing in the first frame.
+- A phone measurement remains open: run the same integration test with `flutter drive -d
+  <device> --profile` when a device is connected.
+
 ## R7. Thumbnails
 
 - Same source and conversion as feature 002 (Monster Hunter Wiki hunter's-notes icons, 256 px
