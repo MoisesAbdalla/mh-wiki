@@ -12,6 +12,11 @@
       "name": "Monster Hunter Wiki",
       "url": "https://monsterhunterwiki.org/",
       "notes": "Locales, classification and broken-part names."
+    },
+    {
+      "name": "Monster Hunter Wiki (icons)",
+      "url": "https://monsterhunterwiki.org/",
+      "notes": "Hunter's-notes icons: Special:FilePath/MHRS-<Name>_Icon.png, converted to 256x256 WebP. Capcom artwork, used locally in a personal study project."
     }
   ],
   "habitats": [
@@ -1781,7 +1786,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Great_Izuchi",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/rise_sunbreak/great-izuchi.webp"
     },
     {
       "slug": "rathian",
@@ -2614,7 +2620,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Rathian",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/rise_sunbreak/rathian.webp"
     },
     {
       "slug": "rathalos",
@@ -3446,7 +3453,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Rathalos",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/rise_sunbreak/rathalos.webp"
     },
     {
       "slug": "tigrex",
@@ -4060,7 +4068,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Tigrex",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/rise_sunbreak/tigrex.webp"
     },
     {
       "slug": "zinogre",
@@ -4782,7 +4791,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Zinogre",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/rise_sunbreak/zinogre.webp"
     },
     {
       "slug": "mizutsune",
@@ -5601,7 +5611,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Mizutsune",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/rise_sunbreak/mizutsune.webp"
     },
     {
       "slug": "violet-mizutsune",
@@ -5890,7 +5901,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Violet_Mizutsune",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/rise_sunbreak/violet-mizutsune.webp"
     },
     {
       "slug": "magnamalo",
@@ -6599,7 +6611,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Magnamalo",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/rise_sunbreak/magnamalo.webp"
     },
     {
       "slug": "rajang",
@@ -7027,7 +7040,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Rajang",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/rise_sunbreak/rajang.webp"
     },
     {
       "slug": "malzeno",
@@ -7266,7 +7280,8 @@
           "url": "https://monsterhunterwiki.org/wiki/Malzeno",
           "notes": "Classification."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/rise_sunbreak/malzeno.webp"
     }
   ]
 }

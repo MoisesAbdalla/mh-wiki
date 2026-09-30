@@ -30,3 +30,20 @@ flutter:
     - assets/data/world_iceborne/
     - assets/data/rise_sunbreak/
     - assets/data/wilds/
+    - assets/images/monsters/world_iceborne/
+    - assets/images/monsters/rise_sunbreak/
+    - assets/images/monsters/wilds/
+
+  # Bundled so they work offline (SIL Open Font License, see assets/fonts/*/OFL.txt).
+  fonts:
+    - family: Cinzel
+      fonts:
+        - asset: assets/fonts/cinzel/Cinzel-Variable.ttf
+    - family: AlegreyaSans
+      fonts:
+        - asset: assets/fonts/alegreya_sans/AlegreyaSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/alegreya_sans/AlegreyaSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/alegreya_sans/AlegreyaSans-Bold.ttf
+          weight: 700

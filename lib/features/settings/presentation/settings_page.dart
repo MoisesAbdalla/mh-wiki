@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
+import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
+import 'package:mh_wiki/core/presentation/widgets/hunter_panel.dart';
 import 'package:mh_wiki/features/settings/presentation/settings_controller.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
@@ -41,28 +43,38 @@ class _SettingsPageState extends State<SettingsPage> {
       body: ListenableBuilder(
         listenable: widget.controller,
         builder: (context, _) => ListView(
+          padding: const EdgeInsets.symmetric(vertical: 12),
           children: [
-            ListTile(
-              title: Text(
-                l10n.nameLanguageTitle,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              subtitle: Text(l10n.nameLanguageDescription),
-            ),
-            RadioGroup<NameLanguage>(
-              groupValue: widget.controller.settings.nameLanguage,
-              onChanged: (value) {
-                if (value != null) widget.controller.setNameLanguage(value);
-              },
+            HunterPanel(
+              title: l10n.nameLanguageTitle,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  RadioListTile<NameLanguage>(
-                    value: NameLanguage.ptBr,
-                    title: Text(l10n.nameLanguagePtBr),
+                  Text(
+                    l10n.nameLanguageDescription,
+                    style: Theme.of(context).textTheme.bodyMedium
+                        ?.copyWith(color: HunterPalette.textMuted),
                   ),
-                  RadioListTile<NameLanguage>(
-                    value: NameLanguage.en,
-                    title: Text(l10n.nameLanguageEn),
+                  const SizedBox(height: 8),
+                  RadioGroup<NameLanguage>(
+                    groupValue: widget.controller.settings.nameLanguage,
+                    onChanged: (value) {
+                      if (value != null) {
+                        widget.controller.setNameLanguage(value);
+                      }
+                    },
+                    child: Column(
+                      children: [
+                        RadioListTile<NameLanguage>(
+                          value: NameLanguage.ptBr,
+                          title: Text(l10n.nameLanguagePtBr),
+                        ),
+                        RadioListTile<NameLanguage>(
+                          value: NameLanguage.en,
+                          title: Text(l10n.nameLanguageEn),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -84,6 +96,11 @@ class SettingsButton extends StatelessWidget {
   Widget build(BuildContext context) => IconButton(
     tooltip: AppLocalizations.of(context).settingsTitle,
     icon: const Icon(Icons.settings_outlined),
+    style: IconButton.styleFrom(
+      backgroundColor: HunterPalette.panelRaised,
+      side: const BorderSide(color: HunterPalette.border),
+      minimumSize: const Size(48, 48),
+    ),
     onPressed: () => Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (_) => SettingsPage(controller: controller),

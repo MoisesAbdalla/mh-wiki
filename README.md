@@ -9,6 +9,19 @@ Windows).
   parts, and materials by rank with acquisition method and drop rate.
 - Game names shown in Portuguese (Brazil) or English (Configurações).
 - Side-by-side list and detail on wide screens (≥ 840 dp).
+- "Caderno do Caçador" look: a fixed dark theme inspired by the games' hunter's notes, with
+  each monster's hunter's-notes icon.
+
+## Credits
+
+- **Fonts**: [Cinzel](https://fonts.google.com/specimen/Cinzel) and
+  [Alegreya Sans](https://fonts.google.com/specimen/Alegreya+Sans), SIL Open Font License
+  (bundled with their `OFL.txt` in `assets/fonts/`).
+- **Monster icons**: hunter's-notes icons from the
+  [Monster Hunter Wiki](https://monsterhunterwiki.org/), converted to 256 px WebP. These are
+  Capcom artwork, used here only locally in a personal study project. Replace them before any
+  public release. The app falls back to a styled marker when an image is missing.
+- **Data**: Kiranico, Monster Hunter Wiki, mhw-db.com and Fextralife (see each dataset's `sources`).
 
 > Fan-made, non-commercial study project. Not affiliated with or endorsed by Capcom.
 > Monster Hunter and all related names are trademarks of Capcom.

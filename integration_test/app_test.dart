@@ -3,6 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:mh_wiki/app/app.dart';
 import 'package:mh_wiki/app/di/app_dependencies.dart';
+import 'package:mh_wiki/core/domain/game.dart';
+import 'package:mh_wiki/core/presentation/widgets/game_tabs.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/monster_detail_page.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/monster_detail_view.dart';
 
@@ -25,7 +27,9 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    await tester.tap(find.widgetWithText(ChoiceChip, 'Wilds'));
+    await tester.tap(
+      find.descendant(of: find.byType(GameTabs), matching: find.text('Wilds')),
+    );
     await tester.pumpAndSettle();
     await tester.enterText(find.byType(TextField), 'rath');
     await tester.pumpAndSettle();
@@ -60,11 +64,6 @@ void main() {
     }
 
     expect(monsters.query.text, 'rath');
-    expect(
-      tester
-          .widget<ChoiceChip>(find.widgetWithText(ChoiceChip, 'Wilds'))
-          .selected,
-      isTrue,
-    );
+    expect(monsters.query.game, Game.wilds);
   });
 }

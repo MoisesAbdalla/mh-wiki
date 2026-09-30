@@ -12,6 +12,11 @@
       "name": "mhw-db.com",
       "url": "https://mhw-db.com/monsters",
       "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none)."
+    },
+    {
+      "name": "Monster Hunter Wiki (icons)",
+      "url": "https://monsterhunterwiki.org/",
+      "notes": "Hunter's-notes icons: Special:FilePath/MHWI-<Name>_Icon.png, converted to 256x256 WebP. Capcom artwork, used locally in a personal study project."
     }
   ],
   "habitats": [
@@ -1402,7 +1407,8 @@
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/world_iceborne/great-jagras.webp"
     },
     {
       "slug": "anjanath",
@@ -1994,7 +2000,8 @@
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/world_iceborne/anjanath.webp"
     },
     {
       "slug": "rathian",
@@ -2697,7 +2704,8 @@
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/world_iceborne/rathian.webp"
     },
     {
       "slug": "pink-rathian",
@@ -3200,7 +3208,8 @@
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/world_iceborne/pink-rathian.webp"
     },
     {
       "slug": "rathalos",
@@ -3927,7 +3936,8 @@
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/world_iceborne/rathalos.webp"
     },
     {
       "slug": "diablos",
@@ -4499,7 +4509,8 @@
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/world_iceborne/diablos.webp"
     },
     {
       "slug": "nergigante",
@@ -4734,7 +4745,8 @@
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/world_iceborne/nergigante.webp"
     },
     {
       "slug": "zinogre",
@@ -4999,7 +5011,8 @@
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/world_iceborne/zinogre.webp"
     },
     {
       "slug": "velkhana",
@@ -5241,7 +5254,8 @@
           "url": "https://monsterhunterworld.wiki.fextralife.com/Velkhana",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none)."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/world_iceborne/velkhana.webp"
     },
     {
       "slug": "alatreon",
@@ -5519,7 +5533,8 @@
           "url": "https://monsterhunterworld.wiki.fextralife.com/Alatreon",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none)."
         }
-      ]
+      ],
+      "image": "assets/images/monsters/world_iceborne/alatreon.webp"
     }
   ]
 }

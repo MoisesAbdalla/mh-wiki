@@ -11,6 +11,13 @@ extension DomainLabels on AppLocalizations {
     Game.wilds => gameWilds,
   };
 
+  /// Short title for the ornamental section headers ("World : Iceborne").
+  String gameSectionTitle(Game game) => switch (game) {
+    Game.worldIceborne => sectionTitleWorldIceborne,
+    Game.riseSunbreak => sectionTitleRiseSunbreak,
+    Game.wilds => sectionTitleWilds,
+  };
+
   String elementName(ElementType element) => switch (element) {
     ElementType.fire => elementFire,
     ElementType.water => elementWater,

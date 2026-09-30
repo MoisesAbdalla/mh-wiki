@@ -142,12 +142,6 @@ abstract class AppLocalizations {
   /// **'Selecione um monstro'**
   String get selectMonster;
 
-  /// No description provided for @monsterSubtitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'{game} · {classification}'**
-  String monsterSubtitle(String game, String classification);
-
   /// No description provided for @sectionWeaknesses.
   ///
   /// In pt, this message translates to:
@@ -325,13 +319,13 @@ abstract class AppLocalizations {
   /// No description provided for @filterWorldIceborne.
   ///
   /// In pt, this message translates to:
-  /// **'World: Iceborne'**
+  /// **'World'**
   String get filterWorldIceborne;
 
   /// No description provided for @filterRiseSunbreak.
   ///
   /// In pt, this message translates to:
-  /// **'Rise: Sunbreak'**
+  /// **'Rise'**
   String get filterRiseSunbreak;
 
   /// No description provided for @filterWilds.
@@ -411,6 +405,30 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Não foi possível salvar a preferência'**
   String get saveFailed;
+
+  /// No description provided for @appSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Caderno do Caçador'**
+  String get appSubtitle;
+
+  /// No description provided for @sectionTitleWorldIceborne.
+  ///
+  /// In pt, this message translates to:
+  /// **'World : Iceborne'**
+  String get sectionTitleWorldIceborne;
+
+  /// No description provided for @sectionTitleRiseSunbreak.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rise : Sunbreak'**
+  String get sectionTitleRiseSunbreak;
+
+  /// No description provided for @sectionTitleWilds.
+  ///
+  /// In pt, this message translates to:
+  /// **'Wilds'**
+  String get sectionTitleWilds;
 }
 
 class _AppLocalizationsDelegate

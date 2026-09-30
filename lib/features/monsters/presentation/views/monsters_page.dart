@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/presentation/breakpoints.dart';
+import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
+import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/monster_detail_page.dart';
@@ -100,19 +102,44 @@ class _MonstersPageState extends State<MonstersPage> {
     );
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.appTitle), actions: widget.actions),
+      appBar: AppBar(
+        toolbarHeight: 68,
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              l10n.appTitle,
+              style: hunterDisplay(size: 22, letterSpacing: 3),
+            ),
+            Text(
+              l10n.appSubtitle,
+              style: Theme.of(context).textTheme.bodyMedium
+                  ?.copyWith(color: HunterPalette.textMuted, letterSpacing: 1),
+            ),
+          ],
+        ),
+        actions: [...?widget.actions, const SizedBox(width: 8)],
+      ),
       body: expanded
           ? Row(
               children: [
                 SizedBox(width: Breakpoints.listPaneWidth, child: list),
-                const VerticalDivider(width: 1),
+                const VerticalDivider(width: 1, color: HunterPalette.border),
                 Expanded(
                   child: ListenableBuilder(
                     listenable: _controller,
                     builder: (context, _) {
                       final monster = _controller.selectedMonster;
                       if (monster == null) {
-                        return Center(child: Text(l10n.selectMonster));
+                        return Center(
+                          child: Text(
+                            l10n.selectMonster,
+                            style: hunterDisplay(
+                              size: 16,
+                              color: HunterPalette.textMuted,
+                            ),
+                          ),
+                        );
                       }
                       return MonsterDetailView(
                         key: ValueKey(monster.id),

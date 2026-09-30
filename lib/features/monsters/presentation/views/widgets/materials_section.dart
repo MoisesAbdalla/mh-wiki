@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
+import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
+import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
+import 'package:mh_wiki/core/presentation/widgets/game_tabs.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/drop_method.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/material_drop.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/material_drop_group.dart';
@@ -55,20 +58,16 @@ class _MaterialsSectionState extends State<MaterialsSection> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           if (ranks.length > 1)
-            SegmentedButton<Rank>(
-              segments: [
-                for (final rank in ranks)
-                  ButtonSegment(value: rank, label: Text(l10n.rankName(rank))),
-              ],
-              selected: {selected},
-              showSelectedIcon: false,
-              onSelectionChanged: (value) =>
-                  setState(() => _selected = value.single),
+            HunterTabs<Rank>(
+              options: [for (final rank in ranks) (rank, l10n.rankName(rank))],
+              selected: selected,
+              dense: true,
+              onChanged: (rank) => setState(() => _selected = rank),
             )
           else
             Text(
               l10n.rankName(selected),
-              style: Theme.of(context).textTheme.labelLarge,
+              style: hunterDisplay(size: 12, color: HunterPalette.textMuted),
             ),
           const SizedBox(height: 8),
           for (final group in byRank[selected]!)
@@ -133,6 +132,8 @@ class _MaterialTile extends StatelessWidget {
                           : l10n.percent(drop.ratePercent!),
                       style: textTheme.bodyMedium?.copyWith(
                         fontFeatures: const [FontFeature.tabularFigures()],
+                        color: HunterPalette.gold,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),

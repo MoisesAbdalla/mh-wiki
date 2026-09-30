@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/core/domain/game.dart';
+import 'package:mh_wiki/core/presentation/widgets/game_tabs.dart';
+import 'package:mh_wiki/core/presentation/widgets/ornament_header.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/monsters_page.dart';
 
@@ -35,6 +37,9 @@ void main() {
 
   tearDown(() => controller.dispose());
 
+  Finder tab(String label) =>
+      find.descendant(of: find.byType(GameTabs), matching: find.text(label));
+
   Future<void> pumpPage(WidgetTester tester) async {
     setWindowSize(tester, const Size(400, 800));
     await pumpApp(tester, MonstersPage(controller: controller));
@@ -43,26 +48,28 @@ void main() {
   testWidgets('offers "Todos" plus the three games', (tester) async {
     await pumpPage(tester);
 
-    for (final label in [
-      'Todos',
-      'World: Iceborne',
-      'Rise: Sunbreak',
-      'Wilds',
-    ]) {
-      expect(find.widgetWithText(ChoiceChip, label), findsOneWidget);
+    for (final label in ['Todos', 'World', 'Rise', 'Wilds']) {
+      expect(tab(label), findsOneWidget);
     }
   });
 
-  testWidgets('"Todos" shows a header per game in order', (tester) async {
+  testWidgets('"Todos" shows an ornament header per game in order', (
+    tester,
+  ) async {
     await pumpPage(tester);
 
-    final headers = [
-      'Monster Hunter World: Iceborne',
-      'Monster Hunter Rise: Sunbreak',
-      'Monster Hunter Wilds',
-    ];
+    expect(find.byType(OrnamentHeader), findsNWidgets(3));
+    final headers = ['World : Iceborne', 'Rise : Sunbreak', 'Wilds'];
     final positions = [
-      for (final header in headers) tester.getTopLeft(find.text(header)).dy,
+      for (final header in headers)
+        tester
+            .getTopLeft(
+              find.descendant(
+                of: find.byType(OrnamentHeader),
+                matching: find.text(header),
+              ),
+            )
+            .dy,
     ];
     expect(positions, orderedEquals([...positions]..sort()));
   });
@@ -72,13 +79,13 @@ void main() {
   ) async {
     await pumpPage(tester);
 
-    await tester.tap(find.widgetWithText(ChoiceChip, 'Wilds'));
+    await tester.tap(tab('Wilds'));
     await tester.pumpAndSettle();
 
     expect(find.text('Arkveld'), findsOneWidget);
     expect(find.text('Anjanath'), findsNothing);
     expect(find.text('Magnamalo'), findsNothing);
-    expect(find.text('Monster Hunter Wilds'), findsNothing);
+    expect(find.byType(OrnamentHeader), findsNothing);
   });
 
   testWidgets('empty result with active filter offers to clear it', (
@@ -90,7 +97,7 @@ void main() {
     await controller.load();
     await pumpPage(tester);
 
-    await tester.tap(find.widgetWithText(ChoiceChip, 'Rise: Sunbreak'));
+    await tester.tap(tab('Rise'));
     await tester.pumpAndSettle();
 
     expect(find.text('Nenhum monstro encontrado'), findsOneWidget);

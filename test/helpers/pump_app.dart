@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
-/// Pumps [child] inside a localized MaterialApp (pt-BR), like the real app.
+/// Pumps [child] inside a localized MaterialApp (pt-BR) with the app's
+/// theme, like the real app.
 /// Set [settle] to false when an endless animation (e.g. a progress
 /// indicator) is expected on screen.
 Future<void> pumpApp(
@@ -12,6 +14,7 @@ Future<void> pumpApp(
 }) async {
   await tester.pumpWidget(
     MaterialApp(
+      theme: buildHunterTheme(),
       locale: const Locale('pt', 'BR'),
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
