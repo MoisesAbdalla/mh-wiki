@@ -66,6 +66,9 @@ still valid.
 - Omit `ratePercent` when a drop rate is not verified. The app then shows "Taxa desconhecida"
   and never shows an invented value.
 
-**Data status:** the bundled datasets are **placeholders** with one Rathalos per game, written
-from memory and marked `UNVERIFIED` in their sources. They still need to be curated and checked
-against the sources (tasks T048, T057, T058 and T089).
+**Data status:** 10 large monsters per game (30 in total, about 1,800 drop entries with rates).
+Sources are Kiranico, the Monster Hunter Wiki, mhw-db.com and Fextralife. Every monster lists
+its sources, and the choices behind them are in
+[research.md](specs/001-monster-wiki/research.md) (R12, R15). Rise and Wilds star ratings are
+derived from hitzones by a documented rule, so they may differ slightly from the in-game field
+guide.

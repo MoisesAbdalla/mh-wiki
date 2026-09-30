@@ -178,6 +178,26 @@ Each entry records the decision, why it was chosen, and what was rejected. All
   habitat is included only if one exists in the chosen roster — otherwise the edge case is
   covered by test fixtures instead of real data.
 - **Rationale**: mixes early/mid/late monsters, flagships and cross-game repeats.
+- **Outcome (2026-09-29, data curated)**: rosters used as proposed, except Rise's subspecies,
+  which Kiranico and the Monster Hunter Wiki call **Violet Mizutsune** ("Soulseer Mizutsune" was
+  wrong). FR-002 check:
+  - Rathalos is in all three games.
+  - Variants: Pink Rathian (World), Violet Mizutsune (Rise), Guardian Rathalos (Wilds).
+  - State-dependent weaknesses: Alatreon (Dragon/Fire/Ice Active).
+  - **No roster monster lacks breakable parts or has zero habitats.** The closest cases are
+    arena-only or single-locale monsters: Alatreon (Secluded Valley), Violet Mizutsune (Forlorn
+    Arena, Infernal Springs), Guardian Rathalos (Ruins of Wyveria). Test fixtures cover the
+    "none" edge cases (FR-016).
+- **Sources per game** (recorded in each dataset and monster `sources`):
+  - World: Kiranico (drops, rates, parts, pt-BR names), mhw-db.com (official star ratings),
+    Fextralife (Velkhana, Alatreon stars).
+  - Rise: Kiranico (drops, rates, hitzones, pt-BR names), Monster Hunter Wiki (named part
+    breaks matched to Kiranico groups by identical item/rate sets, locales, classification).
+  - Wilds: Monster Hunter Wiki (drops per rank, named breaks, locales, classification),
+    Kiranico (pt-BR names, hitzones).
+  - Rise and Wilds stars are derived from hitzones with the documented rule (R12).
+- **Known gaps**: Rise and Wilds habitats (and World's Secluded Valley) have no pt-BR name in a
+  verifiable source, so they fall back to English (FR-024). Classifications are English-only.
 
 ## R16. Testing approach
 

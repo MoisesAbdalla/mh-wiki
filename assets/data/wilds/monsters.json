@@ -4,40 +4,3855 @@
   "generatedAt": "2026-09-29",
   "sources": [
     {
+      "name": "Monster Hunter Wiki",
+      "url": "https://monsterhunterwiki.org/",
+      "notes": "Drop rates, named part breaks, locales, classification."
+    },
+    {
       "name": "Kiranico (MH Wilds)",
       "url": "https://mhwilds.kiranico.com/",
-      "notes": "UNVERIFIED placeholder written from memory; must be checked against the source (tasks T058/T089)."
+      "notes": "pt-BR names, hitzones. Stars = best elemental hitzone over all parts, wounds excluded: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (same rule as the Rise dataset, calibrated on World Rathalos)."
     }
   ],
   "habitats": [
-    { "id": "windward-plains", "name": { "en": "Windward Plains" } }
+    {
+      "id": "windward-plains",
+      "name": {
+        "en": "Windward Plains"
+      }
+    },
+    {
+      "id": "wounded-hollow",
+      "name": {
+        "en": "Wounded Hollow"
+      }
+    },
+    {
+      "id": "scarlet-forest",
+      "name": {
+        "en": "Scarlet Forest"
+      }
+    },
+    {
+      "id": "ruins-of-wyveria",
+      "name": {
+        "en": "Ruins of Wyveria"
+      }
+    },
+    {
+      "id": "oilwell-basin",
+      "name": {
+        "en": "Oilwell Basin"
+      }
+    },
+    {
+      "id": "iceshard-cliffs",
+      "name": {
+        "en": "Iceshard Cliffs"
+      }
+    },
+    {
+      "id": "rimechain-peak",
+      "name": {
+        "en": "Rimechain Peak"
+      }
+    }
   ],
   "materials": [
-    { "id": "rathalos-scale", "name": { "en": "Rathalos Scale" } },
-    { "id": "rathalos-tail", "name": { "en": "Rathalos Tail" } }
+    {
+      "id": "aqua-sac",
+      "name": {
+        "en": "Aqua Sac",
+        "ptBr": "Glândula d'Água"
+      }
+    },
+    {
+      "id": "arkveld-armorplate",
+      "name": {
+        "en": "Arkveld Armorplate",
+        "ptBr": "Armapaça de Arkveld"
+      }
+    },
+    {
+      "id": "arkveld-calloushell",
+      "name": {
+        "en": "Arkveld Calloushell",
+        "ptBr": "Casco Calejado de Arkveld"
+      }
+    },
+    {
+      "id": "arkveld-certificate-s",
+      "name": {
+        "en": "Arkveld Certificate S",
+        "ptBr": "Certificado de Arkveld S"
+      }
+    },
+    {
+      "id": "arkveld-gem",
+      "name": {
+        "en": "Arkveld Gem",
+        "ptBr": "Gema de Arkveld"
+      }
+    },
+    {
+      "id": "arkveld-horn-plus",
+      "name": {
+        "en": "Arkveld Horn+",
+        "ptBr": "Chifre de Arkveld+"
+      }
+    },
+    {
+      "id": "arkveld-scale-plus",
+      "name": {
+        "en": "Arkveld Scale+",
+        "ptBr": "Escama de Arkveld+"
+      }
+    },
+    {
+      "id": "arkveld-tail",
+      "name": {
+        "en": "Arkveld Tail",
+        "ptBr": "Cauda de Arkveld"
+      }
+    },
+    {
+      "id": "armor-sphere-plus",
+      "name": {
+        "en": "Armor Sphere+",
+        "ptBr": "Esfera de Armadura+"
+      }
+    },
+    {
+      "id": "beast-gem",
+      "name": {
+        "en": "Beast Gem",
+        "ptBr": "Gema Feroz"
+      }
+    },
+    {
+      "id": "chatacabra-carapace",
+      "name": {
+        "en": "Chatacabra Carapace",
+        "ptBr": "Carapaça de Chatacabra"
+      }
+    },
+    {
+      "id": "chatacabra-certificate",
+      "name": {
+        "en": "Chatacabra Certificate",
+        "ptBr": "Certificado de Chatacabra"
+      }
+    },
+    {
+      "id": "chatacabra-certificate-s",
+      "name": {
+        "en": "Chatacabra Certificate S",
+        "ptBr": "Certificado de Chatacabra S"
+      }
+    },
+    {
+      "id": "chatacabra-hide",
+      "name": {
+        "en": "Chatacabra Hide",
+        "ptBr": "Couro de Chatacabra"
+      }
+    },
+    {
+      "id": "chatacabra-hide-plus",
+      "name": {
+        "en": "Chatacabra Hide+",
+        "ptBr": "Couro de Chatacabra+"
+      }
+    },
+    {
+      "id": "chatacabra-jaw",
+      "name": {
+        "en": "Chatacabra Jaw",
+        "ptBr": "Mandíbula de Chatacabra"
+      }
+    },
+    {
+      "id": "chatacabra-jaw-plus",
+      "name": {
+        "en": "Chatacabra Jaw+",
+        "ptBr": "Mandíbula de Chatacabra+"
+      }
+    },
+    {
+      "id": "chatacabra-scale",
+      "name": {
+        "en": "Chatacabra Scale",
+        "ptBr": "Escama de Chatacabra"
+      }
+    },
+    {
+      "id": "chatacabra-scale-plus",
+      "name": {
+        "en": "Chatacabra Scale+",
+        "ptBr": "Escama de Chatacabra+"
+      }
+    },
+    {
+      "id": "chatacabra-shell",
+      "name": {
+        "en": "Chatacabra Shell",
+        "ptBr": "Casco de Chatacabra"
+      }
+    },
+    {
+      "id": "doshaguma-certificate",
+      "name": {
+        "en": "Doshaguma Certificate",
+        "ptBr": "Certificado de Doshaguma"
+      }
+    },
+    {
+      "id": "doshaguma-certificate-s",
+      "name": {
+        "en": "Doshaguma Certificate S",
+        "ptBr": "Certificado de Doshaguma S"
+      }
+    },
+    {
+      "id": "doshaguma-claw",
+      "name": {
+        "en": "Doshaguma Claw",
+        "ptBr": "Garra de Doshaguma"
+      }
+    },
+    {
+      "id": "doshaguma-claw-plus",
+      "name": {
+        "en": "Doshaguma Claw+",
+        "ptBr": "Garra de Doshaguma+"
+      }
+    },
+    {
+      "id": "doshaguma-fang",
+      "name": {
+        "en": "Doshaguma Fang",
+        "ptBr": "Presa de Doshaguma"
+      }
+    },
+    {
+      "id": "doshaguma-fang-plus",
+      "name": {
+        "en": "Doshaguma Fang+",
+        "ptBr": "Presa de Doshaguma+"
+      }
+    },
+    {
+      "id": "doshaguma-fur",
+      "name": {
+        "en": "Doshaguma Fur",
+        "ptBr": "Pelo de Doshaguma"
+      }
+    },
+    {
+      "id": "doshaguma-fur-plus",
+      "name": {
+        "en": "Doshaguma Fur+",
+        "ptBr": "Pelo de Doshaguma+"
+      }
+    },
+    {
+      "id": "doshaguma-hide",
+      "name": {
+        "en": "Doshaguma Hide",
+        "ptBr": "Couro de Doshaguma"
+      }
+    },
+    {
+      "id": "doshaguma-hide-plus",
+      "name": {
+        "en": "Doshaguma Hide+",
+        "ptBr": "Couro de Doshaguma+"
+      }
+    },
+    {
+      "id": "dragonite-ore",
+      "name": {
+        "en": "Dragonite Ore",
+        "ptBr": "Minério de Dragonita"
+      }
+    },
+    {
+      "id": "flame-sac",
+      "name": {
+        "en": "Flame Sac",
+        "ptBr": "Glândula de Chama"
+      }
+    },
+    {
+      "id": "freezer-sac",
+      "name": {
+        "en": "Freezer Sac",
+        "ptBr": "Glândula Congelante"
+      }
+    },
+    {
+      "id": "frenzy-crystal",
+      "name": {
+        "en": "Frenzy Crystal",
+        "ptBr": "Cristal de Cólera"
+      }
+    },
+    {
+      "id": "frost-sac",
+      "name": {
+        "en": "Frost Sac",
+        "ptBr": "Glândula de Geada"
+      }
+    },
+    {
+      "id": "g-rathalos-certificate",
+      "name": {
+        "en": "G. Rathalos Certificate",
+        "ptBr": "Certificado de Rathalos G."
+      }
+    },
+    {
+      "id": "g-rathalos-certificate-s",
+      "name": {
+        "en": "G. Rathalos Certificate S",
+        "ptBr": "Certificado de Rathalos G. S"
+      }
+    },
+    {
+      "id": "gore-magala-carapace",
+      "name": {
+        "en": "Gore Magala Carapace",
+        "ptBr": "Carapaça de Gore Magala"
+      }
+    },
+    {
+      "id": "gore-magala-certificate-s",
+      "name": {
+        "en": "Gore Magala Certificate S",
+        "ptBr": "Certificado de Gore Magala S"
+      }
+    },
+    {
+      "id": "gore-magala-feeler-plus",
+      "name": {
+        "en": "Gore Magala Feeler+",
+        "ptBr": "Antena de Gore Magala+"
+      }
+    },
+    {
+      "id": "gore-magala-nyctgem",
+      "name": {
+        "en": "Gore Magala Nyctgem",
+        "ptBr": "Noctigema de Gore Magala"
+      }
+    },
+    {
+      "id": "gore-magala-ripclaw-plus",
+      "name": {
+        "en": "Gore Magala Ripclaw+",
+        "ptBr": "Rasgarra de Gore Magala+"
+      }
+    },
+    {
+      "id": "gore-magala-scale-plus",
+      "name": {
+        "en": "Gore Magala Scale+",
+        "ptBr": "Escama de Gore Magala+"
+      }
+    },
+    {
+      "id": "gore-magala-tail",
+      "name": {
+        "en": "Gore Magala Tail",
+        "ptBr": "Cauda de Gore Magala"
+      }
+    },
+    {
+      "id": "gore-magala-wing-plus",
+      "name": {
+        "en": "Gore Magala Wing+",
+        "ptBr": "Asa de Gore Magala+"
+      }
+    },
+    {
+      "id": "guardian-blood",
+      "name": {
+        "en": "Guardian Blood",
+        "ptBr": "Sangue de Guardião"
+      }
+    },
+    {
+      "id": "guardian-blood-plus",
+      "name": {
+        "en": "Guardian Blood+",
+        "ptBr": "Sangue de Guardião+"
+      }
+    },
+    {
+      "id": "guardian-rathalos-carapace",
+      "name": {
+        "en": "Guardian Rathalos Carapace",
+        "ptBr": "Carapaça de Rathalos G."
+      }
+    },
+    {
+      "id": "guardian-rathalos-plate",
+      "name": {
+        "en": "Guardian Rathalos Plate",
+        "ptBr": "Placa de Rathalos G."
+      }
+    },
+    {
+      "id": "guardian-rathalos-ruby",
+      "name": {
+        "en": "Guardian Rathalos Ruby",
+        "ptBr": "Rubi de Rathalos G."
+      }
+    },
+    {
+      "id": "guardian-rathalos-scale",
+      "name": {
+        "en": "Guardian Rathalos Scale",
+        "ptBr": "Escama de Rathalos G."
+      }
+    },
+    {
+      "id": "guardian-rathalos-scale-plus",
+      "name": {
+        "en": "Guardian Rathalos Scale+",
+        "ptBr": "Escama de Rathalos G.+"
+      }
+    },
+    {
+      "id": "guardian-rathalos-shell",
+      "name": {
+        "en": "Guardian Rathalos Shell",
+        "ptBr": "Casco de Rathalos G."
+      }
+    },
+    {
+      "id": "guardian-rathalos-tail",
+      "name": {
+        "en": "Guardian Rathalos Tail",
+        "ptBr": "Cauda de Rathalos G."
+      }
+    },
+    {
+      "id": "guardian-rathalos-webbing",
+      "name": {
+        "en": "Guardian Rathalos Webbing",
+        "ptBr": "Membrana de Rathalos G."
+      }
+    },
+    {
+      "id": "guardian-rathalos-wing",
+      "name": {
+        "en": "Guardian Rathalos Wing",
+        "ptBr": "Asa de Rathalos G."
+      }
+    },
+    {
+      "id": "guardian-scale",
+      "name": {
+        "en": "Guardian Scale",
+        "ptBr": "Escama de Guardião"
+      }
+    },
+    {
+      "id": "guardian-scale-plus",
+      "name": {
+        "en": "Guardian Scale+",
+        "ptBr": "Escama de Guardião+"
+      }
+    },
+    {
+      "id": "icium",
+      "name": {
+        "en": "Icium",
+        "ptBr": "Ício"
+      }
+    },
+    {
+      "id": "inferno-sac",
+      "name": {
+        "en": "Inferno Sac",
+        "ptBr": "Glândula Infernal"
+      }
+    },
+    {
+      "id": "jin-dahaad-carapace",
+      "name": {
+        "en": "Jin Dahaad Carapace",
+        "ptBr": "Carapaça de Jin Dahaad"
+      }
+    },
+    {
+      "id": "jin-dahaad-certificate-s",
+      "name": {
+        "en": "Jin Dahaad Certificate S",
+        "ptBr": "Certificado de Jin Dahaad S"
+      }
+    },
+    {
+      "id": "jin-dahaad-claw-plus",
+      "name": {
+        "en": "Jin Dahaad Claw+",
+        "ptBr": "Garra de Jin Dahaad+"
+      }
+    },
+    {
+      "id": "jin-dahaad-horn",
+      "name": {
+        "en": "Jin Dahaad Horn",
+        "ptBr": "Chifre de Jin Dahaad"
+      }
+    },
+    {
+      "id": "jin-dahaad-icegem",
+      "name": {
+        "en": "Jin Dahaad Icegem",
+        "ptBr": "Criogema de Jin Dahaad"
+      }
+    },
+    {
+      "id": "jin-dahaad-iceplate",
+      "name": {
+        "en": "Jin Dahaad Iceplate",
+        "ptBr": "Placa Gélida de Jin Dahaad"
+      }
+    },
+    {
+      "id": "jin-dahaad-scale-plus",
+      "name": {
+        "en": "Jin Dahaad Scale+",
+        "ptBr": "Escama de Jin Dahaad+"
+      }
+    },
+    {
+      "id": "jin-dahaad-tail",
+      "name": {
+        "en": "Jin Dahaad Tail",
+        "ptBr": "Cauda de Jin Dahaad"
+      }
+    },
+    {
+      "id": "machalite-ore",
+      "name": {
+        "en": "Machalite Ore",
+        "ptBr": "Minério de Malaquita"
+      }
+    },
+    {
+      "id": "monster-hardbone",
+      "name": {
+        "en": "Monster Hardbone",
+        "ptBr": "Osso Duro Mons."
+      }
+    },
+    {
+      "id": "nu-udra-cerebrospinal-fluid",
+      "name": {
+        "en": "Nu Udra Cerebrospinal Fluid",
+        "ptBr": "Cefalofluido de Nu Udra"
+      }
+    },
+    {
+      "id": "nu-udra-certificate",
+      "name": {
+        "en": "Nu Udra Certificate",
+        "ptBr": "Certificado de Nu Udra"
+      }
+    },
+    {
+      "id": "nu-udra-certificate-s",
+      "name": {
+        "en": "Nu Udra Certificate S",
+        "ptBr": "Certificado de Nu Udra S"
+      }
+    },
+    {
+      "id": "nu-udra-flamegem",
+      "name": {
+        "en": "Nu Udra Flamegem",
+        "ptBr": "Flamagema de Nu Udra"
+      }
+    },
+    {
+      "id": "nu-udra-hide",
+      "name": {
+        "en": "Nu Udra Hide",
+        "ptBr": "Couro de Nu Udra"
+      }
+    },
+    {
+      "id": "nu-udra-hide-plus",
+      "name": {
+        "en": "Nu Udra Hide+",
+        "ptBr": "Couro de Nu Udra+"
+      }
+    },
+    {
+      "id": "nu-udra-horn",
+      "name": {
+        "en": "Nu Udra Horn",
+        "ptBr": "Chifre de Nu Udra"
+      }
+    },
+    {
+      "id": "nu-udra-horn-plus",
+      "name": {
+        "en": "Nu Udra Horn+",
+        "ptBr": "Chifre de Nu Udra+"
+      }
+    },
+    {
+      "id": "nu-udra-oilmucus",
+      "name": {
+        "en": "Nu Udra Oilmucus",
+        "ptBr": "Mucóleo de Nu Udra"
+      }
+    },
+    {
+      "id": "nu-udra-oilmucus-plus",
+      "name": {
+        "en": "Nu Udra Oilmucus+",
+        "ptBr": "Mucóleo de Nu Udra+"
+      }
+    },
+    {
+      "id": "nu-udra-spike",
+      "name": {
+        "en": "Nu Udra Spike",
+        "ptBr": "Espinho de Nu Udra"
+      }
+    },
+    {
+      "id": "nu-udra-spike-plus",
+      "name": {
+        "en": "Nu Udra Spike+",
+        "ptBr": "Espinho de Nu Udra+"
+      }
+    },
+    {
+      "id": "nu-udra-tentacle",
+      "name": {
+        "en": "Nu Udra Tentacle",
+        "ptBr": "Tentáculo de Nu Udra"
+      }
+    },
+    {
+      "id": "nu-udra-tentacle-plus",
+      "name": {
+        "en": "Nu Udra Tentacle+",
+        "ptBr": "Tentáculo de Nu Udra+"
+      }
+    },
+    {
+      "id": "rath-medulla",
+      "name": {
+        "en": "Rath Medulla",
+        "ptBr": "Medula de Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-carapace",
+      "name": {
+        "en": "Rathalos Carapace",
+        "ptBr": "Carapaça de Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-certificate-s",
+      "name": {
+        "en": "Rathalos Certificate S",
+        "ptBr": "Certificado de Rathalos S"
+      }
+    },
+    {
+      "id": "rathalos-ruby",
+      "name": {
+        "en": "Rathalos Ruby",
+        "ptBr": "Rubi de Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-scale-plus",
+      "name": {
+        "en": "Rathalos Scale+",
+        "ptBr": "Escama de Rathalos+"
+      }
+    },
+    {
+      "id": "rathalos-tail",
+      "name": {
+        "en": "Rathalos Tail",
+        "ptBr": "Cauda de Rathalos"
+      }
+    },
+    {
+      "id": "rathalos-wing",
+      "name": {
+        "en": "Rathalos Wing",
+        "ptBr": "Asa de Rathalos"
+      }
+    },
+    {
+      "id": "rey-dau-boltgem",
+      "name": {
+        "en": "Rey Dau Boltgem",
+        "ptBr": "Relampagema de Rey Dau"
+      }
+    },
+    {
+      "id": "rey-dau-bolthorn",
+      "name": {
+        "en": "Rey Dau Bolthorn",
+        "ptBr": "Chifretrovão de Rey Dau"
+      }
+    },
+    {
+      "id": "rey-dau-carapace",
+      "name": {
+        "en": "Rey Dau Carapace",
+        "ptBr": "Carapaça de Rey Dau"
+      }
+    },
+    {
+      "id": "rey-dau-certificate",
+      "name": {
+        "en": "Rey Dau Certificate",
+        "ptBr": "Certificado de Rey Dau"
+      }
+    },
+    {
+      "id": "rey-dau-certificate-s",
+      "name": {
+        "en": "Rey Dau Certificate S",
+        "ptBr": "Certificado de Rey Dau S"
+      }
+    },
+    {
+      "id": "rey-dau-fulgurtalon",
+      "name": {
+        "en": "Rey Dau Fulgurtalon",
+        "ptBr": "Fulgarra de Rey Dau"
+      }
+    },
+    {
+      "id": "rey-dau-plate",
+      "name": {
+        "en": "Rey Dau Plate",
+        "ptBr": "Placa de Rey Dau"
+      }
+    },
+    {
+      "id": "rey-dau-scale",
+      "name": {
+        "en": "Rey Dau Scale",
+        "ptBr": "Escama de Rey Dau"
+      }
+    },
+    {
+      "id": "rey-dau-scale-plus",
+      "name": {
+        "en": "Rey Dau Scale+",
+        "ptBr": "Escama de Rey Dau+"
+      }
+    },
+    {
+      "id": "rey-dau-shell",
+      "name": {
+        "en": "Rey Dau Shell",
+        "ptBr": "Casco de Rey Dau"
+      }
+    },
+    {
+      "id": "rey-dau-tail",
+      "name": {
+        "en": "Rey Dau Tail",
+        "ptBr": "Cauda de Rey Dau"
+      }
+    },
+    {
+      "id": "rey-dau-thunderhorn",
+      "name": {
+        "en": "Rey Dau Thunderhorn",
+        "ptBr": "Chifrelâmpago de Rey Dau"
+      }
+    },
+    {
+      "id": "rey-dau-wingtalon",
+      "name": {
+        "en": "Rey Dau Wingtalon",
+        "ptBr": "Garra de Rey Dau"
+      }
+    },
+    {
+      "id": "sturdy-bone",
+      "name": {
+        "en": "Sturdy Bone",
+        "ptBr": "Osso Robusto"
+      }
+    },
+    {
+      "id": "torrent-sac",
+      "name": {
+        "en": "Torrent Sac",
+        "ptBr": "Glândula Torrencial"
+      }
+    },
+    {
+      "id": "uth-duna-certificate",
+      "name": {
+        "en": "Uth Duna Certificate",
+        "ptBr": "Certificado de Uth Duna"
+      }
+    },
+    {
+      "id": "uth-duna-certificate-s",
+      "name": {
+        "en": "Uth Duna Certificate S",
+        "ptBr": "Certificado de Uth Duna S"
+      }
+    },
+    {
+      "id": "uth-duna-cilia",
+      "name": {
+        "en": "Uth Duna Cilia",
+        "ptBr": "Penugem de Uth Duna"
+      }
+    },
+    {
+      "id": "uth-duna-cilia-plus",
+      "name": {
+        "en": "Uth Duna Cilia+",
+        "ptBr": "Penugem de Uth Duna+"
+      }
+    },
+    {
+      "id": "uth-duna-claw",
+      "name": {
+        "en": "Uth Duna Claw",
+        "ptBr": "Garra de Uth Duna"
+      }
+    },
+    {
+      "id": "uth-duna-claw-plus",
+      "name": {
+        "en": "Uth Duna Claw+",
+        "ptBr": "Garra de Uth Duna+"
+      }
+    },
+    {
+      "id": "uth-duna-hide",
+      "name": {
+        "en": "Uth Duna Hide",
+        "ptBr": "Couro de Uth Duna"
+      }
+    },
+    {
+      "id": "uth-duna-hide-plus",
+      "name": {
+        "en": "Uth Duna Hide+",
+        "ptBr": "Couro de Uth Duna+"
+      }
+    },
+    {
+      "id": "uth-duna-plate",
+      "name": {
+        "en": "Uth Duna Plate",
+        "ptBr": "Placa de Uth Duna"
+      }
+    },
+    {
+      "id": "uth-duna-scale",
+      "name": {
+        "en": "Uth Duna Scale",
+        "ptBr": "Escama de Uth Duna"
+      }
+    },
+    {
+      "id": "uth-duna-scale-plus",
+      "name": {
+        "en": "Uth Duna Scale+",
+        "ptBr": "Escama de Uth Duna+"
+      }
+    },
+    {
+      "id": "uth-duna-tentacle",
+      "name": {
+        "en": "Uth Duna Tentacle",
+        "ptBr": "Tentáculo de Uth Duna"
+      }
+    },
+    {
+      "id": "uth-duna-tentacle-plus",
+      "name": {
+        "en": "Uth Duna Tentacle+",
+        "ptBr": "Tentáculo de Uth Duna+"
+      }
+    },
+    {
+      "id": "uth-duna-watergem",
+      "name": {
+        "en": "Uth Duna Watergem",
+        "ptBr": "Aquagema de Uth Duna"
+      }
+    },
+    {
+      "id": "white-arkveld-pelt",
+      "name": {
+        "en": "White Arkveld Pelt",
+        "ptBr": "Pelica Branca de Arkveld"
+      }
+    }
   ],
   "monsters": [
     {
-      "slug": "rathalos",
-      "name": { "en": "Rathalos", "ptBr": "Rathalos" },
-      "classification": { "en": "Flying Wyvern" },
-      "weaknesses": {
-        "general": { "fire": "none", "water": "low", "thunder": "medium", "ice": "low", "dragon": "high" }
+      "slug": "chatacabra",
+      "name": {
+        "en": "Chatacabra",
+        "ptBr": "Chatacabra"
       },
-      "habitatIds": ["windward-plains"],
+      "classification": {
+        "en": "Amphibian"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "low",
+          "water": "none",
+          "thunder": "high",
+          "ice": "low",
+          "dragon": "none"
+        }
+      },
+      "habitatIds": [
+        "windward-plains",
+        "wounded-hollow"
+      ],
       "parts": [
-        { "id": "head", "name": { "en": "Head" }, "severable": false },
-        { "id": "tail", "name": { "en": "Tail" }, "severable": true }
+        {
+          "id": "left-foreleg",
+          "name": {
+            "en": "Left Foreleg",
+            "ptBr": "Perna Dianteira Esq."
+          },
+          "severable": false
+        },
+        {
+          "id": "right-foreleg",
+          "name": {
+            "en": "Right Foreleg",
+            "ptBr": "Perna Dianteira Dir."
+          },
+          "severable": false
+        }
       ],
       "drops": [
-        { "materialId": "rathalos-scale", "rank": "low", "method": "carve" },
-        { "materialId": "rathalos-tail", "rank": "low", "method": "tailCarve" }
+        {
+          "materialId": "chatacabra-scale",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "chatacabra-hide",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "chatacabra-jaw",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "chatacabra-shell",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "chatacabra-hide",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "chatacabra-scale",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "chatacabra-hide",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "chatacabra-scale",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "chatacabra-jaw",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "chatacabra-shell",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "chatacabra-certificate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "chatacabra-shell",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "left-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "chatacabra-shell",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "right-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "chatacabra-scale-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "chatacabra-hide-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "chatacabra-jaw-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "chatacabra-carapace",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "chatacabra-hide-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "chatacabra-scale-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "chatacabra-hide-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "chatacabra-scale-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "chatacabra-jaw-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "chatacabra-carapace",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "chatacabra-certificate-s",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "chatacabra-carapace",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "left-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "chatacabra-carapace",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "right-foreleg",
+          "ratePercent": 100.0
+        }
       ],
       "sources": [
         {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Chatacabra_(MHWilds)",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+        },
+        {
           "name": "Kiranico (MH Wilds)",
-          "url": "https://mhwilds.kiranico.com/",
-          "notes": "UNVERIFIED placeholder; habitat list and drop rates must be verified."
+          "url": "https://mhwilds.kiranico.com/data/monsters/chatacabra",
+          "notes": "pt-BR names and hitzones. Stars = best elemental hitzone over all parts, wounds excluded: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (same rule as the Rise dataset, calibrated on World Rathalos)."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Chatacabra",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "doshaguma",
+      "name": {
+        "en": "Doshaguma",
+        "ptBr": "Doshaguma"
+      },
+      "classification": {
+        "en": "Fanged Beast"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "medium",
+          "water": "low",
+          "thunder": "medium",
+          "ice": "low",
+          "dragon": "none"
+        }
+      },
+      "habitatIds": [
+        "windward-plains",
+        "scarlet-forest",
+        "ruins-of-wyveria",
+        "wounded-hollow"
+      ],
+      "parts": [
+        {
+          "id": "left-foreleg",
+          "name": {
+            "en": "Left Foreleg",
+            "ptBr": "Perna Dianteira Esq."
+          },
+          "severable": false
+        },
+        {
+          "id": "right-foreleg",
+          "name": {
+            "en": "Right Foreleg",
+            "ptBr": "Perna Dianteira Dir."
+          },
+          "severable": false
+        },
+        {
+          "id": "tail-hair",
+          "name": {
+            "en": "Tail Hair",
+            "ptBr": "Pelo de Cauda"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "doshaguma-hide",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "doshaguma-fur",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "doshaguma-fang",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "doshaguma-claw",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "doshaguma-fur",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "doshaguma-hide",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "doshaguma-fur",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "doshaguma-hide",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "doshaguma-fang",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "doshaguma-claw",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "doshaguma-certificate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "doshaguma-claw",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "left-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "doshaguma-claw",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "right-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "doshaguma-fur",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "tail-hair",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "doshaguma-hide-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "doshaguma-fur-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "doshaguma-fang-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "doshaguma-claw-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "beast-gem",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "doshaguma-fur-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "doshaguma-hide-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "doshaguma-fur-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "doshaguma-hide-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "doshaguma-fang-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "doshaguma-claw-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "doshaguma-certificate-s",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "beast-gem",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "doshaguma-claw-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "left-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "doshaguma-claw-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "right-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "doshaguma-fur-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "tail-hair",
+          "ratePercent": 100.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Doshaguma_(MHWilds)",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+        },
+        {
+          "name": "Kiranico (MH Wilds)",
+          "url": "https://mhwilds.kiranico.com/data/monsters/doshaguma",
+          "notes": "pt-BR names and hitzones. Stars = best elemental hitzone over all parts, wounds excluded: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (same rule as the Rise dataset, calibrated on World Rathalos)."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Doshaguma",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "rey-dau",
+      "name": {
+        "en": "Rey Dau",
+        "ptBr": "Rey Dau"
+      },
+      "classification": {
+        "en": "Flying Wyvern"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "none",
+          "water": "low",
+          "thunder": "none",
+          "ice": "medium",
+          "dragon": "none"
+        }
+      },
+      "habitatIds": [
+        "windward-plains",
+        "wounded-hollow"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "horn",
+          "name": {
+            "en": "Horn"
+          },
+          "severable": false
+        },
+        {
+          "id": "left-wing",
+          "name": {
+            "en": "Left Wing",
+            "ptBr": "Asa Esquerda"
+          },
+          "severable": false
+        },
+        {
+          "id": "right-wing",
+          "name": {
+            "en": "Right Wing",
+            "ptBr": "Asa Direita"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "rey-dau-tail",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 88.0
+        },
+        {
+          "materialId": "rey-dau-plate",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "rey-dau-scale",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "rey-dau-shell",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "rey-dau-wingtalon",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "rey-dau-thunderhorn",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "rey-dau-tail",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "rey-dau-plate",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rey-dau-scale",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "rey-dau-shell",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "rey-dau-scale",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "rey-dau-shell",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "rey-dau-wingtalon",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "rey-dau-tail",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "rey-dau-thunderhorn",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "rey-dau-certificate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "rey-dau-plate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rey-dau-thunderhorn",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "horn",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "rey-dau-wingtalon",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "left-wing",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "rey-dau-wingtalon",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "right-wing",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "rey-dau-tail",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 93.0
+        },
+        {
+          "materialId": "rey-dau-boltgem",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rey-dau-scale-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rey-dau-carapace",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "rey-dau-fulgurtalon",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "rey-dau-bolthorn",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "rey-dau-tail",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "rey-dau-boltgem",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rey-dau-carapace",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "rey-dau-scale-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "rey-dau-carapace",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "rey-dau-scale-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "rey-dau-fulgurtalon",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "rey-dau-bolthorn",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "rey-dau-tail",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "rey-dau-certificate-s",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "rey-dau-plate",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rey-dau-boltgem",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rey-dau-bolthorn",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "horn",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "rey-dau-fulgurtalon",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "left-wing",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "rey-dau-fulgurtalon",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "right-wing",
+          "ratePercent": 100.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Rey_Dau_(MHWilds)",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+        },
+        {
+          "name": "Kiranico (MH Wilds)",
+          "url": "https://mhwilds.kiranico.com/data/monsters/rey-dau",
+          "notes": "pt-BR names and hitzones. Stars = best elemental hitzone over all parts, wounds excluded: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (same rule as the Rise dataset, calibrated on World Rathalos)."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Rey_Dau",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "uth-duna",
+      "name": {
+        "en": "Uth Duna",
+        "ptBr": "Uth Duna"
+      },
+      "classification": {
+        "en": "Leviathan"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "low",
+          "water": "none",
+          "thunder": "high",
+          "ice": "none",
+          "dragon": "none"
+        }
+      },
+      "habitatIds": [
+        "scarlet-forest",
+        "wounded-hollow"
+      ],
+      "parts": [
+        {
+          "id": "head",
+          "name": {
+            "en": "Head",
+            "ptBr": "Cabeça"
+          },
+          "severable": false
+        },
+        {
+          "id": "left-foreleg",
+          "name": {
+            "en": "Left Foreleg",
+            "ptBr": "Perna Dianteira Esq."
+          },
+          "severable": false
+        },
+        {
+          "id": "right-foreleg",
+          "name": {
+            "en": "Right Foreleg",
+            "ptBr": "Perna Dianteira Dir."
+          },
+          "severable": false
+        },
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "uth-duna-scale",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "uth-duna-hide",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "uth-duna-cilia",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "uth-duna-claw",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "uth-duna-tentacle",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "uth-duna-plate",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "uth-duna-scale",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 45.0
+        },
+        {
+          "materialId": "uth-duna-hide",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 43.0
+        },
+        {
+          "materialId": "uth-duna-cilia",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "uth-duna-hide",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "uth-duna-scale",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "aqua-sac",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "uth-duna-cilia",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "uth-duna-certificate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "uth-duna-claw",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "uth-duna-tentacle",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "uth-duna-plate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "uth-duna-tentacle",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "uth-duna-claw",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "left-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "uth-duna-claw",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "right-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "uth-duna-cilia",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 88.0
+        },
+        {
+          "materialId": "uth-duna-plate",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "uth-duna-scale-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "uth-duna-hide-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "uth-duna-cilia-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "uth-duna-claw-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "uth-duna-tentacle-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "uth-duna-watergem",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "uth-duna-scale-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 45.0
+        },
+        {
+          "materialId": "uth-duna-hide-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 43.0
+        },
+        {
+          "materialId": "uth-duna-cilia-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "uth-duna-hide-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "uth-duna-scale-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "torrent-sac",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "uth-duna-cilia-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 14.0
+        },
+        {
+          "materialId": "uth-duna-certificate-s",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "uth-duna-claw-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "uth-duna-tentacle-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "uth-duna-plate",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "uth-duna-watergem",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "uth-duna-tentacle-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "uth-duna-claw-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "left-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "uth-duna-claw-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "right-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "uth-duna-cilia-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 93.0
+        },
+        {
+          "materialId": "uth-duna-watergem",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "tail",
+          "ratePercent": 7.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Uth_Duna_(MHWilds)",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+        },
+        {
+          "name": "Kiranico (MH Wilds)",
+          "url": "https://mhwilds.kiranico.com/data/monsters/uth-duna",
+          "notes": "pt-BR names and hitzones. Stars = best elemental hitzone over all parts, wounds excluded: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (same rule as the Rise dataset, calibrated on World Rathalos)."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Uth_Duna",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "nu-udra",
+      "name": {
+        "en": "Nu Udra",
+        "ptBr": "Nu Udra"
+      },
+      "classification": {
+        "en": "Cephalopod"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "none",
+          "water": "medium",
+          "thunder": "low",
+          "ice": "none",
+          "dragon": "low"
+        }
+      },
+      "habitatIds": [
+        "oilwell-basin",
+        "wounded-hollow"
+      ],
+      "parts": [
+        {
+          "id": "head",
+          "name": {
+            "en": "Head",
+            "ptBr": "Cabeça"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "nu-udra-hide",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 28.0
+        },
+        {
+          "materialId": "nu-udra-oilmucus",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "nu-udra-spike",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "nu-udra-tentacle",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "nu-udra-horn",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "nu-udra-cerebrospinal-fluid",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "nu-udra-hide",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 45.0
+        },
+        {
+          "materialId": "nu-udra-oilmucus",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 43.0
+        },
+        {
+          "materialId": "nu-udra-spike",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "nu-udra-hide",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "nu-udra-oilmucus",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 25.0
+        },
+        {
+          "materialId": "nu-udra-spike",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "nu-udra-horn",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "nu-udra-tentacle",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "nu-udra-certificate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "nu-udra-cerebrospinal-fluid",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "nu-udra-horn",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "nu-udra-hide-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "nu-udra-oilmucus-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "nu-udra-spike-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "nu-udra-tentacle-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "nu-udra-horn-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "nu-udra-flamegem",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "nu-udra-hide-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 45.0
+        },
+        {
+          "materialId": "nu-udra-oilmucus-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 43.0
+        },
+        {
+          "materialId": "nu-udra-spike-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "nu-udra-hide-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "nu-udra-oilmucus-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "nu-udra-spike-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "nu-udra-horn-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "nu-udra-tentacle-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "nu-udra-certificate-s",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "nu-udra-cerebrospinal-fluid",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "nu-udra-flamegem",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "nu-udra-horn-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 100.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Nu_Udra_(MHWilds)",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+        },
+        {
+          "name": "Kiranico (MH Wilds)",
+          "url": "https://mhwilds.kiranico.com/data/monsters/nu-udra",
+          "notes": "pt-BR names and hitzones. Stars = best elemental hitzone over all parts, wounds excluded: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (same rule as the Rise dataset, calibrated on World Rathalos)."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Nu_Udra",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "jin-dahaad",
+      "name": {
+        "en": "Jin Dahaad",
+        "ptBr": "Jin Dahaad"
+      },
+      "classification": {
+        "en": "Leviathan"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "medium",
+          "water": "none",
+          "thunder": "none",
+          "ice": "none",
+          "dragon": "none"
+        }
+      },
+      "habitatIds": [
+        "iceshard-cliffs",
+        "rimechain-peak"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "abdominal-iceplate",
+          "name": {
+            "en": "Abdominal Iceplate",
+            "ptBr": "Placa Gélida (Cintura)"
+          },
+          "severable": false
+        },
+        {
+          "id": "cranial-iceplate",
+          "name": {
+            "en": "Cranial Iceplate"
+          },
+          "severable": false
+        },
+        {
+          "id": "left-foreleg",
+          "name": {
+            "en": "Left Foreleg",
+            "ptBr": "Perna Dianteira Esq."
+          },
+          "severable": false
+        },
+        {
+          "id": "left-hind-leg",
+          "name": {
+            "en": "Left Hind Leg",
+            "ptBr": "Perna Traseira Esq."
+          },
+          "severable": false
+        },
+        {
+          "id": "lg-iceplate-exposed",
+          "name": {
+            "en": "Lg. Iceplate (Exposed)",
+            "ptBr": "Placa Gélida G. (Exposta)"
+          },
+          "severable": false
+        },
+        {
+          "id": "right-foreleg",
+          "name": {
+            "en": "Right Foreleg",
+            "ptBr": "Perna Dianteira Dir."
+          },
+          "severable": false
+        },
+        {
+          "id": "right-hind-leg",
+          "name": {
+            "en": "Right Hind Leg",
+            "ptBr": "Perna Traseira Dir."
+          },
+          "severable": false
+        },
+        {
+          "id": "tail-iceplate",
+          "name": {
+            "en": "Tail Iceplate"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "frost-sac",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "icium",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 60.0
+        },
+        {
+          "materialId": "frost-sac",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 40.0
+        },
+        {
+          "materialId": "icium",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "dragonite-ore",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "frost-sac",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "icium",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "machalite-ore",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "sturdy-bone",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "armor-sphere-plus",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "icium",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "abdominal-iceplate",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "icium",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "cranial-iceplate",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "icium",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "left-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "icium",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "left-hind-leg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "frost-sac",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "lg-iceplate-exposed",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "icium",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "right-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "icium",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "right-hind-leg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "icium",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "tail-iceplate",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "jin-dahaad-tail",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 93.0
+        },
+        {
+          "materialId": "jin-dahaad-icegem",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "jin-dahaad-scale-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "jin-dahaad-carapace",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "jin-dahaad-claw-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "jin-dahaad-horn",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "jin-dahaad-tail",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "jin-dahaad-icegem",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "jin-dahaad-scale-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "jin-dahaad-carapace",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 38.0
+        },
+        {
+          "materialId": "jin-dahaad-iceplate",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "jin-dahaad-carapace",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "jin-dahaad-scale-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "freezer-sac",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "jin-dahaad-claw-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "jin-dahaad-certificate-s",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "jin-dahaad-horn",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "jin-dahaad-tail",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "jin-dahaad-icegem",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "jin-dahaad-iceplate",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "abdominal-iceplate",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "jin-dahaad-horn",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "cranial-iceplate",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "jin-dahaad-claw-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "left-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "jin-dahaad-claw-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "left-hind-leg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "jin-dahaad-iceplate",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "lg-iceplate-exposed",
+          "ratePercent": 88.0
+        },
+        {
+          "materialId": "jin-dahaad-icegem",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "lg-iceplate-exposed",
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "jin-dahaad-claw-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "right-foreleg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "jin-dahaad-claw-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "right-hind-leg",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "jin-dahaad-iceplate",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "tail-iceplate",
+          "ratePercent": 100.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Jin_Dahaad_(MHWilds)",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+        },
+        {
+          "name": "Kiranico (MH Wilds)",
+          "url": "https://mhwilds.kiranico.com/data/monsters/jin-dahaad",
+          "notes": "pt-BR names and hitzones. Stars = best elemental hitzone over all parts, wounds excluded: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (same rule as the Rise dataset, calibrated on World Rathalos)."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Jin_Dahaad",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "rathalos",
+      "name": {
+        "en": "Rathalos",
+        "ptBr": "Rathalos"
+      },
+      "classification": {
+        "en": "Flying Wyvern"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "none",
+          "water": "low",
+          "thunder": "medium",
+          "ice": "low",
+          "dragon": "high"
+        }
+      },
+      "habitatIds": [
+        "scarlet-forest",
+        "oilwell-basin",
+        "ruins-of-wyveria",
+        "wounded-hollow"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "left-wing",
+          "name": {
+            "en": "Left Wing",
+            "ptBr": "Asa Esquerda"
+          },
+          "severable": false
+        },
+        {
+          "id": "right-wing",
+          "name": {
+            "en": "Right Wing",
+            "ptBr": "Asa Direita"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "rathalos-tail",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 80.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "rathalos-scale-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "rathalos-carapace",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "rathalos-wing",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "rathalos-tail",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "rathalos-carapace",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "rathalos-scale-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 50.0
+        },
+        {
+          "materialId": "rathalos-carapace",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "rathalos-scale-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "inferno-sac",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "rathalos-wing",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "rath-medulla",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "rathalos-certificate-s",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "rathalos-tail",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "rathalos-ruby",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "rathalos-wing",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "left-wing",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "rathalos-wing",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "right-wing",
+          "ratePercent": 100.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Rathalos_(MHWilds)",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+        },
+        {
+          "name": "Kiranico (MH Wilds)",
+          "url": "https://mhwilds.kiranico.com/data/monsters/rathalos",
+          "notes": "pt-BR names and hitzones. Stars = best elemental hitzone over all parts, wounds excluded: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (same rule as the Rise dataset, calibrated on World Rathalos)."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Rathalos",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "guardian-rathalos",
+      "name": {
+        "en": "Guardian Rathalos",
+        "ptBr": "Rathalos Guardião"
+      },
+      "classification": {
+        "en": "Construct"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "none",
+          "water": "low",
+          "thunder": "medium",
+          "ice": "low",
+          "dragon": "high"
+        }
+      },
+      "habitatIds": [
+        "ruins-of-wyveria"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "left-wing",
+          "name": {
+            "en": "Left Wing",
+            "ptBr": "Asa Esquerda"
+          },
+          "severable": false
+        },
+        {
+          "id": "right-wing",
+          "name": {
+            "en": "Right Wing",
+            "ptBr": "Asa Direita"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "guardian-rathalos-tail",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 93.0
+        },
+        {
+          "materialId": "guardian-rathalos-plate",
+          "rank": "low",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "guardian-rathalos-scale",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "guardian-rathalos-shell",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "guardian-rathalos-webbing",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "guardian-rathalos-tail",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "guardian-rathalos-plate",
+          "rank": "low",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "guardian-rathalos-scale",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 45.0
+        },
+        {
+          "materialId": "guardian-rathalos-shell",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "guardian-scale",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "guardian-blood",
+          "rank": "low",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "guardian-rathalos-scale",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "guardian-rathalos-shell",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "flame-sac",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "guardian-rathalos-webbing",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "guardian-rathalos-tail",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "g-rathalos-certificate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "guardian-rathalos-plate",
+          "rank": "low",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "guardian-rathalos-webbing",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "left-wing",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "guardian-rathalos-webbing",
+          "rank": "low",
+          "method": "breakPart",
+          "partId": "right-wing",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "guardian-rathalos-tail",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 93.0
+        },
+        {
+          "materialId": "guardian-rathalos-ruby",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "guardian-rathalos-scale-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 33.0
+        },
+        {
+          "materialId": "guardian-rathalos-carapace",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 27.0
+        },
+        {
+          "materialId": "guardian-rathalos-wing",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 24.0
+        },
+        {
+          "materialId": "guardian-rathalos-tail",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "guardian-rathalos-ruby",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "guardian-rathalos-scale-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 45.0
+        },
+        {
+          "materialId": "guardian-rathalos-carapace",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 35.0
+        },
+        {
+          "materialId": "guardian-scale-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "guardian-blood-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "guardian-rathalos-carapace",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "guardian-rathalos-scale-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "inferno-sac",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 17.0
+        },
+        {
+          "materialId": "guardian-rathalos-wing",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "guardian-rathalos-tail",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 10.0
+        },
+        {
+          "materialId": "g-rathalos-certificate-s",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "guardian-rathalos-plate",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "guardian-rathalos-ruby",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "guardian-rathalos-wing",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "left-wing",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "guardian-rathalos-wing",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "right-wing",
+          "ratePercent": 100.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Guardian_Rathalos_(MHWilds)",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+        },
+        {
+          "name": "Kiranico (MH Wilds)",
+          "url": "https://mhwilds.kiranico.com/data/monsters/guardian-rathalos",
+          "notes": "pt-BR names and hitzones. Stars = best elemental hitzone over all parts, wounds excluded: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (same rule as the Rise dataset, calibrated on World Rathalos)."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Guardian_Rathalos",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "gore-magala",
+      "name": {
+        "en": "Gore Magala",
+        "ptBr": "Gore Magala"
+      },
+      "classification": {
+        "en": "Demi Elder"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "medium",
+          "water": "none",
+          "thunder": "low",
+          "ice": "none",
+          "dragon": "high"
+        }
+      },
+      "habitatIds": [
+        "iceshard-cliffs",
+        "ruins-of-wyveria",
+        "wounded-hollow"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "antenna",
+          "name": {
+            "en": "Antenna",
+            "ptBr": "Antena"
+          },
+          "severable": false
+        },
+        {
+          "id": "left-wing",
+          "name": {
+            "en": "Left Wing",
+            "ptBr": "Asa Esquerda"
+          },
+          "severable": false
+        },
+        {
+          "id": "right-wing",
+          "name": {
+            "en": "Right Wing",
+            "ptBr": "Asa Direita"
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "gore-magala-tail",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 93.0
+        },
+        {
+          "materialId": "gore-magala-nyctgem",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "gore-magala-scale-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 24.0
+        },
+        {
+          "materialId": "gore-magala-carapace",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "gore-magala-ripclaw-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 16.0
+        },
+        {
+          "materialId": "gore-magala-wing-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "gore-magala-feeler-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "gore-magala-tail",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "gore-magala-nyctgem",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 4.0
+        },
+        {
+          "materialId": "gore-magala-carapace",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 38.0
+        },
+        {
+          "materialId": "gore-magala-scale-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 38.0
+        },
+        {
+          "materialId": "frenzy-crystal",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 24.0
+        },
+        {
+          "materialId": "gore-magala-carapace",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "gore-magala-scale-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 22.0
+        },
+        {
+          "materialId": "gore-magala-ripclaw-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 21.0
+        },
+        {
+          "materialId": "gore-magala-wing-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "gore-magala-tail",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "gore-magala-certificate-s",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "gore-magala-nyctgem",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "gore-magala-feeler-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "antenna",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "gore-magala-wing-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "left-wing",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "gore-magala-wing-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "right-wing",
+          "ratePercent": 100.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Gore_Magala_(MHWilds)",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+        },
+        {
+          "name": "Kiranico (MH Wilds)",
+          "url": "https://mhwilds.kiranico.com/data/monsters/gore-magala",
+          "notes": "pt-BR names and hitzones. Stars = best elemental hitzone over all parts, wounds excluded: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (same rule as the Rise dataset, calibrated on World Rathalos)."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Gore_Magala",
+          "notes": "Classification."
+        }
+      ]
+    },
+    {
+      "slug": "arkveld",
+      "name": {
+        "en": "Arkveld",
+        "ptBr": "Arkveld"
+      },
+      "classification": {
+        "en": "Flying Wyvern"
+      },
+      "weaknesses": {
+        "general": {
+          "fire": "medium",
+          "water": "medium",
+          "thunder": "medium",
+          "ice": "medium",
+          "dragon": "high"
+        }
+      },
+      "habitatIds": [
+        "windward-plains",
+        "scarlet-forest",
+        "oilwell-basin",
+        "iceshard-cliffs",
+        "ruins-of-wyveria",
+        "wounded-hollow"
+      ],
+      "parts": [
+        {
+          "id": "tail",
+          "name": {
+            "en": "Tail",
+            "ptBr": "Cauda"
+          },
+          "severable": true
+        },
+        {
+          "id": "head",
+          "name": {
+            "en": "Head",
+            "ptBr": "Cabeça"
+          },
+          "severable": false
+        },
+        {
+          "id": "left-chainblade",
+          "name": {
+            "en": "Left Chainblade",
+            "ptBr": "Correlâmina Esq."
+          },
+          "severable": false
+        },
+        {
+          "id": "right-chainblade",
+          "name": {
+            "en": "Right Chainblade",
+            "ptBr": "Correlâmina Dir."
+          },
+          "severable": false
+        }
+      ],
+      "drops": [
+        {
+          "materialId": "arkveld-tail",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 93.0
+        },
+        {
+          "materialId": "arkveld-gem",
+          "rank": "high",
+          "method": "tailCarve",
+          "ratePercent": 7.0
+        },
+        {
+          "materialId": "arkveld-scale-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 30.0
+        },
+        {
+          "materialId": "arkveld-armorplate",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 23.0
+        },
+        {
+          "materialId": "white-arkveld-pelt",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "arkveld-horn-plus",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 13.0
+        },
+        {
+          "materialId": "arkveld-tail",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 11.0
+        },
+        {
+          "materialId": "arkveld-gem",
+          "rank": "high",
+          "method": "carve",
+          "ratePercent": 5.0
+        },
+        {
+          "materialId": "arkveld-scale-plus",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 45.0
+        },
+        {
+          "materialId": "arkveld-armorplate",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 43.0
+        },
+        {
+          "materialId": "white-arkveld-pelt",
+          "rank": "high",
+          "method": "other",
+          "methodLabel": {
+            "en": "Wound Destroyed Reward",
+            "ptBr": "Prêmio de Ferimento Destruído"
+          },
+          "ratePercent": 12.0
+        },
+        {
+          "materialId": "arkveld-armorplate",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "arkveld-scale-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 20.0
+        },
+        {
+          "materialId": "monster-hardbone",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 18.0
+        },
+        {
+          "materialId": "white-arkveld-pelt",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 15.0
+        },
+        {
+          "materialId": "arkveld-certificate-s",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "arkveld-horn-plus",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "arkveld-tail",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 8.0
+        },
+        {
+          "materialId": "arkveld-gem",
+          "rank": "high",
+          "method": "questReward",
+          "ratePercent": 3.0
+        },
+        {
+          "materialId": "arkveld-horn-plus",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "head",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "arkveld-calloushell",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "left-chainblade",
+          "ratePercent": 100.0
+        },
+        {
+          "materialId": "arkveld-calloushell",
+          "rank": "high",
+          "method": "breakPart",
+          "partId": "right-chainblade",
+          "ratePercent": 100.0
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds)",
+          "url": "https://monsterhunterwiki.org/wiki/Arkveld_(MHWilds)",
+          "notes": "Drop tables per rank (carves, tail carves, hunt/capture rewards, named part breaks, wound destruction) and locales. Rotten carves, investigations and tempered extras excluded."
+        },
+        {
+          "name": "Kiranico (MH Wilds)",
+          "url": "https://mhwilds.kiranico.com/data/monsters/arkveld",
+          "notes": "pt-BR names and hitzones. Stars = best elemental hitzone over all parts, wounds excluded: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (same rule as the Rise dataset, calibrated on World Rathalos)."
+        },
+        {
+          "name": "Monster Hunter Wiki",
+          "url": "https://monsterhunterwiki.org/wiki/Arkveld",
+          "notes": "Classification."
         }
       ]
     }
