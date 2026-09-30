@@ -12,6 +12,7 @@ Rules (research R1/R2, refined during implementation):
 """
 import html, json, os, re, statistics, sys
 
+import kiranico_world
 import macaron
 from common import REPO, roster, selected_games
 
@@ -40,7 +41,36 @@ def min_quest(values):
     return min(v for v in values if v >= 0.8 * med)
 
 
+def world_version(entry):
+    """Tempered / arch-tempered HP (004 R4): solo HP of the monster in its own quests
+    (Kiranico quest pages), arena and challenge quests excluded. Quests where it is the
+    only large monster come first, because World lowers each monster's HP in
+    multi-monster quests."""
+    base = next(e for e in roster('world_iceborne').values() if e['slug'] == entry['versionOf'])['name']
+    single, multi = {}, {}
+    for q, _path, en, _pt, stars in kiranico_world.quest_pages(entry):
+        if q['arena']:
+            continue
+        rows = [[clean(c) for c in re.findall(r'<td[^>]*>(.*?)</td>', tr, re.S)]
+                for tr in re.findall(r'<tr[^>]*>(.*?)</tr>', kiranico_world.section(en, 'Monsters'), re.S)]
+        names = [r[0] for r in rows if len(r) == 1]
+        current, hp = None, None
+        for r in rows:
+            if len(r) == 1:
+                current = r[0]
+            elif current == base and r and r[0] == '1':
+                hp = num(r[1])
+        if hp:
+            (single if len(names) == 1 else multi).setdefault(kiranico_world.rank_of(stars), []).append(hp)
+    vals = single or multi
+    return [{'rank': r, 'solo': min_quest(vals[r]), 'basis': 'minQuest'}
+            for r in ('low', 'high', 'master') if r in vals]
+
+
 def world(slug, name=None):
+    entry = roster('world_iceborne').get(slug, {})
+    if entry.get('dataFrom') == 'wikiTemperedQuests':
+        return world_version(entry)
     page = open(f'cache_world_{slug}_en.html', encoding='utf8').read()
     exp = {}
     for tr in re.findall(r'<tr.*?</tr>', section(page, 'Expeditions'), re.S):
@@ -186,6 +216,8 @@ HP_NOTES = {
     'rise_sunbreak': 'HP: lowest solo HP of the regular quests per rank (Village and Gathering Hub 1-3 LR, Hub 4-7 HR, MR).',
 }
 
+WORLD_VERSION_HP_NOTE = ('HP: lowest solo HP of this monster in its own quests (arena and challenge '
+                         'quests excluded; single-monster quests first).')
 AFFLICTED_HP_NOTE = 'HP: solo HP of the "Anomaly Research: <monster>" quest on this page (Master Rank).'
 
 EXTRACT = {'world_iceborne': world, 'rise_sunbreak': rise, 'wilds': wilds}
@@ -239,7 +271,9 @@ for game, fn in ((g, EXTRACT[g]) for g in selected_games()):
                 })
         else:
             src = next(s for s in monster['sources'] if s['name'].startswith('Kiranico'))
-            note = (AFFLICTED_HP_NOTE if monster.get('versionKind') == 'afflicted' else HP_NOTES[game])
+            note = (AFFLICTED_HP_NOTE if monster.get('versionKind') == 'afflicted'
+                    else WORLD_VERSION_HP_NOTE if game == 'world_iceborne' and 'versionOf' in monster
+                    else HP_NOTES[game])
             if note not in src.get('notes', ''):
                 src['notes'] = (src.get('notes', '') + ' ' + note).strip()
         print(game, monster['slug'], [(h['rank'], h['solo'], h['basis']) for h in hp])

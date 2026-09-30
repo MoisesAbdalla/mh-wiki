@@ -181,11 +181,11 @@ then Rise (Phase 6), then World (Phase 7).
 
 **Independent Test**: quickstart checks 1–10 for World (Ruiner Nergigante own row; Arch-Tempered versions).
 
-- [ ] T033 [US1] World source check (research R4): tempered and arch-tempered quests and rewards (streamstones) per monster in Kiranico. Write the result to `tool/data/rosters/world_iceborne.json` and summarize it in research R4.
-- [ ] T034 [US1] Run `tool/data/build.py world_iceborne` for the roster (weakness stars from mhw-db.com as in 001) and update `assets/data/world_iceborne/monsters.json`, keeping the 10 original entries.
-- [ ] T035 [US2] Run HP (expeditions / quests, 003 R1) and items extraction for World; update the dataset.
-- [ ] T036 [US3] Run `fetch_icons.py world_iceborne`.
-- [ ] T037 [US1] Extend `real_datasets_test.dart` for World (roster coverage, SC-003, `noHp` set, SC-006). Run the gates, `flutter build windows --release`, update the README, commit, push. The user runs the manual checks, then merge to `main`.
+- [X] T033 [US1] World source check (research R4): tempered and arch-tempered quests and rewards (streamstones) per monster in Kiranico. Write the result to `tool/data/rosters/world_iceborne.json` and summarize it in research R4.
+- [X] T034 [US1] Run `tool/data/build.py world_iceborne` for the roster (weakness stars from mhw-db.com as in 001) and update `assets/data/world_iceborne/monsters.json`, keeping the 10 original entries.
+- [X] T035 [US2] Run HP (expeditions / quests, 003 R1) and items extraction for World; update the dataset.
+- [X] T036 [US3] Run `fetch_icons.py world_iceborne`.
+- [X] T037 [US1] Extend `real_datasets_test.dart` for World (roster coverage, SC-003, `noHp` set, SC-006). Run the gates, `flutter build windows --release`, update the README, commit, push. The user runs the manual checks, then merge to `main`.
 
 ---
 

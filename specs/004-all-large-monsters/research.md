@@ -162,6 +162,43 @@ party factors, item reactions) are reused unchanged unless stated.
 - The 10 entries of feature 001 keep their values. Four part names gained their pt-BR name
   ("Garra", "Chifre"), because the part-name table now covers the whole roster.
 
+### R4 result — World: Iceborne (T033, 2026-09-30)
+
+- **Roster**: 71 large monsters on the Kiranico list (ver. 15.11), written to
+  `tool/data/rosters/world_iceborne.json` by `tool/data/roster_world.py`. The result is 71 base
+  rows and 46 versions. Subspecies and named variants (Ruiner Nergigante, Raging Brachydios,
+  Savage Deviljho, Frostfang Barioth…) keep their own rows.
+- **Correction to the plan above**: Kiranico's quest pages do not mark tempered or
+  arch-tempered targets. The Monster Hunter Wiki quest pages ("MHWI Quest Pages") do, through
+  their `Goal Icons` template (`Type=Tempered` / `Type=Arch Tempered`). There are 36 tempered and
+  10 arch-tempered targets. Each becomes a version with its quests. Arena and challenge quests are
+  marked by the page's categories.
+- **Version data**:
+  - Drops: the Kiranico reward tables of each of its quests, with rates, as method `other`
+    labelled "Quest reward: <quest>" (pt-BR "Prêmio da missão: <Kiranico pt-BR quest name>").
+    That keeps tickets (e.g. Nergigante Ticket, 100 % in "The Heralds of Destruction Cry") and
+    streamstones. An item listed in two reward tables of one quest combines as independent
+    draws.
+  - HP: the monster's solo HP on those quest pages, with arena and challenge quests excluded.
+    Quests where it is the only large monster come first, because World lowers each monster's HP
+    in multi-monster quests (e.g. Arch-Tempered Nergigante 26,224). Tempered Nergigante has only
+    multi-monster quests (4,998).
+  - Tempered Savage Deviljho and Tempered Uragaan have only challenge quests, so their HP is
+    unknown. "The Heart of the Nora" (tempered Deviljho, a collab event) is not on Kiranico.
+- **Weakness stars** (29 bases not on mhw-db.com):
+  - Velkhana and Alatreon keep their hand-checked Fextralife values.
+  - The other 27 are parsed from the Fextralife "Weakness" box. The first rating of an element is
+    the normal state; charged or crystallized ratings come later in parentheses. Where both
+    sources rate a monster, Fextralife matches mhw-db on 29 of 30 elements.
+  - Elements Fextralife does not rate use the hitzone rule on Kiranico's normal-state
+    Physiology block: Raging Brachydios' dragon, and Yian Garuga's fire, thunder and ice.
+  - The hitzone rule alone matches mhw-db only on 70 % of the elements, because the in-game
+    notes rate each monster relatively. That is why it is only a fallback.
+- **Habitats and classification** of monsters without Kiranico expeditions and not on mhw-db come
+  from the wiki (MHWI page locales, including the Guiding Lands; classification from the base
+  page). Seven new locales have no pt-BR name in the sources and show in English.
+- The 10 entries of feature 001 keep their values. Alatreon's wiki source note gains "Locales.".
+
 ## R5. List, search and selection (spec Q3)
 
 - The list shows one row per base monster, sorted alphabetically, with a "N versões" hint.

@@ -248,6 +248,35 @@ void main() {
       expect(reyDau.huntingInfo.hp.single.solo, 20500); // ★7 ♦3
     });
 
+    test('World: variants own rows, tempered versions from their quests', () async {
+      final monsters = await load(Game.worldIceborne);
+      Monster bySlug(String slug) =>
+          monsters.singleWhere((m) => m.id.slug == slug);
+
+      expect(bySlug('ruiner-nergigante').isVersion, isFalse);
+      final kinds = {
+        for (final v in monsters.where(
+          (m) => m.versionOf?.slug == 'nergigante',
+        ))
+          v.versionKind,
+      };
+      expect(kinds, {VersionKind.tempered, VersionKind.archTempered});
+
+      // Arch-tempered: "The Heralds of Destruction Cry" (Kiranico quest page).
+      final arch = bySlug('arch-tempered-nergigante');
+      final hp = arch.huntingInfo.hp.single;
+      expect((hp.rank, hp.solo), (Rank.high, 26224));
+      final ticket = arch.drops.singleWhere(
+        (d) => d.material.name.en == 'Nergigante Ticket',
+      );
+      expect(ticket.method, DropMethod.other);
+      expect(
+        ticket.methodLabel!.en,
+        contains('The Heralds of Destruction Cry'),
+      );
+      expect(ticket.ratePercent, 100);
+    });
+
     test('Rise: subspecies own rows, Apex/Risen/Afflicted versions', () async {
       final monsters = await load(Game.riseSunbreak);
       Monster bySlug(String slug) =>

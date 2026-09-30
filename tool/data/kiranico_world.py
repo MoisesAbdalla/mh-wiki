@@ -4,38 +4,20 @@ Output: world_raw/<slug>.json with habitats, parts and drops per rank, each
 name paired en/ptBr. Weaknesses are NOT taken from here (Kiranico lists
 hitzones, not the in-game star ratings).
 """
-import html, json, os, re, sys, time, urllib.request
+import html, json, os, re
 import common  # noqa: E402,F401  (sets cwd to the cache)
 
 BASE = 'https://mhworld.kiranico.com'
-UA = {'User-Agent': 'Mozilla/5.0 (mh-wiki data curation; personal study project)'}
 OUT = 'world_raw'
 os.makedirs(OUT, exist_ok=True)
 
-ROSTER = {  # slug -> kiranico path id/slug
-    'great-jagras': 'zJ1Sb/great-jagras',
-    'anjanath': 'ZqptN/anjanath',
-    'rathian': 'Rz9Tb/rathian',
-    'pink-rathian': 'BnNTd/pink-rathian',
-    'rathalos': 'BnetX/rathalos',
-    'diablos': 'BYXHE/diablos',
-    'nergigante': 'aYaUV/nergigante',
-    'zinogre': 'Ak8TZ/zinogre',
-    'velkhana': 'J1pFn/velkhana',
-    'alatreon': 'ErdcV/alatreon',
-}
+ROSTER = {e['slug']: e['kiranicoPath'] for e in common.roster('world_iceborne').values()
+          if 'versionOf' not in e}  # slug -> kiranico path id/slug (tool/data/rosters)
 
 RANKS = {'Low Rank': 'low', 'High Rank': 'high', 'Master Rank': 'master'}
 
 
-def fetch(url, cache):
-    if os.path.exists(cache):
-        return open(cache, encoding='utf8').read()
-    req = urllib.request.Request(url, headers=UA)
-    data = urllib.request.urlopen(req, timeout=60).read().decode('utf8')
-    open(cache, 'w', encoding='utf8').write(data)
-    time.sleep(1.5)  # be polite
-    return data
+fetch = common.fetch
 
 
 def clean(text):
@@ -89,6 +71,31 @@ def parse(page, lang):
         'rewards': [(r, tables(b)) for r, b in rank_blocks(reward_sec)],
         'title': clean(re.search(r'<title>(.*?) - MH', page).group(1)),
     }
+
+
+def quest_pages(entry):
+    """[(quest, kiranico path, en page, pt page, stars label)] of a version's quests, linked from the base page."""
+    base = fetch(f'{BASE}/en/monsters/{entry["kiranicoPath"]}', f'cache_world_{entry["versionOf"]}_en.html')
+    links = {}
+    for path, text in re.findall(r'href="https://mhworld\.kiranico\.com/en/quests/(\w+/[^"]+)"[^>]*>(.*?)</a>', base, re.S):
+        m = re.match(r'(M?★\d+) (.*)$', clean(text))
+        if m:
+            links.setdefault(m.group(2), (path, m.group(1)))
+    pages = []
+    for q in entry['quests']:
+        if q['name'] not in links:
+            print('  quest not on the Kiranico base page:', entry['slug'], q['name'])
+            continue
+        path, stars = links[q['name']]
+        file = path.replace('/', '_')
+        en = fetch(f'{BASE}/en/quests/{path}', f'cache_world_quest_{file}_en.html')
+        pt = fetch(f'{BASE}/pt-BR/quests/{path}', f'cache_world_quest_{file}_pt.html')
+        pages.append((q, path, en, pt, stars))
+    return pages
+
+
+def rank_of(stars):
+    return 'master' if stars.startswith('M') else ('low' if int(stars.lstrip('★')) <= 5 else 'high')
 
 
 def main():

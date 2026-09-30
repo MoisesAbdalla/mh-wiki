@@ -14,7 +14,7 @@ fetch fresh pages. Running the build again on the same cache gives the same data
 
 | Script | What it does | Rules |
 |--------|--------------|-------|
-| `roster_wilds.py`, `roster_rise.py` | Rosters with versions → `rosters/<game>.json` | [004 research R4](../../specs/004-all-large-monsters/research.md) |
+| `roster_wilds.py`, `roster_rise.py`, `roster_world.py` | Rosters with versions → `rosters/<game>.json` | [004 research R4](../../specs/004-all-large-monsters/research.md) |
 | `build_wilds.py`, `build_rise.py`, `build_world.py` (+ `kiranico_world.py`) | Names en/pt-BR, classification, weaknesses, habitats, parts, drops | [001 research](../../specs/001-monster-wiki/research.md) |
 | `hp_extract.py [game…]` (+ `macaron.py`) | Solo HP per rank, party HP factors; Wilds tempered and arch-tempered HP from the macarongamemo table | [003 research R1/R2](../../specs/003-hunting-info/research.md) |
 | `items_extract.py [game…]` (+ `item_parse.py`) | Hunting items and reactions | [003 research R3](../../specs/003-hunting-info/research.md) |
