@@ -2,28 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 
-/// Font families bundled in pubspec.yaml.
-abstract final class HunterFonts {
-  static const display = 'Cinzel';
-  static const body = 'AlegreyaSans';
-}
-
-/// Cinzel style for titles, section headings and tabs. Cinzel is a variable
-/// font, so the weight is set through the `wght` axis.
-TextStyle hunterDisplay({
-  double size = 14,
-  double weight = 700,
-  Color color = HunterPalette.gold,
-  double letterSpacing = 2,
-}) => TextStyle(
-  fontFamily: HunterFonts.display,
-  fontSize: size,
-  fontWeight: weight >= 600 ? FontWeight.w700 : FontWeight.w500,
-  fontVariations: [FontVariation('wght', weight)],
-  color: color,
-  letterSpacing: letterSpacing,
-);
-
 /// The only theme of the app: dark "Caderninho" (002 FR-001, 005).
 ThemeData buildHunterTheme() {
   const scheme = ColorScheme(

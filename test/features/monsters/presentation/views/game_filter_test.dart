@@ -36,8 +36,21 @@ void main() {
 
   tearDown(() => controller.dispose());
 
-  Finder tab(String label) =>
-      find.descendant(of: find.byType(GameTabs), matching: find.text(label));
+  /// A game tab by its short name; logos are found by their spoken label.
+  Finder tab(String label) {
+    const spoken = {
+      'World': 'Monster Hunter World: Iceborne',
+      'Rise': 'Monster Hunter Rise: Sunbreak',
+      'Wilds': 'Monster Hunter Wilds',
+    };
+    final name = spoken[label] ?? label;
+    return find.descendant(
+      of: find.byType(GameTabs),
+      matching: find.byWidgetPredicate(
+        (w) => w is Semantics && w.properties.label == name,
+      ),
+    );
+  }
 
   Future<void> pumpPage(WidgetTester tester) async {
     setWindowSize(tester, const Size(400, 800));
@@ -59,9 +72,7 @@ void main() {
 
     final headers = ['World : Iceborne', 'Rise : Sunbreak', 'Wilds'];
     final positions = [
-      // .last: the caption in the list, below the game tabs.
-      for (final header in headers)
-        tester.getTopLeft(find.text(header).last).dy,
+      for (final header in headers) tester.getTopLeft(find.text(header)).dy,
     ];
     expect(positions, orderedEquals([...positions]..sort()));
   });

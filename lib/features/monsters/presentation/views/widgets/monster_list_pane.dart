@@ -5,6 +5,7 @@ import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 import 'package:mh_wiki/core/presentation/widgets/element_icon.dart';
 import 'package:mh_wiki/core/presentation/widgets/monster_image.dart';
+import 'package:mh_wiki/core/presentation/widgets/notebook_switcher.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_entry.dart';
@@ -126,42 +127,49 @@ class _LoadedList extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Expanded(
-          child: state.isEmpty
-              ? _NoResults(
-                  hasActiveFilters: state.hasActiveFilters,
-                  onClear: controller.clearFilters,
-                )
-              : CustomScrollView(
-                  key: const PageStorageKey('monster-list'),
-                  slivers: [
-                    for (final section in state.sections)
-                      SliverMainAxisGroup(
-                        slivers: [
-                          // Sticky per-game header only in "Todos" (FR-006).
-                          if (showHeaders)
-                            PinnedHeaderSliver(
-                              child: _GameCaption(
-                                title: l10n.gameSectionTitle(section.game),
+          // Fades when the game filter changes (005 FR-015).
+          child: NotebookSwitcher(
+            slide: false,
+            child: KeyedSubtree(
+              key: ValueKey(('list', state.query.game, state.isEmpty)),
+              child: state.isEmpty
+                  ? _NoResults(
+                      hasActiveFilters: state.hasActiveFilters,
+                      onClear: controller.clearFilters,
+                    )
+                  : CustomScrollView(
+                      key: const PageStorageKey('monster-list'),
+                      slivers: [
+                        for (final section in state.sections)
+                          SliverMainAxisGroup(
+                            slivers: [
+                              // Sticky per-game header only in "Todos" (FR-006).
+                              if (showHeaders)
+                                PinnedHeaderSliver(
+                                  child: _GameCaption(
+                                    title: l10n.gameSectionTitle(section.game),
+                                  ),
+                                ),
+                              SliverList.builder(
+                                itemCount: section.entries.length,
+                                itemBuilder: (context, index) {
+                                  final entry = section.entries[index];
+                                  return _MonsterTile(
+                                    entry: entry,
+                                    language: language,
+                                    selected:
+                                        highlightSelection &&
+                                        _isInFamily(entry, state.selectedId),
+                                    onTap: onSelect,
+                                  );
+                                },
                               ),
-                            ),
-                          SliverList.builder(
-                            itemCount: section.entries.length,
-                            itemBuilder: (context, index) {
-                              final entry = section.entries[index];
-                              return _MonsterTile(
-                                entry: entry,
-                                language: language,
-                                selected:
-                                    highlightSelection &&
-                                    _isInFamily(entry, state.selectedId),
-                                onTap: onSelect,
-                              );
-                            },
+                            ],
                           ),
-                        ],
-                      ),
-                  ],
-                ),
+                      ],
+                    ),
+            ),
+          ),
         ),
       ],
     );

@@ -173,20 +173,20 @@ game that respects reduce-motion (spec US3).
 **Independent Test**: quickstart checks 1, 8, 9 and 11 (tabs); `game_tabs`, `game_filter` and
 motion tests pass.
 
-- [ ] T028 [P] [US3] Rewrite `test/core/presentation/widgets/game_tabs_test.dart`:
+- [X] T028 [P] [US3] Rewrite `test/core/presentation/widgets/game_tabs_test.dart`:
   - "Todos" as text;
   - three image tabs using `assets/images/games/<game>.webp`;
   - semantics labels "World: Iceborne", "Rise: Sunbreak", "Wilds" with `selected`;
   - the text fallback when an asset is missing;
   - scrolling at 320 dp / 200 %.
   Update `test/features/monsters/presentation/views/game_filter_test.dart` to tap tabs by semantics label instead of `HunterTabs` text.
-- [ ] T029 [US3] Rewrite `lib/core/presentation/widgets/game_tabs.dart` on `UnderlineTabs`: "Todos" as text, logos at 46 dp from `assets/images/games/`, fallback to the short game name, semantics from `gameLogoLabel`. Delete `HunterTabs` and `_Tab` from this file once no caller is left (materials and HP already use `UnderlineTabs`). This makes `T028` pass.
-- [ ] T030 [P] [US3] Write `test/features/monsters/presentation/views/motion_test.dart`:
+- [X] T029 [US3] Rewrite `lib/core/presentation/widgets/game_tabs.dart` on `UnderlineTabs`: "Todos" as text, logos at 46 dp from `assets/images/games/`, fallback to the short game name, semantics from `gameLogoLabel`. Delete `HunterTabs` and `_Tab` from this file once no caller is left (materials and HP already use `UnderlineTabs`). This makes `T028` pass.
+- [X] T030 [P] [US3] Write `test/features/monsters/presentation/views/motion_test.dart`:
   - switching monster in the expanded layout runs an `AnimatedSwitcher` of 220 ms (a `FadeTransition` is present mid-animation);
   - switching version does the same;
   - switching game fades the list;
   - with `MediaQueryData(disableAnimations: true)` the switch finishes in one frame with no transition in progress.
-- [ ] T031 [US3] Add the transitions:
+- [X] T031 [US3] Add the transitions:
   - an `AnimatedSwitcher` in `monster_detail_view.dart` (or around it in `monsters_page.dart`), keyed by monster id, using a fade plus a 2 % upward `SlideTransition`;
   - an `AnimatedSwitcher` around the list body in `monster_list_pane.dart`, keyed by game filter, fade only;
   - both use `Motion.duration(context)` and `Motion.curve`.
@@ -198,11 +198,11 @@ motion tests pass.
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T032 Audit for leftovers: `grep -r "HunterPanel\|OrnamentHeader\|SectionCard\|HunterTabs\|WeaknessCell\|hunterDisplay\|Cinzel\|AlegreyaSans" lib test` must be empty after T033–T034.
-- [ ] T033 Delete `lib/core/presentation/widgets/hunter_panel.dart`, `ornament_header.dart` and `lib/features/monsters/presentation/views/widgets/section_card.dart`. Move the remaining imports to `notebook_section.dart`. Remove unused `HunterPalette` tokens (`panel`, `panelRaised`, `goldFrame`) if nothing references them.
-- [ ] T034 Remove `hunterDisplay` and `HunterFonts.display/body` (Cinzel, Alegreya Sans) from `hunter_theme.dart`, delete `assets/fonts/cinzel/` and `assets/fonts/alegreya_sans/`, and remove them from `pubspec.yaml`.
-- [ ] T035 [P] Update `README.md`: the app name "Caderninho", the visual identity (fonts and licences, palette roles), the logo source in the sources section (FR-019), and a screenshot note.
-- [ ] T036 Run the gates (`flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`, `flutter build windows --release`), then commit and push.
+- [X] T032 Audit for leftovers: `grep -r "HunterPanel\|OrnamentHeader\|SectionCard\|HunterTabs\|WeaknessCell\|hunterDisplay\|Cinzel\|AlegreyaSans" lib test` must be empty after T033–T034.
+- [X] T033 Delete `lib/core/presentation/widgets/hunter_panel.dart`, `ornament_header.dart` and `lib/features/monsters/presentation/views/widgets/section_card.dart`. Move the remaining imports to `notebook_section.dart`. Remove unused `HunterPalette` tokens (`panel`, `panelRaised`, `goldFrame`) if nothing references them.
+- [X] T034 Remove `hunterDisplay` and `HunterFonts.display/body` (Cinzel, Alegreya Sans) from `hunter_theme.dart`, delete `assets/fonts/cinzel/` and `assets/fonts/alegreya_sans/`, and remove them from `pubspec.yaml`.
+- [X] T035 [P] Update `README.md`: the app name "Caderninho", the visual identity (fonts and licences, palette roles), the logo source in the sources section (FR-019), and a screenshot note.
+- [X] T036 Run the gates (`flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`, `flutter build windows --release`), then commit and push.
 - [ ] T037 Manual quickstart checks 1–13 (user), comparing with [mockups/approved.html](mockups/approved.html). Fix the findings, then merge `005-visual-refresh` into `main`.
 
 ---

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
+import 'package:mh_wiki/core/presentation/widgets/notebook_switcher.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/monster_detail_view.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
@@ -32,11 +33,14 @@ class MonsterDetailPage extends StatelessWidget {
           ),
           body: monster == null
               ? const SizedBox.shrink()
-              : MonsterDetailView(
-                  monster: monster,
-                  language: controller.language,
-                  versions: controller.selectedVersions,
-                  onSelectVersion: controller.select,
+              : NotebookSwitcher(
+                  child: MonsterDetailView(
+                    key: ValueKey(monster.id),
+                    monster: monster,
+                    language: controller.language,
+                    versions: controller.selectedVersions,
+                    onSelectVersion: controller.select,
+                  ),
                 ),
         );
       },

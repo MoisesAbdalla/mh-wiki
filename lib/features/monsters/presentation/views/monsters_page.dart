@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/presentation/breakpoints.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
+import 'package:mh_wiki/core/presentation/widgets/notebook_switcher.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/monster_detail_page.dart';
@@ -117,25 +118,31 @@ class _MonstersPageState extends State<MonstersPage> {
                     listenable: _controller,
                     builder: (context, _) {
                       final monster = _controller.selectedMonster;
+                      final Widget child;
                       if (monster == null) {
-                        return Center(
-                          child: Text(
-                            l10n.selectMonster,
-                            style: notebookTitle(
-                              size: 20,
-                              color: HunterPalette.textMuted,
+                        child = KeyedSubtree(
+                          key: const ValueKey('no-selection'),
+                          child: Center(
+                            child: Text(
+                              l10n.selectMonster,
+                              style: notebookTitle(
+                                size: 20,
+                                color: HunterPalette.textMuted,
+                              ),
                             ),
                           ),
                         );
+                      } else {
+                        child = MonsterDetailView(
+                          key: ValueKey(monster.id),
+                          monster: monster,
+                          language: _controller.language,
+                          versions: _controller.selectedVersions,
+                          onSelectVersion: _controller.select,
+                          showGame: _controller.query.game == null,
+                        );
                       }
-                      return MonsterDetailView(
-                        key: ValueKey(monster.id),
-                        monster: monster,
-                        language: _controller.language,
-                        versions: _controller.selectedVersions,
-                        onSelectVersion: _controller.select,
-                        showGame: _controller.query.game == null,
-                      );
+                      return NotebookSwitcher(child: child);
                     },
                   ),
                 ),

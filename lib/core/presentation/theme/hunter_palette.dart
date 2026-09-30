@@ -13,7 +13,6 @@ abstract final class HunterPalette {
 
   static const gold = Color(0xFFE0BD6A);
   static const goldBright = Color(0xFFF3D68E);
-  static const goldFrame = Color(0xFF8A6A33);
 
   static const text = Color(0xFFEFE4C8);
   static const textMuted = Color(0xFFB9A67F);

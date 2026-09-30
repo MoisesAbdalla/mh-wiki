@@ -17,7 +17,7 @@ What each screen must show and announce after 005. Reference:
 - Minimum tap target 48 × 48 dp. The row scrolls horizontally when it does not fit; it never
   wraps or shrinks the logos below 40 dp.
 - Semantics: each tab is a button with `selected`. A logo tab's label is the game's full name
-  ("World: Iceborne", "Rise: Sunbreak", "Wilds").
+  ("Monster Hunter World: Iceborne", "Monster Hunter Rise: Sunbreak", "Monster Hunter Wilds").
 - If a logo fails to load, the tab shows the game's short name as text.
 
 ## List
@@ -68,12 +68,12 @@ What each screen must show and announce after 005. Reference:
   - the element name (body, bold when best);
   - for best rows, a "Melhor" stamp;
   - at the right edge, three star icons (filled `text`, empty `textDisabled`; gold when best), or
-    "Sem efeito" in `textMuted` for immunity.
+    "Imune" in `textMuted` for immunity. 0 stars shows three empty stars.
 - A 1 dp rule separates rows.
 - Per-state weaknesses (e.g. Alatreon) follow under a caption with the state name, using the
   same rows and no highlight.
-- Semantics per row: "<elemento>, N de 3 estrelas" (plus ", melhor fraqueza" when best), or
-  "<elemento>, sem efeito".
+- Semantics per row: "<elemento>: N de 3" (plus ", melhor fraqueza" when best), or
+  "<elemento>: imune" (the existing strings of 002).
 
 ## 2 Vida
 
