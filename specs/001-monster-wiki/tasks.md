@@ -134,16 +134,16 @@ four detail sections with correct data; on a ≥840 dp window the detail appears
 
 ### Tests for User Story 2 (write first, must fail) ⚠️
 
-- [ ] T050 [P] [US2] Extend `FilterMonsters` tests: `game = riseSunbreak` → single section with only Rise monsters; `game = null` → all sections; same slug in 3 games → 3 distinct entries, one per section in `test/features/monsters/domain/usecases/filter_monsters_test.dart`
-- [ ] T051 [P] [US2] Extend controller tests: `setGame` re-filters, keeps `selectedId`, notifies; `clearFilters` resets game; `hasActiveFilters` true when game set in `test/features/monsters/presentation/controllers/monster_list_controller_test.dart`
-- [ ] T052 [P] [US2] Widget test `GameFilterBar` + list: 4 options ("Todos" + 3 games); selecting Wilds shows only Wilds tiles and no section header; "Todos" shows 3 sticky headers in order; empty result with active filter shows "Nenhum monstro encontrado" + "Limpar filtros" in `test/features/monsters/presentation/views/game_filter_test.dart`
+- [X] T050 [P] [US2] Extend `FilterMonsters` tests: `game = riseSunbreak` → single section with only Rise monsters; `game = null` → all sections; same slug in 3 games → 3 distinct entries, one per section in `test/features/monsters/domain/usecases/filter_monsters_test.dart`
+- [X] T051 [P] [US2] Extend controller tests: `setGame` re-filters, keeps `selectedId`, notifies; `clearFilters` resets game; `hasActiveFilters` true when game set in `test/features/monsters/presentation/controllers/monster_list_controller_test.dart`
+- [X] T052 [P] [US2] Widget test `GameFilterBar` + list: 4 options ("Todos" + 3 games); selecting Wilds shows only Wilds tiles and no section header; "Todos" shows 3 sticky headers in order; empty result with active filter shows "Nenhum monstro encontrado" + "Limpar filtros" in `test/features/monsters/presentation/views/game_filter_test.dart`
 
 ### Implementation for User Story 2
 
-- [ ] T053 [US2] Implement game filtering in `FilterMonsters` in `lib/features/monsters/domain/usecases/filter_monsters.dart` (makes T050 pass)
-- [ ] T054 [US2] Add `setGame(Game?)` and `clearFilters()` to `MonsterListController` in `lib/features/monsters/presentation/controllers/monster_list_controller.dart` (makes T051 pass)
-- [ ] T055 [US2] Add strings "Todos", "Nenhum monstro encontrado", "Limpar filtros", active-filter hint to `lib/l10n/app_pt.arb`; run `flutter gen-l10n`
-- [ ] T056 [US2] Implement `GameFilterBar` (SegmentedButton/ChoiceChips) in `lib/features/monsters/presentation/views/widgets/game_filter_bar.dart`; add sticky section headers (only for "Todos") and empty state with "Limpar filtros" to `lib/features/monsters/presentation/views/widgets/monster_list_pane.dart` (makes T052 pass)
+- [X] T053 [US2] Implement game filtering in `FilterMonsters` in `lib/features/monsters/domain/usecases/filter_monsters.dart` (makes T050 pass)
+- [X] T054 [US2] Add `setGame(Game?)` and `clearFilters()` to `MonsterListController` in `lib/features/monsters/presentation/controllers/monster_list_controller.dart` (makes T051 pass)
+- [X] T055 [US2] Add strings "Todos", "Nenhum monstro encontrado", "Limpar filtros", active-filter hint to `lib/l10n/app_pt.arb`; run `flutter gen-l10n`
+- [X] T056 [US2] Implement `GameFilterBar` (SegmentedButton/ChoiceChips) in `lib/features/monsters/presentation/views/widgets/game_filter_bar.dart`; add sticky section headers (only for "Todos") and empty state with "Limpar filtros" to `lib/features/monsters/presentation/views/widgets/monster_list_pane.dart` (makes T052 pass)
 - [ ] T057 [P] [US2] Curate the full Rise: Sunbreak dataset (Great Izuchi, Rathian, Rathalos, Tigrex, Zinogre, Mizutsune, Soulseer Mizutsune, Magnamalo, Rajang, Malzeno) with low/high/master drops, weakness conversion rule recorded in `sources[].notes` (research R12) in `assets/data/rise_sunbreak/monsters.json`; confirm the FR-002 roster criteria as in T048 (record absence under research.md R15)
 - [ ] T058 [P] [US2] Curate the full Wilds dataset (Chatacabra, Doshaguma, Rey Dau, Uth Duna, Nu Udra, Jin Dahaad, Rathalos, Guardian Rathalos, Gore Magala, Arkveld) with low/high drops only in `assets/data/wilds/monsters.json`; confirm the FR-002 roster criteria as in T048 (record absence under research.md R15)
 - [ ] T059 [US2] Run gates and quickstart scenarios 2, 3, 13 (temporarily corrupt Wilds JSON in a debug run, then restore); commit

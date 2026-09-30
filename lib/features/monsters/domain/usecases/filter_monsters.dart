@@ -13,6 +13,7 @@ final class FilterMonsters {
 
     final sections = <MonsterSection>[];
     for (final game in Game.values) {
+      if (query.game != null && query.game != game) continue;
       final monsters = all.where((m) => m.id.game == game).toList()
         ..sort((a, b) => sortKey(a).compareTo(sortKey(b)));
       if (monsters.isNotEmpty) {

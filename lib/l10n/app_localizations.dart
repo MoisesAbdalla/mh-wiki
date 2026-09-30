@@ -315,6 +315,54 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Taxa desconhecida'**
   String get rateUnknown;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In pt, this message translates to:
+  /// **'Todos'**
+  String get filterAll;
+
+  /// No description provided for @filterWorldIceborne.
+  ///
+  /// In pt, this message translates to:
+  /// **'World: Iceborne'**
+  String get filterWorldIceborne;
+
+  /// No description provided for @filterRiseSunbreak.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rise: Sunbreak'**
+  String get filterRiseSunbreak;
+
+  /// No description provided for @filterWilds.
+  ///
+  /// In pt, this message translates to:
+  /// **'Wilds'**
+  String get filterWilds;
+
+  /// No description provided for @gameFilterLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Filtrar por jogo'**
+  String get gameFilterLabel;
+
+  /// No description provided for @noResults.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum monstro encontrado'**
+  String get noResults;
+
+  /// No description provided for @activeFiltersHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Há filtros ativos.'**
+  String get activeFiltersHint;
+
+  /// No description provided for @clearFilters.
+  ///
+  /// In pt, this message translates to:
+  /// **'Limpar filtros'**
+  String get clearFilters;
 }
 
 class _AppLocalizationsDelegate

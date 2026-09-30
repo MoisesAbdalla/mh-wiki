@@ -131,4 +131,28 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rateUnknown => 'Taxa desconhecida';
+
+  @override
+  String get filterAll => 'Todos';
+
+  @override
+  String get filterWorldIceborne => 'World: Iceborne';
+
+  @override
+  String get filterRiseSunbreak => 'Rise: Sunbreak';
+
+  @override
+  String get filterWilds => 'Wilds';
+
+  @override
+  String get gameFilterLabel => 'Filtrar por jogo';
+
+  @override
+  String get noResults => 'Nenhum monstro encontrado';
+
+  @override
+  String get activeFiltersHint => 'Há filtros ativos.';
+
+  @override
+  String get clearFilters => 'Limpar filtros';
 }

@@ -59,5 +59,14 @@
   "@methodBreakPart": { "placeholders": { "part": { "type": "String" } } },
   "methodQuestReward": "Recompensa de missão",
   "methodDroppedMaterial": "Material caído",
-  "rateUnknown": "Taxa desconhecida"
+  "rateUnknown": "Taxa desconhecida",
+
+  "filterAll": "Todos",
+  "filterWorldIceborne": "World: Iceborne",
+  "filterRiseSunbreak": "Rise: Sunbreak",
+  "filterWilds": "Wilds",
+  "gameFilterLabel": "Filtrar por jogo",
+  "noResults": "Nenhum monstro encontrado",
+  "activeFiltersHint": "Há filtros ativos.",
+  "clearFilters": "Limpar filtros"
 }

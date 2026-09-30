@@ -52,4 +52,32 @@ void main() {
       expect(filter(const [], const MonsterQuery()), isEmpty);
     });
   });
+
+  group('game filter (US2)', () {
+    test('a single game yields only that game', () {
+      final sections = filter(monsters, const MonsterQuery(game: Game.wilds));
+      expect(sections.map((s) => s.game), [Game.wilds]);
+      expect(sections.single.monsters.map((m) => m.id.game).toSet(), {
+        Game.wilds,
+      });
+    });
+
+    test('a game without monsters yields no sections', () {
+      expect(
+        filter(monsters, const MonsterQuery(game: Game.riseSunbreak)),
+        isEmpty,
+      );
+    });
+
+    test('the same monster in three games gives three entries (FR-013)', () {
+      final rathalos = [
+        for (final game in Game.values) buildMonster(game: game),
+      ];
+      final sections = filter(rathalos, const MonsterQuery());
+      expect(sections, hasLength(3));
+      for (final section in sections) {
+        expect(section.monsters.single.id.game, section.game);
+      }
+    });
+  });
 }

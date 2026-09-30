@@ -30,7 +30,7 @@ final class MonsterListController extends ChangeNotifier {
   MonsterListState _state = const MonsterListLoading();
   List<Monster> _monsters = const [];
   Map<Game, Failure> _failedGames = const {};
-  final MonsterQuery _query;
+  MonsterQuery _query;
   MonsterId? _selectedId;
 
   MonsterListState get state => _state;
@@ -61,6 +61,17 @@ final class MonsterListController extends ChangeNotifier {
       notifyListeners();
       return;
     }
+    _emit();
+  }
+
+  /// `null` means "Todos" (FR-003).
+  void setGame(Game? game) {
+    _query = _query.copyWith(game: () => game);
+    _emit();
+  }
+
+  void clearFilters() {
+    _query = MonsterQuery(language: _query.language);
     _emit();
   }
 

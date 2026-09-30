@@ -108,4 +108,42 @@ void main() {
       expect(controller.selectedMonster, isNull);
     });
   });
+
+  group('US2 game filter', () {
+    test('setGame re-filters, keeps selection and notifies', () async {
+      await controller.load();
+      controller.select(const MonsterId(Game.wilds, 'arkveld'));
+      final before = notifications;
+
+      controller.setGame(Game.worldIceborne);
+
+      final state = controller.state as MonsterListLoaded;
+      expect(state.sections.map((s) => s.game), [Game.worldIceborne]);
+      expect(state.selectedId, const MonsterId(Game.wilds, 'arkveld'));
+      expect(state.hasActiveFilters, isTrue);
+      expect(notifications, before + 1);
+    });
+
+    test('setGame(null) shows every game again', () async {
+      await controller.load();
+      controller
+        ..setGame(Game.wilds)
+        ..setGame(null);
+
+      final state = controller.state as MonsterListLoaded;
+      expect(state.sections, hasLength(2));
+      expect(state.hasActiveFilters, isFalse);
+    });
+
+    test('clearFilters resets the game filter', () async {
+      await controller.load();
+      controller
+        ..setGame(Game.riseSunbreak)
+        ..clearFilters();
+
+      final state = controller.state as MonsterListLoaded;
+      expect(state.query.game, isNull);
+      expect(state.sections, hasLength(2));
+    });
+  });
 }
