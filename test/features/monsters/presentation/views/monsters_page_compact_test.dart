@@ -66,13 +66,17 @@ void main() {
   testWidgets('tapping a monster opens its detail; back keeps scroll', (
     tester,
   ) async {
+    final listScrollable = find.descendant(
+      of: find.byType(CustomScrollView),
+      matching: find.byType(Scrollable),
+    );
     await controller.load();
     await pumpPage(tester);
 
-    await tester.drag(find.byType(Scrollable).first, const Offset(0, -600));
+    await tester.drag(listScrollable, const Offset(0, -600));
     await tester.pumpAndSettle();
     final offsetBefore = tester
-        .state<ScrollableState>(find.byType(Scrollable).first)
+        .state<ScrollableState>(listScrollable)
         .position
         .pixels;
     expect(offsetBefore, greaterThan(0));
@@ -97,7 +101,7 @@ void main() {
     expect(find.byType(MonsterDetailPage), findsNothing);
     expect(controller.selectedMonster, isNull);
     final offsetAfter = tester
-        .state<ScrollableState>(find.byType(Scrollable).first)
+        .state<ScrollableState>(listScrollable)
         .position
         .pixels;
     expect(offsetAfter, offsetBefore);

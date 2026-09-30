@@ -155,4 +155,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get clearFilters => 'Limpar filtros';
+
+  @override
+  String get searchHint => 'Buscar monstro';
+
+  @override
+  String get clearSearch => 'Limpar busca';
 }

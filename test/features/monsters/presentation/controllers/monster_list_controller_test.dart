@@ -146,4 +146,46 @@ void main() {
       expect(state.sections, hasLength(2));
     });
   });
+
+  group('US3 search', () {
+    test(
+      'setSearchText re-filters and keeps game filter and selection',
+      () async {
+        await controller.load();
+        controller
+          ..setGame(Game.worldIceborne)
+          ..select(const MonsterId(Game.wilds, 'arkveld'))
+          ..setSearchText('rath');
+
+        final state = controller.state as MonsterListLoaded;
+        expect(state.query.text, 'rath');
+        expect(state.query.game, Game.worldIceborne);
+        expect(state.selectedId, const MonsterId(Game.wilds, 'arkveld'));
+        expect(state.sections.single.monsters.single.name.en, 'Rathalos');
+      },
+    );
+
+    test(
+      'non-matching text gives an empty state with active filters',
+      () async {
+        await controller.load();
+        controller.setSearchText('zzz');
+
+        final state = controller.state as MonsterListLoaded;
+        expect(state.isEmpty, isTrue);
+        expect(state.hasActiveFilters, isTrue);
+      },
+    );
+
+    test('clearFilters also clears the text', () async {
+      await controller.load();
+      controller
+        ..setSearchText('zzz')
+        ..clearFilters();
+
+      final state = controller.state as MonsterListLoaded;
+      expect(state.query.text, isEmpty);
+      expect(state.sections, hasLength(2));
+    });
+  });
 }

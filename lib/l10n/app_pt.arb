@@ -68,5 +68,8 @@
   "gameFilterLabel": "Filtrar por jogo",
   "noResults": "Nenhum monstro encontrado",
   "activeFiltersHint": "Há filtros ativos.",
-  "clearFilters": "Limpar filtros"
+  "clearFilters": "Limpar filtros",
+
+  "searchHint": "Buscar monstro",
+  "clearSearch": "Limpar busca"
 }

@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_query.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/monster_section.dart';
 import 'package:mh_wiki/features/monsters/domain/usecases/filter_monsters.dart';
 
 import '../../../../fakes/monster_fixtures.dart';
@@ -78,6 +79,70 @@ void main() {
       for (final section in sections) {
         expect(section.monsters.single.id.game, section.game);
       }
+    });
+  });
+
+  group('text search (US3)', () {
+    final searchable = [
+      buildMonster(slug: 'rathalos', en: 'Rathalos'),
+      buildMonster(slug: 'rathian', en: 'Rathian'),
+      buildMonster(
+        slug: 'pink-rathian',
+        en: 'Pink Rathian',
+        ptBr: 'Rathian Rosa',
+      ),
+      buildMonster(slug: 'anjanath', en: 'Anjanath'),
+      buildMonster(game: Game.wilds, slug: 'rathalos', en: 'Rathalos'),
+      buildMonster(
+        game: Game.wilds,
+        slug: 'jin-dahaad',
+        en: 'Jin Dahaad',
+        ptBr: 'Jin Dahaad',
+      ),
+    ];
+
+    List<String> names(List<MonsterSection> sections) => [
+      for (final section in sections)
+        for (final m in section.monsters)
+          '${m.id.game.datasetKey}/${m.id.slug}',
+    ];
+
+    test('partial match', () {
+      final result = filter(searchable, const MonsterQuery(text: 'rath'));
+      expect(names(result), [
+        'world_iceborne/rathalos',
+        'world_iceborne/rathian',
+        'world_iceborne/pink-rathian',
+        'wilds/rathalos',
+      ]);
+    });
+
+    test('case and accent insensitive', () {
+      expect(
+        names(filter(searchable, const MonsterQuery(text: 'RÁTH'))),
+        names(filter(searchable, const MonsterQuery(text: 'rath'))),
+      );
+    });
+
+    test('matches the English name while pt-BR is displayed (FR-023)', () {
+      final result = filter(searchable, const MonsterQuery(text: 'pink'));
+      expect(names(result), ['world_iceborne/pink-rathian']);
+      expect(
+        result.single.monsters.single.name.resolve(NameLanguage.ptBr),
+        'Rathian Rosa',
+      );
+    });
+
+    test('combines with the game filter (FR-005)', () {
+      final result = filter(
+        searchable,
+        const MonsterQuery(text: 'rath', game: Game.wilds),
+      );
+      expect(names(result), ['wilds/rathalos']);
+    });
+
+    test('no match gives no sections', () {
+      expect(filter(searchable, const MonsterQuery(text: 'zzz')), isEmpty);
     });
   });
 }

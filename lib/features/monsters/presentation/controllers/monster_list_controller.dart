@@ -70,6 +70,13 @@ final class MonsterListController extends ChangeNotifier {
     _emit();
   }
 
+  /// Called on every keystroke (FR-005).
+  void setSearchText(String text) {
+    if (text == _query.text) return;
+    _query = _query.copyWith(text: text);
+    _emit();
+  }
+
   void clearFilters() {
     _query = MonsterQuery(language: _query.language);
     _emit();

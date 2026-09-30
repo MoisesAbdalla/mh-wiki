@@ -363,6 +363,18 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Limpar filtros'**
   String get clearFilters;
+
+  /// No description provided for @searchHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Buscar monstro'**
+  String get searchHint;
+
+  /// No description provided for @clearSearch.
+  ///
+  /// In pt, this message translates to:
+  /// **'Limpar busca'**
+  String get clearSearch;
 }
 
 class _AppLocalizationsDelegate

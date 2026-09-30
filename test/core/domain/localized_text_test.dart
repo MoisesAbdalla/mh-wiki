@@ -30,4 +30,27 @@ void main() {
       isNot(const LocalizedText(en: 'A')),
     );
   });
+
+  group('LocalizedText.matches (US3)', () {
+    test('matches the English or the pt-BR name', () {
+      const text = LocalizedText(en: 'Flying Wyvern', ptBr: 'Wyvern Voadora');
+      expect(text.matches('flying'), isTrue);
+      expect(text.matches('voadora'), isTrue);
+      expect(text.matches('temnoceran'), isFalse);
+    });
+
+    test('matches accents and case regardless of the query form', () {
+      const text = LocalizedText(en: 'Dragon', ptBr: 'Dragão');
+      expect(text.matches('dragao'), isTrue);
+    });
+
+    test('without pt-BR only English is searched', () {
+      const text = LocalizedText(en: 'Arkveld');
+      expect(text.matches('arkv'), isTrue);
+    });
+
+    test('an empty query matches everything', () {
+      expect(const LocalizedText(en: 'Arkveld').matches(''), isTrue);
+    });
+  });
 }

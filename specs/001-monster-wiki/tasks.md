@@ -163,19 +163,19 @@ combined with the game filter.
 
 ### Tests for User Story 3 (write first, must fail) ⚠️
 
-- [ ] T060 [P] [US3] Unit test `normalizeForSearch` (lowercase; á à â ã ä é ê í ó ô õ ú ü ç ñ folded; trims; empty stays empty) in `test/core/domain/search_normalizer_test.dart`
-- [ ] T061 [P] [US3] Unit test `LocalizedText.matches` (matches en or ptBr; ptBr null → en only) in `test/core/domain/localized_text_test.dart`
-- [ ] T062 [P] [US3] Extend `FilterMonsters` tests: partial match; case/accent-insensitive; matches English name while displaying pt-BR; AND with game filter; no match → empty list in `test/features/monsters/domain/usecases/filter_monsters_test.dart`
-- [ ] T063 [P] [US3] Extend controller tests: `setSearchText` re-filters on each call, keeps game filter and selection; `clearFilters` clears text too in `test/features/monsters/presentation/controllers/monster_list_controller_test.dart`
-- [ ] T064 [P] [US3] Widget test `SearchField` + list: typing "rath" filters as you type; clear (×) button restores list; no-match empty state and "Limpar filtros" in `test/features/monsters/presentation/views/search_test.dart`
+- [X] T060 [P] [US3] Unit test `normalizeForSearch` (lowercase; á à â ã ä é ê í ó ô õ ú ü ç ñ folded; trims; empty stays empty) in `test/core/domain/search_normalizer_test.dart`
+- [X] T061 [P] [US3] Unit test `LocalizedText.matches` (matches en or ptBr; ptBr null → en only) in `test/core/domain/localized_text_test.dart`
+- [X] T062 [P] [US3] Extend `FilterMonsters` tests: partial match; case/accent-insensitive; matches English name while displaying pt-BR; AND with game filter; no match → empty list in `test/features/monsters/domain/usecases/filter_monsters_test.dart`
+- [X] T063 [P] [US3] Extend controller tests: `setSearchText` re-filters on each call, keeps game filter and selection; `clearFilters` clears text too in `test/features/monsters/presentation/controllers/monster_list_controller_test.dart`
+- [X] T064 [P] [US3] Widget test `SearchField` + list: typing "rath" filters as you type; clear (×) button restores list; no-match empty state and "Limpar filtros" in `test/features/monsters/presentation/views/search_test.dart`
 
 ### Implementation for User Story 3
 
-- [ ] T065 [P] [US3] Implement `normalizeForSearch` with explicit diacritic map (pure Dart) in `lib/core/domain/search_normalizer.dart` (makes T060 pass)
-- [ ] T066 [US3] Add `matches(String normalizedQuery)` to `LocalizedText` in `lib/core/domain/localized_text.dart` (makes T061 pass)
-- [ ] T067 [US3] Implement text filtering in `FilterMonsters` in `lib/features/monsters/domain/usecases/filter_monsters.dart` (makes T062 pass)
-- [ ] T068 [US3] Add `setSearchText(String)` to `MonsterListController` and include text in `clearFilters` in `lib/features/monsters/presentation/controllers/monster_list_controller.dart` (makes T063 pass)
-- [ ] T069 [US3] Add search strings (hint "Buscar monstro", clear tooltip) to `lib/l10n/app_pt.arb`; implement `SearchField` in `lib/features/monsters/presentation/views/widgets/search_field.dart` and place it above the filter bar in `monster_list_pane.dart` (makes T064 pass)
+- [X] T065 [P] [US3] Implement `normalizeForSearch` with explicit diacritic map (pure Dart) in `lib/core/domain/search_normalizer.dart` (makes T060 pass)
+- [X] T066 [US3] Add `matches(String normalizedQuery)` to `LocalizedText` in `lib/core/domain/localized_text.dart` (makes T061 pass)
+- [X] T067 [US3] Implement text filtering in `FilterMonsters` in `lib/features/monsters/domain/usecases/filter_monsters.dart` (makes T062 pass)
+- [X] T068 [US3] Add `setSearchText(String)` to `MonsterListController` and include text in `clearFilters` in `lib/features/monsters/presentation/controllers/monster_list_controller.dart` (makes T063 pass)
+- [X] T069 [US3] Add search strings (hint "Buscar monstro", clear tooltip) to `lib/l10n/app_pt.arb`; implement `SearchField` in `lib/features/monsters/presentation/views/widgets/search_field.dart` and place it above the filter bar in `monster_list_pane.dart` (makes T064 pass)
 - [ ] T070 [US3] Run gates and quickstart scenarios 4 and 7; commit
 
 **Checkpoint**: all three user stories independently functional.

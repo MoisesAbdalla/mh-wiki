@@ -6,6 +6,7 @@ import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/monsters/presentation/models/monster_list_state.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/game_filter_bar.dart';
+import 'package:mh_wiki/features/monsters/presentation/views/widgets/search_field.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
 /// The monster list with its loading, error and partial-failure states.
@@ -109,6 +110,10 @@ class _LoadedList extends StatelessWidget {
             leading: const Icon(Icons.warning_amber),
             actions: const [SizedBox.shrink()],
           ),
+        SearchField(
+          text: state.query.text,
+          onChanged: controller.setSearchText,
+        ),
         GameFilterBar(
           selected: state.query.game,
           onChanged: controller.setGame,

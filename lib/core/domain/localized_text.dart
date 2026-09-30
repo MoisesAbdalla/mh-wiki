@@ -1,4 +1,5 @@
 import 'package:mh_wiki/core/domain/name_language.dart';
+import 'package:mh_wiki/core/domain/search_normalizer.dart';
 
 /// Game content text with its official English and (optional) pt-BR names.
 final class LocalizedText {
@@ -14,6 +15,15 @@ final class LocalizedText {
     NameLanguage.ptBr => ptBr ?? en,
     NameLanguage.en => en,
   };
+
+  /// Whether the English or pt-BR name contains [query], ignoring case and
+  /// accents, whatever language is displayed (FR-004, FR-023).
+  bool matches(String query) {
+    final needle = normalizeForSearch(query);
+    if (needle.isEmpty) return true;
+    return normalizeForSearch(en).contains(needle) ||
+        (ptBr != null && normalizeForSearch(ptBr!).contains(needle));
+  }
 
   @override
   bool operator ==(Object other) =>
