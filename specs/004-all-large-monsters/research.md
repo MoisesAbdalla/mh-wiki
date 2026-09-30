@@ -79,7 +79,7 @@ party factors, item reactions) are reused unchanged unless stated.
 
 - **Roster**: 34 large monsters on the Kiranico list (game version 1.040). Written to
   `tool/data/rosters/wilds.json` by `tool/data/roster_wilds.py`. The result is 31 base rows and
-  33 versions.
+  38 versions (arch-tempered added on 2026-09-30, see below).
 - **Guardians**:
   - Guardian Rathalos, Guardian Doshaguma and Guardian Arkveld are `guardian` versions. They
     have their own pages, and all their sections are their own.
@@ -96,8 +96,20 @@ party factors, item reactions) are reused unchanged unless stated.
   - Tempered HP: no quest lists it, so the HP section shows unknown.
   - Guardian Rathalos and Guardian Doshaguma also list tempered drops. They are versions
     themselves, and versions of versions are not modelled, so those drops are left out.
-- **Arch-tempered**: none. The wiki has only a moveset note (Rey Dau, Uth Duna, Nu Udra,
-  Arkveld, Jin Dahaad), and the event quests with their HP and rewards are not on Kiranico.
+- **Arch-tempered** (revised 2026-09-30, after the manual check): 5 `archTempered` versions,
+  Rey Dau, Uth Duna, Nu Udra, Jin Dahaad and Arkveld. They match the wiki category "MHWilds
+  Arch-Tempered Monster Icons".
+  - First pass: none. Only the monster pages and Kiranico were checked, and they have no
+    arch-tempered data. That missed the quest pages.
+  - Own data: the Monster Hunter Wiki quest pages whose target template has
+    `Type=Arch Tempered` (14 event, challenge and ★10 quests; `roster_wilds.py` scans the
+    "MHWilds Quests" category through the wiki API). Each version lists its quests in the roster.
+  - Drops: the quest rewards that are the monster's own materials, meaning items named after it
+    or among the base's drops. Spheres, charms and emblems are left out. They are High Rank
+    `questReward` rows without a rate, because quest pages give none.
+  - HP: unknown. Kiranico's quest list does not include these quests.
+  - The icon is the base icon (R7). All other sections are inherited from the base.
+  - "Certificate γ" gets its own id (`-gamma`). Before, it collided with "Certificate".
 - **Frenzied**: none. The wiki only mentions frenzy quest names.
 - **Without wiki drop tables**: Guardian Arkveld (its HP comes from two Low Rank quests) and
   Omega Planetes (collab). Their drops stay empty ("Sem materiais").

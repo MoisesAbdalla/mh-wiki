@@ -44,7 +44,7 @@ def clean(t):
 
 
 def slug(t):
-    t = t.lower().replace("'", '').replace('+', '-plus')
+    t = t.lower().replace("'", '').replace('+', '-plus').replace('γ', '-gamma')
     return re.sub(r'[^a-z0-9]+', '-', t).strip('-')
 
 
@@ -187,9 +187,60 @@ def tempered_version(entry, materials):
     }
 
 
+def quest_texts():
+    """{quest page title: wikitext} from the pages cached by roster_wilds.py."""
+    texts = {}
+    for name in sorted(f for f in os.listdir('.') if f.startswith('wiki_wilds_quest_text_')):
+        for p in json.load(open(name, encoding='utf8'))['query']['pages'].values():
+            texts[p['title']] = p['revisions'][0]['slots']['main']['*']
+    return texts
+
+
+def arch_tempered_version(entry, materials, base, texts):
+    """An arch-tempered version: the rewards of its quests that are the monster's own
+    materials (named after it or among the base's drops). Quest pages give no rates."""
+    base_slug = entry['versionOf']
+    en_items, _ = kiranico_page(payload(fetch(f'{KIRANICO}/data/monsters/{base_slug}',
+                                              f'cache_wilds_{base_slug}_en.html')))
+    base_name = base['name']['en']
+    base_mats = {d['materialId'] for d in base['drops']}
+    drops, sources = {}, []
+    for title in entry['quests']:
+        text = texts[title]
+        rank = re.search(r'\|Rank\s*=\s*(\w+)', text).group(1).lower()
+        stars = re.search(r'\|Rank Level\s*=\s*(\d+)', text).group(1)
+        rewards = re.search(r'==\s*Rewards\s*==(.*?)(?:\n==[^=]|$)', text, re.S)
+        items = re.findall(r'\{\{#invoke:MHWildsItem\|iconSmall\|([^}|]+)\}\}', rewards.group(1) if rewards else '')
+        own = [i.strip() for i in items if i.startswith(base_name + ' ') or slug(i) in base_mats]
+        for item in own:
+            mid = material_of(item, en_items, materials)
+            drops.setdefault((mid, rank), {'materialId': mid, 'rank': rank, 'method': 'questReward'})
+        name = title.removesuffix(' (MHWilds Quest)')
+        sources.append({'name': f'Monster Hunter Wiki (MHWilds quest): {name}',
+                        'url': MHWIKI + title.replace(' ', '_'),
+                        'notes': f'★{stars} {rank.capitalize()} Rank quest with Arch-Tempered {base_name}. '
+                                 f'Rewards that are {base_name} materials (the page has no rates).'})
+    sources[0]['notes'] += (' Kiranico does not list these quests, so HP is unknown. Weaknesses, parts, '
+                            'habitats, item reactions and classification are the base\'s.')
+    return {
+        'slug': entry['slug'],
+        'versionOf': base_slug,
+        'versionKind': entry['versionKind'],
+        'name': {'en': entry['name']},
+        'drops': list(drops.values()),
+        'sources': sources,
+    }
+
+
 def build():
     habitats, materials, monsters = {}, {}, []
+    texts = quest_texts()
     for entry in ROSTER:
+        if entry.get('dataFrom') == 'wikiArchTemperedQuests':
+            base = next(m for m in monsters if m['slug'] == entry['versionOf'])
+            monsters.append(arch_tempered_version(entry, materials, base, texts))
+            print(entry['slug'], '| drops', [d['materialId'] for d in monsters[-1]['drops']])
+            continue
         if entry.get('dataFrom') == 'baseWikiTemperedDrops':
             monsters.append(tempered_version(entry, materials))
             print(entry['slug'], '| drops', len(monsters[-1]['drops']))

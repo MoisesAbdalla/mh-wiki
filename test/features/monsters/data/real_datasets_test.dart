@@ -8,6 +8,7 @@ import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/features/monsters/data/datasources/asset_monster_datasource.dart';
 import 'package:mh_wiki/features/monsters/data/dtos/monster_dataset_dto.dart';
 import 'package:mh_wiki/features/monsters/data/dtos/monster_dataset_mapper.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/drop_method.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/hunting_info.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/item_reaction.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
@@ -195,6 +196,37 @@ void main() {
       expect(guardian.versionOf?.slug, 'rathalos');
       expect(guardian.versionKind, VersionKind.guardian);
       expect(guardian.inheritedSections, isEmpty);
+    });
+
+    test('Wilds arch-tempered versions come from their quests', () async {
+      final monsters = await load(Game.wilds);
+      final arch = monsters.where(
+        (m) => m.versionKind == VersionKind.archTempered,
+      );
+      expect(arch.map((m) => m.versionOf!.slug).toSet(), {
+        'rey-dau',
+        'uth-duna',
+        'nu-udra',
+        'jin-dahaad',
+        'arkveld',
+      });
+      for (final m in arch) {
+        // Event quests are not on Kiranico: no HP, rewards without rates.
+        expect(m.huntingInfo.hp, isEmpty, reason: '${m.id}');
+        expect(m.drops, isNotEmpty, reason: '${m.id}');
+        for (final d in m.drops) {
+          expect(d.rank, Rank.high, reason: '${m.id}');
+          expect(d.method, DropMethod.questReward, reason: '${m.id}');
+          expect(d.ratePercent, isNull, reason: '${m.id}');
+        }
+      }
+      final reyDau = arch.singleWhere(
+        (m) => m.id.slug == 'arch-tempered-rey-dau',
+      );
+      expect(
+        reyDau.drops.map((d) => d.material.name.en),
+        containsAll(['Rey Dau Plate', 'Rey Dau Certificate γ']),
+      );
     });
   });
 

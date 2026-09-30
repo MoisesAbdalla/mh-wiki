@@ -224,6 +224,12 @@
       }
     },
     {
+      "id": "arkveld-certificate-gamma",
+      "name": {
+        "en": "Arkveld Certificate γ"
+      }
+    },
+    {
       "id": "arkveld-certificate-s",
       "name": {
         "en": "Arkveld Certificate S",
@@ -1407,6 +1413,12 @@
       }
     },
     {
+      "id": "jin-dahaad-certificate-gamma",
+      "name": {
+        "en": "Jin Dahaad Certificate γ"
+      }
+    },
+    {
       "id": "jin-dahaad-certificate-s",
       "name": {
         "en": "Jin Dahaad Certificate S",
@@ -2142,6 +2154,12 @@
       }
     },
     {
+      "id": "rey-dau-certificate-gamma",
+      "name": {
+        "en": "Rey Dau Certificate γ"
+      }
+    },
+    {
       "id": "rey-dau-certificate-s",
       "name": {
         "en": "Rey Dau Certificate S",
@@ -2412,6 +2430,12 @@
       "name": {
         "en": "Uth Duna Certificate",
         "ptBr": "Certificado de Uth Duna"
+      }
+    },
+    {
+      "id": "uth-duna-certificate-gamma",
+      "name": {
+        "en": "Uth Duna Certificate γ"
       }
     },
     {
@@ -19401,6 +19425,381 @@
         }
       ],
       "image": "assets/images/monsters/wilds/zoh-shia.webp"
+    },
+    {
+      "slug": "arch-tempered-arkveld",
+      "versionOf": "arkveld",
+      "versionKind": "archTempered",
+      "name": {
+        "en": "Arch-Tempered Arkveld"
+      },
+      "drops": [
+        {
+          "materialId": "arkveld-certificate-s",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "arkveld-scale-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "arkveld-armorplate",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "white-arkveld-pelt",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "arkveld-horn-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "arkveld-tail",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "monster-hardbone",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "arkveld-gem",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "arkveld-certificate-gamma",
+          "rank": "high",
+          "method": "questReward"
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): Event: Unchained Arkveld",
+          "url": "https://monsterhunterwiki.org/wiki/Event:_Unchained_Arkveld_(MHWilds_Quest)",
+          "notes": "★10 High Rank quest with Arch-Tempered Arkveld. Rewards that are Arkveld materials (the page has no rates). Kiranico does not list these quests, so HP is unknown. Weaknesses, parts, habitats, item reactions and classification are the base's."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): Freedom from Solitude",
+          "url": "https://monsterhunterwiki.org/wiki/Freedom_from_Solitude_(MHWilds_Quest)",
+          "notes": "★10 High Rank quest with Arch-Tempered Arkveld. Rewards that are Arkveld materials (the page has no rates)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): Proof of a Hero",
+          "url": "https://monsterhunterwiki.org/wiki/Proof_of_a_Hero_(MHWilds_Quest)",
+          "notes": "★10 High Rank quest with Arch-Tempered Arkveld. Rewards that are Arkveld materials (the page has no rates)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): The Proud Child of the Wilds",
+          "url": "https://monsterhunterwiki.org/wiki/The_Proud_Child_of_the_Wilds_(MHWilds_Quest)",
+          "notes": "★10 High Rank quest with Arch-Tempered Arkveld. Rewards that are Arkveld materials (the page has no rates)."
+        }
+      ],
+      "image": "assets/images/monsters/wilds/arkveld.webp"
+    },
+    {
+      "slug": "arch-tempered-jin-dahaad",
+      "versionOf": "jin-dahaad",
+      "versionKind": "archTempered",
+      "name": {
+        "en": "Arch-Tempered Jin Dahaad"
+      },
+      "drops": [
+        {
+          "materialId": "jin-dahaad-certificate-s",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "jin-dahaad-scale-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "jin-dahaad-carapace",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "jin-dahaad-claw-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "jin-dahaad-horn",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "jin-dahaad-tail",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "freezer-sac",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "jin-dahaad-icegem",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "jin-dahaad-certificate-gamma",
+          "rank": "high",
+          "method": "questReward"
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): Frozen Knells of the East",
+          "url": "https://monsterhunterwiki.org/wiki/Frozen_Knells_of_the_East_(MHWilds_Quest)",
+          "notes": "★10 High Rank quest with Arch-Tempered Jin Dahaad. Rewards that are Jin Dahaad materials (the page has no rates). Kiranico does not list these quests, so HP is unknown. Weaknesses, parts, habitats, item reactions and classification are the base's."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): Heart of Judecca",
+          "url": "https://monsterhunterwiki.org/wiki/Heart_of_Judecca_(MHWilds_Quest)",
+          "notes": "★9 High Rank quest with Arch-Tempered Jin Dahaad. Rewards that are Jin Dahaad materials (the page has no rates)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): The Cold Path to Oblivion",
+          "url": "https://monsterhunterwiki.org/wiki/The_Cold_Path_to_Oblivion_(MHWilds_Quest)",
+          "notes": "★9 High Rank quest with Arch-Tempered Jin Dahaad. Rewards that are Jin Dahaad materials (the page has no rates)."
+        }
+      ],
+      "image": "assets/images/monsters/wilds/jin-dahaad.webp"
+    },
+    {
+      "slug": "arch-tempered-nu-udra",
+      "versionOf": "nu-udra",
+      "versionKind": "archTempered",
+      "name": {
+        "en": "Arch-Tempered Nu Udra"
+      },
+      "drops": [
+        {
+          "materialId": "nu-udra-certificate-s",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "nu-udra-hide-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "nu-udra-oilmucus-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "nu-udra-spike-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "nu-udra-horn-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "nu-udra-tentacle-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "nu-udra-cerebrospinal-fluid",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "nu-udra-flamegem",
+          "rank": "high",
+          "method": "questReward"
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): Event: Dreams May Soar",
+          "url": "https://monsterhunterwiki.org/wiki/Event:_Dreams_May_Soar_(MHWilds_Quest)",
+          "notes": "★9 High Rank quest with Arch-Tempered Nu Udra. Rewards that are Nu Udra materials (the page has no rates). Kiranico does not list these quests, so HP is unknown. Weaknesses, parts, habitats, item reactions and classification are the base's."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): Proof of a Hero",
+          "url": "https://monsterhunterwiki.org/wiki/Proof_of_a_Hero_(MHWilds_Quest)",
+          "notes": "★10 High Rank quest with Arch-Tempered Nu Udra. Rewards that are Nu Udra materials (the page has no rates)."
+        }
+      ],
+      "image": "assets/images/monsters/wilds/nu-udra.webp"
+    },
+    {
+      "slug": "arch-tempered-rey-dau",
+      "versionOf": "rey-dau",
+      "versionKind": "archTempered",
+      "name": {
+        "en": "Arch-Tempered Rey Dau"
+      },
+      "drops": [
+        {
+          "materialId": "rey-dau-certificate-s",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "rey-dau-scale-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "rey-dau-carapace",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "rey-dau-fulgurtalon",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "rey-dau-bolthorn",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "rey-dau-tail",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "rey-dau-plate",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "rey-dau-boltgem",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "rey-dau-certificate-gamma",
+          "rank": "high",
+          "method": "questReward"
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): A Silent Flash",
+          "url": "https://monsterhunterwiki.org/wiki/A_Silent_Flash_(MHWilds_Quest)",
+          "notes": "★8 High Rank quest with Arch-Tempered Rey Dau. Rewards that are Rey Dau materials (the page has no rates). Kiranico does not list these quests, so HP is unknown. Weaknesses, parts, habitats, item reactions and classification are the base's."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): Proof of a Hero",
+          "url": "https://monsterhunterwiki.org/wiki/Proof_of_a_Hero_(MHWilds_Quest)",
+          "notes": "★10 High Rank quest with Arch-Tempered Rey Dau. Rewards that are Rey Dau materials (the page has no rates)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): Ruler of the Desert Kingdom",
+          "url": "https://monsterhunterwiki.org/wiki/Ruler_of_the_Desert_Kingdom_(MHWilds_Quest)",
+          "notes": "★10 High Rank quest with Arch-Tempered Rey Dau. Rewards that are Rey Dau materials (the page has no rates)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): The Shining Storm Rages",
+          "url": "https://monsterhunterwiki.org/wiki/The_Shining_Storm_Rages_(MHWilds_Quest)",
+          "notes": "★8 High Rank quest with Arch-Tempered Rey Dau. Rewards that are Rey Dau materials (the page has no rates)."
+        }
+      ],
+      "image": "assets/images/monsters/wilds/rey-dau.webp"
+    },
+    {
+      "slug": "arch-tempered-uth-duna",
+      "versionOf": "uth-duna",
+      "versionKind": "archTempered",
+      "name": {
+        "en": "Arch-Tempered Uth Duna"
+      },
+      "drops": [
+        {
+          "materialId": "uth-duna-certificate-s",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "uth-duna-scale-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "uth-duna-hide-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "uth-duna-cilia-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "uth-duna-claw-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "uth-duna-tentacle-plus",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "torrent-sac",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "uth-duna-plate",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "uth-duna-watergem",
+          "rank": "high",
+          "method": "questReward"
+        },
+        {
+          "materialId": "uth-duna-certificate-gamma",
+          "rank": "high",
+          "method": "questReward"
+        }
+      ],
+      "sources": [
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): Proof of a Hero",
+          "url": "https://monsterhunterwiki.org/wiki/Proof_of_a_Hero_(MHWilds_Quest)",
+          "notes": "★10 High Rank quest with Arch-Tempered Uth Duna. Rewards that are Uth Duna materials (the page has no rates). Kiranico does not list these quests, so HP is unknown. Weaknesses, parts, habitats, item reactions and classification are the base's."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): Summons from the Land Beyond",
+          "url": "https://monsterhunterwiki.org/wiki/Summons_from_the_Land_Beyond_(MHWilds_Quest)",
+          "notes": "★10 High Rank quest with Arch-Tempered Uth Duna. Rewards that are Uth Duna materials (the page has no rates)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): The Daunting Downpour",
+          "url": "https://monsterhunterwiki.org/wiki/The_Daunting_Downpour_(MHWilds_Quest)",
+          "notes": "★8 High Rank quest with Arch-Tempered Uth Duna. Rewards that are Uth Duna materials (the page has no rates)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWilds quest): These Roots Run Deep",
+          "url": "https://monsterhunterwiki.org/wiki/These_Roots_Run_Deep_(MHWilds_Quest)",
+          "notes": "★8 High Rank quest with Arch-Tempered Uth Duna. Rewards that are Uth Duna materials (the page has no rates)."
+        }
+      ],
+      "image": "assets/images/monsters/wilds/uth-duna.webp"
     }
   ]
 }

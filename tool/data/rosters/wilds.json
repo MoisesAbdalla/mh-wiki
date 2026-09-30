@@ -447,6 +447,78 @@
       "versionKind": "tempered",
       "dataFrom": "baseWikiTemperedDrops",
       "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-arkveld",
+      "name": "Arch-Tempered Arkveld",
+      "wiki": "Arkveld",
+      "versionOf": "arkveld",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiArchTemperedQuests",
+      "quests": [
+        "Event: Unchained Arkveld (MHWilds Quest)",
+        "Freedom from Solitude (MHWilds Quest)",
+        "Proof of a Hero (MHWilds Quest)",
+        "The Proud Child of the Wilds (MHWilds Quest)"
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-jin-dahaad",
+      "name": "Arch-Tempered Jin Dahaad",
+      "wiki": "Jin_Dahaad",
+      "versionOf": "jin-dahaad",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiArchTemperedQuests",
+      "quests": [
+        "Frozen Knells of the East (MHWilds Quest)",
+        "Heart of Judecca (MHWilds Quest)",
+        "The Cold Path to Oblivion (MHWilds Quest)"
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-nu-udra",
+      "name": "Arch-Tempered Nu Udra",
+      "wiki": "Nu_Udra",
+      "versionOf": "nu-udra",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiArchTemperedQuests",
+      "quests": [
+        "Event: Dreams May Soar (MHWilds Quest)",
+        "Proof of a Hero (MHWilds Quest)"
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-rey-dau",
+      "name": "Arch-Tempered Rey Dau",
+      "wiki": "Rey_Dau",
+      "versionOf": "rey-dau",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiArchTemperedQuests",
+      "quests": [
+        "A Silent Flash (MHWilds Quest)",
+        "Proof of a Hero (MHWilds Quest)",
+        "Ruler of the Desert Kingdom (MHWilds Quest)",
+        "The Shining Storm Rages (MHWilds Quest)"
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-uth-duna",
+      "name": "Arch-Tempered Uth Duna",
+      "wiki": "Uth_Duna",
+      "versionOf": "uth-duna",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiArchTemperedQuests",
+      "quests": [
+        "Proof of a Hero (MHWilds Quest)",
+        "Summons from the Land Beyond (MHWilds Quest)",
+        "The Daunting Downpour (MHWilds Quest)",
+        "These Roots Run Deep (MHWilds Quest)"
+      ],
+      "icon": "base"
     }
   ]
 }
