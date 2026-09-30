@@ -43,15 +43,15 @@ description: "Task list for 003-hunting-info implementation"
 
 ### Tests ⚠️
 
-- [ ] T007 [P] [US1] Unit test `RankHp.partyEstimate(players)` (min/max rounded to 10; single value when min == max; `null` without factors) in `test/features/monsters/domain/entities/rank_hp_test.dart`
-- [ ] T008 [P] [US1] Widget test `HpSection` in `test/features/monsters/presentation/views/widgets/hp_section_test.dart`: rows per rank in pt-BR number format ("20.800"); "a partir de" for `minQuest`; party rows "Grupo (aprox.)" for 2/3/4 with ranges and "Fonte: Fextralife"; "Desconhecido" without factors; "HP desconhecido" without hp
+- [X] T007 [P] [US1] Unit test `RankHp.partyEstimate(players)` (min/max rounded to 10; single value when min == max; `null` without factors) in `test/features/monsters/domain/entities/rank_hp_test.dart`
+- [X] T008 [P] [US1] Widget test `HpSection` in `test/features/monsters/presentation/views/widgets/hp_section_test.dart`: rows per rank in pt-BR number format ("20.800"); "a partir de" for `minQuest`; party rows "Grupo (aprox.)" for 2/3/4 with ranges and "Fonte: Fextralife"; "Desconhecido" without factors; "HP desconhecido" without hp
 
 ### Implementation
 
-- [ ] T009 [US1] Implement `partyEstimate` in `lib/features/monsters/domain/entities/rank_hp.dart` (makes T007 pass)
-- [ ] T010 [US1] Implement `HpSection` (HunterPanel, rank rows, party block, source line, semantics per row) in `lib/features/monsters/presentation/views/widgets/hp_section.dart` and insert it after `WeaknessSection` in `lib/features/monsters/presentation/views/widgets/monster_detail_view.dart` (makes T008 pass)
-- [ ] T011 [US1] Scratchpad script (not shipped): extract solo HP per rank per research R1 — World: Kiranico expeditions (lowest per rank; fallback lowest regular quest by ★ prefix); Rise: Kiranico quest table (Village, Gathering Hub 1–7★, MR; lowest HP); Wilds: Kiranico `/data/quests` (Assignments/Optional; rank read from each quest page); write `hp` for the 30 monsters and `partyHpFactors` (World: Fextralife 1.5 / 2.2–2.6 / 2.2–2.6; Wilds: 1.63 / 2.00 / 2.34; Rise: none) with sources into `assets/data/*/monsters.json`
-- [ ] T012 [US1] Extend `test/features/monsters/data/real_datasets_test.dart`: every monster has ≥1 `hp` entry; World Rathalos = 4908 / 6565 / 20800 (spot check against Kiranico); run gates; commit
+- [X] T009 [US1] Implement `partyEstimate` in `lib/features/monsters/domain/entities/rank_hp.dart` (makes T007 pass)
+- [X] T010 [US1] Implement `HpSection` (HunterPanel, rank rows, party block, source line, semantics per row) in `lib/features/monsters/presentation/views/widgets/hp_section.dart` and insert it after `WeaknessSection` in `lib/features/monsters/presentation/views/widgets/monster_detail_view.dart` (makes T008 pass)
+- [X] T011 [US1] Scratchpad script (not shipped): extract solo HP per rank per research R1 — World: Kiranico expeditions (lowest per rank; fallback lowest regular quest by ★ prefix); Rise: Kiranico quest table (Village, Gathering Hub 1–7★, MR; lowest HP); Wilds: Kiranico `/data/quests` (Assignments/Optional; rank read from each quest page); write `hp` for the 30 monsters and `partyHpFactors` (World: Fextralife 1.5 / 2.2–2.6 / 2.2–2.6; Wilds: 1.63 / 2.00 / 2.34; Rise: none) with sources into `assets/data/*/monsters.json`
+- [X] T012 [US1] Extend `test/features/monsters/data/real_datasets_test.dart`: every monster has ≥1 `hp` entry; World Rathalos = 4908 / 6565 / 20800 (spot check against Kiranico); run gates; commit
 
 **Checkpoint**: MVP — HP visible for all 30 monsters.
 

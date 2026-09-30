@@ -15,10 +15,15 @@
   Challenge, Gathering Hub 8★ (special). Reference = lowest HP of the rank (`basis: minQuest`,
   shown as "a partir de").
 - **Wilds**: Kiranico quest list (`/data/quests`): "[Category N★] name", monsters and HP per
-  monster. Regular categories only (`Assignments`, `Optional`); rank taken from the quest page's
-  rank label, never guessed from stars; quests whose rank cannot be read are skipped. Reference =
+  monster. Regular categories only (`Assignments`, `Optional Quests`). The quest pages carry no
+  rank label (checked during implementation), so the rank comes from the stars: 1–3★ Low Rank,
+  4★+ High Rank — the HP jump is unambiguous (Chatacabra 4,000 at 1★ → 10,080 at 4★). Reference =
   lowest HP of the rank (`basis: minQuest`). The monster page's `BaseHealth` is a raw base value,
   not a quest HP, and is not used.
+- **Outliers (implementation)**: "lowest regular quest" is taken after dropping values under 80% of
+  the rank's median — multi-monster and special variants (e.g. World Alatreon 10,250 vs 52,500;
+  Rise MR Rathalos 18,130 vs 33,320). World quests named Arena/Challenge/Event are excluded.
+- **Gaps**: Kiranico World has no Master Rank data for Nergigante; that rank is omitted.
 - **Decision**: store per monster `hp: [{rank, solo, basis, source}]`; absent ranks are omitted.
 
 ## R2. Party HP (estimate)
@@ -29,9 +34,12 @@ app and always labeled "aprox." with the source:
 | Game | 2 players | 3 players | 4 players | Source |
 |------|-----------|-----------|-----------|--------|
 | World: Iceborne | ×1.5 | ×2.2–2.6 | ×2.2–2.6 | [Fextralife – Multiplayer](https://monsterhunterworld.wiki.fextralife.com/Multiplayer) ("about 150%", "about 220%–260%") |
-| Rise: Sunbreak | — | — | — | No numeric source ([Game8](https://game8.co/games/Monster-Hunter-Rise/archives/322653) gives none) → "Desconhecido" |
-| Wilds | ×1.63 | ×2.00 | ×2.34 | Community testing, [Switchblade Gaming](https://www.switchbladegaming.com/monster-hunter-wilds/multiplayer/) |
+| Rise: Sunbreak | ×1.35–1.5 | ×1.7–2.0 | ×2.0–2.4 | Kiranico quest pages (per-player HP): HR hub ×1.5/2.0/2.4, MR ×1.35/1.7/2.0 |
+| Wilds | ×1.6 | ×2.0 | ×2.4 | Kiranico quest pages (per-player HP, game data), same in LR and HR |
 
+- **Update (implementation)**: Kiranico's Rise and Wilds quest pages list HP for 1–4 players, so
+  both games use game data instead of "Desconhecido" (Rise) and the community estimate
+  1.63/2.00/2.34 (Wilds). Kiranico World ignores the player count, so World keeps Fextralife.
 - **Rationale**: user decision (clarify Q2 = A): a sourced, labeled estimate beats no information;
   nothing unsourced is shown.
 

@@ -13,7 +13,7 @@
 ### Session 2026-09-30
 
 - Q: Qual HP mostrar? → A: Um valor de referência por rank (Baixo/Alto/Mestre), solo e em grupo; missões especiais e eventos ficam de fora.
-- Q: Como tratar HP em grupo e "anda em grupo", dado que as fontes não têm valores oficiais? → A: HP solo por rank nos três jogos (em Rise e Wilds, o menor HP das missões normais do rank, exibido como "a partir de"); HP em grupo como estimativa rotulada "aprox." com fonte onde houver (World, Wilds) e "Desconhecido" em Rise; "anda em grupo" fora do escopo.
+- Q: Como tratar HP em grupo e "anda em grupo", dado que as fontes não têm valores oficiais? → A: HP solo por rank nos três jogos (em Rise e Wilds, o menor HP das missões normais do rank, exibido como "a partir de"); HP em grupo como estimativa rotulada "aprox." com fonte onde houver (World, Wilds) e "Desconhecido" em Rise; "anda em grupo" fora do escopo. *(Atualizado na implementação: as páginas de missão do Kiranico trazem o HP por número de jogadores em Rise e Wilds, então os dois jogos usam esses fatores; World segue com a Fextralife.)*
 
 ## User Scenarios & Testing *(mandatory)*
 

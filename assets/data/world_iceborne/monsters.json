@@ -981,6 +981,25 @@
       }
     }
   ],
+  "partyHpFactors": {
+    "2": {
+      "min": 1.5,
+      "max": 1.5
+    },
+    "3": {
+      "min": 2.2,
+      "max": 2.6
+    },
+    "4": {
+      "min": 2.2,
+      "max": 2.6
+    },
+    "source": {
+      "name": "Fextralife",
+      "url": "https://monsterhunterworld.wiki.fextralife.com/Multiplayer",
+      "notes": "Multiplayer HP scaling: about 150% for 2 hunters, about 220%-260% for 3-4. Applied to the solo reference HP; shown as an approximation."
+    }
+  },
   "monsters": [
     {
       "slug": "great-jagras",
@@ -1400,7 +1419,7 @@
         {
           "name": "Kiranico (MH World: Iceborne)",
           "url": "https://mhworld.kiranico.com/en/monsters/zJ1Sb/great-jagras",
-          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored."
+          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored. HP: lowest solo expedition HP per rank; ranks without expeditions use the lowest regular quest HP."
         },
         {
           "name": "mhw-db.com",
@@ -1408,7 +1427,24 @@
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
       ],
-      "image": "assets/images/monsters/world_iceborne/great-jagras.webp"
+      "image": "assets/images/monsters/world_iceborne/great-jagras.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 1408,
+          "basis": "expedition"
+        },
+        {
+          "rank": "high",
+          "solo": 3850,
+          "basis": "expedition"
+        },
+        {
+          "rank": "master",
+          "solo": 12760,
+          "basis": "expedition"
+        }
+      ]
     },
     {
       "slug": "anjanath",
@@ -1993,7 +2029,7 @@
         {
           "name": "Kiranico (MH World: Iceborne)",
           "url": "https://mhworld.kiranico.com/en/monsters/ZqptN/anjanath",
-          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored."
+          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored. HP: lowest solo expedition HP per rank; ranks without expeditions use the lowest regular quest HP."
         },
         {
           "name": "mhw-db.com",
@@ -2001,7 +2037,24 @@
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
       ],
-      "image": "assets/images/monsters/world_iceborne/anjanath.webp"
+      "image": "assets/images/monsters/world_iceborne/anjanath.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 3528,
+          "basis": "expedition"
+        },
+        {
+          "rank": "high",
+          "solo": 5681,
+          "basis": "expedition"
+        },
+        {
+          "rank": "master",
+          "solo": 18239,
+          "basis": "expedition"
+        }
+      ]
     },
     {
       "slug": "rathian",
@@ -2697,7 +2750,7 @@
         {
           "name": "Kiranico (MH World: Iceborne)",
           "url": "https://mhworld.kiranico.com/en/monsters/Rz9Tb/rathian",
-          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored."
+          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored. HP: lowest solo expedition HP per rank; ranks without expeditions use the lowest regular quest HP."
         },
         {
           "name": "mhw-db.com",
@@ -2705,7 +2758,24 @@
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
       ],
-      "image": "assets/images/monsters/world_iceborne/rathian.webp"
+      "image": "assets/images/monsters/world_iceborne/rathian.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 3540,
+          "basis": "expedition"
+        },
+        {
+          "rank": "high",
+          "solo": 5700,
+          "basis": "expedition"
+        },
+        {
+          "rank": "master",
+          "solo": 18300,
+          "basis": "expedition"
+        }
+      ]
     },
     {
       "slug": "pink-rathian",
@@ -3201,7 +3271,7 @@
         {
           "name": "Kiranico (MH World: Iceborne)",
           "url": "https://mhworld.kiranico.com/en/monsters/BnNTd/pink-rathian",
-          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored."
+          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored. HP: lowest solo expedition HP per rank; ranks without expeditions use the lowest regular quest HP."
         },
         {
           "name": "mhw-db.com",
@@ -3209,7 +3279,19 @@
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
       ],
-      "image": "assets/images/monsters/world_iceborne/pink-rathian.webp"
+      "image": "assets/images/monsters/world_iceborne/pink-rathian.webp",
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 6060,
+          "basis": "expedition"
+        },
+        {
+          "rank": "master",
+          "solo": 18300,
+          "basis": "expedition"
+        }
+      ]
     },
     {
       "slug": "rathalos",
@@ -3929,7 +4011,7 @@
         {
           "name": "Kiranico (MH World: Iceborne)",
           "url": "https://mhworld.kiranico.com/en/monsters/BnetX/rathalos",
-          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored."
+          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored. HP: lowest solo expedition HP per rank; ranks without expeditions use the lowest regular quest HP."
         },
         {
           "name": "mhw-db.com",
@@ -3937,7 +4019,24 @@
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
       ],
-      "image": "assets/images/monsters/world_iceborne/rathalos.webp"
+      "image": "assets/images/monsters/world_iceborne/rathalos.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 4908,
+          "basis": "expedition"
+        },
+        {
+          "rank": "high",
+          "solo": 6565,
+          "basis": "expedition"
+        },
+        {
+          "rank": "master",
+          "solo": 20800,
+          "basis": "expedition"
+        }
+      ]
     },
     {
       "slug": "diablos",
@@ -4502,7 +4601,7 @@
         {
           "name": "Kiranico (MH World: Iceborne)",
           "url": "https://mhworld.kiranico.com/en/monsters/BYXHE/diablos",
-          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored."
+          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored. HP: lowest solo expedition HP per rank; ranks without expeditions use the lowest regular quest HP."
         },
         {
           "name": "mhw-db.com",
@@ -4510,7 +4609,24 @@
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
       ],
-      "image": "assets/images/monsters/world_iceborne/diablos.webp"
+      "image": "assets/images/monsters/world_iceborne/diablos.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 4908,
+          "basis": "expedition"
+        },
+        {
+          "rank": "high",
+          "solo": 6565,
+          "basis": "expedition"
+        },
+        {
+          "rank": "master",
+          "solo": 20800,
+          "basis": "expedition"
+        }
+      ]
     },
     {
       "slug": "nergigante",
@@ -4738,7 +4854,7 @@
         {
           "name": "Kiranico (MH World: Iceborne)",
           "url": "https://mhworld.kiranico.com/en/monsters/aYaUV/nergigante",
-          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored."
+          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored. HP: lowest solo expedition HP per rank; ranks without expeditions use the lowest regular quest HP."
         },
         {
           "name": "mhw-db.com",
@@ -4746,7 +4862,19 @@
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
       ],
-      "image": "assets/images/monsters/world_iceborne/nergigante.webp"
+      "image": "assets/images/monsters/world_iceborne/nergigante.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 4153,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 7110,
+          "basis": "minQuest"
+        }
+      ]
     },
     {
       "slug": "zinogre",
@@ -5004,7 +5132,7 @@
         {
           "name": "Kiranico (MH World: Iceborne)",
           "url": "https://mhworld.kiranico.com/en/monsters/Ak8TZ/zinogre",
-          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored."
+          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored. HP: lowest solo expedition HP per rank; ranks without expeditions use the lowest regular quest HP."
         },
         {
           "name": "mhw-db.com",
@@ -5012,7 +5140,14 @@
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
         }
       ],
-      "image": "assets/images/monsters/world_iceborne/zinogre.webp"
+      "image": "assets/images/monsters/world_iceborne/zinogre.webp",
+      "hp": [
+        {
+          "rank": "master",
+          "solo": 23450,
+          "basis": "minQuest"
+        }
+      ]
     },
     {
       "slug": "velkhana",
@@ -5247,7 +5382,7 @@
         {
           "name": "Kiranico (MH World: Iceborne)",
           "url": "https://mhworld.kiranico.com/en/monsters/J1pFn/velkhana",
-          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored."
+          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored. HP: lowest solo expedition HP per rank; ranks without expeditions use the lowest regular quest HP."
         },
         {
           "name": "Fextralife MHW wiki",
@@ -5255,7 +5390,14 @@
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none)."
         }
       ],
-      "image": "assets/images/monsters/world_iceborne/velkhana.webp"
+      "image": "assets/images/monsters/world_iceborne/velkhana.webp",
+      "hp": [
+        {
+          "rank": "master",
+          "solo": 23040,
+          "basis": "expedition"
+        }
+      ]
     },
     {
       "slug": "alatreon",
@@ -5526,7 +5668,7 @@
         {
           "name": "Kiranico (MH World: Iceborne)",
           "url": "https://mhworld.kiranico.com/en/monsters/ErdcV/alatreon",
-          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored."
+          "notes": "Names (en/pt-BR), habitats (expedition locales, Guiding Lands), breakable parts, carves, capture/break/hunt rewards and rates. Reward quantities (e.g. x2) are not stored. HP: lowest solo expedition HP per rank; ranks without expeditions use the lowest regular quest HP."
         },
         {
           "name": "Fextralife MHW wiki",
@@ -5534,7 +5676,14 @@
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none)."
         }
       ],
-      "image": "assets/images/monsters/world_iceborne/alatreon.webp"
+      "image": "assets/images/monsters/world_iceborne/alatreon.webp",
+      "hp": [
+        {
+          "rank": "master",
+          "solo": 52500,
+          "basis": "minQuest"
+        }
+      ]
     }
   ]
 }

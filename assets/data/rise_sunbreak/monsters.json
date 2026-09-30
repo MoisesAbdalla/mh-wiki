@@ -1281,6 +1281,25 @@
       }
     }
   ],
+  "partyHpFactors": {
+    "2": {
+      "min": 1.35,
+      "max": 1.5
+    },
+    "3": {
+      "min": 1.7,
+      "max": 2.0
+    },
+    "4": {
+      "min": 2.0,
+      "max": 2.4
+    },
+    "source": {
+      "name": "Kiranico (MH Rise: Sunbreak)",
+      "url": "https://mhrise.kiranico.com/data/quests/564051736",
+      "notes": "Per-player HP of quest pages: High Rank Gathering Hub x1.5/x2.0/x2.4, Master Rank x1.35/x1.7/x2.0, Low Rank hub about x1.4/x1.86/x2.2. Village quests do not scale."
+    }
+  },
   "monsters": [
     {
       "slug": "great-izuchi",
@@ -1774,7 +1793,7 @@
         {
           "name": "Kiranico (MH Rise: Sunbreak)",
           "url": "https://mhrise.kiranico.com/data/monsters/1681174536",
-          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded. HP: lowest solo HP of the regular quests per rank (Village and Gathering Hub 1-3 LR, Hub 4-7 HR, MR)."
         },
         {
           "name": "Monster Hunter Wiki (MHRS)",
@@ -1787,7 +1806,24 @@
           "notes": "Classification."
         }
       ],
-      "image": "assets/images/monsters/rise_sunbreak/great-izuchi.webp"
+      "image": "assets/images/monsters/rise_sunbreak/great-izuchi.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 2370,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 7800,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "master",
+          "solo": 11400,
+          "basis": "minQuest"
+        }
+      ]
     },
     {
       "slug": "rathian",
@@ -2608,7 +2644,7 @@
         {
           "name": "Kiranico (MH Rise: Sunbreak)",
           "url": "https://mhrise.kiranico.com/data/monsters/366824395",
-          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded. HP: lowest solo HP of the regular quests per rank (Village and Gathering Hub 1-3 LR, Hub 4-7 HR, MR)."
         },
         {
           "name": "Monster Hunter Wiki (MHRS)",
@@ -2621,7 +2657,24 @@
           "notes": "Classification."
         }
       ],
-      "image": "assets/images/monsters/rise_sunbreak/rathian.webp"
+      "image": "assets/images/monsters/rise_sunbreak/rathian.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 5445,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 10845,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "master",
+          "solo": 21150,
+          "basis": "minQuest"
+        }
+      ]
     },
     {
       "slug": "rathalos",
@@ -3441,7 +3494,7 @@
         {
           "name": "Kiranico (MH Rise: Sunbreak)",
           "url": "https://mhrise.kiranico.com/data/monsters/381074408",
-          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded. HP: lowest solo HP of the regular quests per rank (Village and Gathering Hub 1-3 LR, Hub 4-7 HR, MR)."
         },
         {
           "name": "Monster Hunter Wiki (MHRS)",
@@ -3454,7 +3507,24 @@
           "notes": "Classification."
         }
       ],
-      "image": "assets/images/monsters/rise_sunbreak/rathalos.webp"
+      "image": "assets/images/monsters/rise_sunbreak/rathalos.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 4080,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 12960,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "master",
+          "solo": 33320,
+          "basis": "minQuest"
+        }
+      ]
     },
     {
       "slug": "tigrex",
@@ -4056,7 +4126,7 @@
         {
           "name": "Kiranico (MH Rise: Sunbreak)",
           "url": "https://mhrise.kiranico.com/data/monsters/808327178",
-          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded. HP: lowest solo HP of the regular quests per rank (Village and Gathering Hub 1-3 LR, Hub 4-7 HR, MR)."
         },
         {
           "name": "Monster Hunter Wiki (MHRS)",
@@ -4069,7 +4139,24 @@
           "notes": "Classification."
         }
       ],
-      "image": "assets/images/monsters/rise_sunbreak/tigrex.webp"
+      "image": "assets/images/monsters/rise_sunbreak/tigrex.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 5040,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 13050,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "master",
+          "solo": 30600,
+          "basis": "minQuest"
+        }
+      ]
     },
     {
       "slug": "zinogre",
@@ -4779,7 +4866,7 @@
         {
           "name": "Kiranico (MH Rise: Sunbreak)",
           "url": "https://mhrise.kiranico.com/data/monsters/1432800563",
-          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded. HP: lowest solo HP of the regular quests per rank (Village and Gathering Hub 1-3 LR, Hub 4-7 HR, MR)."
         },
         {
           "name": "Monster Hunter Wiki (MHRS)",
@@ -4792,7 +4879,24 @@
           "notes": "Classification."
         }
       ],
-      "image": "assets/images/monsters/rise_sunbreak/zinogre.webp"
+      "image": "assets/images/monsters/rise_sunbreak/zinogre.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 3825,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 11700,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "master",
+          "solo": 31960,
+          "basis": "minQuest"
+        }
+      ]
     },
     {
       "slug": "mizutsune",
@@ -5599,7 +5703,7 @@
         {
           "name": "Kiranico (MH Rise: Sunbreak)",
           "url": "https://mhrise.kiranico.com/data/monsters/1251979832",
-          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded. HP: lowest solo HP of the regular quests per rank (Village and Gathering Hub 1-3 LR, Hub 4-7 HR, MR)."
         },
         {
           "name": "Monster Hunter Wiki (MHRS)",
@@ -5612,7 +5716,24 @@
           "notes": "Classification."
         }
       ],
-      "image": "assets/images/monsters/rise_sunbreak/mizutsune.webp"
+      "image": "assets/images/monsters/rise_sunbreak/mizutsune.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 4324,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 12420,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "master",
+          "solo": 32640,
+          "basis": "minQuest"
+        }
+      ]
     },
     {
       "slug": "violet-mizutsune",
@@ -5889,7 +6010,7 @@
         {
           "name": "Kiranico (MH Rise: Sunbreak)",
           "url": "https://mhrise.kiranico.com/data/monsters/1061157944",
-          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded. HP: lowest solo HP of the regular quests per rank (Village and Gathering Hub 1-3 LR, Hub 4-7 HR, MR)."
         },
         {
           "name": "Monster Hunter Wiki (MHRS)",
@@ -5902,7 +6023,14 @@
           "notes": "Classification."
         }
       ],
-      "image": "assets/images/monsters/rise_sunbreak/violet-mizutsune.webp"
+      "image": "assets/images/monsters/rise_sunbreak/violet-mizutsune.webp",
+      "hp": [
+        {
+          "rank": "master",
+          "solo": 40480,
+          "basis": "minQuest"
+        }
+      ]
     },
     {
       "slug": "magnamalo",
@@ -6599,7 +6727,7 @@
         {
           "name": "Kiranico (MH Rise: Sunbreak)",
           "url": "https://mhrise.kiranico.com/data/monsters/1921564947",
-          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded. HP: lowest solo HP of the regular quests per rank (Village and Gathering Hub 1-3 LR, Hub 4-7 HR, MR)."
         },
         {
           "name": "Monster Hunter Wiki (MHRS)",
@@ -6612,7 +6740,24 @@
           "notes": "Classification."
         }
       ],
-      "image": "assets/images/monsters/rise_sunbreak/magnamalo.webp"
+      "image": "assets/images/monsters/rise_sunbreak/magnamalo.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 4635,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 13050,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "master",
+          "solo": 28800,
+          "basis": "minQuest"
+        }
+      ]
     },
     {
       "slug": "rajang",
@@ -7028,7 +7173,7 @@
         {
           "name": "Kiranico (MH Rise: Sunbreak)",
           "url": "https://mhrise.kiranico.com/data/monsters/243411229",
-          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded. HP: lowest solo HP of the regular quests per rank (Village and Gathering Hub 1-3 LR, Hub 4-7 HR, MR)."
         },
         {
           "name": "Monster Hunter Wiki (MHRS)",
@@ -7041,7 +7186,24 @@
           "notes": "Classification."
         }
       ],
-      "image": "assets/images/monsters/rise_sunbreak/rajang.webp"
+      "image": "assets/images/monsters/rise_sunbreak/rajang.webp",
+      "hp": [
+        {
+          "rank": "low",
+          "solo": 9630,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "high",
+          "solo": 13050,
+          "basis": "minQuest"
+        },
+        {
+          "rank": "master",
+          "solo": 32300,
+          "basis": "minQuest"
+        }
+      ]
     },
     {
       "slug": "malzeno",
@@ -7268,7 +7430,7 @@
         {
           "name": "Kiranico (MH Rise: Sunbreak)",
           "url": "https://mhrise.kiranico.com/data/monsters/50943022",
-          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded."
+          "notes": "Names (en/pt-BR), drops and rates, hitzones. Rise lists hitzones, not stars. Stars = best elemental hitzone over all parts in the normal state: >=25 3 stars, 20-24 2, 10-19 1, <10 0 (calibrated on World Rathalos, whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X). Afflicted-variant, palico and wyvern-riding drops excluded. HP: lowest solo HP of the regular quests per rank (Village and Gathering Hub 1-3 LR, Hub 4-7 HR, MR)."
         },
         {
           "name": "Monster Hunter Wiki (MHRS)",
@@ -7281,7 +7443,14 @@
           "notes": "Classification."
         }
       ],
-      "image": "assets/images/monsters/rise_sunbreak/malzeno.webp"
+      "image": "assets/images/monsters/rise_sunbreak/malzeno.webp",
+      "hp": [
+        {
+          "rank": "master",
+          "solo": 28500,
+          "basis": "minQuest"
+        }
+      ]
     }
   ]
 }
