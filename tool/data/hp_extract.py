@@ -14,7 +14,7 @@ import glob, html, json, os, re, statistics, sys
 
 import kiranico_world
 import macaron
-from common import REPO, roster, selected_games
+from common import REPO, roster, selected_games, wiki_api
 
 
 def clean(t):
@@ -34,6 +34,20 @@ def section(page, header):
     return ''
 
 
+def tiered_min(tiers, rank):
+    """min_quest of the first tier that has [rank] (004 T039 follow-up). A tier
+    may hold {scale: [hp]} instead of [hp] when a rank mixes HP scales (Rise
+    Village and Gathering Hub quests); then each scale is filtered on its own
+    and the lowest result wins."""
+    for tier in tiers:
+        if rank in tier:
+            values = tier[rank]
+            if isinstance(values, dict):
+                return min(min_quest(v) for v in values.values())
+            return min_quest(values)
+    return None
+
+
 def min_quest(values):
     if not values:
         return None
@@ -41,24 +55,59 @@ def min_quest(values):
     return min(v for v in values if v >= 0.8 * med)
 
 
-_MHWI_QUESTS = None
+_WIKI_QUESTS = {}
+WIKI_QUEST_PAGES = {  # game -> [(wiki category, cache prefix)], first wins on duplicates
+    'world_iceborne': [('Category:MHWI Quest Pages', 'mhwi')],
+    'rise_sunbreak': [('Category:MHRS Quest Pages', 'mhrs'), ('Category:MHRise Quest Pages', 'mhrise')],
+}
 
 
-def mhwi_quests():
+def wiki_quests(game):
     """{normalized quest name: (target names, categories)} from the Monster
-    Hunter Wiki quest pages cached by roster_world.py ("Goal Icons")."""
-    global _MHWI_QUESTS
-    if _MHWI_QUESTS is None:
-        _MHWI_QUESTS = {}
-        for f in sorted(glob.glob('wiki_mhwi_quest_text_*.json')):
-            for p in json.load(open(f, encoding='utf8'))['query']['pages'].values():
-                text = p['revisions'][0]['slots']['main']['*']
-                goals = re.search(r'\|Goal Icons\s*=(.*)', text)
-                targets = re.findall(r'\{\{(?:IconPickerUniversal|IPUClassic\w*)\|MHWI\|([^|}]+)',
-                                     goals.group(1)) if goals else []
-                cats = set(re.findall(r'\[\[Category:MHWI ([^\]]+?) Quests\]\]', text))
-                _MHWI_QUESTS[quest_key(p['title'].removesuffix(' (MHWI Quest)'))] = (targets, cats)
-    return _MHWI_QUESTS
+    Hunter Wiki quest pages of [game] ("Goal Icons" are the targets; they may
+    span several lines). Pages are cached like the other wiki queries."""
+    if game not in _WIKI_QUESTS:
+        found = {}
+        for category, prefix in WIKI_QUEST_PAGES[game]:
+            titles, cont, n = [], {}, 0
+            while True:
+                d = wiki_api({'action': 'query', 'list': 'categorymembers', 'cmlimit': 500,
+                              'cmtitle': category, **cont}, f'wiki_{prefix}_quests_{n}.json')
+                titles += [m['title'] for m in d['query']['categorymembers']]
+                if 'continue' not in d:
+                    break
+                cont, n = d['continue'], n + 1
+            titles = sorted(titles)
+            for i in range(0, len(titles), 40):
+                d = wiki_api({'action': 'query', 'prop': 'revisions', 'rvprop': 'content',
+                              'rvslots': 'main', 'titles': '|'.join(titles[i:i + 40])},
+                             f'wiki_{prefix}_quest_text_{i // 40}.json')
+                for page in d['query']['pages'].values():
+                    text = page['revisions'][0]['slots']['main']['*']
+                    goals = re.search(r'\|Goal Icons\s*=(.*?)(?=\n\|)', text, re.S)
+                    targets = re.findall(
+                        r'\{\{(?:IconPickerUniversal|IPUClassic\w*)\|(?:MHWI|MHRS|MHRise)\|([^|}]+)',
+                        goals.group(1)) if goals else []
+                    cats = set(re.findall(r'\[\[Category:(?:MHWI|MHRS|MHRise) ([^\]]+?) Quests\]\]', text))
+                    name = re.sub(r' \((?:MHWI|MHRS|MHRise) Quest\)$', '', page['title'])
+                    found.setdefault(quest_key(name), ([t.strip() for t in targets], cats))
+        _WIKI_QUESTS[game] = found
+    return _WIKI_QUESTS[game]
+
+
+def quest_tier(game, quest, name):
+    """0 = [name] is the only target, 1 = another regular quest, 2 = a special
+    assignment (used only when nothing else exists), None = left out (arena,
+    challenge). Quests missing on the wiki count as regular."""
+    info = wiki_quests(game).get(quest_key(quest))
+    if info is None:
+        return 1
+    targets, cats = info
+    if cats & EXCLUDED:
+        return None
+    if cats & SPECIAL:
+        return 2
+    return 0 if targets == [name] else 1
 
 
 def quest_key(name):
@@ -117,17 +166,12 @@ def world(slug, name=None):
         m = re.match(r'(M?)★(\d+) (.*?) (\d[\d,]*) x', clean(tr))
         if not m:
             continue
-        info = mhwi_quests().get(quest_key(m.group(3)))
-        if info is None:
-            if re.search(r'Arena|Challenge|Event', m.group(3)):
-                continue
-            tier = 1
-        elif info[1] & EXCLUDED:
+        if quest_key(m.group(3)) not in wiki_quests('world_iceborne') and re.search(
+                r'Arena|Challenge|Event', m.group(3)):
+            continue  # not on the wiki: the name filter of 003
+        tier = quest_tier('world_iceborne', m.group(3), name)
+        if tier is None:
             continue
-        elif info[1] & SPECIAL:
-            tier = 2
-        else:
-            tier = 0 if [t.strip() for t in info[0]] == [name] else 1
         stars = int(m.group(2))
         rank = 'master' if m.group(1) else ('low' if stars <= 5 else 'high')
         tiers[tier].setdefault(rank, []).append(num(m.group(4)))
@@ -135,8 +179,8 @@ def world(slug, name=None):
     for rank in ('low', 'high', 'master'):
         if rank in exp:
             out.append({'rank': rank, 'solo': min(exp[rank]), 'basis': 'expedition'})
-        elif values := next((t[rank] for t in tiers if rank in t), None):
-            out.append({'rank': rank, 'solo': min_quest(values), 'basis': 'minQuest'})
+        elif solo := tiered_min(tiers, rank):
+            out.append({'rank': rank, 'solo': solo, 'basis': 'minQuest'})
     return out
 
 
@@ -153,7 +197,8 @@ def rise(slug, name=None):
                                  clean(tr)))]
         return [{'rank': 'master', 'solo': min_quest(hps), 'basis': 'minQuest'}] if hps else []
     page = open(f'cache_rise_{slug}_en.html', encoding='utf8').read()
-    vals = {}
+    target = entry.get('name', name)
+    tiers = ({}, {}, {})  # only target / other regular / special (see quest_tier)
     for tr in re.findall(r'<tr>.*?</tr>', page, re.S):
         m = re.match(r'(Village|Gathering Hub|MR) (\d+)★ (.*?) 1 (\d[\d,]*) HP', clean(tr))
         if not m or (entry.get('versionKind') == 'apex' and m.group(3).startswith('Advanced:')):
@@ -169,9 +214,16 @@ def rise(slug, name=None):
             rank = 'high'  # Apex hunts are Gathering Hub 8★ High Rank quests (004 R4)
         else:
             continue
-        vals.setdefault(rank, []).append(hp)
-    return [{'rank': r, 'solo': min_quest(vals[r]), 'basis': 'minQuest'}
-            for r in ('low', 'high', 'master') if r in vals]
+        quest = re.split(r' Area \d', m.group(3))[0]
+        tier = quest_tier('rise_sunbreak', quest, target)
+        if tier is None:
+            continue
+        tiers[tier].setdefault(rank, {}).setdefault(cat, []).append(hp)
+    out = []
+    for rank in ('low', 'high', 'master'):
+        if solo := tiered_min(tiers, rank):
+            out.append({'rank': rank, 'solo': solo, 'basis': 'minQuest'})
+    return out
 
 
 WILDS_ROWS = []
@@ -210,18 +262,17 @@ def blog_hp():
 def wilds(slug, name):
     # Quests where the monster is alone first: multi-monster quests lower
     # each one's HP (004 T039 follow-up).
-    single, multi = {}, {}
+    tiers = ({}, {})  # the monster alone / with others
     for n, stars, hp, count in WILDS_ROWS:
         if n == name:
             rank = 'low' if stars <= 3 else 'high'
-            (single if count == 1 else multi).setdefault(rank, []).append(hp)
-    vals = {r: single.get(r) or multi[r] for r in {**multi, **single}}
-    if not vals and slug in blog_hp():
+            tiers[0 if count == 1 else 1].setdefault(rank, []).append(hp)
+    if not any(tiers) and slug in blog_hp():
         FROM_BLOG[slug] = blog_hp()[slug]
         return [{'rank': 'high', 'solo': min(hp for _, hp in FROM_BLOG[slug][1]),
                  'basis': 'minQuest'}]
-    return [{'rank': r, 'solo': min_quest(vals[r]), 'basis': 'minQuest'}
-            for r in ('low', 'high') if r in vals]
+    return [{'rank': r, 'solo': solo, 'basis': 'minQuest'}
+            for r in ('low', 'high') if (solo := tiered_min(tiers, r))]
 
 
 FACTORS = {

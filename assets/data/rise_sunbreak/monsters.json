@@ -5996,25 +5996,6 @@
       }
     }
   ],
-  "partyHpFactors": {
-    "2": {
-      "min": 1.35,
-      "max": 1.5
-    },
-    "3": {
-      "min": 1.7,
-      "max": 2.0
-    },
-    "4": {
-      "min": 2.0,
-      "max": 2.4
-    },
-    "source": {
-      "name": "Kiranico (MH Rise: Sunbreak)",
-      "url": "https://mhrise.kiranico.com/data/quests/564051736",
-      "notes": "Per-player HP of quest pages: High Rank Gathering Hub x1.5/x2.0/x2.4, Master Rank x1.35/x1.7/x2.0, Low Rank hub about x1.4/x1.86/x2.2. Village quests do not scale."
-    }
-  },
   "huntingItems": [
     {
       "id": "flash",
@@ -6052,6 +6033,25 @@
       }
     }
   ],
+  "partyHpFactors": {
+    "2": {
+      "min": 1.35,
+      "max": 1.5
+    },
+    "3": {
+      "min": 1.7,
+      "max": 2.0
+    },
+    "4": {
+      "min": 2.0,
+      "max": 2.4
+    },
+    "source": {
+      "name": "Kiranico (MH Rise: Sunbreak)",
+      "url": "https://mhrise.kiranico.com/data/quests/564051736",
+      "notes": "Per-player HP of quest pages: High Rank Gathering Hub x1.5/x2.0/x2.4, Master Rank x1.35/x1.7/x2.0, Low Rank hub about x1.4/x1.86/x2.2. Village quests do not scale."
+    }
+  },
   "monsters": [
     {
       "slug": "aknosom",
@@ -6628,17 +6628,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 3555,
+          "solo": 3690,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 10845,
+          "solo": 12150,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 20700,
+          "solo": 22500,
           "basis": "minQuest"
         }
       ],
@@ -7480,17 +7480,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 5040,
+          "solo": 5580,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 13050,
+          "solo": 15300,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 25800,
+          "solo": 27520,
           "basis": "minQuest"
         }
       ],
@@ -8483,17 +8483,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 3760,
+          "solo": 4120,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 10400,
+          "solo": 12000,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 21600,
+          "solo": 23200,
           "basis": "minQuest"
         }
       ],
@@ -11265,12 +11265,12 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 2607,
+          "solo": 2112,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 7161,
+          "solo": 8910,
           "basis": "minQuest"
         },
         {
@@ -11610,7 +11610,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 30600,
+          "solo": 32400,
           "basis": "minQuest"
         }
       ],
@@ -11904,7 +11904,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 27000,
+          "solo": 28800,
           "basis": "minQuest"
         }
       ],
@@ -12606,7 +12606,7 @@
         },
         {
           "rank": "master",
-          "solo": 25200,
+          "solo": 26880,
           "basis": "minQuest"
         }
       ],
@@ -13195,17 +13195,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 4484,
+          "solo": 3116,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 8588,
+          "solo": 10640,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 16560,
+          "solo": 18000,
           "basis": "minQuest"
         }
       ],
@@ -14002,12 +14002,12 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 3002,
+          "solo": 3344,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 8588,
+          "solo": 10640,
           "basis": "minQuest"
         },
         {
@@ -14574,7 +14574,7 @@
         },
         {
           "rank": "master",
-          "solo": 34960,
+          "solo": 38640,
           "basis": "minQuest"
         }
       ],
@@ -15228,17 +15228,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 4704,
+          "solo": 3696,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 9492,
+          "solo": 11760,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 22680,
+          "solo": 24360,
           "basis": "minQuest"
         }
       ],
@@ -15533,7 +15533,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 22680,
+          "solo": 24360,
           "basis": "minQuest"
         }
       ],
@@ -15966,7 +15966,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 29700,
+          "solo": 37800,
           "basis": "minQuest"
         }
       ],
@@ -16300,7 +16300,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 41400,
+          "solo": 49950,
           "basis": "minQuest"
         }
       ],
@@ -17038,7 +17038,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 12870,
+          "solo": 14850,
           "basis": "minQuest"
         }
       ],
@@ -17632,12 +17632,12 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 7605,
+          "solo": 5580,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 12150,
+          "solo": 15300,
           "basis": "minQuest"
         },
         {
@@ -18284,7 +18284,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 28560,
+          "solo": 46620,
           "basis": "minQuest"
         }
       ],
@@ -19076,7 +19076,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 20090,
+          "solo": 26240,
           "basis": "minQuest"
         }
       ],
@@ -19444,7 +19444,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 24750,
+          "solo": 49950,
           "basis": "minQuest"
         }
       ],
@@ -19770,7 +19770,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 34200,
+          "solo": 32400,
           "basis": "minQuest"
         }
       ],
@@ -20456,17 +20456,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 5600,
+          "solo": 6200,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 14500,
+          "solo": 17000,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 28800,
+          "solo": 30720,
           "basis": "minQuest"
         }
       ],
@@ -20955,7 +20955,7 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 3360,
+          "solo": 1920,
           "basis": "minQuest"
         },
         {
@@ -21517,17 +21517,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 2370,
+          "solo": 1920,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 7800,
+          "solo": 8100,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 11400,
+          "solo": 17400,
           "basis": "minQuest"
         }
       ],
@@ -22013,12 +22013,12 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 2370,
+          "solo": 2460,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 6510,
+          "solo": 8100,
           "basis": "minQuest"
         },
         {
@@ -22464,7 +22464,7 @@
       "hp": [
         {
           "rank": "high",
-          "solo": 10170,
+          "solo": 12600,
           "basis": "minQuest"
         },
         {
@@ -23075,12 +23075,12 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 2940,
+          "solo": 3444,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 8988,
+          "solo": 11340,
           "basis": "minQuest"
         },
         {
@@ -23628,7 +23628,7 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 3102,
+          "solo": 2706,
           "basis": "minQuest"
         },
         {
@@ -23638,7 +23638,7 @@
         },
         {
           "rank": "master",
-          "solo": 12540,
+          "solo": 19140,
           "basis": "minQuest"
         }
       ],
@@ -24609,17 +24609,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 4032,
+          "solo": 2304,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 9360,
+          "solo": 9720,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 16560,
+          "solo": 18000,
           "basis": "minQuest"
         }
       ],
@@ -25214,7 +25214,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 26400,
+          "solo": 27840,
           "basis": "minQuest"
         }
       ],
@@ -25548,7 +25548,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 32640,
+          "solo": 34560,
           "basis": "minQuest"
         }
       ],
@@ -26308,7 +26308,7 @@
         },
         {
           "rank": "high",
-          "solo": 13050,
+          "solo": 15300,
           "basis": "minQuest"
         },
         {
@@ -26599,7 +26599,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 28500,
+          "solo": 42000,
           "basis": "minQuest"
         }
       ],
@@ -27441,17 +27441,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 4324,
+          "solo": 4738,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 12420,
+          "solo": 13800,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 32640,
+          "solo": 34560,
           "basis": "minQuest"
         }
       ],
@@ -28158,17 +28158,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 7098,
+          "solo": 4326,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 10920,
+          "solo": 12600,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 25200,
+          "solo": 26880,
           "basis": "minQuest"
         }
       ],
@@ -29561,17 +29561,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 6314,
+          "solo": 3608,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 11070,
+          "solo": 11480,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 22140,
+          "solo": 23780,
           "basis": "minQuest"
         }
       ],
@@ -29847,7 +29847,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 31000,
+          "solo": 36000,
           "basis": "minQuest"
         }
       ],
@@ -30326,12 +30326,12 @@
         },
         {
           "rank": "high",
-          "solo": 13050,
+          "solo": 15300,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 32300,
+          "solo": 35700,
           "basis": "minQuest"
         }
       ],
@@ -30782,7 +30782,7 @@
       "hp": [
         {
           "rank": "high",
-          "solo": 15950,
+          "solo": 18700,
           "basis": "minQuest"
         },
         {
@@ -31665,17 +31665,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 4080,
+          "solo": 4944,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 12960,
+          "solo": 14400,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 33320,
+          "solo": 35280,
           "basis": "minQuest"
         }
       ],
@@ -32554,17 +32554,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 5445,
+          "solo": 3960,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 10845,
+          "solo": 12600,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 21150,
+          "solo": 26100,
           "basis": "minQuest"
         }
       ],
@@ -34400,17 +34400,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 4945,
+          "solo": 3526,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 11610,
+          "solo": 12040,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 19780,
+          "solo": 21500,
           "basis": "minQuest"
         }
       ],
@@ -35066,7 +35066,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 48480,
+          "solo": 53280,
           "basis": "minQuest"
         }
       ],
@@ -35387,7 +35387,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 23120,
+          "solo": 24480,
           "basis": "minQuest"
         }
       ],
@@ -35901,7 +35901,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 24000,
+          "solo": 25600,
           "basis": "minQuest"
         }
       ],
@@ -36824,17 +36824,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 3285,
+          "solo": 3960,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 11700,
+          "solo": 13500,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 24300,
+          "solo": 26100,
           "basis": "minQuest"
         }
       ],
@@ -37881,17 +37881,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 3285,
+          "solo": 3690,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 9765,
+          "solo": 12150,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 20700,
+          "solo": 21150,
           "basis": "minQuest"
         }
       ],
@@ -39035,17 +39035,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 5040,
+          "solo": 5580,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 13050,
+          "solo": 15300,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 30600,
+          "solo": 32400,
           "basis": "minQuest"
         }
       ],
@@ -39722,12 +39722,12 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 4420,
+          "solo": 4576,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 13520,
+          "solo": 15600,
           "basis": "minQuest"
         },
         {
@@ -40006,7 +40006,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 50500,
+          "solo": 55500,
           "basis": "minQuest"
         }
       ],
@@ -40318,7 +40318,7 @@
       "hp": [
         {
           "rank": "master",
-          "solo": 40480,
+          "solo": 47080,
           "basis": "minQuest"
         }
       ],
@@ -40831,7 +40831,7 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 3002,
+          "solo": 3344,
           "basis": "minQuest"
         },
         {
@@ -42061,17 +42061,17 @@
       "hp": [
         {
           "rank": "low",
-          "solo": 3825,
+          "solo": 4635,
           "basis": "minQuest"
         },
         {
           "rank": "high",
-          "solo": 11700,
+          "solo": 13500,
           "basis": "minQuest"
         },
         {
           "rank": "master",
-          "solo": 31960,
+          "solo": 33840,
           "basis": "minQuest"
         }
       ],
