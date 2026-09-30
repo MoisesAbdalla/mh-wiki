@@ -156,6 +156,16 @@ void main() {
     // Lala Barina: 9,000 was a multi-monster quest; 10,080 matches the
     // macarongamemo table too.
     expect(hp(await load(Game.wilds), 'lala-barina'), 10080);
+    // Rise Rathalos, Low Rank: the solo Village hunt "Rathalos Alert!".
+    expect(
+      (await load(Game.riseSunbreak))
+          .singleWhere((m) => m.id.slug == 'rathalos')
+          .huntingInfo
+          .hp
+          .first
+          .solo,
+      4944,
+    );
   });
 
   group('full roster (004)', () {

@@ -279,8 +279,21 @@ party factors, item reactions) are reused unchanged unless stated.
     - Wilds: Guardian Fulgur Anjanath HR 11,250 → 15,000; Balahara LR 4,400 → 5,148; Lala Barina
       HR 9,000 → 10,080. With this, the macarongamemo table matches Kiranico for 13 of 13
       monsters (Lala Barina was the one difference).
-  - **Rise** keeps the 003 rule. Its Kiranico monster pages do not say who else is in a quest,
-    so the same refinement would need the quest pages or the wiki's MHRS quest pages.
+  - **Rise** (applied the same day at the user's request): the same tiers, with the targets from
+    the wiki's MHRS and MHRise quest pages ("Goal Icons" can span several lines). Village,
+    Gathering Hub and MR quests stay the quest set, as in 003.
+    - A rank can mix HP scales: Low Rank has Village quests (solo) and Gathering Hub 1–3★.
+      `min_quest` runs on each scale apart, then the lowest result wins. Otherwise a lone Village
+      value was dropped as an outlier (Rathalos Low Rank would have been 8,832 instead of the
+      Village 4,944).
+    - The first attempt took the plain minimum of the single-target tier. It let special
+      single-target quests through (World Leshen HR 900, Wilds Nerscylla 4,972), so every tier
+      keeps the `min_quest` filter.
+    - 96 Rise values changed. Most go up, because solo hunts replace two-monster quests (e.g.
+      Gold Rathian MR 24,750 → 49,950: its only solo MR hunt is 6★). Some Low Rank values go
+      down, because the solo Village hunt now counts (Great Baggi 3,360 → 1,920).
+  - Reading multi-line `Goal Icons` also fixed one World value: Kirin LR 3,350 → 5,058. "Kirin The
+    Myth" has two Kirin targets.
 
 
 ## R7. Thumbnails
