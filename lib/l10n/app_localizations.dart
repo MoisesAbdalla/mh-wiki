@@ -99,6 +99,222 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'MH Wiki'**
   String get appTitle;
+
+  /// No description provided for @gameWorldIceborne.
+  ///
+  /// In pt, this message translates to:
+  /// **'Monster Hunter World: Iceborne'**
+  String get gameWorldIceborne;
+
+  /// No description provided for @gameRiseSunbreak.
+  ///
+  /// In pt, this message translates to:
+  /// **'Monster Hunter Rise: Sunbreak'**
+  String get gameRiseSunbreak;
+
+  /// No description provided for @gameWilds.
+  ///
+  /// In pt, this message translates to:
+  /// **'Monster Hunter Wilds'**
+  String get gameWilds;
+
+  /// No description provided for @loadFailed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar os dados dos monstros.'**
+  String get loadFailed;
+
+  /// No description provided for @retry.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tentar novamente'**
+  String get retry;
+
+  /// No description provided for @failedGamesBanner.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar os dados de: {games}'**
+  String failedGamesBanner(String games);
+
+  /// No description provided for @selectMonster.
+  ///
+  /// In pt, this message translates to:
+  /// **'Selecione um monstro'**
+  String get selectMonster;
+
+  /// No description provided for @monsterSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'{game} · {classification}'**
+  String monsterSubtitle(String game, String classification);
+
+  /// No description provided for @sectionWeaknesses.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fraquezas elementais'**
+  String get sectionWeaknesses;
+
+  /// No description provided for @sectionHabitat.
+  ///
+  /// In pt, this message translates to:
+  /// **'Habitat'**
+  String get sectionHabitat;
+
+  /// No description provided for @sectionParts.
+  ///
+  /// In pt, this message translates to:
+  /// **'Partes quebráveis'**
+  String get sectionParts;
+
+  /// No description provided for @sectionMaterials.
+  ///
+  /// In pt, this message translates to:
+  /// **'Materiais'**
+  String get sectionMaterials;
+
+  /// No description provided for @weaknessByState.
+  ///
+  /// In pt, this message translates to:
+  /// **'Variações por estado'**
+  String get weaknessByState;
+
+  /// No description provided for @elementFire.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fogo'**
+  String get elementFire;
+
+  /// No description provided for @elementWater.
+  ///
+  /// In pt, this message translates to:
+  /// **'Água'**
+  String get elementWater;
+
+  /// No description provided for @elementThunder.
+  ///
+  /// In pt, this message translates to:
+  /// **'Raio'**
+  String get elementThunder;
+
+  /// No description provided for @elementIce.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gelo'**
+  String get elementIce;
+
+  /// No description provided for @elementDragon.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dragão'**
+  String get elementDragon;
+
+  /// No description provided for @immune.
+  ///
+  /// In pt, this message translates to:
+  /// **'Imune'**
+  String get immune;
+
+  /// No description provided for @starsSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'{element}: {stars} de 3'**
+  String starsSemantics(String element, int stars);
+
+  /// No description provided for @immuneSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'{element}: imune'**
+  String immuneSemantics(String element);
+
+  /// No description provided for @noHabitat.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum habitat fixo'**
+  String get noHabitat;
+
+  /// No description provided for @noParts.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma parte quebrável'**
+  String get noParts;
+
+  /// No description provided for @severable.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cortável'**
+  String get severable;
+
+  /// No description provided for @noMaterials.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum material registrado'**
+  String get noMaterials;
+
+  /// No description provided for @rankLow.
+  ///
+  /// In pt, this message translates to:
+  /// **'Baixo'**
+  String get rankLow;
+
+  /// No description provided for @rankHigh.
+  ///
+  /// In pt, this message translates to:
+  /// **'Alto'**
+  String get rankHigh;
+
+  /// No description provided for @rankMaster.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mestre'**
+  String get rankMaster;
+
+  /// No description provided for @rarity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Raridade {value}'**
+  String rarity(int value);
+
+  /// No description provided for @methodCarve.
+  ///
+  /// In pt, this message translates to:
+  /// **'Entalhe'**
+  String get methodCarve;
+
+  /// No description provided for @methodTailCarve.
+  ///
+  /// In pt, this message translates to:
+  /// **'Entalhe da cauda'**
+  String get methodTailCarve;
+
+  /// No description provided for @methodCapture.
+  ///
+  /// In pt, this message translates to:
+  /// **'Captura'**
+  String get methodCapture;
+
+  /// No description provided for @methodBreakPart.
+  ///
+  /// In pt, this message translates to:
+  /// **'Quebrar: {part}'**
+  String methodBreakPart(String part);
+
+  /// No description provided for @methodQuestReward.
+  ///
+  /// In pt, this message translates to:
+  /// **'Recompensa de missão'**
+  String get methodQuestReward;
+
+  /// No description provided for @methodDroppedMaterial.
+  ///
+  /// In pt, this message translates to:
+  /// **'Material caído'**
+  String get methodDroppedMaterial;
+
+  /// No description provided for @rateUnknown.
+  ///
+  /// In pt, this message translates to:
+  /// **'Taxa desconhecida'**
+  String get rateUnknown;
 }
 
 class _AppLocalizationsDelegate

@@ -3,7 +3,9 @@ import 'package:mh_wiki/features/monsters/data/datasources/asset_monster_datasou
 import 'package:mh_wiki/features/monsters/data/repositories/monster_repository_impl.dart';
 import 'package:mh_wiki/features/monsters/domain/repositories/monster_repository.dart';
 import 'package:mh_wiki/features/monsters/domain/usecases/filter_monsters.dart';
+import 'package:mh_wiki/features/monsters/domain/usecases/get_monster_by_id.dart';
 import 'package:mh_wiki/features/monsters/domain/usecases/load_monster_catalog.dart';
+import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 
 /// Composition root (constitution Principle III): the only place that knows
 /// concrete implementations. Everything else receives abstractions through
@@ -20,8 +22,9 @@ final class AppDependencies {
 
   final MonsterRepository monsterRepository;
 
-  LoadMonsterCatalog get loadMonsterCatalog =>
-      LoadMonsterCatalog(monsterRepository);
-
-  FilterMonsters get filterMonsters => const FilterMonsters();
+  MonsterListController createMonsterListController() => MonsterListController(
+    loadCatalog: LoadMonsterCatalog(monsterRepository),
+    filterMonsters: const FilterMonsters(),
+    getMonsterById: const GetMonsterById(),
+  );
 }
