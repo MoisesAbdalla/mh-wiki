@@ -98,7 +98,23 @@ for tr in re.findall(r'<tr.*?</tr>', open('wl_quests_full.html', encoding='utf8'
         WILDS_ROWS.append((name, int(m.group(2)), hp))
 
 
+# Arch-tempered quests are not on Kiranico (004 research R4). HP of the
+# macarongamemo table (歴戦王 rows, middle of the 5 size variations): {slug:
+# [(stars, hp)]}. 12 of 13 normal High Rank values checked there match Kiranico.
+MACARON = 'https://macarongamemo.com/entry/mhwilds-monster-hp'
+ARCH_TEMPERED_HP = {
+    'arch-tempered-rey-dau': [(8, 35550), (10, 54675)],
+    'arch-tempered-uth-duna': [(8, 49500), (10, 77517)],
+    'arch-tempered-nu-udra': [(9, 47250), (10, 66977)],
+    'arch-tempered-jin-dahaad': [(9, 65120), (10, 73593)],
+    'arch-tempered-arkveld': [(10, 79923)],
+}
+
+
 def wilds(slug, name):
+    if slug in ARCH_TEMPERED_HP:
+        return [{'rank': 'high', 'solo': min(hp for _, hp in ARCH_TEMPERED_HP[slug]),
+                 'basis': 'minQuest'}]
     vals = {}
     for n, stars, hp in WILDS_ROWS:
         if n == name:
@@ -176,7 +192,15 @@ for game, fn in ((g, EXTRACT[g]) for g in selected_games()):
             print(game, monster['slug'], 'no HP in the sources')
             continue
         monster['hp'] = hp
-        if game == 'wilds':
+        if game == 'wilds' and monster['slug'] in ARCH_TEMPERED_HP:
+            quests = ', '.join(f'★{s} {hp:,}' for s, hp in ARCH_TEMPERED_HP[monster['slug']])
+            monster['sources'] = [s for s in monster['sources'] if s['url'] != MACARON] + [{
+                'name': 'まかろんのゲームメモ (MHWilds monster HP)',
+                'url': MACARON,
+                'notes': f'HP: arch-tempered (歴戦王) rows, middle of the 5 size variations ({quests}); '
+                         'the lowest is shown. Kiranico does not list these quests.',
+            }]
+        elif game == 'wilds':
             if not any(s['url'] == 'https://mhwilds.kiranico.com/data/quests' for s in monster['sources']):
                 monster['sources'].append({
                     'name': 'Kiranico (MH Wilds) - quests',

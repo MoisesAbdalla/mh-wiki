@@ -19484,7 +19484,7 @@
         {
           "name": "Monster Hunter Wiki (MHWilds quest): Event: Unchained Arkveld",
           "url": "https://monsterhunterwiki.org/wiki/Event:_Unchained_Arkveld_(MHWilds_Quest)",
-          "notes": "★10 High Rank quest with Arch-Tempered Arkveld. Rewards that are Arkveld materials (the page has no rates). Kiranico does not list these quests, so HP is unknown. Weaknesses, parts, habitats, item reactions and classification are the base's."
+          "notes": "★10 High Rank quest with Arch-Tempered Arkveld. Rewards that are Arkveld materials (the page has no rates). Weaknesses, parts, habitats, item reactions and classification are the base's."
         },
         {
           "name": "Monster Hunter Wiki (MHWilds quest): Freedom from Solitude",
@@ -19500,6 +19500,18 @@
           "name": "Monster Hunter Wiki (MHWilds quest): The Proud Child of the Wilds",
           "url": "https://monsterhunterwiki.org/wiki/The_Proud_Child_of_the_Wilds_(MHWilds_Quest)",
           "notes": "★10 High Rank quest with Arch-Tempered Arkveld. Rewards that are Arkveld materials (the page has no rates)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: arch-tempered (歴戦王) rows, middle of the 5 size variations (★10 79,923); the lowest is shown. Kiranico does not list these quests."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 79923,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/arkveld.webp"
@@ -19562,7 +19574,7 @@
         {
           "name": "Monster Hunter Wiki (MHWilds quest): Frozen Knells of the East",
           "url": "https://monsterhunterwiki.org/wiki/Frozen_Knells_of_the_East_(MHWilds_Quest)",
-          "notes": "★10 High Rank quest with Arch-Tempered Jin Dahaad. Rewards that are Jin Dahaad materials (the page has no rates). Kiranico does not list these quests, so HP is unknown. Weaknesses, parts, habitats, item reactions and classification are the base's."
+          "notes": "★10 High Rank quest with Arch-Tempered Jin Dahaad. Rewards that are Jin Dahaad materials (the page has no rates). Weaknesses, parts, habitats, item reactions and classification are the base's."
         },
         {
           "name": "Monster Hunter Wiki (MHWilds quest): Heart of Judecca",
@@ -19573,6 +19585,18 @@
           "name": "Monster Hunter Wiki (MHWilds quest): The Cold Path to Oblivion",
           "url": "https://monsterhunterwiki.org/wiki/The_Cold_Path_to_Oblivion_(MHWilds_Quest)",
           "notes": "★9 High Rank quest with Arch-Tempered Jin Dahaad. Rewards that are Jin Dahaad materials (the page has no rates)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: arch-tempered (歴戦王) rows, middle of the 5 size variations (★9 65,120, ★10 73,593); the lowest is shown. Kiranico does not list these quests."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 65120,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/jin-dahaad.webp"
@@ -19630,12 +19654,24 @@
         {
           "name": "Monster Hunter Wiki (MHWilds quest): Event: Dreams May Soar",
           "url": "https://monsterhunterwiki.org/wiki/Event:_Dreams_May_Soar_(MHWilds_Quest)",
-          "notes": "★9 High Rank quest with Arch-Tempered Nu Udra. Rewards that are Nu Udra materials (the page has no rates). Kiranico does not list these quests, so HP is unknown. Weaknesses, parts, habitats, item reactions and classification are the base's."
+          "notes": "★9 High Rank quest with Arch-Tempered Nu Udra. Rewards that are Nu Udra materials (the page has no rates). Weaknesses, parts, habitats, item reactions and classification are the base's."
         },
         {
           "name": "Monster Hunter Wiki (MHWilds quest): Proof of a Hero",
           "url": "https://monsterhunterwiki.org/wiki/Proof_of_a_Hero_(MHWilds_Quest)",
           "notes": "★10 High Rank quest with Arch-Tempered Nu Udra. Rewards that are Nu Udra materials (the page has no rates)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: arch-tempered (歴戦王) rows, middle of the 5 size variations (★9 47,250, ★10 66,977); the lowest is shown. Kiranico does not list these quests."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 47250,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/nu-udra.webp"
@@ -19698,7 +19734,7 @@
         {
           "name": "Monster Hunter Wiki (MHWilds quest): A Silent Flash",
           "url": "https://monsterhunterwiki.org/wiki/A_Silent_Flash_(MHWilds_Quest)",
-          "notes": "★8 High Rank quest with Arch-Tempered Rey Dau. Rewards that are Rey Dau materials (the page has no rates). Kiranico does not list these quests, so HP is unknown. Weaknesses, parts, habitats, item reactions and classification are the base's."
+          "notes": "★8 High Rank quest with Arch-Tempered Rey Dau. Rewards that are Rey Dau materials (the page has no rates). Weaknesses, parts, habitats, item reactions and classification are the base's."
         },
         {
           "name": "Monster Hunter Wiki (MHWilds quest): Proof of a Hero",
@@ -19714,6 +19750,18 @@
           "name": "Monster Hunter Wiki (MHWilds quest): The Shining Storm Rages",
           "url": "https://monsterhunterwiki.org/wiki/The_Shining_Storm_Rages_(MHWilds_Quest)",
           "notes": "★8 High Rank quest with Arch-Tempered Rey Dau. Rewards that are Rey Dau materials (the page has no rates)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: arch-tempered (歴戦王) rows, middle of the 5 size variations (★8 35,550, ★10 54,675); the lowest is shown. Kiranico does not list these quests."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 35550,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/rey-dau.webp"
@@ -19781,7 +19829,7 @@
         {
           "name": "Monster Hunter Wiki (MHWilds quest): Proof of a Hero",
           "url": "https://monsterhunterwiki.org/wiki/Proof_of_a_Hero_(MHWilds_Quest)",
-          "notes": "★10 High Rank quest with Arch-Tempered Uth Duna. Rewards that are Uth Duna materials (the page has no rates). Kiranico does not list these quests, so HP is unknown. Weaknesses, parts, habitats, item reactions and classification are the base's."
+          "notes": "★10 High Rank quest with Arch-Tempered Uth Duna. Rewards that are Uth Duna materials (the page has no rates). Weaknesses, parts, habitats, item reactions and classification are the base's."
         },
         {
           "name": "Monster Hunter Wiki (MHWilds quest): Summons from the Land Beyond",
@@ -19797,6 +19845,18 @@
           "name": "Monster Hunter Wiki (MHWilds quest): These Roots Run Deep",
           "url": "https://monsterhunterwiki.org/wiki/These_Roots_Run_Deep_(MHWilds_Quest)",
           "notes": "★8 High Rank quest with Arch-Tempered Uth Duna. Rewards that are Uth Duna materials (the page has no rates)."
+        },
+        {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: arch-tempered (歴戦王) rows, middle of the 5 size variations (★8 49,500, ★10 77,517); the lowest is shown. Kiranico does not list these quests."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 49500,
+          "basis": "minQuest"
         }
       ],
       "image": "assets/images/monsters/wilds/uth-duna.webp"

@@ -96,7 +96,9 @@ still valid.
 
 What counts as a version, and which data a version inherits, is described in
 [research.md](specs/004-all-large-monsters/research.md) (R2–R4). In Wilds, arch-tempered versions come from their event and challenge quests on the
-Monster Hunter Wiki: they list the quest rewards without rates, and their HP is unknown.
+Monster Hunter Wiki: they list the quest rewards without rates. Their HP (the lowest of their quests, "a partir de")
+comes from the [macarongamemo HP table](https://macarongamemo.com/entry/mhwilds-monster-hp),
+because Kiranico does not list these quests.
 Frenzied monsters have no entries, because the sources give them no data of their own. Monsters
 from free title updates show "HP desconhecido", because their quests are not in the source
 list.

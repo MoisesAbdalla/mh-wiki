@@ -107,7 +107,15 @@ party factors, item reactions) are reused unchanged unless stated.
   - Drops: the quest rewards that are the monster's own materials, meaning items named after it
     or among the base's drops. Spheres, charms and emblems are left out. They are High Rank
     `questReward` rows without a rate, because quest pages give none.
-  - HP: unknown. Kiranico's quest list does not include these quests.
+  - HP: Kiranico's quest list does not include these quests. The user approved the
+    [macarongamemo HP table](https://macarongamemo.com/entry/mhwilds-monster-hp) (歴戦王 rows,
+    middle of 5 size variations) as the source. Its normal High Rank values match Kiranico for
+    12 of 13 monsters checked; Lala Barina differs (10,080 vs 9,000 in our data). Each version
+    shows its lowest quest HP (basis `minQuest`, the 003 rule); the ★10 value is in the source
+    note. Rey Dau ★8 35,550 / ★10 54,675; Uth Duna ★8 49,500 / ★10 77,517; Nu Udra ★9 47,250 /
+    ★10 66,977; Jin Dahaad ★9 65,120 / ★10 73,593; Arkveld ★10 79,923.
+  - Tempered HP stays unknown. It depends on the hunt's star (★5–9) and strength level, and the
+    table has gaps at ★8–9. A range would need a change to the HP model.
   - The icon is the base icon (R7). All other sections are inherited from the base.
   - "Certificate γ" gets its own id (`-gamma`). Before, it collided with "Certificate".
 - **Frenzied**: none. The wiki only mentions frenzy quest names.

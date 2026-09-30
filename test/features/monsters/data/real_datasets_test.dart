@@ -211,8 +211,9 @@ void main() {
         'arkveld',
       });
       for (final m in arch) {
-        // Event quests are not on Kiranico: no HP, rewards without rates.
-        expect(m.huntingInfo.hp, isEmpty, reason: '${m.id}');
+        // HP: lowest quest of the macarongamemo table; rewards without rates.
+        final hp = m.huntingInfo.hp.single;
+        expect((hp.rank, hp.basis), (Rank.high, HpBasis.minQuest));
         expect(m.drops, isNotEmpty, reason: '${m.id}');
         for (final d in m.drops) {
           expect(d.rank, Rank.high, reason: '${m.id}');
@@ -227,6 +228,7 @@ void main() {
         reyDau.drops.map((d) => d.material.name.en),
         containsAll(['Rey Dau Plate', 'Rey Dau Certificate γ']),
       );
+      expect(reyDau.huntingInfo.hp.single.solo, 35550); // ★8 A Silent Flash
     });
   });
 

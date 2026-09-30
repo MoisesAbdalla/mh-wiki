@@ -220,8 +220,8 @@ def arch_tempered_version(entry, materials, base, texts):
                         'url': MHWIKI + title.replace(' ', '_'),
                         'notes': f'★{stars} {rank.capitalize()} Rank quest with Arch-Tempered {base_name}. '
                                  f'Rewards that are {base_name} materials (the page has no rates).'})
-    sources[0]['notes'] += (' Kiranico does not list these quests, so HP is unknown. Weaknesses, parts, '
-                            'habitats, item reactions and classification are the base\'s.')
+    sources[0]['notes'] += (' Weaknesses, parts, habitats, item reactions and classification are '
+                            'the base\'s.')
     return {
         'slug': entry['slug'],
         'versionOf': base_slug,
