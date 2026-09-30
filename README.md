@@ -101,9 +101,9 @@ Monster Hunter Wiki: they list the quest rewards without rates. Tempered and arc
 [macarongamemo HP table](https://macarongamemo.com/entry/mhwilds-monster-hp), because Kiranico
 does not list those hunts. Four tempered versions (Lagiacrus, Seregios, Gogmazios, Zoh Shia) have
 no value there.
-Frenzied monsters have no entries, because the sources give them no data of their own. Monsters
-from free title updates show "HP desconhecido", because their quests are not in the source
-list.
+The same table fills the HP of the free title update and collab monsters that Kiranico does not
+list, except Gogmazios, which shows "HP desconhecido". Frenzied monsters have no entries, because
+the sources give them no data of their own.
 Sources are Kiranico, the Monster Hunter Wiki, mhw-db.com and Fextralife. Every monster lists
 its sources, and the choices behind them are in
 [research.md](specs/001-monster-wiki/research.md) (R12, R15). Rise and Wilds star ratings are

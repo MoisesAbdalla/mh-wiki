@@ -21,15 +21,10 @@ import 'package:mh_wiki/features/monsters/domain/entities/version_kind.dart';
 /// collab fights), per game slug (SC-003 exceptions).
 const noHabitat = <String>{};
 
-/// Base monsters without quest HP in the sources (004 research R4): Wilds
-/// free title updates and the collab fight are not in Kiranico's quest list.
-const noHp = <String>{
-  'lagiacrus',
-  'seregios',
-  'gogmazios',
-  'mizutsune',
-  'omega-planetes',
-};
+/// Base monsters without HP in the sources (004 research R4): Wilds free
+/// title updates and the collab fight are not in Kiranico's quest list, and
+/// the macarongamemo table gives Gogmazios only an unexplained "(410000)".
+const noHp = <String>{'gogmazios'};
 
 /// Wilds bases whose tempered rows are empty in the macarongamemo table
 /// (004 research R4): their tempered version has no HP.
@@ -252,6 +247,22 @@ void main() {
       );
       expect(reyDau.huntingInfo.hp.single.solo, 20500); // ★7 ♦3
     });
+
+    test(
+      'Wilds bases missing on Kiranico take the ♦3 HP of the table',
+      () async {
+        final monsters = await load(Game.wilds);
+        int hp(String slug) => monsters
+            .singleWhere((m) => m.id.slug == slug)
+            .huntingInfo
+            .hp
+            .single
+            .solo;
+        expect(hp('lagiacrus'), 20160);
+        expect(hp('mizutsune'), 16500);
+        expect(hp('rathalos'), 13500); // Kiranico, same as the table
+      },
+    );
   });
 
   test('the same monster uses a different thumbnail in each game', () async {

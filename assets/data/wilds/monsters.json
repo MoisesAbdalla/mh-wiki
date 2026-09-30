@@ -5463,9 +5463,21 @@
           "notes": "Classification."
         },
         {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: normal-individual row at strength ♦3, the level of quest targets, middle of the 5 size variations (★6 20,160). Kiranico does not list these hunts."
+        },
+        {
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Lagiacrus_%28MHWilds%29",
           "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 20160,
+          "basis": "minQuest"
         }
       ],
       "itemReactions": [
@@ -6383,9 +6395,21 @@
           "notes": "Classification."
         },
         {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: normal-individual row at strength ♦3, the level of quest targets, middle of the 5 size variations (★6 19,800). Kiranico does not list these hunts."
+        },
+        {
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Seregios_%28MHWilds%29",
           "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 19800,
+          "basis": "minQuest"
         }
       ],
       "itemReactions": [
@@ -7059,9 +7083,21 @@
           "notes": "Classification."
         },
         {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: normal-individual row at strength ♦3, the level of quest targets, middle of the 5 size variations (★5 16,500). Kiranico does not list these hunts."
+        },
+        {
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Mizutsune_%28MHWilds%29",
           "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 16500,
+          "basis": "minQuest"
         }
       ],
       "itemReactions": [
@@ -13904,9 +13940,21 @@
           "notes": "Classification."
         },
         {
+          "name": "まかろんのゲームメモ (MHWilds monster HP)",
+          "url": "https://macarongamemo.com/entry/mhwilds-monster-hp",
+          "notes": "HP: normal-individual row at strength ♦3, the level of quest targets, middle of the 5 size variations (★8 90,020). Kiranico does not list these hunts."
+        },
+        {
           "name": "Monster Hunter Wiki (MHWilds)",
           "url": "https://monsterhunterwiki.org/wiki/Omega_Planetes_%28MHWilds%29",
           "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
+        }
+      ],
+      "hp": [
+        {
+          "rank": "high",
+          "solo": 90020,
+          "basis": "minQuest"
         }
       ],
       "itemReactions": [

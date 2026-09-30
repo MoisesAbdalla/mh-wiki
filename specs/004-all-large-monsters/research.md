@@ -119,6 +119,12 @@ party factors, item reactions) are reused unchanged unless stated.
     (basis `minQuest`, e.g. Tempered Rey Dau 20,500 at ★7 ♦3), and every value is listed in its
     source note. Lagiacrus, Seregios, Gogmazios and Zoh Shia have empty tempered rows, so their
     tempered versions keep "HP desconhecido".
+  - Base HP fallback (added on 2026-09-30 at the user's request): bases without HP on Kiranico
+    (free title updates, collab) take the table's normal-individual value at strength ♦3. The page
+    says every assignment and optional quest target is ♦3, and that column matches Kiranico.
+    Lagiacrus 20,160, Seregios 19,800, Mizutsune 16,500 and Omega Planetes 90,020 are all High
+    Rank. Gogmazios is listed only as "(410000)", which the page does not explain, so it stays
+    unknown. Kiranico stays first for every other monster.
   - `tool/data/macaron.py` parses the table. It matches the Japanese names to slugs through the
     Kiranico Japanese monster pages.
   - The icon is the base icon (R7). All other sections are inherited from the base.

@@ -99,31 +99,36 @@ for tr in re.findall(r'<tr.*?</tr>', open('wl_quests_full.html', encoding='utf8'
         WILDS_ROWS.append((name, int(m.group(2)), hp))
 
 
-# Tempered hunts and arch-tempered quests are not on Kiranico (004 research
-# R4): their HP comes from the macarongamemo table, {version slug: [(stars, hp)]}.
-# 12 of 13 normal High Rank values checked there match Kiranico.
-_VERSION_HP = None
+# Tempered hunts, arch-tempered quests and the free title update / collab
+# monsters are not on Kiranico (004 research R4): their HP comes from the
+# macarongamemo table. 12 of 13 normal High Rank values checked there match
+# Kiranico, so Kiranico stays first and the table only fills what it lacks.
+_BLOG_HP = None
+FROM_BLOG = {}  # slug -> [(stars, hp)] of the entries whose HP came from the table
 
 
-def version_hp():
-    global _VERSION_HP
-    if _VERSION_HP is None:
-        entries = roster('wilds')
-        by_base = macaron.wilds_hp()
-        _VERSION_HP = {slug: by_base[(e['versionOf'], e['versionKind'])]
-                       for slug, e in entries.items()
-                       if (e.get('versionOf'), e.get('versionKind')) in by_base}
-    return _VERSION_HP
+def blog_hp():
+    """{slug: (kind, [(stars, hp)])}: versions by (base, kind), bases by 'base'."""
+    global _BLOG_HP
+    if _BLOG_HP is None:
+        table = macaron.wilds_hp()
+        _BLOG_HP = {}
+        for slug, e in roster('wilds').items():
+            key = (e['versionOf'], e['versionKind']) if 'versionOf' in e else (slug, 'base')
+            if key in table:
+                _BLOG_HP[slug] = (key[1], table[key])
+    return _BLOG_HP
 
 
 def wilds(slug, name):
-    if slug in version_hp():
-        return [{'rank': 'high', 'solo': min(hp for _, hp in version_hp()[slug]),
-                 'basis': 'minQuest'}]
     vals = {}
     for n, stars, hp in WILDS_ROWS:
         if n == name:
             vals.setdefault('low' if stars <= 3 else 'high', []).append(hp)
+    if not vals and slug in blog_hp():
+        FROM_BLOG[slug] = blog_hp()[slug]
+        return [{'rank': 'high', 'solo': min(hp for _, hp in FROM_BLOG[slug][1]),
+                 'basis': 'minQuest'}]
     return [{'rank': r, 'solo': min_quest(vals[r]), 'basis': 'minQuest'}
             for r in ('low', 'high') if r in vals]
 
@@ -197,14 +202,20 @@ for game, fn in ((g, EXTRACT[g]) for g in selected_games()):
             print(game, monster['slug'], 'no HP in the sources')
             continue
         monster['hp'] = hp
-        if game == 'wilds' and monster['slug'] in version_hp():
-            values = ', '.join(f'★{s} {hp:,}' for s, hp in version_hp()[monster['slug']])
-            row = '歴戦王 (arch-tempered)' if monster['versionKind'] == 'archTempered' else '歴戦 (tempered)'
+        if game == 'wilds' and monster['slug'] in FROM_BLOG:
+            kind, rows = FROM_BLOG[monster['slug']]
+            values = ', '.join(f'★{s} {hp:,}' for s, hp in rows)
+            if kind == 'base':
+                note = (f'HP: normal-individual row at strength ♦3, the level of quest targets, '
+                        f'middle of the 5 size variations ({values}).')
+            else:
+                row = '歴戦王 (arch-tempered)' if kind == 'archTempered' else '歴戦 (tempered)'
+                note = (f'HP: {row} rows, strength levels ♦3-♦5, middle of the 5 size variations '
+                        f'({values}); the lowest is shown.')
             monster['sources'] = [s for s in monster['sources'] if s['url'] != macaron.URL] + [{
                 'name': 'まかろんのゲームメモ (MHWilds monster HP)',
                 'url': macaron.URL,
-                'notes': f'HP: {row} rows, strength levels ♦3-♦5, middle of the 5 size variations '
-                         f'({values}); the lowest is shown. Kiranico does not list these hunts.',
+                'notes': note + ' Kiranico does not list these hunts.',
             }]
         elif game == 'wilds':
             if not any(s['url'] == 'https://mhwilds.kiranico.com/data/quests' for s in monster['sources']):
