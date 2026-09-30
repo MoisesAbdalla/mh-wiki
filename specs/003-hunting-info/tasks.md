@@ -82,7 +82,7 @@ description: "Task list for 003-hunting-info implementation"
 - [X] T019 Extend `test/features/monsters/presentation/views/accessibility_test.dart`: detail with HP and items at 320 dp / 200% text (no overflow) and text contrast
 - [X] T020 [P] README: document the new sections and their sources (HP factors are estimates)
 - [X] T021 Final gates, `flutter build windows --release`; commit and push
-- [ ] T022 Manual quickstart checks 1–7 (user, on Windows/phone)
+- [X] T022 Manual quickstart checks 1–7 (user, on Windows/phone)
 
 ---
 
