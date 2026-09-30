@@ -92,7 +92,7 @@ still valid.
 |------|---------------|----------|--------|
 | Wilds (game version 1.040) | 31 | 38 (3 guardians, 30 tempered, 5 arch-tempered) | Full large-monster list |
 | Rise: Sunbreak (Kiranico database 16.0.0) | 67 | 63 (6 apex, 5 risen, 52 afflicted) | Full large-monster list |
-| World: Iceborne | 10 | — | Curated (full roster pending) |
+| World: Iceborne (Kiranico ver. 15.11) | 71 | 46 (36 tempered, 10 arch-tempered) | Full large-monster list |
 
 What counts as a version, and which data a version inherits, is described in
 [research.md](specs/004-all-large-monsters/research.md) (R2–R4). In Wilds, arch-tempered versions come from their event and challenge quests on the

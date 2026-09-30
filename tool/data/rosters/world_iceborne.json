@@ -1,0 +1,1244 @@
+{
+  "game": "world_iceborne",
+  "source": "https://mhworld.kiranico.com/en/monsters",
+  "monsters": [
+    {
+      "slug": "acidic-glavenus",
+      "kiranicoPath": "KpViL/acidic-glavenus",
+      "name": "Acidic Glavenus",
+      "wiki": "Acidic_Glavenus"
+    },
+    {
+      "slug": "alatreon",
+      "kiranicoPath": "ErdcV/alatreon",
+      "name": "Alatreon",
+      "wiki": "Alatreon"
+    },
+    {
+      "slug": "ancient-leshen",
+      "kiranicoPath": "N3vuk/ancient-leshen",
+      "name": "Ancient Leshen",
+      "wiki": "Ancient_Leshen"
+    },
+    {
+      "slug": "anjanath",
+      "kiranicoPath": "ZqptN/anjanath",
+      "name": "Anjanath",
+      "wiki": "Anjanath"
+    },
+    {
+      "slug": "azure-rathalos",
+      "kiranicoPath": "BaYte/azure-rathalos",
+      "name": "Azure Rathalos",
+      "wiki": "Azure_Rathalos"
+    },
+    {
+      "slug": "banbaro",
+      "kiranicoPath": "6dJI8/banbaro",
+      "name": "Banbaro",
+      "wiki": "Banbaro"
+    },
+    {
+      "slug": "barioth",
+      "kiranicoPath": "4k2UP/barioth",
+      "name": "Barioth",
+      "wiki": "Barioth"
+    },
+    {
+      "slug": "barroth",
+      "kiranicoPath": "Z9btN/barroth",
+      "name": "Barroth",
+      "wiki": "Barroth"
+    },
+    {
+      "slug": "bazelgeuse",
+      "kiranicoPath": "Xe7fm/bazelgeuse",
+      "name": "Bazelgeuse",
+      "wiki": "Bazelgeuse"
+    },
+    {
+      "slug": "behemoth",
+      "kiranicoPath": "yA8Ub/behemoth",
+      "name": "Behemoth",
+      "wiki": "Behemoth"
+    },
+    {
+      "slug": "beotodus",
+      "kiranicoPath": "OqOIX/beotodus",
+      "name": "Beotodus",
+      "wiki": "Beotodus"
+    },
+    {
+      "slug": "black-diablos",
+      "kiranicoPath": "RoXHw/black-diablos",
+      "name": "Black Diablos",
+      "wiki": "Black_Diablos"
+    },
+    {
+      "slug": "blackveil-vaal-hazak",
+      "kiranicoPath": "WQzsl/blackveil-vaal-hazak",
+      "name": "Blackveil Vaal Hazak",
+      "wiki": "Blackveil_Vaal_Hazak"
+    },
+    {
+      "slug": "brachydios",
+      "kiranicoPath": "qpVH8/brachydios",
+      "name": "Brachydios",
+      "wiki": "Brachydios"
+    },
+    {
+      "slug": "brute-tigrex",
+      "kiranicoPath": "j1ohM/brute-tigrex",
+      "name": "Brute Tigrex",
+      "wiki": "Brute_Tigrex"
+    },
+    {
+      "slug": "coral-pukei-pukei",
+      "kiranicoPath": "aY2Se/coral-pukei-pukei",
+      "name": "Coral Pukei-Pukei",
+      "wiki": "Coral_Pukei-Pukei"
+    },
+    {
+      "slug": "deviljho",
+      "kiranicoPath": "4rATd/deviljho",
+      "name": "Deviljho",
+      "wiki": "Deviljho"
+    },
+    {
+      "slug": "diablos",
+      "kiranicoPath": "BYXHE/diablos",
+      "name": "Diablos",
+      "wiki": "Diablos"
+    },
+    {
+      "slug": "dodogama",
+      "kiranicoPath": "DmeH0/dodogama",
+      "name": "Dodogama",
+      "wiki": "Dodogama"
+    },
+    {
+      "slug": "ebony-odogaron",
+      "kiranicoPath": "v2gSW/ebony-odogaron",
+      "name": "Ebony Odogaron",
+      "wiki": "Ebony_Odogaron"
+    },
+    {
+      "slug": "fatalis",
+      "kiranicoPath": "jA8SZ/fatalis",
+      "name": "Fatalis",
+      "wiki": "Fatalis"
+    },
+    {
+      "slug": "frostfang-barioth",
+      "kiranicoPath": "BaZUz/frostfang-barioth",
+      "name": "Frostfang Barioth",
+      "wiki": "Frostfang_Barioth"
+    },
+    {
+      "slug": "fulgur-anjanath",
+      "kiranicoPath": "zJaFg/fulgur-anjanath",
+      "name": "Fulgur Anjanath",
+      "wiki": "Fulgur_Anjanath"
+    },
+    {
+      "slug": "furious-rajang",
+      "kiranicoPath": "jN0I7/furious-rajang",
+      "name": "Furious Rajang",
+      "wiki": "Furious_Rajang"
+    },
+    {
+      "slug": "glavenus",
+      "kiranicoPath": "Lk1ia/glavenus",
+      "name": "Glavenus",
+      "wiki": "Glavenus"
+    },
+    {
+      "slug": "gold-rathian",
+      "kiranicoPath": "BaPT0/gold-rathian",
+      "name": "Gold Rathian",
+      "wiki": "Gold_Rathian"
+    },
+    {
+      "slug": "great-girros",
+      "kiranicoPath": "eMAHO/great-girros",
+      "name": "Great Girros",
+      "wiki": "Great_Girros"
+    },
+    {
+      "slug": "great-jagras",
+      "kiranicoPath": "zJ1Sb/great-jagras",
+      "name": "Great Jagras",
+      "wiki": "Great_Jagras"
+    },
+    {
+      "slug": "jyuratodus",
+      "kiranicoPath": "oAyTx/jyuratodus",
+      "name": "Jyuratodus",
+      "wiki": "Jyuratodus"
+    },
+    {
+      "slug": "kirin",
+      "kiranicoPath": "BQruK/kirin",
+      "name": "Kirin",
+      "wiki": "Kirin"
+    },
+    {
+      "slug": "kulu-ya-ku",
+      "kiranicoPath": "YQ1FE/kulu-ya-ku",
+      "name": "Kulu-Ya-Ku",
+      "wiki": "Kulu-Ya-Ku"
+    },
+    {
+      "slug": "kulve-taroth",
+      "kiranicoPath": "5xbCn/kulve-taroth",
+      "name": "Kulve Taroth",
+      "wiki": "Kulve_Taroth"
+    },
+    {
+      "slug": "kushala-daora",
+      "kiranicoPath": "jJxin/kushala-daora",
+      "name": "Kushala Daora",
+      "wiki": "Kushala_Daora"
+    },
+    {
+      "slug": "lavasioth",
+      "kiranicoPath": "BL1ca/lavasioth",
+      "name": "Lavasioth",
+      "wiki": "Lavasioth"
+    },
+    {
+      "slug": "legiana",
+      "kiranicoPath": "QNYCK/legiana",
+      "name": "Legiana",
+      "wiki": "Legiana"
+    },
+    {
+      "slug": "leshen",
+      "kiranicoPath": "GmYh0/leshen",
+      "name": "Leshen",
+      "wiki": "Leshen"
+    },
+    {
+      "slug": "lunastra",
+      "kiranicoPath": "j8gFA/lunastra",
+      "name": "Lunastra",
+      "wiki": "Lunastra"
+    },
+    {
+      "slug": "namielle",
+      "kiranicoPath": "Mzdfo/namielle",
+      "name": "Namielle",
+      "wiki": "Namielle"
+    },
+    {
+      "slug": "nargacuga",
+      "kiranicoPath": "BKNIm/nargacuga",
+      "name": "Nargacuga",
+      "wiki": "Nargacuga"
+    },
+    {
+      "slug": "nergigante",
+      "kiranicoPath": "aYaUV/nergigante",
+      "name": "Nergigante",
+      "wiki": "Nergigante"
+    },
+    {
+      "slug": "nightshade-paolumu",
+      "kiranicoPath": "QNkhw/nightshade-paolumu",
+      "name": "Nightshade Paolumu",
+      "wiki": "Nightshade_Paolumu"
+    },
+    {
+      "slug": "odogaron",
+      "kiranicoPath": "ADAfZ/odogaron",
+      "name": "Odogaron",
+      "wiki": "Odogaron"
+    },
+    {
+      "slug": "paolumu",
+      "kiranicoPath": "2mnT3/paolumu",
+      "name": "Paolumu",
+      "wiki": "Paolumu"
+    },
+    {
+      "slug": "pink-rathian",
+      "kiranicoPath": "BnNTd/pink-rathian",
+      "name": "Pink Rathian",
+      "wiki": "Pink_Rathian"
+    },
+    {
+      "slug": "pukei-pukei",
+      "kiranicoPath": "nebTX/pukei-pukei",
+      "name": "Pukei-Pukei",
+      "wiki": "Pukei-Pukei"
+    },
+    {
+      "slug": "radobaan",
+      "kiranicoPath": "v2OUJ/radobaan",
+      "name": "Radobaan",
+      "wiki": "Radobaan"
+    },
+    {
+      "slug": "raging-brachydios",
+      "kiranicoPath": "JoYHZ/raging-brachydios",
+      "name": "Raging Brachydios",
+      "wiki": "Raging_Brachydios"
+    },
+    {
+      "slug": "rajang",
+      "kiranicoPath": "jJZIO/rajang",
+      "name": "Rajang",
+      "wiki": "Rajang"
+    },
+    {
+      "slug": "rathalos",
+      "kiranicoPath": "BnetX/rathalos",
+      "name": "Rathalos",
+      "wiki": "Rathalos"
+    },
+    {
+      "slug": "rathian",
+      "kiranicoPath": "Rz9Tb/rathian",
+      "name": "Rathian",
+      "wiki": "Rathian"
+    },
+    {
+      "slug": "ruiner-nergigante",
+      "kiranicoPath": "oAnim/ruiner-nergigante",
+      "name": "Ruiner Nergigante",
+      "wiki": "Ruiner_Nergigante"
+    },
+    {
+      "slug": "safijiiva",
+      "kiranicoPath": "0kVsV/safi-jiiva",
+      "name": "Safi'jiiva",
+      "wiki": "Safi'jiiva"
+    },
+    {
+      "slug": "savage-deviljho",
+      "kiranicoPath": "B02Tk/savage-deviljho",
+      "name": "Savage Deviljho",
+      "wiki": "Savage_Deviljho"
+    },
+    {
+      "slug": "scarred-yian-garuga",
+      "kiranicoPath": "46DhX/scarred-yian-garuga",
+      "name": "Scarred Yian Garuga",
+      "wiki": "Scarred_Yian_Garuga"
+    },
+    {
+      "slug": "seething-bazelgeuse",
+      "kiranicoPath": "6dkhX/seething-bazelgeuse",
+      "name": "Seething Bazelgeuse",
+      "wiki": "Seething_Bazelgeuse"
+    },
+    {
+      "slug": "shara-ishvalda",
+      "kiranicoPath": "8mvfA/shara-ishvalda",
+      "name": "Shara Ishvalda",
+      "wiki": "Shara_Ishvalda"
+    },
+    {
+      "slug": "shrieking-legiana",
+      "kiranicoPath": "Dm5tZ/shrieking-legiana",
+      "name": "Shrieking Legiana",
+      "wiki": "Shrieking_Legiana"
+    },
+    {
+      "slug": "silver-rathalos",
+      "kiranicoPath": "B0ktO/silver-rathalos",
+      "name": "Silver Rathalos",
+      "wiki": "Silver_Rathalos"
+    },
+    {
+      "slug": "stygian-zinogre",
+      "kiranicoPath": "vmKTW/stygian-zinogre",
+      "name": "Stygian Zinogre",
+      "wiki": "Stygian_Zinogre"
+    },
+    {
+      "slug": "teostra",
+      "kiranicoPath": "jGeS0/teostra",
+      "name": "Teostra",
+      "wiki": "Teostra"
+    },
+    {
+      "slug": "tigrex",
+      "kiranicoPath": "jVAhP/tigrex",
+      "name": "Tigrex",
+      "wiki": "Tigrex"
+    },
+    {
+      "slug": "tobi-kadachi",
+      "kiranicoPath": "blDTZ/tobi-kadachi",
+      "name": "Tobi-Kadachi",
+      "wiki": "Tobi-Kadachi"
+    },
+    {
+      "slug": "tzitzi-ya-ku",
+      "kiranicoPath": "WQvu8/tzitzi-ya-ku",
+      "name": "Tzitzi-Ya-Ku",
+      "wiki": "Tzitzi-Ya-Ku"
+    },
+    {
+      "slug": "uragaan",
+      "kiranicoPath": "z99fb/uragaan",
+      "name": "Uragaan",
+      "wiki": "Uragaan"
+    },
+    {
+      "slug": "vaal-hazak",
+      "kiranicoPath": "9mMsb/vaal-hazak",
+      "name": "Vaal Hazak",
+      "wiki": "Vaal_Hazak"
+    },
+    {
+      "slug": "velkhana",
+      "kiranicoPath": "J1pFn/velkhana",
+      "name": "Velkhana",
+      "wiki": "Velkhana"
+    },
+    {
+      "slug": "viper-tobi-kadachi",
+      "kiranicoPath": "2mJUK/viper-tobi-kadachi",
+      "name": "Viper Tobi-Kadachi",
+      "wiki": "Viper_Tobi-Kadachi"
+    },
+    {
+      "slug": "xenojiiva",
+      "kiranicoPath": "wA8F8/xeno-jiiva",
+      "name": "Xeno'jiiva",
+      "wiki": "Xeno'jiiva"
+    },
+    {
+      "slug": "yian-garuga",
+      "kiranicoPath": "jXmhm/yian-garuga",
+      "name": "Yian Garuga",
+      "wiki": "Yian_Garuga"
+    },
+    {
+      "slug": "zinogre",
+      "kiranicoPath": "Ak8TZ/zinogre",
+      "name": "Zinogre",
+      "wiki": "Zinogre"
+    },
+    {
+      "slug": "zorah-magdaros",
+      "kiranicoPath": "EmVcV/zorah-magdaros",
+      "name": "Zorah Magdaros",
+      "wiki": "Zorah_Magdaros"
+    },
+    {
+      "slug": "arch-tempered-kirin",
+      "kiranicoPath": "BQruK/kirin",
+      "name": "Arch-Tempered Kirin",
+      "wiki": "Kirin",
+      "versionOf": "kirin",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "A Whisper of White Mane",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-kushala-daora",
+      "kiranicoPath": "jJxin/kushala-daora",
+      "name": "Arch-Tempered Kushala Daora",
+      "wiki": "Kushala_Daora",
+      "versionOf": "kushala-daora",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "The Eye of the Storm",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-lunastra",
+      "kiranicoPath": "j8gFA/lunastra",
+      "name": "Arch-Tempered Lunastra",
+      "wiki": "Lunastra",
+      "versionOf": "lunastra",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "When Blue Dust Surpasses Red Lust",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-namielle",
+      "kiranicoPath": "Mzdfo/namielle",
+      "name": "Arch-Tempered Namielle",
+      "wiki": "Namielle",
+      "versionOf": "namielle",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "The Distant Dark Tide",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-nergigante",
+      "kiranicoPath": "aYaUV/nergigante",
+      "name": "Arch-Tempered Nergigante",
+      "wiki": "Nergigante",
+      "versionOf": "nergigante",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "The Heralds of Destruction Cry",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-teostra",
+      "kiranicoPath": "jGeS0/teostra",
+      "name": "Arch-Tempered Teostra",
+      "wiki": "Teostra",
+      "versionOf": "teostra",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "The Scorn of the Sun",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-vaal-hazak",
+      "kiranicoPath": "9mMsb/vaal-hazak",
+      "name": "Arch-Tempered Vaal Hazak",
+      "wiki": "Vaal_Hazak",
+      "versionOf": "vaal-hazak",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "The Deathly Quiet Curtain",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-velkhana",
+      "kiranicoPath": "J1pFn/velkhana",
+      "name": "Arch-Tempered Velkhana",
+      "wiki": "Velkhana",
+      "versionOf": "velkhana",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "The Place Where Winter Sleeps",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-xenojiiva",
+      "kiranicoPath": "wA8F8/xeno-jiiva",
+      "name": "Arch-Tempered Xeno'jiiva",
+      "wiki": "Xeno'jiiva",
+      "versionOf": "xenojiiva",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Like a Moth to the Flame",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "arch-tempered-zorah-magdaros",
+      "kiranicoPath": "EmVcV/zorah-magdaros",
+      "name": "Arch-Tempered Zorah Magdaros",
+      "wiki": "Zorah_Magdaros",
+      "versionOf": "zorah-magdaros",
+      "versionKind": "archTempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Undying Alpenglow",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-anjanath",
+      "kiranicoPath": "ZqptN/anjanath",
+      "name": "Tempered Anjanath",
+      "wiki": "Anjanath",
+      "versionOf": "anjanath",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "A Nose for an Eye",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-azure-rathalos",
+      "kiranicoPath": "BaYte/azure-rathalos",
+      "name": "Tempered Azure Rathalos",
+      "wiki": "Azure_Rathalos",
+      "versionOf": "azure-rathalos",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "A Nose for an Eye",
+          "arena": false
+        },
+        {
+          "name": "New World Sky, New World Flower",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-banbaro",
+      "kiranicoPath": "6dJI8/banbaro",
+      "name": "Tempered Banbaro",
+      "wiki": "Banbaro",
+      "versionOf": "banbaro",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "This Here's Big Horn Country!",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-barioth",
+      "kiranicoPath": "4k2UP/barioth",
+      "name": "Tempered Barioth",
+      "wiki": "Barioth",
+      "versionOf": "barioth",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Proud White Knight",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-barroth",
+      "kiranicoPath": "Z9btN/barroth",
+      "name": "Tempered Barroth",
+      "wiki": "Barroth",
+      "versionOf": "barroth",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Showdown: the Muck and the Maul",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-bazelgeuse",
+      "kiranicoPath": "Xe7fm/bazelgeuse",
+      "name": "Tempered Bazelgeuse",
+      "wiki": "Bazelgeuse",
+      "versionOf": "bazelgeuse",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Beyond the Blasting Scales",
+          "arena": false
+        },
+        {
+          "name": "Challenge Quest 1: Expert",
+          "arena": true
+        },
+        {
+          "name": "No Tomorrow for Usurpers",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-behemoth",
+      "kiranicoPath": "yA8Ub/behemoth",
+      "name": "Tempered Behemoth",
+      "wiki": "Behemoth",
+      "versionOf": "behemoth",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "A Visitor from Eorzea (Extreme)",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-beotodus",
+      "kiranicoPath": "OqOIX/beotodus",
+      "name": "Tempered Beotodus",
+      "wiki": "Beotodus",
+      "versionOf": "beotodus",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "By Our Powers Combined",
+          "arena": false
+        },
+        {
+          "name": "You Scratch Our Backs...",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-black-diablos",
+      "kiranicoPath": "RoXHw/black-diablos",
+      "name": "Tempered Black Diablos",
+      "wiki": "Black_Diablos",
+      "versionOf": "black-diablos",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Piercing Black",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-blackveil-vaal-hazak",
+      "kiranicoPath": "WQzsl/blackveil-vaal-hazak",
+      "name": "Tempered Blackveil Vaal Hazak",
+      "wiki": "Blackveil_Vaal_Hazak",
+      "versionOf": "blackveil-vaal-hazak",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Tears from Nirvana",
+          "arena": false
+        },
+        {
+          "name": "The Storm Brings the Unexpected",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-brachydios",
+      "kiranicoPath": "qpVH8/brachydios",
+      "name": "Tempered Brachydios",
+      "wiki": "Brachydios",
+      "versionOf": "brachydios",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Big Burly Bash",
+          "arena": false
+        },
+        {
+          "name": "Scores of Ores",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-coral-pukei-pukei",
+      "kiranicoPath": "aY2Se/coral-pukei-pukei",
+      "name": "Tempered Coral Pukei-Pukei",
+      "wiki": "Coral_Pukei-Pukei",
+      "versionOf": "coral-pukei-pukei",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Put That Red Cup Away",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-deviljho",
+      "kiranicoPath": "4rATd/deviljho",
+      "name": "Tempered Deviljho",
+      "wiki": "Deviljho",
+      "versionOf": "deviljho",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Relish the Moment",
+          "arena": false
+        },
+        {
+          "name": "The Heart of the Nora",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-frostfang-barioth",
+      "kiranicoPath": "BaZUz/frostfang-barioth",
+      "name": "Tempered Frostfang Barioth",
+      "wiki": "Frostfang_Barioth",
+      "versionOf": "frostfang-barioth",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "The Last White Knight",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-furious-rajang",
+      "kiranicoPath": "jN0I7/furious-rajang",
+      "name": "Tempered Furious Rajang",
+      "wiki": "Furious_Rajang",
+      "versionOf": "furious-rajang",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Mew are Number One!",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-glavenus",
+      "kiranicoPath": "Lk1ia/glavenus",
+      "name": "Tempered Glavenus",
+      "wiki": "Glavenus",
+      "versionOf": "glavenus",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Big Burly Bash",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-kirin",
+      "kiranicoPath": "BQruK/kirin",
+      "name": "Tempered Kirin",
+      "wiki": "Kirin",
+      "versionOf": "kirin",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Divine Surge",
+          "arena": false
+        },
+        {
+          "name": "Thunderous Rumble in the Highlands",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-kushala-daora",
+      "kiranicoPath": "jJxin/kushala-daora",
+      "name": "Tempered Kushala Daora",
+      "wiki": "Kushala_Daora",
+      "versionOf": "kushala-daora",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "In the Tempest's Wake",
+          "arena": false
+        },
+        {
+          "name": "The Sapphire Star's Guidance",
+          "arena": false
+        },
+        {
+          "name": "The Storm Brings the Unexpected",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-lavasioth",
+      "kiranicoPath": "BL1ca/lavasioth",
+      "name": "Tempered Lavasioth",
+      "wiki": "Lavasioth",
+      "versionOf": "lavasioth",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "The Name's Lavasioth!",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-legiana",
+      "kiranicoPath": "QNYCK/legiana",
+      "name": "Tempered Legiana",
+      "wiki": "Legiana",
+      "versionOf": "legiana",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Snow & Cherry Blossoms",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-lunastra",
+      "kiranicoPath": "j8gFA/lunastra",
+      "name": "Tempered Lunastra",
+      "wiki": "Lunastra",
+      "versionOf": "lunastra",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Master Hunter of the New World",
+          "arena": false
+        },
+        {
+          "name": "The Cold Never Bothered Me",
+          "arena": false
+        },
+        {
+          "name": "The Thronetaker",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-namielle",
+      "kiranicoPath": "Mzdfo/namielle",
+      "name": "Tempered Namielle",
+      "wiki": "Namielle",
+      "versionOf": "namielle",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Divine Surge",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-nargacuga",
+      "kiranicoPath": "BKNIm/nargacuga",
+      "name": "Tempered Nargacuga",
+      "wiki": "Nargacuga",
+      "versionOf": "nargacuga",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "The Assassin",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-nergigante",
+      "kiranicoPath": "aYaUV/nergigante",
+      "name": "Tempered Nergigante",
+      "wiki": "Nergigante",
+      "versionOf": "nergigante",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Challenge Quest 2: Expert",
+          "arena": true
+        },
+        {
+          "name": "The Sapphire Star's Guidance",
+          "arena": false
+        },
+        {
+          "name": "The Thronetaker",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-nightshade-paolumu",
+      "kiranicoPath": "QNkhw/nightshade-paolumu",
+      "name": "Tempered Nightshade Paolumu",
+      "wiki": "Nightshade_Paolumu",
+      "versionOf": "nightshade-paolumu",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Sleep Now in the Fire",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-odogaron",
+      "kiranicoPath": "ADAfZ/odogaron",
+      "name": "Tempered Odogaron",
+      "wiki": "Odogaron",
+      "versionOf": "odogaron",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "A Nasty Flesh Wound",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-pink-rathian",
+      "kiranicoPath": "BnNTd/pink-rathian",
+      "name": "Tempered Pink Rathian",
+      "wiki": "Pink_Rathian",
+      "versionOf": "pink-rathian",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "New World Sky, New World Flower",
+          "arena": false
+        },
+        {
+          "name": "Snow & Cherry Blossoms",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-radobaan",
+      "kiranicoPath": "v2OUJ/radobaan",
+      "name": "Tempered Radobaan",
+      "wiki": "Radobaan",
+      "versionOf": "radobaan",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Showdown: the Muck and the Maul",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-rathian",
+      "kiranicoPath": "Rz9Tb/rathian",
+      "name": "Tempered Rathian",
+      "wiki": "Rathian",
+      "versionOf": "rathian",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Sleep Now in the Fire",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-ruiner-nergigante",
+      "kiranicoPath": "oAnim/ruiner-nergigante",
+      "name": "Tempered Ruiner Nergigante",
+      "wiki": "Ruiner_Nergigante",
+      "versionOf": "ruiner-nergigante",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Ode to the Destruction",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-savage-deviljho",
+      "kiranicoPath": "B02Tk/savage-deviljho",
+      "name": "Tempered Savage Deviljho",
+      "wiki": "Savage_Deviljho",
+      "versionOf": "savage-deviljho",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Challenge Quest 2: MR Expert",
+          "arena": true
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-scarred-yian-garuga",
+      "kiranicoPath": "46DhX/scarred-yian-garuga",
+      "name": "Tempered Scarred Yian Garuga",
+      "wiki": "Scarred_Yian_Garuga",
+      "versionOf": "scarred-yian-garuga",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Fear No Scars",
+          "arena": true
+        },
+        {
+          "name": "Scars Tell the Whole Story",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-teostra",
+      "kiranicoPath": "jGeS0/teostra",
+      "name": "Tempered Teostra",
+      "wiki": "Teostra",
+      "versionOf": "teostra",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Day of Ruin",
+          "arena": false
+        },
+        {
+          "name": "Master Hunter of the New World",
+          "arena": false
+        },
+        {
+          "name": "The Sapphire Star's Guidance",
+          "arena": false
+        },
+        {
+          "name": "The Thronetaker",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-uragaan",
+      "kiranicoPath": "z99fb/uragaan",
+      "name": "Tempered Uragaan",
+      "wiki": "Uragaan",
+      "versionOf": "uragaan",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Challenge Quest 1: Expert",
+          "arena": true
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-velkhana",
+      "kiranicoPath": "J1pFn/velkhana",
+      "name": "Tempered Velkhana",
+      "wiki": "Velkhana",
+      "versionOf": "velkhana",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "Master Hunter of the New World",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-zinogre",
+      "kiranicoPath": "Ak8TZ/zinogre",
+      "name": "Tempered Zinogre",
+      "wiki": "Zinogre",
+      "versionOf": "zinogre",
+      "versionKind": "tempered",
+      "dataFrom": "wikiTemperedQuests",
+      "quests": [
+        {
+          "name": "The Wrath of Thunder Descends",
+          "arena": false
+        }
+      ],
+      "icon": "base"
+    }
+  ]
+}

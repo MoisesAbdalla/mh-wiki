@@ -9,6 +9,8 @@ import os
 import re
 import sys
 import time
+import urllib.error
+import urllib.parse
 import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -63,6 +65,16 @@ def fetch(url, cache):
     open(cache, 'w', encoding='utf8').write(data)
     time.sleep(1.2)
     return data
+
+
+def wiki_api(params, cache):
+    """A Monster Hunter Wiki API query (JSON), cached in [cache]."""
+    if not os.path.exists(cache):
+        url = 'https://monsterhunterwiki.org/api.php?' + urllib.parse.urlencode({**params, 'format': 'json'})
+        data = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60).read()
+        open(cache, 'wb').write(data)
+        time.sleep(1.2)
+    return json.load(open(cache, encoding='utf8'))
 
 
 def load_dataset(game):

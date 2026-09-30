@@ -11,31 +11,17 @@ its versions (feature 004, research R1/R2/R4).
 - `archTempered` version of every base that is the arch-tempered target of a
   Monster Hunter Wiki quest page (event/challenge/10-star quests, target
   template with `Type=Arch Tempered`). Its own data: those quests and their
-  rewards. Kiranico does not list these quests, so there is no HP.
+  rewards (HP from the macarongamemo table, see hp_extract.py).
 - No frenzied versions: the sources give them no own HP, drops or quests.
 """
 import json
 import os
 import re
-import time
-import urllib.parse
-import urllib.request
 
-from common import HERE, clean
+from common import HERE, clean, wiki_api
 
 KIRANICO = 'https://mhwilds.kiranico.com'
 TEMPERED_GROUPS = ('Extra Rewards (Tempered)', 'Tempered Wound Destruction Rewards')
-WIKI_API = 'https://monsterhunterwiki.org/api.php'
-UA = {'User-Agent': 'Mozilla/5.0 (mh-wiki data curation; personal study project)'}
-
-
-def wiki_api(params, cache):
-    if not os.path.exists(cache):
-        url = WIKI_API + '?' + urllib.parse.urlencode({**params, 'format': 'json'})
-        data = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60).read()
-        open(cache, 'wb').write(data)
-        time.sleep(1.2)
-    return json.load(open(cache, encoding='utf8'))
 
 
 def arch_tempered_quests():
