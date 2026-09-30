@@ -122,13 +122,18 @@ class _MaterialTile extends StatelessWidget {
               padding: const EdgeInsets.only(left: 12, top: 4),
               child: Row(
                 children: [
-                  Expanded(child: Text(_methodLabel(l10n, drop))),
-                  Text(
-                    drop.ratePercent == null
-                        ? l10n.rateUnknown
-                        : l10n.percent(drop.ratePercent!),
-                    style: textTheme.bodyMedium?.copyWith(
-                      fontFeatures: const [FontFeature.tabularFigures()],
+                  Expanded(flex: 3, child: Text(_methodLabel(l10n, drop))),
+                  const SizedBox(width: 8),
+                  Flexible(
+                    flex: 2,
+                    child: Text(
+                      textAlign: TextAlign.end,
+                      drop.ratePercent == null
+                          ? l10n.rateUnknown
+                          : l10n.percent(drop.ratePercent!),
+                      style: textTheme.bodyMedium?.copyWith(
+                        fontFeatures: const [FontFeature.tabularFigures()],
+                      ),
                     ),
                   ),
                 ],

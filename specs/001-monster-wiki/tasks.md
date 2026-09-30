@@ -212,13 +212,13 @@ instantly; sorting follows the language. Affects US1–US3 views.
 
 - [ ] T082 [P] Implement custom service worker precaching build output (cache-first, cache name versioned by app version) in `web/sw.js` and register it from a custom `web/flutter_bootstrap.js` (research R10); verify quickstart scenario 12 on `flutter build web --release` served locally
 - [ ] T083 [P] Add monster images (WebP, ~256 px thumbnails) for the roster where a reference image is available in `assets/images/monsters/<game>/<slug>.webp` and set `image` in each dataset; missing images keep the placeholder
-- [ ] T084 [P] Create end-to-end test (open list → filter Wilds → search "rath" → open Rathalos → assert 4 sections → back keeps filter/search) in `integration_test/app_test.dart` plus `test_driver/integration_test.dart` for web
+- [X] T084 [P] Create end-to-end test (open list → filter Wilds → search "rath" → open Rathalos → assert 4 sections → back keeps filter/search) in `integration_test/app_test.dart` plus `test_driver/integration_test.dart` for web
 - [ ] T085 Run `integration_test` on Android emulator (phone + tablet), Windows and Chrome (SC-008); run quickstart scenarios 10 and 11
-- [ ] T086 [P] Accessibility pass: verify semantics labels, ≥48 dp tap targets, and 200% text scale without clipping on detail sections; fix in affected widgets under `lib/features/monsters/presentation/views/widgets/`
-- [ ] T087 [P] Run dependency-rule checks from quickstart.md (domain imports only `mh_wiki`; presentation never imports `/data/`) and fix any violation
+- [X] T086 [P] Accessibility pass: verify semantics labels, ≥48 dp tap targets, and 200% text scale without clipping on detail sections; fix in affected widgets under `lib/features/monsters/presentation/views/widgets/`
+- [X] T087 [P] Run dependency-rule checks from quickstart.md (domain imports only `mh_wiki`; presentation never imports `/data/`) and fix any violation
 - [ ] T088 [P] Add performance test for SC-002: build a synthetic catalog of 200 monsters with `test/fakes/monster_fixtures.dart` and assert that `MonsterListController.setSearchText` and `setGame` each produce the new `Loaded` state in < 500 ms (Stopwatch) in `test/features/monsters/presentation/performance/filter_performance_test.dart`; then, for SC-003, run `flutter run --profile` on Android and use DevTools timeline to confirm detail opens in < 1 s after tap; record measured numbers in the phase commit message
 - [ ] T089 Data accuracy spot-check (SC-005) for all 30 monsters against their `sources`; fix discrepancies in `assets/data/*/monsters.json` only
-- [ ] T090 Add `README.md` at repo root (what the app is, run commands, how to add a monster = edit JSON per `specs/001-monster-wiki/contracts/monster-dataset.schema.json`, fan-made/non-commercial note)
+- [X] T090 Add `README.md` at repo root (what the app is, run commands, how to add a monster = edit JSON per `specs/001-monster-wiki/contracts/monster-dataset.schema.json`, fan-made/non-commercial note)
 - [ ] T091 Final gates: `flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`; full quickstart.md run; commit
 
 ---

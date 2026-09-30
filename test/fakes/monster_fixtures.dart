@@ -81,6 +81,23 @@ Monster buildMonster({
   sources: const [SourceRef(name: 'Test', url: 'https://example.com')],
 );
 
+extension MonsterTestCopy on Monster {
+  /// Same data under a unique slug/name, for bulk (performance) fixtures.
+  Monster copyForTest(int index) => Monster(
+    id: MonsterId(id.game, '${id.slug}-$index'),
+    name: LocalizedText(
+      en: '${name.en} $index',
+      ptBr: name.ptBr == null ? null : '${name.ptBr} $index',
+    ),
+    classification: classification,
+    weaknesses: this.weaknesses,
+    habitats: habitats,
+    parts: parts,
+    drops: drops,
+    sources: sources,
+  );
+}
+
 /// A monster exercising every detail edge case: states, immunity, severable
 /// part, break-part drop, unknown rate and an `other` method.
 Monster richMonster({Game game = Game.worldIceborne}) {

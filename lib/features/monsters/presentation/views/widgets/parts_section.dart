@@ -26,13 +26,26 @@ class PartsSection extends StatelessWidget {
                       children: [
                         const Icon(Icons.broken_image_outlined, size: 20),
                         const SizedBox(width: 12),
-                        Expanded(child: Text(part.name.resolve(language))),
-                        if (part.severable)
-                          Chip(
-                            label: Text(l10n.severable),
-                            avatar: const Icon(Icons.content_cut, size: 16),
-                            visualDensity: VisualDensity.compact,
+                        // Wrap lets the tag drop below long names or
+                        // large text instead of overflowing.
+                        Expanded(
+                          child: Wrap(
+                            spacing: 8,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Text(part.name.resolve(language)),
+                              if (part.severable)
+                                Chip(
+                                  label: Text(l10n.severable),
+                                  avatar: const Icon(
+                                    Icons.content_cut,
+                                    size: 16,
+                                  ),
+                                  visualDensity: VisualDensity.compact,
+                                ),
+                            ],
                           ),
+                        ),
                       ],
                     ),
                   ),

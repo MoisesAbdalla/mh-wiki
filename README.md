@@ -1,17 +1,71 @@
-# mh_wiki
+# MH Wiki
 
-A new Flutter project.
+Offline wiki of large monsters from **Monster Hunter World: Iceborne**, **Monster Hunter
+Rise: Sunbreak** and **Monster Hunter Wilds**, built with Flutter (Android, tablet, web and
+Windows).
 
-## Getting Started
+- List monsters by game, with accent- and case-insensitive search (pt-BR and English names).
+- Detail view: elemental weaknesses (including per-state variations), habitats, breakable
+  parts, and materials by rank with acquisition method and drop rate.
+- Game names shown in Portuguese (Brazil) or English (Configurações).
+- Side-by-side list and detail on wide screens (≥ 840 dp).
 
-This project is a starting point for a Flutter application.
+> Fan-made, non-commercial study project. Not affiliated with or endorsed by Capcom.
+> Monster Hunter and all related names are trademarks of Capcom.
 
-A few resources to get you started if this is your first Flutter project:
+## Architecture
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Clean Architecture per feature with MVC in the presentation layer. The rules are in
+[.specify/memory/constitution.md](.specify/memory/constitution.md), and the design is in
+[specs/001-monster-wiki/](specs/001-monster-wiki/).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```text
+lib/
+├── app/                 # MaterialApp + composition root (app/di)
+├── core/                # shared domain types and presentation helpers
+└── features/
+    ├── monsters/{domain,data,presentation}
+    └── settings/{domain,data,presentation}
+assets/data/<game>/monsters.json   # versioned datasets (schemaVersion 1)
+```
+
+## Running
+
+```powershell
+flutter pub get
+flutter run -d windows          # needs Windows Developer Mode (plugin symlinks)
+flutter run -d chrome
+flutter run -d <android-device>
+```
+
+Web build that works offline after the first load (custom service worker in `web/sw.js`;
+CanvasKit is self-hosted so nothing depends on a CDN):
+
+```powershell
+flutter build web --release --no-web-resources-cdn
+```
+
+## Quality gates
+
+```powershell
+flutter analyze
+dart format --set-exit-if-changed .
+flutter test
+flutter test integration_test -d <device>
+```
+
+## Adding or fixing monster data
+
+Data changes never require code changes. Edit `assets/data/<game>/monsters.json` following
+[the dataset schema](specs/001-monster-wiki/contracts/monster-dataset.schema.json) and the
+validation rules in [data-model.md](specs/001-monster-wiki/data-model.md). Then run
+`flutter test test/features/monsters/data/real_datasets_test.dart` to confirm the file is
+still valid.
+
+- Every dataset and every monster must list its `sources`.
+- Omit `ratePercent` when a drop rate is not verified. The app then shows "Taxa desconhecida"
+  and never shows an invented value.
+
+**Data status:** the bundled datasets are **placeholders** with one Rathalos per game, written
+from memory and marked `UNVERIFIED` in their sources. They still need to be curated and checked
+against the sources (tasks T048, T057, T058 and T089).

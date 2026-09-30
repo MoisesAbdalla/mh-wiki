@@ -42,7 +42,7 @@ Get-ChildItem lib -Recurse -Filter *.dart | Where-Object FullName -match '\\pres
 flutter run -d <android-device-id>
 flutter run -d windows
 flutter run -d chrome
-flutter build web --release   # for the offline test below; serve build/web with any static server
+flutter build web --release --no-web-resources-cdn   # self-hosts CanvasKit so offline works; serve build/web with any static server
 ```
 
 ## End-to-end integration test (SC-008)
