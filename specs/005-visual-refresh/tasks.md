@@ -203,7 +203,7 @@ motion tests pass.
 - [X] T034 Remove `hunterDisplay` and `HunterFonts.display/body` (Cinzel, Alegreya Sans) from `hunter_theme.dart`, delete `assets/fonts/cinzel/` and `assets/fonts/alegreya_sans/`, and remove them from `pubspec.yaml`.
 - [X] T035 [P] Update `README.md`: the app name "Caderninho", the visual identity (fonts and licences, palette roles), the logo source in the sources section (FR-019), and a screenshot note.
 - [X] T036 Run the gates (`flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`, `flutter build windows --release`), then commit and push.
-- [ ] T037 Manual quickstart checks 1–13 (user), comparing with [mockups/approved.html](mockups/approved.html). Fix the findings, then merge `005-visual-refresh` into `main`.
+- [X] T037 Manual quickstart checks 1–13 (user), comparing with [mockups/approved.html](mockups/approved.html). Fix the findings, then merge `005-visual-refresh` into `main`.
 
 ---
 
