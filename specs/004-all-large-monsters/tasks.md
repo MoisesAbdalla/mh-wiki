@@ -171,7 +171,7 @@ then Rise (Phase 6), then World (Phase 7).
 - [X] T029 [US1] Run `tool/data/build.py rise_sunbreak` for the roster and update `assets/data/rise_sunbreak/monsters.json`, keeping the 10 original entries.
 - [X] T030 [US2] Run HP and items extraction for Rise (afflicted HP from Anomaly quests; apex and risen from their own quest rows); update the dataset.
 - [X] T031 [US3] Run `fetch_icons.py rise_sunbreak` (Apex and Risen use their own icons; afflicted versions use the base icon).
-- [ ] T032 [US1] Extend `real_datasets_test.dart` for Rise (roster coverage, SC-003, `noHp` set, SC-006). Run the gates, `flutter build windows --release`, update the README data status, commit, push. The user runs the manual checks, then merge to `main`.
+- [X] T032 [US1] Extend `real_datasets_test.dart` for Rise (roster coverage, SC-003, `noHp` set, SC-006). Run the gates, `flutter build windows --release`, update the README data status, commit, push. The user runs the manual checks, then merge to `main`.
 
 ---
 
