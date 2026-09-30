@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "game": "world_iceborne",
+  "generatedAt": "2026-09-29",
+  "sources": [
+    {
+      "name": "Kiranico (MH World)",
+      "url": "https://mhworld.kiranico.com/",
+      "notes": "UNVERIFIED placeholder written from memory; must be checked against the source (tasks T048/T089). Weakness stars follow the in-game Hunter's Notes scale."
+    }
+  ],
+  "habitats": [
+    { "id": "ancient-forest", "name": { "en": "Ancient Forest" } },
+    { "id": "elders-recess", "name": { "en": "Elder's Recess" } }
+  ],
+  "materials": [
+    { "id": "rathalos-scale", "name": { "en": "Rathalos Scale" } },
+    { "id": "rathalos-tail", "name": { "en": "Rathalos Tail" } },
+    { "id": "rathalos-ruby", "name": { "en": "Rathalos Ruby" } }
+  ],
+  "monsters": [
+    {
+      "slug": "rathalos",
+      "name": { "en": "Rathalos", "ptBr": "Rathalos" },
+      "classification": { "en": "Flying Wyvern" },
+      "weaknesses": {
+        "general": { "fire": "none", "water": "low", "thunder": "medium", "ice": "low", "dragon": "high" }
+      },
+      "habitatIds": ["ancient-forest", "elders-recess"],
+      "parts": [
+        { "id": "head", "name": { "en": "Head" }, "severable": false },
+        { "id": "wings", "name": { "en": "Wings" }, "severable": false },
+        { "id": "tail", "name": { "en": "Tail" }, "severable": true }
+      ],
+      "drops": [
+        { "materialId": "rathalos-scale", "rank": "low", "method": "carve" },
+        { "materialId": "rathalos-tail", "rank": "low", "method": "tailCarve" },
+        { "materialId": "rathalos-ruby", "rank": "high", "method": "breakPart", "partId": "head" }
+      ],
+      "sources": [
+        {
+          "name": "Kiranico (MH World)",
+          "url": "https://mhworld.kiranico.com/",
+          "notes": "UNVERIFIED placeholder; drop rates intentionally omitted until verified."
+        }
+      ]
+    }
+  ]
+}
