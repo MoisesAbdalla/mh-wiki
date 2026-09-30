@@ -28,13 +28,13 @@ its own.
 
 **Purpose**: assets and strings every story needs.
 
-- [ ] T001 [P] Download the three OFL font families from `https://raw.githubusercontent.com/google/fonts/main/ofl/` (research R1) into `assets/fonts/im_fell_english_sc/` (`IMFeENsc28P.ttf`, `OFL.txt`), `assets/fonts/averia_serif_libre/` (`AveriaSerifLibre-Regular.ttf`, `AveriaSerifLibre-Bold.ttf`, `OFL.txt`) and `assets/fonts/atkinson_hyperlegible/` (`AtkinsonHyperlegible-Regular.ttf`, `-Bold.ttf`, `-Italic.ttf`, `OFL.txt`). Register the families `IMFellEnglishSC`, `AveriaSerifLibre` (400, 700) and `AtkinsonHyperlegible` (400, 700, italic) in `pubspec.yaml`. Keep Cinzel and Alegreya Sans until T034.
-- [ ] T002 [P] Create `tool/data/fetch_game_logos.py` (uses `common.fetch`; Pillow).
+- [X] T001 [P] Download the three OFL font families from `https://raw.githubusercontent.com/google/fonts/main/ofl/` (research R1) into `assets/fonts/im_fell_english_sc/` (`IMFeENsc28P.ttf`, `OFL.txt`), `assets/fonts/averia_serif_libre/` (`AveriaSerifLibre-Regular.ttf`, `AveriaSerifLibre-Bold.ttf`, `OFL.txt`) and `assets/fonts/atkinson_hyperlegible/` (`AtkinsonHyperlegible-Regular.ttf`, `-Bold.ttf`, `-Italic.ttf`, `OFL.txt`). Register the families `IMFellEnglishSC`, `AveriaSerifLibre` (400, 700) and `AtkinsonHyperlegible` (400, 700, italic) in `pubspec.yaml`. Keep Cinzel and Alegreya Sans until T034.
+- [X] T002 [P] Create `tool/data/fetch_game_logos.py` (uses `common.fetch`; Pillow).
   - Download `MHWI-Logo.png`, `MHRS-Logo.png` and `MHWilds-Logo.png` from `https://monsterhunterwiki.org/wiki/Special:FilePath/<file>`.
   - Convert each to RGBA, trim it to its bounding box, resize it to 138 px tall, and save it as lossless-alpha WebP to `assets/images/games/{world_iceborne,rise_sunbreak,wilds}.webp`.
   - Write `assets/images/games/SOURCES.md` (origin URLs, Capcom trademark note, personal/study use as in feature 001).
   - Run the script, register `assets/images/games/` in `pubspec.yaml`, and add the script to the table in `tool/data/README.md`.
-- [ ] T003 [P] Update `lib/l10n/app_pt.arb`: `appTitle` = "Caderninho"; remove `appSubtitle`; add `bestWeakness` ("Melhor"), `gameLogoLabel`, `weaknessRowSemantics`, `hpRulerSemantics` and `hpSoloLabel` ("solo"), per data-model.md › Localisation. Reuse the existing immunity/"sem efeito" label if there is one. Regenerate the l10n files with `flutter gen-l10n`.
+- [X] T003 [P] Update `lib/l10n/app_pt.arb`: `appTitle` = "Caderninho"; remove `appSubtitle`; add `bestWeakness` ("Melhor"), `gameLogoLabel`, `weaknessRowSemantics`, `hpRulerSemantics` and `hpSoloLabel` ("solo"), per data-model.md › Localisation. Reuse the existing immunity/"sem efeito" label if there is one. Regenerate the l10n files with `flutter gen-l10n`.
 
 ---
 
@@ -44,25 +44,25 @@ its own.
 
 **⚠️ CRITICAL**: US1–US3 build on these.
 
-- [ ] T004 Create `lib/core/presentation/theme/notebook_tokens.dart` with:
+- [X] T004 Create `lib/core/presentation/theme/notebook_tokens.dart` with:
   - `Space` (section 32, title 12, row 8, gutter 22/16);
   - `Motion` (220 ms, `Curves.easeOutCubic`, and `Motion.duration(context)` returning `Duration.zero` when `MediaQuery.disableAnimationsOf(context)`);
   - type helpers `notebookTitle({size, color})` (IMFellEnglishSC, w400) and `notebookNumber({size, color, bold})` (AveriaSerifLibre, tabular figures), per data-model.md.
-- [ ] T005 Update `lib/core/presentation/theme/hunter_theme.dart`:
+- [X] T005 Update `lib/core/presentation/theme/hunter_theme.dart`:
   - body font `AtkinsonHyperlegible` (bodyLarge 16, bodyMedium 14, bodySmall 12.5);
   - app bar title style `notebookTitle(24)`;
   - dividers `borderSubtle` 1 px.
   Keep `hunterDisplay` for now (removed in T034). Update `test/app/app_theme_test.dart` for the new families.
-- [ ] T006 [P] Write `test/core/presentation/widgets/notebook_section_test.dart`. It checks that `NotebookSection` renders the number (Averia) and the title (IM Fell) as a semantics header, shows the optional note after the title, draws no `Card`, no bordered `Material` and no `DecoratedBox` with a border around its child, and wraps without overflow at 320 dp / 200 % text.
-- [ ] T007 Create `lib/core/presentation/widgets/notebook_section.dart`: `NotebookSection` (number, title, optional note, optional trailing, child; hairline under the title; `Space` tokens). Move `EmptySectionText` there from `section_card.dart` and re-export it for now, so `T006` passes.
-- [ ] T008 [P] Create `lib/core/presentation/widgets/ruled_row.dart`: `RuledRow` (leading, label, trailing, optional caption; 1 px `borderSubtle` bottom rule, 8 dp vertical padding, wraps at large text) and `RuledCaption` (small upper-case muted group caption).
-- [ ] T009 [P] Write `test/core/presentation/widgets/underline_tabs_test.dart` covering:
+- [X] T006 [P] Write `test/core/presentation/widgets/notebook_section_test.dart`. It checks that `NotebookSection` renders the number (Averia) and the title (IM Fell) as a semantics header, shows the optional note after the title, draws no `Card`, no bordered `Material` and no `DecoratedBox` with a border around its child, and wraps without overflow at 320 dp / 200 % text.
+- [X] T007 Create `lib/core/presentation/widgets/notebook_section.dart`: `NotebookSection` (number, title, optional note, optional trailing, child; hairline under the title; `Space` tokens). Move `EmptySectionText` there from `section_card.dart` and re-export it for now, so `T006` passes.
+- [X] T008 [P] Create `lib/core/presentation/widgets/ruled_row.dart`: `RuledRow` (leading, label, trailing, optional caption; 1 px `borderSubtle` bottom rule, 8 dp vertical padding, wraps at large text) and `RuledCaption` (small upper-case muted group caption).
+- [X] T009 [P] Write `test/core/presentation/widgets/underline_tabs_test.dart` covering:
   - text and image options, with the image falling back to text on error;
   - the selected tab has the gold underline, and the unselected image tab has reduced opacity;
   - `Semantics(button, selected, label)`, with the label override used for images;
   - 48 dp minimum height;
   - horizontal scrolling instead of wrapping when the width is 320 dp or the text is at 200 %.
-- [ ] T010 Create `lib/core/presentation/widgets/underline_tabs.dart`: `UnderlineTabs<T>` with `TabOption<T>` (value, text, optional image asset, semantics label), per research R4 and the contract, so `T009` passes.
+- [X] T010 Create `lib/core/presentation/widgets/underline_tabs.dart`: `UnderlineTabs<T>` with `TabOption<T>` (value, text, optional image asset, semantics label), per research R4 and the contract, so `T009` passes.
 
 **Checkpoint**: the tokens and shared widgets exist; screens still use the old look.
 

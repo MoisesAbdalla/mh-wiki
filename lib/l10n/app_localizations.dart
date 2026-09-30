@@ -97,7 +97,7 @@ abstract class AppLocalizations {
   /// Application title
   ///
   /// In pt, this message translates to:
-  /// **'MH Wiki'**
+  /// **'Caderninho'**
   String get appTitle;
 
   /// No description provided for @gameWorldIceborne.
@@ -213,6 +213,18 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'{element}: {stars} de 3'**
   String starsSemantics(String element, int stars);
+
+  /// No description provided for @bestWeakness.
+  ///
+  /// In pt, this message translates to:
+  /// **'Melhor'**
+  String get bestWeakness;
+
+  /// No description provided for @bestWeaknessSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'{element}: {stars} de 3, melhor fraqueza'**
+  String bestWeaknessSemantics(String element, int stars);
 
   /// No description provided for @immuneSemantics.
   ///
@@ -406,12 +418,6 @@ abstract class AppLocalizations {
   /// **'Não foi possível salvar a preferência'**
   String get saveFailed;
 
-  /// No description provided for @appSubtitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Caderno do Caçador'**
-  String get appSubtitle;
-
   /// No description provided for @sectionTitleWorldIceborne.
   ///
   /// In pt, this message translates to:
@@ -471,6 +477,12 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Fonte: {name}'**
   String sourceLabel(String name);
+
+  /// No description provided for @hpRulerSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'HP solo {solo}; 2 caçadores {two}; 3 a 4 caçadores {more}'**
+  String hpRulerSemantics(String solo, String two, String more);
 
   /// No description provided for @hpUnknown.
   ///

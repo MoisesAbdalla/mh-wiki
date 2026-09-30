@@ -3,6 +3,9 @@ import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/widgets/hunter_panel.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
+export 'package:mh_wiki/core/presentation/widgets/notebook_section.dart'
+    show EmptySectionText;
+
 /// Titled block used by every detail section, drawn as a hunter's-notes panel.
 class SectionCard extends StatelessWidget {
   const SectionCard({
@@ -44,20 +47,6 @@ class InheritedNote extends StatelessWidget {
   Widget build(BuildContext context) => Text(
     AppLocalizations.of(context).inheritedFromBase,
     style: Theme.of(context).textTheme.bodySmall
-        ?.copyWith(color: HunterPalette.textMuted, fontStyle: FontStyle.italic),
-  );
-}
-
-/// Explicit "no data" message (FR-016).
-class EmptySectionText extends StatelessWidget {
-  const EmptySectionText(this.text, {super.key});
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) => Text(
-    text,
-    style: Theme.of(context).textTheme.bodyMedium
         ?.copyWith(color: HunterPalette.textMuted, fontStyle: FontStyle.italic),
   );
 }

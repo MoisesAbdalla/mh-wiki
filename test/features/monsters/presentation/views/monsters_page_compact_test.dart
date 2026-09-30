@@ -70,7 +70,11 @@ void main() {
     await controller.load();
     await pumpPage(tester);
 
-    await tester.drag(listScrollable, const Offset(0, -600));
+    await tester.scrollUntilVisible(
+      find.text('Monster 12'),
+      200,
+      scrollable: listScrollable,
+    );
     await tester.pumpAndSettle();
     final offsetBefore = tester
         .state<ScrollableState>(listScrollable)
