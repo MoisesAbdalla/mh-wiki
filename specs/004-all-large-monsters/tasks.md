@@ -27,12 +27,12 @@ then Rise (Phase 6), then World (Phase 7).
 
 ## Phase 1: Setup
 
-- [ ] T001 Move the data pipeline into the repository (research R8).
+- [X] T001 Move the data pipeline into the repository (research R8).
   - Copy the scratchpad scripts into `tool/data/`, with shared helpers (`fetch` with cache, `clean`, `payload`, `dump_dataset` that keeps the CRLF / indent-2 / no-trailing-newline format) in `tool/data/common.py`: `build_world.py`, `build_rise.py`, `build_wilds.py`, `kiranico_world.py`, `hp_extract.py`, `items_extract.py`, `item_parse.py`, `fetch_icons.py`.
   - Paths are relative to the repo root; the cache goes in `tool/data/.cache/`.
   - Add `tool/data/.cache/` to `.gitignore`.
   - Add `tool/data/README.md` (usage, rules → links to research of 001–004).
-- [ ] T002 [P] Add the new UI strings to `lib/l10n/app_pt.arb` and run `flutter gen-l10n`:
+- [X] T002 [P] Add the new UI strings to `lib/l10n/app_pt.arb` and run `flutter gen-l10n`:
   - version labels: "Base", "Temperado", "Arquitemperado", "Aflito", "Frenesi", "Apex", "Ressurgido", "Guardião";
   - "{count, plural, =1{1 versão} other{{count} versões}}";
   - "Igual à forma base";
