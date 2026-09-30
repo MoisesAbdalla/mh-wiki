@@ -149,7 +149,7 @@ then Rise (Phase 6), then World (Phase 7).
 - [X] T024 [US3] Parse datasets off the UI thread: `compute(...)` in `lib/features/monsters/data/datasources/asset_monster_datasource.dart` for decode + DTO validation, errors still mapped to `DatasetFormatException` / failures. Makes T023 pass together with T008.
 - [X] T025 [US3] Run `tool/data/fetch_icons.py wilds` for every Wilds base and own-icon version (Guardians). Tempered and arch-tempered versions reference the base icon (research R7). Record `image` in `assets/data/wilds/monsters.json` and extend `real_datasets_test.dart` with an SC-006 check (≥ 95 % of base monsters with own image).
 - [X] T026 [US3] Extend `test/features/monsters/presentation/views/accessibility_test.dart`: a version detail with the selector and inherited notes at 320 dp / 200 % text (no overflow), text contrast, tap targets.
-- [ ] T027 [US3] Wilds release gate:
+- [X] T027 [US3] Wilds release gate:
   - run the gates and `flutter build windows --release`;
   - update `README.md` (data status, versions, `tool/data/`);
   - commit and push;
