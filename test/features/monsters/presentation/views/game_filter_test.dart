@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/presentation/widgets/game_tabs.dart';
-import 'package:mh_wiki/core/presentation/widgets/ornament_header.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/monsters_page.dart';
 
@@ -37,8 +36,21 @@ void main() {
 
   tearDown(() => controller.dispose());
 
-  Finder tab(String label) =>
-      find.descendant(of: find.byType(GameTabs), matching: find.text(label));
+  /// A game tab by its short name; logos are found by their spoken label.
+  Finder tab(String label) {
+    const spoken = {
+      'World': 'Monster Hunter World: Iceborne',
+      'Rise': 'Monster Hunter Rise: Sunbreak',
+      'Wilds': 'Monster Hunter Wilds',
+    };
+    final name = spoken[label] ?? label;
+    return find.descendant(
+      of: find.byType(GameTabs),
+      matching: find.byWidgetPredicate(
+        (w) => w is Semantics && w.properties.label == name,
+      ),
+    );
+  }
 
   Future<void> pumpPage(WidgetTester tester) async {
     setWindowSize(tester, const Size(400, 800));
@@ -53,23 +65,14 @@ void main() {
     }
   });
 
-  testWidgets('"Todos" shows an ornament header per game in order', (
+  testWidgets('"Todos" shows a caption per game in order (005 R10)', (
     tester,
   ) async {
     await pumpPage(tester);
 
-    expect(find.byType(OrnamentHeader), findsNWidgets(3));
     final headers = ['World : Iceborne', 'Rise : Sunbreak', 'Wilds'];
     final positions = [
-      for (final header in headers)
-        tester
-            .getTopLeft(
-              find.descendant(
-                of: find.byType(OrnamentHeader),
-                matching: find.text(header),
-              ),
-            )
-            .dy,
+      for (final header in headers) tester.getTopLeft(find.text(header)).dy,
     ];
     expect(positions, orderedEquals([...positions]..sort()));
   });
@@ -85,7 +88,8 @@ void main() {
     expect(find.text('Arkveld'), findsOneWidget);
     expect(find.text('Anjanath'), findsNothing);
     expect(find.text('Magnamalo'), findsNothing);
-    expect(find.byType(OrnamentHeader), findsNothing);
+    expect(find.text('World : Iceborne'), findsNothing);
+    expect(find.text('Rise : Sunbreak'), findsNothing);
   });
 
   testWidgets('empty result with active filter offers to clear it', (

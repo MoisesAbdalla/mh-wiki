@@ -21,8 +21,9 @@ void main() {
     );
   }
 
-  testWidgets('side by side at 400 dp', (tester) async {
-    await pumpDetail(tester, 400);
+  // 360 dp of content plus the 2 × 22 dp page gutters (005 Space.gutter).
+  testWidgets('side by side at 420 dp', (tester) async {
+    await pumpDetail(tester, 420);
     expect(
       tester.getTopLeft(find.text('Habitat')).dy,
       tester.getTopLeft(find.text('Partes quebráveis')).dy,

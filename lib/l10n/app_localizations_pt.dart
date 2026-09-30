@@ -10,7 +10,7 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
-  String get appTitle => 'MH Wiki';
+  String get appTitle => 'Caderninho';
 
   @override
   String get gameWorldIceborne => 'Monster Hunter World: Iceborne';
@@ -71,6 +71,14 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String starsSemantics(String element, int stars) {
     return '$element: $stars de 3';
+  }
+
+  @override
+  String get bestWeakness => 'Melhor';
+
+  @override
+  String bestWeaknessSemantics(String element, int stars) {
+    return '$element: $stars de 3, melhor fraqueza';
   }
 
   @override
@@ -177,9 +185,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get saveFailed => 'Não foi possível salvar a preferência';
 
   @override
-  String get appSubtitle => 'Caderno do Caçador';
-
-  @override
   String get sectionTitleWorldIceborne => 'World : Iceborne';
 
   @override
@@ -214,6 +219,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String sourceLabel(String name) {
     return 'Fonte: $name';
   }
+
+  @override
+  String hpRulerSemantics(String solo, String two, String more) {
+    return 'HP solo $solo; 2 caçadores $two; 3 a 4 caçadores $more';
+  }
+
+  @override
+  String get hpFromLabel => 'a partir de';
 
   @override
   String get hpUnknown => 'HP desconhecido';

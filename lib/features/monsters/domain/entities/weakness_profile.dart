@@ -1,5 +1,6 @@
 import 'package:mh_wiki/features/monsters/domain/entities/effectiveness.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/ranked_weakness.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/weakness_state.dart';
 
 /// General elemental weaknesses plus optional per-state overrides.
@@ -33,4 +34,9 @@ final class WeaknessProfile {
     }
     return null;
   }
+
+  /// General weaknesses in display order, the most effective marked as best
+  /// (005 FR-010/FR-011).
+  List<RankedWeakness> get ranked =>
+      rankWeaknesses(general, best: mostEffective);
 }

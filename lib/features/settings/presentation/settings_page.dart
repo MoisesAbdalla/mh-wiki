@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
-import 'package:mh_wiki/core/presentation/widgets/hunter_panel.dart';
+import 'package:mh_wiki/core/presentation/widgets/notebook_section.dart';
 import 'package:mh_wiki/features/settings/presentation/settings_controller.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
@@ -43,9 +43,9 @@ class _SettingsPageState extends State<SettingsPage> {
       body: ListenableBuilder(
         listenable: widget.controller,
         builder: (context, _) => ListView(
-          padding: const EdgeInsets.symmetric(vertical: 12),
+          padding: const EdgeInsets.only(top: 24),
           children: [
-            HunterPanel(
+            NotebookSection(
               title: l10n.nameLanguageTitle,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -65,13 +65,13 @@ class _SettingsPageState extends State<SettingsPage> {
                     },
                     child: Column(
                       children: [
-                        RadioListTile<NameLanguage>(
+                        _RuledOption(
                           value: NameLanguage.ptBr,
-                          title: Text(l10n.nameLanguagePtBr),
+                          label: l10n.nameLanguagePtBr,
                         ),
-                        RadioListTile<NameLanguage>(
+                        _RuledOption(
                           value: NameLanguage.en,
-                          title: Text(l10n.nameLanguageEn),
+                          label: l10n.nameLanguageEn,
                         ),
                       ],
                     ),
@@ -96,15 +96,31 @@ class SettingsButton extends StatelessWidget {
   Widget build(BuildContext context) => IconButton(
     tooltip: AppLocalizations.of(context).settingsTitle,
     icon: const Icon(Icons.settings_outlined),
-    style: IconButton.styleFrom(
-      backgroundColor: HunterPalette.panelRaised,
-      side: const BorderSide(color: HunterPalette.border),
-      minimumSize: const Size(48, 48),
-    ),
+    style: IconButton.styleFrom(minimumSize: const Size(48, 48)),
     onPressed: () => Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (_) => SettingsPage(controller: controller),
       ),
+    ),
+  );
+}
+
+/// A radio choice drawn as a ruled row, without a panel (005 FR-003).
+class _RuledOption extends StatelessWidget {
+  const _RuledOption({required this.value, required this.label});
+
+  final NameLanguage value;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) => DecoratedBox(
+    decoration: const BoxDecoration(
+      border: Border(bottom: BorderSide(color: HunterPalette.borderSubtle)),
+    ),
+    child: RadioListTile<NameLanguage>(
+      value: value,
+      title: Text(label),
+      contentPadding: EdgeInsets.zero,
     ),
   );
 }

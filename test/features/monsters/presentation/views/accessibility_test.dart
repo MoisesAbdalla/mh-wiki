@@ -57,10 +57,24 @@ void main() {
     );
     // Scroll through every section (HP and hunting items included, 003);
     // any overflow fails the test.
-    await tester.scrollUntilVisible(find.text('Fonte: Fextralife'), 300);
-    await tester.scrollUntilVisible(find.text('Cápsula de Grito'), 300);
+    final page = find.byType(Scrollable).first;
+    await tester.scrollUntilVisible(
+      find.text('Fonte: Fextralife'),
+      300,
+      scrollable: page,
+    );
+    await tester.scrollUntilVisible(
+      find.text('Cápsula de Grito'),
+      300,
+      scrollable: page,
+    );
     expect(tester.takeException(), isNull);
-    await tester.scrollUntilVisible(find.text('Materiais'), 300);
+    // The page scrolls vertically; the version tabs scroll sideways (005).
+    await tester.scrollUntilVisible(
+      find.text('Materiais'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
     expect(tester.takeException(), isNull);
 
     await pumpScaled(
@@ -125,6 +139,31 @@ void main() {
     settings.dispose();
   });
 
+  testWidgets('settings fit 320 dp at 200% (005)', (tester) async {
+    final repo = FakeSettingsRepository();
+    final settings = SettingsController(
+      loadSettings: LoadSettings(repo),
+      setNameLanguage: SetNameLanguage(repo),
+    );
+    await pumpScaled(tester, SettingsPage(controller: settings));
+    expect(tester.takeException(), isNull);
+    settings.dispose();
+  });
+
+  testWidgets('detail tabs meet tap targets (005)', (tester) async {
+    setWindowSize(tester, const Size(400, 3200));
+    await pumpApp(
+      tester,
+      Scaffold(
+        body: MonsterDetailView(
+          monster: richMonster(),
+          language: NameLanguage.ptBr,
+        ),
+      ),
+    );
+    await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+  });
+
   testWidgets('a version detail with the selector fits 320 dp at 200% (004)', (
     tester,
   ) async {
@@ -161,7 +200,12 @@ void main() {
         ),
       ),
     );
-    await tester.scrollUntilVisible(find.text('Materiais'), 300);
+    // The page scrolls vertically; the version tabs scroll sideways (005).
+    await tester.scrollUntilVisible(
+      find.text('Materiais'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
     expect(tester.takeException(), isNull);
   });
 

@@ -1,6 +1,6 @@
 {
   "@@locale": "pt",
-  "appTitle": "MH Wiki",
+  "appTitle": "Caderninho",
   "@appTitle": { "description": "Application title" },
 
   "gameWorldIceborne": "Monster Hunter World: Iceborne",
@@ -27,6 +27,14 @@
   "immune": "Imune",
   "starsSemantics": "{element}: {stars} de 3",
   "@starsSemantics": {
+    "placeholders": {
+      "element": { "type": "String" },
+      "stars": { "type": "int" }
+    }
+  },
+  "bestWeakness": "Melhor",
+  "bestWeaknessSemantics": "{element}: {stars} de 3, melhor fraqueza",
+  "@bestWeaknessSemantics": {
     "placeholders": {
       "element": { "type": "String" },
       "stars": { "type": "int" }
@@ -73,7 +81,6 @@
   "nameLanguageEn": "English",
   "saveFailed": "Não foi possível salvar a preferência",
 
-  "appSubtitle": "Caderno do Caçador",
   "sectionTitleWorldIceborne": "World : Iceborne",
   "sectionTitleRiseSunbreak": "Rise : Sunbreak",
   "sectionTitleWilds": "Wilds",
@@ -88,6 +95,15 @@
   "@hpHunters": { "placeholders": { "count": { "type": "int" } } },
   "sourceLabel": "Fonte: {name}",
   "@sourceLabel": { "placeholders": { "name": { "type": "String" } } },
+  "hpRulerSemantics": "HP solo {solo}; 2 caçadores {two}; 3 a 4 caçadores {more}",
+  "@hpRulerSemantics": {
+    "placeholders": {
+      "solo": { "type": "String" },
+      "two": { "type": "String" },
+      "more": { "type": "String" }
+    }
+  },
+  "hpFromLabel": "a partir de",
   "hpUnknown": "HP desconhecido",
   "unknown": "Desconhecido",
   "visionLabel": "Visão",

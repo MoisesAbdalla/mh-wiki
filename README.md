@@ -1,4 +1,4 @@
-# MH Wiki
+# Caderninho
 
 Offline wiki of large monsters from **Monster Hunter World: Iceborne**, **Monster Hunter
 Rise: Sunbreak** and **Monster Hunter Wilds**, built with Flutter (Android, tablet, web and
@@ -14,18 +14,31 @@ Windows).
   pods or bombs, Pitfall and Shock traps.
 - Game names shown in Portuguese (Brazil) or English (Configurações).
 - Side-by-side list and detail on wide screens (≥ 840 dp).
-- "Caderno do Caçador" look: a fixed dark theme inspired by the games' hunter's notes, with
-  each monster's hunter's-notes icon.
+- "Caderninho" look (feature 005): a fixed dark theme like a hunter's notebook.
+  - Each monster and each numbered detail section is a discreet card, with ruled rows inside.
+  - Gold is the only accent.
+  - The game tabs are the official game logos.
+  - Weaknesses are ordered from best to worst, with element symbols, stars and a "Melhor"
+    stamp.
+  - HP is shown as a ruler with the party estimates.
+  - Content changes with a short fade, turned off by the system's reduce-motion setting.
 
 ## Credits
 
-- **Fonts**: [Cinzel](https://fonts.google.com/specimen/Cinzel) and
-  [Alegreya Sans](https://fonts.google.com/specimen/Alegreya+Sans), SIL Open Font License
-  (bundled with their `OFL.txt` in `assets/fonts/`).
+- **Fonts**: [IM Fell English SC](https://fonts.google.com/specimen/IM+Fell+English+SC)
+  (titles), [Averia Serif Libre](https://fonts.google.com/specimen/Averia+Serif+Libre)
+  (numbers) and [Atkinson Hyperlegible](https://fonts.google.com/specimen/Atkinson+Hyperlegible)
+  (text), SIL Open Font License, bundled with their `OFL.txt` in `assets/fonts/`.
 - **Monster icons**: hunter's-notes icons from the
   [Monster Hunter Wiki](https://monsterhunterwiki.org/), converted to 256 px WebP. These are
   Capcom artwork, used here only locally in a personal study project. Replace them before any
   public release. The app falls back to a styled marker when an image is missing.
+- **Game logos**: the official logos of the three games, from the Monster Hunter Wiki
+  (`MHWI-Logo.png`, `MHRS-Logo.png`, `MHWilds-Logo.png`). They are Capcom artwork, used locally
+  like the monster icons; see `assets/images/games/SOURCES.md`.
+- **Design**: the 005 refresh followed the Tech Leads Club `frontend-design` skill
+  (`.claude/skills/frontend-design`) and mockups the user approved
+  (`specs/005-visual-refresh/mockups/`).
 - **Data**: Kiranico, Monster Hunter Wiki, mhw-db.com and Fextralife (see each dataset's `sources`).
 
 > Fan-made, non-commercial study project. Not affiliated with or endorsed by Capcom.

@@ -33,17 +33,25 @@ flutter:
     - assets/images/monsters/world_iceborne/
     - assets/images/monsters/rise_sunbreak/
     - assets/images/monsters/wilds/
+    - assets/images/games/
 
   # Bundled so they work offline (SIL Open Font License, see assets/fonts/*/OFL.txt).
   fonts:
-    - family: Cinzel
+    - family: IMFellEnglishSC
       fonts:
-        - asset: assets/fonts/cinzel/Cinzel-Variable.ttf
-    - family: AlegreyaSans
+        - asset: assets/fonts/im_fell_english_sc/IMFeENsc28P.ttf
+    - family: AveriaSerifLibre
       fonts:
-        - asset: assets/fonts/alegreya_sans/AlegreyaSans-Regular.ttf
+        - asset: assets/fonts/averia_serif_libre/AveriaSerifLibre-Regular.ttf
           weight: 400
-        - asset: assets/fonts/alegreya_sans/AlegreyaSans-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/alegreya_sans/AlegreyaSans-Bold.ttf
+        - asset: assets/fonts/averia_serif_libre/AveriaSerifLibre-Bold.ttf
           weight: 700
+    - family: AtkinsonHyperlegible
+      fonts:
+        - asset: assets/fonts/atkinson_hyperlegible/AtkinsonHyperlegible-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/atkinson_hyperlegible/AtkinsonHyperlegible-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/atkinson_hyperlegible/AtkinsonHyperlegible-Italic.ttf
+          weight: 400
+          style: italic

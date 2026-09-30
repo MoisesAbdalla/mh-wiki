@@ -1,29 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
+import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 
-/// Font families bundled in pubspec.yaml.
-abstract final class HunterFonts {
-  static const display = 'Cinzel';
-  static const body = 'AlegreyaSans';
-}
-
-/// Cinzel style for titles, section headings and tabs. Cinzel is a variable
-/// font, so the weight is set through the `wght` axis.
-TextStyle hunterDisplay({
-  double size = 14,
-  double weight = 700,
-  Color color = HunterPalette.gold,
-  double letterSpacing = 2,
-}) => TextStyle(
-  fontFamily: HunterFonts.display,
-  fontSize: size,
-  fontWeight: weight >= 600 ? FontWeight.w700 : FontWeight.w500,
-  fontVariations: [FontVariation('wght', weight)],
-  color: color,
-  letterSpacing: letterSpacing,
-);
-
-/// The only theme of the app: dark "Caderno do Caçador" (FR-001).
+/// The only theme of the app: dark "Caderninho" (002 FR-001, 005).
 ThemeData buildHunterTheme() {
   const scheme = ColorScheme(
     brightness: Brightness.dark,
@@ -48,10 +27,10 @@ ThemeData buildHunterTheme() {
     useMaterial3: true,
     brightness: Brightness.dark,
     colorScheme: scheme,
-    fontFamily: HunterFonts.body,
+    fontFamily: NotebookFonts.body,
   );
   final text = base.textTheme.apply(
-    fontFamily: HunterFonts.body,
+    fontFamily: NotebookFonts.body,
     bodyColor: HunterPalette.text,
     displayColor: HunterPalette.text,
   );
@@ -62,20 +41,29 @@ ThemeData buildHunterTheme() {
     scaffoldBackgroundColor: HunterPalette.background,
     canvasColor: HunterPalette.background,
     textTheme: text.copyWith(
-      headlineSmall: hunterDisplay(size: 26, letterSpacing: 1),
-      titleLarge: hunterDisplay(size: 20, letterSpacing: 2),
-      titleMedium: hunterDisplay(size: 15),
-      titleSmall: hunterDisplay(size: 13),
+      headlineSmall: notebookTitle(size: 28),
+      titleLarge: notebookTitle(size: 22),
+      titleMedium: notebookTitle(size: 18),
+      titleSmall: notebookTitle(size: 16),
+      bodyLarge: text.bodyLarge?.copyWith(fontSize: 16),
+      bodyMedium: text.bodyMedium?.copyWith(fontSize: 14),
+      bodySmall: text.bodySmall?.copyWith(
+        fontSize: 12.5,
+        color: HunterPalette.textMuted,
+      ),
     ),
     appBarTheme: AppBarTheme(
       backgroundColor: HunterPalette.background,
       foregroundColor: HunterPalette.gold,
       surfaceTintColor: Colors.transparent,
       elevation: 0,
-      shape: const Border(bottom: frame),
-      titleTextStyle: hunterDisplay(size: 20, letterSpacing: 3),
+      titleTextStyle: notebookTitle(size: 26),
     ),
-    dividerTheme: const DividerThemeData(color: HunterPalette.border, space: 1),
+    dividerTheme: const DividerThemeData(
+      color: HunterPalette.borderSubtle,
+      space: 1,
+      thickness: 1,
+    ),
     cardTheme: const CardThemeData(
       color: HunterPalette.panel,
       shape: RoundedRectangleBorder(side: frame),
@@ -93,22 +81,19 @@ ThemeData buildHunterTheme() {
       selectedColor: HunterPalette.goldBright,
       selectedTileColor: HunterPalette.panelHighlight,
     ),
+    // A search line, not a box (005 FR-003).
     inputDecorationTheme: const InputDecorationTheme(
-      filled: true,
-      fillColor: HunterPalette.panelRaised,
+      filled: false,
       hintStyle: TextStyle(color: HunterPalette.textMuted),
       prefixIconColor: HunterPalette.gold,
       suffixIconColor: HunterPalette.gold,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.zero,
-        borderSide: frame,
+      border: UnderlineInputBorder(
+        borderSide: BorderSide(color: HunterPalette.border),
       ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.zero,
-        borderSide: frame,
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: HunterPalette.border),
       ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.zero,
+      focusedBorder: UnderlineInputBorder(
         borderSide: BorderSide(color: HunterPalette.gold, width: 1.5),
       ),
     ),

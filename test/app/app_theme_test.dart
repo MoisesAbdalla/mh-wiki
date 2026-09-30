@@ -40,6 +40,9 @@ void main() {
       final theme = Theme.of(tester.element(find.byType(Scaffold).first));
       expect(theme.brightness, Brightness.dark);
       expect(theme.scaffoldBackgroundColor, const Color(0xFF16120E));
+      // 005 FR-005: body in Atkinson Hyperlegible, titles in IM Fell.
+      expect(theme.textTheme.bodyMedium?.fontFamily, 'AtkinsonHyperlegible');
+      expect(theme.appBarTheme.titleTextStyle?.fontFamily, 'IMFellEnglishSC');
 
       monsters.dispose();
       settings.dispose();

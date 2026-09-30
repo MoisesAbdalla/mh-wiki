@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
-import 'package:mh_wiki/core/presentation/widgets/game_tabs.dart';
+import 'package:mh_wiki/core/presentation/widgets/underline_tabs.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
@@ -23,14 +23,20 @@ class VersionSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    return HunterTabs<MonsterId>(
+    return UnderlineTabs<MonsterId>(
       options: [
-        for (final m in versions) (m.id, l10n.versionLabel(m.versionKind)),
+        for (final m in versions)
+          TabOption(
+            value: m.id,
+            text: l10n.versionLabel(m.versionKind),
+            semanticsLabel: l10n.versionTabLabel(
+              l10n.versionLabel(m.versionKind),
+            ),
+          ),
       ],
       selected: selected,
       onChanged: onSelect,
-      dense: true,
-      semanticsLabel: l10n.versionTabLabel,
+      textSize: 16,
     );
   }
 }

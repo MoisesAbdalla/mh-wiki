@@ -13,7 +13,9 @@ void main() {
     return box.decoration! as BoxDecoration;
   }
 
-  testWidgets('shows the thumbnail inside a gold frame', (tester) async {
+  testWidgets('list thumbnail sits on a dark plate without a frame (005)', (
+    tester,
+  ) async {
     await pumpApp(
       tester,
       const Scaffold(
@@ -22,9 +24,33 @@ void main() {
     );
 
     expect(find.byType(Image), findsOneWidget);
+    expect(frameOf(tester).color, HunterPalette.panel);
+    expect(frameOf(tester).border, isNull);
+  });
+
+  testWidgets('detail plate has a thin rule and a slight tilt (005)', (
+    tester,
+  ) async {
+    await pumpApp(
+      tester,
+      const Scaffold(
+        body: Center(
+          child: MonsterImage(
+            asset: 'assets/images/monsters/wilds/rathalos.webp',
+            size: 92,
+            emphasized: true,
+          ),
+        ),
+      ),
+    );
+
+    expect((frameOf(tester).border! as Border).top.color, HunterPalette.border);
     expect(
-      (frameOf(tester).border! as Border).top.color,
-      HunterPalette.goldFrame,
+      find.ancestor(
+        of: find.byKey(const ValueKey('monster-image-frame')),
+        matching: find.byType(Transform),
+      ),
+      findsWidgets,
     );
   });
 
@@ -35,10 +61,7 @@ void main() {
 
     expect(find.byType(Image), findsNothing);
     expect(find.byKey(const ValueKey('monster-image-marker')), findsOneWidget);
-    expect(
-      (frameOf(tester).border! as Border).top.color,
-      HunterPalette.goldFrame,
-    );
+    expect(frameOf(tester).color, HunterPalette.panel);
   });
 
   testWidgets('an image that fails to load falls back to the marker', (

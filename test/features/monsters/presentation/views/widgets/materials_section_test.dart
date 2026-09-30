@@ -21,7 +21,8 @@ void main() {
     expect(find.text('Alto'), findsOneWidget);
     expect(find.text('Mestre'), findsNothing);
 
-    expect(find.text('Escama de Rathalos'), findsOneWidget);
+    // Grouped by method (005 FR-014): the scale is under two captions.
+    expect(find.text('Escama de Rathalos'), findsNWidgets(2));
     expect(find.text('Entalhe'), findsOneWidget);
     expect(find.text('32%'), findsOneWidget);
     expect(find.text('Entalhe da cauda'), findsOneWidget);
@@ -39,8 +40,13 @@ void main() {
     await tester.tap(find.text('Alto'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Rathalos Ruby'), findsOneWidget);
-    expect(find.text('Raridade 8'), findsOneWidget);
+    expect(find.text('Rathalos Ruby'), findsNWidgets(2));
+    expect(find.text('Raridade 8'), findsNWidgets(2));
+    final breakCaption = tester.getTopLeft(find.text('Quebrar: Cabeça')).dy;
+    final investigationCaption = tester
+        .getTopLeft(find.text('Investigação'))
+        .dy;
+    expect(breakCaption, lessThan(investigationCaption));
     expect(find.text('Quebrar: Cabeça'), findsOneWidget);
     expect(find.text('3%'), findsOneWidget);
     expect(find.text('Investigação'), findsOneWidget);

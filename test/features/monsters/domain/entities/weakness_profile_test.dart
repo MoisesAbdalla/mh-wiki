@@ -1,7 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/effectiveness.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
+import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/weakness_profile.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/weakness_state.dart';
 
 import '../../../../fakes/monster_fixtures.dart';
 
@@ -89,6 +91,85 @@ void main() {
         general: weaknesses(fire: Effectiveness.low),
       );
       expect(profile.primaryWeakness, isNull);
+    });
+  });
+
+  group('WeaknessProfile.ranked (005 FR-010/FR-011)', () {
+    List<(ElementType, Effectiveness, bool)> rows(WeaknessProfile p) => [
+      for (final r in p.ranked) (r.element, r.effectiveness, r.best),
+    ];
+
+    test('orders best to worst, immune last, ties in element order', () {
+      final profile = WeaknessProfile(
+        general: weaknesses(
+          fire: Effectiveness.immune,
+          water: Effectiveness.low,
+          thunder: Effectiveness.medium,
+          ice: Effectiveness.low,
+          dragon: Effectiveness.high,
+        ),
+      );
+      expect(rows(profile), [
+        (ElementType.dragon, Effectiveness.high, true),
+        (ElementType.thunder, Effectiveness.medium, false),
+        (ElementType.water, Effectiveness.low, false),
+        (ElementType.ice, Effectiveness.low, false),
+        (ElementType.fire, Effectiveness.immune, false),
+      ]);
+    });
+
+    test('0 stars ranks above immune', () {
+      final profile = WeaknessProfile(
+        general: weaknesses(fire: Effectiveness.immune),
+      );
+      expect(profile.ranked.last.element, ElementType.fire);
+      expect(profile.ranked.first.effectiveness, Effectiveness.none);
+    });
+
+    test('marks every tied best element with 2 stars or more', () {
+      final profile = WeaknessProfile(
+        general: weaknesses(
+          water: Effectiveness.medium,
+          ice: Effectiveness.medium,
+        ),
+      );
+      expect(profile.ranked.where((r) => r.best).map((r) => r.element), [
+        ElementType.water,
+        ElementType.ice,
+      ]);
+    });
+
+    test('marks nothing when no element reaches 2 stars', () {
+      final profile = WeaknessProfile(
+        general: weaknesses(ice: Effectiveness.low),
+      );
+      expect(profile.ranked.any((r) => r.best), isFalse);
+    });
+
+    test('always five entries; missing elements count as none', () {
+      const profile = WeaknessProfile(
+        general: {ElementType.dragon: Effectiveness.high},
+      );
+      expect(profile.ranked, hasLength(5));
+      expect(profile.ranked.skip(1).map((r) => r.effectiveness).toSet(), {
+        Effectiveness.none,
+      });
+    });
+
+    test('states are ranked the same way, without a highlight', () {
+      final state = WeaknessState(
+        id: 'fire-active',
+        name: const LocalizedText(en: 'Fire Active'),
+        values: weaknesses(
+          ice: Effectiveness.high,
+          water: Effectiveness.medium,
+        ),
+      );
+      expect(state.ranked.map((r) => r.element).take(2), [
+        ElementType.ice,
+        ElementType.water,
+      ]);
+      expect(state.ranked.any((r) => r.best), isFalse);
     });
   });
 }

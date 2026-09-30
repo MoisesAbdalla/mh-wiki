@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
+import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 import 'package:mh_wiki/core/presentation/widgets/element_icon.dart';
-import 'package:mh_wiki/core/presentation/widgets/hunter_panel.dart';
 import 'package:mh_wiki/core/presentation/widgets/monster_image.dart';
-import 'package:mh_wiki/core/presentation/widgets/ornament_header.dart';
+import 'package:mh_wiki/core/presentation/widgets/notebook_switcher.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_entry.dart';
@@ -70,18 +70,16 @@ class _LoadFailed extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Center(
     child: SingleChildScrollView(
-      child: HunterPanel(
-        margin: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.cloud_off, size: 40, color: HunterPalette.gold),
-            const SizedBox(height: 16),
-            Text(message, textAlign: TextAlign.center),
-            const SizedBox(height: 16),
-            FilledButton(onPressed: onRetry, child: Text(retryLabel)),
-          ],
-        ),
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.cloud_off, size: 40, color: HunterPalette.gold),
+          const SizedBox(height: 16),
+          Text(message, textAlign: TextAlign.center),
+          const SizedBox(height: 16),
+          FilledButton(onPressed: onRetry, child: Text(retryLabel)),
+        ],
       ),
     ),
   );
@@ -129,42 +127,49 @@ class _LoadedList extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Expanded(
-          child: state.isEmpty
-              ? _NoResults(
-                  hasActiveFilters: state.hasActiveFilters,
-                  onClear: controller.clearFilters,
-                )
-              : CustomScrollView(
-                  key: const PageStorageKey('monster-list'),
-                  slivers: [
-                    for (final section in state.sections)
-                      SliverMainAxisGroup(
-                        slivers: [
-                          // Sticky per-game header only in "Todos" (FR-006).
-                          if (showHeaders)
-                            PinnedHeaderSliver(
-                              child: OrnamentHeader(
-                                title: l10n.gameSectionTitle(section.game),
+          // Fades when the game filter changes (005 FR-015).
+          child: NotebookSwitcher(
+            slide: false,
+            child: KeyedSubtree(
+              key: ValueKey(('list', state.query.game, state.isEmpty)),
+              child: state.isEmpty
+                  ? _NoResults(
+                      hasActiveFilters: state.hasActiveFilters,
+                      onClear: controller.clearFilters,
+                    )
+                  : CustomScrollView(
+                      key: const PageStorageKey('monster-list'),
+                      slivers: [
+                        for (final section in state.sections)
+                          SliverMainAxisGroup(
+                            slivers: [
+                              // Sticky per-game header only in "Todos" (FR-006).
+                              if (showHeaders)
+                                PinnedHeaderSliver(
+                                  child: _GameCaption(
+                                    title: l10n.gameSectionTitle(section.game),
+                                  ),
+                                ),
+                              SliverList.builder(
+                                itemCount: section.entries.length,
+                                itemBuilder: (context, index) {
+                                  final entry = section.entries[index];
+                                  return _MonsterTile(
+                                    entry: entry,
+                                    language: language,
+                                    selected:
+                                        highlightSelection &&
+                                        _isInFamily(entry, state.selectedId),
+                                    onTap: onSelect,
+                                  );
+                                },
                               ),
-                            ),
-                          SliverList.builder(
-                            itemCount: section.entries.length,
-                            itemBuilder: (context, index) {
-                              final entry = section.entries[index];
-                              return _MonsterTile(
-                                entry: entry,
-                                language: language,
-                                selected:
-                                    highlightSelection &&
-                                    _isInFamily(entry, state.selectedId),
-                                onTap: onSelect,
-                              );
-                            },
+                            ],
                           ),
-                        ],
-                      ),
-                  ],
-                ),
+                      ],
+                    ),
+            ),
+          ),
         ),
       ],
     );
@@ -201,13 +206,20 @@ class _MonsterTile extends StatelessWidget {
     final muted = textTheme.bodyMedium?.copyWith(
       color: HunterPalette.textMuted,
     );
+    final gutter = Space.gutter(MediaQuery.sizeOf(context).width);
+    // Each monster is its own card; the selected one gets a gold edge
+    // (005, revised after the US1 review).
     return Padding(
-      padding: const EdgeInsets.fromLTRB(12, 3, 12, 3),
+      padding: EdgeInsets.fromLTRB(gutter - 10, 4, gutter - 10, 4),
       child: Material(
         color: selected ? HunterPalette.panelHighlight : HunterPalette.panel,
-        shape: Border.all(
-          color: selected ? HunterPalette.gold : HunterPalette.borderSubtle,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color: selected ? HunterPalette.gold : HunterPalette.borderSubtle,
+          ),
+          borderRadius: BorderRadius.circular(4),
         ),
+        clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: () => onTap(entry.target),
           child: Semantics(
@@ -221,11 +233,11 @@ class _MonsterTile extends StatelessWidget {
             ].join(', '),
             excludeSemantics: true,
             child: Padding(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.fromLTRB(10, 10, 12, 10),
               child: Row(
                 children: [
-                  MonsterImage(asset: monster.imageAsset, size: 56),
-                  const SizedBox(width: 12),
+                  MonsterImage(asset: monster.imageAsset, size: 44),
+                  const SizedBox(width: 14),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -234,18 +246,26 @@ class _MonsterTile extends StatelessWidget {
                           name,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: HunterPalette.text,
-                          ),
+                          style: notebookTitle(size: 19, height: 1.1),
                         ),
-                        Text(
-                          // The game is already shown by the section header or
-                          // the active tab (002 US2).
-                          classification,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: muted,
+                        const SizedBox(height: 2),
+                        // The game is already shown by the section caption
+                        // or the active tab (002 US2).
+                        Wrap(
+                          spacing: 6,
+                          children: [
+                            Text(
+                              classification,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: muted,
+                            ),
+                            if (matched == null &&
+                                entry.versions.isNotEmpty) ...[
+                              Text('·', style: muted),
+                              Text(versionsHint, style: muted),
+                            ],
+                          ],
                         ),
                         // The version the search matched opens (004).
                         if (matched != null)
@@ -255,13 +275,8 @@ class _MonsterTile extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             style: textTheme.bodyMedium?.copyWith(
                               color: HunterPalette.gold,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w700,
                             ),
-                          )
-                        else if (entry.versions.isNotEmpty)
-                          Text(
-                            versionsHint,
-                            style: muted?.copyWith(fontStyle: FontStyle.italic),
                           ),
                       ],
                     ),
@@ -278,36 +293,67 @@ class _MonsterTile extends StatelessWidget {
   }
 }
 
-/// Primary weakness on the list item (002 FR-005).
+/// Game caption of a group in "Todos": name and a hairline (005 R10).
+class _GameCaption extends StatelessWidget {
+  const _GameCaption({required this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    final gutter = Space.gutter(MediaQuery.sizeOf(context).width);
+    return ColoredBox(
+      color: HunterPalette.background,
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(gutter, 14, gutter, 6),
+        child: Row(
+          children: [
+            Flexible(
+              child: Semantics(
+                header: true,
+                child: Text(
+                  title,
+                  style: notebookTitle(
+                    size: 17,
+                    color: HunterPalette.textMuted,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            const Expanded(
+              child: Divider(color: HunterPalette.border, height: 1),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Primary weakness on the list item: element symbol and name (002 FR-005,
+/// 005 FR-012).
 class _WeaknessBadge extends StatelessWidget {
   const _WeaknessBadge({required this.element});
 
   final ElementType element;
 
   @override
-  Widget build(BuildContext context) {
-    final color = elementColor(element);
-    return Container(
-      margin: const EdgeInsets.only(left: 8),
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-      decoration: BoxDecoration(border: Border.all(color: color)),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ElementIcon(element: element, size: 16),
-          const SizedBox(width: 4),
-          Text(
-            AppLocalizations.of(context).elementName(element),
-            style: TextStyle(
-              color: color,
-              fontSize: 13,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(left: 10),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ElementIcon(element: element, size: 16),
+        const SizedBox(width: 5),
+        Text(
+          AppLocalizations.of(context).elementName(element),
+          style: Theme.of(context).textTheme.bodySmall
+              ?.copyWith(color: HunterPalette.text),
+        ),
+      ],
+    ),
+  );
 }
 
 class _NoResults extends StatelessWidget {
@@ -321,25 +367,23 @@ class _NoResults extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     return Center(
       child: SingleChildScrollView(
-        child: HunterPanel(
-          margin: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.search_off, size: 40, color: HunterPalette.gold),
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.search_off, size: 40, color: HunterPalette.gold),
+            const SizedBox(height: 16),
+            Text(l10n.noResults, textAlign: TextAlign.center),
+            if (hasActiveFilters) ...[
+              const SizedBox(height: 4),
+              Text(l10n.activeFiltersHint, textAlign: TextAlign.center),
               const SizedBox(height: 16),
-              Text(l10n.noResults, textAlign: TextAlign.center),
-              if (hasActiveFilters) ...[
-                const SizedBox(height: 4),
-                Text(l10n.activeFiltersHint, textAlign: TextAlign.center),
-                const SizedBox(height: 16),
-                OutlinedButton(
-                  onPressed: onClear,
-                  child: Text(l10n.clearFilters),
-                ),
-              ],
+              OutlinedButton(
+                onPressed: onClear,
+                child: Text(l10n.clearFilters),
+              ),
             ],
-          ),
+          ],
         ),
       ),
     );
