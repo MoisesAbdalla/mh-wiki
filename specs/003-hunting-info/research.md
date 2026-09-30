@@ -62,6 +62,16 @@ Source: Monster Hunter Wiki game pages (`<Name>_(MHWI)`, `_(MHRS)`, `_(MHWilds)`
   Pod, Pitfall Trap, Shock Trap; Rise: Flash Bomb, Sonic Bomb, Dung Bomb, Pitfall Trap, Shock Trap.
   Item names are stored per dataset (en; pt-BR only when a verified official name exists).
 
+- **Implementation findings**: the item table disagrees with the infobox on every World page for
+  the Sonic Pod (table ✓ everywhere, including Rathalos) and on most Wilds pages for the Flash Pod
+  (table 0s); the infobox matches known game behaviour, so it wins for Flash, Sonic/Screamer and
+  Dung in all three conflicts, logged per monster in `sources[].notes`. Traps always come from the
+  table. One override from the page text: World Diablos + Screamer Pod = conditional ("while it is
+  underground", the only such mention in a scan of all 30 pages; the infobox says ✗).
+- **pt-BR item names**: Kiranico pt-BR item pages (World and Wilds: Cápsula de Lampejo / de Grito
+  / de Esterco, Armadilha de Poço / de Choque; Rise: Bomba de Luz / Sônica / de Esterco, and the
+  official abbreviations "Armad. de Poço" / "Armad. de Choque").
+
 ## R4. Vision
 
 - **Decision**: `sees` when the Flash item affects the monster; otherwise `unknown` (the sources

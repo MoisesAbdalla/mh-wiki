@@ -65,15 +65,15 @@ description: "Task list for 003-hunting-info implementation"
 
 ### Tests ⚠️
 
-- [ ] T013 [P] [US2] Unit test vision derivation (`HuntingInfo.vision`: `sees` when flash `affects`/`conditional`, else `unknown`) and "missing item → unknown" lookup in `test/features/monsters/domain/entities/hunting_info_test.dart`
-- [ ] T014 [P] [US2] Widget test `HuntingItemsSection` in `test/features/monsters/presentation/views/widgets/hunting_items_section_test.dart`: one row per dataset item; status labels "Afeta" / "Não afeta" / "Afeta com condição" + detail / "Desconhecido"; "Visão: Enxerga" vs "Visão: Desconhecido"; item names follow the name-language setting; semantics "<item>: <status>. <detail>"
+- [X] T013 [P] [US2] Unit test vision derivation (`HuntingInfo.vision`: `sees` when flash `affects`/`conditional`, else `unknown`) and "missing item → unknown" lookup in `test/features/monsters/domain/entities/hunting_info_test.dart`
+- [X] T014 [P] [US2] Widget test `HuntingItemsSection` in `test/features/monsters/presentation/views/widgets/hunting_items_section_test.dart`: one row per dataset item; status labels "Afeta" / "Não afeta" / "Afeta com condição" + detail / "Desconhecido"; "Visão: Enxerga" vs "Visão: Desconhecido"; item names follow the name-language setting; semantics "<item>: <status>. <detail>"
 
 ### Implementation
 
-- [ ] T015 [US2] Implement `vision` and `reactionFor(itemId)` on `HuntingInfo` in `lib/features/monsters/domain/entities/hunting_info.dart` (makes T013 pass)
-- [ ] T016 [US2] Implement `HuntingItemsSection` (HunterPanel, status badges per contract) in `lib/features/monsters/presentation/views/widgets/hunting_items_section.dart` and add it after `HpSection` in `monster_detail_view.dart` (makes T014 pass)
-- [ ] T017 [US2] Scratchpad script (not shipped): parse Monster Hunter Wiki `<Name>_(MHWI|MHRS|MHWilds)` pages per research R3 (infobox Dung/Flash/Sonic-Screamer row; "Trap & Flash Pod Effectiveness" and "Other Items" tables; mapping rules; infobox wins on Flash conflicts, noted in sources); write `huntingItems` per dataset and `itemReactions` for the 30 monsters into `assets/data/*/monsters.json`
-- [ ] T018 [US2] Extend `real_datasets_test.dart`: every monster has a reaction for each dataset item or none (unknown), never an item outside `huntingItems`; spot check World Rathalos (Flash affects, Dung 50%, Sonic no effect) and Wilds Rathalos (Flash affects); run gates; commit
+- [X] T015 [US2] Implement `vision` and `reactionFor(itemId)` on `HuntingInfo` in `lib/features/monsters/domain/entities/hunting_info.dart` (makes T013 pass)
+- [X] T016 [US2] Implement `HuntingItemsSection` (HunterPanel, status badges per contract) in `lib/features/monsters/presentation/views/widgets/hunting_items_section.dart` and add it after `HpSection` in `monster_detail_view.dart` (makes T014 pass)
+- [X] T017 [US2] Scratchpad script (not shipped): parse Monster Hunter Wiki `<Name>_(MHWI|MHRS|MHWilds)` pages per research R3 (infobox Dung/Flash/Sonic-Screamer row; "Trap & Flash Pod Effectiveness" and "Other Items" tables; mapping rules; infobox wins on Flash conflicts, noted in sources); write `huntingItems` per dataset and `itemReactions` for the 30 monsters into `assets/data/*/monsters.json`
+- [X] T018 [US2] Extend `real_datasets_test.dart`: every monster has a reaction for each dataset item or none (unknown), never an item outside `huntingItems`; spot check World Rathalos (Flash affects, Dung 50%, Sonic no effect) and Wilds Rathalos (Flash affects); run gates; commit
 
 ---
 

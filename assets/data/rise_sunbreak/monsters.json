@@ -1300,6 +1300,43 @@
       "notes": "Per-player HP of quest pages: High Rank Gathering Hub x1.5/x2.0/x2.4, Master Rank x1.35/x1.7/x2.0, Low Rank hub about x1.4/x1.86/x2.2. Village quests do not scale."
     }
   },
+  "huntingItems": [
+    {
+      "id": "flash",
+      "name": {
+        "en": "Flash Bomb",
+        "ptBr": "Bomba de Luz"
+      }
+    },
+    {
+      "id": "sonic",
+      "name": {
+        "en": "Sonic Bomb",
+        "ptBr": "Bomba Sônica"
+      }
+    },
+    {
+      "id": "dung",
+      "name": {
+        "en": "Dung Bomb",
+        "ptBr": "Bomba de Esterco"
+      }
+    },
+    {
+      "id": "pitfallTrap",
+      "name": {
+        "en": "Pitfall Trap",
+        "ptBr": "Armad. de Poço"
+      }
+    },
+    {
+      "id": "shockTrap",
+      "name": {
+        "en": "Shock Trap",
+        "ptBr": "Armad. de Choque"
+      }
+    }
+  ],
   "monsters": [
     {
       "slug": "great-izuchi",
@@ -1804,6 +1841,11 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Great_Izuchi",
           "notes": "Classification."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Great_Izuchi_%28MHRS%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "image": "assets/images/monsters/rise_sunbreak/great-izuchi.webp",
@@ -1822,6 +1864,44 @@
           "rank": "master",
           "solo": 11400,
           "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
         }
       ]
     },
@@ -2655,6 +2735,11 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Rathian",
           "notes": "Classification."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Rathian_%28MHRS%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "image": "assets/images/monsters/rise_sunbreak/rathian.webp",
@@ -2673,6 +2758,44 @@
           "rank": "master",
           "solo": 21150,
           "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
         }
       ]
     },
@@ -3505,6 +3628,11 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Rathalos",
           "notes": "Classification."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Rathalos_%28MHRS%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "image": "assets/images/monsters/rise_sunbreak/rathalos.webp",
@@ -3523,6 +3651,44 @@
           "rank": "master",
           "solo": 33320,
           "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
         }
       ]
     },
@@ -4137,6 +4303,11 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Tigrex",
           "notes": "Classification."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Tigrex_%28MHRS%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "image": "assets/images/monsters/rise_sunbreak/tigrex.webp",
@@ -4155,6 +4326,44 @@
           "rank": "master",
           "solo": 30600,
           "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
         }
       ]
     },
@@ -4877,6 +5086,11 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Zinogre",
           "notes": "Classification."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Zinogre_%28MHRS%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "image": "assets/images/monsters/rise_sunbreak/zinogre.webp",
@@ -4895,6 +5109,44 @@
           "rank": "master",
           "solo": 31960,
           "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 1 s",
+            "ptBr": "Dura 1 s"
+          }
         }
       ]
     },
@@ -5714,6 +5966,11 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Mizutsune",
           "notes": "Classification."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Mizutsune_%28MHRS%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "image": "assets/images/monsters/rise_sunbreak/mizutsune.webp",
@@ -5732,6 +5989,44 @@
           "rank": "master",
           "solo": 32640,
           "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
         }
       ]
     },
@@ -6021,6 +6316,11 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Violet_Mizutsune",
           "notes": "Classification."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Violet_Mizutsune_%28MHRS%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "image": "assets/images/monsters/rise_sunbreak/violet-mizutsune.webp",
@@ -6029,6 +6329,44 @@
           "rank": "master",
           "solo": 40480,
           "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
         }
       ]
     },
@@ -6738,6 +7076,11 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Magnamalo",
           "notes": "Classification."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Magnamalo_%28MHRS%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "image": "assets/images/monsters/rise_sunbreak/magnamalo.webp",
@@ -6756,6 +7099,44 @@
           "rank": "master",
           "solo": 28800,
           "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
         }
       ]
     },
@@ -7184,6 +7565,11 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Rajang",
           "notes": "Classification."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Rajang_%28MHRS%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "image": "assets/images/monsters/rise_sunbreak/rajang.webp",
@@ -7202,6 +7588,44 @@
           "rank": "master",
           "solo": 32300,
           "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "100% chance to leave",
+            "ptBr": "100% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
         }
       ]
     },
@@ -7441,6 +7865,11 @@
           "name": "Monster Hunter Wiki",
           "url": "https://monsterhunterwiki.org/wiki/Malzeno",
           "notes": "Classification."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHRS)",
+          "url": "https://monsterhunterwiki.org/wiki/Malzeno_%28MHRS%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table."
         }
       ],
       "image": "assets/images/monsters/rise_sunbreak/malzeno.webp",
@@ -7449,6 +7878,20 @@
           "rank": "master",
           "solo": 28500,
           "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
         }
       ]
     }

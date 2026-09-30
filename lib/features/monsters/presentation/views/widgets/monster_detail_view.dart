@@ -7,6 +7,7 @@ import 'package:mh_wiki/core/presentation/widgets/monster_image.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/habitat_section.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/hp_section.dart';
+import 'package:mh_wiki/features/monsters/presentation/views/widgets/hunting_items_section.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/materials_section.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/parts_section.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/weakness_section.dart';
@@ -76,6 +77,7 @@ class MonsterDetailView extends StatelessWidget {
         ),
         WeaknessSection(profile: monster.weaknesses, language: language),
         HpSection(info: monster.huntingInfo),
+        HuntingItemsSection(info: monster.huntingInfo, language: language),
         LayoutBuilder(
           builder: (context, constraints) {
             final habitat = HabitatSection(

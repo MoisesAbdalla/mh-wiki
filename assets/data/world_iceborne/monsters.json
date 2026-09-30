@@ -1000,6 +1000,43 @@
       "notes": "Multiplayer HP scaling: about 150% for 2 hunters, about 220%-260% for 3-4. Applied to the solo reference HP; shown as an approximation."
     }
   },
+  "huntingItems": [
+    {
+      "id": "flash",
+      "name": {
+        "en": "Flash Pod",
+        "ptBr": "Cápsula de Lampejo"
+      }
+    },
+    {
+      "id": "sonic",
+      "name": {
+        "en": "Screamer Pod",
+        "ptBr": "Cápsula de Grito"
+      }
+    },
+    {
+      "id": "dung",
+      "name": {
+        "en": "Dung Pod",
+        "ptBr": "Cápsula de Esterco"
+      }
+    },
+    {
+      "id": "pitfallTrap",
+      "name": {
+        "en": "Pitfall Trap",
+        "ptBr": "Armadilha de Poço"
+      }
+    },
+    {
+      "id": "shockTrap",
+      "name": {
+        "en": "Shock Trap",
+        "ptBr": "Armadilha de Choque"
+      }
+    }
+  ],
   "monsters": [
     {
       "slug": "great-jagras",
@@ -1425,6 +1462,11 @@
           "name": "mhw-db.com",
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWI)",
+          "url": "https://monsterhunterwiki.org/wiki/Great_Jagras_%28MHWI%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Sonic: infobox noEffect, item table affects."
         }
       ],
       "image": "assets/images/monsters/world_iceborne/great-jagras.webp",
@@ -1443,6 +1485,44 @@
           "rank": "master",
           "solo": 12760,
           "basis": "expedition"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 30 s",
+            "ptBr": "Dura 30 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "70% chance to leave",
+            "ptBr": "70% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 12 s",
+            "ptBr": "Dura 12 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
         }
       ]
     },
@@ -2035,6 +2115,11 @@
           "name": "mhw-db.com",
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWI)",
+          "url": "https://monsterhunterwiki.org/wiki/Anjanath_%28MHWI%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Sonic: infobox noEffect, item table affects."
         }
       ],
       "image": "assets/images/monsters/world_iceborne/anjanath.webp",
@@ -2053,6 +2138,44 @@
           "rank": "master",
           "solo": 18239,
           "basis": "expedition"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "70% chance to leave",
+            "ptBr": "70% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
         }
       ]
     },
@@ -2756,6 +2879,11 @@
           "name": "mhw-db.com",
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWI)",
+          "url": "https://monsterhunterwiki.org/wiki/Rathian_%28MHWI%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Sonic: infobox noEffect, item table affects."
         }
       ],
       "image": "assets/images/monsters/world_iceborne/rathian.webp",
@@ -2774,6 +2902,44 @@
           "rank": "master",
           "solo": 18300,
           "basis": "expedition"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "50% chance to leave",
+            "ptBr": "50% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
         }
       ]
     },
@@ -3277,6 +3443,11 @@
           "name": "mhw-db.com",
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWI)",
+          "url": "https://monsterhunterwiki.org/wiki/Pink_Rathian_%28MHWI%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Sonic: infobox noEffect, item table affects."
         }
       ],
       "image": "assets/images/monsters/world_iceborne/pink-rathian.webp",
@@ -3290,6 +3461,44 @@
           "rank": "master",
           "solo": 18300,
           "basis": "expedition"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "50% chance to leave",
+            "ptBr": "50% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
         }
       ]
     },
@@ -4017,6 +4226,11 @@
           "name": "mhw-db.com",
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWI)",
+          "url": "https://monsterhunterwiki.org/wiki/Rathalos_%28MHWI%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Sonic: infobox noEffect, item table affects."
         }
       ],
       "image": "assets/images/monsters/world_iceborne/rathalos.webp",
@@ -4035,6 +4249,44 @@
           "rank": "master",
           "solo": 20800,
           "basis": "expedition"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "50% chance to leave",
+            "ptBr": "50% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
         }
       ]
     },
@@ -4607,6 +4859,11 @@
           "name": "mhw-db.com",
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWI)",
+          "url": "https://monsterhunterwiki.org/wiki/Diablos_%28MHWI%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Screamer Pod from the page text (\"throwing a Screamer Pod at it while it is underground will startle it into a Pitfall Trap-like state\"); the infobox says ✗."
         }
       ],
       "image": "assets/images/monsters/world_iceborne/diablos.webp",
@@ -4625,6 +4882,48 @@
           "rank": "master",
           "solo": 20800,
           "basis": "expedition"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "conditional",
+          "detail": {
+            "en": "Only while burrowed: it is stunned as if in a Pitfall Trap",
+            "ptBr": "Só quando está enterrado: fica preso como numa Armadilha de Poço"
+          }
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "20% chance to leave",
+            "ptBr": "20% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 8 s",
+            "ptBr": "Dura 8 s"
+          }
         }
       ]
     },
@@ -4860,6 +5159,11 @@
           "name": "mhw-db.com",
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWI)",
+          "url": "https://monsterhunterwiki.org/wiki/Nergigante_%28MHWI%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Sonic: infobox noEffect, item table affects."
         }
       ],
       "image": "assets/images/monsters/world_iceborne/nergigante.webp",
@@ -4873,6 +5177,28 @@
           "rank": "high",
           "solo": 7110,
           "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "noEffect"
+        },
+        {
+          "item": "shockTrap",
+          "effect": "noEffect"
         }
       ]
     },
@@ -5138,6 +5464,11 @@
           "name": "mhw-db.com",
           "url": "https://mhw-db.com/monsters",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none). Also species and locations."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWI)",
+          "url": "https://monsterhunterwiki.org/wiki/Zinogre_%28MHWI%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Sonic: infobox noEffect, item table affects."
         }
       ],
       "image": "assets/images/monsters/world_iceborne/zinogre.webp",
@@ -5146,6 +5477,44 @@
           "rank": "master",
           "solo": 23450,
           "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "dung",
+          "effect": "affects",
+          "detail": {
+            "en": "50% chance to leave",
+            "ptBr": "50% de chance de fugir"
+          }
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 10 s",
+            "ptBr": "Dura 10 s"
+          }
+        },
+        {
+          "item": "shockTrap",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 5 s",
+            "ptBr": "Dura 5 s"
+          }
         }
       ]
     },
@@ -5388,6 +5757,11 @@
           "name": "Fextralife MHW wiki",
           "url": "https://monsterhunterworld.wiki.fextralife.com/Velkhana",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWI)",
+          "url": "https://monsterhunterwiki.org/wiki/Velkhana_%28MHWI%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Sonic: infobox noEffect, item table affects."
         }
       ],
       "image": "assets/images/monsters/world_iceborne/velkhana.webp",
@@ -5396,6 +5770,28 @@
           "rank": "master",
           "solo": 23040,
           "basis": "expedition"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects",
+          "detail": {
+            "en": "Lasts 20 s",
+            "ptBr": "Dura 20 s"
+          }
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "noEffect"
+        },
+        {
+          "item": "shockTrap",
+          "effect": "noEffect"
         }
       ]
     },
@@ -5674,6 +6070,11 @@
           "name": "Fextralife MHW wiki",
           "url": "https://monsterhunterworld.wiki.fextralife.com/Alatreon",
           "notes": "In-game Hunter's Notes star ratings; elements the notes mark with an X (no stars) are stored as 0 stars (none)."
+        },
+        {
+          "name": "Monster Hunter Wiki (MHWI)",
+          "url": "https://monsterhunterwiki.org/wiki/Alatreon_%28MHWI%29",
+          "notes": "Hunting items: infobox (Flash, Sonic/Screamer, Dung) and \"Trap & Flash Pod Effectiveness\" table. Conflicts, infobox kept: Flash: infobox affects, item table noEffect."
         }
       ],
       "image": "assets/images/monsters/world_iceborne/alatreon.webp",
@@ -5682,6 +6083,24 @@
           "rank": "master",
           "solo": 52500,
           "basis": "minQuest"
+        }
+      ],
+      "itemReactions": [
+        {
+          "item": "flash",
+          "effect": "affects"
+        },
+        {
+          "item": "sonic",
+          "effect": "noEffect"
+        },
+        {
+          "item": "pitfallTrap",
+          "effect": "noEffect"
+        },
+        {
+          "item": "shockTrap",
+          "effect": "noEffect"
         }
       ]
     }
