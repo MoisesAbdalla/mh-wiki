@@ -33,5 +33,5 @@
 
 - Source names (Kiranico, Monster Hunter Wiki…) appear only in Assumptions as data provenance,
   consistent with specs 001–003; they are not implementation choices.
-- Variant scope (what counts as its own entry) was defaulted in Assumptions; worth confirming in
-  `/speckit-clarify`, since it changes the roster size.
+- Variant scope, delivery order, list grouping and inheritance of version data were settled in
+  `/speckit-clarify` (session 2026-09-30).
