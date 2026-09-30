@@ -13,6 +13,7 @@
 ### Session 2026-09-30
 
 - Q: Qual HP mostrar? → A: Um valor de referência por rank (Baixo/Alto/Mestre), solo e em grupo; missões especiais e eventos ficam de fora.
+- Q: Como tratar HP em grupo e "anda em grupo", dado que as fontes não têm valores oficiais? → A: HP solo por rank nos três jogos (em Rise e Wilds, o menor HP das missões normais do rank, exibido como "a partir de"); HP em grupo como estimativa rotulada "aprox." com fonte onde houver (World, Wilds) e "Desconhecido" em Rise; "anda em grupo" fora do escopo.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -31,11 +32,12 @@ grupos, por rank, contra a fonte registrada.
 **Acceptance Scenarios**:
 
 1. **Given** o detalhe de um monstro, **When** o usuário vê a seção de HP, **Then** vê o HP
-   total para caçada solo e para grupo, com um valor de referência por rank em que o monstro
-   existe (Baixo, Alto, Mestre — conforme o jogo); missões especiais e eventos ficam de fora.
-2. **Given** um jogo em que o HP de grupo é igual para 2, 3 e 4 caçadores, **When** a seção é
-   exibida, **Then** mostra um único valor "Grupo (2–4)"; quando o jogo diferencia, mostra um
-   valor por quantidade de caçadores.
+   solo de referência de cada rank em que o monstro existe (Baixo, Alto, Mestre — conforme o
+   jogo); quando a referência é o menor HP entre as missões normais do rank, o valor aparece como
+   "a partir de"; missões especiais e eventos ficam de fora.
+2. **Given** um jogo com estimativa de HP em grupo documentada na fonte, **When** a seção é
+   exibida, **Then** mostra o HP estimado para 2, 3 e 4 caçadores (ou faixas, quando a fonte
+   der faixa), sempre com o rótulo "aprox." e a fonte; sem estimativa, mostra "Desconhecido".
 3. **Given** um monstro que não existe em algum rank, **When** a seção é exibida, **Then** esse
    rank não aparece (nunca um HP vazio ou zero).
 
@@ -66,25 +68,6 @@ reage a som) e conferir cada item contra a fonte.
 
 ---
 
-### User Story 3 - Saber se o monstro anda em grupo (Priority: P3)
-
-O caçador quer saber se o monstro costuma aparecer em manada ou acompanhado de outros da mesma
-espécie, para não ser pego de surpresa.
-
-**Why this priority**: útil, mas menos frequente e com menos dados disponíveis nas fontes.
-
-**Independent Test**: abrir um monstro conhecido por andar em manada e um solitário e conferir a
-indicação.
-
-**Acceptance Scenarios**:
-
-1. **Given** um monstro que aparece em manada, **When** o detalhe é exibido, **Then** mostra
-   "Costuma aparecer em grupo".
-2. **Given** um monstro sem informação na fonte, **When** o detalhe é exibido, **Then** mostra
-   "Desconhecido".
-
----
-
 ### Edge Cases
 
 - Monstros que só existem em arena ou missão especial: HP pode vir de uma única missão; indicar
@@ -101,19 +84,19 @@ indicação.
 
 ### Functional Requirements
 
-- **FR-001**: O detalhe do monstro DEVE ter uma seção de HP com o HP total de referência de cada
-  rank em que o monstro existe (Baixo, Alto, Mestre — conforme o jogo), para caçada solo e para
-  grupo de caçadores. Missões especiais e eventos não entram no valor de referência.
-- **FR-002**: Quando o jogo define o mesmo HP para 2, 3 e 4 caçadores, o app DEVE mostrar um
-  único valor de grupo; quando define valores diferentes, DEVE mostrar um por quantidade.
+- **FR-001**: O detalhe do monstro DEVE ter uma seção de HP com o HP solo de referência de cada
+  rank em que o monstro existe (Baixo, Alto, Mestre — conforme o jogo). A referência é o HP de
+  expedição/caçada livre quando a fonte o fornece; caso contrário, o menor HP entre as missões
+  normais do rank, exibido como "a partir de". Missões especiais, arenas e eventos não entram.
+- **FR-002**: O HP em grupo (2, 3 e 4 caçadores) DEVE ser exibido como estimativa, com o rótulo
+  "aprox." e a fonte, calculado a partir do HP solo e dos fatores de escala documentados para o
+  jogo (faixa quando a fonte der faixa); sem fatores documentados, DEVE mostrar "Desconhecido".
 - **FR-003**: O detalhe DEVE indicar se o monstro enxerga ("Enxerga" / "Não enxerga" /
   "Desconhecido").
 - **FR-004**: O detalhe DEVE mostrar a reação do monstro a cada item de caça relevante do jogo
   (Flash Pod, Sound/Screamer Pod, Dung Pod, Armadilha de Fosso, Armadilha de Choque) com um de:
   "Afeta", "Não afeta", "Afeta com condição" (com a condição descrita), "Não se aplica" (item
   não existe no jogo) ou "Desconhecido".
-- **FR-005**: O detalhe DEVE indicar se o monstro costuma aparecer em grupo ("Em grupo" /
-  "Solitário" / "Desconhecido").
 - **FR-006**: Nenhum valor desta feature pode ser inventado: sem fonte, o app mostra
   "Desconhecido"; a fonte de cada informação DEVE ficar registrada nos dados.
 - **FR-007**: As novas seções DEVEM seguir a identidade visual "Caderno do Caçador" e as regras de
@@ -132,7 +115,8 @@ indicação.
   Armadilha de Choque), efeito (afeta / não afeta / afeta com condição / não se aplica /
   desconhecido) e condição opcional.
 - **Visão**: enxerga / não enxerga / desconhecido.
-- **Comportamento em grupo**: em grupo / solitário / desconhecido.
+- **Fatores de HP em grupo**: por jogo, o fator (ou faixa) para 2, 3 e 4 caçadores, com fonte;
+  ausente quando não houver fonte.
 
 ## Success Criteria *(mandatory)*
 
@@ -151,6 +135,7 @@ indicação.
 
 - As informações vêm das mesmas fontes de referência da comunidade já usadas (bancos de dados e
   wikis dos jogos) e ficam registradas por monstro.
+- "Anda em grupo" fica fora do escopo: nenhuma fonte tem essa informação de forma estruturada.
 - A feature cobre os 30 monstros atuais; a ampliação para todos os monstros grandes (próxima
   feature) coletará estes campos junto.
 - "Enxerga" é derivado da reação ao Flash Pod quando a fonte não tiver um campo próprio (um
