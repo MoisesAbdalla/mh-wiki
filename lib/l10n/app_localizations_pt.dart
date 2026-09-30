@@ -136,10 +136,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get filterAll => 'Todos';
 
   @override
-  String get filterWorldIceborne => 'World: Iceborne';
+  String get filterWorldIceborne => 'World';
 
   @override
-  String get filterRiseSunbreak => 'Rise: Sunbreak';
+  String get filterRiseSunbreak => 'Rise';
 
   @override
   String get filterWilds => 'Wilds';
@@ -180,4 +180,16 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get saveFailed => 'Não foi possível salvar a preferência';
+
+  @override
+  String get appSubtitle => 'Caderno do Caçador';
+
+  @override
+  String get sectionTitleWorldIceborne => 'World : Iceborne';
+
+  @override
+  String get sectionTitleRiseSunbreak => 'Rise : Sunbreak';
+
+  @override
+  String get sectionTitleWilds => 'Wilds';
 }

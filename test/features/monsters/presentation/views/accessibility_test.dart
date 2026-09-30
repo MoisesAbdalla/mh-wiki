@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
+import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/monsters_page.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/monster_detail_view.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
@@ -17,6 +18,7 @@ void main() {
     setWindowSize(tester, const Size(320, 640));
     await tester.pumpWidget(
       MaterialApp(
+        theme: buildHunterTheme(),
         locale: const Locale('pt', 'BR'),
         supportedLocales: AppLocalizations.supportedLocales,
         localizationsDelegates: AppLocalizations.localizationsDelegates,

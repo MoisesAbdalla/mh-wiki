@@ -20,37 +20,38 @@ class HunterPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final heading = title;
-    return Container(
-      margin: margin,
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
+    // A Material (not a decorated box) so ink effects of tiles inside
+    // (e.g. radio options) stay visible.
+    return Padding(
+      padding: margin,
+      child: Material(
         color: HunterPalette.panel,
-        border: Border.all(color: HunterPalette.border),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          if (heading != null) ...[
-            Wrap(
-              alignment: WrapAlignment.spaceBetween,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                Semantics(
-                  header: true,
-                  child: Text(
-                    heading.toUpperCase(),
-                    style: hunterDisplay(size: 14),
-                  ),
+        shape: Border.all(color: HunterPalette.border),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              if (heading != null) ...[
+                Wrap(
+                  alignment: WrapAlignment.spaceBetween,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    Semantics(
+                      header: true,
+                      child: Text(heading, style: hunterDisplay(size: 14)),
+                    ),
+                    ?trailing,
+                  ],
                 ),
-                ?trailing,
+                const SizedBox(height: 12),
               ],
-            ),
-            const SizedBox(height: 12),
-          ],
-          child,
-        ],
+              child,
+            ],
+          ),
+        ),
       ),
     );
   }

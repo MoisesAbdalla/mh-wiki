@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
 
-/// Section title between two gold lines: ——— WORLD : ICEBORNE ——— (FR-010).
+/// Section title between two gold lines: ——— World : Iceborne ——— (FR-010).
+/// Cinzel draws lowercase as small caps, so no case change is needed.
 class OrnamentHeader extends StatelessWidget {
   const OrnamentHeader({required this.title, super.key});
 
@@ -21,7 +22,7 @@ class OrnamentHeader extends StatelessWidget {
           child: Semantics(
             header: true,
             child: Text(
-              title.toUpperCase(),
+              title,
               textAlign: TextAlign.center,
               style: hunterDisplay(size: 13),
             ),

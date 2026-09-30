@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
+import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
+import 'package:mh_wiki/core/presentation/widgets/hunter_panel.dart';
 import 'package:mh_wiki/core/presentation/widgets/monster_image.dart';
+import 'package:mh_wiki/core/presentation/widgets/ornament_header.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/monsters/presentation/models/monster_list_state.dart';
@@ -62,17 +65,19 @@ class _LoadFailed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-    child: Padding(
-      padding: const EdgeInsets.all(24),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Icon(Icons.cloud_off, size: 48),
-          const SizedBox(height: 16),
-          Text(message, textAlign: TextAlign.center),
-          const SizedBox(height: 16),
-          FilledButton(onPressed: onRetry, child: Text(retryLabel)),
-        ],
+    child: SingleChildScrollView(
+      child: HunterPanel(
+        margin: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.cloud_off, size: 40, color: HunterPalette.gold),
+            const SizedBox(height: 16),
+            Text(message, textAlign: TextAlign.center),
+            const SizedBox(height: 16),
+            FilledButton(onPressed: onRetry, child: Text(retryLabel)),
+          ],
+        ),
       ),
     ),
   );
@@ -107,7 +112,7 @@ class _LoadedList extends StatelessWidget {
                 state.failedGames.keys.map(l10n.gameName).join(', '),
               ),
             ),
-            leading: const Icon(Icons.warning_amber),
+            leading: const Icon(Icons.warning_amber, color: HunterPalette.gold),
             actions: const [SizedBox.shrink()],
           ),
         SearchField(
@@ -118,6 +123,7 @@ class _LoadedList extends StatelessWidget {
           selected: state.query.game,
           onChanged: controller.setGame,
         ),
+        const SizedBox(height: 4),
         Expanded(
           child: state.isEmpty
               ? _NoResults(
@@ -133,8 +139,8 @@ class _LoadedList extends StatelessWidget {
                           // Sticky per-game header only in "Todos" (FR-006).
                           if (showHeaders)
                             PinnedHeaderSliver(
-                              child: _SectionHeader(
-                                title: l10n.gameName(section.game),
+                              child: OrnamentHeader(
+                                title: l10n.gameSectionTitle(section.game),
                               ),
                             ),
                           SliverList.builder(
@@ -175,23 +181,58 @@ class _MonsterTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    return ListTile(
-      leading: MonsterImage(asset: monster.imageAsset),
-      title: Text(
-        monster.name.resolve(language),
-        maxLines: 2,
-        overflow: TextOverflow.ellipsis,
-      ),
-      subtitle: Text(
-        l10n.monsterSubtitle(
-          l10n.gameName(monster.id.game),
-          monster.classification.resolve(language),
+    final textTheme = Theme.of(context).textTheme;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(12, 3, 12, 3),
+      child: Material(
+        color: selected ? HunterPalette.panelHighlight : HunterPalette.panel,
+        shape: Border.all(
+          color: selected ? HunterPalette.gold : HunterPalette.borderSubtle,
         ),
-        maxLines: 2,
-        overflow: TextOverflow.ellipsis,
+        child: InkWell(
+          onTap: () => onTap(monster),
+          child: Semantics(
+            selected: selected,
+            button: true,
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Row(
+                children: [
+                  MonsterImage(asset: monster.imageAsset, size: 56),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          monster.name.resolve(language),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            color: HunterPalette.text,
+                          ),
+                        ),
+                        Text(
+                          l10n.monsterSubtitle(
+                            l10n.gameName(monster.id.game),
+                            monster.classification.resolve(language),
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: HunterPalette.textMuted,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
-      selected: selected,
-      onTap: () => onTap(monster),
     );
   }
 }
@@ -206,42 +247,28 @@ class _NoResults extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.search_off, size: 48),
-            const SizedBox(height: 16),
-            Text(l10n.noResults, textAlign: TextAlign.center),
-            if (hasActiveFilters) ...[
-              const SizedBox(height: 4),
-              Text(l10n.activeFiltersHint, textAlign: TextAlign.center),
+      child: SingleChildScrollView(
+        child: HunterPanel(
+          margin: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.search_off, size: 40, color: HunterPalette.gold),
               const SizedBox(height: 16),
-              OutlinedButton(
-                onPressed: onClear,
-                child: Text(l10n.clearFilters),
-              ),
+              Text(l10n.noResults, textAlign: TextAlign.center),
+              if (hasActiveFilters) ...[
+                const SizedBox(height: 4),
+                Text(l10n.activeFiltersHint, textAlign: TextAlign.center),
+                const SizedBox(height: 16),
+                OutlinedButton(
+                  onPressed: onClear,
+                  child: Text(l10n.clearFilters),
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );
   }
-}
-
-class _SectionHeader extends StatelessWidget {
-  const _SectionHeader({required this.title});
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) => Semantics(
-    header: true,
-    child: Container(
-      color: Theme.of(context).colorScheme.surfaceContainerHigh,
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-      child: Text(title, style: Theme.of(context).textTheme.titleSmall),
-    ),
-  );
 }

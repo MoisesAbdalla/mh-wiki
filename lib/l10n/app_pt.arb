@@ -62,8 +62,8 @@
   "rateUnknown": "Taxa desconhecida",
 
   "filterAll": "Todos",
-  "filterWorldIceborne": "World: Iceborne",
-  "filterRiseSunbreak": "Rise: Sunbreak",
+  "filterWorldIceborne": "World",
+  "filterRiseSunbreak": "Rise",
   "filterWilds": "Wilds",
   "gameFilterLabel": "Filtrar por jogo",
   "noResults": "Nenhum monstro encontrado",
@@ -78,5 +78,10 @@
   "nameLanguageDescription": "Nomes de monstros, materiais, habitats e partes. O restante do app continua em português.",
   "nameLanguagePtBr": "Português (Brasil)",
   "nameLanguageEn": "English",
-  "saveFailed": "Não foi possível salvar a preferência"
+  "saveFailed": "Não foi possível salvar a preferência",
+
+  "appSubtitle": "Caderno do Caçador",
+  "sectionTitleWorldIceborne": "World : Iceborne",
+  "sectionTitleRiseSunbreak": "Rise : Sunbreak",
+  "sectionTitleWilds": "Wilds"
 }

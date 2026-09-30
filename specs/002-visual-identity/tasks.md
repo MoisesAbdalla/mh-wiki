@@ -73,18 +73,18 @@ Existing 001 tests must keep passing (FR-012, SC-006); tests that find widgets b
 
 ### Tests (write first, must fail) ⚠️
 
-- [ ] T016 [P] [US2] Widget test `GameTabs`: four tabs "Todos", "World", "Rise", "Wilds"; active tab exposes `selected` semantics and gold fill; tapping calls `onChanged` with the game (null for "Todos"); ≥48 dp tall in `test/core/presentation/widgets/game_tabs_test.dart`
-- [ ] T017 [P] [US2] Widget test: list in "Todos" shows one `OrnamentHeader` per game in order; single-game filter shows none in `test/features/monsters/presentation/views/game_filter_test.dart` (update the existing test to find tabs via `GameTabs` instead of `ChoiceChip`; keep all current assertions)
+- [X] T016 [P] [US2] Widget test `GameTabs`: four tabs "Todos", "World", "Rise", "Wilds"; active tab exposes `selected` semantics and gold fill; tapping calls `onChanged` with the game (null for "Todos"); ≥48 dp tall in `test/core/presentation/widgets/game_tabs_test.dart`
+- [X] T017 [P] [US2] Widget test: list in "Todos" shows one `OrnamentHeader` per game in order; single-game filter shows none in `test/features/monsters/presentation/views/game_filter_test.dart` (update the existing test to find tabs via `GameTabs` instead of `ChoiceChip`; keep all current assertions)
 
 ### Implementation
 
-- [ ] T018 [US2] Create `GameTabs` (4 equal-width tabs, wrap to 2 rows when text scale needs it) in `lib/core/presentation/widgets/game_tabs.dart`; replace `GameFilterBar`'s chips with it in `lib/features/monsters/presentation/views/widgets/game_filter_bar.dart` (makes T016 pass)
-- [ ] T019 [US2] List pane: `OrnamentHeader` for sections (uppercase game name, e.g. "WORLD : ICEBORNE" via new ARB keys), framed tiles, themed loading/empty/error/banner states in `lib/features/monsters/presentation/views/widgets/monster_list_pane.dart` (makes T017 pass)
-- [ ] T020 [P] [US2] App bar "MH WIKI" + subtitle "Caderno do Caçador" (ARB) and framed settings button in `lib/features/monsters/presentation/views/monsters_page.dart` and `lib/features/settings/presentation/settings_page.dart`
-- [ ] T021 [P] [US2] Framed search field in `lib/features/monsters/presentation/views/widgets/search_field.dart`
-- [ ] T022 [US2] Replace `SectionCard` internals with `HunterPanel` (keep the class name and API so sections need no call-site changes) in `lib/features/monsters/presentation/views/widgets/section_card.dart`
-- [ ] T023 [US2] Settings page panels and gold radios in `lib/features/settings/presentation/settings_page.dart`; expanded layout divider/pane background in `monsters_page.dart`
-- [ ] T024 [US2] Update `integration_test/app_test.dart` to select Wilds through `GameTabs`; run gates; commit
+- [X] T018 [US2] Create `GameTabs` (4 equal-width tabs, wrap to 2 rows when text scale needs it) in `lib/core/presentation/widgets/game_tabs.dart`; replace `GameFilterBar`'s chips with it in `lib/features/monsters/presentation/views/widgets/game_filter_bar.dart` (makes T016 pass)
+- [X] T019 [US2] List pane: `OrnamentHeader` for sections (uppercase game name, e.g. "WORLD : ICEBORNE" via new ARB keys), framed tiles, themed loading/empty/error/banner states in `lib/features/monsters/presentation/views/widgets/monster_list_pane.dart` (makes T017 pass)
+- [X] T020 [P] [US2] App bar "MH WIKI" + subtitle "Caderno do Caçador" (ARB) and framed settings button in `lib/features/monsters/presentation/views/monsters_page.dart` and `lib/features/settings/presentation/settings_page.dart`
+- [X] T021 [P] [US2] Framed search field in `lib/features/monsters/presentation/views/widgets/search_field.dart`
+- [X] T022 [US2] Replace `SectionCard` internals with `HunterPanel` (keep the class name and API so sections need no call-site changes) in `lib/features/monsters/presentation/views/widgets/section_card.dart`
+- [X] T023 [US2] Settings page panels and gold radios in `lib/features/settings/presentation/settings_page.dart`; expanded layout divider/pane background in `monsters_page.dart`
+- [X] T024 [US2] Update `integration_test/app_test.dart` to select Wilds through `GameTabs`; run gates; commit
 
 **Checkpoint**: identity applied everywhere; US1 still works.
 
