@@ -6,26 +6,16 @@ Sources:
   (used to name Kiranico's "BodyPart N" groups by identical item/rate sets),
   locales; base pages give the classification.
 """
-import collections, datetime, html, json, os, re, time, urllib.request
-from common import REPO, dataset_path  # noqa: E402,F401  (sets cwd to the cache)
+import collections, datetime, json, os, re, urllib.error
+from common import HERE, REPO, clean, dataset_path, fetch  # noqa: F401  (sets cwd to the cache)
 
-UA = {'User-Agent': 'Mozilla/5.0 (mh-wiki data curation; personal study project)'}
 OUT = dataset_path('rise_sunbreak')
 KIRANICO = 'https://mhrise.kiranico.com'
 MHWIKI = 'https://monsterhunterwiki.org/wiki/'
 
-ROSTER = [  # slug, kiranico id, wiki page name
-    ('great-izuchi', '1681174536', 'Great_Izuchi'),
-    ('rathian', '366824395', 'Rathian'),
-    ('rathalos', '381074408', 'Rathalos'),
-    ('tigrex', '808327178', 'Tigrex'),
-    ('zinogre', '1432800563', 'Zinogre'),
-    ('mizutsune', '1251979832', 'Mizutsune'),
-    ('violet-mizutsune', '1061157944', 'Violet_Mizutsune'),
-    ('magnamalo', '1921564947', 'Magnamalo'),
-    ('rajang', '243411229', 'Rajang'),
-    ('malzeno', '50943022', 'Malzeno'),
-]
+ENTRIES = json.load(open(os.path.join(HERE, 'rosters', 'rise_sunbreak.json'), encoding='utf8'))['monsters']
+BY_SLUG = {e['slug']: e for e in ENTRIES}
+ROSTER = [(e['slug'], e['kiranicoId'], e['wiki']) for e in ENTRIES if not e.get('dataFrom')]
 ELEMENTS_KIRANICO_ORDER = ['fire', 'water', 'ice', 'thunder', 'dragon']
 ELEMENTS = ['fire', 'water', 'thunder', 'ice', 'dragon']
 RANK = {'Low Rank': 'low', 'High Rank': 'high', 'Master Rank': 'master'}
@@ -34,18 +24,15 @@ STAR_RULE = ('Rise lists hitzones, not stars. Stars = best elemental hitzone ove
              'whose official notes give dragon 30=3, thunder 20=2, water/ice 15=1, fire 0=X).')
 
 
-def fetch(url, cache):
-    if os.path.exists(cache):
-        return open(cache, encoding='utf8').read()
-    req = urllib.request.Request(url, headers=UA)
-    data = urllib.request.urlopen(req, timeout=60).read().decode('utf8')
-    open(cache, 'w', encoding='utf8').write(data)
-    time.sleep(1.5)
-    return data
-
-
-def clean(t):
-    return html.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', t))).strip()
+def wiki_page(url, cache):
+    """The wiki page, or '' when it does not exist (e.g. no own page for an Apex)."""
+    try:
+        return fetch(url, cache)
+    except urllib.error.HTTPError as e:
+        if e.code != 404:
+            raise
+        open(cache, 'w', encoding='utf8').write('')
+        return ''
 
 
 def slug(t):
@@ -102,14 +89,53 @@ def global_part_names():
     return names
 
 
+SIMPLE_METHODS = {('Carves', 'Body'): 'carve', ('Carves', 'Severing'): 'tailCarve',
+                  ('Dropped Materials', ''): 'droppedMaterial', ('Capture Rewards', ''): 'capture',
+                  ('Target Rewards', ''): 'questReward'}
+
+
+def afflicted_version(entry, materials):
+    """An afflicted version: only the "Afflicted" materials of the base page."""
+    base_slug, kid = entry['versionOf'], entry['kiranicoId']
+    _, en_items, _ = kiranico(fetch(f'{KIRANICO}/data/monsters/{kid}', f'cache_rise_{base_slug}_en.html'))
+    _, pt_items, _ = kiranico(fetch(f'{KIRANICO}/pt-BR/data/monsters/{kid}', f'cache_rise_{base_slug}_pt.html'))
+    final = {}
+    for (_iid, name, rank_l, method, sub, _qty, rate), pt in zip(en_items, pt_items):
+        m = SIMPLE_METHODS.get((method, sub))
+        if not name.startswith('Afflicted') or not m:
+            continue
+        mid = slug(name)
+        materials.setdefault(mid, {'id': mid, 'name': {'en': name}})['name']['ptBr'] = pt[1]
+        final.setdefault((mid, RANK[rank_l], m), {'materialId': mid, 'rank': RANK[rank_l], 'method': m,
+                                                   'ratePercent': float(rate.rstrip('%'))})
+    return {
+        'slug': entry['slug'],
+        'versionOf': base_slug,
+        'versionKind': 'afflicted',
+        'name': {'en': entry['name']},
+        'drops': list(final.values()),
+        'sources': [
+            {'name': 'Kiranico (MH Rise: Sunbreak)', 'url': f'{KIRANICO}/data/monsters/{kid}',
+             'notes': '"Afflicted" materials of the base page (one row per material; the page repeats '
+                      'them per anomaly level). Weaknesses, parts, habitats, item reactions and '
+                      "classification are the base's."},
+        ],
+    }
+
+
 def build():
     habitats, materials, monsters = {}, {}, []
     all_pt_parts = global_part_names()
-    for s, kid, wname in ROSTER:
+    for entry in ENTRIES:
+        if entry.get('dataFrom') == 'baseKiranicoAfflicted':
+            monsters.append(afflicted_version(entry, materials))
+            print(entry['slug'], '| drops', len(monsters[-1]['drops']))
+            continue
+        s, kid, wname = entry['slug'], entry['kiranicoId'], entry['wiki']
         en_title, en_items, en_phys = kiranico(fetch(f'{KIRANICO}/data/monsters/{kid}', f'cache_rise_{s}_en.html'))
         pt_title, pt_items, pt_phys = kiranico(fetch(f'{KIRANICO}/pt-BR/data/monsters/{kid}', f'cache_rise_{s}_pt.html'))
-        wiki = fetch(f'{MHWIKI}{wname}_(MHRS)', f'cache_mhwiki_{s}_mhrs.html')
-        base = fetch(f'{MHWIKI}{wname}', f'cache_mhwiki_{s}_base.html')
+        wiki = wiki_page(f'{MHWIKI}{wname}_(MHRS)', f'cache_mhwiki_{s}_mhrs.html')
+        base = wiki_page(f'{MHWIKI}{wname}', f'cache_mhwiki_{s}_base.html')
         assert len(en_items) == len(pt_items), s
         pt_part = {**all_pt_parts, **{e[0]: p[0] for e, p in zip(en_phys, pt_phys)}}
 
@@ -188,10 +214,17 @@ def build():
             habitats.setdefault(hid, {'id': hid, 'name': {'en': loc}})
             hab.append(hid)
 
-        monsters.append({
+        version = ({'versionOf': entry['versionOf'], 'versionKind': entry['versionKind']}
+                   if 'versionOf' in entry else {})
+        cls = wiki_class(base)
+        if version and not cls:  # no page of its own: the base species' classification
+            b = BY_SLUG[entry['versionOf']]
+            cls = wiki_class(wiki_page(f'{MHWIKI}{b["wiki"]}', f'cache_mhwiki_{b["slug"]}_base.html'))
+        monster = {
             'slug': s,
+            **version,
             'name': {'en': en_title, 'ptBr': pt_title},
-            'classification': {'en': wiki_class(base) or 'Unknown'},
+            'classification': {'en': cls or 'Unknown'},
             'weaknesses': {'general': general},
             'habitatIds': hab,
             'parts': list(parts.values()),
@@ -200,14 +233,23 @@ def build():
                 {'name': 'Kiranico (MH Rise: Sunbreak)', 'url': f'{KIRANICO}/data/monsters/{kid}',
                  'notes': 'Names (en/pt-BR), drops and rates, hitzones. ' + STAR_RULE
                           + ' Afflicted-variant, palico and wyvern-riding drops excluded.'},
+            ],
+        }
+        if wiki:
+            monster['sources'].append(
                 {'name': 'Monster Hunter Wiki (MHRS)', 'url': f'{MHWIKI}{wname}_(MHRS)',
                  'notes': 'Locales and named broken-part rewards, matched to Kiranico BodyPart groups by '
                           'identical item/rate sets.'
-                          + (f' Unmatched groups not shown: {", ".join(unnamed)}.' if unnamed else '')},
-                {'name': 'Monster Hunter Wiki', 'url': f'{MHWIKI}{wname}', 'notes': 'Classification.'},
-            ],
-        })
-        print(s, en_title, '/', pt_title, '|', monsters[-1]['classification']['en'], '| hab', hab,
+                          + (f' Unmatched groups not shown: {", ".join(unnamed)}.' if unnamed else '')})
+        if base:
+            monster['sources'].append({'name': 'Monster Hunter Wiki', 'url': f'{MHWIKI}{wname}',
+                                       'notes': 'Classification.'})
+        if version and not hab:
+            del monster['habitatIds']  # no wiki page of its own: the base's (inherited)
+        if version and not base:
+            del monster['classification']
+        monsters.append(monster)
+        print(s, en_title, '/', pt_title, '|', cls, '| hab', hab,
               '| parts', [(p['id'], p['name'].get('ptBr'), p['severable']) for p in parts.values()],
               '| unnamed', unnamed, '| drops', len(final), '| weak', general)
 

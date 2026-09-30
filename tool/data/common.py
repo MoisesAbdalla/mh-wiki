@@ -52,7 +52,14 @@ def fetch(url, cache):
     if os.path.exists(cache):
         return open(cache, encoding='utf8').read()
     req = urllib.request.Request(url, headers=UA)
-    data = urllib.request.urlopen(req, timeout=60).read().decode('utf8')
+    for attempt in range(3):  # the sites answer 5xx now and then under load
+        try:
+            data = urllib.request.urlopen(req, timeout=60).read().decode('utf8')
+            break
+        except urllib.error.HTTPError as e:
+            if e.code < 500 or attempt == 2:
+                raise
+            time.sleep(10 * (attempt + 1))
     open(cache, 'w', encoding='utf8').write(data)
     time.sleep(1.2)
     return data

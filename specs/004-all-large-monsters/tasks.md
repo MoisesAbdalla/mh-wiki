@@ -164,13 +164,13 @@ then Rise (Phase 6), then World (Phase 7).
 
 **Independent Test**: quickstart checks 1–10 for Rise (Silver Rathalos own row; Apex/Risen/Afflicted as versions).
 
-- [ ] T028 [US1] Rise source check (research R4).
+- [X] T028 [US1] Rise source check (research R4).
   - Apex, Risen and Primordial versions: Primordial Malzeno and similar "Variant"-class monsters keep their own rows (research R2).
   - Afflicted: Anomaly quests and afflicted materials per monster.
   - Write the result to `tool/data/rosters/rise_sunbreak.json` and summarize it in research R4.
-- [ ] T029 [US1] Run `tool/data/build.py rise_sunbreak` for the roster and update `assets/data/rise_sunbreak/monsters.json`, keeping the 10 original entries.
-- [ ] T030 [US2] Run HP and items extraction for Rise (afflicted HP from Anomaly quests; apex and risen from their own quest rows); update the dataset.
-- [ ] T031 [US3] Run `fetch_icons.py rise_sunbreak` (Apex and Risen use their own icons; afflicted versions use the base icon).
+- [X] T029 [US1] Run `tool/data/build.py rise_sunbreak` for the roster and update `assets/data/rise_sunbreak/monsters.json`, keeping the 10 original entries.
+- [X] T030 [US2] Run HP and items extraction for Rise (afflicted HP from Anomaly quests; apex and risen from their own quest rows); update the dataset.
+- [X] T031 [US3] Run `fetch_icons.py rise_sunbreak` (Apex and Risen use their own icons; afflicted versions use the base icon).
 - [ ] T032 [US1] Extend `real_datasets_test.dart` for Rise (roster coverage, SC-003, `noHp` set, SC-006). Run the gates, `flutter build windows --release`, update the README data status, commit, push. The user runs the manual checks, then merge to `main`.
 
 ---

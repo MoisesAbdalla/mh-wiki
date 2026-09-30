@@ -1,0 +1,1016 @@
+{
+  "game": "rise_sunbreak",
+  "source": "https://mhrise.kiranico.com/data/monsters?view=lg",
+  "monsters": [
+    {
+      "slug": "aknosom",
+      "kiranicoId": "2084266193",
+      "name": "Aknosom",
+      "wiki": "Aknosom"
+    },
+    {
+      "slug": "almudron",
+      "kiranicoId": "2040569941",
+      "name": "Almudron",
+      "wiki": "Almudron"
+    },
+    {
+      "slug": "amatsu",
+      "kiranicoId": "1446526160",
+      "name": "Amatsu",
+      "wiki": "Amatsu"
+    },
+    {
+      "slug": "anjanath",
+      "kiranicoId": "1743214542",
+      "name": "Anjanath",
+      "wiki": "Anjanath"
+    },
+    {
+      "slug": "apex-arzuros",
+      "kiranicoId": "1192999830",
+      "name": "Apex Arzuros",
+      "wiki": "Apex_Arzuros",
+      "versionOf": "arzuros",
+      "versionKind": "apex"
+    },
+    {
+      "slug": "apex-diablos",
+      "kiranicoId": "36049421",
+      "name": "Apex Diablos",
+      "wiki": "Apex_Diablos",
+      "versionOf": "diablos",
+      "versionKind": "apex"
+    },
+    {
+      "slug": "apex-mizutsune",
+      "kiranicoId": "2043189560",
+      "name": "Apex Mizutsune",
+      "wiki": "Apex_Mizutsune",
+      "versionOf": "mizutsune",
+      "versionKind": "apex"
+    },
+    {
+      "slug": "apex-rathalos",
+      "kiranicoId": "99050216",
+      "name": "Apex Rathalos",
+      "wiki": "Apex_Rathalos",
+      "versionOf": "rathalos",
+      "versionKind": "apex"
+    },
+    {
+      "slug": "apex-rathian",
+      "kiranicoId": "453915339",
+      "name": "Apex Rathian",
+      "wiki": "Apex_Rathian",
+      "versionOf": "rathian",
+      "versionKind": "apex"
+    },
+    {
+      "slug": "apex-zinogre",
+      "kiranicoId": "1150792755",
+      "name": "Apex Zinogre",
+      "wiki": "Apex_Zinogre",
+      "versionOf": "zinogre",
+      "versionKind": "apex"
+    },
+    {
+      "slug": "arzuros",
+      "kiranicoId": "1374346390",
+      "name": "Arzuros",
+      "wiki": "Arzuros"
+    },
+    {
+      "slug": "astalos",
+      "kiranicoId": "1237729819",
+      "name": "Astalos",
+      "wiki": "Astalos"
+    },
+    {
+      "slug": "aurora-somnacanth",
+      "kiranicoId": "88482199",
+      "name": "Aurora Somnacanth",
+      "wiki": "Aurora_Somnacanth"
+    },
+    {
+      "slug": "barioth",
+      "kiranicoId": "614678208",
+      "name": "Barioth",
+      "wiki": "Barioth"
+    },
+    {
+      "slug": "barroth",
+      "kiranicoId": "643686022",
+      "name": "Barroth",
+      "wiki": "Barroth"
+    },
+    {
+      "slug": "basarios",
+      "kiranicoId": "274815918",
+      "name": "Basarios",
+      "wiki": "Basarios"
+    },
+    {
+      "slug": "bazelgeuse",
+      "kiranicoId": "321844636",
+      "name": "Bazelgeuse",
+      "wiki": "Bazelgeuse"
+    },
+    {
+      "slug": "bishaten",
+      "kiranicoId": "1935814960",
+      "name": "Bishaten",
+      "wiki": "Bishaten"
+    },
+    {
+      "slug": "blood-orange-bishaten",
+      "kiranicoId": "447894064",
+      "name": "Blood Orange Bishaten",
+      "wiki": "Blood_Orange_Bishaten"
+    },
+    {
+      "slug": "chameleos",
+      "kiranicoId": "138201299",
+      "name": "Chameleos",
+      "wiki": "Chameleos"
+    },
+    {
+      "slug": "chaotic-gore-magala",
+      "kiranicoId": "131188813",
+      "name": "Chaotic Gore Magala",
+      "wiki": "Chaotic_Gore_Magala"
+    },
+    {
+      "slug": "crimson-glow-valstrax",
+      "kiranicoId": "815111868",
+      "name": "Crimson Glow Valstrax",
+      "wiki": "Crimson_Glow_Valstrax"
+    },
+    {
+      "slug": "daimyo-hermitaur",
+      "kiranicoId": "19196313",
+      "name": "Daimyo Hermitaur",
+      "wiki": "Daimyo_Hermitaur"
+    },
+    {
+      "slug": "diablos",
+      "kiranicoId": "485829389",
+      "name": "Diablos",
+      "wiki": "Diablos"
+    },
+    {
+      "slug": "espinas",
+      "kiranicoId": "141986722",
+      "name": "Espinas",
+      "wiki": "Espinas"
+    },
+    {
+      "slug": "flaming-espinas",
+      "kiranicoId": "1472640162",
+      "name": "Flaming Espinas",
+      "wiki": "Flaming_Espinas"
+    },
+    {
+      "slug": "furious-rajang",
+      "kiranicoId": "1326634525",
+      "name": "Furious Rajang",
+      "wiki": "Furious_Rajang"
+    },
+    {
+      "slug": "gaismagorm",
+      "kiranicoId": "261970829",
+      "name": "Gaismagorm",
+      "wiki": "Gaismagorm"
+    },
+    {
+      "slug": "garangolm",
+      "kiranicoId": "247196652",
+      "name": "Garangolm",
+      "wiki": "Garangolm"
+    },
+    {
+      "slug": "gold-rathian",
+      "kiranicoId": "1518179787",
+      "name": "Gold Rathian",
+      "wiki": "Gold_Rathian"
+    },
+    {
+      "slug": "gore-magala",
+      "kiranicoId": "1161896781",
+      "name": "Gore Magala",
+      "wiki": "Gore_Magala"
+    },
+    {
+      "slug": "goss-harag",
+      "kiranicoId": "2069053547",
+      "name": "Goss Harag",
+      "wiki": "Goss_Harag"
+    },
+    {
+      "slug": "great-baggi",
+      "kiranicoId": "718470492",
+      "name": "Great Baggi",
+      "wiki": "Great_Baggi"
+    },
+    {
+      "slug": "great-izuchi",
+      "kiranicoId": "1681174536",
+      "name": "Great Izuchi",
+      "wiki": "Great_Izuchi"
+    },
+    {
+      "slug": "great-wroggi",
+      "kiranicoId": "1460759793",
+      "name": "Great Wroggi",
+      "wiki": "Great_Wroggi"
+    },
+    {
+      "slug": "jyuratodus",
+      "kiranicoId": "1755961030",
+      "name": "Jyuratodus",
+      "wiki": "Jyuratodus"
+    },
+    {
+      "slug": "khezu",
+      "kiranicoId": "395307913",
+      "name": "Khezu",
+      "wiki": "Khezu"
+    },
+    {
+      "slug": "kulu-ya-ku",
+      "kiranicoId": "1875928865",
+      "name": "Kulu-Ya-Ku",
+      "wiki": "Kulu-Ya-Ku"
+    },
+    {
+      "slug": "kushala-daora",
+      "kiranicoId": "257661234",
+      "name": "Kushala Daora",
+      "wiki": "Kushala_Daora"
+    },
+    {
+      "slug": "lagombi",
+      "kiranicoId": "1389104311",
+      "name": "Lagombi",
+      "wiki": "Lagombi"
+    },
+    {
+      "slug": "lucent-nargacuga",
+      "kiranicoId": "1661782447",
+      "name": "Lucent Nargacuga",
+      "wiki": "Lucent_Nargacuga"
+    },
+    {
+      "slug": "lunagaron",
+      "kiranicoId": "232963023",
+      "name": "Lunagaron",
+      "wiki": "Lunagaron"
+    },
+    {
+      "slug": "magma-almudron",
+      "kiranicoId": "15778133",
+      "name": "Magma Almudron",
+      "wiki": "Magma_Almudron"
+    },
+    {
+      "slug": "magnamalo",
+      "kiranicoId": "1921564947",
+      "name": "Magnamalo",
+      "wiki": "Magnamalo"
+    },
+    {
+      "slug": "malzeno",
+      "kiranicoId": "50943022",
+      "name": "Malzeno",
+      "wiki": "Malzeno"
+    },
+    {
+      "slug": "mizutsune",
+      "kiranicoId": "1251979832",
+      "name": "Mizutsune",
+      "wiki": "Mizutsune"
+    },
+    {
+      "slug": "nargacuga",
+      "kiranicoId": "1047302063",
+      "name": "Nargacuga",
+      "wiki": "Nargacuga"
+    },
+    {
+      "slug": "narwa-the-allmother",
+      "kiranicoId": "664702249",
+      "name": "Narwa the Allmother",
+      "wiki": "Narwa_the_Allmother"
+    },
+    {
+      "slug": "primordial-malzeno",
+      "kiranicoId": "1301934382",
+      "name": "Primordial Malzeno",
+      "wiki": "Primordial_Malzeno"
+    },
+    {
+      "slug": "pukei-pukei",
+      "kiranicoId": "1636956044",
+      "name": "Pukei-Pukei",
+      "wiki": "Pukei-Pukei"
+    },
+    {
+      "slug": "pyre-rakna-kadaki",
+      "kiranicoId": "102732212",
+      "name": "Pyre Rakna-Kadaki",
+      "wiki": "Pyre_Rakna-Kadaki"
+    },
+    {
+      "slug": "rajang",
+      "kiranicoId": "243411229",
+      "name": "Rajang",
+      "wiki": "Rajang"
+    },
+    {
+      "slug": "rakna-kadaki",
+      "kiranicoId": "2026860724",
+      "name": "Rakna-Kadaki",
+      "wiki": "Rakna-Kadaki"
+    },
+    {
+      "slug": "rathalos",
+      "kiranicoId": "381074408",
+      "name": "Rathalos",
+      "wiki": "Rathalos"
+    },
+    {
+      "slug": "rathian",
+      "kiranicoId": "366824395",
+      "name": "Rathian",
+      "wiki": "Rathian"
+    },
+    {
+      "slug": "risen-chameleos",
+      "kiranicoId": "1186844883",
+      "name": "Risen Chameleos",
+      "wiki": "Risen_Chameleos",
+      "versionOf": "chameleos",
+      "versionKind": "risen"
+    },
+    {
+      "slug": "risen-crimson-glow-valstrax",
+      "kiranicoId": "210106812",
+      "name": "Risen Crimson Glow Valstrax",
+      "wiki": "Risen_Crimson_Glow_Valstrax",
+      "versionOf": "crimson-glow-valstrax",
+      "versionKind": "risen"
+    },
+    {
+      "slug": "risen-kushala-daora",
+      "kiranicoId": "1172594994",
+      "name": "Risen Kushala Daora",
+      "wiki": "Risen_Kushala_Daora",
+      "versionOf": "kushala-daora",
+      "versionKind": "risen"
+    },
+    {
+      "slug": "risen-shagaru-magala",
+      "kiranicoId": "479959906",
+      "name": "Risen Shagaru Magala",
+      "wiki": "Risen_Shagaru_Magala",
+      "versionOf": "shagaru-magala",
+      "versionKind": "risen"
+    },
+    {
+      "slug": "risen-teostra",
+      "kiranicoId": "1080586385",
+      "name": "Risen Teostra",
+      "wiki": "Risen_Teostra",
+      "versionOf": "teostra",
+      "versionKind": "risen"
+    },
+    {
+      "slug": "royal-ludroth",
+      "kiranicoId": "585215589",
+      "name": "Royal Ludroth",
+      "wiki": "Royal_Ludroth"
+    },
+    {
+      "slug": "scorned-magnamalo",
+      "kiranicoId": "857304595",
+      "name": "Scorned Magnamalo",
+      "wiki": "Scorned_Magnamalo"
+    },
+    {
+      "slug": "seething-bazelgeuse",
+      "kiranicoId": "1572835996",
+      "name": "Seething Bazelgeuse",
+      "wiki": "Seething_Bazelgeuse"
+    },
+    {
+      "slug": "seregios",
+      "kiranicoId": "1280901767",
+      "name": "Seregios",
+      "wiki": "Seregios"
+    },
+    {
+      "slug": "shagaru-magala",
+      "kiranicoId": "1176146786",
+      "name": "Shagaru Magala",
+      "wiki": "Shagaru_Magala"
+    },
+    {
+      "slug": "shogun-ceanataur",
+      "kiranicoId": "67000766",
+      "name": "Shogun Ceanataur",
+      "wiki": "Shogun_Ceanataur"
+    },
+    {
+      "slug": "silver-rathalos",
+      "kiranicoId": "1532413416",
+      "name": "Silver Rathalos",
+      "wiki": "Silver_Rathalos"
+    },
+    {
+      "slug": "somnacanth",
+      "kiranicoId": "2146828439",
+      "name": "Somnacanth",
+      "wiki": "Somnacanth"
+    },
+    {
+      "slug": "teostra",
+      "kiranicoId": "200239249",
+      "name": "Teostra",
+      "wiki": "Teostra"
+    },
+    {
+      "slug": "tetranadon",
+      "kiranicoId": "2099040502",
+      "name": "Tetranadon",
+      "wiki": "Tetranadon"
+    },
+    {
+      "slug": "thunder-serpent-narwa",
+      "kiranicoId": "1695408169",
+      "name": "Thunder Serpent Narwa",
+      "wiki": "Thunder_Serpent_Narwa"
+    },
+    {
+      "slug": "tigrex",
+      "kiranicoId": "808327178",
+      "name": "Tigrex",
+      "wiki": "Tigrex"
+    },
+    {
+      "slug": "tobi-kadachi",
+      "kiranicoId": "1770194663",
+      "name": "Tobi-Kadachi",
+      "wiki": "Tobi-Kadachi"
+    },
+    {
+      "slug": "velkhana",
+      "kiranicoId": "440849622",
+      "name": "Velkhana",
+      "wiki": "Velkhana"
+    },
+    {
+      "slug": "violet-mizutsune",
+      "kiranicoId": "1061157944",
+      "name": "Violet Mizutsune",
+      "wiki": "Violet_Mizutsune"
+    },
+    {
+      "slug": "volvidon",
+      "kiranicoId": "1403354196",
+      "name": "Volvidon",
+      "wiki": "Volvidon"
+    },
+    {
+      "slug": "wind-serpent-ibushi",
+      "kiranicoId": "2054819914",
+      "name": "Wind Serpent Ibushi",
+      "wiki": "Wind_Serpent_Ibushi"
+    },
+    {
+      "slug": "zinogre",
+      "kiranicoId": "1432800563",
+      "name": "Zinogre",
+      "wiki": "Zinogre"
+    },
+    {
+      "slug": "afflicted-aknosom",
+      "kiranicoId": "2084266193",
+      "name": "Afflicted Aknosom",
+      "wiki": "Aknosom",
+      "versionOf": "aknosom",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-almudron",
+      "kiranicoId": "2040569941",
+      "name": "Afflicted Almudron",
+      "wiki": "Almudron",
+      "versionOf": "almudron",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-anjanath",
+      "kiranicoId": "1743214542",
+      "name": "Afflicted Anjanath",
+      "wiki": "Anjanath",
+      "versionOf": "anjanath",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-arzuros",
+      "kiranicoId": "1374346390",
+      "name": "Afflicted Arzuros",
+      "wiki": "Arzuros",
+      "versionOf": "arzuros",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-astalos",
+      "kiranicoId": "1237729819",
+      "name": "Afflicted Astalos",
+      "wiki": "Astalos",
+      "versionOf": "astalos",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-aurora-somnacanth",
+      "kiranicoId": "88482199",
+      "name": "Afflicted Aurora Somnacanth",
+      "wiki": "Aurora_Somnacanth",
+      "versionOf": "aurora-somnacanth",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-barioth",
+      "kiranicoId": "614678208",
+      "name": "Afflicted Barioth",
+      "wiki": "Barioth",
+      "versionOf": "barioth",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-barroth",
+      "kiranicoId": "643686022",
+      "name": "Afflicted Barroth",
+      "wiki": "Barroth",
+      "versionOf": "barroth",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-basarios",
+      "kiranicoId": "274815918",
+      "name": "Afflicted Basarios",
+      "wiki": "Basarios",
+      "versionOf": "basarios",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-bazelgeuse",
+      "kiranicoId": "321844636",
+      "name": "Afflicted Bazelgeuse",
+      "wiki": "Bazelgeuse",
+      "versionOf": "bazelgeuse",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-bishaten",
+      "kiranicoId": "1935814960",
+      "name": "Afflicted Bishaten",
+      "wiki": "Bishaten",
+      "versionOf": "bishaten",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-blood-orange-bishaten",
+      "kiranicoId": "447894064",
+      "name": "Afflicted Blood Orange Bishaten",
+      "wiki": "Blood_Orange_Bishaten",
+      "versionOf": "blood-orange-bishaten",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-chaotic-gore-magala",
+      "kiranicoId": "131188813",
+      "name": "Afflicted Chaotic Gore Magala",
+      "wiki": "Chaotic_Gore_Magala",
+      "versionOf": "chaotic-gore-magala",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-daimyo-hermitaur",
+      "kiranicoId": "19196313",
+      "name": "Afflicted Daimyo Hermitaur",
+      "wiki": "Daimyo_Hermitaur",
+      "versionOf": "daimyo-hermitaur",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-diablos",
+      "kiranicoId": "485829389",
+      "name": "Afflicted Diablos",
+      "wiki": "Diablos",
+      "versionOf": "diablos",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-espinas",
+      "kiranicoId": "141986722",
+      "name": "Afflicted Espinas",
+      "wiki": "Espinas",
+      "versionOf": "espinas",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-flaming-espinas",
+      "kiranicoId": "1472640162",
+      "name": "Afflicted Flaming Espinas",
+      "wiki": "Flaming_Espinas",
+      "versionOf": "flaming-espinas",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-furious-rajang",
+      "kiranicoId": "1326634525",
+      "name": "Afflicted Furious Rajang",
+      "wiki": "Furious_Rajang",
+      "versionOf": "furious-rajang",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-garangolm",
+      "kiranicoId": "247196652",
+      "name": "Afflicted Garangolm",
+      "wiki": "Garangolm",
+      "versionOf": "garangolm",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-gold-rathian",
+      "kiranicoId": "1518179787",
+      "name": "Afflicted Gold Rathian",
+      "wiki": "Gold_Rathian",
+      "versionOf": "gold-rathian",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-gore-magala",
+      "kiranicoId": "1161896781",
+      "name": "Afflicted Gore Magala",
+      "wiki": "Gore_Magala",
+      "versionOf": "gore-magala",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-goss-harag",
+      "kiranicoId": "2069053547",
+      "name": "Afflicted Goss Harag",
+      "wiki": "Goss_Harag",
+      "versionOf": "goss-harag",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-great-baggi",
+      "kiranicoId": "718470492",
+      "name": "Afflicted Great Baggi",
+      "wiki": "Great_Baggi",
+      "versionOf": "great-baggi",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-great-izuchi",
+      "kiranicoId": "1681174536",
+      "name": "Afflicted Great Izuchi",
+      "wiki": "Great_Izuchi",
+      "versionOf": "great-izuchi",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-great-wroggi",
+      "kiranicoId": "1460759793",
+      "name": "Afflicted Great Wroggi",
+      "wiki": "Great_Wroggi",
+      "versionOf": "great-wroggi",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-jyuratodus",
+      "kiranicoId": "1755961030",
+      "name": "Afflicted Jyuratodus",
+      "wiki": "Jyuratodus",
+      "versionOf": "jyuratodus",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-khezu",
+      "kiranicoId": "395307913",
+      "name": "Afflicted Khezu",
+      "wiki": "Khezu",
+      "versionOf": "khezu",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-kulu-ya-ku",
+      "kiranicoId": "1875928865",
+      "name": "Afflicted Kulu-Ya-Ku",
+      "wiki": "Kulu-Ya-Ku",
+      "versionOf": "kulu-ya-ku",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-lagombi",
+      "kiranicoId": "1389104311",
+      "name": "Afflicted Lagombi",
+      "wiki": "Lagombi",
+      "versionOf": "lagombi",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-lunagaron",
+      "kiranicoId": "232963023",
+      "name": "Afflicted Lunagaron",
+      "wiki": "Lunagaron",
+      "versionOf": "lunagaron",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-magma-almudron",
+      "kiranicoId": "15778133",
+      "name": "Afflicted Magma Almudron",
+      "wiki": "Magma_Almudron",
+      "versionOf": "magma-almudron",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-magnamalo",
+      "kiranicoId": "1921564947",
+      "name": "Afflicted Magnamalo",
+      "wiki": "Magnamalo",
+      "versionOf": "magnamalo",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-mizutsune",
+      "kiranicoId": "1251979832",
+      "name": "Afflicted Mizutsune",
+      "wiki": "Mizutsune",
+      "versionOf": "mizutsune",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-nargacuga",
+      "kiranicoId": "1047302063",
+      "name": "Afflicted Nargacuga",
+      "wiki": "Nargacuga",
+      "versionOf": "nargacuga",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-pukei-pukei",
+      "kiranicoId": "1636956044",
+      "name": "Afflicted Pukei-Pukei",
+      "wiki": "Pukei-Pukei",
+      "versionOf": "pukei-pukei",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-pyre-rakna-kadaki",
+      "kiranicoId": "102732212",
+      "name": "Afflicted Pyre Rakna-Kadaki",
+      "wiki": "Pyre_Rakna-Kadaki",
+      "versionOf": "pyre-rakna-kadaki",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-rajang",
+      "kiranicoId": "243411229",
+      "name": "Afflicted Rajang",
+      "wiki": "Rajang",
+      "versionOf": "rajang",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-rakna-kadaki",
+      "kiranicoId": "2026860724",
+      "name": "Afflicted Rakna-Kadaki",
+      "wiki": "Rakna-Kadaki",
+      "versionOf": "rakna-kadaki",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-rathalos",
+      "kiranicoId": "381074408",
+      "name": "Afflicted Rathalos",
+      "wiki": "Rathalos",
+      "versionOf": "rathalos",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-rathian",
+      "kiranicoId": "366824395",
+      "name": "Afflicted Rathian",
+      "wiki": "Rathian",
+      "versionOf": "rathian",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-royal-ludroth",
+      "kiranicoId": "585215589",
+      "name": "Afflicted Royal Ludroth",
+      "wiki": "Royal_Ludroth",
+      "versionOf": "royal-ludroth",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-scorned-magnamalo",
+      "kiranicoId": "857304595",
+      "name": "Afflicted Scorned Magnamalo",
+      "wiki": "Scorned_Magnamalo",
+      "versionOf": "scorned-magnamalo",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-seething-bazelgeuse",
+      "kiranicoId": "1572835996",
+      "name": "Afflicted Seething Bazelgeuse",
+      "wiki": "Seething_Bazelgeuse",
+      "versionOf": "seething-bazelgeuse",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-seregios",
+      "kiranicoId": "1280901767",
+      "name": "Afflicted Seregios",
+      "wiki": "Seregios",
+      "versionOf": "seregios",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-shogun-ceanataur",
+      "kiranicoId": "67000766",
+      "name": "Afflicted Shogun Ceanataur",
+      "wiki": "Shogun_Ceanataur",
+      "versionOf": "shogun-ceanataur",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-silver-rathalos",
+      "kiranicoId": "1532413416",
+      "name": "Afflicted Silver Rathalos",
+      "wiki": "Silver_Rathalos",
+      "versionOf": "silver-rathalos",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-somnacanth",
+      "kiranicoId": "2146828439",
+      "name": "Afflicted Somnacanth",
+      "wiki": "Somnacanth",
+      "versionOf": "somnacanth",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-tetranadon",
+      "kiranicoId": "2099040502",
+      "name": "Afflicted Tetranadon",
+      "wiki": "Tetranadon",
+      "versionOf": "tetranadon",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-tigrex",
+      "kiranicoId": "808327178",
+      "name": "Afflicted Tigrex",
+      "wiki": "Tigrex",
+      "versionOf": "tigrex",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-tobi-kadachi",
+      "kiranicoId": "1770194663",
+      "name": "Afflicted Tobi-Kadachi",
+      "wiki": "Tobi-Kadachi",
+      "versionOf": "tobi-kadachi",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-volvidon",
+      "kiranicoId": "1403354196",
+      "name": "Afflicted Volvidon",
+      "wiki": "Volvidon",
+      "versionOf": "volvidon",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    },
+    {
+      "slug": "afflicted-zinogre",
+      "kiranicoId": "1432800563",
+      "name": "Afflicted Zinogre",
+      "wiki": "Zinogre",
+      "versionOf": "zinogre",
+      "versionKind": "afflicted",
+      "dataFrom": "baseKiranicoAfflicted",
+      "icon": "base"
+    }
+  ]
+}

@@ -133,6 +133,35 @@ party factors, item reactions) are reused unchanged unless stated.
 - **Without wiki drop tables**: Guardian Arkveld (its HP comes from two Low Rank quests) and
   Omega Planetes (collab). Their drops stay empty ("Sem materiais").
 
+### R4 result — Rise: Sunbreak (T028, 2026-09-30)
+
+- **Roster**: 78 large monsters on the Kiranico list (`/data/monsters?view=lg`, database 16.0.0),
+  written to `tool/data/rosters/rise_sunbreak.json` by `tool/data/roster_rise.py`. The result is
+  67 base rows and 63 versions.
+- **Apex** (6: Arzuros, Diablos, Mizutsune, Rathalos, Rathian, Zinogre) and **Risen** (5:
+  Chameleos, Crimson Glow Valstrax, Kushala Daora, Shagaru Magala, Teostra) are versions. They
+  have their own Kiranico pages, so their names (pt-BR "Rathalos Alfa", "Teostra Erguido"),
+  weaknesses, parts, drops, habitats and icons are their own. The classification is the base
+  species' when the wiki has no page of its own.
+- **Own rows**: subspecies and rare species (Silver Rathalos, Gold Rathian…) and the named
+  variants with their own Hunter's Notes entry (Primordial Malzeno, Scorned Magnamalo, Furious
+  Rajang, Chaotic Gore Magala, Seething Bazelgeuse, Lucent Nargacuga…).
+- **Afflicted**: 52 bases whose Kiranico page lists "Afflicted" materials. Each becomes an
+  `afflicted` version with those materials (Master Rank carves; the page repeats them per anomaly
+  level, so there is one row per material). The elder dragons, the serpents, Malzeno, Primordial
+  Malzeno, Violet Mizutsune and Lucent Nargacuga have none. The name is English only ("Afflicted
+  Rathalos"), because no official pt-BR name exists. The icon is the base's.
+- **HP** (T030):
+  - Afflicted: the "Anomaly Research: <monster>" row of the base page (e.g. Rathalos 88,200).
+    Other Anomaly rows on that page are research quests of other targets, where the monster is
+    only an extra.
+  - Apex: its quests are Gathering Hub 8★ High Rank hunts ("The Fearsome Apex Rathalos",
+    20,400). "Advanced:" 8★ quests are arena-style multi-Apex fights and are left out.
+  - Risen: the Master Rank quests of its own page.
+  - Every entry has HP.
+- The 10 entries of feature 001 keep their values. Four part names gained their pt-BR name
+  ("Garra", "Chifre"), because the part-name table now covers the whole roster.
+
 ## R5. List, search and selection (spec Q3)
 
 - The list shows one row per base monster, sorted alphabetically, with a "N versões" hint.

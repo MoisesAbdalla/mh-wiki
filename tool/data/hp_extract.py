@@ -65,21 +65,32 @@ def world(slug, name=None):
 
 
 def rise(slug, name=None):
+    entry = roster('rise_sunbreak').get(slug, {})
+    if entry.get('versionKind') == 'afflicted':
+        # Afflicted: the base page's "Anomaly Research: <base>" quest (Master Rank),
+        # 004 research R4. Other Anomaly rows are research quests of other targets
+        # where this monster is only an extra.
+        base = roster('rise_sunbreak')[entry['versionOf']]['name']
+        page = open(f'cache_rise_{entry["versionOf"]}_en.html', encoding='utf8').read()
+        hps = [num(m.group(1)) for tr in re.findall(r'<tr>.*?</tr>', page, re.S)
+               if (m := re.match(rf'Anomaly \d+★ Anomaly Research: {re.escape(base)} .*? 1 (\d[\d,]*) HP',
+                                 clean(tr)))]
+        return [{'rank': 'master', 'solo': min_quest(hps), 'basis': 'minQuest'}] if hps else []
     page = open(f'cache_rise_{slug}_en.html', encoding='utf8').read()
     vals = {}
     for tr in re.findall(r'<tr>.*?</tr>', page, re.S):
-        m = re.match(r'(Village|Gathering Hub|MR) (\d+)★ .*? 1 (\d[\d,]*) HP', clean(tr))
-        if not m:
-            continue
-        cat, stars, hp = m.group(1), int(m.group(2)), num(m.group(3))
+        m = re.match(r'(Village|Gathering Hub|MR) (\d+)★ (.*?) 1 (\d[\d,]*) HP', clean(tr))
+        if not m or (entry.get('versionKind') == 'apex' and m.group(3).startswith('Advanced:')):
+            continue  # "Advanced:" 8★ quests are arena-style multi-Apex fights
+        cat, stars, hp = m.group(1), int(m.group(2)), num(m.group(4))
         if cat == 'Village':
             rank = 'low'
         elif cat == 'MR':
             rank = 'master'
         elif stars <= 3:
             rank = 'low'
-        elif stars <= 7:
-            rank = 'high'
+        elif stars <= 7 or entry.get('versionKind') == 'apex':
+            rank = 'high'  # Apex hunts are Gathering Hub 8★ High Rank quests (004 R4)
         else:
             continue
         vals.setdefault(rank, []).append(hp)
@@ -175,6 +186,8 @@ HP_NOTES = {
     'rise_sunbreak': 'HP: lowest solo HP of the regular quests per rank (Village and Gathering Hub 1-3 LR, Hub 4-7 HR, MR).',
 }
 
+AFFLICTED_HP_NOTE = 'HP: solo HP of the "Anomaly Research: <monster>" quest on this page (Master Rank).'
+
 EXTRACT = {'world_iceborne': world, 'rise_sunbreak': rise, 'wilds': wilds}
 
 for game, fn in ((g, EXTRACT[g]) for g in selected_games()):
@@ -226,8 +239,9 @@ for game, fn in ((g, EXTRACT[g]) for g in selected_games()):
                 })
         else:
             src = next(s for s in monster['sources'] if s['name'].startswith('Kiranico'))
-            if HP_NOTES[game] not in src.get('notes', ''):
-                src['notes'] = (src.get('notes', '') + ' ' + HP_NOTES[game]).strip()
+            note = (AFFLICTED_HP_NOTE if monster.get('versionKind') == 'afflicted' else HP_NOTES[game])
+            if note not in src.get('notes', ''):
+                src['notes'] = (src.get('notes', '') + ' ' + note).strip()
         print(game, monster['slug'], [(h['rank'], h['solo'], h['basis']) for h in hp])
 
     open(path, 'w', encoding='utf8', newline='\n').write(dump(data))

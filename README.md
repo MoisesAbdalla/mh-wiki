@@ -91,7 +91,7 @@ still valid.
 | Game | Base monsters | Versions | Roster |
 |------|---------------|----------|--------|
 | Wilds (game version 1.040) | 31 | 38 (3 guardians, 30 tempered, 5 arch-tempered) | Full large-monster list |
-| Rise: Sunbreak | 10 | — | Curated (full roster pending) |
+| Rise: Sunbreak (Kiranico database 16.0.0) | 67 | 63 (6 apex, 5 risen, 52 afflicted) | Full large-monster list |
 | World: Iceborne | 10 | — | Curated (full roster pending) |
 
 What counts as a version, and which data a version inherits, is described in
