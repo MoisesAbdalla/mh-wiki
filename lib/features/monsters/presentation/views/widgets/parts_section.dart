@@ -10,12 +10,14 @@ class PartsSection extends StatelessWidget {
     required this.parts,
     required this.language,
     this.margin = const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+    this.inherited = false,
     super.key,
   });
 
   final List<BreakablePart> parts;
   final NameLanguage language;
   final EdgeInsetsGeometry margin;
+  final bool inherited;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class PartsSection extends StatelessWidget {
     return SectionCard(
       title: l10n.sectionParts,
       margin: margin,
+      inherited: inherited,
       child: parts.isEmpty
           ? EmptySectionText(l10n.noParts)
           : Column(

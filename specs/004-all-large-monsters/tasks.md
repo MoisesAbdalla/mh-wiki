@@ -126,27 +126,27 @@ then Rise (Phase 6), then World (Phase 7).
 
 **Independent Test**: quickstart checks 2, 3, 4, 7, 8 and 9.
 
-- [ ] T019 [P] [US3] Widget tests for the list row in `test/features/monsters/presentation/views/widgets/monster_list_pane_test.dart` (contract "List row"):
+- [X] T019 [P] [US3] Widget tests for the list row in `test/features/monsters/presentation/views/widgets/monster_list_pane_test.dart` (contract "List row"):
   - "N versões" hint;
   - the matched version name under the base name when the search matched a version;
   - tap opens that version;
   - semantics "<name>, <classification>, N versões".
-- [ ] T020 [P] [US3] Widget tests in `test/features/monsters/presentation/views/widgets/version_selector_test.dart` and `test/features/monsters/presentation/views/widgets/monster_detail_view_test.dart`:
+- [X] T020 [P] [US3] Widget tests in `test/features/monsters/presentation/views/widgets/version_selector_test.dart` and `test/features/monsters/presentation/views/widgets/monster_detail_view_test.dart`:
   - the selector is shown only with versions, with labels in kind order;
   - selecting calls back with the id;
   - tabs are labeled "Versão: <label>";
   - inherited sections show "Igual à forma base";
   - HP and materials of a version never show base data.
-- [ ] T021 [US3] Implement the list row hint and matched version in `lib/features/monsters/presentation/views/widgets/monster_list_pane.dart` (makes T019 pass).
-- [ ] T022 [US3] Implement the detail changes (makes T020 pass).
+- [X] T021 [US3] Implement the list row hint and matched version in `lib/features/monsters/presentation/views/widgets/monster_list_pane.dart` (makes T019 pass).
+- [X] T022 [US3] Implement the detail changes (makes T020 pass).
   - New `lib/features/monsters/presentation/views/widgets/version_selector.dart` (HunterTabs style).
   - New `lib/features/monsters/presentation/views/widgets/inherited_note.dart`.
   - `monster_detail_view.dart` gains `versions` and `onSelectVersion` parameters.
   - Wire them from the compact detail page and the expanded pane in `lib/features/monsters/presentation/views/monsters_page.dart` and related views.
-- [ ] T023 [P] [US3] Performance test in `test/features/monsters/presentation/views/performance_test.dart`, with a synthetic catalog of 300 entries (100 bases with 2 versions each, via `copyForTest`):
+- [X] T023 [P] [US3] Performance test in `test/features/monsters/presentation/views/performance_test.dart`, with a synthetic catalog of 300 entries (100 bases with 2 versions each, via `copyForTest`):
   - the list builds and a game switch settles within the frame budget;
   - `FilterMonsters` over 300 entries runs < 50 ms per query in the test VM (SC-005 margin).
-- [ ] T024 [US3] Parse datasets off the UI thread: `compute(...)` in `lib/features/monsters/data/datasources/asset_monster_datasource.dart` for decode + DTO validation, errors still mapped to `DatasetFormatException` / failures. Makes T023 pass together with T008.
+- [X] T024 [US3] Parse datasets off the UI thread: `compute(...)` in `lib/features/monsters/data/datasources/asset_monster_datasource.dart` for decode + DTO validation, errors still mapped to `DatasetFormatException` / failures. Makes T023 pass together with T008.
 - [ ] T025 [US3] Run `tool/data/fetch_icons.py wilds` for every Wilds base and own-icon version (Guardians). Tempered and arch-tempered versions reference the base icon (research R7). Record `image` in `assets/data/wilds/monsters.json` and extend `real_datasets_test.dart` with an SC-006 check (≥ 95 % of base monsters with own image).
 - [ ] T026 [US3] Extend `test/features/monsters/presentation/views/accessibility_test.dart`: a version detail with the selector and inherited notes at 320 dp / 200 % text (no overflow), text contrast, tap targets.
 - [ ] T027 [US3] Wilds release gate:

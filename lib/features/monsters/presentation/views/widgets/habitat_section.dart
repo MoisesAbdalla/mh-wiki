@@ -10,12 +10,14 @@ class HabitatSection extends StatelessWidget {
     required this.habitats,
     required this.language,
     this.margin = const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+    this.inherited = false,
     super.key,
   });
 
   final List<Habitat> habitats;
   final NameLanguage language;
   final EdgeInsetsGeometry margin;
+  final bool inherited;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class HabitatSection extends StatelessWidget {
     return SectionCard(
       title: l10n.sectionHabitat,
       margin: margin,
+      inherited: inherited,
       child: habitats.isEmpty
           ? EmptySectionText(l10n.noHabitat)
           : Column(

@@ -193,6 +193,14 @@ class _MonsterTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final monster = entry.base;
+    final l10n = AppLocalizations.of(context);
+    final name = monster.name.resolve(language);
+    final classification = monster.classification.resolve(language);
+    final matched = entry.matchedVersion?.name.resolve(language);
+    final versionsHint = l10n.versionCount(entry.versions.length);
+    final muted = textTheme.bodyMedium?.copyWith(
+      color: HunterPalette.textMuted,
+    );
     return Padding(
       padding: const EdgeInsets.fromLTRB(12, 3, 12, 3),
       child: Material(
@@ -205,6 +213,13 @@ class _MonsterTile extends StatelessWidget {
           child: Semantics(
             selected: selected,
             button: true,
+            label: [
+              name,
+              classification,
+              ?matched,
+              if (entry.versions.isNotEmpty) versionsHint,
+            ].join(', '),
+            excludeSemantics: true,
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Row(
@@ -216,7 +231,7 @@ class _MonsterTile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          monster.name.resolve(language),
+                          name,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: textTheme.titleMedium?.copyWith(
@@ -227,13 +242,27 @@ class _MonsterTile extends StatelessWidget {
                         Text(
                           // The game is already shown by the section header or
                           // the active tab (002 US2).
-                          monster.classification.resolve(language),
+                          classification,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: textTheme.bodyMedium?.copyWith(
-                            color: HunterPalette.textMuted,
-                          ),
+                          style: muted,
                         ),
+                        // The version the search matched opens (004).
+                        if (matched != null)
+                          Text(
+                            matched,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: textTheme.bodyMedium?.copyWith(
+                              color: HunterPalette.gold,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        else if (entry.versions.isNotEmpty)
+                          Text(
+                            versionsHint,
+                            style: muted?.copyWith(fontStyle: FontStyle.italic),
+                          ),
                       ],
                     ),
                   ),

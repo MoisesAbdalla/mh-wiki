@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/features/monsters/data/datasources/monster_datasource.dart';
@@ -24,7 +25,9 @@ class AssetMonsterDatasource implements MonsterDatasource {
 
     final Object? decoded;
     try {
-      decoded = jsonDecode(raw);
+      // Large datasets (feature 004) are decoded on a background isolate so
+      // the list keeps rendering while a game loads (SC-004).
+      decoded = await compute(jsonDecode, raw);
     } on FormatException catch (error) {
       throw DatasetFormatException('${assetPath(game)}: ${error.message}');
     }

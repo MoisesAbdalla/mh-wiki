@@ -5,11 +5,14 @@ import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
 import 'package:mh_wiki/core/presentation/widgets/monster_image.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/monster_section_kind.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/habitat_section.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/hp_section.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/hunting_items_section.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/materials_section.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/parts_section.dart';
+import 'package:mh_wiki/features/monsters/presentation/views/widgets/version_selector.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/weakness_section.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
@@ -19,11 +22,21 @@ class MonsterDetailView extends StatelessWidget {
   const MonsterDetailView({
     required this.monster,
     required this.language,
+    this.versions = const [],
+    this.onSelectVersion,
     super.key,
   });
 
   final Monster monster;
   final NameLanguage language;
+
+  /// The monster's base and versions (004); the selector shows only when
+  /// there is more than one.
+  final List<Monster> versions;
+  final ValueChanged<MonsterId>? onSelectVersion;
+
+  bool _inherits(MonsterSectionKind kind) =>
+      monster.inheritedSections.contains(kind);
 
   @override
   Widget build(BuildContext context) {
@@ -75,20 +88,39 @@ class MonsterDetailView extends StatelessWidget {
             ],
           ),
         ),
-        WeaknessSection(profile: monster.weaknesses, language: language),
+        if (versions.length > 1 && onSelectVersion != null)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+            child: VersionSelector(
+              versions: versions,
+              selected: monster.id,
+              onSelect: onSelectVersion!,
+            ),
+          ),
+        WeaknessSection(
+          profile: monster.weaknesses,
+          language: language,
+          inherited: _inherits(MonsterSectionKind.weaknesses),
+        ),
         HpSection(info: monster.huntingInfo),
-        HuntingItemsSection(info: monster.huntingInfo, language: language),
+        HuntingItemsSection(
+          info: monster.huntingInfo,
+          language: language,
+          inherited: _inherits(MonsterSectionKind.itemReactions),
+        ),
         LayoutBuilder(
           builder: (context, constraints) {
             final habitat = HabitatSection(
               habitats: monster.habitats,
               language: language,
               margin: EdgeInsets.zero,
+              inherited: _inherits(MonsterSectionKind.habitats),
             );
             final parts = PartsSection(
               parts: monster.parts,
               language: language,
               margin: EdgeInsets.zero,
+              inherited: _inherits(MonsterSectionKind.parts),
             );
             // Side by side from 360 dp of content (002 FR-008).
             if (constraints.maxWidth - 32 < 360) {
