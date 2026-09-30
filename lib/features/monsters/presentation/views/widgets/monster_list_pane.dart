@@ -199,34 +199,33 @@ class _MonsterTile extends StatelessWidget {
       color: HunterPalette.textMuted,
     );
     final gutter = Space.gutter(MediaQuery.sizeOf(context).width);
-    return Material(
-      color: selected ? HunterPalette.panelHighlight : Colors.transparent,
-      child: InkWell(
-        onTap: () => onTap(entry.target),
-        child: Semantics(
-          selected: selected,
-          button: true,
-          label: [
-            name,
-            classification,
-            ?matched,
-            if (entry.versions.isNotEmpty) versionsHint,
-          ].join(', '),
-          excludeSemantics: true,
-          child: DecoratedBox(
-            // A hairline between rows; the selected row also gets a gold
-            // mark at its left edge (005 contract, List).
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: const BorderSide(color: HunterPalette.borderSubtle),
-                left: BorderSide(
-                  color: selected ? HunterPalette.gold : Colors.transparent,
-                  width: 2,
-                ),
-              ),
-            ),
+    // Each monster is its own card; the selected one gets a gold edge
+    // (005, revised after the US1 review).
+    return Padding(
+      padding: EdgeInsets.fromLTRB(gutter - 10, 4, gutter - 10, 4),
+      child: Material(
+        color: selected ? HunterPalette.panelHighlight : HunterPalette.panel,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color: selected ? HunterPalette.gold : HunterPalette.borderSubtle,
+          ),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: () => onTap(entry.target),
+          child: Semantics(
+            selected: selected,
+            button: true,
+            label: [
+              name,
+              classification,
+              ?matched,
+              if (entry.versions.isNotEmpty) versionsHint,
+            ].join(', '),
+            excludeSemantics: true,
             child: Padding(
-              padding: EdgeInsets.fromLTRB(gutter - 2, 10, gutter, 10),
+              padding: const EdgeInsets.fromLTRB(10, 10, 12, 10),
               child: Row(
                 children: [
                   MonsterImage(asset: monster.imageAsset, size: 44),

@@ -50,7 +50,14 @@ Decisions for the 005 plan. Each has the decision, the rationale and the alterna
     the logo's opacity.
 - **Alternatives**: the vermilion accent of mockup A (the user chose the current palette).
 
-## R3. Structure without cards
+## R3. Structure: section and row cards, never nested
+
+> **Revised after the US1 review**: the user asked to keep cards to separate each monster and
+> each section ([mockups/cards.html](mockups/cards.html)). `NotebookSection` is now a card
+> (`Material` with `panel` colour, `borderSubtle` edge, 4 dp corners), and list rows are cards with
+> a gold edge when selected. Content inside a card stays in ruled rows. The original decision is
+> kept below for the record.
+
 
 - **Decision**: Replace `HunterPanel`, `SectionCard` and `OrnamentHeader` with two layout
   widgets, and delete the old ones.

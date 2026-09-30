@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MH Wiki — direção combinada</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Averia+Serif+Libre:wght@400;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* "Caderno do Caçador" palette of the app (lib/core/presentation/theme/hunter_palette.dart) */
+    --bg: #16120e;        /* background */
+    --bg-raise: #2c2215;  /* panelHighlight: selected row */
+    --ink: #efe4c8;       /* text */
+    --ink-2: #b9a67f;     /* textMuted */
+    --ink-3: #8a7652;     /* textDisabled: empty stars */
+    --rule: #3b2e1d;      /* borderSubtle: hairlines */
+    --rule-strong: #5a4526; /* border */
+    --shu: #e0bd6a;       /* gold: the one accent */
+    --fire: #f07a4a; --water: #6fb2f0; --thunder: #f0cf4a; --ice: #a9e2f2; --dragon: #c592f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d0a08; color: var(--ink); font: 15px/1.5 "Atkinson Hyperlegible", sans-serif; padding: 28px 16px 60px; }
+  .intro { max-width: 1180px; margin: 0 auto 24px; }
+  .intro h1 { font: 800 34px/1 "IM Fell English SC"; letter-spacing: .01em; }
+  .intro p { color: var(--ink-2); margin-top: 8px; max-width: 72ch; font-size: 14px; }
+  .row { display: flex; gap: 28px; flex-wrap: wrap; justify-content: center; max-width: 1180px; margin: 0 auto; }
+  .cap { font-size: 12px; color: var(--ink-2); margin-bottom: 8px; letter-spacing: .06em; text-transform: uppercase; }
+  .phone { width: 380px; max-width: 100%; height: 780px; overflow-y: auto; background: var(--bg); border-radius: 26px; }
+
+  /* app bar */
+  .appbar { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 22px 10px; }
+  .brand { font: 800 22px/1 "IM Fell English SC"; letter-spacing: .04em; }
+  .brand span { color: var(--shu); }
+  .thumb img, .plate img { width: 100%; height: 100%; object-fit: cover; }
+  .games a img { width: 20px; height: 20px; border-radius: 3px; vertical-align: -4px; margin-right: 6px; opacity: .75; }
+  .games a.on img { opacity: 1; }
+  .appbar .gear { color: var(--ink-2); font-size: 13px; }
+
+  /* game switch: text tabs, underline = state (not filled buttons) */
+  .games { display: flex; gap: 20px; padding: 0 22px; border-bottom: 1px solid var(--rule); }
+  .games a { font: 700 17px "IM Fell English SC"; letter-spacing: .05em; color: var(--ink-2); padding: 8px 0 9px; text-decoration: none; }
+  .games a.on { color: var(--ink); box-shadow: inset 0 -2px 0 var(--shu); }
+
+  .search { margin: 14px 22px 6px; display: flex; gap: 10px; align-items: center; border-bottom: 1px solid var(--rule-strong); padding: 8px 0; color: var(--ink-2); font-size: 15px; }
+  .count { padding: 4px 22px 8px; font-size: 12px; color: var(--ink-2); }
+  .num { font-family: "Averia Serif Libre"; font-weight: 700; color: var(--ink); }
+
+  /* list: rows separated by hairlines, no cards */
+  .list a { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; padding: 11px 22px; border-bottom: 1px solid var(--rule); color: inherit; text-decoration: none; }
+  .list a.sel { background: var(--bg-raise); box-shadow: inset 2px 0 0 var(--shu); }
+  .thumb { width: 44px; height: 44px; border-radius: 3px; background: #1f1812; overflow: hidden; display: grid; place-items: center; font: 400 18px "IM Fell English SC"; color: var(--ink-3); }
+  .list b { display: block; font: 400 20px/1.1 "IM Fell English SC"; letter-spacing: .03em; }
+  .list small { font-size: 12.5px; color: var(--ink-2); }
+  .list small i { font-style: normal; color: var(--ink); }
+  .weak { font-size: 12px; text-align: right; line-height: 1.2; }
+  .weak .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; vertical-align: 1px; }
+
+  /* detail */
+  .d { padding: 18px 22px 40px; }
+  .d .crumb { font-size: 12px; color: var(--ink-2); display: flex; justify-content: space-between; }
+  .d .head { display: grid; grid-template-columns: 1fr 92px; gap: 12px; align-items: end; margin: 14px 0 4px; }
+  .d h2 { font: 400 50px/.95 "IM Fell English SC"; letter-spacing: .005em; }
+  .d .sub { font-size: 13px; color: var(--ink-2); margin-top: 8px; }
+  .plate { width: 92px; height: 92px; background: #1f1812; overflow: hidden; border: 1px solid var(--rule-strong); transform: rotate(3deg); display: grid; place-items: center; font: 400 38px "IM Fell English SC"; color: var(--ink-3); }
+
+  .vers { display: flex; gap: 18px; margin: 20px 0 26px; border-bottom: 1px solid var(--rule); }
+  .vers a { font-size: 14px; color: var(--ink-2); padding: 6px 0 8px; text-decoration: none; }
+  .vers a.on { color: var(--ink); font-weight: 700; box-shadow: inset 0 -2px 0 var(--shu); }
+
+  h3 { display: flex; align-items: baseline; gap: 10px; font: 400 22px "IM Fell English SC"; letter-spacing: .05em; margin-bottom: 10px; }
+  h3 i { font: 700 20px "Averia Serif Libre"; font-style: normal; color: var(--shu); }
+  h3 small { margin-left: auto; font: 400 12px "Atkinson Hyperlegible"; letter-spacing: 0; text-transform: none; color: var(--ink-2); }
+  .block { margin-bottom: 34px; }
+
+  /* weaknesses: rows of seals (C), best one in vermilion */
+  .seal { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--rule); font-size: 15px; }
+  .seal .el { display: flex; align-items: center; gap: 9px; }
+  .ico { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .weak .ico { width: 15px; height: 15px; vertical-align: -3px; margin-right: 4px; }
+  .seal .stars { font-size: 17px; letter-spacing: 3px; color: var(--ink); }
+  .seal .stars .e { color: var(--ink-3); }
+  .seal.best { font-weight: 700; }
+  .seal.best .stars { color: var(--shu); }
+  .seal .imm { font-size: 13px; color: var(--ink-2); }
+  .hanko { display: inline-block; margin-left: 8px; border: 1.5px solid var(--shu); color: var(--shu); font: 700 11px "IM Fell English SC"; letter-spacing: .12em; padding: 1px 5px; transform: rotate(-3deg); text-transform: uppercase; }
+
+  /* HP ruler (B) */
+  .hprow { display: flex; align-items: baseline; gap: 10px; }
+  .hprow strong { font: 700 46px/1 "Averia Serif Libre"; font-variant-numeric: tabular-nums; }
+  .hprow span { color: var(--ink-2); font-size: 13px; }
+  .ranks { display: flex; gap: 14px; font-size: 13px; margin: 2px 0 12px; }
+  .ranks a { color: var(--ink-2); text-decoration: none; }
+  .ranks a.on { color: var(--ink); font-weight: 700; box-shadow: inset 0 -2px 0 var(--shu); }
+  .scale { position: relative; height: 30px; }
+  .scale .track { position: absolute; left: 0; right: 0; top: 14px; height: 2px; background: var(--rule-strong); }
+  .scale .span { position: absolute; top: 12px; height: 6px; background: var(--rule-strong); }
+  .scale .tick { position: absolute; top: 8px; width: 2px; height: 14px; background: var(--ink-2); }
+  .scale .tick.me { background: var(--shu); height: 22px; top: 4px; }
+  .legend { position: relative; height: 34px; font-size: 11.5px; color: var(--ink-2); }
+  .legend span { position: absolute; transform: translateX(-50%); white-space: nowrap; text-align: center; line-height: 1.25; }
+  .legend span b { color: var(--ink); font-weight: 700; font-family: "Averia Serif Libre"; font-size: 13px; display: block; font-variant-numeric: tabular-nums; }
+  .legend span:first-child { transform: none; text-align: left; }
+  .legend span:last-child { transform: translateX(-100%); text-align: right; }
+
+  /* tables */
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  td { padding: 8px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  td.r { text-align: right; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  td.r b { color: var(--ink); font-family: "Averia Serif Libre"; font-weight: 700; }
+  .grp td { padding-top: 16px; font: 700 13px "Atkinson Hyperlegible"; color: var(--ink-2); text-transform: uppercase; letter-spacing: .06em; border-bottom-color: var(--rule-strong); }
+
+  .inherit { font-size: 12.5px; color: var(--ink-2); font-style: italic; }
+  .src { font-size: 12px; color: var(--ink-2); margin-top: 8px; }
+
+  .notes { max-width: 1180px; margin: 32px auto 0; font-size: 14px; color: var(--ink-2); }
+  .notes h2 { font: 800 22px "IM Fell English SC"; color: var(--ink); margin-bottom: 8px; letter-spacing: .03em; }
+  .notes li { margin: 4px 0 4px 18px; }
+  .notes b { color: var(--ink); }
+
+  .variants { max-width: 1180px; margin: 0 auto 28px; display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+  .variant { width: 380px; max-width: 100%; background: var(--bg); border-radius: 18px; padding-bottom: 6px; }
+  .variant .cap { padding: 14px 22px 0; }
+  .games.logos { gap: 12px; align-items: flex-end; }
+  .games.logos a { padding: 6px 0 8px; }
+  .games.logos a img { height: 46px; width: auto; border-radius: 0; margin: 0; vertical-align: bottom; opacity: .55; filter: saturate(.6); }
+  .games.logos a.on img { opacity: 1; filter: none; }
+  .games.logos a.all { font: 400 17px "IM Fell English SC"; letter-spacing: .05em; color: var(--ink-2); padding-bottom: 12px; }
+  .games.emb a img { width: 22px; height: 22px; border-radius: 0; opacity: .6; }
+  .variant .why { font-size: 12.5px; color: var(--ink-2); padding: 10px 22px 12px; }
+
+  /* ---- Cards variant (005 revision): cards return, in the notebook style ---- */
+  .phone { background: var(--bg); }
+  .list { padding: 8px 12px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .list a { border: 1px solid var(--rule); background: #1f1812; border-radius: 4px; padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+  .list a.sel { background: var(--bg-raise); box-shadow: none; border-color: var(--shu); }
+  .d .block { background: #1f1812; border: 1px solid var(--rule); border-radius: 4px; padding: 14px 16px 16px; margin-bottom: 12px; }
+  .d .block .seal:last-child, .d .block tr:last-child td { border-bottom: 0; }
+  .count { padding-left: 16px; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="fire" viewBox="0 0 24 24"><path d="M12 3c1 3.5 5 5.5 5 10.5a5 5 0 0 1-10 0c0-2.3 1.2-3.8 2.3-5 .3 1.6 1 2.6 2.2 3.2C11.3 9 11.2 6 12 3z"/></symbol>
+  <symbol id="water" viewBox="0 0 24 24"><path d="M12 3.5c3 4 6 7.2 6 10.5a6 6 0 0 1-12 0c0-3.3 3-6.5 6-10.5z"/></symbol>
+  <symbol id="thunder" viewBox="0 0 24 24"><path d="M13.5 3 5.5 13.5h6l-1 7.5 8-10.5h-6z"/></symbol>
+  <symbol id="ice" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5"/></symbol>
+  <symbol id="dragon" viewBox="0 0 24 24"><path d="M12 3c.8 4.6 2.4 6.2 7 7-4.6.8-6.2 2.4-7 7-.8-4.6-2.4-6.2-7-7 4.6-.8 6.2-2.4 7-7z"/><path d="M18.5 16.5c.3 1.6.9 2.2 2.5 2.5-1.6.3-2.2.9-2.5 2.5-.3-1.6-.9-2.2-2.5-2.5 1.6-.3 2.2-.9 2.5-2.5z"/></symbol>
+</svg>
+<div class="intro">
+  <h1>Caderninho — com cards</h1>
+  <p>Revisão pedida: cada monstro da lista e cada seção do detalhe voltam a ser um card (fundo um pouco mais claro, borda bronze sutil, cantos levemente arredondados, sem moldura dourada). Dentro do card, as linhas continuam com fios finos (sem card dentro de card). Resto igual ao aprovado: tema escuro · títulos em IM Fell English SC, números em Averia Serif Libre, texto em Atkinson Hyperlegible · fraquezas com estrelas e símbolos dos elementos, carimbo da C · régua de HP da B. Dados reais do Rathalos (World: Iceborne).</p>
+</div>
+
+<div class="variants">
+  <div class="variant">
+    <div class="cap">Opção 1 · emblema recortado ao lado do nome</div>
+    <div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div>
+    <nav class="games emb"><a>Todos</a><a class="on"><img src="emblem_world.png" alt="">World</a><a><img src="emblem_rise.png" alt="">Rise</a><a><img src="emblem_wilds.png" alt="">Wilds</a></nav>
+    <p class="why">O brasão da World fica reconhecível; o da Rise vira uma mancha vermelha (o dragão fica atrás das letras no logo original) e o da Wilds só mostra parte do emblema.</p>
+  </div>
+  <div class="variant">
+    <div class="cap">Opção 2 · o logo oficial é a própria aba</div>
+    <div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div>
+    <nav class="games logos"><a class="all">Todos</a><a class="on"><img src="logo_world.png" alt="World: Iceborne"></a><a><img src="logo_rise.png" alt="Rise: Sunbreak"></a><a><img src="logo_wilds.png" alt="Wilds"></a></nav>
+    <p class="why">Os três logos inteiros (46 px de altura), reconhecíveis na hora. Abas inativas ficam apagadas; a ativa em cor cheia com o sublinhado dourado.</p>
+  </div>
+</div>
+<div class="row">
+  <div>
+    <div class="cap">Lista</div>
+    <div class="phone">
+      <div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div>
+      <nav class="games logos"><a class="all">Todos</a><a class="on"><img src="logo_world.png" alt="World: Iceborne"></a><a><img src="logo_rise.png" alt="Rise: Sunbreak"></a><a><img src="logo_wilds.png" alt="Wilds"></a></nav>
+      <div class="search">⌕ <span>Buscar monstro</span></div>
+      <div class="count"><span class="num">71</span> monstros · <span class="num">46</span> versões</div>
+      <div class="list">
+        <a><div class="thumb"><img src="../../../assets/images/monsters/world_iceborne/acidic-glavenus.webp" alt=""></div><small>Wyvern Carnívora</small></div><div class="weak"><svg class="ico" style="color:var(--fire)"><use href="#fire"/></svg>Fogo</div></a>
+        <a><div class="thumb"><img src="../../../assets/images/monsters/world_iceborne/alatreon.webp" alt=""></div><small>Dragão Ancião</small></div><div class="weak"><svg class="ico" style="color:var(--dragon)"><use href="#dragon"/></svg>Dragão</div></a>
+        <a><div class="thumb"><img src="../../../assets/images/monsters/world_iceborne/anjanath.webp" alt=""></div><small>Wyvern Carnívora · <i>1 versão</i></small></div><div class="weak"><svg class="ico" style="color:var(--water)"><use href="#water"/></svg>Água</div></a>
+        <a><div class="thumb"><img src="../../../assets/images/monsters/world_iceborne/azure-rathalos.webp" alt=""></div><small>Wyvern Voadora · <i>1 versão</i></small></div><div class="weak"><svg class="ico" style="color:var(--dragon)"><use href="#dragon"/></svg>Dragão</div></a>
+        <a><div class="thumb"><img src="../../../assets/images/monsters/world_iceborne/banbaro.webp" alt=""></div><small>Wyvern Carnívora · <i>1 versão</i></small></div><div class="weak"><svg class="ico" style="color:var(--dragon)"><use href="#dragon"/></svg>Dragão</div></a>
+        <a><div class="thumb"><img src="../../../assets/images/monsters/world_iceborne/nergigante.webp" alt=""></div><small>Dragão Ancião · <i><span class="num">2</span> versões</i></small></div><div class="weak"><svg class="ico" style="color:var(--thunder)"><use href="#thunder"/></svg>Raio</div></a>
+        <a class="sel"><div class="thumb"><img src="../../../assets/images/monsters/world_iceborne/rathalos.webp" alt=""></div><small>Wyvern Voadora</small></div><div class="weak"><svg class="ico" style="color:var(--dragon)"><use href="#dragon"/></svg>Dragão</div></a>
+        <a><div class="thumb"><img src="../../../assets/images/monsters/world_iceborne/rathian.webp" alt=""></div><small>Wyvern Voadora</small></div><div class="weak"><svg class="ico" style="color:var(--dragon)"><use href="#dragon"/></svg>Dragão</div></a>
+        <a><div class="thumb"><img src="../../../assets/images/monsters/world_iceborne/ruiner-nergigante.webp" alt=""></div><small>Dragão Ancião · <i>1 versão</i></small></div><div class="weak"><svg class="ico" style="color:var(--dragon)"><use href="#dragon"/></svg>Dragão</div></a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="cap">Detalhe</div>
+    <div class="phone d">
+      <div class="crumb"><span>‹ Monstros</span><span>World: Iceborne</span></div>
+      <div class="head">
+        <div><h2>Rathalos</h2><div class="sub">Wyvern Voadora · Floresta Ancestral, Planalto Coral, Fenda do Ancião</div></div>
+        <div class="plate"><img src="../../../assets/images/monsters/world_iceborne/rathalos.webp" alt=""></div>
+      </div>
+      <nav class="vers"><a class="on">Base</a><a>Temperado</a></nav>
+
+      <div class="block">
+        <h3><i>1</i>Fraquezas</h3>
+        <div class="seal best"><span class="el"><svg class="ico" style="color:var(--dragon)"><use href="#dragon"/></svg>Dragão <span class="hanko">Melhor</span></span><span class="stars">★★★</span></div>
+        <div class="seal"><span class="el"><svg class="ico" style="color:var(--thunder)"><use href="#thunder"/></svg>Raio</span><span class="stars">★★<span class="e">★</span></span></div>
+        <div class="seal"><span class="el"><svg class="ico" style="color:var(--water)"><use href="#water"/></svg>Água</span><span class="stars">★<span class="e">★★</span></span></div>
+        <div class="seal"><span class="el"><svg class="ico" style="color:var(--ice)"><use href="#ice"/></svg>Gelo</span><span class="stars">★<span class="e">★★</span></span></div>
+        <div class="seal"><span class="el"><svg class="ico" style="color:var(--fire)"><use href="#fire"/></svg>Fogo</span><span class="imm">sem efeito</span></div>
+      </div>
+
+      <div class="block">
+        <h3><i>2</i>Vida <small>aprox. por nº de caçadores</small></h3>
+        <nav class="ranks"><a>Low</a><a class="on">High</a><a>Master</a></nav>
+        <div class="hprow"><strong>6.565</strong><span>solo</span></div>
+        <div class="scale">
+          <div class="track"></div>
+          <div class="span" style="left:62%;width:36%"></div>
+          <div class="tick me" style="left:0"></div>
+          <div class="tick" style="left:38%"></div>
+          <div class="tick" style="left:62%"></div>
+          <div class="tick" style="left:98%"></div>
+        </div>
+        <div class="legend">
+          <span style="left:0">1<b>6.565</b></span>
+          <span style="left:38%">2<b>9.850</b></span>
+          <span style="left:98%">3–4<b>14.440–17.070</b></span>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3><i>3</i>Itens de caça</h3>
+        <table>
+          <tr><td>Visão</td><td class="r"><b>Enxerga</b></td></tr>
+          <tr><td>Cápsula de lampejo</td><td class="r"><b>Afeta</b></td></tr>
+          <tr><td>Armadilha de choque</td><td class="r"><b>Afeta</b> · 8 s</td></tr>
+        </table>
+      </div>
+
+      <div class="block">
+        <h3><i>4</i>Materiais <small>High Rank</small></h3>
+        <table>
+          <tr class="grp"><td colspan="2">Entalhe</td></tr>
+          <tr><td>Carapaça de Rathalos+</td><td class="r"><b>32%</b></td></tr>
+          <tr><td>Escama de Rathalos+</td><td class="r"><b>25%</b></td></tr>
+          <tr class="grp"><td colspan="2">Quebrar cabeça</td></tr>
+          <tr><td>Rubi de Rathalos</td><td class="r"><b>3%</b></td></tr>
+        </table>
+        <div class="src">Fontes: Kiranico · mhw-db.com · Monster Hunter Wiki</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="cap">Versão (herda da base)</div>
+    <div class="phone d">
+      <div class="crumb"><span>‹ Monstros</span><span>World: Iceborne</span></div>
+      <div class="head">
+        <div><h2>Arch-Tempered Nergigante</h2><div class="sub">Dragão Ancião</div></div>
+        <div class="plate"><img src="../../../assets/images/monsters/world_iceborne/nergigante.webp" alt=""></div>
+      </div>
+      <nav class="vers"><a>Base</a><a>Temperado</a><a class="on">Arquitemperado</a></nav>
+      <div class="block">
+        <h3><i>1</i>Fraquezas <small>igual à base</small></h3>
+        <div class="seal best"><span class="el"><svg class="ico" style="color:var(--thunder)"><use href="#thunder"/></svg>Raio <span class="hanko">Melhor</span></span><span class="stars">★★★</span></div>
+        <div class="seal"><span class="el"><svg class="ico" style="color:var(--dragon)"><use href="#dragon"/></svg>Dragão</span><span class="stars">★★<span class="e">★</span></span></div>
+        <div class="seal"><span class="el"><svg class="ico" style="color:var(--ice)"><use href="#ice"/></svg>Gelo</span><span class="stars">★<span class="e">★★</span></span></div>
+      </div>
+      <div class="block">
+        <h3><i>2</i>Vida</h3>
+        <nav class="ranks"><a class="on">High</a></nav>
+        <div class="hprow"><strong>26.224</strong><span>solo · a partir de</span></div>
+        <div class="scale"><div class="track"></div><div class="span" style="left:62%;width:36%"></div><div class="tick me" style="left:0"></div><div class="tick" style="left:38%"></div><div class="tick" style="left:62%"></div><div class="tick" style="left:98%"></div></div>
+        <div class="legend"><span style="left:0">1<b>26.224</b></span><span style="left:38%">2<b>39.340</b></span><span style="left:98%">3–4<b>57.690–68.180</b></span></div>
+      </div>
+      <div class="block">
+        <h3><i>3</i>Materiais <small>High Rank</small></h3>
+        <table>
+          <tr class="grp"><td colspan="2">The Heralds of Destruction Cry</td></tr>
+          <tr><td>Nergigante Ticket</td><td class="r"><b>100%</b></td></tr>
+          <tr><td>Sullied Streamstone</td><td class="r"><b>11%</b></td></tr>
+          <tr><td>Nergigante Gem</td><td class="r"><b>5%</b></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="notes">
+  <h2>O que muda em relação a hoje</h2>
+  <ul>
+    <li><b>Sem cards:</b> lista e seções separadas só por fios finos; espaço maior entre seções, menor dentro delas.</li>
+    <li><b>Um só acento</b> (dourado, a paleta atual do app): aba ativa, item selecionado, melhor fraqueza, marca do HP solo. O resto é tinta e osso.</li>
+    <li><b>Abas em texto sublinhado</b>, não blocos cheios; só o estado atual tem cor.</li>
+    <li><b>Títulos em IM Fell English SC</b> (tipo de impressão antiga, versalete) para nome, abas e seções; <b>números em Averia Serif Libre</b> (HP, régua, porcentagens, numeração das seções); texto de leitura em Atkinson Hyperlegible.</li>
+    <li><b>Fraquezas</b> ordenadas da melhor para a pior, com o símbolo do elemento e estrelas (a melhor em vermelho, com carimbo “Melhor”); imune vira texto.</li>
+    <li><b>Régua de HP</b>: marcação solo em vermelho e as estimativas de 2 e 3–4 caçadores no mesmo eixo.</li>
+    <li><b>“Igual à base” vira uma nota discreta</b> no título da seção, não uma linha repetida.</li>
+    <li><b>Movimento</b> (na implementação): troca de monstro/versão com fade + leve deslize, respeitando “reduzir movimento”.</li>
+  </ul>
+</div>
+</body>
+</html>

@@ -18,6 +18,12 @@ estrelas, régua de HP, transições curtas; acessibilidade, dados e comportamen
 As outras direções avaliadas estão em [mockups/directions.html](mockups/directions.html) e a
 comparação de fontes em [mockups/fonts.html](mockups/fonts.html).
 
+**Revision (2026-09-30, after the US1 review)**: the user asked to keep cards to separate each
+monster in the list and each section of the detail. The approved revision is
+[mockups/cards.html](mockups/cards.html): one card per list row and per detail section, with a
+subtle bronze edge and slightly lighter background, and ruled rows inside. Cards are never nested.
+FR-003 and SC-002 below reflect it.
+
 **Supersedes** (feature 002): a grade de cinco cards de fraqueza (FR-006), as molduras e painéis
 emoldurados (FR-002), as fontes de inscrição anteriores e os separadores ornamentais do filtro
 "Todos" (FR-010). As demais regras da 002 (tema escuro fixo, miniaturas, regra da fraqueza
@@ -30,25 +36,25 @@ principal da lista, acessibilidade) continuam valendo.
 O caçador abre o app e o reconhece como um caderno de anotações desenhado para Monster Hunter,
 não como um app genérico: o nome "Caderninho" no topo, fundo escuro com um único acento dourado,
 títulos numa letra de impressão antiga, números numa serifa macia, e as informações dispostas como
-páginas de um caderno — separadas por fios finos, sem caixas emolduradas em volta de tudo.
+páginas de um caderno: cada monstro e cada seção no seu card discreto, com o conteúdo em linhas
+com fios finos, sem molduras douradas nem cards dentro de cards.
 
 **Why this priority**: é a mudança que o usuário pediu (menos "cara de IA") e alcança todas as
 telas; as outras histórias refinam partes específicas.
 
 **Independent Test**: navegar por lista, detalhe e configurações (celular e tela larga) e
-comparar com o mockup aprovado: marca, paleta, tipografia, ausência de cards, seções numeradas e
+comparar com o mockup aprovado: marca, paleta, tipografia, cards discretos (sem card dentro de card), seções numeradas e
 abas sublinhadas.
 
 **Acceptance Scenarios**:
 
 1. **Given** qualquer tela, **When** o app é aberto, **Then** o topo mostra "Caderninho" (e não
    mais "MH Wiki" / "Caderno do Caçador").
-2. **Given** a lista de monstros, **When** exibida, **Then** os monstros aparecem em linhas
-   separadas por fios finos, sem moldura em volta de cada item; o item selecionado é marcado pelo
-   acento dourado.
-3. **Given** o detalhe de um monstro, **When** exibido, **Then** as seções aparecem numeradas
-   (1 Fraquezas, 2 Vida, 3 Itens de caça, 4 Materiais, e as demais seções existentes em
-   seguida), separadas por espaço e fios finos, sem painéis emoldurados nem cards dentro de cards.
+2. **Given** a lista de monstros, **When** exibida, **Then** cada monstro aparece no seu próprio
+   card, no novo estilo (borda bronze sutil, sem moldura dourada); o selecionado tem borda dourada.
+3. **Given** o detalhe de um monstro, **When** exibido, **Then** cada seção aparece no seu card,
+   numerada (1 Fraquezas, 2 Vida, 3 Itens de caça, 4 Materiais, e as demais seções existentes em
+   seguida), com o conteúdo em linhas com fios finos e sem card dentro de card.
 4. **Given** qualquer tela, **When** exibida, **Then** títulos (marca, abas, nomes de monstros,
    títulos de seção) usam a letra de impressão antiga, números (HP, porcentagens, numeração das
    seções, contagens) usam a serifa macia e o texto corrido usa a letra de alta legibilidade.
@@ -159,9 +165,11 @@ movimento" no sistema e verificar que a transição some.
   texto creme, texto secundário bege, fios em bronze) e um único acento: o dourado, usado apenas
   para estado ativo/selecionado e destaques (aba ativa, item selecionado, melhor fraqueza,
   marcador do HP solo, numeração das seções, carimbo).
-- **FR-003**: Lista, detalhe, configurações e os estados de carregamento, vazio e erro NÃO DEVEM
-  usar cards ou painéis emoldurados; blocos DEVEM ser separados por fios finos e espaçamento, com
-  mais espaço entre seções do que dentro delas.
+- **FR-003**: Cada monstro da lista e cada seção do detalhe (e de configurações) DEVE ser um card
+  próprio no novo estilo (fundo um pouco mais claro que a página, borda bronze sutil, cantos
+  levemente arredondados, sem moldura dourada; o selecionado com borda dourada). Dentro de um card
+  o conteúdo DEVE usar linhas separadas por fios finos; NÃO DEVE haver card dentro de card. Os
+  estados de carregamento, vazio e erro NÃO DEVEM usar painéis.
 - **FR-004**: As seções do detalhe DEVEM ser numeradas na ordem em que aparecem, começando por
   1 Fraquezas, 2 Vida, 3 Itens de caça, 4 Materiais, seguidas das demais seções existentes.
 - **FR-005**: A tipografia DEVE usar três famílias, todas de licença livre e empacotadas no app
@@ -222,10 +230,10 @@ movimento" no sistema e verificar que a transição some.
 ### Measurable Outcomes
 
 - **SC-001**: Em comparação lado a lado com o mockup aprovado, lista, detalhe e versão apresentam
-  os mesmos elementos: marca "Caderninho", logos nas abas, seções numeradas, fios em vez de cards,
+  os mesmos elementos: marca "Caderninho", logos nas abas, seções numeradas em cards discretos com linhas de fios finos,
   fraquezas com símbolo e estrelas, carimbo "Melhor", régua de HP e as três fontes.
-- **SC-002**: Nenhuma tela do app contém caixas emolduradas em volta de itens ou seções (0 cards,
-  0 cards dentro de cards).
+- **SC-002**: Cada monstro da lista e cada seção do detalhe aparecem num único card, e nenhuma
+  tela contém card dentro de card.
 - **SC-003**: 100% das cores de texto atingem contraste de 4,5:1 (3:1 para texto grande e ícones)
   sobre o fundo em que aparecem, com os valores documentados.
 - **SC-004**: Um usuário identifica a melhor fraqueza e o HP solo de um monstro no detalhe em

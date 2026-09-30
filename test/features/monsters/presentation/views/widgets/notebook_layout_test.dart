@@ -11,8 +11,8 @@ import 'package:mh_wiki/features/monsters/presentation/views/widgets/monster_det
 import '../../../../../fakes/monster_fixtures.dart';
 import '../../../../../helpers/pump_app.dart';
 
-/// 005 US1: numbered sections, no cards, no repeated game name, discreet
-/// inherited notes (FR-003, FR-004, FR-009).
+/// 005 US1: numbered section cards (never nested), no repeated game name,
+/// discreet inherited notes (FR-003, FR-004, FR-009).
 void main() {
   final rathalos = richMonster();
 
@@ -53,14 +53,28 @@ void main() {
     ]);
   });
 
-  testWidgets('no card or framed panel in the detail', (tester) async {
+  testWidgets('each section is one card, never a card inside a card', (
+    tester,
+  ) async {
     await pumpDetail(tester, rathalos);
 
     expect(find.byType(Card), findsNothing);
-    final framed = tester
-        .widgetList<Material>(find.byType(Material))
-        .where((m) => m.shape is Border);
-    expect(framed, isEmpty);
+    for (final section in find.byType(NotebookSection).evaluate()) {
+      final nested = find.descendant(
+        of: find.byWidget(section.widget),
+        matching: find.byType(NotebookSection),
+      );
+      expect(nested, findsNothing);
+      final shaped = tester
+          .widgetList<Material>(
+            find.descendant(
+              of: find.byWidget(section.widget),
+              matching: find.byType(Material),
+            ),
+          )
+          .where((m) => m.shape is ShapeBorder);
+      expect(shaped, hasLength(1), reason: 'only the section card');
+    }
   });
 
   testWidgets('the game name is not repeated above the monster name', (

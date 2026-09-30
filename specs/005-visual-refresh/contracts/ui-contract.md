@@ -22,15 +22,15 @@ What each screen must show and announce after 005. Reference:
 
 ## List
 
-- Rows have no border or card. A 1 dp `borderSubtle` rule separates them.
+- Each row is a card (revision after US1): `panel` background, 1 dp `borderSubtle` edge,
+  4 dp corners, 8 dp between cards.
 - Each row shows, from left to right:
   - the thumbnail (44 dp);
   - the name in the title font, 18;
   - the classification and "N versões" in body small, `textMuted` (the count in Averia);
   - the primary weakness at the right, as the element symbol in the element colour plus the
     element name.
-- Selected row (expanded layout): `panelHighlight` background and a 2 dp gold bar at the left
-  edge.
+- Selected row (expanded layout): `panelHighlight` background and a gold edge.
 - "Todos": each game block starts with a caption row, the game name in the title font 16 with a
   hairline. There is no ornament.
 - The count line ("71 monstros · 46 versões") stays if it exists today. Otherwise it is out of
@@ -57,7 +57,8 @@ What each screen must show and announce after 005. Reference:
 - Title row: the number in Averia 18 gold, then the title in the title font 20. Optional
   right-aligned note in body small italic `textMuted`: "igual à forma base" for inherited
   sections, or the rank for single-rank HP and materials.
-- 32 dp between sections. No border or background around a section.
+- Each section is a card: `panel` background, 1 dp `borderSubtle` edge, 4 dp corners, 16 dp
+  inner padding, 12 dp between cards. Inside, rows are ruled. Cards are never nested.
 - Semantics: the title is a header. The note is read after the title.
 
 ## 1 Fraquezas

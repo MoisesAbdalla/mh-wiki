@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
 import 'package:mh_wiki/core/presentation/widgets/notebook_section.dart';
 
-/// 005 FR-003/FR-004: a numbered section drawn without a card or frame.
+/// 005 FR-003/FR-004: a numbered section in one card, never nested cards.
 void main() {
   Future<void> pump(
     WidgetTester tester, {
@@ -65,19 +65,20 @@ void main() {
     expect(find.text('Igual à forma base'), findsOneWidget);
   });
 
-  testWidgets('draws no card or frame around the content', (tester) async {
+  testWidgets('is one card with no frame inside it', (tester) async {
     await pump(tester);
 
-    expect(find.byType(Card), findsNothing);
-    final framed = tester
+    final shaped = tester
         .widgetList<Material>(
           find.descendant(
             of: find.byType(NotebookSection),
             matching: find.byType(Material),
           ),
         )
-        .where((m) => m.shape is Border || m.shape is OutlinedBorder);
-    expect(framed, isEmpty);
+        .where((m) => m.shape != null)
+        .toList();
+    expect(shaped, hasLength(1), reason: 'the section card itself');
+    expect(find.byType(Card), findsNothing);
     final boxes = tester
         .widgetList<DecoratedBox>(
           find.descendant(

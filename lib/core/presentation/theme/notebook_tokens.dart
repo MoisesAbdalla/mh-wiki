@@ -17,6 +17,9 @@ abstract final class NotebookFonts {
 /// Spacing rhythm: generous between sections, tight inside them (005 FR-003).
 abstract final class Space {
   static const section = 32.0;
+
+  /// Gap between cards (detail sections, list rows).
+  static const card = 12.0;
   static const title = 12.0;
   static const row = 8.0;
 
