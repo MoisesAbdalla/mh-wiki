@@ -145,6 +145,8 @@ class _MonstersPageState extends State<MonstersPage> {
                         key: ValueKey(monster.id),
                         monster: monster,
                         language: _controller.language,
+                        versions: _controller.selectedVersions,
+                        onSelectVersion: _controller.select,
                       );
                     },
                   ),

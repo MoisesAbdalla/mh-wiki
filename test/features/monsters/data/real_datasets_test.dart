@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/core/domain/game.dart';
@@ -5,13 +8,28 @@ import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/features/monsters/data/datasources/asset_monster_datasource.dart';
 import 'package:mh_wiki/features/monsters/data/dtos/monster_dataset_dto.dart';
 import 'package:mh_wiki/features/monsters/data/dtos/monster_dataset_mapper.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/drop_method.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/hunting_info.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/item_reaction.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/rank_hp.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/version_kind.dart';
 
 /// Guards the shipped data: every bundled dataset must parse and validate,
 /// and every monster must have a bundled thumbnail (002 SC-001).
+/// Base monsters the sources list without a habitat (arena, story or
+/// collab fights), per game slug (SC-003 exceptions).
+const noHabitat = <String>{};
+
+/// Base monsters without HP in the sources (004 research R4): Wilds free
+/// title updates and the collab fight are not in Kiranico's quest list, and
+/// the macarongamemo table gives Gogmazios only an unexplained "(410000)".
+const noHp = <String>{'gogmazios'};
+
+/// Wilds bases whose tempered rows are empty in the macarongamemo table
+/// (004 research R4): their tempered version has no HP.
+const noTemperedHp = <String>{'lagiacrus', 'seregios', 'gogmazios', 'zoh-shia'};
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   final datasource = AssetMonsterDatasource(rootBundle);
@@ -42,11 +60,16 @@ void main() {
       }
     });
 
-    test('${game.datasetKey} monsters all have a reference HP (003)', () async {
-      for (final monster in await load(game)) {
-        expect(monster.huntingInfo.hp, isNotEmpty, reason: '${monster.id}');
-      }
-    });
+    test(
+      '${game.datasetKey} base monsters have a reference HP (003)',
+      () async {
+        for (final monster in await load(game)) {
+          // Versions carry only the HP their sources give (004 R3).
+          if (monster.isVersion || noHp.contains(monster.id.slug)) continue;
+          expect(monster.huntingInfo.hp, isNotEmpty, reason: '${monster.id}');
+        }
+      },
+    );
 
     test('${game.datasetKey} documents party HP factors (003)', () async {
       final factors = (await load(game)).first.huntingInfo.partyFactors;
@@ -122,6 +145,123 @@ void main() {
     expect(
       hp.partyEstimate(rathalos.huntingInfo.partyFactors, 4),
       const HpRange(32400, 32400), // Kiranico: 4 players = 32,400
+    );
+  });
+
+  group('full roster (004)', () {
+    /// Slugs of `tool/data/rosters/<game>.json`; empty until the game's
+    /// phase builds it.
+    Map<String, Map<String, Object?>> roster(Game game) {
+      final file = File('tool/data/rosters/${game.datasetKey}.json');
+      if (!file.existsSync()) return const {};
+      final json = jsonDecode(file.readAsStringSync()) as Map<String, Object?>;
+      return {
+        for (final m
+            in (json['monsters']! as List<Object?>)
+                .cast<Map<String, Object?>>())
+          m['slug']! as String: m,
+      };
+    }
+
+    for (final game in Game.values) {
+      test('${game.datasetKey} matches its roster (SC-001)', () async {
+        final expected = roster(game);
+        if (expected.isEmpty) return; // phase not started
+        final monsters = await load(game);
+        expect(monsters.map((m) => m.id.slug).toSet(), expected.keys.toSet());
+        for (final m in monsters) {
+          final entry = expected[m.id.slug]!;
+          expect(m.versionOf?.slug, entry['versionOf'], reason: '${m.id}');
+          expect(m.versionKind?.name, entry['versionKind'], reason: '${m.id}');
+        }
+      });
+
+      test('${game.datasetKey} base monsters are complete (SC-003)', () async {
+        for (final m in await load(game)) {
+          if (m.isVersion) continue;
+          expect(m.classification.en, isNot('Unknown'), reason: '${m.id}');
+          expect(
+            m.habitats.isNotEmpty || noHabitat.contains(m.id.slug),
+            isTrue,
+            reason: '${m.id} has no habitat and is not a documented exception',
+          );
+        }
+      });
+    }
+
+    test('Wilds Guardian Rathalos is a guardian version of Rathalos', () async {
+      final guardian = (await load(Game.wilds))
+          .singleWhere((m) => m.id.slug == 'guardian-rathalos');
+      expect(guardian.versionOf?.slug, 'rathalos');
+      expect(guardian.versionKind, VersionKind.guardian);
+      expect(guardian.inheritedSections, isEmpty);
+    });
+
+    test('Wilds arch-tempered versions come from their quests', () async {
+      final monsters = await load(Game.wilds);
+      final arch = monsters.where(
+        (m) => m.versionKind == VersionKind.archTempered,
+      );
+      expect(arch.map((m) => m.versionOf!.slug).toSet(), {
+        'rey-dau',
+        'uth-duna',
+        'nu-udra',
+        'jin-dahaad',
+        'arkveld',
+      });
+      for (final m in arch) {
+        // HP: lowest quest of the macarongamemo table; rewards without rates.
+        final hp = m.huntingInfo.hp.single;
+        expect((hp.rank, hp.basis), (Rank.high, HpBasis.minQuest));
+        expect(m.drops, isNotEmpty, reason: '${m.id}');
+        for (final d in m.drops) {
+          expect(d.rank, Rank.high, reason: '${m.id}');
+          expect(d.method, DropMethod.questReward, reason: '${m.id}');
+          expect(d.ratePercent, isNull, reason: '${m.id}');
+        }
+      }
+      final reyDau = arch.singleWhere(
+        (m) => m.id.slug == 'arch-tempered-rey-dau',
+      );
+      expect(
+        reyDau.drops.map((d) => d.material.name.en),
+        containsAll(['Rey Dau Plate', 'Rey Dau Certificate γ']),
+      );
+      expect(reyDau.huntingInfo.hp.single.solo, 35550); // ★8 A Silent Flash
+    });
+
+    test('Wilds tempered versions have the lowest tempered HP', () async {
+      final monsters = await load(Game.wilds);
+      for (final m in monsters.where(
+        (m) => m.versionKind == VersionKind.tempered,
+      )) {
+        if (noTemperedHp.contains(m.versionOf!.slug)) {
+          expect(m.huntingInfo.hp, isEmpty, reason: '${m.id}');
+          continue;
+        }
+        final hp = m.huntingInfo.hp.single;
+        expect((hp.rank, hp.basis), (Rank.high, HpBasis.minQuest));
+      }
+      final reyDau = monsters.singleWhere(
+        (m) => m.id.slug == 'tempered-rey-dau',
+      );
+      expect(reyDau.huntingInfo.hp.single.solo, 20500); // ★7 ♦3
+    });
+
+    test(
+      'Wilds bases missing on Kiranico take the ♦3 HP of the table',
+      () async {
+        final monsters = await load(Game.wilds);
+        int hp(String slug) => monsters
+            .singleWhere((m) => m.id.slug == slug)
+            .huntingInfo
+            .hp
+            .single
+            .solo;
+        expect(hp('lagiacrus'), 20160);
+        expect(hp('mizutsune'), 16500);
+        expect(hp('rathalos'), 13500); // Kiranico, same as the table
+      },
     );
   });
 

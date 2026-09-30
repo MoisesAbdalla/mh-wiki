@@ -19,17 +19,20 @@ class WeaknessSection extends StatelessWidget {
   const WeaknessSection({
     required this.profile,
     required this.language,
+    this.inherited = false,
     super.key,
   });
 
   final WeaknessProfile profile;
   final NameLanguage language;
+  final bool inherited;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return SectionCard(
       title: l10n.sectionWeaknesses,
+      inherited: inherited,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

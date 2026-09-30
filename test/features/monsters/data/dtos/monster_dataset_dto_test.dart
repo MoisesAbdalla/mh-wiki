@@ -9,6 +9,7 @@ import 'package:mh_wiki/features/monsters/domain/entities/effectiveness.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/item_reaction.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/rank_hp.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/version_kind.dart';
 
 import '../../../../fakes/dataset_json_fixtures.dart';
 
@@ -246,6 +247,86 @@ void main() {
         'max': 3,
       };
       expectFormatError(badKey);
+    });
+  });
+
+  group('versions (004)', () {
+    Map<String, Object?> versioned() => withVersion(validDatasetJson());
+
+    test('a version may omit the inheritable sections', () {
+      final dataset = parse(versioned());
+      final version = dataset.monsters.last;
+      expect(version.versionOf, 'rathalos');
+      expect(version.versionKind, VersionKind.tempered);
+      expect(version.general, isNull);
+      expect(version.parts, isNull);
+      expect(version.habitatIds, isNull);
+      expect(version.reactions, isNull);
+      expect(version.classification, isNull);
+    });
+
+    test('a base monster may not omit them', () {
+      for (final key in [
+        'weaknesses',
+        'parts',
+        'habitatIds',
+        'classification',
+      ]) {
+        final json = validDatasetJson();
+        firstMonster(json).remove(key);
+        expectFormatError(json);
+      }
+    });
+
+    test('unknown base or a base that is itself a version is rejected', () {
+      expectFormatError(withVersion(validDatasetJson(), versionOf: 'kirin'));
+
+      final chain = withVersion(
+        versioned(),
+        slug: 'at-rathalos',
+        versionOf: 'tempered-rathalos',
+        kind: 'archTempered',
+      );
+      expectFormatError(chain);
+
+      final self = withVersion(
+        validDatasetJson(),
+        versionOf: 'tempered-rathalos',
+      );
+      expectFormatError(self);
+    });
+
+    test('versionKind and versionOf go together', () {
+      final noKind = versioned();
+      lastMonster(noKind).remove('versionKind');
+      expectFormatError(noKind);
+
+      final noBase = versioned();
+      lastMonster(noBase).remove('versionOf');
+      expectFormatError(noBase);
+    });
+
+    test('kind must be allowed for the game', () {
+      expectFormatError(withVersion(validDatasetJson(), kind: 'apex'));
+    });
+
+    test('one version per kind and base', () {
+      expectFormatError(withVersion(versioned(), slug: 'tempered-rathalos-2'));
+    });
+
+    test('a version needs own hp or drops', () {
+      final json = versioned();
+      lastMonster(json)
+        ..remove('hp')
+        ..['drops'] = <Object?>[];
+      expectFormatError(json);
+    });
+
+    test('drop partId is checked against the inherited parts', () {
+      final json = versioned();
+      final drops = lastMonster(json)['drops']! as List<Object?>;
+      (drops.single! as Map<String, Object?>)['partId'] = 'wing';
+      expectFormatError(json);
     });
   });
 }

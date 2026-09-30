@@ -1,6 +1,7 @@
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/version_kind.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
 /// Maps domain enums to localized UI strings (constitution Principle VII).
@@ -24,6 +25,18 @@ extension DomainLabels on AppLocalizations {
     ElementType.thunder => elementThunder,
     ElementType.ice => elementIce,
     ElementType.dragon => elementDragon,
+  };
+
+  /// Selector label of a version; `null` is the base monster (004).
+  String versionLabel(VersionKind? kind) => switch (kind) {
+    null => versionBase,
+    VersionKind.tempered => versionTempered,
+    VersionKind.archTempered => versionArchTempered,
+    VersionKind.afflicted => versionAfflicted,
+    VersionKind.frenzied => versionFrenzied,
+    VersionKind.apex => versionApex,
+    VersionKind.risen => versionRisen,
+    VersionKind.guardian => versionGuardian,
   };
 
   String rankName(Rank rank) => switch (rank) {

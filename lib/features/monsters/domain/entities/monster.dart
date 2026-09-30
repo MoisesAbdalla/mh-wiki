@@ -6,7 +6,9 @@ import 'package:mh_wiki/features/monsters/domain/entities/hunting_info.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/material_drop.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/material_drop_group.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/monster_section_kind.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/source_ref.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/version_kind.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/weakness_profile.dart';
 
 /// A large monster of one specific game.
@@ -22,6 +24,9 @@ final class Monster {
     required this.sources,
     this.imageAsset,
     this.huntingInfo = const HuntingInfo(),
+    this.versionOf,
+    this.versionKind,
+    this.inheritedSections = const {},
   });
 
   final MonsterId id;
@@ -38,6 +43,16 @@ final class Monster {
 
   /// HP and hunting-item reactions (feature 003); empty when unknown.
   final HuntingInfo huntingInfo;
+
+  /// The base monster when this entry is a version of it (feature 004).
+  final MonsterId? versionOf;
+  final VersionKind? versionKind;
+
+  /// Sections copied from the base because the sources give none of their
+  /// own; shown as "Igual à forma base" (FR-006c).
+  final Set<MonsterSectionKind> inheritedSections;
+
+  bool get isVersion => versionOf != null;
 
   /// Drops grouped by rank (low → high → master), then by material in order
   /// of first appearance. Ranks without drops are omitted.

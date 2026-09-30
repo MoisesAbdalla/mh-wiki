@@ -37,10 +37,14 @@ class HunterTabs<T> extends StatelessWidget {
     required this.selected,
     required this.onChanged,
     this.dense = false,
+    this.semanticsLabel,
     super.key,
   });
 
   final List<(T, String)> options;
+
+  /// Spoken label of a tab, when it should say more than its text.
+  final String Function(String label)? semanticsLabel;
   final T selected;
   final ValueChanged<T> onChanged;
 
@@ -72,6 +76,7 @@ class HunterTabs<T> extends StatelessWidget {
                 width: width,
                 child: _Tab(
                   label: label,
+                  semanticsLabel: semanticsLabel?.call(label),
                   selected: value == selected,
                   dense: dense,
                   onTap: () => onChanged(value),
@@ -90,9 +95,11 @@ class _Tab extends StatelessWidget {
     required this.selected,
     required this.dense,
     required this.onTap,
+    this.semanticsLabel,
   });
 
   final String label;
+  final String? semanticsLabel;
   final bool selected;
   final bool dense;
   final VoidCallback onTap;
@@ -104,6 +111,8 @@ class _Tab extends StatelessWidget {
       container: true,
       button: true,
       selected: selected,
+      label: semanticsLabel,
+      excludeSemantics: semanticsLabel != null,
       child: Material(
         color: selected ? HunterPalette.gold : Colors.transparent,
         shape: Border.all(

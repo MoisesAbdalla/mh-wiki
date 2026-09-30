@@ -235,4 +235,47 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get effectConditional => 'Afeta com condição';
+
+  @override
+  String get versionBase => 'Base';
+
+  @override
+  String get versionTempered => 'Temperado';
+
+  @override
+  String get versionArchTempered => 'Arquitemperado';
+
+  @override
+  String get versionAfflicted => 'Aflito';
+
+  @override
+  String get versionFrenzied => 'Frenesi';
+
+  @override
+  String get versionApex => 'Apex';
+
+  @override
+  String get versionRisen => 'Ressurgido';
+
+  @override
+  String get versionGuardian => 'Guardião';
+
+  @override
+  String versionCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count versões',
+      one: '1 versão',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String versionTabLabel(String label) {
+    return 'Versão: $label';
+  }
+
+  @override
+  String get inheritedFromBase => 'Igual à forma base';
 }

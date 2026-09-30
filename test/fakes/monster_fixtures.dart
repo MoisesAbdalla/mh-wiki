@@ -13,9 +13,11 @@ import 'package:mh_wiki/features/monsters/domain/entities/material_drop.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_material.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/monster_section_kind.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/party_hp_factors.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/rank_hp.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/source_ref.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/version_kind.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/weakness_profile.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/weakness_state.dart';
 
@@ -70,6 +72,9 @@ Monster buildMonster({
   List<MaterialDrop> drops = const [],
   String? imageAsset,
   HuntingInfo huntingInfo = const HuntingInfo(),
+  String? versionOf,
+  VersionKind? versionKind,
+  Set<MonsterSectionKind> inheritedSections = const {},
 }) => Monster(
   id: MonsterId(game, slug),
   name: LocalizedText(en: en, ptBr: ptBr),
@@ -86,6 +91,38 @@ Monster buildMonster({
   drops: drops,
   sources: const [SourceRef(name: 'Test', url: 'https://example.com')],
   huntingInfo: huntingInfo,
+  versionOf: versionOf == null ? null : MonsterId(game, versionOf),
+  versionKind: versionKind,
+  inheritedSections: inheritedSections,
+);
+
+/// A version of [base] (feature 004) with the given name.
+Monster buildVersion(
+  Monster base,
+  VersionKind kind, {
+  required String slug,
+  required String en,
+  String? ptBr,
+  Set<MonsterSectionKind> inherited = const {
+    MonsterSectionKind.weaknesses,
+    MonsterSectionKind.parts,
+    MonsterSectionKind.habitats,
+    MonsterSectionKind.itemReactions,
+    MonsterSectionKind.classification,
+  },
+}) => Monster(
+  id: MonsterId(base.id.game, slug),
+  name: LocalizedText(en: en, ptBr: ptBr),
+  classification: base.classification,
+  weaknesses: base.weaknesses,
+  habitats: base.habitats,
+  parts: base.parts,
+  drops: const [],
+  sources: base.sources,
+  imageAsset: base.imageAsset,
+  versionOf: base.id,
+  versionKind: kind,
+  inheritedSections: inherited,
 );
 
 extension MonsterTestCopy on Monster {
@@ -103,6 +140,9 @@ extension MonsterTestCopy on Monster {
     drops: drops,
     sources: sources,
     huntingInfo: huntingInfo,
+    versionOf: versionOf,
+    versionKind: versionKind,
+    inheritedSections: inheritedSections,
   );
 }
 

@@ -27,6 +27,8 @@ class MonsterDetailPage extends StatelessWidget {
               : MonsterDetailView(
                   monster: monster,
                   language: controller.language,
+                  versions: controller.selectedVersions,
+                  onSelectVersion: controller.select,
                 ),
         );
       },

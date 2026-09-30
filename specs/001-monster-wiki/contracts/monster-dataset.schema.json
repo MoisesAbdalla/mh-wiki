@@ -344,10 +344,6 @@
       "required": [
         "slug",
         "name",
-        "classification",
-        "weaknesses",
-        "habitatIds",
-        "parts",
         "drops",
         "sources"
       ],
@@ -514,8 +510,49 @@
               ]
             }
           }
+        },
+        "versionOf": {
+          "$ref": "#/$defs/slug",
+          "description": "Feature 004: slug of the base monster when this entry is a version. The base must be in the same dataset and must not be a version itself."
+        },
+        "versionKind": {
+          "enum": [
+            "tempered",
+            "archTempered",
+            "afflicted",
+            "frenzied",
+            "apex",
+            "risen",
+            "guardian"
+          ],
+          "description": "Feature 004: required with versionOf. Allowed kinds: world_iceborne tempered/archTempered; rise_sunbreak afflicted/apex/risen; wilds tempered/archTempered/guardian/frenzied. One version per kind and base."
         }
-      }
+      },
+      "allOf": [
+        {
+          "description": "Feature 004: base monsters require every section; a version (versionOf present) may omit classification, weaknesses, habitatIds, parts and itemReactions, which are inherited from its base, and must have its own hp or drops.",
+          "if": {
+            "not": {
+              "required": [
+                "versionOf"
+              ]
+            }
+          },
+          "then": {
+            "required": [
+              "classification",
+              "weaknesses",
+              "habitatIds",
+              "parts"
+            ]
+          },
+          "else": {
+            "required": [
+              "versionKind"
+            ]
+          }
+        }
+      ]
     }
   }
 }

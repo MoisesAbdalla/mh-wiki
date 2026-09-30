@@ -4,6 +4,7 @@ import 'package:mh_wiki/features/monsters/data/repositories/monster_repository_i
 import 'package:mh_wiki/features/monsters/domain/repositories/monster_repository.dart';
 import 'package:mh_wiki/features/monsters/domain/usecases/filter_monsters.dart';
 import 'package:mh_wiki/features/monsters/domain/usecases/get_monster_by_id.dart';
+import 'package:mh_wiki/features/monsters/domain/usecases/get_monster_versions.dart';
 import 'package:mh_wiki/features/monsters/domain/usecases/load_monster_catalog.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/settings/data/shared_prefs_settings_repository.dart';
@@ -39,6 +40,7 @@ final class AppDependencies {
     loadCatalog: LoadMonsterCatalog(monsterRepository),
     filterMonsters: const FilterMonsters(),
     getMonsterById: const GetMonsterById(),
+    getMonsterVersions: const GetMonsterVersions(),
   );
 
   SettingsController createSettingsController() => SettingsController(

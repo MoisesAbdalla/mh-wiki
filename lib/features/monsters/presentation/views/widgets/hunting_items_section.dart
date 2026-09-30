@@ -11,11 +11,13 @@ class HuntingItemsSection extends StatelessWidget {
   const HuntingItemsSection({
     required this.info,
     required this.language,
+    this.inherited = false,
     super.key,
   });
 
   final HuntingInfo info;
   final NameLanguage language;
+  final bool inherited;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class HuntingItemsSection extends StatelessWidget {
 
     return SectionCard(
       title: l10n.sectionHuntingItems,
+      inherited: inherited,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

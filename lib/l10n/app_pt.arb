@@ -94,5 +94,19 @@
   "visionSees": "Enxerga",
   "effectAffects": "Afeta",
   "effectNoEffect": "Não afeta",
-  "effectConditional": "Afeta com condição"
+  "effectConditional": "Afeta com condição",
+
+  "versionBase": "Base",
+  "versionTempered": "Temperado",
+  "versionArchTempered": "Arquitemperado",
+  "versionAfflicted": "Aflito",
+  "versionFrenzied": "Frenesi",
+  "versionApex": "Apex",
+  "versionRisen": "Ressurgido",
+  "versionGuardian": "Guardião",
+  "versionCount": "{count, plural, =1{1 versão} other{{count} versões}}",
+  "@versionCount": { "placeholders": { "count": { "type": "int" } } },
+  "versionTabLabel": "Versão: {label}",
+  "@versionTabLabel": { "placeholders": { "label": { "type": "String" } } },
+  "inheritedFromBase": "Igual à forma base"
 }

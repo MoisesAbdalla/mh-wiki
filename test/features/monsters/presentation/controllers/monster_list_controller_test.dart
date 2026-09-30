@@ -5,6 +5,7 @@ import 'package:mh_wiki/core/domain/failure.dart';
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/version_kind.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/monsters/presentation/models/monster_list_state.dart';
 
@@ -215,5 +216,47 @@ void main() {
         expect(controller.language, NameLanguage.en);
       },
     );
+  });
+
+  group('versions (004)', () {
+    final rathalos = buildMonster(game: Game.wilds, en: 'Rathalos');
+    final guardian = buildVersion(
+      rathalos,
+      VersionKind.guardian,
+      slug: 'guardian-rathalos',
+      en: 'Guardian Rathalos',
+      ptBr: 'Rathalos Guardião',
+    );
+
+    setUp(() => repository.monsters = [guardian, rathalos]);
+
+    test('selecting a version exposes it and its family', () async {
+      await controller.load();
+      controller.select(guardian.id);
+
+      expect(controller.selectedMonster, guardian);
+      expect(controller.selectedVersions, [rathalos, guardian]);
+      expect((controller.state as MonsterListLoaded).selectedId, guardian.id);
+    });
+
+    test('a monster without versions has a single-member family', () async {
+      repository.monsters = [rathalos];
+      await controller.load();
+      controller.select(rathalos.id);
+      expect(controller.selectedVersions, [rathalos]);
+    });
+
+    test('nothing selected gives no family', () async {
+      await controller.load();
+      expect(controller.selectedVersions, isEmpty);
+    });
+
+    test('a language change keeps the selected version', () async {
+      await controller.load();
+      controller
+        ..select(guardian.id)
+        ..onLanguageChanged(NameLanguage.en);
+      expect(controller.selectedMonster, guardian);
+    });
   });
 }

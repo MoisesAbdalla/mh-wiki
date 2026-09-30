@@ -50,3 +50,7 @@ app.*.map.json
 # OS / editor
 Thumbs.db
 *.tmp
+
+# Data pipeline page cache (feature 004)
+tool/data/.cache/
+__pycache__/

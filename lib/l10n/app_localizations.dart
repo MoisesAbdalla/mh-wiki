@@ -513,6 +513,72 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Afeta com condição'**
   String get effectConditional;
+
+  /// No description provided for @versionBase.
+  ///
+  /// In pt, this message translates to:
+  /// **'Base'**
+  String get versionBase;
+
+  /// No description provided for @versionTempered.
+  ///
+  /// In pt, this message translates to:
+  /// **'Temperado'**
+  String get versionTempered;
+
+  /// No description provided for @versionArchTempered.
+  ///
+  /// In pt, this message translates to:
+  /// **'Arquitemperado'**
+  String get versionArchTempered;
+
+  /// No description provided for @versionAfflicted.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aflito'**
+  String get versionAfflicted;
+
+  /// No description provided for @versionFrenzied.
+  ///
+  /// In pt, this message translates to:
+  /// **'Frenesi'**
+  String get versionFrenzied;
+
+  /// No description provided for @versionApex.
+  ///
+  /// In pt, this message translates to:
+  /// **'Apex'**
+  String get versionApex;
+
+  /// No description provided for @versionRisen.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ressurgido'**
+  String get versionRisen;
+
+  /// No description provided for @versionGuardian.
+  ///
+  /// In pt, this message translates to:
+  /// **'Guardião'**
+  String get versionGuardian;
+
+  /// No description provided for @versionCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 versão} other{{count} versões}}'**
+  String versionCount(int count);
+
+  /// No description provided for @versionTabLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Versão: {label}'**
+  String versionTabLabel(String label);
+
+  /// No description provided for @inheritedFromBase.
+  ///
+  /// In pt, this message translates to:
+  /// **'Igual à forma base'**
+  String get inheritedFromBase;
 }
 
 class _AppLocalizationsDelegate
