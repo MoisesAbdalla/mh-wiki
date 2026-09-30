@@ -32,6 +32,14 @@ def selected_games(argv=None):
     return args or list(GAMES)
 
 
+def roster(game):
+    """{slug: entry} of tool/data/rosters/<game>.json, or {} when absent."""
+    path = os.path.join(HERE, 'rosters', f'{game}.json')
+    if not os.path.exists(path):
+        return {}
+    return {m['slug']: m for m in json.load(open(path, encoding='utf8'))['monsters']}
+
+
 def clean(text):
     return html.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', text))).strip()
 

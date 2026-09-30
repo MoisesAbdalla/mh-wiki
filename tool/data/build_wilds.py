@@ -15,19 +15,13 @@ KIRANICO = 'https://mhwilds.kiranico.com'
 MHWIKI = 'https://monsterhunterwiki.org/wiki/'
 ELEMENTS = ['fire', 'water', 'thunder', 'ice', 'dragon']  # also Kiranico's column order here
 
-ROSTER = [  # slug (= Kiranico slug), wiki page name
-    ('chatacabra', 'Chatacabra'),
-    ('doshaguma', 'Doshaguma'),
-    ('rey-dau', 'Rey_Dau'),
-    ('uth-duna', 'Uth_Duna'),
-    ('nu-udra', 'Nu_Udra'),
-    ('jin-dahaad', 'Jin_Dahaad'),
-    ('rathalos', 'Rathalos'),
-    ('guardian-rathalos', 'Guardian_Rathalos'),
-    ('gore-magala', 'Gore_Magala'),
-    ('arkveld', 'Arkveld'),
-]
-PT_SLUG = {'guardian-rathalos': 'rathalos-guardiao'}  # Kiranico localizes this URL
+ROSTER = json.load(open(os.path.join(REPO, 'tool', 'data', 'rosters', 'wilds.json'),
+                       encoding='utf8'))['monsters']
+TEMPERED_LABELS = {  # drop group -> method label (pt-BR from Kiranico when it exists)
+    'Extra Rewards (Tempered)': {'en': 'Extra Reward (Tempered)'},
+    'Tempered Wound Destruction Rewards': {'en': 'Tempered Wound Destroyed Reward',
+                                           'ptBr': 'Prêmio de Ferimento Ag. Destr.'},
+}
 STAR_RULE = ('Stars = best elemental hitzone over all parts, wounds excluded: >=25 3 stars, 20-24 2, '
              '10-19 1, <10 0 (same rule as the Rise dataset, calibrated on World Rathalos).')
 
@@ -138,11 +132,73 @@ def method_of(title):
     return None, None  # rotten carves, investigations, tempered extras
 
 
+def combine(a, b):
+    """Rate of a material listed twice in one group: the same table with other
+    amounts adds up; when that would pass 100 % the rows are separate draws,
+    combined as independent chances (feature 004)."""
+    total = a + b
+    if total <= 100:
+        return round(total, 2)
+    return round(100 * (1 - (1 - a / 100) * (1 - b / 100)), 2)
+
+
+def material_of(item, en_items, materials):
+    mid = slug(item)
+    mat = materials.setdefault(mid, {'id': mid, 'name': {'en': item}})
+    if 'ptBr' not in mat['name']:
+        pt = pt_item_name(en_items.get(item) or slug(item))
+        if pt:
+            mat['name']['ptBr'] = pt
+    return mid
+
+
+def tempered_version(entry, materials):
+    """A tempered version: only its own drops (the base page's tempered groups)."""
+    base_slug, wname = entry['versionOf'], entry['wiki']
+    wiki = fetch(f'{MHWIKI}{wname}_(MHWilds)', f'cache_mhwiki_wilds_{base_slug}.html')
+    en_items, _ = kiranico_page(payload(fetch(f'{KIRANICO}/data/monsters/{base_slug}',
+                                              f'cache_wilds_{base_slug}_en.html')))
+    final = {}
+    for rank, groups in wiki_drops(wiki).items():
+        for title, rows in groups:
+            label = TEMPERED_LABELS.get(title)
+            if not label:
+                continue
+            for item, rate in rows:
+                mid = material_of(item, en_items, materials)
+                key = (mid, rank, label['en'])
+                if key in final:
+                    final[key]['ratePercent'] = combine(final[key]['ratePercent'], rate)
+                else:
+                    final[key] = {'materialId': mid, 'rank': rank, 'method': 'other',
+                                  'methodLabel': label, 'ratePercent': rate}
+    return {
+        'slug': entry['slug'],
+        'versionOf': base_slug,
+        'versionKind': entry['versionKind'],
+        'name': {'en': entry['name']},
+        'drops': list(final.values()),
+        'sources': [
+            {'name': 'Monster Hunter Wiki (MHWilds)', 'url': f'{MHWIKI}{wname}_(MHWilds)',
+             'notes': 'Tempered drop groups of the base page ("Extra Rewards (Tempered)", '
+                      '"Tempered Wound Destruction Rewards"). Weaknesses, parts, habitats, item '
+                      'reactions and classification are the base\'s (not listed separately).'},
+        ],
+    }
+
+
 def build():
     habitats, materials, monsters = {}, {}, []
-    for s, wname in ROSTER:
+    for entry in ROSTER:
+        if entry.get('dataFrom') == 'baseWikiTemperedDrops':
+            monsters.append(tempered_version(entry, materials))
+            print(entry['slug'], '| drops', len(monsters[-1]['drops']))
+            continue
+        s, wname = entry['slug'], entry['wiki']
         en_page = fetch(f'{KIRANICO}/data/monsters/{s}', f'cache_wilds_{s}_en.html')
-        pt_page = fetch(f'{KIRANICO}/pt-BR/data/monsters/{PT_SLUG.get(s, s)}', f'cache_wilds_{s}_pt.html')
+        pt_url = re.search(r'"version":"pt-BR","url":"(/pt-BR/data/monsters/[^"]+)"', payload(en_page))
+        pt_page = fetch(KIRANICO + (pt_url.group(1) if pt_url else f'/pt-BR/data/monsters/{s}'),
+                        f'cache_wilds_{s}_pt.html')
         wiki = fetch(f'{MHWIKI}{wname}_(MHWilds)', f'cache_mhwiki_wilds_{s}.html')
         base = fetch(f'{MHWIKI}{wname}', f'cache_mhwiki_{s}_base.html')
 
@@ -179,13 +235,7 @@ def build():
                     parts.setdefault('tail', {'id': 'tail', 'name': {'en': 'Tail', **({'ptBr': part_pt['Tail']} if part_pt.get('Tail') else {})}, 'severable': True})
                     parts['tail']['severable'] = True
                 for item, rate in rows:
-                    mid = slug(item)
-                    mat = materials.setdefault(mid, {'id': mid, 'name': {'en': item}})
-                    if 'ptBr' not in mat['name']:
-                        kslug = en_items.get(item) or slug(item)
-                        pt = pt_item_name(kslug)
-                        if pt:
-                            mat['name']['ptBr'] = pt
+                    mid = material_of(item, en_items, materials)
                     d = {'materialId': mid, 'rank': rank, 'method': method}
                     if part_id:
                         d['partId'] = part_id
@@ -199,7 +249,7 @@ def build():
         for d in drops:  # same material listed twice in one group (different amounts): sum
             key = (d['materialId'], d['rank'], d['method'], d.get('partId'))
             if key in final:
-                final[key]['ratePercent'] = round(final[key]['ratePercent'] + d['ratePercent'], 2)
+                final[key]['ratePercent'] = combine(final[key]['ratePercent'], d['ratePercent'])
             else:
                 final[key] = dict(d)
 
@@ -209,8 +259,11 @@ def build():
             habitats.setdefault(hid, {'id': hid, 'name': {'en': loc}})
             hab.append(hid)
 
+        version = ({'versionOf': entry['versionOf'], 'versionKind': entry['versionKind']}
+                   if 'versionOf' in entry else {})
         monsters.append({
             'slug': s,
+            **version,
             'name': {'en': name_en, 'ptBr': name_pt},
             'classification': {'en': wiki_class(base) or 'Unknown'},
             'weaknesses': {'general': general},

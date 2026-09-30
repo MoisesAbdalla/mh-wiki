@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/version_kind.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/monsters_page.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/monster_detail_view.dart';
 import 'package:mh_wiki/features/settings/domain/usecases/load_settings.dart';
@@ -121,5 +123,75 @@ void main() {
     await expectLater(tester, meetsGuideline(textContrastGuideline));
     await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
     settings.dispose();
+  });
+
+  testWidgets('a version detail with the selector fits 320 dp at 200% (004)', (
+    tester,
+  ) async {
+    final base = richMonster(game: Game.wilds);
+    final family = [
+      base,
+      buildVersion(
+        base,
+        VersionKind.tempered,
+        slug: 'tempered-rathalos',
+        en: 'Tempered Rathalos',
+      ),
+      buildVersion(
+        base,
+        VersionKind.archTempered,
+        slug: 'arch-tempered-rathalos',
+        en: 'Arch-Tempered Rathalos',
+      ),
+      buildVersion(
+        base,
+        VersionKind.guardian,
+        slug: 'guardian-rathalos',
+        en: 'Guardian Rathalos',
+      ),
+    ];
+    await pumpScaled(
+      tester,
+      Scaffold(
+        body: MonsterDetailView(
+          monster: family[1],
+          language: NameLanguage.ptBr,
+          versions: family,
+          onSelectVersion: (_) {},
+        ),
+      ),
+    );
+    await tester.scrollUntilVisible(find.text('Materiais'), 300);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('version selector meets contrast and tap targets (004)', (
+    tester,
+  ) async {
+    final base = richMonster(game: Game.wilds);
+    final family = [
+      base,
+      buildVersion(
+        base,
+        VersionKind.tempered,
+        slug: 'tempered-rathalos',
+        en: 'Tempered Rathalos',
+      ),
+    ];
+    setWindowSize(tester, const Size(400, 3200));
+    await pumpApp(
+      tester,
+      Scaffold(
+        body: MonsterDetailView(
+          monster: family[1],
+          language: NameLanguage.ptBr,
+          versions: family,
+          onSelectVersion: (_) {},
+        ),
+      ),
+    );
+    await expectLater(tester, meetsGuideline(textContrastGuideline));
+    await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+    await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
   });
 }

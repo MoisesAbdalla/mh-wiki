@@ -1,0 +1,452 @@
+{
+  "game": "wilds",
+  "source": "https://mhwilds.kiranico.com/data/monsters (game version 1.040)",
+  "monsters": [
+    {
+      "slug": "rathian",
+      "name": "Rathian",
+      "wiki": "Rathian"
+    },
+    {
+      "slug": "rathalos",
+      "name": "Rathalos",
+      "wiki": "Rathalos"
+    },
+    {
+      "slug": "guardian-rathalos",
+      "name": "Guardian Rathalos",
+      "wiki": "Guardian_Rathalos",
+      "versionOf": "rathalos",
+      "versionKind": "guardian"
+    },
+    {
+      "slug": "gravios",
+      "name": "Gravios",
+      "wiki": "Gravios"
+    },
+    {
+      "slug": "yian-kut-ku",
+      "name": "Yian Kut-Ku",
+      "wiki": "Yian_Kut-Ku"
+    },
+    {
+      "slug": "gypceros",
+      "name": "Gypceros",
+      "wiki": "Gypceros"
+    },
+    {
+      "slug": "congalala",
+      "name": "Congalala",
+      "wiki": "Congalala"
+    },
+    {
+      "slug": "blangonga",
+      "name": "Blangonga",
+      "wiki": "Blangonga"
+    },
+    {
+      "slug": "lagiacrus",
+      "name": "Lagiacrus",
+      "wiki": "Lagiacrus"
+    },
+    {
+      "slug": "nerscylla",
+      "name": "Nerscylla",
+      "wiki": "Nerscylla"
+    },
+    {
+      "slug": "gore-magala",
+      "name": "Gore Magala",
+      "wiki": "Gore_Magala"
+    },
+    {
+      "slug": "seregios",
+      "name": "Seregios",
+      "wiki": "Seregios"
+    },
+    {
+      "slug": "gogmazios",
+      "name": "Gogmazios",
+      "wiki": "Gogmazios"
+    },
+    {
+      "slug": "mizutsune",
+      "name": "Mizutsune",
+      "wiki": "Mizutsune"
+    },
+    {
+      "slug": "guardian-fulgur-anjanath",
+      "name": "Guardian Fulgur Anjanath",
+      "wiki": "Guardian_Fulgur_Anjanath"
+    },
+    {
+      "slug": "guardian-ebony-odogaron",
+      "name": "Guardian Ebony Odogaron",
+      "wiki": "Guardian_Ebony_Odogaron"
+    },
+    {
+      "slug": "doshaguma",
+      "name": "Doshaguma",
+      "wiki": "Doshaguma"
+    },
+    {
+      "slug": "guardian-doshaguma",
+      "name": "Guardian Doshaguma",
+      "wiki": "Guardian_Doshaguma",
+      "versionOf": "doshaguma",
+      "versionKind": "guardian"
+    },
+    {
+      "slug": "balahara",
+      "name": "Balahara",
+      "wiki": "Balahara"
+    },
+    {
+      "slug": "chatacabra",
+      "name": "Chatacabra",
+      "wiki": "Chatacabra"
+    },
+    {
+      "slug": "quematrice",
+      "name": "Quematrice",
+      "wiki": "Quematrice"
+    },
+    {
+      "slug": "lala-barina",
+      "name": "Lala Barina",
+      "wiki": "Lala_Barina"
+    },
+    {
+      "slug": "rompopolo",
+      "name": "Rompopolo",
+      "wiki": "Rompopolo"
+    },
+    {
+      "slug": "rey-dau",
+      "name": "Rey Dau",
+      "wiki": "Rey_Dau"
+    },
+    {
+      "slug": "uth-duna",
+      "name": "Uth Duna",
+      "wiki": "Uth_Duna"
+    },
+    {
+      "slug": "nu-udra",
+      "name": "Nu Udra",
+      "wiki": "Nu_Udra"
+    },
+    {
+      "slug": "ajarakan",
+      "name": "Ajarakan",
+      "wiki": "Ajarakan"
+    },
+    {
+      "slug": "arkveld",
+      "name": "Arkveld",
+      "wiki": "Arkveld"
+    },
+    {
+      "slug": "guardian-arkveld",
+      "name": "Guardian Arkveld",
+      "wiki": "Guardian_Arkveld",
+      "versionOf": "arkveld",
+      "versionKind": "guardian"
+    },
+    {
+      "slug": "hirabami",
+      "name": "Hirabami",
+      "wiki": "Hirabami"
+    },
+    {
+      "slug": "jin-dahaad",
+      "name": "Jin Dahaad",
+      "wiki": "Jin_Dahaad"
+    },
+    {
+      "slug": "xu-wu",
+      "name": "Xu Wu",
+      "wiki": "Xu_Wu"
+    },
+    {
+      "slug": "zoh-shia",
+      "name": "Zoh Shia",
+      "wiki": "Zoh_Shia"
+    },
+    {
+      "slug": "omega-planetes",
+      "name": "Omega Planetes",
+      "wiki": "Omega_Planetes"
+    },
+    {
+      "slug": "tempered-rathian",
+      "name": "Tempered Rathian",
+      "wiki": "Rathian",
+      "versionOf": "rathian",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-rathalos",
+      "name": "Tempered Rathalos",
+      "wiki": "Rathalos",
+      "versionOf": "rathalos",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-gravios",
+      "name": "Tempered Gravios",
+      "wiki": "Gravios",
+      "versionOf": "gravios",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-yian-kut-ku",
+      "name": "Tempered Yian Kut-Ku",
+      "wiki": "Yian_Kut-Ku",
+      "versionOf": "yian-kut-ku",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-gypceros",
+      "name": "Tempered Gypceros",
+      "wiki": "Gypceros",
+      "versionOf": "gypceros",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-congalala",
+      "name": "Tempered Congalala",
+      "wiki": "Congalala",
+      "versionOf": "congalala",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-blangonga",
+      "name": "Tempered Blangonga",
+      "wiki": "Blangonga",
+      "versionOf": "blangonga",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-lagiacrus",
+      "name": "Tempered Lagiacrus",
+      "wiki": "Lagiacrus",
+      "versionOf": "lagiacrus",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-nerscylla",
+      "name": "Tempered Nerscylla",
+      "wiki": "Nerscylla",
+      "versionOf": "nerscylla",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-gore-magala",
+      "name": "Tempered Gore Magala",
+      "wiki": "Gore_Magala",
+      "versionOf": "gore-magala",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-seregios",
+      "name": "Tempered Seregios",
+      "wiki": "Seregios",
+      "versionOf": "seregios",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-gogmazios",
+      "name": "Tempered Gogmazios",
+      "wiki": "Gogmazios",
+      "versionOf": "gogmazios",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-mizutsune",
+      "name": "Tempered Mizutsune",
+      "wiki": "Mizutsune",
+      "versionOf": "mizutsune",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-guardian-fulgur-anjanath",
+      "name": "Tempered Guardian Fulgur Anjanath",
+      "wiki": "Guardian_Fulgur_Anjanath",
+      "versionOf": "guardian-fulgur-anjanath",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-guardian-ebony-odogaron",
+      "name": "Tempered Guardian Ebony Odogaron",
+      "wiki": "Guardian_Ebony_Odogaron",
+      "versionOf": "guardian-ebony-odogaron",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-doshaguma",
+      "name": "Tempered Doshaguma",
+      "wiki": "Doshaguma",
+      "versionOf": "doshaguma",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-balahara",
+      "name": "Tempered Balahara",
+      "wiki": "Balahara",
+      "versionOf": "balahara",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-chatacabra",
+      "name": "Tempered Chatacabra",
+      "wiki": "Chatacabra",
+      "versionOf": "chatacabra",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-quematrice",
+      "name": "Tempered Quematrice",
+      "wiki": "Quematrice",
+      "versionOf": "quematrice",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-lala-barina",
+      "name": "Tempered Lala Barina",
+      "wiki": "Lala_Barina",
+      "versionOf": "lala-barina",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-rompopolo",
+      "name": "Tempered Rompopolo",
+      "wiki": "Rompopolo",
+      "versionOf": "rompopolo",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-rey-dau",
+      "name": "Tempered Rey Dau",
+      "wiki": "Rey_Dau",
+      "versionOf": "rey-dau",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-uth-duna",
+      "name": "Tempered Uth Duna",
+      "wiki": "Uth_Duna",
+      "versionOf": "uth-duna",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-nu-udra",
+      "name": "Tempered Nu Udra",
+      "wiki": "Nu_Udra",
+      "versionOf": "nu-udra",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-ajarakan",
+      "name": "Tempered Ajarakan",
+      "wiki": "Ajarakan",
+      "versionOf": "ajarakan",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-arkveld",
+      "name": "Tempered Arkveld",
+      "wiki": "Arkveld",
+      "versionOf": "arkveld",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-hirabami",
+      "name": "Tempered Hirabami",
+      "wiki": "Hirabami",
+      "versionOf": "hirabami",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-jin-dahaad",
+      "name": "Tempered Jin Dahaad",
+      "wiki": "Jin_Dahaad",
+      "versionOf": "jin-dahaad",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-xu-wu",
+      "name": "Tempered Xu Wu",
+      "wiki": "Xu_Wu",
+      "versionOf": "xu-wu",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    },
+    {
+      "slug": "tempered-zoh-shia",
+      "name": "Tempered Zoh Shia",
+      "wiki": "Zoh_Shia",
+      "versionOf": "zoh-shia",
+      "versionKind": "tempered",
+      "dataFrom": "baseWikiTemperedDrops",
+      "icon": "base"
+    }
+  ]
+}

@@ -75,6 +75,33 @@ party factors, item reactions) are reused unchanged unless stated.
 - **Decision**: each game phase starts with a short source check (a task) that fixes the
   version inventory before any data is written.
 
+### R4 result — Wilds (T013, 2026-09-30)
+
+- **Roster**: 34 large monsters on the Kiranico list (game version 1.040). Written to
+  `tool/data/rosters/wilds.json` by `tool/data/roster_wilds.py`. The result is 31 base rows and
+  33 versions.
+- **Guardians**:
+  - Guardian Rathalos, Guardian Doshaguma and Guardian Arkveld are `guardian` versions. They
+    have their own pages, and all their sections are their own.
+  - Guardian Fulgur Anjanath and Guardian Ebony Odogaron keep their own rows, because the base
+    species is not in Wilds.
+- **Tempered**:
+  - 30 bases list tempered drop groups on their wiki page: "Extra Rewards (Tempered)" and
+    "Tempered Wound Destruction Rewards", High Rank only. Each becomes a `tempered` version with
+    those drops. The labels are "Extra Reward (Tempered)" and "Tempered Wound Destroyed Reward"
+    (Kiranico pt-BR: "Prêmio de Ferimento Ag. Destr.").
+  - All other sections are inherited.
+  - No official pt-BR name exists for the tempered monster, so the name is English only (e.g.
+    "Tempered Rey Dau").
+  - Tempered HP: no quest lists it, so the HP section shows unknown.
+  - Guardian Rathalos and Guardian Doshaguma also list tempered drops. They are versions
+    themselves, and versions of versions are not modelled, so those drops are left out.
+- **Arch-tempered**: none. The wiki has only a moveset note (Rey Dau, Uth Duna, Nu Udra,
+  Arkveld, Jin Dahaad), and the event quests with their HP and rewards are not on Kiranico.
+- **Frenzied**: none. The wiki only mentions frenzy quest names.
+- **Without wiki drop tables**: Guardian Arkveld (its HP comes from two Low Rank quests) and
+  Omega Planetes (collab). Their drops stay empty ("Sem materiais").
+
 ## R5. List, search and selection (spec Q3)
 
 - The list shows one row per base monster, sorted alphabetically, with a "N versões" hint.

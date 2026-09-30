@@ -39,7 +39,7 @@ def min_quest(values):
     return min(v for v in values if v >= 0.8 * med)
 
 
-def world(slug):
+def world(slug, name=None):
     page = open(f'cache_world_{slug}_en.html', encoding='utf8').read()
     exp = {}
     for tr in re.findall(r'<tr.*?</tr>', section(page, 'Expeditions'), re.S):
@@ -63,7 +63,7 @@ def world(slug):
     return out
 
 
-def rise(slug):
+def rise(slug, name=None):
     page = open(f'cache_rise_{slug}_en.html', encoding='utf8').read()
     vals = {}
     for tr in re.findall(r'<tr>.*?</tr>', page, re.S):
@@ -98,8 +98,7 @@ for tr in re.findall(r'<tr.*?</tr>', open('wl_quests_full.html', encoding='utf8'
         WILDS_ROWS.append((name, int(m.group(2)), hp))
 
 
-def wilds(slug):
-    name = ' '.join(w.capitalize() for w in slug.split('-'))
+def wilds(slug, name):
     vals = {}
     for n, stars, hp in WILDS_ROWS:
         if n == name:
@@ -171,8 +170,11 @@ for game, fn in ((g, EXTRACT[g]) for g in selected_games()):
     data = ordered
 
     for monster in data['monsters']:
-        hp = fn(monster['slug'])
-        assert hp, f'{game}/{monster["slug"]}: no HP found'
+        hp = fn(monster['slug'], monster['name']['en'])
+        if not hp:
+            monster.pop('hp', None)
+            print(game, monster['slug'], 'no HP in the sources')
+            continue
         monster['hp'] = hp
         if game == 'wilds':
             if not any(s['url'] == 'https://mhwilds.kiranico.com/data/quests' for s in monster['sources']):

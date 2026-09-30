@@ -13,7 +13,7 @@ import json, os, re, time, urllib.parse, urllib.request
 
 from item_parse import clean, infobox, item_table
 
-from common import REPO, selected_games
+from common import REPO, roster, selected_games
 UA = {'User-Agent': 'Mozilla/5.0 (mh-wiki data curation; personal study project)'}
 WIKI = 'https://monsterhunterwiki.org/wiki/'
 
@@ -183,9 +183,15 @@ for game, cfg in ((g, GAMES[g]) for g in selected_games()):
             ordered[k] = v
     data = ordered
 
+    entries = roster(game)
     for monster in data['monsters']:
         slug = monster['slug']
-        url = WIKI + urllib.parse.quote(f'{wiki_title(slug)}_({cfg["suffix"]})')
+        entry = entries.get(slug, {})
+        if entry.get('dataFrom'):  # no page of its own: reactions are the base's
+            monster.pop('itemReactions', None)
+            continue
+        title = entry.get('wiki') or wiki_title(slug)
+        url = WIKI + urllib.parse.quote(f'{title}_({cfg["suffix"]})')
         page = fetch(url, cfg['cache'](slug))
         rs, conflicts = reactions(page, cfg)
         note = 'Hunting items: infobox (Flash, Sonic/Screamer, Dung) and "Trap & Flash Pod Effectiveness" table.'

@@ -5,7 +5,7 @@ Research R1/R2 of specs/002-visual-identity.
 import io, json, os, sys, time, urllib.parse, urllib.request
 from PIL import Image
 
-from common import REPO as ROOT, selected_games  # noqa: E402
+from common import REPO as ROOT, roster, selected_games  # noqa: E402
 UA = {'User-Agent': 'Mozilla/5.0 (mh-wiki personal study project)'}
 GAMES = {  # dataset key -> (file prefix, extension)
     'world_iceborne': ('MHWI', 'png'),
@@ -44,7 +44,11 @@ failures = []
 for game, (prefix, ext) in ((g, GAMES[g]) for g in selected_games()):
     path = os.path.join(ROOT, 'assets', 'data', game, 'monsters.json')
     data = json.load(open(path, encoding='utf8'))
+    entries = roster(game)
+    images = {}
     for m in data['monsters']:
+        if entries.get(m['slug'], {}).get('icon') == 'base':
+            continue  # filled from the base below (004 research R7)
         name = m['name']['en'].replace(' ', '_')
         file = f'{prefix}-{name}_Icon.{ext}'
         rel = f'assets/images/monsters/{game}/{m["slug"]}.webp'
@@ -54,7 +58,11 @@ for game, (prefix, ext) in ((g, GAMES[g]) for g in selected_games()):
             failures.append((game, m['slug'], file, str(e)))
             continue
         m['image'] = rel
+        images[m['slug']] = rel
         print('ok', game, m['slug'], file, os.path.getsize(os.path.join(ROOT, rel)), 'bytes')
+    for m in data['monsters']:
+        if entries.get(m['slug'], {}).get('icon') == 'base' and m['versionOf'] in images:
+            m['image'] = images[m['versionOf']]
     data['sources'] = [s for s in data['sources'] if s['name'] != 'Monster Hunter Wiki (icons)']
     data['sources'].append({
         'name': 'Monster Hunter Wiki (icons)',

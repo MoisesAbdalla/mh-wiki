@@ -94,14 +94,14 @@ then Rise (Phase 6), then World (Phase 7).
 
 **Independent Test**: quickstart checks 1, 5, 6 and 10 for Wilds; `real_datasets_test` roster coverage.
 
-- [ ] T013 [US1] Source check for Wilds versions (research R4). For each Wilds monster, record which tempered, arch-tempered and frenzied entries have own data in the sources (Kiranico tempered drop group, wiki "Arch-Tempered" section, event quests). Guardians: Rathalos, Doshaguma and Arkveld become versions; Fulgur Anjanath and Ebony Odogaron keep their own rows. Write the result to `tool/data/rosters/wilds.json` (slug, Kiranico slug, wiki title, `versionOf`, `versionKind`) and summarize it in `specs/004-all-large-monsters/research.md` (R4 Wilds).
-- [ ] T014 [US1] Make `tool/data/build.py wilds` roster-driven. It builds names (en/pt-BR), classification, weaknesses (hitzone star rule), habitats, parts and drops (per rank; tempered drop group for tempered versions) for every roster entry. Versions omit inheritable sections unless the source has their own. It regenerates `assets/data/wilds/monsters.json`, keeping the 30 original entries' values (`guardian-rathalos` gains `versionOf: rathalos`, `versionKind: guardian`).
-- [ ] T015 [US1] Extend `test/features/monsters/data/real_datasets_test.dart`.
+- [X] T013 [US1] Source check for Wilds versions (research R4). For each Wilds monster, record which tempered, arch-tempered and frenzied entries have own data in the sources (Kiranico tempered drop group, wiki "Arch-Tempered" section, event quests). Guardians: Rathalos, Doshaguma and Arkveld become versions; Fulgur Anjanath and Ebony Odogaron keep their own rows. Write the result to `tool/data/rosters/wilds.json` (slug, Kiranico slug, wiki title, `versionOf`, `versionKind`) and summarize it in `specs/004-all-large-monsters/research.md` (R4 Wilds).
+- [X] T014 [US1] Make `tool/data/build.py wilds` roster-driven. It builds names (en/pt-BR), classification, weaknesses (hitzone star rule), habitats, parts and drops (per rank; tempered drop group for tempered versions) for every roster entry. Versions omit inheritable sections unless the source has their own. It regenerates `assets/data/wilds/monsters.json`, keeping the 30 original entries' values (`guardian-rathalos` gains `versionOf: rathalos`, `versionKind: guardian`).
+- [X] T015 [US1] Extend `test/features/monsters/data/real_datasets_test.dart`.
   - Every slug in `tool/data/rosters/wilds.json` is in the dataset (SC-001) and vice versa.
   - Every base monster has weaknesses, classification and ≥ 1 habitat (SC-003).
   - `guardian-rathalos` is a guardian version of `rathalos`.
   - The spot checks of 001–003 still pass.
-- [ ] T016 [US1] Run the gates; commit the Wilds base data.
+- [X] T016 [US1] Run the gates; commit the Wilds base data.
 
 ---
 
@@ -111,12 +111,12 @@ then Rise (Phase 6), then World (Phase 7).
 
 **Independent Test**: quickstart check 3; new monsters show HP/items or "Desconhecido".
 
-- [ ] T017 [US2] Run `tool/data/hp_extract.py` and `tool/data/items_extract.py` for the whole Wilds roster (rules of 003).
+- [X] T017 [US2] Run `tool/data/hp_extract.py` and `tool/data/items_extract.py` for the whole Wilds roster (rules of 003).
   - Tempered versions without quest HP get no `hp`.
   - Arch-tempered versions get `hp` only from quests with that monster.
   - Versions get `itemReactions` only when their own wiki page differs from the base's.
   - Update `assets/data/wilds/monsters.json`.
-- [ ] T018 [US2] Extend `real_datasets_test.dart`: every Wilds base monster has ≥ 1 `hp` entry or is listed in a documented `noHp` set in the test (with the reason, e.g. story-only fights), and reactions use only the dataset items. Run the gates; commit.
+- [X] T018 [US2] Extend `real_datasets_test.dart`: every Wilds base monster has ≥ 1 `hp` entry or is listed in a documented `noHp` set in the test (with the reason, e.g. story-only fights), and reactions use only the dataset items. Run the gates; commit.
 
 ---
 
@@ -147,8 +147,8 @@ then Rise (Phase 6), then World (Phase 7).
   - the list builds and a game switch settles within the frame budget;
   - `FilterMonsters` over 300 entries runs < 50 ms per query in the test VM (SC-005 margin).
 - [X] T024 [US3] Parse datasets off the UI thread: `compute(...)` in `lib/features/monsters/data/datasources/asset_monster_datasource.dart` for decode + DTO validation, errors still mapped to `DatasetFormatException` / failures. Makes T023 pass together with T008.
-- [ ] T025 [US3] Run `tool/data/fetch_icons.py wilds` for every Wilds base and own-icon version (Guardians). Tempered and arch-tempered versions reference the base icon (research R7). Record `image` in `assets/data/wilds/monsters.json` and extend `real_datasets_test.dart` with an SC-006 check (≥ 95 % of base monsters with own image).
-- [ ] T026 [US3] Extend `test/features/monsters/presentation/views/accessibility_test.dart`: a version detail with the selector and inherited notes at 320 dp / 200 % text (no overflow), text contrast, tap targets.
+- [X] T025 [US3] Run `tool/data/fetch_icons.py wilds` for every Wilds base and own-icon version (Guardians). Tempered and arch-tempered versions reference the base icon (research R7). Record `image` in `assets/data/wilds/monsters.json` and extend `real_datasets_test.dart` with an SC-006 check (≥ 95 % of base monsters with own image).
+- [X] T026 [US3] Extend `test/features/monsters/presentation/views/accessibility_test.dart`: a version detail with the selector and inherited notes at 320 dp / 200 % text (no overflow), text contrast, tap targets.
 - [ ] T027 [US3] Wilds release gate:
   - run the gates and `flutter build windows --release`;
   - update `README.md` (data status, versions, `tool/data/`);
