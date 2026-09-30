@@ -5,14 +5,17 @@ import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/hunting_info.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/rank_hp.dart';
-import 'package:mh_wiki/features/monsters/presentation/views/widgets/section_card.dart';
+import 'package:mh_wiki/core/presentation/widgets/notebook_section.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
 /// Reference HP per rank, solo and estimated for a party (003 FR-001/002).
 class HpSection extends StatelessWidget {
-  const HpSection({required this.info, super.key});
+  const HpSection({required this.info, this.number, super.key});
 
   final HuntingInfo info;
+
+  /// Position in the detail (005 FR-004).
+  final int? number;
 
   static const _partySizes = [2, 3, 4];
 
@@ -26,7 +29,8 @@ class HpSection extends StatelessWidget {
         ? format.format(range.min)
         : '${format.format(range.min)} – ${format.format(range.max)}';
 
-    return SectionCard(
+    return NotebookSection(
+      number: number,
       title: l10n.sectionHp,
       child: info.hp.isEmpty
           ? EmptySectionText(l10n.hpUnknown)

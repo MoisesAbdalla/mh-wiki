@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/presentation/breakpoints.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
-import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
+import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/monster_detail_page.dart';
@@ -121,8 +121,8 @@ class _MonstersPageState extends State<MonstersPage> {
                         return Center(
                           child: Text(
                             l10n.selectMonster,
-                            style: hunterDisplay(
-                              size: 16,
+                            style: notebookTitle(
+                              size: 20,
                               color: HunterPalette.textMuted,
                             ),
                           ),
@@ -134,6 +134,7 @@ class _MonstersPageState extends State<MonstersPage> {
                         language: _controller.language,
                         versions: _controller.selectedVersions,
                         onSelectVersion: _controller.select,
+                        showGame: _controller.query.game == null,
                       );
                     },
                   ),

@@ -77,18 +77,18 @@ version tabs, no repeated game name, and discreet inherited notes (spec US1).
 tabs and notes), 10 and 12; `monsters_page_*`, `monster_list_pane`, `version_selector` and
 accessibility tests pass.
 
-- [ ] T011 [P] [US1] Unit tests in `test/features/monsters/domain/entities/monster_test.dart` for `Monster.dropsByMethod(rank)`:
+- [X] T011 [P] [US1] Unit tests in `test/features/monsters/domain/entities/monster_test.dart` for `Monster.dropsByMethod(rank)`:
   - groups keyed by (method, partId, methodLabel.en) in first-appearance order;
   - `breakPart` groups split by part;
   - `other` groups split by label;
   - an empty rank gives an empty list.
-- [ ] T012 [US1] Add `lib/features/monsters/domain/entities/method_drop_group.dart` (`MethodDropGroup`) and `Monster.dropsByMethod(Rank)` in `lib/features/monsters/domain/entities/monster.dart`, so `T011` passes.
-- [ ] T013 [P] [US1] Write `test/features/monsters/presentation/views/widgets/notebook_layout_test.dart`:
+- [X] T012 [US1] Add `lib/features/monsters/domain/entities/method_drop_group.dart` (`MethodDropGroup`) and `Monster.dropsByMethod(Rank)` in `lib/features/monsters/domain/entities/monster.dart`, so `T011` passes.
+- [X] T013 [P] [US1] Write `test/features/monsters/presentation/views/widgets/notebook_layout_test.dart`:
   - the detail of a fixture monster shows sections numbered 1 Fraquezas, 2 Vida, 3 Itens de caça, 4 Materiais, 5 Habitat, 6 Partes;
   - the detail and the list contain no `Card`, `HunterPanel` or bordered `Material`;
   - the expanded detail under the World filter shows no game name above the monster name;
   - an inherited section shows the note next to its title once.
-- [ ] T014 [US1] Restyle `lib/features/monsters/presentation/views/widgets/monster_detail_view.dart`:
+- [X] T014 [US1] Restyle `lib/features/monsters/presentation/views/widgets/monster_detail_view.dart`:
   - header plate 92 dp (1 dp border, +3° rotation, via `MonsterImage`);
   - name `notebookTitle(40/32)`, up to 3 lines; classification in muted body;
   - no game name, except with a `showGame` flag;
@@ -96,21 +96,21 @@ accessibility tests pass.
   - sections in the new order, wrapped in `NotebookSection` with numbers 1–6;
   - habitat and parts side by side from 360 dp.
   Pass `showGame` from `lib/features/monsters/presentation/views/monsters_page.dart` (only when the filter is "Todos").
-- [ ] T015 [US1] Restyle `lib/features/monsters/presentation/views/widgets/version_selector.dart` to `UnderlineTabs` (text options, semantics "Versão: <label>"), and update `test/features/monsters/presentation/views/widgets/version_selector_test.dart` to semantics-based finders.
-- [ ] T016 [P] [US1] Restyle `lib/features/monsters/presentation/views/widgets/hunting_items_section.dart`, `habitat_section.dart` and `parts_section.dart` to `NotebookSection` + `RuledRow`. "Cortável" becomes muted text, not a chip. Keep the semantics. Update `hunting_items_section_test.dart`, `habitat_parts_sections_test.dart` and `habitat_parts_layout_test.dart` if their finders depend on the old panels.
-- [ ] T017 [US1] Rewrite `lib/features/monsters/presentation/views/widgets/materials_section.dart`:
+- [X] T015 [US1] Restyle `lib/features/monsters/presentation/views/widgets/version_selector.dart` to `UnderlineTabs` (text options, semantics "Versão: <label>"), and update `test/features/monsters/presentation/views/widgets/version_selector_test.dart` to semantics-based finders.
+- [X] T016 [P] [US1] Restyle `lib/features/monsters/presentation/views/widgets/hunting_items_section.dart`, `habitat_section.dart` and `parts_section.dart` to `NotebookSection` + `RuledRow`. "Cortável" becomes muted text, not a chip. Keep the semantics. Update `hunting_items_section_test.dart`, `habitat_parts_sections_test.dart` and `habitat_parts_layout_test.dart` if their finders depend on the old panels.
+- [X] T017 [US1] Rewrite `lib/features/monsters/presentation/views/widgets/materials_section.dart`:
   - `NotebookSection`, with `UnderlineTabs` for ranks, or the rank as the section note when there is only one;
   - groups from `monster.dropsByMethod(rank)`, each a `RuledCaption` (method label) followed by `RuledRow`s: name (+ rarity) and rate (`notebookNumber(14, bold)`) or "Taxa desconhecida".
   Update `test/features/monsters/presentation/views/widgets/materials_section_test.dart` for method grouping, e.g. the World Arch-Tempered Nergigante fixture with a "Prêmio da missão" group.
-- [ ] T018 [US1] Restyle `lib/features/monsters/presentation/views/widgets/monster_list_pane.dart`:
+- [X] T018 [US1] Restyle `lib/features/monsters/presentation/views/widgets/monster_list_pane.dart`:
   - `_MonsterTile` as a ruled row (thumbnail 44, name `notebookTitle(18)`, classification and "N versões" with the count in Averia);
   - selected row `panelHighlight` with a 2 dp gold left bar;
   - "Todos" game captions (name `notebookTitle(16)` + hairline) replacing `OrnamentHeader`;
   - `_LoadFailed` and `_NoResults` without `HunterPanel`.
   Keep the current weakness badge until T023. Update `test/features/monsters/presentation/views/widgets/monster_list_pane_test.dart`.
-- [ ] T019 [US1] Update `lib/features/monsters/presentation/views/monsters_page.dart` and `monster_detail_page.dart`: app bar title "Caderninho" with no subtitle; the compact detail back row "‹ Monstros" with the game name at the right. Update `monsters_page_compact_test.dart` and `monsters_page_adaptive_test.dart`.
-- [ ] T020 [P] [US1] Restyle `lib/features/settings/presentation/settings_page.dart`: no `HunterPanel`; the options are ruled rows with radio semantics under a title in `notebookTitle(20)`. Update `test/features/settings/presentation/name_language_flow_test.dart` if its finders change.
-- [ ] T021 [US1] Update `test/features/monsters/presentation/views/accessibility_test.dart`: list, detail, version detail and settings at 320 dp / 200 % text (no overflow), text contrast guideline, 48 dp tap targets. Run `flutter analyze` and `flutter test`; commit the US1 slice.
+- [X] T019 [US1] Update `lib/features/monsters/presentation/views/monsters_page.dart` and `monster_detail_page.dart`: app bar title "Caderninho" with no subtitle; the compact detail back row "‹ Monstros" with the game name at the right. Update `monsters_page_compact_test.dart` and `monsters_page_adaptive_test.dart`.
+- [X] T020 [P] [US1] Restyle `lib/features/settings/presentation/settings_page.dart`: no `HunterPanel`; the options are ruled rows with radio semantics under a title in `notebookTitle(20)`. Update `test/features/settings/presentation/name_language_flow_test.dart` if its finders change.
+- [X] T021 [US1] Update `test/features/monsters/presentation/views/accessibility_test.dart`: list, detail, version detail and settings at 320 dp / 200 % text (no overflow), text contrast guideline, 48 dp tap targets. Run `flutter analyze` and `flutter test`; commit the US1 slice.
 
 **Checkpoint**: US1 is visible end to end. Weaknesses, HP and the game tabs keep their old
 widgets, restyled only through the theme.

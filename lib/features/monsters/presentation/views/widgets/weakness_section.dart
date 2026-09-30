@@ -10,7 +10,7 @@ import 'package:mh_wiki/core/presentation/widgets/star_rating.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/effectiveness.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/weakness_profile.dart';
-import 'package:mh_wiki/features/monsters/presentation/views/widgets/section_card.dart';
+import 'package:mh_wiki/core/presentation/widgets/notebook_section.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
 /// General weaknesses as a grid of five element cells, the most effective
@@ -19,6 +19,7 @@ class WeaknessSection extends StatelessWidget {
   const WeaknessSection({
     required this.profile,
     required this.language,
+    this.number,
     this.inherited = false,
     super.key,
   });
@@ -27,12 +28,16 @@ class WeaknessSection extends StatelessWidget {
   final NameLanguage language;
   final bool inherited;
 
+  /// Position in the detail (005 FR-004).
+  final int? number;
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    return SectionCard(
+    return NotebookSection(
+      number: number,
       title: l10n.sectionWeaknesses,
-      inherited: inherited,
+      note: inherited ? l10n.inheritedFromBase : null,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

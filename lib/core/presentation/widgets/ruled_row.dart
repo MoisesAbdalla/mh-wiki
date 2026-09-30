@@ -52,8 +52,8 @@ class RuledRow extends StatelessWidget {
   }
 }
 
-/// Small upper-case caption that opens a group of [RuledRow]s, e.g. the
-/// method of a group of materials ("Entalhe").
+/// Small caption that opens a group of [RuledRow]s, e.g. the method of a
+/// group of materials ("Entalhe").
 class RuledCaption extends StatelessWidget {
   const RuledCaption(this.text, {super.key});
 
@@ -67,9 +67,9 @@ class RuledCaption extends StatelessWidget {
     child: Padding(
       padding: const EdgeInsets.only(top: 16, bottom: 6),
       child: Text(
-        text.toUpperCase(),
+        text,
         style: Theme.of(context).textTheme.bodySmall
-            ?.copyWith(fontWeight: FontWeight.w700, letterSpacing: 0.8),
+            ?.copyWith(fontWeight: FontWeight.w700, letterSpacing: 0.4),
       ),
     ),
   );
