@@ -7,6 +7,9 @@ Windows).
 - List monsters by game, with accent- and case-insensitive search (pt-BR and English names).
 - Detail view: elemental weaknesses (including per-state variations), habitats, breakable
   parts, and materials by rank with acquisition method and drop rate.
+- Hunting info: reference HP per rank (solo, plus an approximate party estimate for 2–4
+  hunters with its source), vision, and the reaction to Flash, Sonic/Screamer and Dung
+  pods or bombs, Pitfall and Shock traps.
 - Game names shown in Portuguese (Brazil) or English (Configurações).
 - Side-by-side list and detail on wide screens (≥ 840 dp).
 - "Caderno do Caçador" look: a fixed dark theme inspired by the games' hunter's notes, with
@@ -85,3 +88,18 @@ its sources, and the choices behind them are in
 [research.md](specs/001-monster-wiki/research.md) (R12, R15). Rise and Wilds star ratings are
 derived from hitzones by a documented rule, so they may differ slightly from the in-game field
 guide.
+
+**Hunting info** ([research](specs/003-hunting-info/research.md)):
+
+- HP is a reference, not a fixed number. World uses the solo expedition HP of each rank; Rise
+  and Wilds, and World ranks without expeditions, use the lowest HP of the rank's regular
+  quests, shown as "a partir de".
+- Party HP is always an estimate labeled "aprox.". It is the solo HP times the game's factor:
+  World from Fextralife (×1.5 / ×2.2–2.6 / ×2.2–2.6); Rise (×1.35–1.5 / ×1.7–2.0 / ×2.0–2.4)
+  and Wilds (×1.6 / ×2.0 / ×2.4) from Kiranico's per-player quest data.
+- Item reactions come from the Monster Hunter Wiki. When its infobox and item table disagree,
+  the infobox is used and the conflict is noted in the monster's `sources`. "Enxerga" is
+  shown only when the Flash item affects the monster, so the app never claims a monster is
+  blind.
+- `hp`, `partyHpFactors`, `huntingItems` and `itemReactions` are optional. A monster without
+  them shows "HP desconhecido" or "Desconhecido".

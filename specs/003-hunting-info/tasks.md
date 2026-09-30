@@ -79,9 +79,9 @@ description: "Task list for 003-hunting-info implementation"
 
 ## Phase 5: Polish & Cross-Cutting Concerns
 
-- [ ] T019 Extend `test/features/monsters/presentation/views/accessibility_test.dart`: detail with HP and items at 320 dp / 200% text (no overflow) and text contrast
-- [ ] T020 [P] README: document the new sections and their sources (HP factors are estimates)
-- [ ] T021 Final gates, `flutter build windows --release`; commit and push
+- [X] T019 Extend `test/features/monsters/presentation/views/accessibility_test.dart`: detail with HP and items at 320 dp / 200% text (no overflow) and text contrast
+- [X] T020 [P] README: document the new sections and their sources (HP factors are estimates)
+- [X] T021 Final gates, `flutter build windows --release`; commit and push
 - [ ] T022 Manual quickstart checks 1–7 (user, on Windows/phone)
 
 ---
