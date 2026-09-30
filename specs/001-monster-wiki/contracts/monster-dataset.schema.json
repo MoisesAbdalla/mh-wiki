@@ -2,24 +2,52 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://mhwiki.local/schemas/monster-dataset.v1.json",
   "title": "Monster dataset (one file per game)",
-  "description": "Contract for assets/data/<game>/monsters.json. Cross-reference rules that JSON Schema cannot express (unique ids, partId/materialId/habitatId references, ranks allowed per game) are listed in data-model.md and enforced by the data layer.",
+  "description": "Contract for assets/data/<game>/monsters.json. Cross-reference rules that JSON Schema cannot express (unique ids, partId/materialId/habitatId references, ranks allowed per game) are listed in data-model.md and enforced by the data layer. Feature 003 adds the optional properties partyHpFactors, huntingItems (dataset) and hp, itemReactions (monster); schema version stays 1 (additive).",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "game", "generatedAt", "sources", "habitats", "materials", "monsters"],
+  "required": [
+    "schemaVersion",
+    "game",
+    "generatedAt",
+    "sources",
+    "habitats",
+    "materials",
+    "monsters"
+  ],
   "properties": {
-    "schemaVersion": { "const": 1 },
-    "game": { "enum": ["world_iceborne", "rise_sunbreak", "wilds"] },
-    "generatedAt": { "type": "string", "format": "date" },
-    "sources": { "$ref": "#/$defs/sources" },
+    "schemaVersion": {
+      "const": 1
+    },
+    "game": {
+      "enum": [
+        "world_iceborne",
+        "rise_sunbreak",
+        "wilds"
+      ]
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "sources": {
+      "$ref": "#/$defs/sources"
+    },
     "habitats": {
       "type": "array",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "name"],
+        "required": [
+          "id",
+          "name"
+        ],
         "properties": {
-          "id": { "$ref": "#/$defs/slug" },
-          "name": { "$ref": "#/$defs/localizedText" }
+          "id": {
+            "$ref": "#/$defs/slug"
+          },
+          "name": {
+            "$ref": "#/$defs/localizedText"
+          }
         }
       }
     },
@@ -28,41 +56,180 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "name"],
+        "required": [
+          "id",
+          "name"
+        ],
         "properties": {
-          "id": { "$ref": "#/$defs/slug" },
-          "name": { "$ref": "#/$defs/localizedText" },
-          "rarity": { "type": "integer", "minimum": 1, "maximum": 12 }
+          "id": {
+            "$ref": "#/$defs/slug"
+          },
+          "name": {
+            "$ref": "#/$defs/localizedText"
+          },
+          "rarity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12
+          }
         }
       }
     },
     "monsters": {
       "type": "array",
-      "items": { "$ref": "#/$defs/monster" }
+      "items": {
+        "$ref": "#/$defs/monster"
+      }
+    },
+    "partyHpFactors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source"
+      ],
+      "properties": {
+        "2": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "min",
+            "max"
+          ],
+          "properties": {
+            "min": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "max": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          }
+        },
+        "3": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "min",
+            "max"
+          ],
+          "properties": {
+            "min": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "max": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          }
+        },
+        "4": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "min",
+            "max"
+          ],
+          "properties": {
+            "min": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "max": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/sources/items"
+        }
+      }
+    },
+    "huntingItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "flash",
+              "sonic",
+              "dung",
+              "pitfallTrap",
+              "shockTrap"
+            ]
+          },
+          "name": {
+            "$ref": "#/$defs/localizedText"
+          }
+        }
+      }
     }
   },
   "$defs": {
-    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
     "localizedText": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["en"],
+      "required": [
+        "en"
+      ],
       "properties": {
-        "en": { "type": "string", "minLength": 1 },
-        "ptBr": { "type": "string", "minLength": 1 }
+        "en": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ptBr": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
-    "effectiveness": { "enum": ["immune", "none", "low", "medium", "high"] },
+    "effectiveness": {
+      "enum": [
+        "immune",
+        "none",
+        "low",
+        "medium",
+        "high"
+      ]
+    },
     "elementMap": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["fire", "water", "thunder", "ice", "dragon"],
+      "required": [
+        "fire",
+        "water",
+        "thunder",
+        "ice",
+        "dragon"
+      ],
       "properties": {
-        "fire": { "$ref": "#/$defs/effectiveness" },
-        "water": { "$ref": "#/$defs/effectiveness" },
-        "thunder": { "$ref": "#/$defs/effectiveness" },
-        "ice": { "$ref": "#/$defs/effectiveness" },
-        "dragon": { "$ref": "#/$defs/effectiveness" }
+        "fire": {
+          "$ref": "#/$defs/effectiveness"
+        },
+        "water": {
+          "$ref": "#/$defs/effectiveness"
+        },
+        "thunder": {
+          "$ref": "#/$defs/effectiveness"
+        },
+        "ice": {
+          "$ref": "#/$defs/effectiveness"
+        },
+        "dragon": {
+          "$ref": "#/$defs/effectiveness"
+        }
       }
     },
     "sources": {
@@ -71,48 +238,129 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["name", "url"],
+        "required": [
+          "name",
+          "url"
+        ],
         "properties": {
-          "name": { "type": "string", "minLength": 1 },
-          "url": { "type": "string", "format": "uri", "pattern": "^https?://" },
-          "notes": { "type": "string" }
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https?://"
+          },
+          "notes": {
+            "type": "string"
+          }
         }
       }
     },
     "drop": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["materialId", "rank", "method"],
+      "required": [
+        "materialId",
+        "rank",
+        "method"
+      ],
       "properties": {
-        "materialId": { "$ref": "#/$defs/slug" },
-        "rank": { "enum": ["low", "high", "master"] },
-        "method": {
-          "enum": ["carve", "tailCarve", "capture", "breakPart", "questReward", "droppedMaterial", "other"]
+        "materialId": {
+          "$ref": "#/$defs/slug"
         },
-        "methodLabel": { "$ref": "#/$defs/localizedText" },
-        "partId": { "$ref": "#/$defs/slug" },
-        "ratePercent": { "type": "number", "exclusiveMinimum": 0, "maximum": 100 }
+        "rank": {
+          "enum": [
+            "low",
+            "high",
+            "master"
+          ]
+        },
+        "method": {
+          "enum": [
+            "carve",
+            "tailCarve",
+            "capture",
+            "breakPart",
+            "questReward",
+            "droppedMaterial",
+            "other"
+          ]
+        },
+        "methodLabel": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "partId": {
+          "$ref": "#/$defs/slug"
+        },
+        "ratePercent": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 100
+        }
       },
       "allOf": [
         {
-          "if": { "properties": { "method": { "const": "breakPart" } } },
-          "then": { "required": ["partId"] },
-          "else": { "not": { "required": ["partId"] } }
+          "if": {
+            "properties": {
+              "method": {
+                "const": "breakPart"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "partId"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "partId"
+              ]
+            }
+          }
         },
         {
-          "if": { "properties": { "method": { "const": "other" } } },
-          "then": { "required": ["methodLabel"] }
+          "if": {
+            "properties": {
+              "method": {
+                "const": "other"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "methodLabel"
+            ]
+          }
         }
       ]
     },
     "monster": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["slug", "name", "classification", "weaknesses", "habitatIds", "parts", "drops", "sources"],
+      "required": [
+        "slug",
+        "name",
+        "classification",
+        "weaknesses",
+        "habitatIds",
+        "parts",
+        "drops",
+        "sources"
+      ],
       "properties": {
-        "slug": { "$ref": "#/$defs/slug" },
-        "name": { "$ref": "#/$defs/localizedText" },
-        "classification": { "$ref": "#/$defs/localizedText" },
+        "slug": {
+          "$ref": "#/$defs/slug"
+        },
+        "name": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "classification": {
+          "$ref": "#/$defs/localizedText"
+        },
         "image": {
           "type": "string",
           "description": "Asset path relative to project root, e.g. assets/images/monsters/wilds/rathalos.webp"
@@ -120,40 +368,153 @@
         "weaknesses": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["general"],
+          "required": [
+            "general"
+          ],
           "properties": {
-            "general": { "$ref": "#/$defs/elementMap" },
+            "general": {
+              "$ref": "#/$defs/elementMap"
+            },
             "states": {
               "type": "array",
               "items": {
                 "type": "object",
                 "additionalProperties": false,
-                "required": ["id", "name", "values"],
+                "required": [
+                  "id",
+                  "name",
+                  "values"
+                ],
                 "properties": {
-                  "id": { "$ref": "#/$defs/slug" },
-                  "name": { "$ref": "#/$defs/localizedText" },
-                  "values": { "$ref": "#/$defs/elementMap" }
+                  "id": {
+                    "$ref": "#/$defs/slug"
+                  },
+                  "name": {
+                    "$ref": "#/$defs/localizedText"
+                  },
+                  "values": {
+                    "$ref": "#/$defs/elementMap"
+                  }
                 }
               }
             }
           }
         },
-        "habitatIds": { "type": "array", "items": { "$ref": "#/$defs/slug" }, "uniqueItems": true },
+        "habitatIds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/slug"
+          },
+          "uniqueItems": true
+        },
         "parts": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["id", "name", "severable"],
+            "required": [
+              "id",
+              "name",
+              "severable"
+            ],
             "properties": {
-              "id": { "$ref": "#/$defs/slug" },
-              "name": { "$ref": "#/$defs/localizedText" },
-              "severable": { "type": "boolean" }
+              "id": {
+                "$ref": "#/$defs/slug"
+              },
+              "name": {
+                "$ref": "#/$defs/localizedText"
+              },
+              "severable": {
+                "type": "boolean"
+              }
             }
           }
         },
-        "drops": { "type": "array", "items": { "$ref": "#/$defs/drop" } },
-        "sources": { "$ref": "#/$defs/sources" }
+        "drops": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/drop"
+          }
+        },
+        "sources": {
+          "$ref": "#/$defs/sources"
+        },
+        "hp": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "rank",
+              "solo",
+              "basis"
+            ],
+            "properties": {
+              "rank": {
+                "enum": [
+                  "low",
+                  "high",
+                  "master"
+                ]
+              },
+              "solo": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "basis": {
+                "enum": [
+                  "expedition",
+                  "minQuest"
+                ]
+              }
+            }
+          }
+        },
+        "itemReactions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "item",
+              "effect"
+            ],
+            "properties": {
+              "item": {
+                "enum": [
+                  "flash",
+                  "sonic",
+                  "dung",
+                  "pitfallTrap",
+                  "shockTrap"
+                ]
+              },
+              "effect": {
+                "enum": [
+                  "affects",
+                  "noEffect",
+                  "conditional",
+                  "unknown"
+                ]
+              },
+              "detail": {
+                "$ref": "#/$defs/localizedText"
+              }
+            },
+            "if": {
+              "properties": {
+                "effect": {
+                  "const": "conditional"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "detail"
+              ]
+            }
+          }
+        }
       }
     }
   }

@@ -21,17 +21,17 @@ description: "Task list for 003-hunting-info implementation"
 
 ## Phase 1: Setup
 
-- [ ] T001 Add the new UI strings to `lib/l10n/app_pt.arb` (section titles "HP" and "Itens de caça", "Solo", "Grupo (aprox.)", "a partir de {value}", "{n} caçadores", "Fonte: {name}", "HP desconhecido", "Desconhecido", "Visão", "Enxerga", "Afeta", "Não afeta", "Afeta com condição") and run `flutter gen-l10n`
+- [X] T001 Add the new UI strings to `lib/l10n/app_pt.arb` (section titles "HP" and "Itens de caça", "Solo", "Grupo (aprox.)", "a partir de {value}", "{n} caçadores", "Fonte: {name}", "HP desconhecido", "Desconhecido", "Visão", "Enxerga", "Afeta", "Não afeta", "Afeta com condição") and run `flutter gen-l10n`
 
 ---
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
-- [ ] T002 [P] Unit tests for the new optional dataset fields in `test/features/monsters/data/dtos/monster_dataset_dto_test.dart`: dataset without them still parses; valid `partyHpFactors`, `huntingItems`, `hp`, `itemReactions` parse; rejected: duplicate hp rank, rank not allowed for the game, `solo <= 0`, reaction item not in `huntingItems`, `conditional` without `detail`, factor with `min > max` or `min <= 0`, factor key outside 2–4 (extend `test/fakes/dataset_json_fixtures.dart`)
-- [ ] T003 [P] Create domain entities per data-model.md (pure Dart): `RankHp` (rank, solo, basis `expedition|minQuest`), `PartyHpFactors` (factors for 2/3/4 as min/max + `SourceRef`), `HuntingItem` (id, name), `ItemReaction` (item, effect `affects|noEffect|conditional|unknown`, detail), `HuntingInfo` (hp, partyFactors, items, reactions) in `lib/features/monsters/domain/entities/` (one file each); add `huntingInfo` to `Monster` in `lib/features/monsters/domain/entities/monster.dart` with an empty default
-- [ ] T004 Extend DTOs with the optional fields and validation rules of T002 and map them to the new entities (dataset-level factors and items shared by all its monsters) in `lib/features/monsters/data/dtos/monster_dataset_dto.dart` and `lib/features/monsters/data/dtos/monster_dataset_mapper.dart` (makes T002 pass)
-- [ ] T005 Add a "Monster Hunter Wiki (hunting info)" and "HP sources" note to `specs/001-monster-wiki/contracts/monster-dataset.schema.json` documenting the new optional properties (schema stays v1, research R5)
-- [ ] T006 Run gates (`flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`); commit
+- [X] T002 [P] Unit tests for the new optional dataset fields in `test/features/monsters/data/dtos/monster_dataset_dto_test.dart`: dataset without them still parses; valid `partyHpFactors`, `huntingItems`, `hp`, `itemReactions` parse; rejected: duplicate hp rank, rank not allowed for the game, `solo <= 0`, reaction item not in `huntingItems`, `conditional` without `detail`, factor with `min > max` or `min <= 0`, factor key outside 2–4 (extend `test/fakes/dataset_json_fixtures.dart`)
+- [X] T003 [P] Create domain entities per data-model.md (pure Dart): `RankHp` (rank, solo, basis `expedition|minQuest`), `PartyHpFactors` (factors for 2/3/4 as min/max + `SourceRef`), `HuntingItem` (id, name), `ItemReaction` (item, effect `affects|noEffect|conditional|unknown`, detail), `HuntingInfo` (hp, partyFactors, items, reactions) in `lib/features/monsters/domain/entities/` (one file each); add `huntingInfo` to `Monster` in `lib/features/monsters/domain/entities/monster.dart` with an empty default
+- [X] T004 Extend DTOs with the optional fields and validation rules of T002 and map them to the new entities (dataset-level factors and items shared by all its monsters) in `lib/features/monsters/data/dtos/monster_dataset_dto.dart` and `lib/features/monsters/data/dtos/monster_dataset_mapper.dart` (makes T002 pass)
+- [X] T005 Add a "Monster Hunter Wiki (hunting info)" and "HP sources" note to `specs/001-monster-wiki/contracts/monster-dataset.schema.json` documenting the new optional properties (schema stays v1, research R5)
+- [X] T006 Run gates (`flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`); commit
 
 ---
 

@@ -429,6 +429,90 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Wilds'**
   String get sectionTitleWilds;
+
+  /// No description provided for @sectionHp.
+  ///
+  /// In pt, this message translates to:
+  /// **'HP'**
+  String get sectionHp;
+
+  /// No description provided for @sectionHuntingItems.
+  ///
+  /// In pt, this message translates to:
+  /// **'Itens de caça'**
+  String get sectionHuntingItems;
+
+  /// No description provided for @hpSolo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Solo'**
+  String get hpSolo;
+
+  /// No description provided for @hpParty.
+  ///
+  /// In pt, this message translates to:
+  /// **'Grupo (aprox.)'**
+  String get hpParty;
+
+  /// No description provided for @hpFrom.
+  ///
+  /// In pt, this message translates to:
+  /// **'a partir de {value}'**
+  String hpFrom(String value);
+
+  /// No description provided for @hpHunters.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count} caçadores'**
+  String hpHunters(int count);
+
+  /// No description provided for @sourceLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fonte: {name}'**
+  String sourceLabel(String name);
+
+  /// No description provided for @hpUnknown.
+  ///
+  /// In pt, this message translates to:
+  /// **'HP desconhecido'**
+  String get hpUnknown;
+
+  /// No description provided for @unknown.
+  ///
+  /// In pt, this message translates to:
+  /// **'Desconhecido'**
+  String get unknown;
+
+  /// No description provided for @visionLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Visão'**
+  String get visionLabel;
+
+  /// No description provided for @visionSees.
+  ///
+  /// In pt, this message translates to:
+  /// **'Enxerga'**
+  String get visionSees;
+
+  /// No description provided for @effectAffects.
+  ///
+  /// In pt, this message translates to:
+  /// **'Afeta'**
+  String get effectAffects;
+
+  /// No description provided for @effectNoEffect.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não afeta'**
+  String get effectNoEffect;
+
+  /// No description provided for @effectConditional.
+  ///
+  /// In pt, this message translates to:
+  /// **'Afeta com condição'**
+  String get effectConditional;
 }
 
 class _AppLocalizationsDelegate
