@@ -1,12 +1,17 @@
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
 
+/// What kind of gathering point gives a material (from the wiki item icon).
+enum GatherKind { ore, bone, bug, plant, fish }
+
 /// Where a material comes from, as Kiranico lists it (006 US5, FR-015).
 final class MaterialSources {
   const MaterialSources({
     this.gathering = const [],
     this.monsters = const [],
     this.quests = const [],
+    this.kind,
+    this.description,
   });
 
   static const none = MaterialSources();
@@ -19,6 +24,13 @@ final class MaterialSources {
 
   /// Quests whose rewards include it, by stars.
   final List<QuestSource> quests;
+
+  /// What to gather on the maps: a mining outcrop, a bonepile… `null` when
+  /// the material is not gathered or the source does not say.
+  final GatherKind? kind;
+
+  /// The game's description of the item, which often says where to find it.
+  final LocalizedText? description;
 
   bool get isEmpty => gathering.isEmpty && monsters.isEmpty && quests.isEmpty;
 
@@ -46,10 +58,17 @@ final class MaterialSources {
           gathering: g,
           monsters: m,
           quests: quests,
+          kind: kind,
+          description: description,
         );
       }
     }
-    return RankedSources(rank: rank, quests: quests);
+    return RankedSources(
+      rank: rank,
+      quests: quests,
+      kind: kind,
+      description: description,
+    );
   }
 }
 
@@ -60,14 +79,21 @@ final class RankedSources {
     this.gathering = const [],
     this.monsters = const [],
     this.quests = const [],
+    this.kind,
+    this.description,
   });
 
   final Rank rank;
   final List<GatheringSource> gathering;
   final List<MonsterSource> monsters;
   final List<QuestSource> quests;
+  final GatherKind? kind;
+  final LocalizedText? description;
 
   bool get isEmpty => gathering.isEmpty && monsters.isEmpty && quests.isEmpty;
+
+  /// Something to show when the material is opened.
+  bool get hasDetails => !isEmpty || description != null;
 }
 
 final class GatheringSource {

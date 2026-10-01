@@ -54,8 +54,10 @@ class _MaterialCostRowState extends State<MaterialCostRow> {
       for (final m in ranked.monsters)
         if (m.small) m,
     ];
-    final canOpen = !ranked.isEmpty;
-    final unknown = widget.droppers.isEmpty && ranked.isEmpty;
+    final canOpen = ranked.hasDetails;
+    final kind = gatherLabel(l10n, ranked.kind);
+    final unknown =
+        widget.droppers.isEmpty && ranked.isEmpty && ranked.kind == null;
 
     final chips = <Widget>[
       for (final dropper in widget.droppers.take(3))
@@ -69,10 +71,15 @@ class _MaterialCostRowState extends State<MaterialCostRow> {
         _Chip(text: l10n.smallMonster(m.name.resolve(language))),
       if (ranked.gathering.length == 1)
         _Chip(
-          text: l10n.gatheringAt(ranked.gathering.single.map.resolve(language)),
+          text: l10n.gatheringAt(
+            kind,
+            ranked.gathering.single.map.resolve(language),
+          ),
         )
       else if (ranked.gathering.isNotEmpty)
-        _Chip(text: l10n.gatheringMaps(ranked.gathering.length)),
+        _Chip(text: l10n.gatheringMaps(kind, ranked.gathering.length))
+      else if (ranked.kind != null)
+        _Chip(text: l10n.gatherNoMap(kind)),
       if (ranked.quests.length == 1)
         _Chip(text: l10n.questChip(ranked.quests.single.stars))
       else if (ranked.quests.isNotEmpty)
@@ -227,8 +234,21 @@ class _SourcesTable extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          if (ranked.description case final description?) ...[
+            Text(
+              description.resolve(language),
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: HunterPalette.textMuted,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+            const SizedBox(height: 6),
+          ],
           if (ranked.gathering.isNotEmpty) ...[
-            Text(l10n.sourcesGathering(rank), style: caption),
+            Text(
+              l10n.sourcesGathering(gatherLabel(l10n, ranked.kind), rank),
+              style: caption,
+            ),
             for (final (i, g) in ranked.gathering.indexed)
               row(
                 g.map.resolve(language),
@@ -262,3 +282,13 @@ class _SourcesTable extends StatelessWidget {
     );
   }
 }
+
+/// "Mineração", "Pilha de ossos"… or "Coleta" when the kind is unknown.
+String gatherLabel(AppLocalizations l10n, GatherKind? kind) => switch (kind) {
+  GatherKind.ore => l10n.gatherOre,
+  GatherKind.bone => l10n.gatherBone,
+  GatherKind.bug => l10n.gatherBug,
+  GatherKind.plant => l10n.gatherPlant,
+  GatherKind.fish => l10n.gatherFish,
+  null => l10n.gatherAny,
+};

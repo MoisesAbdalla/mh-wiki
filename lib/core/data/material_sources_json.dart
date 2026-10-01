@@ -39,5 +39,9 @@ MaterialSources readMaterialSources(JsonReader r) {
           rate: rate(q),
         ),
     ],
+    kind: r.has('kind') ? r.enumValue('kind', GatherKind.values) : null,
+    description: r.has('description')
+        ? readLocalized(r.object('description'))
+        : null,
   );
 }

@@ -597,19 +597,19 @@ class AppLocalizationsPt extends AppLocalizations {
   String get ammoTranq => 'Tranquilizante';
 
   @override
-  String gatheringMaps(int count) {
+  String gatheringMaps(String kind, int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
       other: '$count mapas',
       one: '1 mapa',
     );
-    return 'Coleta · $_temp0';
+    return '$kind · $_temp0';
   }
 
   @override
-  String gatheringAt(String map) {
-    return 'Coleta · $map';
+  String gatheringAt(String kind, String map) {
+    return '$kind · $map';
   }
 
   @override
@@ -631,8 +631,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get unknownOrigin => 'Origem desconhecida';
 
   @override
-  String sourcesGathering(String rank) {
-    return 'Coleta · Rank $rank';
+  String sourcesGathering(String kind, String rank) {
+    return '$kind · Rank $rank';
   }
 
   @override
@@ -794,4 +794,27 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rampageDecorationsFit => 'Joias Rampage que cabem';
+
+  @override
+  String get gatherAny => 'Coleta';
+
+  @override
+  String get gatherOre => 'Mineração';
+
+  @override
+  String get gatherBone => 'Pilha de ossos';
+
+  @override
+  String get gatherBug => 'Inseto';
+
+  @override
+  String get gatherPlant => 'Planta';
+
+  @override
+  String get gatherFish => 'Pesca';
+
+  @override
+  String gatherNoMap(String kind) {
+    return '$kind · mapa não informado';
+  }
 }

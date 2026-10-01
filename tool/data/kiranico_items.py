@@ -111,3 +111,58 @@ def material_sources(item_id, large):
         'quests': strip(sorted(quests.values(), key=lambda q: (len(q['stars']), q['stars']))),
     }
     return {k: v for k, v in out.items() if v}
+
+
+# ---------------------------------------------------------------- what to gather (007 R13)
+
+def wiki_item_icons(names):
+    """{item en name: wiki icon type} ("Ore", "Bone", "Bug", "Herb"…) from the MHRS item pages.
+
+    The icon says what kind of gathering point gives the item, which Kiranico does not."""
+    from common import wiki_api
+    titles = sorted({f'{n} (MHRS)' for n in names})
+    out = {}
+    for i in range(0, len(titles), 40):
+        d = wiki_api({'action': 'query', 'prop': 'revisions', 'rvprop': 'content', 'rvslots': 'main',
+                      'redirects': 1, 'titles': '|'.join(titles[i:i + 40])}, f'wiki_mhrs_items_{i // 40}.json')
+        for p in d['query']['pages'].values():
+            if 'revisions' not in p:
+                continue
+            icon = re.search(r'^\|\s*Icon\s*=\s*(.+)$', p['revisions'][0]['slots']['main']['*'], re.M)
+            if icon:
+                out[p['title'].replace(' (MHRS)', '')] = icon.group(1).strip()
+    return out
+
+
+def item_description(item_id):
+    """The game's description of an item, en and pt-BR, from its cached Kiranico pages."""
+    out = {}
+    for lang, key_ in (('en', 'en'), ('pt', 'ptBr')):
+        path = f'kiranico_item_{item_id}_{lang}.html'
+        if not os.path.exists(path):
+            continue
+        m = re.search(r'</h1>\s*<p>(.*?)</p>', open(path, encoding='utf8').read(), re.S)
+        if m:
+            # The game wraps lines with a hyphen ("enter- rado"); join those.
+            out[key_] = re.sub(r'(\w)- (\w)', r'\1\2', clean(m.group(1)))
+    return out if out.get('en') else None
+
+
+# Wiki item icon → what kind of gathering point gives it.
+GATHER_KINDS = {'Ore': 'ore', 'Bone': 'bone', 'Bug': 'bug', 'Herb': 'plant', 'Mushroom': 'plant',
+                'Seed': 'plant', 'Fish': 'fish', 'Fish-Star': 'fish'}
+
+
+def enrich_sources(sources, item_id, icon):
+    """Adds the gathering `kind` and the game's `description` to a material's sources.
+
+    The kind is set only when the material is gathered: it has gathering maps, or it has no other
+    source and its icon is a gathering one (an insect with no listed map)."""
+    out = dict(sources or {})
+    kind = GATHER_KINDS.get(icon or '')
+    if kind and (out.get('gathering') or not out):
+        out['kind'] = kind
+    desc = item_description(item_id) if item_id else None
+    if desc:
+        out['description'] = desc
+    return out or None

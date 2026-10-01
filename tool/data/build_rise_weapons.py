@@ -25,7 +25,7 @@ import time
 import urllib.request
 
 from common import REPO, UA, clean, dataset_path, fetch, wiki_api  # noqa: F401 (sets cwd to the cache)
-from kiranico_items import key, material_sources, slug  # noqa: E402
+from kiranico_items import enrich_sources, key, material_sources, slug, wiki_item_icons  # noqa: E402
 
 KIRANICO = 'https://mhrise.kiranico.com'
 WIKI = 'https://monsterhunterwiki.org/wiki/'
@@ -519,11 +519,12 @@ def main():
     if os.path.exists('kiranico_item_ids.json'):
         item_ids = {slug(n): i for n, i in json.load(open('kiranico_item_ids.json', encoding='utf8')).items()}
     large = {key(m['name']['en']): m['slug'] for m in monsters}
+    icons = wiki_item_icons(m['name']['en'] for m in materials_out.values())
     for m in materials_out.values():
-        if m['id'] in item_ids:
-            src = material_sources(item_ids[m['id']], large)
-            if src:
-                m['sources'] = src
+        iid = item_ids.get(m['id'])
+        src = enrich_sources(material_sources(iid, large) if iid else None, iid, icons.get(m['name']['en']))
+        if src:
+            m['sources'] = src
     used_rampage = {r for w in weapons for r in w.get('rampageSkills', [])} | {d['skill'] for d in rampage_decos}
     dataset = {
         'schemaVersion': 1,

@@ -371,6 +371,53 @@ void main() {
     expect(find.text('Missões de Eventos 8★ · Narwa Ribomba'), findsOneWidget);
   });
 
+  testWidgets('Materiais: what to gather and the game description', (
+    tester,
+  ) async {
+    const ore = MaterialSources(
+      kind: GatherKind.ore,
+      description: LocalizedText(
+        en: 'An ore still being studied.',
+        ptBr: 'Minério ainda sob estudo.',
+      ),
+      gathering: [
+        GatheringSource(
+          map: LocalizedText(en: 'Jungle', ptBr: 'Selva'),
+          rank: Rank.master,
+          rate: 35,
+        ),
+      ],
+    );
+    const bug = MaterialSources(
+      kind: GatherKind.bug,
+      description: LocalizedText(en: 'A rare insect.', ptBr: 'Inseto raro.'),
+    );
+    final weapon = buildWeapon(
+      'gathered',
+      en: 'Gathered Blade',
+      rarity: 8,
+      forge: [
+        cost('carbalite-ore', 'Carbalite Ore', sources: ore),
+        cost('split-jaw-buttlefly', 'Split-Jaw Buttlefly', sources: bug),
+      ],
+    );
+    catalog = weaponCatalog([...anjanathWeapons(), weapon]);
+    await pumpDetail(tester, 'gathered');
+
+    expect(find.text('Mineração · Selva'), findsOneWidget);
+    expect(find.text('Inseto · mapa não informado'), findsOneWidget);
+    expect(find.text('Origem desconhecida'), findsNothing);
+
+    await tester.tap(find.text('Carbalite Ore'));
+    await tester.pumpAndSettle();
+    expect(find.text('Minério ainda sob estudo.'), findsOneWidget);
+    expect(find.text('Mineração · Rank Mestre'), findsOneWidget);
+
+    await tester.tap(find.text('Split-Jaw Buttlefly'));
+    await tester.pumpAndSettle();
+    expect(find.text('Inseto raro.'), findsOneWidget);
+  });
+
   testWidgets('Árvore: previous, this and every next; tap opens', (
     tester,
   ) async {

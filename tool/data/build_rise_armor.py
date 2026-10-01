@@ -22,7 +22,7 @@ import time
 import urllib.request
 
 from common import REPO, UA, clean, dataset_path, wiki_api  # sets cwd to the cache
-from kiranico_items import key, material_sources, slug
+from kiranico_items import enrich_sources, key, material_sources, slug, wiki_item_icons
 
 KIRANICO = 'https://mhrise.kiranico.com'
 WIKI = 'https://monsterhunterwiki.org/wiki/'
@@ -261,6 +261,12 @@ def main():
     skills = skill_table()
     deco_en, deco_pt = decoration_table()
 
+    item_names = set()
+    for kid in kept:
+        item_names |= {n for _, n, _ in (forge_items(f'kiranico_armor_{kid}.html') or [])}
+    for did in deco_en:
+        item_names |= {n for _, n, _ in (forge_items(f'kiranico_decoration_{did}.html') or [])}
+    icons = wiki_item_icons(item_names)
     materials = {}
 
     def costs(items):
@@ -269,7 +275,7 @@ def main():
             mid = slug(name)
             if mid not in materials:
                 entry = {'id': mid, 'name': localized(name, item_pt_name(iid))}
-                src = material_sources(iid, large)
+                src = enrich_sources(material_sources(iid, large), iid, icons.get(name))
                 if src:
                     entry['sources'] = src
                 materials[mid] = entry

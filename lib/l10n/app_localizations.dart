@@ -1129,14 +1129,14 @@ abstract class AppLocalizations {
   /// No description provided for @gatheringMaps.
   ///
   /// In pt, this message translates to:
-  /// **'Coleta · {count, plural, =1{1 mapa} other{{count} mapas}}'**
-  String gatheringMaps(int count);
+  /// **'{kind} · {count, plural, =1{1 mapa} other{{count} mapas}}'**
+  String gatheringMaps(String kind, int count);
 
   /// No description provided for @gatheringAt.
   ///
   /// In pt, this message translates to:
-  /// **'Coleta · {map}'**
-  String gatheringAt(String map);
+  /// **'{kind} · {map}'**
+  String gatheringAt(String kind, String map);
 
   /// No description provided for @smallMonster.
   ///
@@ -1165,8 +1165,8 @@ abstract class AppLocalizations {
   /// No description provided for @sourcesGathering.
   ///
   /// In pt, this message translates to:
-  /// **'Coleta · Rank {rank}'**
-  String sourcesGathering(String rank);
+  /// **'{kind} · Rank {rank}'**
+  String sourcesGathering(String kind, String rank);
 
   /// No description provided for @sourcesMonsters.
   ///
@@ -1431,6 +1431,48 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Joias Rampage que cabem'**
   String get rampageDecorationsFit;
+
+  /// No description provided for @gatherAny.
+  ///
+  /// In pt, this message translates to:
+  /// **'Coleta'**
+  String get gatherAny;
+
+  /// No description provided for @gatherOre.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mineração'**
+  String get gatherOre;
+
+  /// No description provided for @gatherBone.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pilha de ossos'**
+  String get gatherBone;
+
+  /// No description provided for @gatherBug.
+  ///
+  /// In pt, this message translates to:
+  /// **'Inseto'**
+  String get gatherBug;
+
+  /// No description provided for @gatherPlant.
+  ///
+  /// In pt, this message translates to:
+  /// **'Planta'**
+  String get gatherPlant;
+
+  /// No description provided for @gatherFish.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pesca'**
+  String get gatherFish;
+
+  /// No description provided for @gatherNoMap.
+  ///
+  /// In pt, this message translates to:
+  /// **'{kind} · mapa não informado'**
+  String gatherNoMap(String kind);
 }
 
 class _AppLocalizationsDelegate
