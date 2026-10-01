@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
-import 'package:mh_wiki/features/weapons/domain/entities/material_sources.dart';
+import 'package:mh_wiki/core/domain/material_sources.dart';
 
 /// 006 FR-015: the sources shown are the weapon's rank, else the nearest.
 void main() {

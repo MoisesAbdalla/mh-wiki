@@ -597,19 +597,19 @@ class AppLocalizationsPt extends AppLocalizations {
   String get ammoTranq => 'Tranquilizante';
 
   @override
-  String gatheringMaps(int count) {
+  String gatheringMaps(String kind, int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
       other: '$count mapas',
       one: '1 mapa',
     );
-    return 'Coleta · $_temp0';
+    return '$kind · $_temp0';
   }
 
   @override
-  String gatheringAt(String map) {
-    return 'Coleta · $map';
+  String gatheringAt(String kind, String map) {
+    return '$kind · $map';
   }
 
   @override
@@ -631,8 +631,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get unknownOrigin => 'Origem desconhecida';
 
   @override
-  String sourcesGathering(String rank) {
-    return 'Coleta · Rank $rank';
+  String sourcesGathering(String kind, String rank) {
+    return '$kind · Rank $rank';
   }
 
   @override
@@ -648,4 +648,173 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get hideSources => 'Esconder de onde vem';
+
+  @override
+  String get armorTabSets => 'Conjuntos';
+
+  @override
+  String get armorTabSkills => 'Habilidades';
+
+  @override
+  String get armorTabDecorations => 'Joias';
+
+  @override
+  String get partHead => 'Cabeça';
+
+  @override
+  String get partChest => 'Tronco';
+
+  @override
+  String get partArms => 'Braços';
+
+  @override
+  String get partWaist => 'Cintura';
+
+  @override
+  String get partLegs => 'Pernas';
+
+  @override
+  String get armorSectionDefense => 'Defesa';
+
+  @override
+  String get armorSectionSkills => 'Habilidades';
+
+  @override
+  String get armorSectionPieces => 'Peças';
+
+  @override
+  String get skillSectionLevels => 'Níveis';
+
+  @override
+  String get skillSectionDecorations => 'Joias';
+
+  @override
+  String get skillSectionArmor => 'Armaduras';
+
+  @override
+  String get decorationSectionSkill => 'Habilidade';
+
+  @override
+  String get defenseBase => 'Defesa';
+
+  @override
+  String defenseRange(int base, int max) {
+    return '$base → $max';
+  }
+
+  @override
+  String resistancesSemantics(String values) {
+    return 'Resistências: $values';
+  }
+
+  @override
+  String skillLevelShort(int level) {
+    return 'Nv $level';
+  }
+
+  @override
+  String skillMaxLevel(int level) {
+    return 'máx. $level';
+  }
+
+  @override
+  String skillLevelOf(String skill, int level, int max) {
+    return '$skill, nível $level de $max';
+  }
+
+  @override
+  String skillOverflow(int extra) {
+    return '+$extra';
+  }
+
+  @override
+  String piecesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count peças',
+      one: '1 peça',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String setSkillsFooter(String skills) {
+    return 'Conjunto: $skills';
+  }
+
+  @override
+  String slotLevelTitle(int level) {
+    return 'Slot nível $level';
+  }
+
+  @override
+  String get allSlots => 'Todas';
+
+  @override
+  String get searchArmorHint => 'Buscar conjunto ou habilidade';
+
+  @override
+  String get searchSkillHint => 'Buscar habilidade';
+
+  @override
+  String get searchDecorationHint => 'Buscar joia';
+
+  @override
+  String get armorLoadFailed => 'Não foi possível carregar as armaduras.';
+
+  @override
+  String get noSetsFound => 'Nenhum conjunto encontrado';
+
+  @override
+  String get noSkillsFound => 'Nenhuma habilidade encontrada';
+
+  @override
+  String get noDecorationsFound => 'Nenhuma joia encontrada';
+
+  @override
+  String seeAllPieces(int count) {
+    return 'Ver todas ($count)';
+  }
+
+  @override
+  String get selectArmorItem => 'Escolha um item na lista';
+
+  @override
+  String get weaponSectionRampage => 'Habilidades Rampage';
+
+  @override
+  String get rampageChooseOne => 'escolha uma';
+
+  @override
+  String get rampageTitle => 'Rampage';
+
+  @override
+  String get rampageSlotRow => 'Slot Rampage';
+
+  @override
+  String get rampageDecorationsFit => 'Joias Rampage que cabem';
+
+  @override
+  String get gatherAny => 'Coleta';
+
+  @override
+  String get gatherOre => 'Mineração';
+
+  @override
+  String get gatherBone => 'Pilha de ossos';
+
+  @override
+  String get gatherBug => 'Inseto';
+
+  @override
+  String get gatherPlant => 'Planta';
+
+  @override
+  String get gatherFish => 'Pesca';
+
+  @override
+  String gatherNoMap(String kind) {
+    return '$kind · mapa não informado';
+  }
 }

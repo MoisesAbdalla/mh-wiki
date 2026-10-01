@@ -17,7 +17,16 @@ Windows).
   affinity, slots and Rampage slot, sharpness with and without Handicraft, forge and upgrade
   materials with the monsters that drop them, and the upgrade tree. A Rise monster lists the
   weapons made from it. World and Wilds weapons, Armaduras and the build Assistente come later.
-- Areas (Monstros, Armas) in a bottom bar, or a side rail on wide screens; each keeps its
+- **Armaduras** (feature 007): the Rise: Sunbreak armor, with three tabs.
+  - **Conjuntos**: 292 sets and 1,371 pieces, filtered by rank, by name or by a chosen skill.
+  - **Habilidades**: 147 skills with the effect of each level, the jewels that give them and the
+    pieces that have them.
+  - **Joias**: 243 decorations, filtered by slot level.
+  - A set shows its base and max defense, the five resistances, the summed skills, and each
+    piece's forge materials with their sources.
+  - Weapons gain a Rampage card: the Rampage skills to choose from (Low and High Rank), or the
+    Rampage slot and the Rampage jewels that fit it (Master Rank).
+- Areas (Monstros, Armas, Armaduras) in a bottom bar, or a side rail on wide screens; each keeps its
   filters and selection.
 - Game names shown in Portuguese (Brazil) or English (Configurações).
 - Side-by-side list and detail on wide screens (≥ 840 dp).
@@ -49,6 +58,8 @@ Windows).
 - **Weapon icons**: each weapon's icon from Kiranico and the type icons from the Monster Hunter
   Wiki, as 96 px WebP; Capcom artwork used locally like the monster icons (see
   `assets/images/weapons/SOURCES.md`).
+- **Armor icons**: each piece's male render from Kiranico, as 96 px WebP (see
+  `assets/images/armor/SOURCES.md`).
 - **Data**: Kiranico, Monster Hunter Wiki, mhw-db.com and Fextralife (see each dataset's `sources`).
 
 > Fan-made, non-commercial study project. Not affiliated with or endorsed by Capcom.
@@ -67,9 +78,10 @@ lib/
 └── features/
     ├── monsters/{domain,data,presentation}
     ├── weapons/{domain,data,presentation}
+    ├── armor/{domain,data,presentation}
     └── settings/{domain,data,presentation}
 assets/data/<game>/monsters.json   # versioned datasets (schemaVersion 1)
-assets/data/rise_sunbreak/weapons.json
+assets/data/rise_sunbreak/weapons.json, armor.json
 ```
 
 ## Running
@@ -162,3 +174,19 @@ guide.
   **estimate**, shown as "(estimado)": the highest of the lowest-star quests, in that rank, of
   the monsters that drop the weapon's materials (the first star of the rank when none does).
 - 3,799 weapons (96.8 %) have an icon; the rest show the plate's marker.
+
+**Armor** ([research](specs/007-rise-armor/research.md)):
+
+- To rebuild the data, run the Python scripts in this order:
+  1. `python tool/data/fetch_rise_armor_pages.py`;
+  2. `python tool/data/fetch_rise_item_pages.py`;
+  3. `python tool/data/build_rise_armor.py --icons`.
+- **Sources**:
+  - the Kiranico armor lists give the stats, slots and skills;
+  - the armor pages give the materials;
+  - the Monster Hunter Wiki set pages give the set, body part and max defense;
+  - the Kiranico skills and decorations lists give the skills and decorations. 36 Sunbreak skills
+    whose Kiranico list has no level text take it from the wiki, in English only.
+- 220 rows with no defense and no skills (cosmetic armor) are left out.
+- 1,282 pieces (93.5 %) have an icon.
+- The release APK (arm64) is 34.2 MB.

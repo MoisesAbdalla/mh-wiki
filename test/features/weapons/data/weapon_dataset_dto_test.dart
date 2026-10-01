@@ -163,6 +163,39 @@ void main() {
     expect(s.quests.single.stars, '3');
   });
 
+  test('reads Rampage tables and ids; rejects an unknown one', () {
+    final json =
+        weaponDatasetJson(
+            weapons: [
+              weaponJson(rarity: 5)..['rampageSkills'] = ['attack-boost-i'],
+            ],
+          )
+          ..['rampageSkills'] = [
+            {
+              'id': 'attack-boost-i',
+              'name': {'en': 'Attack Boost I'},
+              'effect': {'en': 'Attack +4'},
+            },
+          ]
+          ..['rampageDecorations'] = [
+            {
+              'id': 'attack-jewel-1',
+              'name': {'en': 'Attack Jewel 1'},
+              'slotLevel': 1,
+              'skill': 'attack-boost-i',
+              'types': ['great-sword'],
+            },
+          ];
+    final c = catalog(json);
+    expect(c.weapons.single.rampageSkills.single.effect.en, 'Attack +4');
+    expect(c.rampageDecorations.single.fits('great-sword', 1), isTrue);
+    expect(c.rampageDecorations.single.fits('bow', 3), isFalse);
+
+    rejects([
+      weaponJson()..['rampageSkills'] = ['ghost'],
+    ]);
+  });
+
   test('rejects out-of-range slots, rarity and attack', () {
     rejects([
       weaponJson(slots: [5]),

@@ -2,8 +2,9 @@ import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/source_ref.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/estimated_stars.dart';
-import 'package:mh_wiki/features/weapons/domain/entities/material_cost.dart';
+import 'package:mh_wiki/core/domain/material_cost.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/sharpness.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/rampage.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_id.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_special.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
@@ -33,6 +34,7 @@ final class Weapon {
     this.imageAsset,
     this.sources = const [],
     this.traits = WeaponTraits.none,
+    this.rampageSkills = const [],
   });
 
   final WeaponId id;
@@ -66,6 +68,9 @@ final class Weapon {
 
   /// Phial, shelling, kinsect, songs, shots or ammo (006 US4).
   final WeaponTraits traits;
+
+  /// The Rampage skills to choose from (Low/High Rank, 007 US4).
+  final List<RampageSkill> rampageSkills;
 
   /// Sunbreak ranks by rarity: 1–3 Low, 4–7 High, 8–10 Master (research R3).
   Rank get rank => rarity <= 3

@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caderninho — Armaduras (007)</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Averia+Serif+Libre:wght@400;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #16120e; --panel: #1f1812; --bg-raise: #2c2215;
+    --ink: #efe4c8; --ink-2: #b9a67f; --ink-3: #8a7652;
+    --rule: #3b2e1d; --rule-strong: #5a4526; --gold: #e0bd6a; --neg: #f2a08a;
+    --fire: #f07a4a; --water: #6fb2f0; --thunder: #f0cf4a; --ice: #a9e2f2; --dragon: #c592f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d0a08; color: var(--ink); font: 15px/1.5 "Atkinson Hyperlegible", sans-serif; padding: 28px 16px 60px; }
+  .intro { max-width: 1400px; margin: 0 auto 22px; }
+  .intro h1 { font: 400 32px/1 "IM Fell English SC"; }
+  .intro p { color: var(--ink-2); margin-top: 8px; max-width: 90ch; font-size: 14px; }
+  .row { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; max-width: 1400px; margin: 0 auto; }
+  .cap { font-size: 12px; color: var(--ink-2); margin-bottom: 8px; letter-spacing: .06em; text-transform: uppercase; }
+  .cap b { color: var(--gold); }
+  .phone { width: 360px; max-width: 100%; height: 820px; background: var(--bg); border-radius: 26px; display: flex; flex-direction: column; overflow: hidden; }
+  .scroll { flex: 1; overflow-y: auto; }
+  .num { font-family: "Averia Serif Libre"; font-weight: 700; }
+  .appbar { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 20px 6px; }
+  .brand { font: 400 24px/1 "IM Fell English SC"; }
+  .appbar .gear { color: var(--ink-2); font-size: 13px; }
+  .tabs { display: flex; gap: 16px; padding: 4px 20px 0; border-bottom: 1px solid var(--rule); }
+  .tabs span { padding: 6px 0 8px; font: 400 17px "IM Fell English SC"; color: var(--ink-2); }
+  .tabs span.on { color: var(--ink); box-shadow: inset 0 -2px 0 var(--gold); }
+  .filters { display: flex; gap: 12px; padding: 8px 20px; font-size: 13px; color: var(--ink-2); border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+  .filters b { color: var(--ink); box-shadow: inset 0 -2px 0 var(--gold); }
+  .search { margin: 8px 16px 2px; padding: 7px 10px; border-bottom: 1px solid var(--rule-strong); color: var(--ink-3); font-size: 13px; }
+  .chipline { display: flex; gap: 6px; padding: 6px 16px 0; flex-wrap: wrap; }
+  .chip { font-size: 11.5px; padding: 1px 8px; border: 1px solid var(--rule-strong); border-radius: 10px; color: var(--ink-2); }
+  .chip.m { border-color: var(--gold); color: var(--gold); }
+  .set { margin: 10px 12px 0; background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; }
+  .set h4 { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 14px 6px; font: 400 18px "IM Fell English SC"; border-bottom: 1px solid var(--rule); }
+  .set h4 small { font: 12px "Atkinson Hyperlegible"; color: var(--ink-2); }
+  .pc { display: grid; grid-template-columns: 28px 1fr auto; gap: 8px; align-items: center; padding: 7px 14px; border-bottom: 1px solid var(--rule); }
+  .pc:last-child { border-bottom: 0; }
+  .pc .ic { width: 28px; height: 28px; border-radius: 3px; background: #2a2119; display: grid; place-items: center; color: var(--ink-3); font-size: 10px; }
+  .pc b { display: block; font: 400 15px/1.15 "IM Fell English SC"; }
+  .pc small { font-size: 11.5px; color: var(--ink-2); }
+  .gems { display: flex; gap: 3px; }
+  .gem { width: 15px; height: 15px; border: 1.5px solid var(--ink-2); transform: rotate(45deg) scale(.78); border-radius: 2px; display: grid; place-items: center; }
+  .gem i { transform: rotate(-45deg); font: 700 9px "Averia Serif Libre"; font-style: normal; color: var(--ink); }
+  .gem.r { border-color: var(--gold); }
+  .setsum { padding: 6px 14px 9px; font-size: 12px; color: var(--ink-2); border-top: 1px solid var(--rule); }
+  .setsum b { color: var(--ink); font-weight: 400; }
+
+  .d { padding: 18px 12px 30px; }
+  .crumb { font-size: 12px; color: var(--ink-2); padding: 0 10px; display: flex; justify-content: space-between; }
+  .head { display: grid; grid-template-columns: 1fr 70px; gap: 12px; align-items: end; padding: 12px 10px 14px; }
+  .head h2 { font: 400 30px/1 "IM Fell English SC"; }
+  .head .sub { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+  .plate { width: 70px; height: 70px; background: var(--panel); border: 1px solid var(--rule-strong); transform: rotate(3deg); display: grid; place-items: center; color: var(--ink-3); font-size: 11px; }
+  .card { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 14px 16px 16px; margin-bottom: 12px; }
+  .card h3 { display: flex; gap: 10px; align-items: baseline; font: 400 21px "IM Fell English SC"; margin-bottom: 8px; }
+  .card h3 i { font: 700 18px "Averia Serif Libre"; color: var(--gold); font-style: normal; }
+  .card h3 small { margin-left: auto; font: 12px "Atkinson Hyperlegible"; color: var(--ink-2); }
+  .statgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px 12px; }
+  .stat small { display: block; font-size: 12px; color: var(--ink-2); }
+  .stat .num { font-size: 26px; }
+  .res { display: flex; gap: 10px; margin-top: 10px; font-size: 13px; flex-wrap: wrap; }
+  .res span { display: inline-flex; align-items: center; gap: 4px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .neg { color: var(--neg); }
+  .rr { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--rule); font-size: 14px; }
+  .rr:last-child { border-bottom: 0; }
+  .rr em { font-style: normal; color: var(--ink-2); font-size: 12.5px; }
+  .pips { display: inline-flex; gap: 3px; }
+  .pips i { width: 9px; height: 9px; border: 1px solid var(--gold); border-radius: 2px; display: inline-block; }
+  .pips i.f { background: var(--gold); }
+  .pips i.o { border-color: var(--rule-strong); }
+  .cap2 { font-size: 12px; font-weight: 700; color: var(--ink-2); padding: 12px 0 4px; border-bottom: 1px solid var(--rule-strong); }
+  .lv { display: grid; grid-template-columns: 44px 1fr; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--rule); font-size: 13.5px; }
+  .lv b { font-family: "Averia Serif Libre"; color: var(--gold); }
+  .lv.on { background: var(--bg-raise); }
+  .seal { display: inline-flex; align-items: center; gap: 6px; padding: 1px 9px; border: 1px solid var(--gold); border-radius: 3px; font: 400 14px "IM Fell English SC"; }
+  .note { font-size: 12px; color: var(--ink-3); margin-top: 8px; }
+  .nav { display: flex; border-top: 1px solid var(--rule-strong); background: #120e0b; }
+  .nav a { flex: 1; text-align: center; padding: 8px 0 10px; font: 400 15px "IM Fell English SC"; color: var(--ink-2); text-decoration: none; }
+  .nav a i { display: block; font-style: normal; font-size: 18px; line-height: 1.2; }
+  .nav a.on { color: var(--gold); }
+  .nav a.soon { opacity: .35; }
+  .notes { max-width: 1400px; margin: 30px auto 0; font-size: 14px; color: var(--ink-2); }
+  .notes h2 { font: 400 22px "IM Fell English SC"; color: var(--ink); margin-bottom: 8px; }
+  .notes li { margin: 5px 0 5px 18px; }
+  .notes b { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="intro">
+  <h1>Armaduras, habilidades e joias — proposta (007)</h1>
+  <p>Dados reais da Kiranico (en + pt-BR), conjunto <b>Rathalos X</b> (Rank Mestre, raridade 9). A área Armaduras ganha
+  três abas: <b>Conjuntos</b>, <b>Habilidades</b> e <b>Joias</b>. Compare duas formas de listar: <b>A</b> um card por
+  conjunto (como as árvores de armas) ou <b>B</b> as peças separadas por parte do corpo. Os detalhes (conjunto,
+  habilidade e o card Rampage da arma) valem para as duas.</p>
+</div>
+
+<div class="row">
+  <!-- LIST A -->
+  <div>
+    <div class="cap"><b>A</b> · lista por conjunto</div>
+    <div class="phone">
+      <div class="scroll">
+        <div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div>
+        <div class="tabs"><span class="on">Conjuntos</span><span>Habilidades</span><span>Joias</span></div>
+        <div class="filters"><span>Todos</span><span>Baixo</span><span>Alto</span><b>Mestre</b></div>
+        <div class="search">⌕ Buscar conjunto ou habilidade</div>
+        <div class="chipline"><span class="chip m">Reforço de Ataque ✕</span></div>
+        <div class="set">
+          <h4>Rathalos X <small>Raridade <span class="num">9</span></small></h4>
+          <div class="pc"><div class="ic">elmo</div><div><b>Elmo de Rathalos X</b><small>Ataque 1 · Quebra-parte 1 · Crítico 1</small></div><div class="gems"><span class="gem"><i>4</i></span></div></div>
+          <div class="pc"><div class="ic">arm.</div><div><b>Arm. de Rathalos X</b><small>Ataque 1 · Quebra-parte 1 · Tampões 1</small></div><div class="gems"><span class="gem"><i>3</i></span></div></div>
+          <div class="pc"><div class="ic">avb.</div><div><b>Avamb. de Rathalos X</b><small>Ataque 2 · Tampões 2</small></div><div class="gems"><span class="gem"><i>2</i></span></div></div>
+          <div class="pc"><div class="ic">cint.</div><div><b>Cint. de Rathalos X</b><small>Ataque 2 · Antivento 3 · Crítico 1</small></div><div class="gems"><span class="gem"><i>2</i></span></div></div>
+          <div class="pc"><div class="ic">grv.</div><div><b>Grevas de Rathalos X</b><small>Ataque 1 · Quebra-parte 1 · Tampões 2</small></div><div class="gems"><span class="gem"><i>1</i></span><span class="gem"><i>1</i></span></div></div>
+          <div class="setsum">Conjunto: <b>Reforço de Ataque 7</b> · Tampões 5 · Quebra-parte 3 · Antivento 3 · Crítico 2</div>
+        </div>
+        <div class="set">
+          <h4>Zinogre X <small>Raridade <span class="num">9</span></small></h4>
+          <div class="pc"><div class="ic">elmo</div><div><b>Elmo de Zinogre X</b><small>…</small></div><div class="gems"><span class="gem"><i>2</i></span></div></div>
+        </div>
+      </div>
+      <nav class="nav"><a><i>❦</i>Monstros</a><a><i>⚔</i>Armas</a><a class="on"><i>⛨</i>Armaduras</a><a class="soon"><i>✦</i>Assistente</a></nav>
+    </div>
+  </div>
+
+  <!-- LIST B -->
+  <div>
+    <div class="cap"><b>B</b> · lista por parte do corpo</div>
+    <div class="phone">
+      <div class="scroll">
+        <div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div>
+        <div class="tabs"><span class="on">Conjuntos</span><span>Habilidades</span><span>Joias</span></div>
+        <div class="filters"><b>Cabeça</b><span>Tronco</span><span>Braços</span><span>Cintura</span><span>Pernas</span></div>
+        <div class="filters"><span>Todos</span><span>Baixo</span><span>Alto</span><b>Mestre</b></div>
+        <div class="search">⌕ Buscar peça ou habilidade</div>
+        <div class="set">
+          <div class="pc"><div class="ic">elmo</div><div><b>Elmo de Rathalos X</b><small>Ataque 1 · Quebra-parte 1 · Crítico 1</small></div><div class="gems"><span class="gem"><i>4</i></span></div></div>
+          <div class="pc"><div class="ic">elmo</div><div><b>Elmo de Zinogre X</b><small>Grito de Guerra 2 · …</small></div><div class="gems"><span class="gem"><i>2</i></span></div></div>
+          <div class="pc"><div class="ic">elmo</div><div><b>Grevas Mizutsune X</b><small>…</small></div><div class="gems"><span class="gem"><i>3</i></span><span class="gem"><i>1</i></span></div></div>
+          <div class="pc"><div class="ic">elmo</div><div><b>Elmo de Kushala X</b><small>…</small></div><div class="gems"><span class="gem"><i>2</i></span><span class="gem"><i>1</i></span></div></div>
+          <div class="pc"><div class="ic">elmo</div><div><b>Elmo de Nargacuga X</b><small>…</small></div><div class="gems"><span class="gem"><i>4</i></span></div></div>
+        </div>
+        <p class="note" style="padding:10px 16px">Mais próxima de como se monta uma build peça a peça (008–009), mas perde a visão do conjunto.</p>
+      </div>
+      <nav class="nav"><a><i>❦</i>Monstros</a><a><i>⚔</i>Armas</a><a class="on"><i>⛨</i>Armaduras</a><a class="soon"><i>✦</i>Assistente</a></nav>
+    </div>
+  </div>
+
+  <!-- SET DETAIL -->
+  <div>
+    <div class="cap">Detalhe do conjunto</div>
+    <div class="phone">
+      <div class="scroll d">
+        <div class="crumb"><span>‹ Conjuntos</span><span>Rise: Sunbreak</span></div>
+        <div class="head"><div><h2>Rathalos X</h2><div class="sub">Rank Mestre · Raridade <span class="num">9</span> · <span class="num">5</span> peças</div></div><div class="plate">ícone</div></div>
+        <div class="card">
+          <h3><i>1</i>Defesa</h3>
+          <div class="statgrid"><div class="stat"><small>Defesa (base)</small><span class="num">570</span></div></div>
+          <div class="res">
+            <span><span class="dot" style="background:var(--fire)"></span><span class="num">15</span></span>
+            <span><span class="dot" style="background:var(--water)"></span><span class="num">5</span></span>
+            <span><span class="dot" style="background:var(--thunder)"></span><span class="num">5</span></span>
+            <span><span class="dot" style="background:var(--ice)"></span><span class="num neg">−10</span></span>
+            <span><span class="dot" style="background:var(--dragon)"></span><span class="num neg">−15</span></span>
+          </div>
+        </div>
+        <div class="card">
+          <h3><i>2</i>Habilidades <small>soma das 5 peças</small></h3>
+          <div class="rr"><span>Reforço de Ataque</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span></div>
+          <div class="rr"><span>Tampões</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span></div>
+          <div class="rr"><span>Quebra-parte</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i></span></div>
+          <div class="rr"><span>Antivento</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i></span></div>
+          <div class="rr"><span>Reforço Crítico</span><span class="pips"><i class="f"></i><i class="f"></i><i class="o"></i></span></div>
+          <p class="note">Quadrados cheios = nível obtido; vazios = até o máximo da habilidade. Toque abre a habilidade.</p>
+        </div>
+        <div class="card">
+          <h3><i>3</i>Peças</h3>
+          <div class="rr"><span>Elmo de Rathalos X</span><span class="gems"><span class="gem"><i>4</i></span></span></div>
+          <div class="rr" style="display:block;border-bottom:0;padding-bottom:0"><em>Materiais de forja (toque para abrir)</em></div>
+          <div class="rr"><span>Frag. Rathalos ×4</span><span class="chip m">Rathalos ›</span></div>
+          <div class="rr"><span>Rocha Omniflama ×2</span><span class="chip">Coleta · 3 mapas</span></div>
+          <div class="rr"><span>Arm. de Rathalos X</span><span class="gems"><span class="gem"><i>3</i></span></span></div>
+          <div class="rr"><span>Avamb. de Rathalos X</span><span class="gems"><span class="gem"><i>2</i></span></span></div>
+          <div class="rr"><span>Cint. de Rathalos X</span><span class="gems"><span class="gem"><i>2</i></span></span></div>
+          <div class="rr"><span>Grevas de Rathalos X</span><span class="gems"><span class="gem"><i>1</i></span><span class="gem"><i>1</i></span></span></div>
+        </div>
+      </div>
+      <nav class="nav"><a><i>❦</i>Monstros</a><a><i>⚔</i>Armas</a><a class="on"><i>⛨</i>Armaduras</a><a class="soon"><i>✦</i>Assistente</a></nav>
+    </div>
+  </div>
+
+  <!-- SKILL DETAIL -->
+  <div>
+    <div class="cap">Detalhe da habilidade</div>
+    <div class="phone">
+      <div class="scroll d">
+        <div class="crumb"><span>‹ Habilidades</span><span>Rise: Sunbreak</span></div>
+        <div class="head" style="grid-template-columns:1fr"><div><h2>Reforço de Ataque</h2><div class="sub">Aumenta o poder de ataque. · máx. Nv. <span class="num">7</span></div></div></div>
+        <div class="card">
+          <h3><i>1</i>Níveis</h3>
+          <div class="lv"><b>Nv 1</b><span>Ataque +3</span></div>
+          <div class="lv"><b>Nv 2</b><span>Ataque +6</span></div>
+          <div class="lv"><b>Nv 3</b><span>Ataque +9</span></div>
+          <div class="lv"><b>Nv 4</b><span>Ataque +5% · Bônus +7</span></div>
+          <div class="lv"><b>Nv 5</b><span>Ataque +6% · Bônus +8</span></div>
+          <div class="lv"><b>Nv 6</b><span>Ataque +8% · Bônus +9</span></div>
+          <div class="lv"><b>Nv 7</b><span>Ataque +10% · Bônus +10</span></div>
+        </div>
+        <div class="card">
+          <h3><i>2</i>Joias</h3>
+          <div class="rr"><span>Joia do Ataque 2 <em>· Nv 1</em></span><span class="gems"><span class="gem"><i>2</i></span></span></div>
+          <div class="rr"><span>Joia Ataque+ 4 <em>· Nv 2</em></span><span class="gems"><span class="gem"><i>4</i></span></span></div>
+        </div>
+        <div class="card">
+          <h3><i>3</i>Armaduras <small>Rank Mestre</small></h3>
+          <div class="rr"><span>Avamb. de Rathalos X</span><em>Nv 2</em></div>
+          <div class="rr"><span>Cint. de Rathalos X</span><em>Nv 2</em></div>
+          <div class="rr"><span>Elmo de Rathalos X</span><em>Nv 1</em></div>
+          <div class="rr"><em style="color:var(--gold)">Ver todas (n) ›</em></div>
+        </div>
+      </div>
+      <nav class="nav"><a><i>❦</i>Monstros</a><a><i>⚔</i>Armas</a><a class="on"><i>⛨</i>Armaduras</a><a class="soon"><i>✦</i>Assistente</a></nav>
+    </div>
+  </div>
+
+  <!-- WEAPON RAMPAGE -->
+  <div>
+    <div class="cap">Na arma: novo card Rampage</div>
+    <div class="phone">
+      <div class="scroll d">
+        <div class="crumb"><span>‹ Lâmina Dínamo</span><span>Rise: Sunbreak</span></div>
+        <div class="head"><div><h2>Lâmina D. Kamura V</h2><div class="sub">Rank Alto · Raridade <span class="num">4</span></div></div><div class="plate">ícone</div></div>
+        <div class="card"><h3><i>1</i>Atributos</h3><div class="rr"><em>… (igual a hoje)</em></div></div>
+        <div class="card">
+          <h3><i>5</i>Habilidades Rampage <small>escolha uma</small></h3>
+          <div class="rr"><span>Ref. de Afinid. III</span><em>Afinidade +8%</em></div>
+          <div class="rr"><span>Reforço de Defesa II</span><em>Bônus de Defesa +20</em></div>
+          <div class="rr"><span>Mestre em Montaria</span><em>Montaria mais forte</em></div>
+        </div>
+        <div style="height:18px"></div>
+        <div class="crumb"><span>Arma de Rank Mestre</span><span></span></div>
+        <div class="card" style="margin-top:8px">
+          <h3><i>5</i>Rampage</h3>
+          <div class="rr"><span>Slot Rampage</span><span class="gems"><span class="gem r"><i>3</i></span></span></div>
+          <p class="note">No Rank Mestre (Sunbreak) as armas não têm habilidades Rampage: usam joias Rampage no slot. Toque mostra as joias Rampage que cabem (nível ≤ 3).</p>
+        </div>
+      </div>
+      <nav class="nav"><a><i>❦</i>Monstros</a><a class="on"><i>⚔</i>Armas</a><a class="soon"><i>⛨</i>Armaduras</a><a class="soon"><i>✦</i>Assistente</a></nav>
+    </div>
+  </div>
+</div>
+
+<div class="notes">
+  <h2>Pontos para decidir</h2>
+  <ul>
+    <li><b>Lista</b>: A (card por conjunto, soma das habilidades no rodapé) ou B (peças por parte do corpo). Recomendo <b>A</b>: é como o jogo agrupa na forja e mostra num relance o que o conjunto dá; a visão "peça a peça" é o que o otimizador da 009 vai fazer melhor.</li>
+    <li><b>Busca por habilidade</b>: digitar uma habilidade filtra os conjuntos que a têm e vira um selo removível (ex.: "Reforço de Ataque ✕").</li>
+    <li><b>Defesa</b>: a Kiranico só dá a defesa base de cada peça; a defesa máxima com melhorias fica de fora.</li>
+    <li><b>Materiais das peças</b>: reaproveitam os selos da 006 (monstro grande, pequeno, coleta, missão).</li>
+    <li><b>Rampage</b>: armas de Rank Baixo e Alto mostram as habilidades Rampage para escolher; de Rank Mestre, o slot e as joias Rampage que cabem.</li>
+    <li>Talismãs e montagem de builds ficam para a 008–009, como combinado.</li>
+  </ul>
+</div>
+</body>
+</html>

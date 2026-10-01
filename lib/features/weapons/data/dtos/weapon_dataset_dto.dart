@@ -2,8 +2,9 @@ import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/features/monsters/data/datasources/monster_datasource.dart';
 import 'package:mh_wiki/features/monsters/data/dtos/json_reader.dart';
-import 'package:mh_wiki/core/domain/rank.dart';
-import 'package:mh_wiki/features/weapons/domain/entities/material_sources.dart';
+import 'package:mh_wiki/core/data/material_sources_json.dart';
+import 'package:mh_wiki/core/domain/material_sources.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/rampage.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/special_kind.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
 
@@ -16,6 +17,7 @@ final class WeaponDatasetDto {
     required this.game,
     required this.types,
     required this.materials,
+    this.rampageDecorations = const [],
     this.sources = const {},
     required this.weapons,
   });
@@ -54,9 +56,35 @@ final class WeaponDatasetDto {
       if (materials.containsKey(id)) reader.fail('duplicate material "$id"');
       materials[id] = _localized(reader.object('name'));
       if (reader.optionalObject('sources') case final s?) {
-        sources[id] = _sources(s);
+        sources[id] = readMaterialSources(s);
       }
     }
+
+    // Rampage tables (007 research R6).
+    final rampageSkills = <String, RampageSkill>{};
+    for (final r in root.optionalObjects('rampageSkills')) {
+      final id = r.string('id');
+      if (rampageSkills.containsKey(id)) {
+        r.fail('duplicate rampage skill "$id"');
+      }
+      rampageSkills[id] = RampageSkill(
+        id: id,
+        name: readLocalized(r.object('name')),
+        effect: readLocalized(r.object('effect')),
+      );
+    }
+    final rampageDecorations = [
+      for (final r in root.optionalObjects('rampageDecorations'))
+        RampageDecoration(
+          id: r.string('id'),
+          name: readLocalized(r.object('name')),
+          slotLevel: r.number('slotLevel').toInt(),
+          skill:
+              rampageSkills[r.string('skill')] ??
+              r.fail('unknown rampage skill "${r.string('skill')}"'),
+          weaponTypes: r.has('types') ? r.strings('types') : const [],
+        ),
+    ];
 
     final readers = root.objects('weapons');
     final slugs = <String>{};
@@ -72,6 +100,7 @@ final class WeaponDatasetDto {
           types: types,
           materialIds: materials.keys.toSet(),
           slugs: slugs,
+          rampageSkills: rampageSkills,
         ),
     ];
 
@@ -97,6 +126,7 @@ final class WeaponDatasetDto {
       materials: materials,
       sources: sources,
       weapons: weapons,
+      rampageDecorations: rampageDecorations,
     );
   }
 
@@ -107,6 +137,7 @@ final class WeaponDatasetDto {
   /// Material id → where it comes from.
   final Map<String, MaterialSources> sources;
   final List<WeaponDto> weapons;
+  final List<RampageDecoration> rampageDecorations;
 }
 
 final class WeaponTypeDto {
@@ -152,6 +183,7 @@ final class WeaponDto {
     required this.starsEstimated,
     required this.image,
     required this.traits,
+    this.rampageSkills = const [],
     required this.sources,
   });
 
@@ -160,6 +192,7 @@ final class WeaponDto {
     required Map<String, WeaponTypeDto> types,
     required Set<String> materialIds,
     required Set<String> slugs,
+    Map<String, RampageSkill> rampageSkills = const {},
   }) {
     final typeId = r.string('type');
     final type = types[typeId] ?? r.fail('unknown type "$typeId"');
@@ -249,6 +282,11 @@ final class WeaponDto {
       starsEstimated: stars.boolean('estimated'),
       image: r.optionalString('image'),
       traits: _traits(r, typeId),
+      rampageSkills: [
+        if (r.has('rampageSkills'))
+          for (final id in r.strings('rampageSkills'))
+            rampageSkills[id] ?? r.fail('unknown rampage skill "$id"'),
+      ],
       sources: [
         for (final s in r.objects('sources'))
           (s.string('name'), s.string('url')),
@@ -277,6 +315,7 @@ final class WeaponDto {
   final bool starsEstimated;
   final String? image;
   final WeaponTraits traits;
+  final List<RampageSkill> rampageSkills;
   final List<(String, String)> sources;
 }
 
@@ -344,39 +383,6 @@ WeaponTraits _traits(JsonReader weapon, String typeId) {
         AmmoCapacity(
           kind: a.enumValue('ammo', AmmoKind.values),
           capacity: _ints(a, 'capacity'),
-        ),
-    ],
-  );
-}
-
-MaterialSources _sources(JsonReader r) {
-  int? rate(JsonReader x) => x.optionalNumber('rate')?.toInt();
-  return MaterialSources(
-    gathering: [
-      for (final g in r.optionalObjects('gathering'))
-        GatheringSource(
-          map: _localized(g.object('map')),
-          rank: g.enumValue('rank', Rank.values),
-          rate: rate(g),
-        ),
-    ],
-    monsters: [
-      for (final m in r.optionalObjects('monsters'))
-        MonsterSource(
-          name: _localized(m.object('name')),
-          rank: m.enumValue('rank', Rank.values),
-          method: _localized(m.object('method')),
-          rate: rate(m),
-          slug: m.optionalString('slug'),
-        ),
-    ],
-    quests: [
-      for (final q in r.optionalObjects('quests'))
-        QuestSource(
-          name: _localized(q.object('name')),
-          category: _localized(q.object('category')),
-          stars: q.string('stars'),
-          rate: rate(q),
         ),
     ],
   );

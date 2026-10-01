@@ -2,8 +2,8 @@ import 'package:mh_wiki/features/monsters/domain/entities/monster_material.dart'
 import 'package:mh_wiki/features/monsters/domain/entities/source_ref.dart';
 import 'package:mh_wiki/features/weapons/data/dtos/weapon_dataset_dto.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/estimated_stars.dart';
-import 'package:mh_wiki/features/weapons/domain/entities/material_cost.dart';
-import 'package:mh_wiki/features/weapons/domain/entities/material_sources.dart';
+import 'package:mh_wiki/core/domain/material_cost.dart';
+import 'package:mh_wiki/core/domain/material_sources.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/sharpness.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_catalog.dart';
@@ -37,6 +37,7 @@ abstract final class WeaponDatasetMapper {
     return WeaponCatalog(
       game: game,
       types: types.values.toList(),
+      rampageDecorations: dto.rampageDecorations,
       weapons: [
         for (final w in dto.weapons)
           Weapon(
@@ -69,6 +70,7 @@ abstract final class WeaponDatasetMapper {
             stars: EstimatedStars(value: w.stars, estimated: w.starsEstimated),
             imageAsset: w.image,
             traits: w.traits,
+            rampageSkills: w.rampageSkills,
             sources: [
               for (final (name, url) in w.sources)
                 SourceRef(name: name, url: url),

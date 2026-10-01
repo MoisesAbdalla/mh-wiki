@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/rampage.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
-import 'package:mh_wiki/features/weapons/domain/entities/material_sources.dart';
+import 'package:mh_wiki/core/domain/material_sources.dart';
 import 'package:mh_wiki/core/presentation/widgets/notebook_section.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_catalog.dart';
-import 'package:mh_wiki/features/weapons/presentation/material_sources.dart';
+import 'package:mh_wiki/core/presentation/material_droppers.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_detail_view.dart';
 
 import '../../../../fakes/weapon_fixtures.dart';
@@ -68,11 +70,92 @@ void main() {
   });
 
   testWidgets('cards 1–4 for melee; 1, 3 and 4 for ranged', (tester) async {
+    // Master Rank with a Rampage slot: the Rampage card is number 5.
     await pumpDetail(tester, 'gnashing-flammenzahn-plus');
-    expect(sectionNumbers(tester), [1, 2, 3, 4]);
+    expect(sectionNumbers(tester), [1, 2, 3, 4, 5]);
 
     await pumpDetail(tester, 'hunters-bow');
     expect(sectionNumbers(tester), [1, 3, 4]);
+  });
+
+  testWidgets('Rampage: skills to choose (High Rank), slot and fitting '
+      'decorations (Master Rank)', (tester) async {
+    const boost = RampageSkill(
+      id: 'attack-boost-i',
+      name: LocalizedText(en: 'Attack Boost I', ptBr: 'Reforço de Ataque I'),
+      effect: LocalizedText(en: 'Attack +4', ptBr: 'Ataque +4'),
+    );
+    const grinder = RampageSkill(
+      id: 'defense-grinder-i',
+      name: LocalizedText(en: 'Defense Grinder I'),
+      effect: LocalizedText(en: 'Lowers defense'),
+    );
+    final high = buildWeapon(
+      'high-blade',
+      en: 'High Blade',
+      rarity: 5,
+      rampageSkills: const [boost],
+    );
+    final master = buildWeapon(
+      'master-blade',
+      en: 'Master Blade',
+      rarity: 9,
+      rampageSlot: 2,
+    );
+    final bow = buildWeapon(
+      'master-bow',
+      en: 'Master Bow',
+      type: bowType,
+      rarity: 9,
+      rampageSlot: 2,
+      tree: 'bone-tree',
+      treeEn: 'Bone Tree',
+    );
+    catalog = WeaponCatalog(
+      game: Game.riseSunbreak,
+      types: const [greatSword, bowType],
+      weapons: [...anjanathWeapons(), high, master, bow],
+      rampageDecorations: const [
+        RampageDecoration(
+          id: 'attack-jewel-1',
+          name: LocalizedText(en: 'Attack Jewel 1'),
+          slotLevel: 1,
+          skill: boost,
+        ),
+        RampageDecoration(
+          id: 'defense-edge-jewel-1',
+          name: LocalizedText(en: 'Defense Edge Jewel 1'),
+          slotLevel: 1,
+          skill: grinder,
+          weaponTypes: ['great-sword'],
+        ),
+        RampageDecoration(
+          id: 'big-jewel-3',
+          name: LocalizedText(en: 'Big Jewel 3'),
+          slotLevel: 3,
+          skill: boost,
+        ),
+      ],
+    );
+
+    await pumpDetail(tester, 'high-blade');
+    expect(find.text('Habilidades Rampage'), findsOneWidget);
+    expect(find.text('escolha uma'), findsOneWidget);
+    expect(find.text('Reforço de Ataque I'), findsOneWidget);
+    expect(find.text('Ataque +4'), findsOneWidget);
+
+    await pumpDetail(tester, 'master-blade');
+    expect(find.text('Slot Rampage'), findsOneWidget);
+    expect(find.text('Attack Jewel 1'), findsOneWidget);
+    expect(find.text('Defense Edge Jewel 1'), findsOneWidget);
+    expect(find.text('Big Jewel 3'), findsNothing); // slot 3 > 2
+
+    await pumpDetail(tester, 'master-bow');
+    expect(find.text('Defense Edge Jewel 1'), findsNothing); // GS/CB only
+
+    await pumpDetail(tester, 'flammenzahn-i'); // Low Rank, no options
+    expect(find.text('Habilidades Rampage'), findsNothing);
+    expect(find.text('Rampage'), findsNothing);
   });
 
   testWidgets('a bow gets the Munição card as number 2', (tester) async {
@@ -286,6 +369,53 @@ void main() {
     expect(find.text('Forte'), findsNothing); // High Rank
     expect(find.text('Izuchi · Talha Corpo'), findsOneWidget);
     expect(find.text('Missões de Eventos 8★ · Narwa Ribomba'), findsOneWidget);
+  });
+
+  testWidgets('Materiais: what to gather and the game description', (
+    tester,
+  ) async {
+    const ore = MaterialSources(
+      kind: GatherKind.ore,
+      description: LocalizedText(
+        en: 'An ore still being studied.',
+        ptBr: 'Minério ainda sob estudo.',
+      ),
+      gathering: [
+        GatheringSource(
+          map: LocalizedText(en: 'Jungle', ptBr: 'Selva'),
+          rank: Rank.master,
+          rate: 35,
+        ),
+      ],
+    );
+    const bug = MaterialSources(
+      kind: GatherKind.bug,
+      description: LocalizedText(en: 'A rare insect.', ptBr: 'Inseto raro.'),
+    );
+    final weapon = buildWeapon(
+      'gathered',
+      en: 'Gathered Blade',
+      rarity: 8,
+      forge: [
+        cost('carbalite-ore', 'Carbalite Ore', sources: ore),
+        cost('split-jaw-buttlefly', 'Split-Jaw Buttlefly', sources: bug),
+      ],
+    );
+    catalog = weaponCatalog([...anjanathWeapons(), weapon]);
+    await pumpDetail(tester, 'gathered');
+
+    expect(find.text('Mineração · Selva'), findsOneWidget);
+    expect(find.text('Inseto · mapa não informado'), findsOneWidget);
+    expect(find.text('Origem desconhecida'), findsNothing);
+
+    await tester.tap(find.text('Carbalite Ore'));
+    await tester.pumpAndSettle();
+    expect(find.text('Minério ainda sob estudo.'), findsOneWidget);
+    expect(find.text('Mineração · Rank Mestre'), findsOneWidget);
+
+    await tester.tap(find.text('Split-Jaw Buttlefly'));
+    await tester.pumpAndSettle();
+    expect(find.text('Inseto raro.'), findsOneWidget);
   });
 
   testWidgets('Árvore: previous, this and every next; tap opens', (

@@ -1,4 +1,9 @@
 import 'package:flutter/services.dart';
+import 'package:mh_wiki/features/armor/data/armor_repository_impl.dart';
+import 'package:mh_wiki/features/armor/data/asset_armor_datasource.dart';
+import 'package:mh_wiki/features/armor/domain/repositories/armor_repository.dart';
+import 'package:mh_wiki/features/armor/domain/usecases/load_armor_catalog.dart';
+import 'package:mh_wiki/features/armor/presentation/armor_controller.dart';
 import 'package:mh_wiki/features/monsters/data/datasources/asset_monster_datasource.dart';
 import 'package:mh_wiki/features/monsters/data/repositories/monster_repository_impl.dart';
 import 'package:mh_wiki/features/monsters/domain/repositories/monster_repository.dart';
@@ -27,6 +32,7 @@ final class AppDependencies {
     required this.monsterRepository,
     required this.settingsRepository,
     required this.weaponRepository,
+    required this.armorRepository,
   });
 
   static Future<AppDependencies> create({AssetBundle? bundle}) async {
@@ -36,12 +42,14 @@ final class AppDependencies {
       monsterRepository: MonsterRepositoryImpl(AssetMonsterDatasource(assets)),
       settingsRepository: SharedPrefsSettingsRepository(prefs),
       weaponRepository: WeaponRepositoryImpl(AssetWeaponDatasource(assets)),
+      armorRepository: ArmorRepositoryImpl(AssetArmorDatasource(assets)),
     );
   }
 
   final MonsterRepository monsterRepository;
   final SettingsRepository settingsRepository;
   final WeaponRepository weaponRepository;
+  final ArmorRepository armorRepository;
 
   MonsterListController createMonsterListController() => MonsterListController(
     loadCatalog: LoadMonsterCatalog(monsterRepository),
@@ -52,6 +60,9 @@ final class AppDependencies {
 
   WeaponListController createWeaponListController() =>
       WeaponListController(loadCatalog: LoadWeaponCatalog(weaponRepository));
+
+  ArmorController createArmorController() =>
+      ArmorController(loadCatalog: LoadArmorCatalog(armorRepository));
 
   SettingsController createSettingsController() => SettingsController(
     loadSettings: LoadSettings(settingsRepository),
@@ -65,11 +76,13 @@ void linkNameLanguage({
   required SettingsController settings,
   required MonsterListController monsters,
   WeaponListController? weapons,
+  ArmorController? armor,
 }) {
   void sync() {
     final language = settings.settings.nameLanguage;
     monsters.onLanguageChanged(language);
     weapons?.onLanguageChanged(language);
+    armor?.onLanguageChanged(language);
   }
 
   settings.addListener(sync);

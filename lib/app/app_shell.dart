@@ -12,12 +12,14 @@ class AppShell extends StatefulWidget {
   const AppShell({
     required this.monsters,
     required this.weapons,
+    this.armor = const SizedBox.shrink(),
     this.controller,
     super.key,
   });
 
   final Widget monsters;
   final Widget weapons;
+  final Widget armor;
 
   /// Lets other parts of the app switch areas (e.g. "Dropado por").
   final AppShellController? controller;
@@ -27,7 +29,7 @@ class AppShell extends StatefulWidget {
 }
 
 /// The areas that can be opened; Armaduras and Assistente come later.
-enum AppArea { monsters, weapons }
+enum AppArea { monsters, weapons, armor }
 
 /// The selected area, shared by the shell and whoever navigates between
 /// areas.
@@ -82,8 +84,8 @@ class _AppShellState extends State<AppShell> {
   List<_Area> _areas(AppLocalizations l10n) => [
     (glyph: '❦', label: l10n.areaMonsters, enabled: true),
     (glyph: '⚔', label: l10n.areaWeapons, enabled: true),
-    // Armaduras arrives in 007, the Assistente in 008.
-    (glyph: '⛨', label: l10n.areaArmor, enabled: false),
+    (glyph: '⛨', label: l10n.areaArmor, enabled: true),
+    // The Assistente arrives in 008.
     (glyph: '✦', label: l10n.areaAssistant, enabled: false),
   ];
 
@@ -96,6 +98,7 @@ class _AppShellState extends State<AppShell> {
       children: [
         widget.monsters,
         if (_visited.contains(1)) widget.weapons else const SizedBox.shrink(),
+        if (_visited.contains(2)) widget.armor else const SizedBox.shrink(),
       ],
     );
 
