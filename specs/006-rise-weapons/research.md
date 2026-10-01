@@ -96,6 +96,16 @@ Decisions for the 006 plan. Each has the decision, the rationale and the alterna
   thread (`compute`, as monsters do since 004) and loads on first entry into the Armas area,
   not at app start. A failure produces a `Failure` shown only in that area (FR-011).
 
+- **Results (T035, 2026-10-01)**:
+  - Release APK, arm64 (`flutter build apk --release --analyze-size --target-platform
+    android-arm64`): **31.4 MB** in total, 13 MB of it `flutter_assets`. That is below the
+    ~45 MB estimate: the WebP icons barely compress, but they are smaller than estimated, and
+    the JSON compresses well.
+  - `weapons.json` is 5.5 MB with 3,925 weapons and 1,204 materials. 3,799 weapons (96.8 %) have
+    an icon (SC-007), and 126 icons return 404 on Kiranico. All 14 type icons are bundled.
+  - Opening the Armas area (load, decode in an isolate, first build), from the Windows
+    integration run in debug mode: **882 ms**. The monster lists load in 459 ms in the same run.
+
 ## R7. Link to monsters
 
 - **Decision**: material ids use the same slug rule as the monster datasets, so a weapon
@@ -150,3 +160,26 @@ Decisions for the 006 plan. Each has the decision, the rationale and the alterna
   ranged weapons without sharpness, material → monster link), the monster's "Armas feitas com
   ele" card, the `AppShell` (disabled areas, preserved state, rail on wide screens) and
   accessibility at 320 dp / 200 %.
+
+## R12. Kiranico weapon pages as the materials and sharpness source
+
+- **Finding (T036 spot check)**: 21 weapons, at least one per type, were compared field by field
+  with their Kiranico pages. Attack, element/status, affinity, slots and Rampage slot all matched.
+  These fields differed:
+  - **Handicraft sharpness**: in 217 weapons, the wiki's `SharpnessBar` has no Handicraft values,
+    so the Handicraft bar repeated the normal one. For example, Buster Blade showed green 50
+    instead of 100.
+  - **Materials**: in 2 of 21 weapons the wiki differed from the game. It left out
+    `Anjanath Scrap+` on Flammengewehr I and listed an extra `Rajang Apoplexy` on Le Miracle.
+- **Decision**:
+  - `tool/data/fetch_rise_weapon_pages.py` caches the 3,925 Kiranico weapon pages, with 4
+    requests at a time; one pass takes about 35 minutes.
+  - `build_rise_weapons.py` then takes from those pages the forge and upgrade materials with
+    their quantities, and both sharpness bars (SVG widths × 5 units).
+  - The points requirements ("Anjanath Material(s) x10 pts.") still come from the wiki, because
+    Kiranico does not list them. They are now one material per monster (`anjanath-material-s`),
+    with the points in the cost.
+  - Without a cached page, the builder falls back to the wiki.
+- **Result**: after the rebuild, all 21 weapons match on every field. 108 melee weapons have the
+  same normal and Handicraft bars in the game data. 57 bonus weapons (Champion, Guardian,
+  Hand-Me-Down) have no materials, as in the game.

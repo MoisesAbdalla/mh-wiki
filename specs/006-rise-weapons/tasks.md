@@ -34,13 +34,13 @@ Write the test before its implementation where it pins behaviour.
   - **Compute the slugs and links.** Use the same slug rule as `build_rise.py`. Turn `previous` and `next` into slugs, and give every material an id (and a pt-BR name when the Rise monster dataset or Kiranico has one).
   - **Set the rank and stars.** Rank comes from rarity. Stars use rule R3: material → monsters in `assets/data/rise_sunbreak/monsters.json` → lowest quest star of that rank from the cached Kiranico monster pages; the weapon gets the highest of those, or 1 when no monster is involved. Store them as `{value, estimated: true}`.
   - **Write the file.** Write `assets/data/rise_sunbreak/weapons.json` exactly as in data-model.md, with `weaponTypes` (en names from Kiranico, pt-BR names from the pt-BR navigation), `materials`, `sources` and `starRule`.
-- [ ] T002 Add `--icons` to `tool/data/build_rise_weapons.py`:
+- [X] T002 Add `--icons` to `tool/data/build_rise_weapons.py`:
   - download each Kiranico weapon icon (`avatar/weapons/<id>.webp`) and convert it to 96 px WebP at `assets/images/weapons/rise_sunbreak/<slug>.webp`;
   - download the 14 type icons from the wiki (`Special:FilePath/MHRS-<Type> Icon.png`, falling back to the Kiranico list header icon) into `assets/images/weapons/types/<type-id>.webp`;
   - set `image` per weapon;
   - register the folders in `pubspec.yaml`;
   - add the script to `tool/data/README.md`, and record the icon source in `assets/images/weapons/SOURCES.md`.
-- [ ] T003 Run `python tool/data/build_rise_weapons.py --icons`. Check the counts per type against research R1 (sum ≈ 3,925 after excluding 28), the unmatched report and the APK-size estimate. Commit the data and icons separately from the code.
+- [X] T003 Run `python tool/data/build_rise_weapons.py --icons`. Check the counts per type against research R1 (sum ≈ 3,925 after excluding 28), the unmatched report and the APK-size estimate. Commit the data and icons separately from the code.
 - [X] T004 [P] Add the strings of data-model.md › Localisation to `lib/l10n/app_pt.arb` and run `flutter gen-l10n`.
 
 ---
@@ -165,7 +165,7 @@ and the wide-screen rail (spec US3).
   - tapping a row opens the weapon in Armas;
   - "Ver todas" opens Armas filtered to those weapons, with a removable chip.
 - [X] T031 [US3] Implement `lib/app/monster_weapons_card.dart` and wire it as the `extraSections` builder in `lib/app/app_shell.dart`. Add `WeaponQuery.onlyIds` and the removable chip to the weapon list (`weapon_list_pane.dart`, `filter_weapons.dart` with a unit test), so that T030 passes.
-- [ ] T032 [US3] Extend `integration_test/app_test.dart`: open Armas, choose Espada Grande, search "flammen", open Gnashing Flammenzahn+, follow "Dropado por: Anjanath", and check the "Armas feitas com ele" card. Run the gates and commit the US3 slice.
+- [X] T032 [US3] Extend `integration_test/app_test.dart`: open Armas, choose Espada Grande, search "flammen", open Gnashing Flammenzahn+, follow "Dropado por: Anjanath", and check the "Armas feitas com ele" card. Run the gates and commit the US3 slice.
 
 **Checkpoint**: all three stories are done.
 
@@ -173,11 +173,11 @@ and the wide-screen rail (spec US3).
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T033 [P] Update `README.md`: the Armas area, the data sources (wiki MHRS pages, Kiranico lists, icons), the estimated-stars rule, the new data counts and the APK size.
-- [ ] T034 [P] Correct the mockup note: Gnashing Flammenzahn+ is rarity 8, Master Rank (research R3). Update `specs/006-rise-weapons/mockups/approved.html` labels if they mislead.
-- [ ] T035 Measure the release APK size (`flutter build apk --release --analyze-size --target-platform android-arm64`) and the time to open the Armas list (profile integration run). Record both in `specs/006-rise-weapons/research.md` (R6 results).
-- [ ] T036 SC-002 spot check: 20 weapons, at least one per type, compared field by field with their wiki and Kiranico pages. Fix the data only in `tool/data/build_rise_weapons.py`, rebuild, and record the result in research.md.
-- [ ] T037 Run the gates and `flutter build windows --release`, then commit and push.
+- [X] T033 [P] Update `README.md`: the Armas area, the data sources (wiki MHRS pages, Kiranico lists, icons), the estimated-stars rule, the new data counts and the APK size.
+- [X] T034 [P] Correct the mockup note: Gnashing Flammenzahn+ is rarity 8, Master Rank (research R3). Update `specs/006-rise-weapons/mockups/approved.html` labels if they mislead.
+- [X] T035 Measure the release APK size (`flutter build apk --release --analyze-size --target-platform android-arm64`) and the time to open the Armas list (profile integration run). Record both in `specs/006-rise-weapons/research.md` (R6 results).
+- [X] T036 SC-002 spot check: 20 weapons, at least one per type, compared field by field with their wiki and Kiranico pages. Fix the data only in `tool/data/build_rise_weapons.py`, rebuild, and record the result in research.md.
+- [X] T037 Run the gates and `flutter build windows --release`, then commit and push.
 - [ ] T038 Manual quickstart checks 1–14 (user). Fix the findings, then merge `006-rise-weapons` into `main`.
 
 ---

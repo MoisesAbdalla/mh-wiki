@@ -103,8 +103,13 @@ void main() {
     );
     await tester.pumpAndSettle();
 
+    // 006 T035: time from tapping Armas to the list (load + first build).
+    final open = Stopwatch()..start();
     await tester.tap(find.text('Armas'));
     await tester.pumpAndSettle();
+    open.stop();
+    // ignore: avoid_print
+    print('armas list opened in ${open.elapsedMilliseconds} ms');
     expect((weapons.state as WeaponListLoaded).query.typeId, 'great-sword');
     if (!tester.testTextInput.isRegistered) tester.testTextInput.register();
     await tester.enterText(find.byType(TextField), 'flammen');

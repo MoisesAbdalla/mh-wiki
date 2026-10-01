@@ -149,6 +149,38 @@ def sharpness(f):
     return {'base': base, 'handicraft': [b + p for b, p in zip(base, plus)]}
 
 
+def kiranico_detail(kid):
+    """Materials and both sharpness bars from the cached Kiranico weapon page, or None.
+
+    The game data there is complete where the wiki sometimes is not (a missing material, no
+    Handicraft values); fetch_rise_weapon_pages.py caches the pages (006 research R12).
+    """
+    path = f'kiranico_weapon_{kid}.html'
+    if not os.path.exists(path):
+        return None
+    t = open(path, encoding='utf8').read()
+
+    def items(start, end):
+        i = t.find(start)
+        j = t.find(end, i) if end else len(t)
+        if i < 0:
+            return []
+        return [(clean(n), int(q)) for n, q in re.findall(
+            r'/data/items/\d+">(.*?)</a></td>\s*<td[^>]*>x(\d+)</td>', t[i:j], re.S)]
+
+    row = t[t.find('avatar/weapons/'):]
+    row = row[:row.find('</tr>')]
+    bars = [[int(w) * 5 for w in re.findall(r'<rect height="8" width="(\d+)"', b)]
+            for b in re.findall(r'<svg width="96" height="8">(.*?)</svg>', row, re.S)]
+    sharp = None
+    if len(bars) >= 2:
+        base, hc = [(b + [0] * 7)[:7] for b in bars[:2]]
+        sharp = {'base': base, 'handicraft': hc}
+    return {'forge': items('Forging Materials', 'Upgrade Materials'),
+            'upgrade': items('Upgrade Materials', '</article>'),
+            'sharpness': sharp}
+
+
 def slots(f):
     out = []
     for level in (4, 3, 2, 1):
@@ -229,9 +261,17 @@ def main():
             rarity = int(f['Rarity'])
             rank = rank_of(rarity)
 
+            detail = kiranico_detail(kid)
+
             def costs(prefix):
+                listed = materials(f, prefix)
+                if detail is not None:
+                    # Kiranico has the game's materials; the wiki adds the
+                    # points requirements, which Kiranico does not list.
+                    kir = detail['forge' if prefix.startswith('Forge') else 'upgrade']
+                    listed = [(n, q, None) for n, q in kir] + [m for m in listed if m[2]]
                 out = []
-                for mat_name, qty, pts in materials(f, prefix):
+                for mat_name, qty, pts in listed:
                     if pts:
                         # "Anjanath Material(s) x10 pts." is one material whose
                         # points go in the cost, not one material per amount.
@@ -275,7 +315,8 @@ def main():
                 'special': specials(f),
                 'slots': slots(f),
                 'rampageSlot': int((re.search(r'Rampage Deco\|(\d)', f.get('Rampage Decoration', '')) or [0, 0])[1]),
-                **({'sharpness': sharpness(f)} if not ranged and sharpness(f) else {}),
+                **({'sharpness': (detail or {}).get('sharpness') or sharpness(f)}
+                   if not ranged and ((detail or {}).get('sharpness') or sharpness(f)) else {}),
                 'previous': slug(f['Previous Name']) if f.get('Previous Name') else None,
                 'next': [slug(f[f'Next {i} Name']) for i in range(1, 6) if f.get(f'Next {i} Name')],
                 'forge': forge,
@@ -387,7 +428,7 @@ def fetch_icons(weapons):
         out = os.path.join(TYPE_ICON_DIR, f'{type_id}.webp')
         if os.path.exists(out):
             continue
-        url = WIKI + 'Special:FilePath/' + f'MHRS-{stem} Icon.png'.replace(' ', '_')
+        url = WIKI + 'Special:FilePath/' + f'MHRS-{stem} Icon Rare 1.png'.replace(' ', '_')
         try:
             data = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60).read()
             im = Image.open(io.BytesIO(data)).convert('RGBA')
