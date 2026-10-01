@@ -80,7 +80,7 @@ void main() {
     expect(find.text('280'), findsOneWidget);
     expect(find.text('28'), findsOneWidget);
     expect(find.text('−20%'), findsOneWidget);
-    expect(find.byKey(const ValueKey('slot-3')), findsOneWidget);
+    expect(find.byKey(const ValueKey('slot-0-3')), findsOneWidget);
     expect(find.byKey(const ValueKey('rampage-slot')), findsOneWidget);
     expect(
       find.bySemanticsLabel('Slots: nível 3; Rampage: nível 2'),
@@ -96,6 +96,8 @@ void main() {
     await pumpDetail(tester, 'gnashing-flammenzahn-plus');
 
     final red = tester.getSize(find.byKey(const ValueKey('sharpness-0')).first);
+    // Each segment is drawn, not only sized.
+    expect(red.height, 12);
     final white = find.byKey(const ValueKey('sharpness-5'));
     // red 130/400 of the bar; white 10 (normal) and 60 (Artesanato).
     expect(

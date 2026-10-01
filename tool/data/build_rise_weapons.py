@@ -32,6 +32,7 @@ WIKI = 'https://monsterhunterwiki.org/wiki/'
 OUT = os.path.join(REPO, 'assets', 'data', 'rise_sunbreak', 'weapons.json')
 ICON_DIR = os.path.join(REPO, 'assets', 'images', 'weapons', 'rise_sunbreak')
 TYPE_ICON_DIR = os.path.join(REPO, 'assets', 'images', 'weapons', 'types')
+SLOT_ICON_DIR = os.path.join(REPO, 'assets', 'images', 'weapons', 'slots')
 ICON_SIZE = 96
 
 # id, Kiranico list view, wiki category, wiki icon file stem, ranged
@@ -436,6 +437,17 @@ def fetch_icons(weapons):
             im.save(out, 'WEBP', quality=90, method=6)
         except Exception as e:  # noqa: BLE001
             print('type icon failed', type_id, e)
+    # The game's decoration slot icons, levels 1-4 (also used for the Rampage slot).
+    os.makedirs(SLOT_ICON_DIR, exist_ok=True)
+    for level in range(1, 5):
+        out = os.path.join(SLOT_ICON_DIR, f'deco{level}.webp')
+        if os.path.exists(out):
+            continue
+        url = f'https://cdn.kiranico.net/file/kiranico/mhrise-web/images/ui/deco{level}.png'
+        data = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60).read()
+        im = Image.open(io.BytesIO(data)).convert('RGBA')
+        im.thumbnail((48, 48), Image.LANCZOS)
+        im.save(out, 'WEBP', lossless=True)
 
 
 if __name__ == '__main__':

@@ -66,6 +66,9 @@ class SharpnessBar extends StatelessWidget {
                           SizedBox(
                             key: ValueKey('sharpness-$i'),
                             width: width * u / Sharpness.maxUnits,
+                            // An explicit height: a childless box in a Row
+                            // would collapse to zero.
+                            height: 12,
                             child: ColoredBox(color: sharpnessColors[i]),
                           ),
                     ],

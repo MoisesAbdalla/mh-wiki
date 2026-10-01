@@ -3,13 +3,17 @@ import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
-/// Decoration slots as round level badges and the Rampage slot as a square
-/// gold one (006 ui-contract "Atributos").
+/// Decoration slots with the game's slot icons (a gem with one to four
+/// pips), and the Rampage slot as the same gem in gold (006 ui-contract
+/// "Atributos").
 class SlotBadges extends StatelessWidget {
   const SlotBadges({required this.slots, required this.rampageSlot, super.key});
 
   final List<int> slots;
   final int rampageSlot;
+
+  static String iconAsset(int level) =>
+      'assets/images/weapons/slots/deco$level.webp';
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +39,16 @@ class SlotBadges extends StatelessWidget {
           if (slots.isEmpty)
             Text(l10n.noSlots, style: muted)
           else
-            for (final level in slots) _Badge(level: level, rampage: false),
+            for (final (i, level) in slots.indexed)
+              SlotIcon(key: ValueKey('slot-$i-$level'), level: level),
           if (rampageSlot > 0) ...[
-            const SizedBox(width: 8),
+            const SizedBox(width: 10),
             Text(l10n.rampageSlot, style: muted),
-            _Badge(level: rampageSlot, rampage: true),
+            SlotIcon(
+              key: const ValueKey('rampage-slot'),
+              level: rampageSlot,
+              rampage: true,
+            ),
           ],
         ],
       ),
@@ -47,28 +56,44 @@ class SlotBadges extends StatelessWidget {
   }
 }
 
-class _Badge extends StatelessWidget {
-  const _Badge({required this.level, required this.rampage});
+/// One slot icon of the game; falls back to the level number in a ring.
+class SlotIcon extends StatelessWidget {
+  const SlotIcon({
+    required this.level,
+    this.rampage = false,
+    this.size = 26,
+    super.key,
+  });
 
   final int level;
   final bool rampage;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
     final color = rampage ? HunterPalette.gold : HunterPalette.text;
-    return Container(
-      key: ValueKey(rampage ? 'rampage-slot' : 'slot-$level'),
-      constraints: const BoxConstraints(minWidth: 22, minHeight: 22),
-      alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(horizontal: 4),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: rampage ? HunterPalette.gold : HunterPalette.textMuted,
-          width: 1.5,
+    return SizedBox.square(
+      dimension: size,
+      child: Image.asset(
+        SlotBadges.iconAsset(level),
+        fit: BoxFit.contain,
+        excludeFromSemantics: true,
+        // The gem is white and grey: gold tints it for the Rampage slot.
+        color: rampage ? HunterPalette.gold : null,
+        colorBlendMode: BlendMode.modulate,
+        errorBuilder: (_, _, _) => DecoratedBox(
+          decoration: BoxDecoration(
+            shape: rampage ? BoxShape.rectangle : BoxShape.circle,
+            border: Border.all(color: color, width: 1.5),
+          ),
+          child: Center(
+            child: Text(
+              '$level',
+              style: notebookNumber(size: 12, color: color),
+            ),
+          ),
         ),
-        borderRadius: BorderRadius.circular(rampage ? 3 : 11),
       ),
-      child: Text('$level', style: notebookNumber(size: 12, color: color)),
     );
   }
 }
