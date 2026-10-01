@@ -1,9 +1,12 @@
 import 'dart:ui' show Tristate;
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/core/domain/failure.dart';
 import 'package:mh_wiki/core/domain/game.dart';
+import 'package:mh_wiki/core/domain/localized_text.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/weapon_type.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/features/weapons/presentation/controllers/weapon_list_controller.dart';
@@ -199,5 +202,49 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Gnashing Flammenzahn+'), findsOneWidget);
     expect(find.text('Great Sword'), findsOneWidget);
+  });
+
+  testWidgets('with a mouse, the type row scrolls by wheel and shows a bar', (
+    tester,
+  ) async {
+    setWindowSize(tester, const Size(320, 400));
+    await pumpApp(
+      tester,
+      Scaffold(
+        body: WeaponTypePicker(
+          types: [
+            for (var i = 0; i < 14; i++)
+              WeaponType(
+                id: 'type-$i',
+                name: LocalizedText(en: 'Type $i'),
+                ranged: false,
+              ),
+          ],
+          selectedId: 'type-0',
+          onChanged: (_) {},
+        ),
+      ),
+    );
+    expect(find.byType(Scrollbar), findsOneWidget);
+    final row = find.byType(Scrollable);
+    expect(tester.state<ScrollableState>(row).position.pixels, 0);
+
+    final mouse = TestPointer(1, PointerDeviceKind.mouse);
+    await tester.sendEventToBinding(mouse.hover(tester.getCenter(row)));
+    await tester.sendEventToBinding(mouse.scroll(const Offset(0, 120)));
+    await tester.pumpAndSettle();
+    expect(tester.state<ScrollableState>(row).position.pixels, 120);
+
+    // Dragging with the mouse scrolls too.
+    await tester.dragFrom(
+      tester.getCenter(row),
+      const Offset(-100, 0),
+      kind: PointerDeviceKind.mouse,
+    );
+    await tester.pumpAndSettle();
+    expect(
+      tester.state<ScrollableState>(row).position.pixels,
+      greaterThan(120),
+    );
   });
 }

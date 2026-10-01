@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
@@ -7,8 +8,10 @@ import 'package:mh_wiki/features/weapons/domain/entities/weapon_type.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
 /// The weapon types as blocks that scroll sideways (006 ui-contract): icon
-/// and pt-BR name, the selected one with a gold edge.
-class WeaponTypePicker extends StatelessWidget {
+/// and pt-BR name, the selected one with a gold edge. With a mouse, the row
+/// also scrolls by dragging and with the wheel, and its scrollbar stays
+/// visible so the other types can be found.
+class WeaponTypePicker extends StatefulWidget {
   const WeaponTypePicker({
     required this.types,
     required this.selectedId,
@@ -28,25 +31,66 @@ class WeaponTypePicker extends StatelessWidget {
       'assets/images/weapons/types/$typeId.webp';
 
   @override
+  State<WeaponTypePicker> createState() => _WeaponTypePickerState();
+}
+
+class _WeaponTypePickerState extends State<WeaponTypePicker> {
+  final _scroll = ScrollController();
+
+  @override
+  void dispose() {
+    _scroll.dispose();
+    super.dispose();
+  }
+
+  /// A vertical wheel over the row scrolls it sideways.
+  void _onWheel(PointerSignalEvent event) {
+    if (event is! PointerScrollEvent || !_scroll.hasClients) return;
+    final delta = event.scrollDelta.dy != 0
+        ? event.scrollDelta.dy
+        : event.scrollDelta.dx;
+    final position = _scroll.position;
+    if (position.maxScrollExtent <= 0) return;
+    GestureBinding.instance.pointerSignalResolver.register(event, (_) {
+      _scroll.jumpTo(
+        (position.pixels + delta).clamp(0, position.maxScrollExtent),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final gutter = Space.gutter(MediaQuery.sizeOf(context).width);
-    return SingleChildScrollView(
-      key: const PageStorageKey('weapon-types'),
-      scrollDirection: Axis.horizontal,
-      padding: EdgeInsets.fromLTRB(gutter, 10, gutter, 6),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          for (final (i, type) in types.indexed) ...[
-            if (i > 0) const SizedBox(width: 8),
-            _TypeBlock(
-              type: type,
-              selected: type.id == selectedId,
-              language: language,
-              onTap: () => onChanged(type.id),
+    return Listener(
+      onPointerSignal: _onWheel,
+      child: ScrollConfiguration(
+        // Dragging with the mouse too, not only touch (Windows, web).
+        behavior: ScrollConfiguration.of(context)
+            .copyWith(dragDevices: PointerDeviceKind.values.toSet()),
+        child: Scrollbar(
+          controller: _scroll,
+          thumbVisibility: true,
+          child: SingleChildScrollView(
+            key: const PageStorageKey('weapon-types'),
+            controller: _scroll,
+            scrollDirection: Axis.horizontal,
+            padding: EdgeInsets.fromLTRB(gutter, 10, gutter, 14),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (final (i, type) in widget.types.indexed) ...[
+                  if (i > 0) const SizedBox(width: 8),
+                  _TypeBlock(
+                    type: type,
+                    selected: type.id == widget.selectedId,
+                    language: widget.language,
+                    onTap: () => widget.onChanged(type.id),
+                  ),
+                ],
+              ],
             ),
-          ],
-        ],
+          ),
+        ),
       ),
     );
   }
