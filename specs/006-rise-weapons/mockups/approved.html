@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caderninho — Armas (006)</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Averia+Serif+Libre:wght@400;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #16120e; --panel: #1f1812; --bg-raise: #2c2215;
+    --ink: #efe4c8; --ink-2: #b9a67f; --ink-3: #8a7652;
+    --rule: #3b2e1d; --rule-strong: #5a4526; --gold: #e0bd6a;
+    --fire: #f07a4a; --water: #6fb2f0; --thunder: #f0cf4a; --ice: #a9e2f2; --dragon: #c592f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d0a08; color: var(--ink); font: 15px/1.5 "Atkinson Hyperlegible", sans-serif; padding: 28px 16px 60px; }
+  .intro { max-width: 1240px; margin: 0 auto 22px; }
+  .intro h1 { font: 400 32px/1 "IM Fell English SC"; }
+  .intro p { color: var(--ink-2); margin-top: 8px; max-width: 80ch; font-size: 14px; }
+  .row { display: flex; gap: 26px; flex-wrap: wrap; justify-content: center; max-width: 1240px; margin: 0 auto; }
+  .cap { font-size: 12px; color: var(--ink-2); margin-bottom: 8px; letter-spacing: .06em; text-transform: uppercase; }
+  .phone { width: 380px; max-width: 100%; height: 800px; background: var(--bg); border-radius: 26px; display: flex; flex-direction: column; overflow: hidden; }
+  .scroll { flex: 1; overflow-y: auto; }
+  .num { font-family: "Averia Serif Libre"; font-weight: 700; }
+
+  .appbar { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 22px 8px; }
+  .brand { font: 400 24px/1 "IM Fell English SC"; }
+  .appbar .gear { color: var(--ink-2); font-size: 13px; }
+  .games { display: flex; gap: 14px; padding: 0 22px; border-bottom: 1px solid var(--rule); align-items: flex-end; }
+  .games a { padding: 6px 0 8px; color: var(--ink-2); font: 400 17px "IM Fell English SC"; text-decoration: none; }
+  .games a.on { color: var(--ink); box-shadow: inset 0 -2px 0 var(--gold); }
+  .games a.off { opacity: .35; }
+  .logo { display: inline-block; height: 34px; padding: 0 6px; border: 1px dashed var(--rule-strong); font: 12px "Atkinson Hyperlegible"; line-height: 32px; color: var(--ink-2); }
+
+  /* weapon type chips: 14 types, scroll sideways */
+  .types { display: flex; gap: 8px; padding: 12px 22px 6px; overflow-x: auto; }
+  .types span { flex: none; display: flex; flex-direction: column; align-items: center; gap: 3px; width: 58px; padding: 6px 2px; border: 1px solid var(--rule); border-radius: 4px; background: var(--panel); font-size: 11px; color: var(--ink-2); text-align: center; line-height: 1.15; }
+  .types span i { font-style: normal; font: 400 20px "IM Fell English SC"; color: var(--ink-3); }
+  .types span.on { border-color: var(--gold); color: var(--ink); background: var(--bg-raise); }
+  .types span.on i { color: var(--gold); }
+
+  .filters { display: flex; gap: 14px; padding: 8px 22px; font-size: 13px; color: var(--ink-2); border-bottom: 1px solid var(--rule); }
+  .filters b { color: var(--ink); font-weight: 700; box-shadow: inset 0 -2px 0 var(--gold); }
+
+  /* tree list: one card per tree, rows inside */
+  .tree { margin: 10px 12px 0; background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; }
+  .tree h4 { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 14px 6px; font: 400 18px "IM Fell English SC"; border-bottom: 1px solid var(--rule); }
+  .tree h4 small { font: 12px "Atkinson Hyperlegible"; color: var(--ink-2); }
+  .w { display: grid; grid-template-columns: 34px 1fr auto; gap: 10px; align-items: center; padding: 8px 14px; border-bottom: 1px solid var(--rule); }
+  .w:last-child { border-bottom: 0; }
+  .w.sel { background: var(--bg-raise); box-shadow: inset 2px 0 0 var(--gold); }
+  .w .ic { width: 34px; height: 34px; border-radius: 3px; background: #2a2119; display: grid; place-items: center; color: var(--ink-3); font: 11px "Averia Serif Libre"; }
+  .w b { display: block; font: 400 16px/1.15 "IM Fell English SC"; }
+  .w small { font-size: 12px; color: var(--ink-2); }
+  .w .stats { text-align: right; font-size: 12px; color: var(--ink-2); line-height: 1.3; }
+  .w .stats .num { color: var(--ink); font-size: 15px; }
+  .indent1 { padding-left: 30px; } .indent2 { padding-left: 46px; }
+  .el { display: inline-flex; align-items: center; gap: 3px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+  /* detail */
+  .d { padding: 18px 12px 30px; }
+  .crumb { font-size: 12px; color: var(--ink-2); padding: 0 10px; display: flex; justify-content: space-between; }
+  .head { display: grid; grid-template-columns: 1fr 84px; gap: 12px; align-items: end; padding: 12px 10px 4px; }
+  .head h2 { font: 400 34px/1 "IM Fell English SC"; }
+  .head .sub { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+  .plate { width: 84px; height: 84px; background: var(--panel); border: 1px solid var(--rule-strong); transform: rotate(3deg); display: grid; place-items: center; color: var(--ink-3); font: 12px "Atkinson Hyperlegible"; }
+  .desc { padding: 8px 10px 16px; font-size: 13px; color: var(--ink-2); font-style: italic; }
+  .card { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 14px 16px 16px; margin-bottom: 12px; }
+  .card h3 { display: flex; gap: 10px; align-items: baseline; font: 400 21px "IM Fell English SC"; margin-bottom: 8px; }
+  .card h3 i { font: 700 18px "Averia Serif Libre"; color: var(--gold); font-style: normal; }
+  .card h3 small { margin-left: auto; font: 12px "Atkinson Hyperlegible"; color: var(--ink-2); }
+  .statgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px 12px; }
+  .stat small { display: block; font-size: 12px; color: var(--ink-2); }
+  .stat .num { font-size: 26px; }
+  .neg { color: #f2a08a; }
+  .slots { display: flex; gap: 6px; margin-top: 10px; font-size: 13px; color: var(--ink-2); align-items: center; }
+  .slot { width: 18px; height: 18px; border: 1.5px solid var(--ink-2); border-radius: 50%; display: grid; place-items: center; font: 700 10px "Averia Serif Libre"; color: var(--ink); }
+  .slot.r { border-radius: 3px; border-color: var(--gold); color: var(--gold); }
+  .sharp { display: flex; height: 12px; border-radius: 2px; overflow: hidden; margin: 6px 0 2px; }
+  .sharp span { height: 100%; }
+  .sharp-l { font-size: 12px; color: var(--ink-2); margin-top: 8px; }
+  .rr { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--rule); font-size: 14.5px; }
+  .rr:last-child { border-bottom: 0; }
+  .rr a { color: var(--ink); text-decoration: none; }
+  .rr em { font-style: normal; color: var(--ink-2); font-size: 12.5px; }
+  .rr .num { color: var(--ink); }
+  .cap2 { font-size: 12px; font-weight: 700; color: var(--ink-2); padding: 12px 0 4px; border-bottom: 1px solid var(--rule-strong); }
+  .path { display: flex; flex-direction: column; gap: 0; }
+  .path .rr.cur { color: var(--gold); }
+
+  .nav { display: flex; border-top: 1px solid var(--rule-strong); background: #120e0b; }
+  .nav a { flex: 1; text-align: center; padding: 8px 0 10px; font: 400 15px "IM Fell English SC"; color: var(--ink-2); text-decoration: none; }
+  .nav a i { display: block; font-style: normal; font-size: 18px; line-height: 1.2; }
+  .nav a.on { color: var(--gold); }
+  .nav a.soon { opacity: .35; }
+
+  .notes { max-width: 1240px; margin: 30px auto 0; font-size: 14px; color: var(--ink-2); }
+  .notes h2 { font: 400 22px "IM Fell English SC"; color: var(--ink); margin-bottom: 8px; }
+  .notes li { margin: 5px 0 5px 18px; }
+  .notes b { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="intro">
+  <h1>Armas — proposta de telas (006)</h1>
+  <p>Dados reais da Rise (Kiranico, Grande Espada do Anjanath). Estilo Caderninho aprovado: cards discretos, dourado único, IM Fell nos títulos, Averia nos números. Uma barra inferior passa a separar as áreas do app; Armaduras e Assistente aparecem desligadas até as features 007–008.</p>
+</div>
+
+<p class="intro" style="color:#b9a67f;font-size:13px">Correção (006 T034): Gnashing Flammenzahn+ tem raridade 8, que na Sunbreak é Master Rank (research R3).</p>
+<div class="row">
+  <!-- LIST -->
+  <div>
+    <div class="cap">Lista de armas</div>
+    <div class="phone">
+      <div class="scroll">
+        <div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div>
+        <nav class="games">
+          <a class="off"><span class="logo">World (em breve)</span></a>
+          <a class="on"><span class="logo">Rise: Sunbreak</span></a>
+          <a class="off"><span class="logo">Wilds (em breve)</span></a>
+        </nav>
+        <div class="types">
+          <span class="on"><i>GE</i>Grande Espada</span>
+          <span><i>EL</i>Espada Longa</span>
+          <span><i>EE</i>Espada e Escudo</span>
+          <span><i>LD</i>Lâminas Duplas</span>
+          <span><i>M</i>Martelo</span>
+          <span><i>B</i>Berrante</span>
+          <span><i>L</i>Lança</span>
+        </div>
+        <div class="filters"><b>Todos os ranks</b><span>Low</span><span>High</span><span>Master</span><span style="margin-left:auto">⌕ Buscar</span></div>
+
+        <div class="tree">
+          <h4>Árvore do Anjanath <small><span class="num">6</span> armas</small></h4>
+          <div class="w"><div class="ic">R3</div><div><b>Flammenzahn I</b><small>Low Rank</small></div><div class="stats"><span class="num">140</span><br><span class="el"><span class="dot" style="background:var(--fire)"></span>20</span> · −20%</div></div>
+          <div class="w indent1"><div class="ic">R5</div><div><b>Flammenzahn II</b><small>Low Rank</small></div><div class="stats"><span class="num">200</span><br><span class="el"><span class="dot" style="background:var(--fire)"></span>24</span> · −20%</div></div>
+          <div class="w indent1"><div class="ic">R6</div><div><b>Gnashing Flammenzahn</b><small>High Rank</small></div><div class="stats"><span class="num">220</span><br><span class="el"><span class="dot" style="background:var(--fire)"></span>26</span> · −20%</div></div>
+          <div class="w indent2 sel"><div class="ic">R8</div><div><b>Gnashing Flammenzahn+</b><small>Master Rank</small></div><div class="stats"><span class="num">280</span><br><span class="el"><span class="dot" style="background:var(--fire)"></span>28</span> · −20%</div></div>
+          <div class="w indent2"><div class="ic">R9</div><div><b>Lohenzahn</b><small>Master Rank</small></div><div class="stats"><span class="num">320</span><br><span class="el"><span class="dot" style="background:var(--fire)"></span>30</span> · −20%</div></div>
+          <div class="w indent2"><div class="ic">R10</div><div><b>Lohenzahn+</b><small>Master Rank</small></div><div class="stats"><span class="num">350</span><br><span class="el"><span class="dot" style="background:var(--fire)"></span>32</span> · −20%</div></div>
+        </div>
+        <div class="tree">
+          <h4>Árvore do Rathalos <small><span class="num">5</span> armas</small></h4>
+          <div class="w"><div class="ic">R6</div><div><b>Rathalos Firesword</b><small>High Rank</small></div><div class="stats"><span class="num">210</span><br><span class="el"><span class="dot" style="background:var(--fire)"></span>40</span></div></div>
+          <div class="w indent1"><div class="ic">R9</div><div><b>Rathalos Firesword+</b><small>Master Rank</small></div><div class="stats"><span class="num">310</span><br><span class="el"><span class="dot" style="background:var(--fire)"></span>57</span></div></div>
+        </div>
+      </div>
+      <nav class="nav"><a><i>❦</i>Monstros</a><a class="on"><i>⚔</i>Armas</a><a class="soon"><i>⛨</i>Armaduras</a><a class="soon"><i>✦</i>Assistente</a></nav>
+    </div>
+  </div>
+
+  <!-- DETAIL -->
+  <div>
+    <div class="cap">Detalhe da arma</div>
+    <div class="phone">
+      <div class="scroll d">
+        <div class="crumb"><span>‹ Grande Espada</span><span>Rise: Sunbreak</span></div>
+        <div class="head">
+          <div><h2>Gnashing Flammenzahn+</h2><div class="sub">Grande Espada · Raridade <span class="num">8</span> · Master Rank</div></div>
+          <div class="plate">ícone</div>
+        </div>
+        <p class="desc">“A Flammenzahn upgrade. The edge has been ground to an even deadlier sharpness.”</p>
+
+        <div class="card">
+          <h3><i>1</i>Atributos</h3>
+          <div class="statgrid">
+            <div class="stat"><small>Ataque</small><span class="num">280</span></div>
+            <div class="stat"><small>Fogo</small><span class="num" style="color:var(--fire)">28</span></div>
+            <div class="stat"><small>Afinidade</small><span class="num neg">−20%</span></div>
+          </div>
+          <div class="slots">Slots <span class="slot">3</span> · Rampage <span class="slot r">2</span></div>
+        </div>
+
+        <div class="card">
+          <h3><i>2</i>Afiação</h3>
+          <div class="sharp-l">Normal</div>
+          <div class="sharp"><span style="width:27%;background:#BE3843"></span><span style="width:21%;background:#D3673D"></span><span style="width:8%;background:#C9B232"></span><span style="width:10%;background:#81B034"></span><span style="width:4%;background:#3A58D7"></span><span style="width:2%;background:#E2E2E2"></span></div>
+          <div class="sharp-l">Com Artesanato (Handicraft) nível máximo</div>
+          <div class="sharp"><span style="width:27%;background:#BE3843"></span><span style="width:21%;background:#D3673D"></span><span style="width:8%;background:#C9B232"></span><span style="width:10%;background:#81B034"></span><span style="width:4%;background:#3A58D7"></span><span style="width:12.5%;background:#E2E2E2"></span></div>
+        </div>
+
+        <div class="card">
+          <h3><i>3</i>Materiais <small>melhorar a partir da anterior</small></h3>
+          <div class="rr"><a>Anjanath Hardfang</a><span class="num">×3</span></div>
+          <div class="rr"><a>Heavy Anjanath Nosebone</a><span class="num">×2</span></div>
+          <div class="rr"><a>Anjanath Fur</a><span class="num">×2</span></div>
+          <div class="rr"><a>Conflagrant Sac</a><span class="num">×1</span></div>
+          <div class="rr"><em>Dropados por: Anjanath (Master Rank) ›</em></div>
+        </div>
+
+        <div class="card">
+          <h3><i>4</i>Árvore</h3>
+          <div class="path">
+            <div class="rr"><span>Gnashing Flammenzahn</span><em>anterior</em></div>
+            <div class="rr cur"><span>Gnashing Flammenzahn+</span><em>esta</em></div>
+            <div class="rr"><span>Lohenzahn</span><em>próxima</em></div>
+          </div>
+        </div>
+      </div>
+      <nav class="nav"><a><i>❦</i>Monstros</a><a class="on"><i>⚔</i>Armas</a><a class="soon"><i>⛨</i>Armaduras</a><a class="soon"><i>✦</i>Assistente</a></nav>
+    </div>
+  </div>
+
+  <!-- MONSTER LINK -->
+  <div>
+    <div class="cap">No detalhe do monstro (novo card)</div>
+    <div class="phone">
+      <div class="scroll d">
+        <div class="crumb"><span>‹ Monstros</span><span>Rise: Sunbreak</span></div>
+        <div class="head"><div><h2>Anjanath</h2><div class="sub">Wyvern Carnívora</div></div><div class="plate">ícone</div></div>
+        <div style="height:14px"></div>
+        <div class="card"><h3><i>1</i>Fraquezas</h3><div class="rr"><span>… (igual a hoje)</span></div></div>
+        <div class="card"><h3><i>4</i>Materiais</h3><div class="rr"><span>… (igual a hoje)</span></div></div>
+        <div class="card">
+          <h3><i>7</i>Armas feitas com ele <small><span class="num">17</span></small></h3>
+          <div class="rr"><span>Lohenzahn+ <em>· Grande Espada</em></span><em>MR</em></div>
+          <div class="rr"><span>Anja Saber <em>· Espada Longa</em></span><em>MR</em></div>
+          <div class="rr"><span>Flammenhammer <em>· Martelo</em></span><em>HR</em></div>
+          <div class="rr"><em>Ver todas ›</em></div>
+        </div>
+      </div>
+      <nav class="nav"><a class="on"><i>❦</i>Monstros</a><a><i>⚔</i>Armas</a><a class="soon"><i>⛨</i>Armaduras</a><a class="soon"><i>✦</i>Assistente</a></nav>
+    </div>
+  </div>
+</div>
+
+<div class="notes">
+  <h2>O que a proposta traz</h2>
+  <ul>
+    <li><b>Barra inferior</b> com as áreas do app (Monstros, Armas, Armaduras, Assistente); as duas últimas aparecem apagadas até existirem. Em tela larga vira uma coluna lateral.</li>
+    <li><b>Abas de jogo</b> com os logos: só a Rise tem armas por enquanto; World e Wilds aparecem como “em breve”.</li>
+    <li><b>Tipo de arma</b> em blocos que rolam para o lado (14 tipos); filtro por rank e busca.</li>
+    <li><b>Lista agrupada por árvore</b>: cada árvore (Anjanath, Rathalos…) é um card, com as armas em ordem de melhoria e recuo indicando o caminho; ataque, elemento e afinidade à direita.</li>
+    <li><b>Detalhe</b> em cards numerados: Atributos (ataque, elemento, afinidade, slots e Rampage), Afiação (normal e com Artesanato), Materiais (com link para o monstro que dropa) e Árvore (anterior / próxima).</li>
+    <li><b>No monstro</b>, um card novo “Armas feitas com ele”.</li>
+    <li>Ícones dos tipos de arma e de cada arma virão da Kiranico/wiki; aqui estão como marcadores.</li>
+  </ul>
+</div>
+</body>
+</html>

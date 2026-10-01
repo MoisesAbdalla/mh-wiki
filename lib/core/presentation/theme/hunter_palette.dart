@@ -24,4 +24,13 @@ abstract final class HunterPalette {
   static const thunder = Color(0xFFF0CF4A);
   static const ice = Color(0xFFA9E2F2);
   static const dragon = Color(0xFFC592F0);
+
+  // Statuses (006): light tints that stay >= 4.5:1 on the panel.
+  static const poison = Color(0xFFC79BEA);
+  static const sleep = Color(0xFF9FC3E8);
+  static const paralysis = Color(0xFFE8D27A);
+  static const blast = Color(0xFFF0A070);
+
+  /// Negative values such as affinity (the theme's error colour).
+  static const negative = Color(0xFFF2A08A);
 }

@@ -8,10 +8,23 @@ import 'package:mh_wiki/l10n/app_localizations.dart';
 /// (005 FR-006/FR-007, research R5). `null` = Todos. A logo that cannot be
 /// shown falls back to the game's short name.
 class GameTabs extends StatelessWidget {
-  const GameTabs({required this.selected, required this.onChanged, super.key});
+  const GameTabs({
+    required this.selected,
+    required this.onChanged,
+    this.includeAll = true,
+    this.enabledGames,
+    super.key,
+  });
 
   final Game? selected;
   final ValueChanged<Game?> onChanged;
+
+  /// Shows the "Todos" tab first.
+  final bool includeAll;
+
+  /// Games that can be chosen; the others read "World, em breve" (006).
+  /// `null` = every game.
+  final Set<Game>? enabledGames;
 
   static String logoAsset(Game game) =>
       'assets/images/games/${game.datasetKey}.webp';
@@ -26,14 +39,23 @@ class GameTabs extends StatelessWidget {
     };
     return UnderlineTabs<Game?>(
       options: [
-        TabOption(value: null, text: l10n.filterAll),
+        if (includeAll) TabOption(value: null, text: l10n.filterAll),
         for (final game in Game.values)
-          TabOption(
-            value: game,
-            text: shortName(game),
-            image: logoAsset(game),
-            semanticsLabel: l10n.gameName(game),
-          ),
+          if (enabledGames?.contains(game) ?? true)
+            TabOption(
+              value: game,
+              text: shortName(game),
+              image: logoAsset(game),
+              semanticsLabel: l10n.gameName(game),
+            )
+          else
+            TabOption(
+              value: game,
+              text: l10n.gameComingSoon(shortName(game)),
+              image: logoAsset(game),
+              semanticsLabel: l10n.gameComingSoon(l10n.gameName(game)),
+              enabled: false,
+            ),
       ],
       selected: selected,
       onChanged: onChanged,

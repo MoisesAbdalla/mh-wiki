@@ -597,6 +597,600 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Igual à forma base'**
   String get inheritedFromBase;
+
+  /// No description provided for @areaMonsters.
+  ///
+  /// In pt, this message translates to:
+  /// **'Monstros'**
+  String get areaMonsters;
+
+  /// No description provided for @areaWeapons.
+  ///
+  /// In pt, this message translates to:
+  /// **'Armas'**
+  String get areaWeapons;
+
+  /// No description provided for @areaArmor.
+  ///
+  /// In pt, this message translates to:
+  /// **'Armaduras'**
+  String get areaArmor;
+
+  /// No description provided for @areaAssistant.
+  ///
+  /// In pt, this message translates to:
+  /// **'Assistente'**
+  String get areaAssistant;
+
+  /// No description provided for @areaComingSoon.
+  ///
+  /// In pt, this message translates to:
+  /// **'{area}, em breve'**
+  String areaComingSoon(String area);
+
+  /// No description provided for @gameComingSoon.
+  ///
+  /// In pt, this message translates to:
+  /// **'{game}, em breve'**
+  String gameComingSoon(String game);
+
+  /// No description provided for @comingSoon.
+  ///
+  /// In pt, this message translates to:
+  /// **'em breve'**
+  String get comingSoon;
+
+  /// No description provided for @weaponTypeLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tipo de arma: {type}'**
+  String weaponTypeLabel(String type);
+
+  /// No description provided for @rankAll.
+  ///
+  /// In pt, this message translates to:
+  /// **'Todos'**
+  String get rankAll;
+
+  /// No description provided for @searchWeaponHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Buscar arma'**
+  String get searchWeaponHint;
+
+  /// No description provided for @weaponCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 arma} other{{count} armas}}'**
+  String weaponCount(int count);
+
+  /// No description provided for @weaponSectionAttributes.
+  ///
+  /// In pt, this message translates to:
+  /// **'Atributos'**
+  String get weaponSectionAttributes;
+
+  /// No description provided for @weaponSectionSharpness.
+  ///
+  /// In pt, this message translates to:
+  /// **'Afiação'**
+  String get weaponSectionSharpness;
+
+  /// No description provided for @weaponSectionMaterials.
+  ///
+  /// In pt, this message translates to:
+  /// **'Materiais'**
+  String get weaponSectionMaterials;
+
+  /// No description provided for @weaponSectionTree.
+  ///
+  /// In pt, this message translates to:
+  /// **'Árvore'**
+  String get weaponSectionTree;
+
+  /// No description provided for @attack.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ataque'**
+  String get attack;
+
+  /// No description provided for @affinity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Afinidade'**
+  String get affinity;
+
+  /// No description provided for @slots.
+  ///
+  /// In pt, this message translates to:
+  /// **'Slots'**
+  String get slots;
+
+  /// No description provided for @rampageSlot.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rampage'**
+  String get rampageSlot;
+
+  /// No description provided for @noSlots.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sem slots'**
+  String get noSlots;
+
+  /// No description provided for @slotsSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'Slots: {slots}; Rampage: {rampage}'**
+  String slotsSemantics(String slots, String rampage);
+
+  /// No description provided for @slotLevel.
+  ///
+  /// In pt, this message translates to:
+  /// **'nível {level}'**
+  String slotLevel(int level);
+
+  /// No description provided for @none.
+  ///
+  /// In pt, this message translates to:
+  /// **'nenhum'**
+  String get none;
+
+  /// No description provided for @sharpnessBase.
+  ///
+  /// In pt, this message translates to:
+  /// **'Normal'**
+  String get sharpnessBase;
+
+  /// No description provided for @sharpnessHandicraft.
+  ///
+  /// In pt, this message translates to:
+  /// **'Com Artesanato (máximo)'**
+  String get sharpnessHandicraft;
+
+  /// No description provided for @sharpnessSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'Afiação {label}: {segments}'**
+  String sharpnessSemantics(String label, String segments);
+
+  /// No description provided for @sharpnessRed.
+  ///
+  /// In pt, this message translates to:
+  /// **'vermelho'**
+  String get sharpnessRed;
+
+  /// No description provided for @sharpnessOrange.
+  ///
+  /// In pt, this message translates to:
+  /// **'laranja'**
+  String get sharpnessOrange;
+
+  /// No description provided for @sharpnessYellow.
+  ///
+  /// In pt, this message translates to:
+  /// **'amarelo'**
+  String get sharpnessYellow;
+
+  /// No description provided for @sharpnessGreen.
+  ///
+  /// In pt, this message translates to:
+  /// **'verde'**
+  String get sharpnessGreen;
+
+  /// No description provided for @sharpnessBlue.
+  ///
+  /// In pt, this message translates to:
+  /// **'azul'**
+  String get sharpnessBlue;
+
+  /// No description provided for @sharpnessWhite.
+  ///
+  /// In pt, this message translates to:
+  /// **'branco'**
+  String get sharpnessWhite;
+
+  /// No description provided for @sharpnessPurple.
+  ///
+  /// In pt, this message translates to:
+  /// **'roxo'**
+  String get sharpnessPurple;
+
+  /// No description provided for @forgeMaterials.
+  ///
+  /// In pt, this message translates to:
+  /// **'Criar'**
+  String get forgeMaterials;
+
+  /// No description provided for @upgradeMaterials.
+  ///
+  /// In pt, this message translates to:
+  /// **'Melhorar'**
+  String get upgradeMaterials;
+
+  /// No description provided for @materialPoints.
+  ///
+  /// In pt, this message translates to:
+  /// **'{points} pts.'**
+  String materialPoints(int points);
+
+  /// No description provided for @droppedBy.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dropado por: {monsters}'**
+  String droppedBy(String monsters);
+
+  /// No description provided for @treePrevious.
+  ///
+  /// In pt, this message translates to:
+  /// **'anterior'**
+  String get treePrevious;
+
+  /// No description provided for @treeCurrent.
+  ///
+  /// In pt, this message translates to:
+  /// **'esta'**
+  String get treeCurrent;
+
+  /// No description provided for @treeNext.
+  ///
+  /// In pt, this message translates to:
+  /// **'próxima'**
+  String get treeNext;
+
+  /// No description provided for @starsEstimated.
+  ///
+  /// In pt, this message translates to:
+  /// **'{stars}★ (estimado)'**
+  String starsEstimated(int stars);
+
+  /// No description provided for @weaponsMadeFrom.
+  ///
+  /// In pt, this message translates to:
+  /// **'Armas feitas com ele'**
+  String get weaponsMadeFrom;
+
+  /// No description provided for @seeAllWeapons.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver todas ({count})'**
+  String seeAllWeapons(int count);
+
+  /// No description provided for @weaponsOfMonster.
+  ///
+  /// In pt, this message translates to:
+  /// **'Armas de {monster}'**
+  String weaponsOfMonster(String monster);
+
+  /// No description provided for @weaponsLoadFailed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar as armas.'**
+  String get weaponsLoadFailed;
+
+  /// No description provided for @noWeaponsFound.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma arma encontrada'**
+  String get noWeaponsFound;
+
+  /// No description provided for @statusPoison.
+  ///
+  /// In pt, this message translates to:
+  /// **'Veneno'**
+  String get statusPoison;
+
+  /// No description provided for @statusSleep.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sono'**
+  String get statusSleep;
+
+  /// No description provided for @statusParalysis.
+  ///
+  /// In pt, this message translates to:
+  /// **'Paralisia'**
+  String get statusParalysis;
+
+  /// No description provided for @statusBlast.
+  ///
+  /// In pt, this message translates to:
+  /// **'Explosão'**
+  String get statusBlast;
+
+  /// No description provided for @rankLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rank {rank}'**
+  String rankLabel(String rank);
+
+  /// No description provided for @selectWeapon.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha uma arma na lista'**
+  String get selectWeapon;
+
+  /// No description provided for @weaponTreeSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'{tree}, {count}'**
+  String weaponTreeSemantics(String tree, String count);
+
+  /// No description provided for @traitPhial.
+  ///
+  /// In pt, this message translates to:
+  /// **'Frasco'**
+  String get traitPhial;
+
+  /// No description provided for @traitShelling.
+  ///
+  /// In pt, this message translates to:
+  /// **'Projéteis'**
+  String get traitShelling;
+
+  /// No description provided for @traitKinsect.
+  ///
+  /// In pt, this message translates to:
+  /// **'Inseto'**
+  String get traitKinsect;
+
+  /// No description provided for @kinsectLevel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nível {level}'**
+  String kinsectLevel(int level);
+
+  /// No description provided for @traitSongs.
+  ///
+  /// In pt, this message translates to:
+  /// **'Músicas'**
+  String get traitSongs;
+
+  /// No description provided for @weaponSectionAmmo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Munição'**
+  String get weaponSectionAmmo;
+
+  /// No description provided for @arcShot.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tiro de arco'**
+  String get arcShot;
+
+  /// No description provided for @chargeShots.
+  ///
+  /// In pt, this message translates to:
+  /// **'Disparos por carga'**
+  String get chargeShots;
+
+  /// No description provided for @chargeLevel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Carga {level}'**
+  String chargeLevel(int level);
+
+  /// No description provided for @needsSkill.
+  ///
+  /// In pt, this message translates to:
+  /// **'precisa de habilidade'**
+  String get needsSkill;
+
+  /// No description provided for @coatings.
+  ///
+  /// In pt, this message translates to:
+  /// **'Revestimentos'**
+  String get coatings;
+
+  /// No description provided for @ammoLevels.
+  ///
+  /// In pt, this message translates to:
+  /// **'nível 1 · 2 · 3'**
+  String get ammoLevels;
+
+  /// No description provided for @ammoElementalLevels.
+  ///
+  /// In pt, this message translates to:
+  /// **'normal · perfurante'**
+  String get ammoElementalLevels;
+
+  /// No description provided for @ammoCapacitySemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'{ammo}: {capacity}'**
+  String ammoCapacitySemantics(String ammo, String capacity);
+
+  /// No description provided for @ammoNormal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Normal'**
+  String get ammoNormal;
+
+  /// No description provided for @ammoPierce.
+  ///
+  /// In pt, this message translates to:
+  /// **'Perfurante'**
+  String get ammoPierce;
+
+  /// No description provided for @ammoSpread.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dispersão'**
+  String get ammoSpread;
+
+  /// No description provided for @ammoShrapnel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Estilhaço'**
+  String get ammoShrapnel;
+
+  /// No description provided for @ammoSticky.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adesiva'**
+  String get ammoSticky;
+
+  /// No description provided for @ammoCluster.
+  ///
+  /// In pt, this message translates to:
+  /// **'Grupo'**
+  String get ammoCluster;
+
+  /// No description provided for @ammoFlaming.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fogo'**
+  String get ammoFlaming;
+
+  /// No description provided for @ammoWater.
+  ///
+  /// In pt, this message translates to:
+  /// **'Água'**
+  String get ammoWater;
+
+  /// No description provided for @ammoThunder.
+  ///
+  /// In pt, this message translates to:
+  /// **'Trovão'**
+  String get ammoThunder;
+
+  /// No description provided for @ammoFreeze.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gelo'**
+  String get ammoFreeze;
+
+  /// No description provided for @ammoDragon.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dragão'**
+  String get ammoDragon;
+
+  /// No description provided for @ammoPoison.
+  ///
+  /// In pt, this message translates to:
+  /// **'Veneno'**
+  String get ammoPoison;
+
+  /// No description provided for @ammoParalysis.
+  ///
+  /// In pt, this message translates to:
+  /// **'Paralisia'**
+  String get ammoParalysis;
+
+  /// No description provided for @ammoSleep.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sono'**
+  String get ammoSleep;
+
+  /// No description provided for @ammoExhaust.
+  ///
+  /// In pt, this message translates to:
+  /// **'Exaustão'**
+  String get ammoExhaust;
+
+  /// No description provided for @ammoRecover.
+  ///
+  /// In pt, this message translates to:
+  /// **'Recuperação'**
+  String get ammoRecover;
+
+  /// No description provided for @ammoDemon.
+  ///
+  /// In pt, this message translates to:
+  /// **'Demoníaca'**
+  String get ammoDemon;
+
+  /// No description provided for @ammoArmor.
+  ///
+  /// In pt, this message translates to:
+  /// **'Blindagem'**
+  String get ammoArmor;
+
+  /// No description provided for @ammoSlicing.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cortante'**
+  String get ammoSlicing;
+
+  /// No description provided for @ammoWyvern.
+  ///
+  /// In pt, this message translates to:
+  /// **'Serpe'**
+  String get ammoWyvern;
+
+  /// No description provided for @ammoTranq.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tranquilizante'**
+  String get ammoTranq;
+
+  /// No description provided for @gatheringMaps.
+  ///
+  /// In pt, this message translates to:
+  /// **'Coleta · {count, plural, =1{1 mapa} other{{count} mapas}}'**
+  String gatheringMaps(int count);
+
+  /// No description provided for @gatheringAt.
+  ///
+  /// In pt, this message translates to:
+  /// **'Coleta · {map}'**
+  String gatheringAt(String map);
+
+  /// No description provided for @smallMonster.
+  ///
+  /// In pt, this message translates to:
+  /// **'{monster} · pequeno'**
+  String smallMonster(String monster);
+
+  /// No description provided for @questChip.
+  ///
+  /// In pt, this message translates to:
+  /// **'Missão · {stars}★'**
+  String questChip(String stars);
+
+  /// No description provided for @questsChip.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count} missões'**
+  String questsChip(int count);
+
+  /// No description provided for @unknownOrigin.
+  ///
+  /// In pt, this message translates to:
+  /// **'Origem desconhecida'**
+  String get unknownOrigin;
+
+  /// No description provided for @sourcesGathering.
+  ///
+  /// In pt, this message translates to:
+  /// **'Coleta · Rank {rank}'**
+  String sourcesGathering(String rank);
+
+  /// No description provided for @sourcesMonsters.
+  ///
+  /// In pt, this message translates to:
+  /// **'Monstros · Rank {rank}'**
+  String sourcesMonsters(String rank);
+
+  /// No description provided for @sourcesQuests.
+  ///
+  /// In pt, this message translates to:
+  /// **'Missões'**
+  String get sourcesQuests;
+
+  /// No description provided for @showSources.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mostrar de onde vem'**
+  String get showSources;
+
+  /// No description provided for @hideSources.
+  ///
+  /// In pt, this message translates to:
+  /// **'Esconder de onde vem'**
+  String get hideSources;
 }
 
 class _AppLocalizationsDelegate

@@ -38,6 +38,9 @@ final class MonsterListController extends ChangeNotifier {
 
   MonsterListState get state => _state;
 
+  /// Every loaded monster, versions included (for cross-feature lookups).
+  List<Monster> get monsters => _monsters;
+
   MonsterQuery get query => _query;
 
   NameLanguage get language => _query.language;

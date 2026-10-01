@@ -10,9 +10,14 @@ import 'package:mh_wiki/l10n/app_localizations.dart';
 /// Full-screen detail used in the compact layout. Reads the selected monster
 /// from the controller so language changes apply immediately.
 class MonsterDetailPage extends StatelessWidget {
-  const MonsterDetailPage({required this.controller, super.key});
+  const MonsterDetailPage({
+    required this.controller,
+    this.extraSections,
+    super.key,
+  });
 
   final MonsterListController controller;
+  final MonsterExtraSections? extraSections;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +45,7 @@ class MonsterDetailPage extends StatelessWidget {
                     language: controller.language,
                     versions: controller.selectedVersions,
                     onSelectVersion: controller.select,
+                    extraSections: extraSections,
                   ),
                 ),
         );

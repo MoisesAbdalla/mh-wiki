@@ -34,6 +34,9 @@ flutter:
     - assets/images/monsters/rise_sunbreak/
     - assets/images/monsters/wilds/
     - assets/images/games/
+    - assets/images/weapons/rise_sunbreak/
+    - assets/images/weapons/types/
+    - assets/images/weapons/slots/
 
   # Bundled so they work offline (SIL Open Font License, see assets/fonts/*/OFL.txt).
   fonts:

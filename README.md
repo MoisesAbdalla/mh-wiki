@@ -12,6 +12,13 @@ Windows).
 - Hunting info: reference HP per rank (solo, plus an approximate party estimate for 2–4
   hunters with its source), vision, and the reaction to Flash, Sonic/Screamer and Dung
   pods or bombs, Pitfall and Shock traps.
+- **Armas** (feature 006): every Rise: Sunbreak weapon of the 14 types (3,925), browsed by
+  type, rank and name, one card per upgrade tree. The detail shows attack, element or status,
+  affinity, slots and Rampage slot, sharpness with and without Handicraft, forge and upgrade
+  materials with the monsters that drop them, and the upgrade tree. A Rise monster lists the
+  weapons made from it. World and Wilds weapons, Armaduras and the build Assistente come later.
+- Areas (Monstros, Armas) in a bottom bar, or a side rail on wide screens; each keeps its
+  filters and selection.
 - Game names shown in Portuguese (Brazil) or English (Configurações).
 - Side-by-side list and detail on wide screens (≥ 840 dp).
 - "Caderninho" look (feature 005): a fixed dark theme like a hunter's notebook.
@@ -39,6 +46,9 @@ Windows).
 - **Design**: the 005 refresh followed the Tech Leads Club `frontend-design` skill
   (`.claude/skills/frontend-design`) and mockups the user approved
   (`specs/005-visual-refresh/mockups/`).
+- **Weapon icons**: each weapon's icon from Kiranico and the type icons from the Monster Hunter
+  Wiki, as 96 px WebP; Capcom artwork used locally like the monster icons (see
+  `assets/images/weapons/SOURCES.md`).
 - **Data**: Kiranico, Monster Hunter Wiki, mhw-db.com and Fextralife (see each dataset's `sources`).
 
 > Fan-made, non-commercial study project. Not affiliated with or endorsed by Capcom.
@@ -56,8 +66,10 @@ lib/
 ├── core/                # shared domain types and presentation helpers
 └── features/
     ├── monsters/{domain,data,presentation}
+    ├── weapons/{domain,data,presentation}
     └── settings/{domain,data,presentation}
 assets/data/<game>/monsters.json   # versioned datasets (schemaVersion 1)
+assets/data/rise_sunbreak/weapons.json
 ```
 
 ## Running
@@ -137,3 +149,16 @@ guide.
   blind.
 - `hp`, `partyHpFactors`, `huntingItems` and `itemReactions` are optional. A monster without
   them shows "HP desconhecido" or "Desconhecido".
+
+**Weapons** ([research](specs/006-rise-weapons/research.md)):
+
+- `python tool/data/fetch_rise_weapon_pages.py` caches the Kiranico weapon pages, then
+  `python tool/data/build_rise_weapons.py --icons` builds `weapons.json` and the icons.
+- Stats, slots, the upgrade tree and points requirements come from the Monster Hunter Wiki MHRS
+  pages; forge and upgrade materials and both sharpness bars come from Kiranico, which has the
+  game's own data; pt-BR names come from Kiranico's pt-BR lists. 28 wiki entries that are not
+  obtainable (no attack or no tree) are left out.
+- The rank comes from rarity (1–3 Low, 4–7 High, 8–10 Master). The quest stars are an
+  **estimate**, shown as "(estimado)": the highest of the lowest-star quests, in that rank, of
+  the monsters that drop the weapon's materials (the first star of the rank when none does).
+- 3,799 weapons (96.8 %) have an icon; the rest show the plate's marker.

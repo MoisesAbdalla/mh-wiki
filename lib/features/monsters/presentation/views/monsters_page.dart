@@ -17,10 +17,18 @@ import 'package:mh_wiki/l10n/app_localizations.dart';
 /// (FR-020): shrinking with a selection pushes the detail route; growing with
 /// the route open pops it and the pane shows the same monster.
 class MonstersPage extends StatefulWidget {
-  const MonstersPage({required this.controller, this.actions, super.key});
+  const MonstersPage({
+    required this.controller,
+    this.actions,
+    this.extraSections,
+    super.key,
+  });
 
   final MonsterListController controller;
   final List<Widget>? actions;
+
+  /// Cards the app adds after the monster's own (006 US3).
+  final MonsterExtraSections? extraSections;
 
   @override
   State<MonstersPage> createState() => _MonstersPageState();
@@ -65,7 +73,10 @@ class _MonstersPageState extends State<MonstersPage> {
 
     if (!_expanded && hasSelection && route == null) {
       final newRoute = MaterialPageRoute<void>(
-        builder: (_) => MonsterDetailPage(controller: _controller),
+        builder: (_) => MonsterDetailPage(
+          controller: _controller,
+          extraSections: widget.extraSections,
+        ),
       );
       _detailRoute = newRoute;
       Navigator.of(context).push(newRoute).then((_) {
@@ -140,6 +151,7 @@ class _MonstersPageState extends State<MonstersPage> {
                           versions: _controller.selectedVersions,
                           onSelectVersion: _controller.select,
                           showGame: _controller.query.game == null,
+                          extraSections: widget.extraSections,
                         );
                       }
                       return NotebookSwitcher(child: child);

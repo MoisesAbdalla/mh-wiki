@@ -10,9 +10,13 @@ class TabOption<T> {
     required this.text,
     this.image,
     this.semanticsLabel,
+    this.enabled = true,
   });
 
   final T value;
+
+  /// A disabled tab is dimmed and ignores taps (e.g. a game "em breve").
+  final bool enabled;
   final String text;
 
   /// Asset path of an image shown instead of [text] (e.g. a game logo).
@@ -64,7 +68,7 @@ class UnderlineTabs<T> extends StatelessWidget {
               selected: option.value == selected,
               textSize: textSize,
               imageHeight: imageHeight,
-              onTap: () => onChanged(option.value),
+              onTap: option.enabled ? () => onChanged(option.value) : null,
             ),
           ],
         ],
@@ -86,7 +90,7 @@ class _UnderlineTab extends StatelessWidget {
   final bool selected;
   final double textSize;
   final double imageHeight;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   /// Greyscale mix of an unselected image (0 = grey, 1 = original colours).
   static const _saturation = 0.6;
@@ -118,10 +122,10 @@ class _UnderlineTab extends StatelessWidget {
             ),
           );
 
-    return Semantics(
+    final tab = Semantics(
       container: true,
       button: true,
-      enabled: true,
+      enabled: option.enabled,
       selected: selected,
       label: option.semanticsLabel ?? option.text,
       child: InkWell(
@@ -148,6 +152,7 @@ class _UnderlineTab extends StatelessWidget {
         ),
       ),
     );
+    return option.enabled ? tab : Opacity(opacity: 0.45, child: tab);
   }
 
   static List<double> _saturationMatrix(double s) {

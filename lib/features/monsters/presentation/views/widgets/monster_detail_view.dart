@@ -16,6 +16,15 @@ import 'package:mh_wiki/features/monsters/presentation/views/widgets/version_sel
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/weakness_section.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
+/// Builds extra cards after the monster's own, numbered from [nextNumber]
+/// (006: "Armas feitas com ele"). The monsters feature knows nothing of
+/// what they show.
+typedef MonsterExtraSections = List<Widget> Function(
+  BuildContext context,
+  Monster monster,
+  int nextNumber,
+);
+
 /// Header + the numbered notebook sections (001 FR-007, 005 FR-004). Used
 /// both as a full page (compact layout) and as the right pane (expanded).
 class MonsterDetailView extends StatelessWidget {
@@ -25,8 +34,11 @@ class MonsterDetailView extends StatelessWidget {
     this.versions = const [],
     this.onSelectVersion,
     this.showGame = false,
+    this.extraSections,
     super.key,
   });
+
+  final MonsterExtraSections? extraSections;
 
   final Monster monster;
   final NameLanguage language;
@@ -152,6 +164,7 @@ class MonsterDetailView extends StatelessWidget {
             );
           },
         ),
+        ...?extraSections?.call(context, monster, 7),
       ],
     );
   }

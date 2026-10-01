@@ -291,4 +291,361 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get inheritedFromBase => 'Igual à forma base';
+
+  @override
+  String get areaMonsters => 'Monstros';
+
+  @override
+  String get areaWeapons => 'Armas';
+
+  @override
+  String get areaArmor => 'Armaduras';
+
+  @override
+  String get areaAssistant => 'Assistente';
+
+  @override
+  String areaComingSoon(String area) {
+    return '$area, em breve';
+  }
+
+  @override
+  String gameComingSoon(String game) {
+    return '$game, em breve';
+  }
+
+  @override
+  String get comingSoon => 'em breve';
+
+  @override
+  String weaponTypeLabel(String type) {
+    return 'Tipo de arma: $type';
+  }
+
+  @override
+  String get rankAll => 'Todos';
+
+  @override
+  String get searchWeaponHint => 'Buscar arma';
+
+  @override
+  String weaponCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count armas',
+      one: '1 arma',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get weaponSectionAttributes => 'Atributos';
+
+  @override
+  String get weaponSectionSharpness => 'Afiação';
+
+  @override
+  String get weaponSectionMaterials => 'Materiais';
+
+  @override
+  String get weaponSectionTree => 'Árvore';
+
+  @override
+  String get attack => 'Ataque';
+
+  @override
+  String get affinity => 'Afinidade';
+
+  @override
+  String get slots => 'Slots';
+
+  @override
+  String get rampageSlot => 'Rampage';
+
+  @override
+  String get noSlots => 'Sem slots';
+
+  @override
+  String slotsSemantics(String slots, String rampage) {
+    return 'Slots: $slots; Rampage: $rampage';
+  }
+
+  @override
+  String slotLevel(int level) {
+    return 'nível $level';
+  }
+
+  @override
+  String get none => 'nenhum';
+
+  @override
+  String get sharpnessBase => 'Normal';
+
+  @override
+  String get sharpnessHandicraft => 'Com Artesanato (máximo)';
+
+  @override
+  String sharpnessSemantics(String label, String segments) {
+    return 'Afiação $label: $segments';
+  }
+
+  @override
+  String get sharpnessRed => 'vermelho';
+
+  @override
+  String get sharpnessOrange => 'laranja';
+
+  @override
+  String get sharpnessYellow => 'amarelo';
+
+  @override
+  String get sharpnessGreen => 'verde';
+
+  @override
+  String get sharpnessBlue => 'azul';
+
+  @override
+  String get sharpnessWhite => 'branco';
+
+  @override
+  String get sharpnessPurple => 'roxo';
+
+  @override
+  String get forgeMaterials => 'Criar';
+
+  @override
+  String get upgradeMaterials => 'Melhorar';
+
+  @override
+  String materialPoints(int points) {
+    return '$points pts.';
+  }
+
+  @override
+  String droppedBy(String monsters) {
+    return 'Dropado por: $monsters';
+  }
+
+  @override
+  String get treePrevious => 'anterior';
+
+  @override
+  String get treeCurrent => 'esta';
+
+  @override
+  String get treeNext => 'próxima';
+
+  @override
+  String starsEstimated(int stars) {
+    return '$stars★ (estimado)';
+  }
+
+  @override
+  String get weaponsMadeFrom => 'Armas feitas com ele';
+
+  @override
+  String seeAllWeapons(int count) {
+    return 'Ver todas ($count)';
+  }
+
+  @override
+  String weaponsOfMonster(String monster) {
+    return 'Armas de $monster';
+  }
+
+  @override
+  String get weaponsLoadFailed => 'Não foi possível carregar as armas.';
+
+  @override
+  String get noWeaponsFound => 'Nenhuma arma encontrada';
+
+  @override
+  String get statusPoison => 'Veneno';
+
+  @override
+  String get statusSleep => 'Sono';
+
+  @override
+  String get statusParalysis => 'Paralisia';
+
+  @override
+  String get statusBlast => 'Explosão';
+
+  @override
+  String rankLabel(String rank) {
+    return 'Rank $rank';
+  }
+
+  @override
+  String get selectWeapon => 'Escolha uma arma na lista';
+
+  @override
+  String weaponTreeSemantics(String tree, String count) {
+    return '$tree, $count';
+  }
+
+  @override
+  String get traitPhial => 'Frasco';
+
+  @override
+  String get traitShelling => 'Projéteis';
+
+  @override
+  String get traitKinsect => 'Inseto';
+
+  @override
+  String kinsectLevel(int level) {
+    return 'Nível $level';
+  }
+
+  @override
+  String get traitSongs => 'Músicas';
+
+  @override
+  String get weaponSectionAmmo => 'Munição';
+
+  @override
+  String get arcShot => 'Tiro de arco';
+
+  @override
+  String get chargeShots => 'Disparos por carga';
+
+  @override
+  String chargeLevel(int level) {
+    return 'Carga $level';
+  }
+
+  @override
+  String get needsSkill => 'precisa de habilidade';
+
+  @override
+  String get coatings => 'Revestimentos';
+
+  @override
+  String get ammoLevels => 'nível 1 · 2 · 3';
+
+  @override
+  String get ammoElementalLevels => 'normal · perfurante';
+
+  @override
+  String ammoCapacitySemantics(String ammo, String capacity) {
+    return '$ammo: $capacity';
+  }
+
+  @override
+  String get ammoNormal => 'Normal';
+
+  @override
+  String get ammoPierce => 'Perfurante';
+
+  @override
+  String get ammoSpread => 'Dispersão';
+
+  @override
+  String get ammoShrapnel => 'Estilhaço';
+
+  @override
+  String get ammoSticky => 'Adesiva';
+
+  @override
+  String get ammoCluster => 'Grupo';
+
+  @override
+  String get ammoFlaming => 'Fogo';
+
+  @override
+  String get ammoWater => 'Água';
+
+  @override
+  String get ammoThunder => 'Trovão';
+
+  @override
+  String get ammoFreeze => 'Gelo';
+
+  @override
+  String get ammoDragon => 'Dragão';
+
+  @override
+  String get ammoPoison => 'Veneno';
+
+  @override
+  String get ammoParalysis => 'Paralisia';
+
+  @override
+  String get ammoSleep => 'Sono';
+
+  @override
+  String get ammoExhaust => 'Exaustão';
+
+  @override
+  String get ammoRecover => 'Recuperação';
+
+  @override
+  String get ammoDemon => 'Demoníaca';
+
+  @override
+  String get ammoArmor => 'Blindagem';
+
+  @override
+  String get ammoSlicing => 'Cortante';
+
+  @override
+  String get ammoWyvern => 'Serpe';
+
+  @override
+  String get ammoTranq => 'Tranquilizante';
+
+  @override
+  String gatheringMaps(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count mapas',
+      one: '1 mapa',
+    );
+    return 'Coleta · $_temp0';
+  }
+
+  @override
+  String gatheringAt(String map) {
+    return 'Coleta · $map';
+  }
+
+  @override
+  String smallMonster(String monster) {
+    return '$monster · pequeno';
+  }
+
+  @override
+  String questChip(String stars) {
+    return 'Missão · $stars★';
+  }
+
+  @override
+  String questsChip(int count) {
+    return '$count missões';
+  }
+
+  @override
+  String get unknownOrigin => 'Origem desconhecida';
+
+  @override
+  String sourcesGathering(String rank) {
+    return 'Coleta · Rank $rank';
+  }
+
+  @override
+  String sourcesMonsters(String rank) {
+    return 'Monstros · Rank $rank';
+  }
+
+  @override
+  String get sourcesQuests => 'Missões';
+
+  @override
+  String get showSources => 'Mostrar de onde vem';
+
+  @override
+  String get hideSources => 'Esconder de onde vem';
 }

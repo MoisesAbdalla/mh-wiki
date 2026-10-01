@@ -20,6 +20,7 @@ fetch fresh pages. Running the build again on the same cache gives the same data
 | `items_extract.py [game…]` (+ `item_parse.py`) | Hunting items and reactions | [003 research R3](../../specs/003-hunting-info/research.md) |
 | `fetch_icons.py [game…]` | Hunter's-notes icons → 256 px WebP | [002 research](../../specs/002-visual-identity/research.md) |
 | `fetch_game_logos.py` | Official game logos → `assets/images/games/*.webp` (138 px, alpha) | [005 research R5](../../specs/005-visual-refresh/research.md) |
+| `build_rise_weapons.py [--icons]` | Every Rise: Sunbreak weapon → `assets/data/rise_sunbreak/weapons.json`: stats, sharpness, slots, materials, upgrade tree and estimated stars from the monsterhunterwiki.org MHRS pages, pt-BR names from Kiranico. `--icons` also fetches the weapon icons (96 px WebP) and the 14 type icons | [006 research R1–R5](../../specs/006-rise-weapons/research.md) |
 | `common.py` | Paths (repo, cache), game selection, helpers | |
 
 Each step rewrites the dataset file, so run them in the order `build.py` uses. Every value keeps

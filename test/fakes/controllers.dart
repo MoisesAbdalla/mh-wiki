@@ -4,7 +4,11 @@ import 'package:mh_wiki/features/monsters/domain/usecases/get_monster_versions.d
 import 'package:mh_wiki/features/monsters/domain/usecases/load_monster_catalog.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 
+import 'package:mh_wiki/features/weapons/domain/usecases/load_weapon_catalog.dart';
+import 'package:mh_wiki/features/weapons/presentation/controllers/weapon_list_controller.dart';
+
 import 'fake_monster_repository.dart';
+import 'fake_weapon_repository.dart';
 
 /// Controllers receive use cases only (Principle II); the fake repository is
 /// wrapped by the real use cases.
@@ -15,3 +19,9 @@ MonsterListController buildController(FakeMonsterRepository repository) =>
       getMonsterById: const GetMonsterById(),
       getMonsterVersions: const GetMonsterVersions(),
     );
+
+WeaponListController buildWeaponController([
+  FakeWeaponRepository? repository,
+]) => WeaponListController(
+  loadCatalog: LoadWeaponCatalog(repository ?? FakeWeaponRepository()),
+);
