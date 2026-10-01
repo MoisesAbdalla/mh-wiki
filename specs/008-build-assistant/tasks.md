@@ -17,7 +17,7 @@ description: "Task list for 008 Assistente de builds da Rise: Sunbreak"
 
 ## Phase 1: Setup (data)
 
-- [ ] T001 Write `tool/data/build_rise_builds.py` per research R1–R4:
+- [X] T001 Write `tool/data/build_rise_builds.py` per research R1–R4:
   - it fetches, slowly and cached, the 14 Master Rank pages and the High/Low Rank pages, classified by `<title>`;
   - it parses each build (weapon, decorations per slot, pieces with alternatives, talisman, skills, Rampage);
   - it maps the stage (R3), checking the HR thresholds against the wiki;
@@ -25,7 +25,7 @@ description: "Task list for 008 Assistente de builds da Rise: Sunbreak"
   - it writes `assets/data/rise_sunbreak/builds.json` and `tool/data/.cache/rise_builds_report.txt`.
 
   Run it.
-- [ ] T002 Add the script to `tool/data/README.md`, and record the counts per type and rank and the match rate in research.md. Commit the data separately.
+- [X] T002 Add the script to `tool/data/README.md`, and record the counts per type and rank and the match rate in research.md. Commit the data separately.
 - [ ] T003 [P] Add the ARB strings of data-model.md › Localisation, then run `flutter gen-l10n`.
 
 ## Phase 2: Foundational

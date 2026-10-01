@@ -43,9 +43,9 @@
 - **Decision**: map each stage label to one point of the progress picker.
   - "MR a–b" or "MR a+" with a ≤ 6 → Mestre M{a}★. "MR 6+" → M6★, the end of the story.
   - "MR a+" with a ≥ 10 → Pós-jogo, the highest band ≤ a among 10, 50, 100, 140 and 180.
-  - "HR a – b" / "HR a+" → Alto. HR 1–7 → 4★, HR 8–29 → 6★, HR ≥ 30 → 7★. The HR thresholds are
-    checked during implementation against the wiki's quest unlock pages; the rule and its source
-    are recorded here.
+  - "Hub HR a and b" → Alto a★: the guides name hub stars outright ("Hub HR 4 and 5").
+  - "HR a to b" / "HR a+" → Alto 7★ when a ≥ 8, else 4★. HR 8 opens only after the 6★ urgent
+    quest, so these builds belong after the 7★ quests.
   - "Village ★a to ★b" / "Low Rank" → Baixo, by the stars when given, else 1★.
 - Progress compares as an ordered scale: Baixo 1–3★ < Alto 4–7★ < Mestre M1–M6★ < Pós-jogo
   10 < 50 < 100 < 140 < 180.
@@ -91,3 +91,25 @@
   - Minhas builds;
   - the disabled "Montar build" tab;
   - accessibility at 320 dp / 200 %.
+
+## Results (T001, 2026-10-01)
+
+- **Pages**: 42 (14 Master Rank, 14 High Rank, 14 Low Rank). The Low Rank Dual Blades page is
+  `339296`.
+- **Builds**: 323. Per type and rank:
+  - every type has Master Rank and post-game builds;
+  - High Rank has 5–13 builds per type;
+  - Low Rank has 2–3 builds per type.
+- **Stages**: the Master Rank pages' progression table ("MR180+ BU Blood Awakening …") gives each
+  build its own MR level. A build takes it when its name overlaps the heading by ≥ 50 %; otherwise
+  it takes the section stage.
+- **Matching**: 99.2 % of the 8,618 item references are in our catalog, after these fixes:
+  - names are read from the visible text, because image alts are cut at apostrophes;
+  - possessives and accents are ignored;
+  - "S" is added for base-Rise High Rank pieces, and "+" for weapons;
+  - in "A / B Coil", the last word is shared;
+  - aliases cover "Masters Touch" and "Quick Sheath".
+- **Unmatched**: mostly Rampage decorations that neither Kiranico nor the wiki lists
+  ("Anti-Wyvern Jewel 2" and "Fanged Exploit Jewel 2", 113 each), plus a few generic skills
+  ("Element Attack"). They are kept by name.
+- `builds.json` is 2.6 MB.
