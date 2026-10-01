@@ -8,10 +8,13 @@ import 'package:mh_wiki/core/presentation/widgets/game_tabs.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/monster_detail_page.dart';
 import 'package:mh_wiki/features/armor/presentation/armor_controller.dart';
 import 'package:mh_wiki/features/armor/presentation/views/widgets/armor_detail_views.dart';
+import 'package:mh_wiki/features/assistant/presentation/assistant_controller.dart';
+import 'package:mh_wiki/features/assistant/presentation/views/widgets/build_detail_view.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/monster_detail_view.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_id.dart';
 import 'package:mh_wiki/features/weapons/presentation/models/weapon_list_state.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_detail_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// End-to-end flow on the real app with the bundled datasets (SC-008):
 /// list → filter Wilds → search "rath" → open Rathalos → four sections →
@@ -215,6 +218,84 @@ void main() {
     await tester.tap(jewel);
     await tester.pumpAndSettle();
     expect(find.byType(DecorationDetailView), findsOneWidget);
+  });
+
+  // 008 T021: Assistente → Mestre M2★ → Espadão → a build → save it → it
+  // shows in Minhas builds. Preferences are mocked so the real ones stay.
+  testWidgets('pick the progress, open a build and save it', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final dependencies = await AppDependencies.create();
+    final settings = dependencies.createSettingsController();
+    final monsters = dependencies.createMonsterListController();
+    final weapons = dependencies.createWeaponListController();
+    final armor = dependencies.createArmorController();
+    final assistant = dependencies.createAssistantController();
+    await settings.load();
+    await monsters.load();
+
+    await tester.pumpWidget(
+      MhWikiApp(
+        monsterListController: monsters,
+        settingsController: settings,
+        weaponListController: weapons,
+        armorController: armor,
+        assistantController: assistant,
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Assistente'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Mestre'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('M2★'));
+    await tester.pumpAndSettle();
+    expect(assistant.weaponType, 'great-sword');
+    expect(find.text('Para agora'), findsOneWidget);
+
+    final build = find.text('Kamura Warrior Cleaver Raw Affinity');
+    await tester.scrollUntilVisible(
+      build,
+      200,
+      scrollable: find
+          .byWidgetPredicate(
+            (w) => w is Scrollable && w.axisDirection == AxisDirection.down,
+          )
+          .first,
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(build);
+    await tester.pumpAndSettle();
+    expect(find.byType(BuildDetailView), findsOneWidget);
+    expect(
+      find.descendant(
+        of: find.byType(BuildDetailView),
+        matching: find.text('Cutelo Guerreiro Kamura'),
+      ),
+      findsOneWidget,
+    );
+
+    final save = find.text('Salvar em Minhas builds');
+    await tester.scrollUntilVisible(
+      save,
+      300,
+      scrollable: find
+          .descendant(
+            of: find.byType(BuildDetailView),
+            matching: find.byType(Scrollable),
+          )
+          .first,
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(save);
+    await tester.pumpAndSettle();
+    expect(assistant.savedBuilds, hasLength(1));
+
+    assistant
+      ..clearSelection()
+      ..selectTab(AssistantTab.saved);
+    await tester.pumpAndSettle();
+    expect(build, findsOneWidget);
   });
 
   // 004 T038 / SC-004: time to load every dataset and show the list, and to

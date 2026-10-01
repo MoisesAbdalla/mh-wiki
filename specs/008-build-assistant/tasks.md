@@ -47,51 +47,51 @@ description: "Task list for 008 Assistente de builds da Rise: Sunbreak"
   - "Kamura Warrior Cleaver Raw Affinity" at M1★ with Hunter's Helm X;
   - "Fine Kamura Cleaver Dereliction Strongarm" with the waist alternative and Attack Boost 7;
   - ≥ 95 % of the refs with an id (SC-002).
-- [ ] T011 Wire DI, enable Assistente in `AppShell` (`AppArea.assistant`, built on its first visit), and update `app_shell_test.dart`.
+- [X] T011 Wire DI, enable Assistente in `AppShell` (`AppArea.assistant`, built on its first visit), and update `app_shell_test.dart`.
 
 ## Phase 3: User Story 1 - Builds para onde estou (P1) 🎯 MVP
 
-- [ ] T012 [P] [US1] Write the controller tests:
+- [X] T012 [P] [US1] Write the controller tests:
   - loading, then failure and retry;
   - the progress and type, persisted and restored;
   - the now/next lists recomputed;
   - the tabs, with "Montar build" disabled.
-- [ ] T013 [US1] Implement `AssistantController`.
-- [ ] T014 [P] [US1] Write the widget tests for `assistant_page.dart`:
+- [X] T013 [US1] Implement `AssistantController`.
+- [X] T014 [P] [US1] Write the widget tests for `assistant_page.dart`:
   - the tabs, with Montar build reading "em breve";
   - the progress card: rank tabs and step chips, with the chosen one marked;
   - the type picker;
   - the Para agora and Próximas sections, with dimmed next cards and "A partir de …";
   - the empty state.
-- [ ] T015 [US1] Implement `assistant_page.dart` (tabs; list plus detail pane from 840 dp), `progress_picker.dart`, `build_card.dart` and `recommended_list.dart`.
+- [X] T015 [US1] Implement `assistant_page.dart` (tabs; list plus detail pane from 840 dp), `progress_picker.dart`, `build_card.dart` and `recommended_list.dart`.
 
 ## Phase 4: User Story 2 - Ver a build inteira (P2)
 
-- [ ] T016 [P] [US2] Write the tests for `build_detail_view.dart`:
+- [X] T016 [P] [US2] Write the tests for `build_detail_view.dart`:
   - the header;
   - Equipamento rows per part, with decorations, "ou …" alternatives, the talisman requirement, and the "não encontrado no catálogo" mark;
   - Habilidades pips, with a tap to the skill;
   - Joias totals;
   - the source link;
   - item taps calling the `onOpen…` callbacks.
-- [ ] T017 [US2] Implement the build detail and its compact page. Wire the links in `lib/app/app_home.dart`:
+- [X] T017 [US2] Implement the build detail and its compact page. Wire the links in `lib/app/app_home.dart`:
   - weapon → Armas;
   - piece, skill and decoration → Armaduras.
 
 ## Phase 5: User Story 3 - Minhas builds (P3)
 
-- [ ] T018 [P] [US3] Write the tests:
+- [X] T018 [P] [US3] Write the tests:
   - save from the detail (a "Salva" feedback);
   - the Minhas builds list (name, stage, "baseada em", date);
   - rename and delete, with a confirmation;
   - the empty state;
   - a saved build opens the same detail.
-- [ ] T019 [US3] Implement `saved_builds_list.dart`, the save, rename and delete actions in the controller and detail, and the dialogs.
+- [X] T019 [US3] Implement `saved_builds_list.dart`, the save, rename and delete actions in the controller and detail, and the dialogs.
 
 ## Phase 6: Polish
 
-- [ ] T020 [P] Write the accessibility tests: 320 dp / 200 % on the list, detail and saved builds; contrast; tap targets.
-- [ ] T021 [P] Extend `integration_test/app_test.dart`: Assistente → Mestre M2★ → Espadão → open a build → save it → it shows in Minhas builds.
+- [X] T020 [P] Write the accessibility tests: 320 dp / 200 % on the list, detail and saved builds; contrast; tap targets.
+- [X] T021 [P] Extend `integration_test/app_test.dart`: Assistente → Mestre M2★ → Espadão → open a build → save it → it shows in Minhas builds.
 - [ ] T022 SC-002 spot check: 10 builds of different types against their Game8 pages. Fix any finding in the builder, and record it in research.md.
 - [ ] T023 Update `README.md` (the Assistente area, the Game8 credit, counts).
 - [ ] T024 Run the gates (analyze, format, test, integration on Windows, build Windows release) and commit.
