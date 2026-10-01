@@ -5,17 +5,21 @@ import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_
 import 'package:mh_wiki/features/monsters/presentation/views/monsters_page.dart';
 import 'package:mh_wiki/features/settings/presentation/settings_controller.dart';
 import 'package:mh_wiki/features/settings/presentation/settings_page.dart';
+import 'package:mh_wiki/features/weapons/presentation/controllers/weapon_list_controller.dart';
+import 'package:mh_wiki/features/weapons/presentation/views/weapons_page.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
 class MhWikiApp extends StatelessWidget {
   const MhWikiApp({
     required this.monsterListController,
     required this.settingsController,
+    required this.weaponListController,
     super.key,
   });
 
   final MonsterListController monsterListController;
   final SettingsController settingsController;
+  final WeaponListController weaponListController;
 
   static final _theme = buildHunterTheme();
 
@@ -36,8 +40,10 @@ class MhWikiApp extends StatelessWidget {
           controller: monsterListController,
           actions: [SettingsButton(controller: settingsController)],
         ),
-        // Replaced by the weapons page in 006 US1 (T018).
-        weapons: const Scaffold(body: SizedBox.shrink()),
+        weapons: WeaponsPage(
+          controller: weaponListController,
+          actions: [SettingsButton(controller: settingsController)],
+        ),
       ),
     );
   }

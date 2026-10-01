@@ -31,7 +31,11 @@ void main() {
     await monsters.load();
 
     await tester.pumpWidget(
-      MhWikiApp(monsterListController: monsters, settingsController: settings),
+      MhWikiApp(
+        monsterListController: monsters,
+        settingsController: settings,
+        weaponListController: dependencies.createWeaponListController(),
+      ),
     );
     await tester.pumpAndSettle();
 
@@ -88,7 +92,11 @@ void main() {
     await monsters.load();
     load.stop();
     await tester.pumpWidget(
-      MhWikiApp(monsterListController: monsters, settingsController: settings),
+      MhWikiApp(
+        monsterListController: monsters,
+        settingsController: settings,
+        weaponListController: dependencies.createWeaponListController(),
+      ),
     );
     await tester.pumpAndSettle();
     total.stop();

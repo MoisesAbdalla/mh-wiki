@@ -33,6 +33,7 @@ void main() {
         MhWikiApp(
           monsterListController: monsters,
           settingsController: settings,
+          weaponListController: buildWeaponController(),
         ),
       );
       await tester.pumpAndSettle();

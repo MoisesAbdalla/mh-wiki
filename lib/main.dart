@@ -14,6 +14,10 @@ Future<void> main() async {
   monsters.load();
 
   runApp(
-    MhWikiApp(monsterListController: monsters, settingsController: settings),
+    MhWikiApp(
+      monsterListController: monsters,
+      settingsController: settings,
+      weaponListController: dependencies.createWeaponListController(),
+    ),
   );
 }

@@ -471,4 +471,17 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get statusBlast => 'Explosão';
+
+  @override
+  String rankLabel(String rank) {
+    return 'Rank $rank';
+  }
+
+  @override
+  String get selectWeapon => 'Escolha uma arma na lista';
+
+  @override
+  String weaponTreeSemantics(String tree, String count) {
+    return '$tree, $count';
+  }
 }

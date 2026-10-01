@@ -186,5 +186,10 @@
   "statusPoison": "Veneno",
   "statusSleep": "Sono",
   "statusParalysis": "Paralisia",
-  "statusBlast": "Explosão"
+  "statusBlast": "Explosão",
+  "rankLabel": "Rank {rank}",
+  "@rankLabel": { "placeholders": { "rank": { "type": "String" } } },
+  "selectWeapon": "Escolha uma arma na lista",
+  "weaponTreeSemantics": "{tree}, {count}",
+  "@weaponTreeSemantics": { "placeholders": { "tree": { "type": "String" }, "count": { "type": "String" } } }
 }

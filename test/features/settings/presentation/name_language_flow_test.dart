@@ -50,7 +50,11 @@ void main() {
   Future<void> pumpFullApp(WidgetTester tester) async {
     setWindowSize(tester, const Size(400, 800));
     await tester.pumpWidget(
-      MhWikiApp(monsterListController: monsters, settingsController: settings),
+      MhWikiApp(
+        monsterListController: monsters,
+        settingsController: settings,
+        weaponListController: buildWeaponController(),
+      ),
     );
     await tester.pumpAndSettle();
   }

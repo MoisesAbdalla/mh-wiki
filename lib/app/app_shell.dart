@@ -7,6 +7,7 @@ import 'package:mh_wiki/l10n/app_localizations.dart';
 /// Navigation between the app's areas (006 ui-contract "App shell"): a
 /// bottom bar below 840 dp, a rail from 840 dp. Areas live in an
 /// [IndexedStack], so each keeps its filters, search, scroll and selection.
+/// An area is built on its first visit, so the weapons load only then.
 class AppShell extends StatefulWidget {
   const AppShell({required this.monsters, required this.weapons, super.key});
 
@@ -21,6 +22,7 @@ typedef _Area = ({String glyph, String label, bool enabled});
 
 class _AppShellState extends State<AppShell> {
   int _index = 0;
+  final _visited = <int>{0};
 
   List<_Area> _areas(AppLocalizations l10n) => [
     (glyph: '❦', label: l10n.areaMonsters, enabled: true),
@@ -36,7 +38,10 @@ class _AppShellState extends State<AppShell> {
     final areas = _areas(l10n);
     final body = IndexedStack(
       index: _index,
-      children: [widget.monsters, widget.weapons],
+      children: [
+        widget.monsters,
+        if (_visited.contains(1)) widget.weapons else const SizedBox.shrink(),
+      ],
     );
 
     Widget item(int i, {required bool vertical}) => _AreaButton(
@@ -44,7 +49,7 @@ class _AppShellState extends State<AppShell> {
       selected: i == _index,
       comingSoon: l10n.areaComingSoon(areas[i].label),
       wide: vertical,
-      onTap: () => setState(() => _index = i),
+      onTap: () => setState(() => _visited.add(_index = i)),
     );
 
     return LayoutBuilder(

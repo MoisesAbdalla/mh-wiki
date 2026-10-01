@@ -4,10 +4,18 @@ import 'package:mh_wiki/l10n/app_localizations.dart';
 /// Search box that reports every change (FR-005) and stays in sync when the
 /// query is cleared elsewhere (e.g. "Limpar filtros").
 class SearchField extends StatefulWidget {
-  const SearchField({required this.text, required this.onChanged, super.key});
+  const SearchField({
+    required this.text,
+    required this.onChanged,
+    this.hint,
+    super.key,
+  });
 
   final String text;
   final ValueChanged<String> onChanged;
+
+  /// Defaults to the monster search hint.
+  final String? hint;
 
   @override
   State<SearchField> createState() => _SearchFieldState();
@@ -45,7 +53,7 @@ class _SearchFieldState extends State<SearchField> {
         onChanged: widget.onChanged,
         textInputAction: TextInputAction.search,
         decoration: InputDecoration(
-          hintText: l10n.searchHint,
+          hintText: widget.hint ?? l10n.searchHint,
           prefixIcon: const Icon(Icons.search),
           suffixIcon: widget.text.isEmpty
               ? null

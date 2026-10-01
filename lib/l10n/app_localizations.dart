@@ -897,6 +897,24 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Explosão'**
   String get statusBlast;
+
+  /// No description provided for @rankLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rank {rank}'**
+  String rankLabel(String rank);
+
+  /// No description provided for @selectWeapon.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha uma arma na lista'**
+  String get selectWeapon;
+
+  /// No description provided for @weaponTreeSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'{tree}, {count}'**
+  String weaponTreeSemantics(String tree, String count);
 }
 
 class _AppLocalizationsDelegate

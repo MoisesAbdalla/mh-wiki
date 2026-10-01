@@ -79,7 +79,7 @@ Write the test before its implementation where it pins behaviour.
   - `lib/features/weapons/domain/repositories/weapon_repository.dart` and `lib/features/weapons/data/repositories/weapon_repository_impl.dart`, which map errors to `Failure`;
   - `lib/features/weapons/domain/usecases/load_weapon_catalog.dart`.
 - [X] T012 [P] Write the real-dataset test `test/features/weapons/data/real_weapons_dataset_test.dart`. It checks that the dataset parses, that it has 14 types, that every type count matches T003's record, that no weapon has attack 0, that every previous/next resolves, that there is no cycle, that the Anjanath Great Sword tree has 6 weapons with Gnashing Flammenzahn+ = 280 / fire 28 / −20 % / slot 3 / Rampage 2 / rarity 8 / Master, and that ≥ 95 % of the weapons have an image (SC-007).
-- [ ] T013 Wire DI in `lib/app/di/app_dependencies.dart`: add the `weaponRepository` and `createWeaponListController()`. Use fakes in `test/fakes/fake_weapon_repository.dart` and add weapon fixtures in `test/fakes/weapon_fixtures.dart`, with a small tree, a ranged weapon and a branch.
+- [X] T013 Wire DI in `lib/app/di/app_dependencies.dart`: add the `weaponRepository` and `createWeaponListController()`. Use fakes in `test/fakes/fake_weapon_repository.dart` and add weapon fixtures in `test/fakes/weapon_fixtures.dart`, with a small tree, a ranged weapon and a branch.
 - [X] T014 [P] Write `test/app/app_shell_test.dart`:
   - four destinations, with Armaduras and Assistente disabled and announced as "em breve" (a tap does nothing);
   - a bottom bar below 840 dp and a rail from 840 dp;
@@ -97,9 +97,9 @@ Write the test before its implementation where it pins behaviour.
 
 **Independent Test**: quickstart checks 1–4 and 10.
 
-- [ ] T016 [P] [US1] Write `test/features/weapons/presentation/controllers/weapon_list_controller_test.dart`. It covers the states: loading → loaded (the first type selected), failure → retry, and type / rank / search changes recomputing the visible trees. It also checks that the query survives a reload.
-- [ ] T017 [US1] Implement `lib/features/weapons/presentation/controllers/weapon_list_controller.dart` and `lib/features/weapons/presentation/models/weapon_list_state.dart`, so that T016 passes. The catalog loads on the first `load()` call, which happens when the Armas area is opened.
-- [ ] T018 [P] [US1] Write `test/features/weapons/presentation/views/weapon_list_pane_test.dart`:
+- [X] T016 [P] [US1] Write `test/features/weapons/presentation/controllers/weapon_list_controller_test.dart`. It covers the states: loading → loaded (the first type selected), failure → retry, and type / rank / search changes recomputing the visible trees. It also checks that the query survives a reload.
+- [X] T017 [US1] Implement `lib/features/weapons/presentation/controllers/weapon_list_controller.dart` and `lib/features/weapons/presentation/models/weapon_list_state.dart`, so that T016 passes. The catalog loads on the first `load()` call, which happens when the Armas area is opened.
+- [X] T018 [P] [US1] Write `test/features/weapons/presentation/views/weapon_list_pane_test.dart`:
   - game tabs, with only Rise selectable and World/Wilds announced "em breve";
   - the 14-type picker, with the selected type marked and a scroll at 320 dp;
   - rank tabs;
@@ -108,14 +108,14 @@ Write the test before its implementation where it pins behaviour.
   - rows that show attack, special (symbol + value) and affinity (negative in the error colour), and no special when there is none;
   - the empty state with "Limpar filtros";
   - the failure state with retry.
-- [ ] T019 [US1] Implement the list per the contract, so that T018 passes:
+- [X] T019 [US1] Implement the list per the contract, so that T018 passes:
   - `lib/features/weapons/presentation/views/weapons_page.dart` (list only on compact screens; list plus detail pane from 840 dp, as `MonstersPage` does);
   - `lib/features/weapons/presentation/views/widgets/weapon_list_pane.dart`, `weapon_type_picker.dart`, `weapon_tree_card.dart`, `weapon_row.dart` and `weapon_special_label.dart` (reusing `ElementIcon` for elements; statuses get text plus a colour token).
 
   Reuse `GameTabs` for the game tabs, with a new `enabledGames` parameter for the "em breve" state, and `UnderlineTabs`, `NotebookSection` and `MonsterImage` (or a generic image plate) for the rest.
-- [ ] T020 [US1] Plug the Armas area into `lib/app/app_shell.dart`, replacing the placeholder: create the controller through DI and call `load()` on first visit. Extend `test/features/monsters/presentation/views/accessibility_test.dart`, or add `test/features/weapons/presentation/views/weapons_accessibility_test.dart`, with the list at 320 dp / 200 % and the contrast and tap-target guidelines.
-- [ ] T021 [P] [US1] Write the performance test `test/features/weapons/presentation/performance/weapons_performance_test.dart`. Using a synthetic catalog of 4,000 weapons (300 per type), check that the list builds and a type switch settles within the frame budget, and that `FilterWeapons` runs under 50 ms per query (SC-004).
-- [ ] T022 [US1] Run the gates (`flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`) and commit the US1 slice.
+- [X] T020 [US1] Plug the Armas area into `lib/app/app_shell.dart`, replacing the placeholder: create the controller through DI and call `load()` on first visit. Extend `test/features/monsters/presentation/views/accessibility_test.dart`, or add `test/features/weapons/presentation/views/weapons_accessibility_test.dart`, with the list at 320 dp / 200 % and the contrast and tap-target guidelines.
+- [X] T021 [P] [US1] Write the performance test `test/features/weapons/presentation/performance/weapons_performance_test.dart`. Using a synthetic catalog of 4,000 weapons (300 per type), check that the list builds and a type switch settles within the frame budget, and that `FilterWeapons` runs under 50 ms per query (SC-004).
+- [X] T022 [US1] Run the gates (`flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`) and commit the US1 slice.
 
 **Checkpoint**: the weapon catalog is browsable. MVP.
 

@@ -37,8 +37,9 @@ final class WeaponDatasetDto {
         name: _localized(reader.object('name')),
         ranged: reader.boolean('ranged'),
       );
-      if (types.containsKey(type.id))
+      if (types.containsKey(type.id)) {
         reader.fail('duplicate type "${type.id}"');
+      }
       types[type.id] = type;
     }
 
@@ -169,8 +170,9 @@ final class WeaponDto {
 
     (List<int>, List<int>)? sharpness;
     final sharp = r.optionalObject('sharpness');
-    if (type.ranged && sharp != null)
+    if (type.ranged && sharp != null) {
       r.fail('ranged weapons have no sharpness');
+    }
     if (!type.ranged && sharp == null) r.fail('melee weapons need sharpness');
     if (sharp != null) {
       final base = _ints(sharp, 'base');
@@ -187,8 +189,9 @@ final class WeaponDto {
     }
 
     String? link(String? slug) {
-      if (slug != null && !slugs.contains(slug))
+      if (slug != null && !slugs.contains(slug)) {
         r.fail('unknown weapon "$slug"');
+      }
       return slug;
     }
 

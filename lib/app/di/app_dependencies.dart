@@ -15,6 +15,8 @@ import 'package:mh_wiki/features/settings/presentation/settings_controller.dart'
 import 'package:mh_wiki/features/weapons/data/datasources/asset_weapon_datasource.dart';
 import 'package:mh_wiki/features/weapons/data/repositories/weapon_repository_impl.dart';
 import 'package:mh_wiki/features/weapons/domain/repositories/weapon_repository.dart';
+import 'package:mh_wiki/features/weapons/domain/usecases/load_weapon_catalog.dart';
+import 'package:mh_wiki/features/weapons/presentation/controllers/weapon_list_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Composition root (constitution Principle III): the only place that knows
@@ -47,6 +49,9 @@ final class AppDependencies {
     getMonsterById: const GetMonsterById(),
     getMonsterVersions: const GetMonsterVersions(),
   );
+
+  WeaponListController createWeaponListController() =>
+      WeaponListController(loadCatalog: LoadWeaponCatalog(weaponRepository));
 
   SettingsController createSettingsController() => SettingsController(
     loadSettings: LoadSettings(settingsRepository),
