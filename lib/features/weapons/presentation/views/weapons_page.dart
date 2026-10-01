@@ -44,8 +44,10 @@ class _WeaponsPageState extends State<WeaponsPage> {
   void initState() {
     super.initState();
     _controller.addListener(_scheduleSync);
-    // The page is built on the first visit to the area (AppShell).
+    // The page is built on the first visit to the area (AppShell), maybe
+    // with a weapon already chosen from a monster (006 US3).
     _controller.ensureLoaded();
+    _scheduleSync();
   }
 
   @override

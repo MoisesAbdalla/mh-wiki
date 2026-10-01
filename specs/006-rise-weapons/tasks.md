@@ -157,14 +157,14 @@ and the wide-screen rail (spec US3).
 
 **Independent Test**: quickstart checks 8, 9 and 11.
 
-- [ ] T028 [P] [US3] Write `test/features/monsters/presentation/views/widgets/monster_extra_sections_test.dart`. It checks that `MonsterDetailView` renders the cards from an optional `extraSections` builder after its own, numbered from 7, and that it renders nothing extra when the builder is null.
-- [ ] T029 [US3] Add the optional `extraSections` parameter to `lib/features/monsters/presentation/views/widgets/monster_detail_view.dart` (`List<Widget> Function(BuildContext, Monster, int nextNumber)?`) and pass it through `monsters_page.dart` and `monster_detail_page.dart`, so that T028 passes. Keep the monsters feature unaware of weapons.
-- [ ] T030 [P] [US3] Write `test/app/monster_weapons_card_test.dart`:
+- [X] T028 [P] [US3] Write `test/features/monsters/presentation/views/widgets/monster_extra_sections_test.dart`. It checks that `MonsterDetailView` renders the cards from an optional `extraSections` builder after its own, numbered from 7, and that it renders nothing extra when the builder is null.
+- [X] T029 [US3] Add the optional `extraSections` parameter to `lib/features/monsters/presentation/views/widgets/monster_detail_view.dart` (`List<Widget> Function(BuildContext, Monster, int nextNumber)?`) and pass it through `monsters_page.dart` and `monster_detail_page.dart`, so that T028 passes. Keep the monsters feature unaware of weapons.
+- [X] T030 [P] [US3] Write `test/app/monster_weapons_card_test.dart`:
   - a Rise monster with weapons shows "Armas feitas com ele (n)" with at most 5 rows (name, type, rank) and "Ver todas (n)";
   - World and Wilds monsters, and monsters without weapons, show no card;
   - tapping a row opens the weapon in Armas;
   - "Ver todas" opens Armas filtered to those weapons, with a removable chip.
-- [ ] T031 [US3] Implement `lib/app/monster_weapons_card.dart` and wire it as the `extraSections` builder in `lib/app/app_shell.dart`. Add `WeaponQuery.onlyIds` and the removable chip to the weapon list (`weapon_list_pane.dart`, `filter_weapons.dart` with a unit test), so that T030 passes.
+- [X] T031 [US3] Implement `lib/app/monster_weapons_card.dart` and wire it as the `extraSections` builder in `lib/app/app_shell.dart`. Add `WeaponQuery.onlyIds` and the removable chip to the weapon list (`weapon_list_pane.dart`, `filter_weapons.dart` with a unit test), so that T030 passes.
 - [ ] T032 [US3] Extend `integration_test/app_test.dart`: open Armas, choose Espada Grande, search "flammen", open Gnashing Flammenzahn+, follow "Dropado por: Anjanath", and check the "Armas feitas com ele" card. Run the gates and commit the US3 slice.
 
 **Checkpoint**: all three stories are done.
