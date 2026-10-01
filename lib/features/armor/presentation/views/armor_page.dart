@@ -50,7 +50,9 @@ class _ArmorPageState extends State<ArmorPage> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.controller != widget.controller) {
       oldWidget.controller.removeListener(_scheduleSync);
-      widget.controller.addListener(_scheduleSync);
+      widget.controller
+        ..addListener(_scheduleSync)
+        ..ensureLoaded();
     }
   }
 

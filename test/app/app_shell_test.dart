@@ -19,9 +19,7 @@ void main() {
 
   Finder area(String label) => find.bySemanticsLabel(label);
 
-  testWidgets('four areas; only the Assistente is "em breve"', (
-    tester,
-  ) async {
+  testWidgets('four areas; only the Assistente is "em breve"', (tester) async {
     final handle = tester.ensureSemantics();
     await pumpShell(tester);
 

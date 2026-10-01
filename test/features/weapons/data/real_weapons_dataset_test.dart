@@ -112,6 +112,30 @@ void main() {
     expect(ore.gathering.first.map.ptBr, 'Selva Inundada');
   });
 
+  test('Rampage: Low/High Rank options, none on Master Rank (007 R6)', () {
+    final kamura = catalog.weapons.singleWhere(
+      (w) => w.id.slug == 'kamura-c-blade-v',
+    );
+    expect(kamura.rampageSkills.map((r) => r.name.en), [
+      'Affinity Boost III',
+      'Defense Boost II',
+      'Master Rider',
+    ]);
+    expect(
+      catalog.weapons.where(
+        (w) => w.rank == Rank.master && w.rampageSkills.isNotEmpty,
+      ),
+      isEmpty,
+    );
+    expect(
+      catalog.weapons.where(
+        (w) => w.rank != Rank.master && w.rampageSkills.isEmpty,
+      ),
+      isEmpty,
+    );
+    expect(catalog.rampageDecorations, hasLength(greaterThan(20)));
+  });
+
   test('at least 95% of the weapons have a bundled icon (SC-007)', () {
     final withIcon = catalog.weapons.where(
       (w) => w.imageAsset != null && File(w.imageAsset!).existsSync(),

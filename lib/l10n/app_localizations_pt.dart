@@ -361,7 +361,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get slots => 'Slots';
 
   @override
-  String get rampageSlot => 'Slot Rampage';
+  String get rampageSlot => 'Rampage';
 
   @override
   String get noSlots => 'Sem slots';
@@ -788,6 +788,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rampageTitle => 'Rampage';
+
+  @override
+  String get rampageSlotRow => 'Slot Rampage';
 
   @override
   String get rampageDecorationsFit => 'Joias Rampage que cabem';

@@ -709,7 +709,7 @@ abstract class AppLocalizations {
   /// No description provided for @rampageSlot.
   ///
   /// In pt, this message translates to:
-  /// **'Slot Rampage'**
+  /// **'Rampage'**
   String get rampageSlot;
 
   /// No description provided for @noSlots.
@@ -1419,6 +1419,12 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Rampage'**
   String get rampageTitle;
+
+  /// No description provided for @rampageSlotRow.
+  ///
+  /// In pt, this message translates to:
+  /// **'Slot Rampage'**
+  String get rampageSlotRow;
 
   /// No description provided for @rampageDecorationsFit.
   ///

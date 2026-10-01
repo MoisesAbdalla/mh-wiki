@@ -4,6 +4,7 @@ import 'package:mh_wiki/features/monsters/domain/entities/monster_material.dart'
 import 'package:mh_wiki/features/weapons/domain/entities/estimated_stars.dart';
 import 'package:mh_wiki/core/domain/material_cost.dart';
 import 'package:mh_wiki/core/domain/material_sources.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/rampage.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/sharpness.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/special_kind.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
@@ -68,6 +69,7 @@ Weapon buildWeapon(
   int stars = 1,
   String? imageAsset,
   WeaponTraits traits = WeaponTraits.none,
+  List<RampageSkill> rampageSkills = const [],
 }) => Weapon(
   id: wid(slug),
   type: type,
@@ -89,6 +91,7 @@ Weapon buildWeapon(
   stars: EstimatedStars(value: stars),
   imageAsset: imageAsset,
   traits: traits,
+  rampageSkills: rampageSkills,
 );
 
 /// The Anjanath Great Sword tree of Rise (real values), plus a branch, a

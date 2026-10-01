@@ -539,8 +539,10 @@ def main():
         'starRule': STAR_RULE,
         'weaponTypes': weapon_types,
         'materials': sorted((m for m in materials_out.values() if m['id'] in used), key=lambda m: m['id']),
-        'rampageSkills': sorted((r for r in rampage_skills.values() if r['id'] in used_rampage),
-                                key=lambda r: r['id']),
+        # Kiranico repeats some Rampage skills under several ids (one per weapon type):
+        # keep one entry per name.
+        'rampageSkills': sorted({r['id']: r for r in rampage_skills.values()
+                                 if r['id'] in used_rampage}.values(), key=lambda r: r['id']),
         'rampageDecorations': sorted(rampage_decos, key=lambda d: (d['slotLevel'], d['id'])),
         'weapons': weapons,
     }

@@ -37,6 +37,7 @@ abstract final class WeaponDatasetMapper {
     return WeaponCatalog(
       game: game,
       types: types.values.toList(),
+      rampageDecorations: dto.rampageDecorations,
       weapons: [
         for (final w in dto.weapons)
           Weapon(
@@ -69,6 +70,7 @@ abstract final class WeaponDatasetMapper {
             stars: EstimatedStars(value: w.stars, estimated: w.starsEstimated),
             imageAsset: w.image,
             traits: w.traits,
+            rampageSkills: w.rampageSkills,
             sources: [
               for (final (name, url) in w.sources)
                 SourceRef(name: name, url: url),

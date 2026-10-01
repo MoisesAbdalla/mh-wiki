@@ -11,6 +11,7 @@ import 'package:mh_wiki/features/weapons/presentation/views/widgets/sharpness_ba
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_ammo_section.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_attributes_section.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_materials_section.dart';
+import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_rampage_section.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_tree_section.dart';
 import 'package:mh_wiki/core/presentation/widgets/notebook_section.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
@@ -81,6 +82,13 @@ class WeaponDetailView extends StatelessWidget {
           onOpenWeapon: onSelectWeapon,
           language: language,
         ),
+        if (WeaponRampageSection.shows(weapon))
+          WeaponRampageSection(
+            weapon: weapon,
+            catalog: catalog,
+            number: 5,
+            language: language,
+          ),
       ],
     );
   }

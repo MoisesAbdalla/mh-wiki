@@ -38,7 +38,7 @@ class SkillPips extends StatelessWidget {
         children: [
           for (var i = 1; i <= max; i++)
             Container(
-              key: ValueKey(i <= level ? 'pip-on' : 'pip-off'),
+              key: ValueKey(('pip', i, i <= level)),
               width: 10,
               height: 10,
               decoration: BoxDecoration(
