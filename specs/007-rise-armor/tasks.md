@@ -92,10 +92,10 @@ description: "Task list for 007 Armaduras, habilidades e joias da Rise: Sunbreak
 
 ## Phase 7: Polish
 
-- [ ] T025 [P] Extend `integration_test/app_test.dart`: Armaduras → Mestre → search "Reforço de Ataque" → Rathalos X → skill → decoration.
-- [ ] T026 [P] Update `README.md` (the Armaduras area, sources, counts and APK size) and record the T003 results and the spot check in research.md.
-- [ ] T027 SC-002 spot check: 20 pieces (2 per rarity), 10 skills and 10 decorations against Kiranico and the wiki. Fix any finding in the builder.
-- [ ] T028 Gates (`flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`, integration on Windows, `flutter build windows --release`) and commit.
+- [X] T025 [P] Extend `integration_test/app_test.dart`: Armaduras → Mestre → search "Reforço de Ataque" → Rathalos X → skill → decoration.
+- [X] T026 [P] Update `README.md` (the Armaduras area, sources, counts and APK size) and record the T003 results and the spot check in research.md.
+- [X] T027 SC-002 spot check: 20 pieces (2 per rarity), 10 skills and 10 decorations against Kiranico and the wiki. Fix any finding in the builder.
+- [X] T028 Gates (`flutter analyze`, `dart format --set-exit-if-changed .`, `flutter test`, integration on Windows, `flutter build windows --release`) and commit.
 - [ ] T029 The user runs the quickstart checks 1–10. Fix the findings, then merge `007-rise-armor` into `main`.
 
 ---

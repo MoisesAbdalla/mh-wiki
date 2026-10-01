@@ -98,3 +98,33 @@
   - the Rampage card for High and Master Rank weapons;
   - accessibility at 320 dp / 200 %;
   - performance with 2,000 pieces.
+
+## Results (T003, T027, 2026-10-01)
+
+- **Build**: 1,591 list rows → 1,371 pieces. 220 cosmetic rows (no defense and no skills) are
+  dropped.
+  - **Per rarity**: 1:40, 2:164, 3:105, 4:131, 5:110, 6:84, 7:64, 8:338, 9:208, 10:127.
+  - **Sets**: 292. 10 pieces have no wiki set page and are grouped by name (Diver's, Sonic,
+    Canyne). 30 sets have no common pt-BR suffix and keep the English name.
+  - **Skills**: 147. 36 Sunbreak skills have no level text in the Kiranico list; their effects
+    come from the wiki skill pages, in English.
+  - **Decorations**: 243. Hard Sniper Jewel 4 gives Steadiness 3, above its max of 2, as the game
+    data does.
+  - **Materials**: 1,124 with sources.
+  - **Icons**: 1,282 (93.5 %); 89 renders return 404.
+- **Rampage**:
+  - every one of the 1,930 Low/High Rank weapons has its options;
+  - 237 Rampage skills remain after removing Kiranico's per-type duplicates;
+  - there are 26 Rampage decorations, with their weapon-type limits.
+- **Sizes**:
+  - `armor.json` is 3.1 MB;
+  - the armor icons take 5.3 MB;
+  - the release APK (arm64) is 34.2 MB;
+  - the Armaduras list opens in 493 ms (Windows, debug).
+- **Spot check (SC-002)**:
+  - 20 pieces (2 per rarity) were compared with the wiki set pages (defense, max defense,
+    resistances, slots, skills) and with the Kiranico piece pages (materials). 19 match on every
+    field. Ibushi's Helm lists Stormsoul 1 on the wiki but not on Kiranico; Kiranico is kept, as
+    the game data source (006 R12).
+  - 10 skills match their level counts.
+  - 10 decorations match their slot level and skills.

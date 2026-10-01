@@ -6,6 +6,8 @@ import 'package:mh_wiki/app/di/app_dependencies.dart';
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/presentation/widgets/game_tabs.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/monster_detail_page.dart';
+import 'package:mh_wiki/features/armor/presentation/armor_controller.dart';
+import 'package:mh_wiki/features/armor/presentation/views/widgets/armor_detail_views.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/monster_detail_view.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_id.dart';
 import 'package:mh_wiki/features/weapons/presentation/models/weapon_list_state.dart';
@@ -151,6 +153,68 @@ void main() {
     expect(find.text('Armas feitas com ele'), findsOneWidget);
     // Armas kept its search.
     expect((weapons.state as WeaponListLoaded).query.text, 'flammen');
+  });
+
+  // 007 T025: Armaduras → Mestre → a skill filter → Rathalos X → skill → decoration.
+  testWidgets('find a set by skill, then its skill and a decoration', (
+    tester,
+  ) async {
+    final dependencies = await AppDependencies.create();
+    final settings = dependencies.createSettingsController();
+    final monsters = dependencies.createMonsterListController();
+    final weapons = dependencies.createWeaponListController();
+    final armor = dependencies.createArmorController();
+    await settings.load();
+    await monsters.load();
+
+    await tester.pumpWidget(
+      MhWikiApp(
+        monsterListController: monsters,
+        settingsController: settings,
+        weaponListController: weapons,
+        armorController: armor,
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    final open = Stopwatch()..start();
+    await tester.tap(find.text('Armaduras'));
+    await tester.pumpAndSettle();
+    open.stop();
+    // ignore: avoid_print
+    print('armaduras list opened in ${open.elapsedMilliseconds} ms');
+
+    await tester.tap(find.text('Mestre'));
+    await tester.pumpAndSettle();
+    if (!tester.testTextInput.isRegistered) tester.testTextInput.register();
+    await tester.enterText(find.byType(TextField).first, 'reforço de ata');
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(ActionChip, 'Reforço de Ataque'));
+    await tester.pumpAndSettle();
+    expect((armor.state as ArmorLoaded).setQuery.skillId, 'attack-boost');
+
+    await armor.select(ArmorTab.sets, 'rathalos-x');
+    await tester.pumpAndSettle();
+    expect(find.text('570 → 870'), findsOneWidget);
+
+    await armor.select(ArmorTab.skills, 'attack-boost');
+    await tester.pumpAndSettle();
+    expect(find.byType(SkillDetailView), findsOneWidget);
+    final jewel = find.textContaining('Joia do Ataque 2');
+    await tester.scrollUntilVisible(
+      jewel,
+      200,
+      scrollable: find
+          .descendant(
+            of: find.byType(SkillDetailView),
+            matching: find.byType(Scrollable),
+          )
+          .first,
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(jewel);
+    await tester.pumpAndSettle();
+    expect(find.byType(DecorationDetailView), findsOneWidget);
   });
 
   // 004 T038 / SC-004: time to load every dataset and show the list, and to
