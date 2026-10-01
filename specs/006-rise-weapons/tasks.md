@@ -178,7 +178,7 @@ and the wide-screen rail (spec US3).
 - [X] T035 Measure the release APK size (`flutter build apk --release --analyze-size --target-platform android-arm64`) and the time to open the Armas list (profile integration run). Record both in `specs/006-rise-weapons/research.md` (R6 results).
 - [X] T036 SC-002 spot check: 20 weapons, at least one per type, compared field by field with their wiki and Kiranico pages. Fix the data only in `tool/data/build_rise_weapons.py`, rebuild, and record the result in research.md.
 - [X] T037 Run the gates and `flutter build windows --release`, then commit and push.
-- [ ] T038 Manual quickstart checks 1–14 (user). Fix the findings, then merge `006-rise-weapons` into `main`.
+- [X] T038 Manual quickstart checks 1–14 (user). Fix the findings, then merge `006-rise-weapons` into `main`.
 
 ---
 
@@ -198,7 +198,7 @@ FR-014; mockup `mockups/approved-sources.html`, option B).
 - [X] T042 [US5] `tool/data/fetch_rise_item_pages.py` caches the Kiranico item pages (en + pt-BR); `build_rise_weapons.py` adds `sources` per material: `gathering` (map, rank, best rate), `monsters` (name, slug when it is a large monster of the app, small flag, rank, method, rate) and `quests` (category, stars, name, rank). Record in research.md R13.
 - [X] T043 [US5] Domain `MaterialSource` entities on `MonsterMaterial`'s weapon side (`WeaponMaterial.sources`), DTO/mapper with tests, and the rule "sources of the weapon's rank, else the nearest rank, labelled".
 - [X] T044 [US5] Materials card option B: chips per material (gathering, large monster link, small monster, quest, unknown origin); tapping a material expands the full list with rates. Large monster links keep using the app layer (`onOpenMonster`). Widget, accessibility and app tests.
-- [ ] T045 Gates, spot check of the sources of 10 materials against Kiranico, commit; the user's manual check, then merge.
+- [X] T045 Gates, spot check of the sources of 10 materials against Kiranico, commit; the user's manual check, then merge.
 
 ---
 
