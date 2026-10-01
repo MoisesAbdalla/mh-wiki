@@ -70,10 +70,11 @@ void main() {
       finder,
       delta,
       scrollable: find
-          .byWidgetPredicate(
-            (w) => w is Scrollable && w.axisDirection == AxisDirection.down,
+          .descendant(
+            of: find.byType(ListView).last,
+            matching: find.byType(Scrollable),
           )
-          .last,
+          .first,
     );
     await tester.ensureVisible(finder);
     await tester.pumpAndSettle();
@@ -159,8 +160,23 @@ void main() {
     expect(find.text('Olho Crítico Nv 3'), findsOneWidget);
     expect(find.textContaining('Espadão · Game8'), findsOneWidget);
 
+    Finder asset(String path) => find.byWidgetPredicate(
+      (w) =>
+          w is Image &&
+          w.image is AssetImage &&
+          (w.image as AssetImage).assetName == path,
+    );
+    // The part icon in the piece's rarity colour; the talisman takes the
+    // rarest piece's.
+    expect(asset('assets/images/armor/parts/head-8.webp'), findsOneWidget);
+    expect(asset('assets/images/armor/parts/waist-1.webp'), findsOneWidget);
+    expect(asset('assets/images/armor/parts/talisman-8.webp'), findsOneWidget);
+    expect(asset('assets/images/weapons/types/great-sword.webp'), findsWidgets);
+
     await tester.tap(find.text('Elmo do Caçador X'));
     expect(opened.single.id, 'hunters-helm-x');
+    await tester.tap(find.text('Joia Energiz. 2').first);
+    expect(opened.last.id, 'charger-jewel-2');
 
     await scrollTo(tester, find.text('Habilidades'));
     expect(

@@ -71,6 +71,7 @@ void main() {
       expect(back.stage, b.stage);
       expect(back.pieces[1].alternatives.single.known, isFalse);
       expect(back.talisman!.level, 3);
+      expect(back.pieces.first.item.ref.rarity, 8);
       expect(back.decorations.first.count, 3);
     });
 

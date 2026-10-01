@@ -1,0 +1,64 @@
+# Equipment part icons
+
+From the Monster Hunter Fandom wiki (MHRise / MHRS item icons, colour by rarity as in its MHRise-Rarity and MHRS-Rarity templates). Capcom artwork, used locally like the other icons. Built by `tool/data/fetch_part_icons.py`.
+
+- `head-1.webp`: MHRise Item Icon-Helmet Equipment White.svg
+- `head-2.webp`: MHRise Item Icon-Helmet Equipment Yellow.svg
+- `head-3.webp`: MHRise Item Icon-Helmet Equipment Red.svg
+- `head-4.webp`: MHRise Item Icon-Helmet Equipment Green.svg
+- `head-5.webp`: MHRise Item Icon-Helmet Equipment Blue.svg
+- `head-6.webp`: MHRise Item Icon-Helmet Equipment Dark Blue.svg
+- `head-7.webp`: MHRise Item Icon-Helmet Equipment Dark Red.svg
+- `head-8.webp`: MHRS Item Icon-Helmet Equipment Light Blue.svg
+- `head-9.webp`: MHRS Item Icon-Helmet Equipment Purple.svg
+- `head-10.webp`: MHRS Item Icon-Helmet Equipment Orange.svg
+- `chest-1.webp`: MHRise Item Icon-Chestplate Equipment White.svg
+- `chest-2.webp`: MHRise Item Icon-Chestplate Equipment Yellow.svg
+- `chest-3.webp`: MHRise Item Icon-Chestplate Equipment Red.svg
+- `chest-4.webp`: MHRise Item Icon-Chestplate Equipment Green.svg
+- `chest-5.webp`: MHRise Item Icon-Chestplate Equipment Blue.svg
+- `chest-6.webp`: MHRise Item Icon-Chestplate Equipment Dark Blue.svg
+- `chest-7.webp`: MHRise Item Icon-Chestplate Equipment Dark Red.svg
+- `chest-8.webp`: MHRS Item Icon-Chestplate Equipment Light Blue.svg
+- `chest-9.webp`: MHRS Item Icon-Chestplate Equipment Purple.svg
+- `chest-10.webp`: MHRS Item Icon-Chestplate Equipment Orange.svg
+- `arms-1.webp`: MHRise Item Icon-Armguard Equipment White.svg
+- `arms-2.webp`: MHRise Item Icon-Armguard Equipment Yellow.svg
+- `arms-3.webp`: MHRise Item Icon-Armguard Equipment Red.svg
+- `arms-4.webp`: MHRise Item Icon-Armguard Equipment Green.svg
+- `arms-5.webp`: MHRise Item Icon-Armguard Equipment Blue.svg
+- `arms-6.webp`: MHRise Item Icon-Armguard Equipment Dark Blue.svg
+- `arms-7.webp`: MHRise Item Icon-Armguard Equipment Dark Red.svg
+- `arms-8.webp`: MHRS Item Icon-Armguard Equipment Light Blue.svg
+- `arms-9.webp`: MHRS Item Icon-Armguard Equipment Purple.svg
+- `arms-10.webp`: MHRS Item Icon-Armguard Equipment Orange.svg
+- `waist-1.webp`: MHRise Item Icon-Waist Equipment White.svg
+- `waist-2.webp`: MHRise Item Icon-Waist Equipment Yellow.svg
+- `waist-3.webp`: MHRise Item Icon-Waist Equipment Red.svg
+- `waist-4.webp`: MHRise Item Icon-Waist Equipment Green.svg
+- `waist-5.webp`: MHRise Item Icon-Waist Equipment Blue.svg
+- `waist-6.webp`: MHRise Item Icon-Waist Equipment Dark Blue.svg
+- `waist-7.webp`: MHRise Item Icon-Waist Equipment Dark Red.svg
+- `waist-8.webp`: `waist-1.webp` tinted like `head-8.webp`
+- `waist-9.webp`: `waist-1.webp` tinted like `head-9.webp`
+- `waist-10.webp`: `waist-1.webp` tinted like `head-10.webp`
+- `legs-1.webp`: MHRise Item Icon-Leggings Equipment White.svg
+- `legs-2.webp`: MHRise Item Icon-Leggings Equipment Yellow.svg
+- `legs-3.webp`: MHRise Item Icon-Leggings Equipment Red.svg
+- `legs-4.webp`: MHRise Item Icon-Leggings Equipment Green.svg
+- `legs-5.webp`: MHRise Item Icon-Leggings Equipment Blue.svg
+- `legs-6.webp`: MHRise Item Icon-Leggings Equipment Dark Blue.svg
+- `legs-7.webp`: MHRise Item Icon-Leggings Equipment Dark Red.svg
+- `legs-8.webp`: MHRS Item Icon-Leggings Equipment Light Blue.svg
+- `legs-9.webp`: MHRS Item Icon-Leggings Equipment Purple.svg
+- `legs-10.webp`: MHRS Item Icon-Leggings Equipment Orange.svg
+- `talisman-1.webp`: MHRise Item Icon-Talisman Equipment White.svg
+- `talisman-2.webp`: MHRise Item Icon-Talisman Equipment Yellow.svg
+- `talisman-3.webp`: MHRise Item Icon-Talisman Equipment Red.svg
+- `talisman-4.webp`: MHRise Item Icon-Talisman Equipment Green.svg
+- `talisman-5.webp`: MHRise Item Icon-Talisman Equipment Blue.svg
+- `talisman-6.webp`: MHRise Item Icon-Talisman Equipment Dark Blue.svg
+- `talisman-7.webp`: MHRise Item Icon-Talisman Equipment Dark Red.svg
+- `talisman-8.webp`: MHRS Item Icon-Talisman Equipment Light Blue.svg
+- `talisman-9.webp`: MHRS Item Icon-Talisman Equipment Purple.svg
+- `talisman-10.webp`: MHRS Item Icon-Talisman Equipment Orange.svg

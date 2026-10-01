@@ -4,6 +4,7 @@ import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 import 'package:mh_wiki/core/presentation/widgets/notebook_section.dart';
 import 'package:mh_wiki/core/presentation/widgets/ruled_row.dart';
+import 'package:mh_wiki/core/presentation/widgets/slot_icon.dart';
 import 'package:mh_wiki/features/armor/presentation/views/widgets/armor_widgets.dart';
 import 'package:mh_wiki/features/assistant/domain/entities/curated_build.dart';
 import 'package:mh_wiki/features/assistant/presentation/views/widgets/assistant_labels.dart';
@@ -47,31 +48,51 @@ class BuildDetailView extends StatelessWidget {
         ?.copyWith(color: HunterPalette.textMuted);
     final type = typeName?.call(curated.weaponType) ?? curated.weaponType;
     final name = savedName;
-    final rows = <Widget>[
-      _EquipmentRow(
+    // The talisman takes the colour of the build's rarest piece.
+    int? rarest;
+    for (final p in curated.pieces) {
+      final r = p.item.ref.rarity;
+      if (r != null && (rarest == null || r > rarest)) rarest = r;
+    }
+    final weaponImage =
+        curated.weapon.ref.image ??
+        'assets/images/weapons/types/${curated.weaponType}.webp';
+    final entries = <Widget Function(bool last)>[
+      (last) => _EquipmentRow(
         part: l10n.partWeapon,
+        icon: weaponImage,
         item: curated.weapon,
         language: language,
         onOpen: onOpen,
+        last: last,
       ),
       for (final p in curated.pieces)
-        _EquipmentRow(
+        (last) => _EquipmentRow(
           part: p.part == null ? '—' : partText(l10n, p.part!),
+          icon: p.part == null
+              ? null
+              : partIcon(p.part!.name, p.item.ref.rarity),
           item: p.item,
           alternatives: p.alternatives,
           language: language,
           onOpen: onOpen,
+          last: last,
         ),
       if (curated.talisman case final t?)
-        _EquipmentRow(
+        (last) => _EquipmentRow(
           part: l10n.partTalisman,
+          icon: partIcon('talisman', rarest),
           item: BuildItem(ref: t.skill, decorations: t.decorations),
           label:
               '${t.skill.name.resolve(language)} '
               '${l10n.skillLevelShort(t.level)}',
           language: language,
           onOpen: onOpen,
+          last: last,
         ),
+    ];
+    final rows = [
+      for (final (i, row) in entries.indexed) row(i == entries.length - 1),
     ];
     final decorations = [...curated.decorations]
       ..sort((a, b) => _slot(b.decoration).compareTo(_slot(a.decoration)));
@@ -197,22 +218,34 @@ class BuildDetailView extends StatelessWidget {
       int.tryParse(RegExp(r'(\d)$').firstMatch(d.name.en)?.group(1) ?? '') ?? 0;
 }
 
-/// One equipment row: part caption, the name (with "ou …"), decorations.
+/// The game's icon of an equipment part in its rarity colour (feature 008,
+/// approved mockup B). [part] is a [BuildPart] name or `talisman`.
+String partIcon(String part, int? rarity) =>
+    'assets/images/armor/parts/$part-${(rarity ?? 1).clamp(1, 10)}.webp';
+
+/// One equipment row: the icon, part caption and name (with "ou …"), then
+/// the decorations as tiles with their slot icon.
 class _EquipmentRow extends StatelessWidget {
   const _EquipmentRow({
     required this.part,
+    required this.icon,
     required this.item,
     required this.language,
     required this.onOpen,
+    required this.last,
     this.alternatives = const [],
     this.label,
   });
 
   final String part;
+
+  /// Asset of the icon; `null` for a piece outside the catalog.
+  final String? icon;
   final BuildItem item;
   final List<CatalogRef> alternatives;
   final NameLanguage language;
   final ValueChanged<CatalogRef>? onOpen;
+  final bool last;
 
   /// Replaces the item's name (the talisman's "Olho Crítico Nv 3").
   final String? label;
@@ -222,41 +255,47 @@ class _EquipmentRow extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final small = Theme.of(context).textTheme.bodySmall;
     final ref = item.ref;
-    return _Tappable(
-      ref: ref,
-      onOpen: onOpen,
-      child: DecoratedBox(
-        decoration: const BoxDecoration(
-          border: Border(bottom: BorderSide(color: HunterPalette.borderSubtle)),
+    final asset = icon;
+    final header = Row(
+      children: [
+        Container(
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(
+            color: HunterPalette.panelHighlight,
+            borderRadius: BorderRadius.circular(4),
+          ),
+          padding: const EdgeInsets.all(3),
+          child: asset == null
+              ? null
+              : Image.asset(
+                  asset,
+                  fit: BoxFit.contain,
+                  excludeFromSemantics: true,
+                  errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 7),
+        const SizedBox(width: 12),
+        Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                part.toUpperCase(),
+                part,
                 style: small?.copyWith(
-                  color: HunterPalette.textDisabled,
-                  letterSpacing: .5,
-                  fontSize: 11,
+                  color: HunterPalette.textMuted,
+                  fontSize: 12,
                 ),
               ),
-              Wrap(
-                spacing: 8,
-                crossAxisAlignment: WrapCrossAlignment.end,
-                children: [
-                  Text(
-                    label ?? ref.name.resolve(language),
-                    style: notebookTitle(size: 16),
-                  ),
-                  for (final a in alternatives)
-                    Text(
-                      l10n.alternativePiece(a.name.resolve(language)),
-                      style: small?.copyWith(color: HunterPalette.textMuted),
-                    ),
-                ],
+              Text(
+                label ?? ref.name.resolve(language),
+                style: notebookTitle(size: 17),
               ),
+              for (final a in alternatives)
+                Text(
+                  l10n.alternativePiece(a.name.resolve(language)),
+                  style: small?.copyWith(color: HunterPalette.textMuted),
+                ),
               if (!ref.known)
                 Text(
                   l10n.notInCatalog,
@@ -265,46 +304,145 @@ class _EquipmentRow extends StatelessWidget {
                     fontStyle: FontStyle.italic,
                   ),
                 ),
-              if (item.decorations.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: Wrap(
-                    spacing: 6,
-                    runSpacing: 4,
-                    children: [
-                      for (final d in item.decorations)
-                        _DecorationSeal(d.name.resolve(language)),
-                    ],
-                  ),
-                ),
             ],
           ),
+        ),
+      ],
+    );
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        border: last
+            ? null
+            : const Border(
+                bottom: BorderSide(color: HunterPalette.borderSubtle),
+              ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _Tappable(ref: ref, onOpen: onOpen, child: header),
+            if (item.decorations.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: _DecorationTiles(
+                  decorations: item.decorations,
+                  language: language,
+                  onOpen: onOpen,
+                ),
+              ),
+          ],
         ),
       ),
     );
   }
 }
 
-class _DecorationSeal extends StatelessWidget {
-  const _DecorationSeal(this.text);
+/// Decorations as tiles with their slot icon: three per line, two on narrow
+/// cards or large text.
+class _DecorationTiles extends StatelessWidget {
+  const _DecorationTiles({
+    required this.decorations,
+    required this.language,
+    required this.onOpen,
+  });
 
-  final String text;
+  final List<CatalogRef> decorations;
+  final NameLanguage language;
+  final ValueChanged<CatalogRef>? onOpen;
+
+  static const _gap = 6.0;
+  static const _minTile = 124.0;
 
   @override
-  Widget build(BuildContext context) => DecoratedBox(
-    decoration: BoxDecoration(
-      border: Border.all(color: HunterPalette.border),
-      borderRadius: BorderRadius.circular(10),
-    ),
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 7),
-      child: Text(
-        text,
-        style: Theme.of(context).textTheme.bodySmall
-            ?.copyWith(color: HunterPalette.textMuted, fontSize: 12),
-      ),
-    ),
+  Widget build(BuildContext context) => LayoutBuilder(
+    builder: (context, constraints) {
+      final scale = MediaQuery.textScalerOf(context).scale(1);
+      // Three per line when a tile still fits a whole word such as
+      // "Atenuadora"; two otherwise, so names never break mid-word.
+      final three = (constraints.maxWidth - _gap * 2) / 3 / scale;
+      final columns = three >= _minTile ? 3 : 2;
+      final width = (constraints.maxWidth - _gap * (columns - 1)) / columns;
+      return Wrap(
+        spacing: _gap,
+        runSpacing: _gap,
+        children: [
+          for (final d in decorations)
+            SizedBox(
+              width: width,
+              child: _DecorationTile(
+                decoration: d,
+                language: language,
+                onOpen: onOpen,
+              ),
+            ),
+        ],
+      );
+    },
   );
+}
+
+class _DecorationTile extends StatelessWidget {
+  const _DecorationTile({
+    required this.decoration,
+    required this.language,
+    required this.onOpen,
+  });
+
+  final CatalogRef decoration;
+  final NameLanguage language;
+  final ValueChanged<CatalogRef>? onOpen;
+
+  @override
+  Widget build(BuildContext context) {
+    final open = onOpen;
+    final level = BuildDetailView._slot(decoration);
+    final name = decoration.name.resolve(language);
+    return Semantics(
+      container: true,
+      button: open != null && decoration.known,
+      label: name,
+      excludeSemantics: true,
+      child: Material(
+        color: HunterPalette.panelHighlight,
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(color: HunterPalette.border),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: open == null || !decoration.known
+              ? null
+              : () => open(decoration),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: 48),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              child: Row(
+                children: [
+                  if (level > 0) ...[
+                    SlotIcon(level: level.clamp(1, 4), size: 18),
+                    const SizedBox(width: 6),
+                  ],
+                  Expanded(
+                    child: Text(
+                      name,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: HunterPalette.text,
+                        fontSize: 12.5,
+                        height: 1.15,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 /// Makes [child] open [ref] when the app knows it.

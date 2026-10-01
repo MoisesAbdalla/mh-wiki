@@ -56,6 +56,8 @@ CatalogRef _ref(JsonReader r) => CatalogRef(
   id: r.optionalString('id'),
   name: readLocalized(r.object('name')),
   kind: r.enumValue('kind', RefKind.values),
+  rarity: r.has('rarity') ? r.number('rarity').toInt() : null,
+  image: r.optionalString('image'),
 );
 
 List<CatalogRef> _refs(JsonReader r, String key) => [
@@ -138,6 +140,8 @@ Map<String, Object?> _writeRef(CatalogRef r) => {
   'id': ?r.id,
   'name': _writeText(r.name),
   'kind': r.kind.name,
+  'rarity': ?r.rarity,
+  'image': ?r.image,
 };
 
 Map<String, Object?> _writeItem(BuildItem i) => {

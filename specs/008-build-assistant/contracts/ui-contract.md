@@ -32,15 +32,18 @@ the Caderninho direction from 005.
   - the name;
   - the stage seal, then "type · fonte: Game8";
   - a crumb back to the list.
-- **1 Equipamento**: rows for Arma, Cabeça, Tronco, Braços, Cintura, Pernas and Talismã. Each row
-  has:
-  - the part caption;
-  - the name (IM Fell), with "ou …" for alternatives;
-  - decoration seals.
+- **1 Equipamento** (layout B of [mockups/equipment-approved.html](../mockups/equipment-approved.html)):
+  one card with a ruled row per part: Arma, Cabeça, Tronco, Braços, Cintura, Pernas and Talismã.
+  Each row has:
+  - an icon: the weapon's own image (or its type icon); for armor and the talisman, the game's
+    part icon in the rarity colour (rarity 1 white … 10 orange; the talisman takes the rarest
+    piece's colour);
+  - the part caption and the name (IM Fell), with "ou …" for alternatives;
+  - the decorations as tiles with their slot icon, three per line, or two when a tile cannot fit
+    a whole word.
 
-  A tap on a known item opens its detail in Armas or Armaduras. An unknown item shows "não
-  encontrado no catálogo" in muted text. The talisman row shows "Olho Crítico 3 · slots ②① ou
-  melhor".
+  A tap on a known item or decoration opens it in Armas or Armaduras. An unknown item shows
+  "não encontrado no catálogo" in muted text. The talisman row reads "Olho Crítico Nv 3".
 - **2 Habilidades**: ruled rows with pips up to the max; a tap opens the skill.
 - **3 Joias**: each decoration with "×n", sorted by slot level.
 - **Buttons and source**: a full-width "Salvar em Minhas builds" button, then the source link and

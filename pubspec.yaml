@@ -38,6 +38,7 @@ flutter:
     - assets/images/weapons/types/
     - assets/images/weapons/slots/
     - assets/images/armor/rise_sunbreak/
+    - assets/images/armor/parts/
 
   # Bundled so they work offline (SIL Open Font License, see assets/fonts/*/OFL.txt).
   fonts:

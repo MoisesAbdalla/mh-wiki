@@ -7,11 +7,23 @@ enum RefKind { weapon, piece, skill, decoration, rampage }
 /// A named item of a build, with its catalog id when the app knows it
 /// (008 FR-008).
 final class CatalogRef {
-  const CatalogRef({required this.name, required this.kind, this.id});
+  const CatalogRef({
+    required this.name,
+    required this.kind,
+    this.id,
+    this.rarity,
+    this.image,
+  });
 
   final String? id;
   final LocalizedText name;
   final RefKind kind;
+
+  /// A weapon's or piece's rarity (1–10), for its icon colour.
+  final int? rarity;
+
+  /// A weapon's own image asset, when there is one.
+  final String? image;
 
   bool get known => id != null;
 }

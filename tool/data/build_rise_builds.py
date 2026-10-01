@@ -100,10 +100,14 @@ def load_catalog():
     w = json.load(open(os.path.join(REPO, 'assets/data/rise_sunbreak/weapons.json'), encoding='utf8'))
     a = json.load(open(os.path.join(REPO, 'assets/data/rise_sunbreak/armor.json'), encoding='utf8'))
     by = {'weapon': {}, 'piece': {}, 'decoration': {}, 'skill': {}, 'rampage': {}}
+    # Shown next to a build item: its rarity colour, and the weapon's image.
+    by['extra'] = {}
     for x in w['weapons']:
         by['weapon'][key(x['name']['en'])] = (x['slug'], x['name'])
+        by['extra'][('weapon', x['slug'])] = {'rarity': x['rarity'], 'image': x.get('image')}
     for x in a['pieces']:
         by['piece'][key(x['name']['en'])] = (x['id'], x['name'], x['part'])
+        by['extra'][('piece', x['id'])] = {'rarity': x['rarity'], 'image': x.get('image')}
     for x in a['decorations']:
         by['decoration'][key(x['name']['en'])] = (x['id'], x['name'], x['slotLevel'])
     for x in a['skills']:
@@ -133,7 +137,8 @@ class Matcher:
         if not hit:
             self.missing.append(f'{where}: {kind} "{name}"')
             return {'name': {'en': name}, 'kind': kind}
-        return {'id': hit[0], 'name': hit[1], 'kind': kind}
+        extra = {k: v for k, v in self.catalog['extra'].get((kind, hit[0]), {}).items() if v is not None}
+        return {'id': hit[0], 'name': hit[1], 'kind': kind, **extra}
 
 
 # ---------------------------------------------------------------- parsing (R2)

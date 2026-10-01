@@ -8,10 +8,17 @@ import 'package:mh_wiki/features/assistant/domain/assistant_domain.dart';
 import 'package:mh_wiki/features/assistant/domain/entities/curated_build.dart';
 import 'package:mh_wiki/features/assistant/domain/entities/progress.dart';
 
-CatalogRef ref(String? id, String en, RefKind kind, {String? pt}) => CatalogRef(
+CatalogRef ref(
+  String? id,
+  String en,
+  RefKind kind, {
+  String? pt,
+  int? rarity,
+}) => CatalogRef(
   id: id,
   name: LocalizedText(en: en, ptBr: pt),
   kind: kind,
+  rarity: rarity,
 );
 
 CuratedBuild buildFixture(
@@ -51,6 +58,7 @@ CuratedBuild buildFixture(
           "Hunter's Helm X",
           RefKind.piece,
           pt: 'Elmo do Caçador X',
+          rarity: 8,
         ),
         decorations: [
           ref(
