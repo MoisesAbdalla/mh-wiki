@@ -23,8 +23,9 @@ cost = { material, quantity }
 
 - Unique ids per table, and every reference resolves: `set`, `pieces`, `skill` and `material`.
 - Every piece of a set appears in the set's `pieces`, sorted by `part`.
-- A skill's `level` is between 1 and its max level (the length of `levels`). Sums are not
-  validated, because overflow is real data.
+- A piece's skill `level` is between 1 and the skill's max level (the length of `levels`). A
+  decoration may give more than the max, as the game data does (Hard Sniper Jewel 4: Steadiness 3
+  of 2). Sums are not validated, because overflow is real data.
 - `slotLevel` and `slots` hold values 1–4; there are at most 3 slots.
 - When present, `maxDefense` is at least `defense`.
 

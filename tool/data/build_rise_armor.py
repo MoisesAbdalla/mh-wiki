@@ -95,6 +95,10 @@ def skill_table():
             rows[m.group(1)] = {'name': name, 'description': desc, 'levels': levels}
         return rows
     en, pt = parse('en'), parse('pt')
+    wiki = wiki_skill_levels([s['name'] for s in en.values() if not s['levels']])
+    for s in en.values():
+        if not s['levels'] and s['name'] in wiki:
+            s['levels'] = wiki[s['name']]
     out = {}
     for sid, s in en.items():
         p = pt.get(sid, {})
@@ -106,6 +110,29 @@ def skill_table():
             'levels': [{'level': i + 1, 'effect': localized(e, pl[i] if i < len(pl) else None)}
                        for i, e in enumerate(s['levels'])],
         }
+    return out
+
+
+def wiki_skill_levels(names):
+    """{skill en name: [level effect, ...]} from the MHRS skill pages of the wiki, for the skills
+    whose Kiranico list has no level text (the Sunbreak additions, 007 research R4)."""
+    titles = sorted({f'{n} (MHRS)' for n in names})
+    out = {}
+    for i in range(0, len(titles), 40):
+        d = wiki_api({'action': 'query', 'prop': 'revisions', 'rvprop': 'content', 'rvslots': 'main',
+                      'redirects': 1, 'titles': '|'.join(titles[i:i + 40])},
+                     f'wiki_mhrs_skills_{i // 40}.json')
+        for p in d['query']['pages'].values():
+            if 'revisions' not in p:
+                continue
+            body = p['revisions'][0]['slots']['main']['*']
+            table = body[body.find('Level Description'):]
+            table = table[:table.find('|}')]
+            levels = re.findall(r'^\|\s*(\d+)\s*\n\|\s*(.+)$', table, re.M)
+            if levels:
+                # [[Link|Text]] and [[Text]] keep only the shown text.
+                out[p['title'].replace(' (MHRS)', '')] = [
+                    clean(re.sub(r'\[\[(?:[^|\]]*\|)?([^\]]*)\]\]', r'\1', t)) for _, t in levels]
     return out
 
 

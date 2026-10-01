@@ -6,28 +6,29 @@ import 'package:mh_wiki/app/app_shell.dart';
 
 import '../helpers/pump_app.dart';
 
-/// 006 ui-contract "App shell": four areas, two of them "em breve".
+/// 006/007 ui-contract "App shell": four areas, the Assistente "em breve".
 void main() {
   Future<void> pumpShell(WidgetTester tester) => pumpApp(
     tester,
     const AppShell(
       monsters: Scaffold(body: TextField(key: Key('monster-search'))),
       weapons: Scaffold(body: Text('weapons-area')),
+      armor: Scaffold(body: Text('armor-area')),
     ),
   );
 
   Finder area(String label) => find.bySemanticsLabel(label);
 
-  testWidgets('four areas; Armaduras and Assistente are "em breve"', (
+  testWidgets('four areas; only the Assistente is "em breve"', (
     tester,
   ) async {
     final handle = tester.ensureSemantics();
     await pumpShell(tester);
 
-    for (final label in ['Monstros', 'Armas']) {
+    for (final label in ['Monstros', 'Armas', 'Armaduras']) {
       expect(area(label), findsOneWidget);
     }
-    for (final label in ['Armaduras, em breve', 'Assistente, em breve']) {
+    for (final label in ['Assistente, em breve']) {
       expect(area(label), findsOneWidget);
       expect(
         tester.getSemantics(area(label)).flagsCollection.isEnabled,
@@ -36,10 +37,13 @@ void main() {
       );
     }
 
-    await tester.tap(find.text('Armaduras'));
+    await tester.tap(find.text('Assistente'));
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('monster-search')), findsOneWidget);
-    expect(find.text('weapons-area'), findsNothing);
+
+    await tester.tap(find.text('Armaduras'));
+    await tester.pumpAndSettle();
+    expect(find.text('armor-area'), findsOneWidget);
     handle.dispose();
   });
 

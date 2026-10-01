@@ -3,6 +3,8 @@ import 'package:mh_wiki/app/app_shell.dart';
 import 'package:mh_wiki/app/monster_weapons_card.dart';
 import 'package:mh_wiki/app/weapons_of_monster.dart';
 import 'package:mh_wiki/core/domain/game.dart';
+import 'package:mh_wiki/features/armor/presentation/armor_controller.dart';
+import 'package:mh_wiki/features/armor/presentation/views/armor_page.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
@@ -20,12 +22,14 @@ class AppHome extends StatefulWidget {
   const AppHome({
     required this.monsters,
     required this.weapons,
+    this.armor,
     this.actions,
     super.key,
   });
 
   final MonsterListController monsters;
   final WeaponListController weapons;
+  final ArmorController? armor;
   final List<Widget>? actions;
 
   @override
@@ -132,6 +136,15 @@ class _AppHomeState extends State<AppHome> {
       actions: widget.actions,
       extraSections: _extraSections,
     ),
+    armor: switch (widget.armor) {
+      final armor? => ArmorPage(
+        controller: armor,
+        actions: widget.actions,
+        sources: _sources,
+        onOpenMonster: _openMonster,
+      ),
+      null => const SizedBox.shrink(),
+    },
     weapons: WeaponsPage(
       controller: widget.weapons,
       actions: widget.actions,

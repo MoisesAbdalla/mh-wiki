@@ -2,7 +2,7 @@ import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/features/monsters/data/datasources/monster_datasource.dart';
 import 'package:mh_wiki/features/monsters/data/dtos/json_reader.dart';
-import 'package:mh_wiki/core/domain/rank.dart';
+import 'package:mh_wiki/core/data/material_sources_json.dart';
 import 'package:mh_wiki/core/domain/material_sources.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/special_kind.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
@@ -54,7 +54,7 @@ final class WeaponDatasetDto {
       if (materials.containsKey(id)) reader.fail('duplicate material "$id"');
       materials[id] = _localized(reader.object('name'));
       if (reader.optionalObject('sources') case final s?) {
-        sources[id] = _sources(s);
+        sources[id] = readMaterialSources(s);
       }
     }
 
@@ -344,39 +344,6 @@ WeaponTraits _traits(JsonReader weapon, String typeId) {
         AmmoCapacity(
           kind: a.enumValue('ammo', AmmoKind.values),
           capacity: _ints(a, 'capacity'),
-        ),
-    ],
-  );
-}
-
-MaterialSources _sources(JsonReader r) {
-  int? rate(JsonReader x) => x.optionalNumber('rate')?.toInt();
-  return MaterialSources(
-    gathering: [
-      for (final g in r.optionalObjects('gathering'))
-        GatheringSource(
-          map: _localized(g.object('map')),
-          rank: g.enumValue('rank', Rank.values),
-          rate: rate(g),
-        ),
-    ],
-    monsters: [
-      for (final m in r.optionalObjects('monsters'))
-        MonsterSource(
-          name: _localized(m.object('name')),
-          rank: m.enumValue('rank', Rank.values),
-          method: _localized(m.object('method')),
-          rate: rate(m),
-          slug: m.optionalString('slug'),
-        ),
-    ],
-    quests: [
-      for (final q in r.optionalObjects('quests'))
-        QuestSource(
-          name: _localized(q.object('name')),
-          category: _localized(q.object('category')),
-          stars: q.string('stars'),
-          rate: rate(q),
         ),
     ],
   );

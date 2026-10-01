@@ -42,10 +42,10 @@ description: "Task list for 007 Armaduras, habilidades e joias da Rise: Sunbreak
 ## Phase 2: Foundational
 
 - [X] T007 Move `MaterialSources` and its sources, `RankedSources` and `MaterialCost` from `lib/features/weapons/domain/entities/` to `lib/core/domain/`. Move the material row with seals and the rates table from `weapon_materials_section.dart` to `lib/core/presentation/widgets/material_cost_row.dart`, parameterized by name, amount, sources, droppers and rank. Weapons import them from core. All existing tests stay green.
-- [ ] T008 [P] Write tests for the armor domain in `test/features/armor/domain/`: `SumSetSkills` (sums, max, overflow, order), `FilterSets` (rank, text in en and pt-BR, skill) and `SkillSources` (decorations and pieces, master rank first). Add fixtures in `test/fakes/armor_fixtures.dart`.
-- [ ] T009 Implement the entities and use cases in `lib/features/armor/domain/` so that T008 passes.
-- [ ] T010 [P] Write DTO and mapper tests in `test/features/armor/data/armor_dataset_dto_test.dart`. Cover the data-model validation rules: unique ids, references that resolve, part order, levels within the max, slots, and maxDefense ≥ defense.
-- [ ] T011 Implement the data layer: DTO, mapper, asset datasource (with `compute`), `ArmorRepository` and its impl, and `LoadArmorCatalog`.
+- [X] T008 [P] Write tests for the armor domain in `test/features/armor/domain/`: `SumSetSkills` (sums, max, overflow, order), `FilterSets` (rank, text in en and pt-BR, skill) and `SkillSources` (decorations and pieces, master rank first). Add fixtures in `test/fakes/armor_fixtures.dart`.
+- [X] T009 Implement the entities and use cases in `lib/features/armor/domain/` so that T008 passes.
+- [X] T010 [P] Write DTO and mapper tests in `test/features/armor/data/armor_dataset_dto_test.dart`. Cover the data-model validation rules: unique ids, references that resolve, part order, levels within the max, slots, and maxDefense ≥ defense.
+- [X] T011 Implement the data layer: DTO, mapper, asset datasource (with `compute`), `ArmorRepository` and its impl, and `LoadArmorCatalog`.
 - [ ] T012 [P] Write the real-dataset test `test/features/armor/data/real_armor_dataset_test.dart`. It checks:
   - the counts per rarity from the T003 report;
   - every piece in one set, and every reference resolved;
@@ -53,12 +53,12 @@ description: "Task list for 007 Armaduras, habilidades e joias da Rise: Sunbreak
   - the Elmo materials include Heavy Rathalos Scrap;
   - Attack Boost has 7 levels and the decorations Attack Jewel 2 and 4;
   - ≥ 90 % of the pieces have an icon.
-- [ ] T013 Wire DI (`armorRepository`, `createArmorController`), enable Armaduras in `AppShell` (`AppArea.armor`, built on its first visit), and update `test/app/app_shell_test.dart`.
+- [X] T013 Wire DI (`armorRepository`, `createArmorController`), enable Armaduras in `AppShell` (`AppArea.armor`, built on its first visit), and update `test/app/app_shell_test.dart`.
 
 ## Phase 3: User Story 1 - Conjuntos (P1) 🎯 MVP
 
-- [ ] T014 [P] [US1] Write the controller tests: loading, failure and retry; the tabs; rank, text and skill-seal filters; state kept per tab.
-- [ ] T015 [US1] Implement `ArmorController` and its state.
+- [X] T014 [P] [US1] Write the controller tests: loading, failure and retry; the tabs; rank, text and skill-seal filters; state kept per tab.
+- [X] T015 [US1] Implement `ArmorController` and its state.
 - [ ] T016 [P] [US1] Write the widget tests for `armor_page.dart` and the set list:
   - the tabs and the rank tabs;
   - search with skill suggestions, and the removable seal;
