@@ -4,7 +4,7 @@ import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
-import 'package:mh_wiki/features/weapons/presentation/material_sources.dart';
+import 'package:mh_wiki/core/presentation/material_droppers.dart';
 
 /// Joins monsters and weapons through their materials (006 research R7).
 /// Lives in the app layer, so neither feature imports the other.

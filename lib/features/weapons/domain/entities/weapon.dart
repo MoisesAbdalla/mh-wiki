@@ -2,7 +2,7 @@ import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/source_ref.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/estimated_stars.dart';
-import 'package:mh_wiki/features/weapons/domain/entities/material_cost.dart';
+import 'package:mh_wiki/core/domain/material_cost.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/sharpness.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_id.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_special.dart';

@@ -3,7 +3,7 @@ import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/features/monsters/data/datasources/monster_datasource.dart';
 import 'package:mh_wiki/features/monsters/data/dtos/json_reader.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
-import 'package:mh_wiki/features/weapons/domain/entities/material_sources.dart';
+import 'package:mh_wiki/core/domain/material_sources.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/special_kind.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
 

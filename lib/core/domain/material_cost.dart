@@ -1,5 +1,5 @@
 import 'package:mh_wiki/features/monsters/domain/entities/monster_material.dart';
-import 'package:mh_wiki/features/weapons/domain/entities/material_sources.dart';
+import 'package:mh_wiki/core/domain/material_sources.dart';
 
 /// A material needed to forge or upgrade a weapon: a quantity of one item, or
 /// [points] of a category ("Anjanath Material(s) x10 pts.").

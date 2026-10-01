@@ -22,10 +22,10 @@ import os
 import re
 import sys
 import time
-import unicodedata
 import urllib.request
 
 from common import REPO, UA, clean, dataset_path, fetch, wiki_api  # noqa: F401 (sets cwd to the cache)
+from kiranico_items import key, material_sources, slug  # noqa: E402
 
 KIRANICO = 'https://mhrise.kiranico.com'
 WIKI = 'https://monsterhunterwiki.org/wiki/'
@@ -61,17 +61,6 @@ STAR_RULE = ('Stars are estimated: each forge/upgrade material that the Rise mon
              '(Village and Gathering Hub 1-3 = Low, Hub 4-7 = High, MR = Master); the weapon takes the '
              'highest of those, or the first star of the rank (Low 1, High 4, Master 1) when no monster is involved. Rank comes from rarity (1-3 Low, '
              '4-7 High, 8-10 Master).')
-
-
-def slug(text):
-    text = text.lower().replace("'", '').replace('+', '-plus')
-    return re.sub(r'[^a-z0-9]+', '-', text).strip('-')
-
-
-def key(name):
-    """Join key for names across sources (case, accents and punctuation removed)."""
-    text = unicodedata.normalize('NFKD', html.unescape(name)).encode('ascii', 'ignore').decode()
-    return re.sub(r'[^a-z0-9+]', '', text.lower())
 
 
 def rank_of(rarity):
@@ -280,95 +269,56 @@ def traits_of(view, en, pt):
     return None
 
 
-# ---------------------------------------------------------------- material sources
+# ---------------------------------------------------------------- Rampage (007 research R6)
 
-RANKS = {'Low Rank': 'low', 'High Rank': 'high', 'Master Rank': 'master'}
-
-
-def _item_rows(page, heading):
-    """The table rows (list of cell texts) under one heading of a Kiranico item page."""
-    page = re.sub(r'<script.*?</script>', '', page, flags=re.S)
-    for part in re.split(r'<h[23][^>]*>', page)[1:]:
-        if clean(re.sub(r'<[^>]+>', '', part[:part.find('</h')])) == heading:
-            return [[clean(re.sub(r'<[^>]+>', ' ', c)) for c in re.findall(r'<td.*?</td>', row, re.S)]
-                    for row in re.findall(r'<tr.*?</tr>', part, re.S)]
-    return []
-
-
-def _rate(text):
-    m = re.match(r'(\d+)%', text or '')
-    return int(m.group(1)) if m else None
-
-
-def material_sources(item_id, large):
-    """`sources` of one material from its cached Kiranico item pages (en + pt-BR), or None.
-
-    Gathering keeps the best rate per map and rank; monsters the best row per monster and rank,
-    with `slug` when it is a large monster of the app (else `small`); quests keep their category,
-    stars and best rate. Rows pair by position between the en and pt-BR pages, which list them in
-    the same order (006 research R13).
-    """
-    pages = {}
-    for lang in ('en', 'pt'):
-        path = f'kiranico_item_{item_id}_{lang}.html'
+def rampage_tables():
+    """Rampage skills {kiranico id: entry} and Rampage decorations, from the cached en and pt-BR
+    lists (fetch_rise_armor_pages.py). Empty when the lists are not cached."""
+    def rows(name, lang):
+        path = f'rise_{name}{"_pt" if lang == "pt" else ""}.html'
         if not os.path.exists(path):
-            return None
-        pages[lang] = open(path, encoding='utf8').read()
-    heads = {'en': ('Locale', 'Monsters', 'Quests'), 'pt': ('Loc.', 'Monstros', 'Missões')}
-    rows = {lang: [_item_rows(pages[lang], h) for h in heads[lang]] for lang in pages}
-
-    def pt_cell(section, i, col):
-        pt = rows['pt'][section]
-        return pt[i][col] if i < len(pt) and col < len(pt[i]) else None
+            return []
+        page = re.sub(r'<script.*?</script>', '', open(path, encoding='utf8').read(), flags=re.S)
+        return [[clean(re.sub(r'<[^>]+>', ' ', c)) for c in re.findall(r'<td[^>]*>(.*?)</td>', r, re.S)]
+                + re.findall(r'/data/rampage-skills/(\d+)"', r)
+                for r in re.findall(r'<tr.*?</tr>', page, re.S)]
 
     def loc(en, pt):
         return {'en': en, **({'ptBr': pt} if pt else {})}
 
-    gathering = {}
-    for i, r in enumerate(rows['en'][0]):
-        if len(r) < 4 or r[1] not in RANKS:
+    en, pt = rows('rampage-skills', 'en'), rows('rampage-skills', 'pt')
+    pt_by_id = {r[-1]: r for r in pt if len(r) >= 3}
+    skills = {}
+    for r in en:
+        if len(r) < 3:
             continue
-        k = (r[0], RANKS[r[1]])
-        rate = _rate(r[3])
-        if k not in gathering or (rate or 0) > (gathering[k]['rate'] or 0):
-            gathering[k] = {'map': loc(r[0], pt_cell(0, i, 0)), 'rank': k[1], 'rate': rate}
+        rid, p = r[-1], pt_by_id.get(r[-1], [None, None])
+        skills[rid] = {'id': slug(r[0]), 'name': loc(r[0], p[0]), 'effect': loc(r[1], p[1])}
 
-    monsters = {}
-    for i, r in enumerate(rows['en'][1]):
-        if len(r) < 5 or r[1] not in RANKS:
+    type_ids = {name: tid for tid, _v, name, _stem, _r in TYPES}
+    type_ids['Sword & Shield'] = 'sword-and-shield'
+    decos = []
+    pt_decos = {r[-1]: r for r in rows('rampage-decorations', 'pt') if len(r) >= 4}
+    for r in rows('rampage-decorations', 'en'):
+        if len(r) < 4 or r[-1] not in skills:
             continue
-        k = (r[0], RANKS[r[1]])
-        rate = _rate(r[4])
-        method_en = re.sub(r'\s*BodyPart \d+', '', r[2])
-        method_pt = re.sub(r'\s*BodyPart \d+', '', pt_cell(1, i, 2) or '') or None
-        if k not in monsters or (rate or 0) > (monsters[k]['rate'] or 0):
-            entry = {'name': loc(r[0], pt_cell(1, i, 0)), 'rank': k[1],
-                     'method': loc(method_en, method_pt), 'rate': rate}
-            slug_of = large.get(key(r[0]))
-            entry.update({'slug': slug_of} if slug_of else {'small': True})
-            monsters[k] = entry
+        level = re.search(r'(\d)\s*$', r[0])
+        only = re.match(r'\((.*?) only\)', r[2])
+        types = [type_ids[t.strip()] for t in only.group(1).split('/') if t.strip() in type_ids] if only else []
+        p = pt_decos.get(r[-1], [None])
+        decos.append({'id': slug(r[0]), 'name': loc(r[0], p[0]),
+                      'slotLevel': int(level.group(1)) if level else 1,
+                      'skill': skills[r[-1]]['id'], **({'types': types} if types else {})})
+    return skills, decos
 
-    quests = {}
-    for i, r in enumerate(rows['en'][2]):
-        m = re.match(r'(.*?)\s*(M?\d+)★\s*(.*)', r[0] if r else '')
-        if not m:
-            continue
-        pm = re.match(r'(.*?)\s*(M?\d+)★\s*(.*)', pt_cell(2, i, 0) or '')
-        k = (m.group(1), m.group(2), m.group(3))
-        rate = _rate(r[3] if len(r) > 3 else None)
-        if k not in quests or (rate or 0) > (quests[k]['rate'] or 0):
-            quests[k] = {'name': loc(m.group(3), pm.group(3) if pm else None),
-                         'category': loc(m.group(1) or 'Quest', (pm.group(1) if pm else None) or None),
-                         'stars': m.group(2), 'rate': rate}
 
-    def strip(xs):
-        return [{k: v for k, v in x.items() if v is not None} for x in xs]
-    out = {
-        'gathering': strip(sorted(gathering.values(), key=lambda g: -(g['rate'] or 0))),
-        'monsters': strip(sorted(monsters.values(), key=lambda m: -(m['rate'] or 0))),
-        'quests': strip(sorted(quests.values(), key=lambda q: (len(q['stars']), q['stars']))),
-    }
-    return {k: v for k, v in out.items() if v}
+def weapon_rampage(kid, skills):
+    """The Rampage skill ids a weapon offers, from its cached Kiranico page."""
+    path = f'kiranico_weapon_{kid}.html'
+    if not os.path.exists(path):
+        return []
+    found = re.findall(r'/data/rampage-skills/(\d+)"', open(path, encoding='utf8').read())
+    return [skills[i]['id'] for i in dict.fromkeys(found) if i in skills]
 
 
 def slots(f):
@@ -415,6 +365,7 @@ def monster_star_table(monsters):
 
 def main():
     with_icons = '--icons' in sys.argv
+    rampage_skills, rampage_decos = rampage_tables()
     monsters_data = json.load(open(dataset_path('rise_sunbreak'), encoding='utf8'))
     monsters = monsters_data['monsters']
     star_table = monster_star_table(monsters)
@@ -511,6 +462,7 @@ def main():
                 'previous': slug(f['Previous Name']) if f.get('Previous Name') else None,
                 'next': [slug(f[f'Next {i} Name']) for i in range(1, 6) if f.get(f'Next {i} Name')],
                 **({'traits': t} if (t := traits_of(view, en_traits.get(kid), pt_traits.get(kid))) else {}),
+                **({'rampageSkills': rs} if rank != 'master' and (rs := weapon_rampage(kid, rampage_skills)) else {}),
                 'forge': forge,
                 'upgrade': upgrade,
                 'stars': {'value': max(star_values) if star_values else FIRST_STAR[rank], 'estimated': True},
@@ -572,6 +524,7 @@ def main():
             src = material_sources(item_ids[m['id']], large)
             if src:
                 m['sources'] = src
+    used_rampage = {r for w in weapons for r in w.get('rampageSkills', [])} | {d['skill'] for d in rampage_decos}
     dataset = {
         'schemaVersion': 1,
         'game': 'rise_sunbreak',
@@ -586,6 +539,9 @@ def main():
         'starRule': STAR_RULE,
         'weaponTypes': weapon_types,
         'materials': sorted((m for m in materials_out.values() if m['id'] in used), key=lambda m: m['id']),
+        'rampageSkills': sorted((r for r in rampage_skills.values() if r['id'] in used_rampage),
+                                key=lambda r: r['id']),
+        'rampageDecorations': sorted(rampage_decos, key=lambda d: (d['slotLevel'], d['id'])),
         'weapons': weapons,
     }
     with open(OUT, 'w', encoding='utf8', newline='\n') as fh:

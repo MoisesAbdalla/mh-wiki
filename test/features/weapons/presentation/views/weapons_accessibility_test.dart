@@ -9,7 +9,7 @@ import 'package:mh_wiki/l10n/app_localizations.dart';
 
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
-import 'package:mh_wiki/features/weapons/domain/entities/material_sources.dart';
+import 'package:mh_wiki/core/domain/material_sources.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
 
 import '../../../../fakes/controllers.dart';

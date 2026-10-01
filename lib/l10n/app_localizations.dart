@@ -709,7 +709,7 @@ abstract class AppLocalizations {
   /// No description provided for @rampageSlot.
   ///
   /// In pt, this message translates to:
-  /// **'Rampage'**
+  /// **'Slot Rampage'**
   String get rampageSlot;
 
   /// No description provided for @noSlots.
@@ -1191,6 +1191,240 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Esconder de onde vem'**
   String get hideSources;
+
+  /// No description provided for @armorTabSets.
+  ///
+  /// In pt, this message translates to:
+  /// **'Conjuntos'**
+  String get armorTabSets;
+
+  /// No description provided for @armorTabSkills.
+  ///
+  /// In pt, this message translates to:
+  /// **'Habilidades'**
+  String get armorTabSkills;
+
+  /// No description provided for @armorTabDecorations.
+  ///
+  /// In pt, this message translates to:
+  /// **'Joias'**
+  String get armorTabDecorations;
+
+  /// No description provided for @partHead.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cabeça'**
+  String get partHead;
+
+  /// No description provided for @partChest.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tronco'**
+  String get partChest;
+
+  /// No description provided for @partArms.
+  ///
+  /// In pt, this message translates to:
+  /// **'Braços'**
+  String get partArms;
+
+  /// No description provided for @partWaist.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cintura'**
+  String get partWaist;
+
+  /// No description provided for @partLegs.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pernas'**
+  String get partLegs;
+
+  /// No description provided for @armorSectionDefense.
+  ///
+  /// In pt, this message translates to:
+  /// **'Defesa'**
+  String get armorSectionDefense;
+
+  /// No description provided for @armorSectionSkills.
+  ///
+  /// In pt, this message translates to:
+  /// **'Habilidades'**
+  String get armorSectionSkills;
+
+  /// No description provided for @armorSectionPieces.
+  ///
+  /// In pt, this message translates to:
+  /// **'Peças'**
+  String get armorSectionPieces;
+
+  /// No description provided for @skillSectionLevels.
+  ///
+  /// In pt, this message translates to:
+  /// **'Níveis'**
+  String get skillSectionLevels;
+
+  /// No description provided for @skillSectionDecorations.
+  ///
+  /// In pt, this message translates to:
+  /// **'Joias'**
+  String get skillSectionDecorations;
+
+  /// No description provided for @skillSectionArmor.
+  ///
+  /// In pt, this message translates to:
+  /// **'Armaduras'**
+  String get skillSectionArmor;
+
+  /// No description provided for @decorationSectionSkill.
+  ///
+  /// In pt, this message translates to:
+  /// **'Habilidade'**
+  String get decorationSectionSkill;
+
+  /// No description provided for @defenseBase.
+  ///
+  /// In pt, this message translates to:
+  /// **'Defesa'**
+  String get defenseBase;
+
+  /// No description provided for @defenseRange.
+  ///
+  /// In pt, this message translates to:
+  /// **'{base} → {max}'**
+  String defenseRange(int base, int max);
+
+  /// No description provided for @resistancesSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'Resistências: {values}'**
+  String resistancesSemantics(String values);
+
+  /// No description provided for @skillLevelShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nv {level}'**
+  String skillLevelShort(int level);
+
+  /// No description provided for @skillMaxLevel.
+  ///
+  /// In pt, this message translates to:
+  /// **'máx. {level}'**
+  String skillMaxLevel(int level);
+
+  /// No description provided for @skillLevelOf.
+  ///
+  /// In pt, this message translates to:
+  /// **'{skill}, nível {level} de {max}'**
+  String skillLevelOf(String skill, int level, int max);
+
+  /// No description provided for @skillOverflow.
+  ///
+  /// In pt, this message translates to:
+  /// **'+{extra}'**
+  String skillOverflow(int extra);
+
+  /// No description provided for @piecesCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 peça} other{{count} peças}}'**
+  String piecesCount(int count);
+
+  /// No description provided for @setSkillsFooter.
+  ///
+  /// In pt, this message translates to:
+  /// **'Conjunto: {skills}'**
+  String setSkillsFooter(String skills);
+
+  /// No description provided for @slotLevelTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Slot nível {level}'**
+  String slotLevelTitle(int level);
+
+  /// No description provided for @allSlots.
+  ///
+  /// In pt, this message translates to:
+  /// **'Todas'**
+  String get allSlots;
+
+  /// No description provided for @searchArmorHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Buscar conjunto ou habilidade'**
+  String get searchArmorHint;
+
+  /// No description provided for @searchSkillHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Buscar habilidade'**
+  String get searchSkillHint;
+
+  /// No description provided for @searchDecorationHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Buscar joia'**
+  String get searchDecorationHint;
+
+  /// No description provided for @armorLoadFailed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar as armaduras.'**
+  String get armorLoadFailed;
+
+  /// No description provided for @noSetsFound.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum conjunto encontrado'**
+  String get noSetsFound;
+
+  /// No description provided for @noSkillsFound.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma habilidade encontrada'**
+  String get noSkillsFound;
+
+  /// No description provided for @noDecorationsFound.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma joia encontrada'**
+  String get noDecorationsFound;
+
+  /// No description provided for @seeAllPieces.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver todas ({count})'**
+  String seeAllPieces(int count);
+
+  /// No description provided for @selectArmorItem.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha um item na lista'**
+  String get selectArmorItem;
+
+  /// No description provided for @weaponSectionRampage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Habilidades Rampage'**
+  String get weaponSectionRampage;
+
+  /// No description provided for @rampageChooseOne.
+  ///
+  /// In pt, this message translates to:
+  /// **'escolha uma'**
+  String get rampageChooseOne;
+
+  /// No description provided for @rampageTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rampage'**
+  String get rampageTitle;
+
+  /// No description provided for @rampageDecorationsFit.
+  ///
+  /// In pt, this message translates to:
+  /// **'Joias Rampage que cabem'**
+  String get rampageDecorationsFit;
 }
 
 class _AppLocalizationsDelegate

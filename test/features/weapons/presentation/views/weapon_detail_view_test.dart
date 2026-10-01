@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
-import 'package:mh_wiki/features/weapons/domain/entities/material_sources.dart';
+import 'package:mh_wiki/core/domain/material_sources.dart';
 import 'package:mh_wiki/core/presentation/widgets/notebook_section.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_catalog.dart';
-import 'package:mh_wiki/features/weapons/presentation/material_sources.dart';
+import 'package:mh_wiki/core/presentation/material_droppers.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_detail_view.dart';
 
 import '../../../../fakes/weapon_fixtures.dart';

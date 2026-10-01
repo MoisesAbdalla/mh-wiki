@@ -2,7 +2,7 @@
 
 The pages say where a material comes from: gathering by map and rank, monsters (large and
 small) and quest rewards (006 research R13). The item ids come from the cached weapon pages
-(fetch_rise_weapon_pages.py), so run that first. Cached pages are skipped.
+(fetch_rise_weapon_pages.py, fetch_rise_armor_pages.py), so run those first. Cached pages are skipped.
 
     python tool/data/fetch_rise_item_pages.py
 """
@@ -23,9 +23,12 @@ KIRANICO = 'https://mhrise.kiranico.com'
 
 
 def item_ids():
-    """{English item name: Kiranico item id} from the cached weapon pages."""
+    """{English item name: Kiranico item id} from the cached weapon, armor and decoration pages."""
     ids = {}
-    for path in glob.glob(os.path.join(CACHE, 'kiranico_weapon_*.html')):
+    pages = []
+    for pattern in ('kiranico_weapon_*.html', 'kiranico_armor_*.html', 'kiranico_decoration_*.html'):
+        pages += glob.glob(os.path.join(CACHE, pattern))
+    for path in pages:
         page = open(path, encoding='utf8').read()
         for item_id, name in re.findall(r'/data/items/(\d+)">(.*?)</a>', page):
             ids.setdefault(html.unescape(name.strip()), item_id)

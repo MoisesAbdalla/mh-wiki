@@ -17,7 +17,7 @@ description: "Task list for 007 Armaduras, habilidades e joias da Rise: Sunbreak
 
 ## Phase 1: Setup (data)
 
-- [ ] T001 Move the item-page source logic of `tool/data/build_rise_weapons.py` (`_item_rows`, `material_sources`, `RANKS`) to `tool/data/kiranico_items.py`, and import it from the weapons builder. Rebuilding `weapons.json` must give the same file (diff check).
+- [X] T001 Move the item-page source logic of `tool/data/build_rise_weapons.py` (`_item_rows`, `material_sources`, `RANKS`) to `tool/data/kiranico_items.py`, and import it from the weapons builder. Rebuilding `weapons.json` must give the same file (diff check).
 - [ ] T002 Write `tool/data/fetch_rise_armor_pages.py`. It caches, with 4 workers and resuming:
   - the Kiranico armor lists `/data/armors?view=0..9` (en and pt-BR);
   - every armor page `/data/armors/<id>`;
@@ -35,13 +35,13 @@ description: "Task list for 007 Armaduras, habilidades e joias da Rise: Sunbreak
   - `--icons` for the male renders at 96 px WebP.
 
   It writes `assets/data/rise_sunbreak/armor.json` and a report of dropped and unmatched pieces.
-- [ ] T004 Extend `tool/data/build_rise_weapons.py` with the Rampage data (research R6): the `rampageSkills` table, `rampageDecorations`, and `rampageSkills` ids per Low/High Rank weapon (from the cached weapon pages). Rebuild `weapons.json`.
+- [X] T004 Extend `tool/data/build_rise_weapons.py` with the Rampage data (research R6): the `rampageSkills` table, `rampageDecorations`, and `rampageSkills` ids per Low/High Rank weapon (from the cached weapon pages). Rebuild `weapons.json`.
 - [ ] T005 Register `assets/images/armor/rise_sunbreak/` in `pubspec.yaml`, add the scripts to `tool/data/README.md`, and write `assets/images/armor/SOURCES.md`. Commit the data and icons separately from the code.
-- [ ] T006 [P] Add the ARB strings of data-model.md › Localisation, then run `flutter gen-l10n`.
+- [X] T006 [P] Add the ARB strings of data-model.md › Localisation, then run `flutter gen-l10n`.
 
 ## Phase 2: Foundational
 
-- [ ] T007 Move `MaterialSources` and its sources, `RankedSources` and `MaterialCost` from `lib/features/weapons/domain/entities/` to `lib/core/domain/`. Move the material row with seals and the rates table from `weapon_materials_section.dart` to `lib/core/presentation/widgets/material_cost_row.dart`, parameterized by name, amount, sources, droppers and rank. Weapons import them from core. All existing tests stay green.
+- [X] T007 Move `MaterialSources` and its sources, `RankedSources` and `MaterialCost` from `lib/features/weapons/domain/entities/` to `lib/core/domain/`. Move the material row with seals and the rates table from `weapon_materials_section.dart` to `lib/core/presentation/widgets/material_cost_row.dart`, parameterized by name, amount, sources, droppers and rank. Weapons import them from core. All existing tests stay green.
 - [ ] T008 [P] Write tests for the armor domain in `test/features/armor/domain/`: `SumSetSkills` (sums, max, overflow, order), `FilterSets` (rank, text in en and pt-BR, skill) and `SkillSources` (decorations and pieces, master rank first). Add fixtures in `test/fakes/armor_fixtures.dart`.
 - [ ] T009 Implement the entities and use cases in `lib/features/armor/domain/` so that T008 passes.
 - [ ] T010 [P] Write DTO and mapper tests in `test/features/armor/data/armor_dataset_dto_test.dart`. Cover the data-model validation rules: unique ids, references that resolve, part order, levels within the max, slots, and maxDefense ≥ defense.

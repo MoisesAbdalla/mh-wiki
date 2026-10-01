@@ -5,7 +5,7 @@ import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 import 'package:mh_wiki/core/presentation/widgets/notebook_switcher.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
 import 'package:mh_wiki/features/weapons/presentation/controllers/weapon_list_controller.dart';
-import 'package:mh_wiki/features/weapons/presentation/material_sources.dart';
+import 'package:mh_wiki/core/presentation/material_droppers.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/weapon_detail_page.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_detail_view.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_list_pane.dart';

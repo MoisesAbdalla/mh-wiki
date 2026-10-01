@@ -10,7 +10,7 @@ import 'package:mh_wiki/features/monsters/presentation/views/monsters_page.dart'
 import 'package:mh_wiki/features/weapons/presentation/controllers/weapon_list_controller.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_catalog.dart';
-import 'package:mh_wiki/features/weapons/presentation/material_sources.dart';
+import 'package:mh_wiki/core/presentation/material_droppers.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/weapons_page.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
