@@ -100,6 +100,18 @@ void main() {
     }
   });
 
+  test('most materials say where they come from (FR-015)', () {
+    final costs = {
+      for (final w in catalog.weapons)
+        for (final c in [...w.forge, ...w.upgrade]) c.material.id: c,
+    };
+    final known = costs.values.where((c) => !c.sources.isEmpty).length;
+    // Points requirements, scraps and some endemic life have no source.
+    expect(known / costs.length, greaterThan(.75));
+    final ore = costs['novacrystal']!.sources;
+    expect(ore.gathering.first.map.ptBr, 'Selva Inundada');
+  });
+
   test('at least 95% of the weapons have a bundled icon (SC-007)', () {
     final withIcon = catalog.weapons.where(
       (w) => w.imageAsset != null && File(w.imageAsset!).existsSync(),

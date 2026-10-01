@@ -122,7 +122,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(WeaponDetailView), findsOneWidget);
 
-    final link = find.text('Dropado por: Anjanath').first;
+    final link = find.text('Anjanath ›').first;
     await tester.scrollUntilVisible(
       link,
       200,

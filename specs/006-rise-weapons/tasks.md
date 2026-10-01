@@ -195,9 +195,9 @@ FR-014; mockup `mockups/approved-sources.html`, option B).
 
 **Goal**: material sources beyond large monsters (spec US5, FR-015).
 
-- [ ] T042 [US5] `tool/data/fetch_rise_item_pages.py` caches the Kiranico item pages (en + pt-BR); `build_rise_weapons.py` adds `sources` per material: `gathering` (map, rank, best rate), `monsters` (name, slug when it is a large monster of the app, small flag, rank, method, rate) and `quests` (category, stars, name, rank). Record in research.md R13.
-- [ ] T043 [US5] Domain `MaterialSource` entities on `MonsterMaterial`'s weapon side (`WeaponMaterial.sources`), DTO/mapper with tests, and the rule "sources of the weapon's rank, else the nearest rank, labelled".
-- [ ] T044 [US5] Materials card option B: chips per material (gathering, large monster link, small monster, quest, unknown origin); tapping a material expands the full list with rates. Large monster links keep using the app layer (`onOpenMonster`). Widget, accessibility and app tests.
+- [X] T042 [US5] `tool/data/fetch_rise_item_pages.py` caches the Kiranico item pages (en + pt-BR); `build_rise_weapons.py` adds `sources` per material: `gathering` (map, rank, best rate), `monsters` (name, slug when it is a large monster of the app, small flag, rank, method, rate) and `quests` (category, stars, name, rank). Record in research.md R13.
+- [X] T043 [US5] Domain `MaterialSource` entities on `MonsterMaterial`'s weapon side (`WeaponMaterial.sources`), DTO/mapper with tests, and the rule "sources of the weapon's rank, else the nearest rank, labelled".
+- [X] T044 [US5] Materials card option B: chips per material (gathering, large monster link, small monster, quest, unknown origin); tapping a material expands the full list with rates. Large monster links keep using the app layer (`onOpenMonster`). Widget, accessibility and app tests.
 - [ ] T045 Gates, spot check of the sources of 10 materials against Kiranico, commit; the user's manual check, then merge.
 
 ---

@@ -595,4 +595,57 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ammoTranq => 'Tranquilizante';
+
+  @override
+  String gatheringMaps(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count mapas',
+      one: '1 mapa',
+    );
+    return 'Coleta · $_temp0';
+  }
+
+  @override
+  String gatheringAt(String map) {
+    return 'Coleta · $map';
+  }
+
+  @override
+  String smallMonster(String monster) {
+    return '$monster · pequeno';
+  }
+
+  @override
+  String questChip(String stars) {
+    return 'Missão · $stars★';
+  }
+
+  @override
+  String questsChip(int count) {
+    return '$count missões';
+  }
+
+  @override
+  String get unknownOrigin => 'Origem desconhecida';
+
+  @override
+  String sourcesGathering(String rank) {
+    return 'Coleta · Rank $rank';
+  }
+
+  @override
+  String sourcesMonsters(String rank) {
+    return 'Monstros · Rank $rank';
+  }
+
+  @override
+  String get sourcesQuests => 'Missões';
+
+  @override
+  String get showSources => 'Mostrar de onde vem';
+
+  @override
+  String get hideSources => 'Esconder de onde vem';
 }

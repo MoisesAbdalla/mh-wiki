@@ -3,6 +3,7 @@ import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_material.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/estimated_stars.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/material_cost.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/material_sources.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/sharpness.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/special_kind.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
@@ -31,15 +32,21 @@ const sharpnessFixture = Sharpness(
 WeaponId wid(String slug, {Game game = Game.riseSunbreak}) =>
     WeaponId(game, slug);
 
-MaterialCost cost(String id, String en, {int? quantity, int? points}) =>
-    MaterialCost(
-      material: MonsterMaterial(
-        id: id,
-        name: LocalizedText(en: en),
-      ),
-      quantity: points == null ? (quantity ?? 1) : null,
-      points: points,
-    );
+MaterialCost cost(
+  String id,
+  String en, {
+  int? quantity,
+  int? points,
+  MaterialSources sources = MaterialSources.none,
+}) => MaterialCost(
+  material: MonsterMaterial(
+    id: id,
+    name: LocalizedText(en: en),
+  ),
+  quantity: points == null ? (quantity ?? 1) : null,
+  points: points,
+  sources: sources,
+);
 
 Weapon buildWeapon(
   String slug, {

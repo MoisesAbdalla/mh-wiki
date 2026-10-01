@@ -125,6 +125,44 @@ void main() {
     ]);
   });
 
+  test('reads material sources into each cost', () {
+    final json = weaponDatasetJson();
+    (json['materials']! as List<Object?>)[0] = {
+      'id': 'anjanath-scale',
+      'name': {'en': 'Anjanath Scale'},
+      'sources': {
+        'gathering': [
+          {
+            'map': {'en': 'Jungle', 'ptBr': 'Selva'},
+            'rank': 'high',
+            'rate': 20,
+          },
+        ],
+        'monsters': [
+          {
+            'name': {'en': 'Anjanath'},
+            'rank': 'low',
+            'method': {'en': 'Carves'},
+            'rate': 30,
+            'slug': 'anjanath',
+          },
+        ],
+        'quests': [
+          {
+            'name': {'en': 'Q'},
+            'category': {'en': 'Village'},
+            'stars': '3',
+          },
+        ],
+      },
+    };
+    final s = catalog(json).weapons.first.forge.single.sources;
+    expect(s.gathering.single.map.ptBr, 'Selva');
+    expect(s.gathering.single.rank, Rank.high);
+    expect(s.monsters.single.small, isFalse);
+    expect(s.quests.single.stars, '3');
+  });
+
   test('rejects out-of-range slots, rarity and attack', () {
     rejects([
       weaponJson(slots: [5]),

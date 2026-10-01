@@ -2,6 +2,8 @@ import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/features/monsters/data/datasources/monster_datasource.dart';
 import 'package:mh_wiki/features/monsters/data/dtos/json_reader.dart';
+import 'package:mh_wiki/core/domain/rank.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/material_sources.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/special_kind.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
 
@@ -14,6 +16,7 @@ final class WeaponDatasetDto {
     required this.game,
     required this.types,
     required this.materials,
+    this.sources = const {},
     required this.weapons,
   });
 
@@ -45,10 +48,14 @@ final class WeaponDatasetDto {
     }
 
     final materials = <String, LocalizedText>{};
+    final sources = <String, MaterialSources>{};
     for (final reader in root.objects('materials')) {
       final id = reader.string('id');
       if (materials.containsKey(id)) reader.fail('duplicate material "$id"');
       materials[id] = _localized(reader.object('name'));
+      if (reader.optionalObject('sources') case final s?) {
+        sources[id] = _sources(s);
+      }
     }
 
     final readers = root.objects('weapons');
@@ -88,6 +95,7 @@ final class WeaponDatasetDto {
       game: expectedGame,
       types: types.values.toList(),
       materials: materials,
+      sources: sources,
       weapons: weapons,
     );
   }
@@ -95,6 +103,9 @@ final class WeaponDatasetDto {
   final Game game;
   final List<WeaponTypeDto> types;
   final Map<String, LocalizedText> materials;
+
+  /// Material id → where it comes from.
+  final Map<String, MaterialSources> sources;
   final List<WeaponDto> weapons;
 }
 
@@ -333,6 +344,39 @@ WeaponTraits _traits(JsonReader weapon, String typeId) {
         AmmoCapacity(
           kind: a.enumValue('ammo', AmmoKind.values),
           capacity: _ints(a, 'capacity'),
+        ),
+    ],
+  );
+}
+
+MaterialSources _sources(JsonReader r) {
+  int? rate(JsonReader x) => x.optionalNumber('rate')?.toInt();
+  return MaterialSources(
+    gathering: [
+      for (final g in r.optionalObjects('gathering'))
+        GatheringSource(
+          map: _localized(g.object('map')),
+          rank: g.enumValue('rank', Rank.values),
+          rate: rate(g),
+        ),
+    ],
+    monsters: [
+      for (final m in r.optionalObjects('monsters'))
+        MonsterSource(
+          name: _localized(m.object('name')),
+          rank: m.enumValue('rank', Rank.values),
+          method: _localized(m.object('method')),
+          rate: rate(m),
+          slug: m.optionalString('slug'),
+        ),
+    ],
+    quests: [
+      for (final q in r.optionalObjects('quests'))
+        QuestSource(
+          name: _localized(q.object('name')),
+          category: _localized(q.object('category')),
+          stars: q.string('stars'),
+          rate: rate(q),
         ),
     ],
   );

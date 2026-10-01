@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
+import 'package:mh_wiki/core/domain/rank.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/material_sources.dart';
 import 'package:mh_wiki/core/presentation/widgets/notebook_section.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
@@ -201,6 +203,7 @@ void main() {
   testWidgets('Materiais: groups, amounts and "Dropado por" links', (
     tester,
   ) async {
+    final handle = tester.ensureSemantics();
     await pumpDetail(tester, 'gnashing-flammenzahn-plus');
 
     expect(find.text('Melhorar'), findsOneWidget);
@@ -209,9 +212,80 @@ void main() {
     expect(find.text('10 pts.'), findsOneWidget);
 
     // Only the material known from a monster has a link.
-    expect(find.text('Dropado por: Anjanath'), findsOneWidget);
-    await tester.tap(find.text('Dropado por: Anjanath'));
+    expect(find.text('Anjanath ›'), findsOneWidget);
+    expect(find.bySemanticsLabel('Dropado por: Anjanath'), findsOneWidget);
+    await tester.tap(find.text('Anjanath ›'));
     expect(opened, [anjanath]);
+    // Materials without any known origin say so.
+    expect(find.text('Origem desconhecida'), findsWidgets);
+    handle.dispose();
+  });
+
+  testWidgets('Materiais: seals of the weapon rank; a tap lists the rates', (
+    tester,
+  ) async {
+    const sources = MaterialSources(
+      gathering: [
+        GatheringSource(
+          map: LocalizedText(en: 'Shrine Ruins', ptBr: 'Ruínas do Templo'),
+          rank: Rank.master,
+          rate: 30,
+        ),
+        GatheringSource(
+          map: LocalizedText(en: 'Jungle', ptBr: 'Selva'),
+          rank: Rank.master,
+          rate: 25,
+        ),
+        GatheringSource(
+          map: LocalizedText(en: 'Citadel', ptBr: 'Forte'),
+          rank: Rank.high,
+          rate: 20,
+        ),
+      ],
+      monsters: [
+        MonsterSource(
+          name: LocalizedText(en: 'Izuchi'),
+          rank: Rank.master,
+          method: LocalizedText(en: 'Carves Body', ptBr: 'Talha Corpo'),
+          rate: 53,
+        ),
+      ],
+      quests: [
+        QuestSource(
+          name: LocalizedText(en: 'Clouds of Narwa', ptBr: 'Narwa Ribomba'),
+          category: LocalizedText(
+            en: 'Event Quests',
+            ptBr: 'Missões de Eventos',
+          ),
+          stars: '8',
+          rate: 50,
+        ),
+      ],
+    );
+    final weapon = buildWeapon(
+      'sourced',
+      en: 'Sourced Blade',
+      rarity: 8, // Master Rank
+      forge: [
+        cost('carbalite-ore', 'Carbalite Ore', quantity: 8, sources: sources),
+      ],
+    );
+    catalog = weaponCatalog([...anjanathWeapons(), weapon]);
+    await pumpDetail(tester, 'sourced');
+
+    expect(find.text('Izuchi · pequeno'), findsOneWidget);
+    expect(find.text('Coleta · 2 mapas'), findsOneWidget); // Master Rank only
+    expect(find.text('Missão · 8★'), findsOneWidget);
+    expect(find.text('Ruínas do Templo'), findsNothing);
+
+    await tester.tap(find.text('Carbalite Ore'));
+    await tester.pumpAndSettle();
+    expect(find.text('Coleta · Rank Mestre'), findsOneWidget);
+    expect(find.text('Ruínas do Templo'), findsOneWidget);
+    expect(find.text('30%'), findsOneWidget);
+    expect(find.text('Forte'), findsNothing); // High Rank
+    expect(find.text('Izuchi · Talha Corpo'), findsOneWidget);
+    expect(find.text('Missões de Eventos 8★ · Narwa Ribomba'), findsOneWidget);
   });
 
   testWidgets('Árvore: previous, this and every next; tap opens', (

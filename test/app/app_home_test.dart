@@ -47,7 +47,7 @@ void main() {
     await tester.pumpAndSettle();
 
     // Hardfang and the Anjanath points both link to it.
-    final link = find.text('Dropado por: Anjanath').first;
+    final link = find.text('Anjanath ›').first;
     await tester.scrollUntilVisible(
       link,
       300,

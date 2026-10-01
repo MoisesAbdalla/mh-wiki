@@ -3,6 +3,7 @@ import 'package:mh_wiki/features/monsters/domain/entities/source_ref.dart';
 import 'package:mh_wiki/features/weapons/data/dtos/weapon_dataset_dto.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/estimated_stars.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/material_cost.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/material_sources.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/sharpness.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_catalog.dart';
@@ -27,6 +28,7 @@ abstract final class WeaponDatasetMapper {
       for (final c in list)
         MaterialCost(
           material: materials[c.material]!,
+          sources: dto.sources[c.material] ?? MaterialSources.none,
           quantity: c.quantity,
           points: c.points,
         ),

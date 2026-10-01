@@ -183,3 +183,33 @@ Decisions for the 006 plan. Each has the decision, the rationale and the alterna
 - **Result**: after the rebuild, all 21 weapons match on every field. 108 melee weapons have the
   same normal and Handicraft bars in the game data. 57 bonus weapons (Champion, Guardian,
   Hand-Me-Down) have no materials, as in the game.
+
+## R13. Type traits and material sources (US4, US5)
+
+- **Type traits**: the Kiranico weapon lists (en and pt-BR, already cached for the names) have a
+  type-specific cell per weapon. Each row is the page slice between two weapon icons, because the
+  bowgun ammo tables nest `<tr>`. What is read:
+  - Charge Blade and Switch Axe: the phial ("Impact Phial" → "Impacto");
+  - Gunlance: the shelling ("Amplo 6");
+  - Insect Glaive: the kinsect level;
+  - Hunting Horn: three songs;
+  - Bow: the arc shot (green), the charge shots and the coatings (grey means locked or unusable);
+  - bowguns: deviation, recoil, reload, and the ammo table.
+  Ammo names come as English abbreviations on both pages ("Nrm", "Fir/P."), so the app translates
+  them (`AmmoKind`). Every weapon of these 8 types has its traits.
+- **Material sources**: `tool/data/fetch_rise_item_pages.py` caches the en and pt-BR Kiranico item
+  page of the 1,076 items the weapons use (~20 min, 4 requests at a time). The builder keeps:
+  - "Locale": the best rate per map and rank;
+  - "Monsters": the best row per monster and rank, with `slug` when it is a large monster of the
+    app, else `small`;
+  - "Quests": category, stars and the best rate.
+  en and pt-BR rows pair by position. Quests carry no rank, because the categories do not map
+  reliably to one, so they are always shown.
+- **Coverage**: 946 of 1,204 materials have sources: 47 gathering, 113 small monsters, 780 large
+  monsters, 456 quests. The rest are:
+  - points requirements, which already link to their monster in the app;
+  - scraps, tickets and some endemic life, whose Kiranico pages list no source. These show
+    "Origem desconhecida".
+- `weapons.json` grows from 5.5 to 8.3 MB.
+- **Spot check**: Novacrystal, Lightcrystal, Dragonite Ore, Guild Ticket, Izuchi Pelt+ and
+  Bird Wyvern Gem match their Kiranico pages: maps, ranks, best rates, monsters and quests.

@@ -1125,6 +1125,72 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Tranquilizante'**
   String get ammoTranq;
+
+  /// No description provided for @gatheringMaps.
+  ///
+  /// In pt, this message translates to:
+  /// **'Coleta · {count, plural, =1{1 mapa} other{{count} mapas}}'**
+  String gatheringMaps(int count);
+
+  /// No description provided for @gatheringAt.
+  ///
+  /// In pt, this message translates to:
+  /// **'Coleta · {map}'**
+  String gatheringAt(String map);
+
+  /// No description provided for @smallMonster.
+  ///
+  /// In pt, this message translates to:
+  /// **'{monster} · pequeno'**
+  String smallMonster(String monster);
+
+  /// No description provided for @questChip.
+  ///
+  /// In pt, this message translates to:
+  /// **'Missão · {stars}★'**
+  String questChip(String stars);
+
+  /// No description provided for @questsChip.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count} missões'**
+  String questsChip(int count);
+
+  /// No description provided for @unknownOrigin.
+  ///
+  /// In pt, this message translates to:
+  /// **'Origem desconhecida'**
+  String get unknownOrigin;
+
+  /// No description provided for @sourcesGathering.
+  ///
+  /// In pt, this message translates to:
+  /// **'Coleta · Rank {rank}'**
+  String sourcesGathering(String rank);
+
+  /// No description provided for @sourcesMonsters.
+  ///
+  /// In pt, this message translates to:
+  /// **'Monstros · Rank {rank}'**
+  String sourcesMonsters(String rank);
+
+  /// No description provided for @sourcesQuests.
+  ///
+  /// In pt, this message translates to:
+  /// **'Missões'**
+  String get sourcesQuests;
+
+  /// No description provided for @showSources.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mostrar de onde vem'**
+  String get showSources;
+
+  /// No description provided for @hideSources.
+  ///
+  /// In pt, this message translates to:
+  /// **'Esconder de onde vem'**
+  String get hideSources;
 }
 
 class _AppLocalizationsDelegate
