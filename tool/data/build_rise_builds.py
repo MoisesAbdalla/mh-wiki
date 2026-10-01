@@ -207,6 +207,9 @@ def parse_build(name, tables, ctx, m):
                 if not first.startswith('[') or visible(first).startswith(NOT_PIECES):
                     continue
                 pname = visible(first)
+                # A decoration list printed as a row ("Attack Jewel 2 x3 ...").
+                if re.search(r'Jewel \d x\d', pname):
+                    continue
                 names = [n.strip() for n in pname.split('/') if n.strip()]
                 # "Virtue / Prudence Coil": the last word belongs to every name.
                 last = names[-1].split()
@@ -219,6 +222,9 @@ def parse_build(name, tables, ctx, m):
                     if hit:
                         part = hit[2]
                         break
+                if part and any(p['part'] == part for p in pieces):
+                    print(f'  ! {ctx}: second {part} piece "{pname}" dropped')
+                    continue
                 pieces.append({'part': part, 'item': {'ref': refs[0],
                                                       'decorations': [m.ref('decoration', d, ctx) for d in decos(r[1])] if len(r) > 2 else []},
                                'alternatives': refs[1:]})

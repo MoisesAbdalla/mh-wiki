@@ -63750,30 +63750,6 @@
      "alternatives": []
     },
     {
-     "part": "arms",
-     "item": {
-      "ref": {
-       "id": "flaming-espinas-grip",
-       "name": {
-        "en": "Flaming Espinas Grip",
-        "ptBr": "Garra de Espinas F"
-       },
-       "kind": "piece"
-      },
-      "decorations": [
-       {
-        "id": "jumping-jewel-plus-4",
-        "name": {
-         "en": "Jumping Jewel+ 4",
-         "ptBr": "Joia de Salto+ 4"
-        },
-        "kind": "decoration"
-       }
-      ]
-     },
-     "alternatives": []
-    },
-    {
      "part": "legs",
      "item": {
       "ref": {
@@ -64112,17 +64088,6 @@
       "name": {
        "en": "Quickswitch Jewel+ 4",
        "ptBr": "Joia Troca Rápida+ 4"
-      },
-      "kind": "decoration"
-     },
-     "count": 1
-    },
-    {
-     "decoration": {
-      "id": "jumping-jewel-plus-4",
-      "name": {
-       "en": "Jumping Jewel+ 4",
-       "ptBr": "Joia de Salto+ 4"
       },
       "kind": "decoration"
      },
@@ -111458,19 +111423,6 @@
       "decorations": []
      },
      "alternatives": []
-    },
-    {
-     "part": null,
-     "item": {
-      "ref": {
-       "name": {
-        "en": "Attack Jewel 2 x3 Critical Jewel 2 x3 Grinder Jewel 1 x2 Brace Jewel 1 x1"
-       },
-       "kind": "piece"
-      },
-      "decorations": []
-     },
-     "alternatives": []
     }
    ],
    "talisman": {
@@ -119022,19 +118974,6 @@
       "decorations": []
      },
      "alternatives": []
-    },
-    {
-     "part": null,
-     "item": {
-      "ref": {
-       "name": {
-        "en": "Guardian Jewel 3 x3 Ironwall Jewel 2 x3 Grinder Jewel 1 x3 Brace Jewel 1 x1"
-       },
-       "kind": "piece"
-      },
-      "decorations": []
-     },
-     "alternatives": []
     }
    ],
    "talisman": {
@@ -119145,19 +119084,6 @@
        "name": {
         "en": "Diablos Greaves",
         "ptBr": "Grevas de Diablos"
-       },
-       "kind": "piece"
-      },
-      "decorations": []
-     },
-     "alternatives": []
-    },
-    {
-     "part": null,
-     "item": {
-      "ref": {
-       "name": {
-        "en": "Mastery Jewel 2 x3 Attack Jewel 2 x2 Tenderizer Jewel 2 x1 Grinder Jewel 1 x3 Brace Jewel 1 x1"
        },
        "kind": "piece"
       },

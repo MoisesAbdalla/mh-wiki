@@ -26,23 +26,23 @@ description: "Task list for 008 Assistente de builds da Rise: Sunbreak"
 
   Run it.
 - [X] T002 Add the script to `tool/data/README.md`, and record the counts per type and rank and the match rate in research.md. Commit the data separately.
-- [ ] T003 [P] Add the ARB strings of data-model.md › Localisation, then run `flutter gen-l10n`.
+- [X] T003 [P] Add the ARB strings of data-model.md › Localisation, then run `flutter gen-l10n`.
 
 ## Phase 2: Foundational
 
-- [ ] T004 [P] Write the domain tests in `test/features/assistant/domain/`:
+- [X] T004 [P] Write the domain tests in `test/features/assistant/domain/`:
   - the `Progress` scale and parsing (Baixo < Alto < Mestre < Pós-jogo; M6 < MR 10);
   - `SplitBuilds` (now ≤ progress, latest first; next > progress, nearest first);
   - `TotalDecorations`;
   - skill pips data.
 
   Add fixtures in `test/fakes/build_fixtures.dart`.
-- [ ] T005 Implement the entities and use cases in `lib/features/assistant/domain/` so that T004 passes.
-- [ ] T006 [P] Write the DTO tests: version and game; unique ids; a known type; a stage that fits its rank; distinct parts; refs with and without ids.
-- [ ] T007 Implement the data layer: the DTO, the asset datasource (`compute`), `BuildRepository` and its impl, and `LoadBuildCatalog`.
-- [ ] T008 [P] Write the repository tests with `SharedPreferences.setMockInitialValues`: save, rename and delete a build, and keep it after a new repository instance; save and load the progress and type; a corrupt value falls back to empty.
-- [ ] T009 Implement `SavedBuildsRepository` and `AssistantPrefsRepository` (prefs-backed, versioned JSON).
-- [ ] T010 [P] Write the real-dataset test `test/features/assistant/data/real_builds_dataset_test.dart`:
+- [X] T005 Implement the entities and use cases in `lib/features/assistant/domain/` so that T004 passes.
+- [X] T006 [P] Write the DTO tests: version and game; unique ids; a known type; a stage that fits its rank; distinct parts; refs with and without ids.
+- [X] T007 Implement the data layer: the DTO, the asset datasource (`compute`), `BuildRepository` and its impl, and `LoadBuildCatalog`.
+- [X] T008 [P] Write the repository tests with `SharedPreferences.setMockInitialValues`: save, rename and delete a build, and keep it after a new repository instance; save and load the progress and type; a corrupt value falls back to empty.
+- [X] T009 Implement `SavedBuildsRepository` and `AssistantPrefsRepository` (prefs-backed, versioned JSON).
+- [X] T010 [P] Write the real-dataset test `test/features/assistant/data/real_builds_dataset_test.dart`:
   - Master Rank builds for all 14 types;
   - "Kamura Warrior Cleaver Raw Affinity" at M1★ with Hunter's Helm X;
   - "Fine Kamura Cleaver Dereliction Strongarm" with the waist alternative and Attack Boost 7;

@@ -1473,6 +1473,216 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'{kind} · mapa não informado'**
   String gatherNoMap(String kind);
+
+  /// No description provided for @assistantTabRecommended.
+  ///
+  /// In pt, this message translates to:
+  /// **'Recomendadas'**
+  String get assistantTabRecommended;
+
+  /// No description provided for @assistantTabSaved.
+  ///
+  /// In pt, this message translates to:
+  /// **'Minhas builds'**
+  String get assistantTabSaved;
+
+  /// No description provided for @assistantTabBuild.
+  ///
+  /// In pt, this message translates to:
+  /// **'Montar build'**
+  String get assistantTabBuild;
+
+  /// No description provided for @whereAreYou.
+  ///
+  /// In pt, this message translates to:
+  /// **'Onde você está?'**
+  String get whereAreYou;
+
+  /// No description provided for @rankPost.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pós-jogo'**
+  String get rankPost;
+
+  /// No description provided for @progressStar.
+  ///
+  /// In pt, this message translates to:
+  /// **'{step}★'**
+  String progressStar(String step);
+
+  /// No description provided for @progressBand.
+  ///
+  /// In pt, this message translates to:
+  /// **'MR {band}+'**
+  String progressBand(String band);
+
+  /// No description provided for @stageFrom.
+  ///
+  /// In pt, this message translates to:
+  /// **'A partir de {stage}'**
+  String stageFrom(String stage);
+
+  /// No description provided for @stageSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'Disponível a partir de {stage}'**
+  String stageSemantics(String stage);
+
+  /// No description provided for @buildsNow.
+  ///
+  /// In pt, this message translates to:
+  /// **'Para agora'**
+  String get buildsNow;
+
+  /// No description provided for @buildsNext.
+  ///
+  /// In pt, this message translates to:
+  /// **'Próximas'**
+  String get buildsNext;
+
+  /// No description provided for @noBuildsNow.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma build pronta para este ponto; veja as próximas.'**
+  String get noBuildsNow;
+
+  /// No description provided for @noBuildsAtAll.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma build pronta para esta arma.'**
+  String get noBuildsAtAll;
+
+  /// No description provided for @buildSectionEquipment.
+  ///
+  /// In pt, this message translates to:
+  /// **'Equipamento'**
+  String get buildSectionEquipment;
+
+  /// No description provided for @buildSectionSkills.
+  ///
+  /// In pt, this message translates to:
+  /// **'Habilidades'**
+  String get buildSectionSkills;
+
+  /// No description provided for @buildSectionDecorations.
+  ///
+  /// In pt, this message translates to:
+  /// **'Joias'**
+  String get buildSectionDecorations;
+
+  /// No description provided for @partWeapon.
+  ///
+  /// In pt, this message translates to:
+  /// **'Arma'**
+  String get partWeapon;
+
+  /// No description provided for @partTalisman.
+  ///
+  /// In pt, this message translates to:
+  /// **'Talismã'**
+  String get partTalisman;
+
+  /// No description provided for @alternativePiece.
+  ///
+  /// In pt, this message translates to:
+  /// **'ou {name}'**
+  String alternativePiece(String name);
+
+  /// No description provided for @notInCatalog.
+  ///
+  /// In pt, this message translates to:
+  /// **'não encontrado no catálogo'**
+  String get notInCatalog;
+
+  /// No description provided for @saveBuild.
+  ///
+  /// In pt, this message translates to:
+  /// **'Salvar em Minhas builds'**
+  String get saveBuild;
+
+  /// No description provided for @buildSaved.
+  ///
+  /// In pt, this message translates to:
+  /// **'Build salva em Minhas builds'**
+  String get buildSaved;
+
+  /// No description provided for @savedFrom.
+  ///
+  /// In pt, this message translates to:
+  /// **'baseada em: {name}'**
+  String savedFrom(String name);
+
+  /// No description provided for @renameBuild.
+  ///
+  /// In pt, this message translates to:
+  /// **'Renomear'**
+  String get renameBuild;
+
+  /// No description provided for @deleteBuild.
+  ///
+  /// In pt, this message translates to:
+  /// **'Excluir'**
+  String get deleteBuild;
+
+  /// No description provided for @deleteBuildConfirm.
+  ///
+  /// In pt, this message translates to:
+  /// **'Excluir \"{name}\"?'**
+  String deleteBuildConfirm(String name);
+
+  /// No description provided for @cancel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cancelar'**
+  String get cancel;
+
+  /// No description provided for @save.
+  ///
+  /// In pt, this message translates to:
+  /// **'Salvar'**
+  String get save;
+
+  /// No description provided for @buildName.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nome da build'**
+  String get buildName;
+
+  /// No description provided for @noSavedBuilds.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma build salva. Abra uma build em Recomendadas e toque em \"Salvar em Minhas builds\".'**
+  String get noSavedBuilds;
+
+  /// No description provided for @buildsLoadFailed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar as builds.'**
+  String get buildsLoadFailed;
+
+  /// No description provided for @buildSourceNote.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fonte: {source}. Os aprimoramentos (Qurious) da guia não entram.'**
+  String buildSourceNote(String source);
+
+  /// No description provided for @openSource.
+  ///
+  /// In pt, this message translates to:
+  /// **'Abrir a fonte'**
+  String get openSource;
+
+  /// No description provided for @selectBuild.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha uma build na lista'**
+  String get selectBuild;
+
+  /// No description provided for @afterStory.
+  ///
+  /// In pt, this message translates to:
+  /// **'Depois da história'**
+  String get afterStory;
 }
 
 class _AppLocalizationsDelegate

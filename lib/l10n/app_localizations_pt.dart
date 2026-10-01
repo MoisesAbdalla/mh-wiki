@@ -817,4 +817,127 @@ class AppLocalizationsPt extends AppLocalizations {
   String gatherNoMap(String kind) {
     return '$kind · mapa não informado';
   }
+
+  @override
+  String get assistantTabRecommended => 'Recomendadas';
+
+  @override
+  String get assistantTabSaved => 'Minhas builds';
+
+  @override
+  String get assistantTabBuild => 'Montar build';
+
+  @override
+  String get whereAreYou => 'Onde você está?';
+
+  @override
+  String get rankPost => 'Pós-jogo';
+
+  @override
+  String progressStar(String step) {
+    return '$step★';
+  }
+
+  @override
+  String progressBand(String band) {
+    return 'MR $band+';
+  }
+
+  @override
+  String stageFrom(String stage) {
+    return 'A partir de $stage';
+  }
+
+  @override
+  String stageSemantics(String stage) {
+    return 'Disponível a partir de $stage';
+  }
+
+  @override
+  String get buildsNow => 'Para agora';
+
+  @override
+  String get buildsNext => 'Próximas';
+
+  @override
+  String get noBuildsNow =>
+      'Nenhuma build pronta para este ponto; veja as próximas.';
+
+  @override
+  String get noBuildsAtAll => 'Nenhuma build pronta para esta arma.';
+
+  @override
+  String get buildSectionEquipment => 'Equipamento';
+
+  @override
+  String get buildSectionSkills => 'Habilidades';
+
+  @override
+  String get buildSectionDecorations => 'Joias';
+
+  @override
+  String get partWeapon => 'Arma';
+
+  @override
+  String get partTalisman => 'Talismã';
+
+  @override
+  String alternativePiece(String name) {
+    return 'ou $name';
+  }
+
+  @override
+  String get notInCatalog => 'não encontrado no catálogo';
+
+  @override
+  String get saveBuild => 'Salvar em Minhas builds';
+
+  @override
+  String get buildSaved => 'Build salva em Minhas builds';
+
+  @override
+  String savedFrom(String name) {
+    return 'baseada em: $name';
+  }
+
+  @override
+  String get renameBuild => 'Renomear';
+
+  @override
+  String get deleteBuild => 'Excluir';
+
+  @override
+  String deleteBuildConfirm(String name) {
+    return 'Excluir \"$name\"?';
+  }
+
+  @override
+  String get cancel => 'Cancelar';
+
+  @override
+  String get save => 'Salvar';
+
+  @override
+  String get buildName => 'Nome da build';
+
+  @override
+  String get noSavedBuilds =>
+      'Nenhuma build salva. Abra uma build em Recomendadas e toque em \"Salvar em Minhas builds\".';
+
+  @override
+  String get buildsLoadFailed => 'Não foi possível carregar as builds.';
+
+  @override
+  String buildSourceNote(String source) {
+    return 'Fonte: $source. Os aprimoramentos (Qurious) da guia não entram.';
+  }
+
+  @override
+  String get openSource => 'Abrir a fonte';
+
+  @override
+  String get selectBuild => 'Escolha uma build na lista';
+
+  @override
+  String get afterStory => 'Depois da história';
 }
