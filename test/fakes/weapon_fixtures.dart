@@ -129,7 +129,7 @@ List<Weapon> anjanathWeapons() => [
     upgrade: [
       cost('anjanath-hardfang', 'Anjanath Hardfang', quantity: 3),
       cost('heavy-anjanath-nosebone', 'Heavy Anjanath Nosebone', quantity: 2),
-      cost('anjanath-material', 'Anjanath Material(s) x10 pts.', points: 10),
+      cost('anjanath-material-s', 'Anjanath Material(s)', points: 10),
     ],
     stars: 4,
   ),

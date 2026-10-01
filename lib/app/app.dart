@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mh_wiki/app/app_shell.dart';
+import 'package:mh_wiki/app/app_home.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
-import 'package:mh_wiki/features/monsters/presentation/views/monsters_page.dart';
 import 'package:mh_wiki/features/settings/presentation/settings_controller.dart';
 import 'package:mh_wiki/features/settings/presentation/settings_page.dart';
 import 'package:mh_wiki/features/weapons/presentation/controllers/weapon_list_controller.dart';
-import 'package:mh_wiki/features/weapons/presentation/views/weapons_page.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
 class MhWikiApp extends StatelessWidget {
@@ -35,15 +33,10 @@ class MhWikiApp extends StatelessWidget {
       locale: const Locale('pt', 'BR'),
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
-      home: AppShell(
-        monsters: MonstersPage(
-          controller: monsterListController,
-          actions: [SettingsButton(controller: settingsController)],
-        ),
-        weapons: WeaponsPage(
-          controller: weaponListController,
-          actions: [SettingsButton(controller: settingsController)],
-        ),
+      home: AppHome(
+        monsters: monsterListController,
+        weapons: weaponListController,
+        actions: [SettingsButton(controller: settingsController)],
       ),
     );
   }

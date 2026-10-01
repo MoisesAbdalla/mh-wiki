@@ -9,20 +9,75 @@ import 'package:mh_wiki/l10n/app_localizations.dart';
 /// [IndexedStack], so each keeps its filters, search, scroll and selection.
 /// An area is built on its first visit, so the weapons load only then.
 class AppShell extends StatefulWidget {
-  const AppShell({required this.monsters, required this.weapons, super.key});
+  const AppShell({
+    required this.monsters,
+    required this.weapons,
+    this.controller,
+    super.key,
+  });
 
   final Widget monsters;
   final Widget weapons;
+
+  /// Lets other parts of the app switch areas (e.g. "Dropado por").
+  final AppShellController? controller;
 
   @override
   State<AppShell> createState() => _AppShellState();
 }
 
+/// The areas that can be opened; Armaduras and Assistente come later.
+enum AppArea { monsters, weapons }
+
+/// The selected area, shared by the shell and whoever navigates between
+/// areas.
+class AppShellController extends ChangeNotifier {
+  AppArea _area = AppArea.monsters;
+
+  AppArea get area => _area;
+
+  void open(AppArea area) {
+    if (area == _area) return;
+    _area = area;
+    notifyListeners();
+  }
+}
+
 typedef _Area = ({String glyph, String label, bool enabled});
 
 class _AppShellState extends State<AppShell> {
-  int _index = 0;
+  late AppShellController _controller =
+      widget.controller ?? AppShellController();
   final _visited = <int>{0};
+
+  int get _index => _controller.area.index;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(_onArea);
+    _visited.add(_index);
+  }
+
+  @override
+  void didUpdateWidget(AppShell oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final next = widget.controller ?? _controller;
+    if (!identical(next, _controller)) {
+      _controller.removeListener(_onArea);
+      _controller = next..addListener(_onArea);
+      _onArea();
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.removeListener(_onArea);
+    if (widget.controller == null) _controller.dispose();
+    super.dispose();
+  }
+
+  void _onArea() => setState(() => _visited.add(_index));
 
   List<_Area> _areas(AppLocalizations l10n) => [
     (glyph: '❦', label: l10n.areaMonsters, enabled: true),
@@ -49,7 +104,7 @@ class _AppShellState extends State<AppShell> {
       selected: i == _index,
       comingSoon: l10n.areaComingSoon(areas[i].label),
       wide: vertical,
-      onTap: () => setState(() => _visited.add(_index = i)),
+      onTap: () => _controller.open(AppArea.values[i]),
     );
 
     return LayoutBuilder(

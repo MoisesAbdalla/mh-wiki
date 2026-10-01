@@ -128,23 +128,23 @@ Write the test before its implementation where it pins behaviour.
 
 **Independent Test**: quickstart checks 5–7.
 
-- [ ] T023 [P] [US2] Write `test/features/weapons/presentation/views/weapon_detail_view_test.dart`:
+- [X] T023 [P] [US2] Write `test/features/weapons/presentation/views/weapon_detail_view_test.dart`:
   - the header: name, "<tipo> · Raridade n · <rank> · n★ (estimado)", the plate and the description;
   - the cards numbered 1–4 in order, and only 1, 3 and 4 for a ranged weapon;
   - Atributos: attack, special, affinity, slot level badges, the Rampage badge, and the semantics "Slots: nível 3; Rampage: nível 2";
   - Afiação: two bars whose segment widths are proportional to the units over 400, with semantics per colour;
   - Materiais: "Melhorar" and/or "Criar" groups with quantities; a material known from a monster shows "Dropado por: <monstro>" and calls `onOpenMonster`; an unknown material has no link;
   - Árvore: the previous, current (gold) and next weapons, where tapping one calls `onOpenWeapon`, and a branch shows every next weapon.
-- [ ] T024 [US2] Implement the detail, so that T023 passes:
+- [X] T024 [US2] Implement the detail, so that T023 passes:
   - `lib/features/weapons/presentation/views/widgets/weapon_detail_view.dart`, `weapon_attributes_section.dart`, `sharpness_bar.dart`, `slot_badges.dart`, `weapon_materials_section.dart` and `weapon_tree_section.dart`;
   - the compact page `weapon_detail_page.dart`;
   - the selection wiring in `weapon_list_controller.dart`;
   - transitions with `NotebookSwitcher`.
 
   The monster names for "Dropado por" come from a `MaterialSourceLookup` passed in by the app layer (Monster name and id per material), so the weapons feature does not import monsters.
-- [ ] T025 [US2] Create `lib/app/weapons_of_monster.dart` (research R7). It provides `MaterialSourceLookup.fromMonsters(catalog)`, which maps each material id to the Rise monsters that drop it, and `WeaponsUsingMaterialsOf(monster, weapons)`. Unit-test both in `test/app/weapons_of_monster_test.dart`.
-- [ ] T026 [US2] Implement "Dropado por → monstro" navigation in `lib/app/app_shell.dart`: switch to Monstros and select that monster through `MonsterListController.select`, keeping the Armas state. Cover it in `test/app/app_shell_test.dart`.
-- [ ] T027 [US2] Extend the accessibility tests with the detail of a melee and a ranged weapon at 320 dp / 200 % (no overflow; the attribute grid wraps to one column). Run the gates and commit the US2 slice.
+- [X] T025 [US2] Create `lib/app/weapons_of_monster.dart` (research R7). It provides `MaterialSourceLookup.fromMonsters(catalog)`, which maps each material id to the Rise monsters that drop it, and `WeaponsUsingMaterialsOf(monster, weapons)`. Unit-test both in `test/app/weapons_of_monster_test.dart`.
+- [X] T026 [US2] Implement "Dropado por → monstro" navigation in `lib/app/app_shell.dart`: switch to Monstros and select that monster through `MonsterListController.select`, keeping the Armas state. Cover it in `test/app/app_shell_test.dart`.
+- [X] T027 [US2] Extend the accessibility tests with the detail of a melee and a ranged weapon at 320 dp / 200 % (no overflow; the attribute grid wraps to one column). Run the gates and commit the US2 slice.
 
 **Checkpoint**: list and detail are complete.
 

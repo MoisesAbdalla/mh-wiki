@@ -232,6 +232,10 @@ def main():
             def costs(prefix):
                 out = []
                 for mat_name, qty, pts in materials(f, prefix):
+                    if pts:
+                        # "Anjanath Material(s) x10 pts." is one material whose
+                        # points go in the cost, not one material per amount.
+                        mat_name = re.sub(r'\s*x\d+ pts\.?$', '', mat_name)
                     mid = slug(mat_name)
                     entry = materials_out.setdefault(mid, {'id': mid, 'name': {'en': mat_name}})
                     if pt_material.get(mid):
@@ -252,7 +256,7 @@ def main():
                 for mslug in drops.get(mid, {}).get(rank, ()):
                     if rank in star_table.get(mslug, {}):
                         star_values.append(star_table[mslug][rank])
-                pts_name = re.match(r'(.+?)\+* Material\(s\) x\d+ pts\.', materials_out[mid]['name']['en'])
+                pts_name = re.match(r'(.+?)\+* Material\(s\)$', materials_out[mid]['name']['en'])
                 if pts_name and key(pts_name.group(1)) in by_name:
                     mslug = by_name[key(pts_name.group(1))]
                     if rank in star_table.get(mslug, {}):
