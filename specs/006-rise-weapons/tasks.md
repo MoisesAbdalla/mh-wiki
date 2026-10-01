@@ -27,7 +27,7 @@ Write the test before its implementation where it pins behaviour.
 
 **Purpose**: the weapon data and the strings every story needs.
 
-- [ ] T001 Create `tool/data/build_rise_weapons.py` (research R1–R3, R5, R6), using `common.fetch` / `common.wiki_api` and the cache in `tool/data/.cache/`. It must:
+- [X] T001 Create `tool/data/build_rise_weapons.py` (research R1–R3, R5, R6), using `common.fetch` / `common.wiki_api` and the cache in `tool/data/.cache/`. It must:
   - **Read the Kiranico lists.** Read the 14 Kiranico lists in en and pt-BR (`/data/weapons?view=0..13` and `/pt-BR/data/weapons?view=…`). From each row take the Kiranico id, the en and pt-BR names, the icon URL, and attack, element, affinity, slots and sharpness for the cross-check. Drop the rows with attack 0.
   - **Read the wiki pages.** List the wiki categories `MHRS <type>` (Sword & Shield is `MHRS Sword and Shield`), keeping the titles that end in `(MHRS)`. Read the pages 40 per request and parse `{{GenericWeapon}}`: type, `Tree`, rarity, description, attack, affinity, `Level N Decos`, `Elemental Damage`/`Type` (and the status fields), the `SharpnessBar` base plus the H* extension, the `Rampage Decoration` level, `Previous Name`, `Next N Name`, and the forge/upgrade materials with quantities.
   - **Join the two sources by English name** (normalized). Report the unmatched names from each side, and fail if more than 1 % of the weapons are unmatched.
@@ -41,7 +41,7 @@ Write the test before its implementation where it pins behaviour.
   - register the folders in `pubspec.yaml`;
   - add the script to `tool/data/README.md`, and record the icon source in `assets/images/weapons/SOURCES.md`.
 - [ ] T003 Run `python tool/data/build_rise_weapons.py --icons`. Check the counts per type against research R1 (sum ≈ 3,925 after excluding 28), the unmatched report and the APK-size estimate. Commit the data and icons separately from the code.
-- [ ] T004 [P] Add the strings of data-model.md › Localisation to `lib/l10n/app_pt.arb` and run `flutter gen-l10n`.
+- [X] T004 [P] Add the strings of data-model.md › Localisation to `lib/l10n/app_pt.arb` and run `flutter gen-l10n`.
 
 ---
 
@@ -51,40 +51,40 @@ Write the test before its implementation where it pins behaviour.
 
 **⚠️ CRITICAL**: no story can start before this phase is done.
 
-- [ ] T005 [P] Create the domain entities in `lib/features/weapons/domain/entities/`, per data-model.md, with value equality where the monster entities have it:
+- [X] T005 [P] Create the domain entities in `lib/features/weapons/domain/entities/`, per data-model.md, with value equality where the monster entities have it:
   - `weapon_id.dart`, `weapon_type.dart`, `special_kind.dart` and `weapon_special.dart`;
   - `sharpness.dart`, with `maxUnits` = 400;
   - `material_cost.dart`, which reuses `MonsterMaterial`;
   - `estimated_stars.dart`;
   - `weapon.dart`, whose `rank` is derived from `rarity`;
   - `weapon_tree.dart` and `weapon_catalog.dart`.
-- [ ] T006 [P] Write unit tests in `test/features/weapons/domain/usecases/build_weapon_trees_test.dart`:
+- [X] T006 [P] Write unit tests in `test/features/weapons/domain/usecases/build_weapon_trees_test.dart`:
   - roots (no previous weapon in the tree) come first, ordered by rarity then name;
   - children are depth-first, with siblings by rarity then name;
   - a branch (two next weapons) gives two subtrees;
   - a weapon whose previous one is in another tree stays in its own tree as a root;
   - a cycle is reported as an error.
-- [ ] T007 Implement `lib/features/weapons/domain/usecases/build_weapon_trees.dart`, so that T006 passes.
-- [ ] T008 [P] Write unit tests in `test/features/weapons/domain/usecases/filter_weapons_test.dart`:
+- [X] T007 Implement `lib/features/weapons/domain/usecases/build_weapon_trees.dart`, so that T006 passes.
+- [X] T008 [P] Write unit tests in `test/features/weapons/domain/usecases/filter_weapons_test.dart`:
   - filter by type;
   - filter by rank, keeping each tree's order and dropping empty trees;
   - accent- and case-insensitive search over en and pt-BR names ("lohen", "flammen");
   - an empty result.
-- [ ] T009 Implement `lib/features/weapons/domain/entities/weapon_query.dart` and `lib/features/weapons/domain/usecases/filter_weapons.dart`, normalizing names once per catalog as `FilterMonsters` does, so that T008 passes.
-- [ ] T010 [P] Write DTO and mapper tests in `test/features/weapons/data/weapon_dataset_dto_test.dart`. Use the small JSON fixtures in `test/fakes/weapon_json_fixtures.dart` and cover every validation rule of data-model.md, including: wrong game or version; a duplicate slug; an unknown type, material or previous weapon; previous/next that disagree; sharpness on a ranged weapon; a missing sharpness on a melee weapon; and out-of-range slots. Also check that the mapper derives the rank from rarity.
-- [ ] T011 Implement the data layer, so that T010 passes:
+- [X] T009 Implement `lib/features/weapons/domain/entities/weapon_query.dart` and `lib/features/weapons/domain/usecases/filter_weapons.dart`, normalizing names once per catalog as `FilterMonsters` does, so that T008 passes.
+- [X] T010 [P] Write DTO and mapper tests in `test/features/weapons/data/weapon_dataset_dto_test.dart`. Use the small JSON fixtures in `test/fakes/weapon_json_fixtures.dart` and cover every validation rule of data-model.md, including: wrong game or version; a duplicate slug; an unknown type, material or previous weapon; previous/next that disagree; sharpness on a ranged weapon; a missing sharpness on a melee weapon; and out-of-range slots. Also check that the mapper derives the rank from rarity.
+- [X] T011 Implement the data layer, so that T010 passes:
   - `lib/features/weapons/data/dtos/weapon_dataset_dto.dart` (reusing `JsonReader`);
   - `weapon_dataset_mapper.dart`;
   - `lib/features/weapons/data/datasources/asset_weapon_datasource.dart`, which decodes with `compute`, as the monster datasource does;
   - `lib/features/weapons/domain/repositories/weapon_repository.dart` and `lib/features/weapons/data/repositories/weapon_repository_impl.dart`, which map errors to `Failure`;
   - `lib/features/weapons/domain/usecases/load_weapon_catalog.dart`.
-- [ ] T012 [P] Write the real-dataset test `test/features/weapons/data/real_weapons_dataset_test.dart`. It checks that the dataset parses, that it has 14 types, that every type count matches T003's record, that no weapon has attack 0, that every previous/next resolves, that there is no cycle, that the Anjanath Great Sword tree has 6 weapons with Gnashing Flammenzahn+ = 280 / fire 28 / −20 % / slot 3 / Rampage 2 / rarity 8 / Master, and that ≥ 95 % of the weapons have an image (SC-007).
+- [X] T012 [P] Write the real-dataset test `test/features/weapons/data/real_weapons_dataset_test.dart`. It checks that the dataset parses, that it has 14 types, that every type count matches T003's record, that no weapon has attack 0, that every previous/next resolves, that there is no cycle, that the Anjanath Great Sword tree has 6 weapons with Gnashing Flammenzahn+ = 280 / fire 28 / −20 % / slot 3 / Rampage 2 / rarity 8 / Master, and that ≥ 95 % of the weapons have an image (SC-007).
 - [ ] T013 Wire DI in `lib/app/di/app_dependencies.dart`: add the `weaponRepository` and `createWeaponListController()`. Use fakes in `test/fakes/fake_weapon_repository.dart` and add weapon fixtures in `test/fakes/weapon_fixtures.dart`, with a small tree, a ranged weapon and a branch.
-- [ ] T014 [P] Write `test/app/app_shell_test.dart`:
+- [X] T014 [P] Write `test/app/app_shell_test.dart`:
   - four destinations, with Armaduras and Assistente disabled and announced as "em breve" (a tap does nothing);
   - a bottom bar below 840 dp and a rail from 840 dp;
   - switching areas keeps the monster list's search and scroll (`IndexedStack`).
-- [ ] T015 Create `lib/app/app_shell.dart`, styled with the 005 tokens, and point `lib/app/app.dart` `home` to it. The Monstros area is the current `MonstersPage`, and the Armas area is a placeholder until T018. Update the integration and app tests that pumped `MonstersPage` directly if needed, so that T014 passes.
+- [X] T015 Create `lib/app/app_shell.dart`, styled with the 005 tokens, and point `lib/app/app.dart` `home` to it. The Monstros area is the current `MonstersPage`, and the Armas area is a placeholder until T018. Update the integration and app tests that pumped `MonstersPage` directly if needed, so that T014 passes.
 
 **Checkpoint**: weapons load and filter in tests, and the app has its area navigation.
 

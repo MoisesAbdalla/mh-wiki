@@ -597,6 +597,306 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Igual à forma base'**
   String get inheritedFromBase;
+
+  /// No description provided for @areaMonsters.
+  ///
+  /// In pt, this message translates to:
+  /// **'Monstros'**
+  String get areaMonsters;
+
+  /// No description provided for @areaWeapons.
+  ///
+  /// In pt, this message translates to:
+  /// **'Armas'**
+  String get areaWeapons;
+
+  /// No description provided for @areaArmor.
+  ///
+  /// In pt, this message translates to:
+  /// **'Armaduras'**
+  String get areaArmor;
+
+  /// No description provided for @areaAssistant.
+  ///
+  /// In pt, this message translates to:
+  /// **'Assistente'**
+  String get areaAssistant;
+
+  /// No description provided for @areaComingSoon.
+  ///
+  /// In pt, this message translates to:
+  /// **'{area}, em breve'**
+  String areaComingSoon(String area);
+
+  /// No description provided for @gameComingSoon.
+  ///
+  /// In pt, this message translates to:
+  /// **'{game}, em breve'**
+  String gameComingSoon(String game);
+
+  /// No description provided for @comingSoon.
+  ///
+  /// In pt, this message translates to:
+  /// **'em breve'**
+  String get comingSoon;
+
+  /// No description provided for @weaponTypeLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tipo de arma: {type}'**
+  String weaponTypeLabel(String type);
+
+  /// No description provided for @rankAll.
+  ///
+  /// In pt, this message translates to:
+  /// **'Todos'**
+  String get rankAll;
+
+  /// No description provided for @searchWeaponHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Buscar arma'**
+  String get searchWeaponHint;
+
+  /// No description provided for @weaponCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 arma} other{{count} armas}}'**
+  String weaponCount(int count);
+
+  /// No description provided for @weaponSectionAttributes.
+  ///
+  /// In pt, this message translates to:
+  /// **'Atributos'**
+  String get weaponSectionAttributes;
+
+  /// No description provided for @weaponSectionSharpness.
+  ///
+  /// In pt, this message translates to:
+  /// **'Afiação'**
+  String get weaponSectionSharpness;
+
+  /// No description provided for @weaponSectionMaterials.
+  ///
+  /// In pt, this message translates to:
+  /// **'Materiais'**
+  String get weaponSectionMaterials;
+
+  /// No description provided for @weaponSectionTree.
+  ///
+  /// In pt, this message translates to:
+  /// **'Árvore'**
+  String get weaponSectionTree;
+
+  /// No description provided for @attack.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ataque'**
+  String get attack;
+
+  /// No description provided for @affinity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Afinidade'**
+  String get affinity;
+
+  /// No description provided for @slots.
+  ///
+  /// In pt, this message translates to:
+  /// **'Slots'**
+  String get slots;
+
+  /// No description provided for @rampageSlot.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rampage'**
+  String get rampageSlot;
+
+  /// No description provided for @noSlots.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sem slots'**
+  String get noSlots;
+
+  /// No description provided for @slotsSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'Slots: {slots}; Rampage: {rampage}'**
+  String slotsSemantics(String slots, String rampage);
+
+  /// No description provided for @slotLevel.
+  ///
+  /// In pt, this message translates to:
+  /// **'nível {level}'**
+  String slotLevel(int level);
+
+  /// No description provided for @none.
+  ///
+  /// In pt, this message translates to:
+  /// **'nenhum'**
+  String get none;
+
+  /// No description provided for @sharpnessBase.
+  ///
+  /// In pt, this message translates to:
+  /// **'Normal'**
+  String get sharpnessBase;
+
+  /// No description provided for @sharpnessHandicraft.
+  ///
+  /// In pt, this message translates to:
+  /// **'Com Artesanato (máximo)'**
+  String get sharpnessHandicraft;
+
+  /// No description provided for @sharpnessSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'Afiação {label}: {segments}'**
+  String sharpnessSemantics(String label, String segments);
+
+  /// No description provided for @sharpnessRed.
+  ///
+  /// In pt, this message translates to:
+  /// **'vermelho'**
+  String get sharpnessRed;
+
+  /// No description provided for @sharpnessOrange.
+  ///
+  /// In pt, this message translates to:
+  /// **'laranja'**
+  String get sharpnessOrange;
+
+  /// No description provided for @sharpnessYellow.
+  ///
+  /// In pt, this message translates to:
+  /// **'amarelo'**
+  String get sharpnessYellow;
+
+  /// No description provided for @sharpnessGreen.
+  ///
+  /// In pt, this message translates to:
+  /// **'verde'**
+  String get sharpnessGreen;
+
+  /// No description provided for @sharpnessBlue.
+  ///
+  /// In pt, this message translates to:
+  /// **'azul'**
+  String get sharpnessBlue;
+
+  /// No description provided for @sharpnessWhite.
+  ///
+  /// In pt, this message translates to:
+  /// **'branco'**
+  String get sharpnessWhite;
+
+  /// No description provided for @sharpnessPurple.
+  ///
+  /// In pt, this message translates to:
+  /// **'roxo'**
+  String get sharpnessPurple;
+
+  /// No description provided for @forgeMaterials.
+  ///
+  /// In pt, this message translates to:
+  /// **'Criar'**
+  String get forgeMaterials;
+
+  /// No description provided for @upgradeMaterials.
+  ///
+  /// In pt, this message translates to:
+  /// **'Melhorar'**
+  String get upgradeMaterials;
+
+  /// No description provided for @materialPoints.
+  ///
+  /// In pt, this message translates to:
+  /// **'{points} pts.'**
+  String materialPoints(int points);
+
+  /// No description provided for @droppedBy.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dropado por: {monsters}'**
+  String droppedBy(String monsters);
+
+  /// No description provided for @treePrevious.
+  ///
+  /// In pt, this message translates to:
+  /// **'anterior'**
+  String get treePrevious;
+
+  /// No description provided for @treeCurrent.
+  ///
+  /// In pt, this message translates to:
+  /// **'esta'**
+  String get treeCurrent;
+
+  /// No description provided for @treeNext.
+  ///
+  /// In pt, this message translates to:
+  /// **'próxima'**
+  String get treeNext;
+
+  /// No description provided for @starsEstimated.
+  ///
+  /// In pt, this message translates to:
+  /// **'{stars}★ (estimado)'**
+  String starsEstimated(int stars);
+
+  /// No description provided for @weaponsMadeFrom.
+  ///
+  /// In pt, this message translates to:
+  /// **'Armas feitas com ele'**
+  String get weaponsMadeFrom;
+
+  /// No description provided for @seeAllWeapons.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver todas ({count})'**
+  String seeAllWeapons(int count);
+
+  /// No description provided for @weaponsOfMonster.
+  ///
+  /// In pt, this message translates to:
+  /// **'Armas de {monster}'**
+  String weaponsOfMonster(String monster);
+
+  /// No description provided for @weaponsLoadFailed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar as armas.'**
+  String get weaponsLoadFailed;
+
+  /// No description provided for @noWeaponsFound.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma arma encontrada'**
+  String get noWeaponsFound;
+
+  /// No description provided for @statusPoison.
+  ///
+  /// In pt, this message translates to:
+  /// **'Veneno'**
+  String get statusPoison;
+
+  /// No description provided for @statusSleep.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sono'**
+  String get statusSleep;
+
+  /// No description provided for @statusParalysis.
+  ///
+  /// In pt, this message translates to:
+  /// **'Paralisia'**
+  String get statusParalysis;
+
+  /// No description provided for @statusBlast.
+  ///
+  /// In pt, this message translates to:
+  /// **'Explosão'**
+  String get statusBlast;
 }
 
 class _AppLocalizationsDelegate

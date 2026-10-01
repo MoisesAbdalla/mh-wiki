@@ -12,6 +12,9 @@ import 'package:mh_wiki/features/settings/domain/settings_repository.dart';
 import 'package:mh_wiki/features/settings/domain/usecases/load_settings.dart';
 import 'package:mh_wiki/features/settings/domain/usecases/set_name_language.dart';
 import 'package:mh_wiki/features/settings/presentation/settings_controller.dart';
+import 'package:mh_wiki/features/weapons/data/datasources/asset_weapon_datasource.dart';
+import 'package:mh_wiki/features/weapons/data/repositories/weapon_repository_impl.dart';
+import 'package:mh_wiki/features/weapons/domain/repositories/weapon_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Composition root (constitution Principle III): the only place that knows
@@ -21,20 +24,22 @@ final class AppDependencies {
   AppDependencies._({
     required this.monsterRepository,
     required this.settingsRepository,
+    required this.weaponRepository,
   });
 
   static Future<AppDependencies> create({AssetBundle? bundle}) async {
     final prefs = await SharedPreferences.getInstance();
+    final assets = bundle ?? rootBundle;
     return AppDependencies._(
-      monsterRepository: MonsterRepositoryImpl(
-        AssetMonsterDatasource(bundle ?? rootBundle),
-      ),
+      monsterRepository: MonsterRepositoryImpl(AssetMonsterDatasource(assets)),
       settingsRepository: SharedPrefsSettingsRepository(prefs),
+      weaponRepository: WeaponRepositoryImpl(AssetWeaponDatasource(assets)),
     );
   }
 
   final MonsterRepository monsterRepository;
   final SettingsRepository settingsRepository;
+  final WeaponRepository weaponRepository;
 
   MonsterListController createMonsterListController() => MonsterListController(
     loadCatalog: LoadMonsterCatalog(monsterRepository),
