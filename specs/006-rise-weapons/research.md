@@ -1,0 +1,152 @@
+# Research: Armas da Rise: Sunbreak
+
+Decisions for the 006 plan. Each has the decision, the rationale and the alternatives.
+
+## R1. Source of the weapon data
+
+- **Decision**: The **Monster Hunter Wiki** MHRS weapon pages are the main source. Kiranico adds the
+  pt-BR names and the icons.
+  - Each wiki page (e.g. `Gnashing Flammenzahn+ (MHRS)`) has a structured `{{GenericWeapon}}`
+    template with these fields: `Weapon Type`, `Tree` ("Anjanath Tree"), `Rarity`,
+    `Description`, `Attack`, `Affinity`, `Level N Decos`, `Elemental Damage` /
+    `Elemental Damage Type`, the `Sharpness` bar with the Handicraft extension (`HW`, `HB`…),
+    `Rampage Decoration` level, `Previous Name`, `Next N Name`, the forge/upgrade materials with
+    quantities, and costs.
+  - The pages are listed by the categories `MHRS <type>` (e.g. `MHRS Sword and Shield`) and read
+    40 per API request. That is about 100 requests for the whole catalog, cached like the other
+    wiki queries in `tool/data/.cache/`.
+  - Kiranico weapon lists (`/data/weapons?view=0..13`, en and pt-BR: 28 pages) give the
+    Kiranico id, the pt-BR name, the icon URL (`avatar/weapons/<id>.webp`) and a second copy of
+    attack, element, affinity, slots and sharpness for cross-checking.
+- **Rationale**:
+  - Kiranico has no upgrade tree. Its "Previous / Next" links are only the neighbours in the
+    list (`rel="prev"`, e.g. Gnashing Flammenzahn+ → Lohenzahn happens to match, but most do
+    not). Its materials need one page per weapon (~3,950 pages, more than an hour of polite
+    fetching).
+  - The wiki gives the real tree and the materials in about 100 requests.
+- **Counts**: per type, the wiki categories match the Kiranico lists exactly (Great Sword 282,
+  Long Sword 300, Bow 313…). The one exception is Sword and Shield (287 vs 286): the extra page
+  is found by name matching and left out. The total is about 3,950 weapons.
+- **Alternatives**: Kiranico detail pages (no tree, too many pages); a single source for
+  everything (the wiki has no pt-BR names).
+
+## R2. What counts as obtainable
+
+- **Decision**: Kiranico rows with attack 0 are excluded. There are 28, such as "Stuffed Rathalos"
+  (description `#Rejected#`). A weapon is also excluded when no wiki page matches it.
+- **Rationale**: FR-003 / SC-001. These are cut items left in the game data.
+
+## R3. Rank and quest stars
+
+- **Rank: exact, from rarity.** In Sunbreak, rarity 1–3 is Low Rank, 4–7 High Rank and 8–10
+  Master Rank. The wiki's own summary confirms it (Gnashing Flammenzahn+, rarity 8: "a Master
+  Rank (MR) Great Sword"). **Correction to the mockup**: it labelled that weapon "High Rank".
+- **Stars: estimated** (FR-005).
+  1. Each forge or upgrade material that the Rise dataset knows as a monster drop (by English
+     name) points to the monsters that drop it at the weapon's rank.
+  2. For each such monster, take the lowest quest star of that rank. The source is the quest
+     table already cached from the Kiranico monster pages, where Village and Gathering Hub
+     1–3★ are Low, Hub 4–7★ High and MR 1–6★ Master, as in `hp_extract.py`.
+  3. The weapon's stars are the **highest** of those values: the hunter needs every material,
+     so the last monster unlocked decides.
+  4. Weapons whose materials come from no known monster (ores, bones) get the first star of
+     their rank.
+  5. The value is stored with `estimated: true` and the rule above, and the app shows it as an
+     estimate.
+- **Rationale**: the sources do not say when each weapon unlocks. The progress picker of 008
+  needs a number per weapon.
+- **Alternatives**: no stars at all (008 would have only the rank); manual curation of about
+  3,950 weapons (not sustainable).
+
+## R4. Weapon trees in the list
+
+- **Decision**: group by the wiki's `Tree` field. Inside a tree, order the weapons by walking the
+  graph from its roots (weapons without a previous weapon in the tree), depth first, siblings by
+  rarity then name. The indent equals the depth, capped at 3 levels in the list; the detail shows
+  the full path.
+- Trees that span ranks (Low → Master) stay one card. Filtering by rank keeps only the weapons of
+  that rank inside each card, and empty cards are hidden.
+- Weapons whose `Previous` lies in another tree keep their own tree's card, and the link still
+  works.
+- The tree is built in the domain layer (`WeaponTree`), with unit tests: cycles are rejected and
+  missing previous weapons become roots.
+
+## R5. Sharpness
+
+- **Decision**: store the 7 segments (red → purple) in game units (hits ×10, from the wiki
+  `SharpnessBar` values) plus the Handicraft extension. "Max Handicraft" is the base bar plus
+  `HR…HW` added to the last colours, as the wiki template draws it.
+- The UI draws both bars on a fixed scale of 400 units, the maximum, so weapons compare
+  visually.
+- Bows and bowguns have no sharpness (the template field is absent) and the card is hidden.
+
+## R6. Data files and loading
+
+- **Decision**:
+  - A new `tool/data/build_rise_weapons.py` writes `assets/data/rise_sunbreak/weapons.json`:
+    `schemaVersion` 1, `game`, `sources`, `weaponTypes` (14 with en/pt-BR names),
+    `materials` (id, names) and `weapons`.
+  - Icons go to `assets/images/weapons/rise_sunbreak/<slug>.webp`, 96 px, so about 3,950 small
+    files of ~5 KB, roughly 20 MB.
+    - **Size check**: the APK grows by about 20 MB, from about 25 to 45 MB. This is noted
+      against research R6 of feature 004.
+    - **Fallback**: if that is judged too large in review, the icons can be grouped per type
+      in a sprite. The weapon renders on the wiki are larger and not used.
+- **Loading**: a separate `WeaponRepository` / `AssetWeaponDatasource`. It decodes off the UI
+  thread (`compute`, as monsters do since 004) and loads on first entry into the Armas area,
+  not at app start. A failure produces a `Failure` shown only in that area (FR-011).
+
+## R7. Link to monsters
+
+- **Decision**: material ids use the same slug rule as the monster datasets, so a weapon
+  material equals a monster drop material by id. A use case in the app composition layer,
+  `GetWeaponsUsingMaterialsOf(monster)`, crosses the two catalogs. The monsters feature does not
+  import the weapons feature: the detail view receives an optional `extraSections` builder from
+  the page that owns both controllers.
+- **Rationale**: Constitution I/III. Features stay independent, and the link lives in the
+  composition root.
+
+## R8. Navigation between areas
+
+- **Decision**: a new `AppShell` in `lib/app/`.
+  - Below 840 dp (the existing breakpoint) it uses a `NavigationBar`, and from 840 dp a
+    `NavigationRail`.
+  - Destinations: Monstros, Armas, Armaduras (disabled), Assistente (disabled, with an
+    "em breve" tooltip and semantics).
+  - An `IndexedStack` keeps each area's state (FR-012).
+  - Styled with the 005 tokens: gold for the selected item, IM Fell labels.
+- **Rationale**: the platform widgets bring accessibility and adaptive behaviour. Disabled
+  destinations are rendered as visible but not selectable.
+
+## R9. Weapon type names in pt-BR
+
+- **Decision**: take the pt-BR type names from Kiranico's pt-BR navigation, which uses the
+  official localisation. Fall back to the community names in the spec's entity list when one is
+  missing.
+- Type icons are the in-game weapon type icons from the wiki (`MHRS-<Type> Icon`), converted to
+  WebP. They are only 14 files.
+
+## R10. Performance
+
+- About 300 weapons per type are shown at once (one type at a time), in at most ~45 tree cards.
+  The list uses a lazy builder over cards, and the rows inside a card are built eagerly (≤ 25
+  per card).
+- Search over ~3,950 names uses names normalized once at load, as `FilterMonsters` does.
+- The 004 performance test pattern is extended with a synthetic catalog of 4,000 weapons: the
+  list builds and a type switch settles within the frame budget, and a query takes under 50 ms.
+
+## R11. Tests to add
+
+- **Domain**:
+  - the `WeaponTree` build (order, depth, roots, branches, cycle rejection);
+  - `FilterWeapons` (type, rank, search);
+  - the stars estimate is surfaced, not computed, in the app.
+- **Data**:
+  - DTO validation;
+  - a real-dataset test: 14 types, counts equal to the Kiranico lists minus the excluded rows,
+    no zero-attack weapon, every `previous` and `next` resolves, no cycles, ≥ 95 % icons
+    (SC-007).
+- **Presentation**: the list (tree cards, filters, search, empty state), the detail (4 cards,
+  ranged weapons without sharpness, material → monster link), the monster's "Armas feitas com
+  ele" card, the `AppShell` (disabled areas, preserved state, rail on wide screens) and
+  accessibility at 320 dp / 200 %.
