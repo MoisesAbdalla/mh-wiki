@@ -92,9 +92,9 @@ description: "Task list for 008 Assistente de builds da Rise: Sunbreak"
 
 - [X] T020 [P] Write the accessibility tests: 320 dp / 200 % on the list, detail and saved builds; contrast; tap targets.
 - [X] T021 [P] Extend `integration_test/app_test.dart`: Assistente → Mestre M2★ → Espadão → open a build → save it → it shows in Minhas builds.
-- [ ] T022 SC-002 spot check: 10 builds of different types against their Game8 pages. Fix any finding in the builder, and record it in research.md.
-- [ ] T023 Update `README.md` (the Assistente area, the Game8 credit, counts).
-- [ ] T024 Run the gates (analyze, format, test, integration on Windows, build Windows release) and commit.
+- [X] T022 SC-002 spot check: 10 builds of different types against their Game8 pages. Fix any finding in the builder, and record it in research.md.
+- [X] T023 Update `README.md` (the Assistente area, the Game8 credit, counts).
+- [X] T024 Run the gates (analyze, format, test, integration on Windows, build Windows release) and commit.
 - [ ] T025 The user runs the quickstart checks 1–8. Fix the findings, then merge `008-build-assistant` into `main`.
 
 ---

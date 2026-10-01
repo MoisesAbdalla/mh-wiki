@@ -113,3 +113,17 @@
   ("Anti-Wyvern Jewel 2" and "Fanged Exploit Jewel 2", 113 each), plus a few generic skills
   ("Element Attack"). They are kept by name.
 - `builds.json` is 2.6 MB.
+
+### SC-002 spot check (T022)
+
+Ten builds, one per weapon type (bow, charge blade, dual blades, great sword, gunlance, hammer,
+heavy bowgun, hunting horn, insect glaive, lance), from MR 3–6 to MR 180+ plus one High Rank
+build. Each weapon, piece, skill and decoration name (21–36 per build) was compared with the
+cached Game8 page:
+- all names are on the page, except "Virtue Braces". The page reads "Virtue / Prudence Braces",
+  and the shared-last-word rule turns it into Virtue Braces with Prudence Braces as the
+  alternative, as intended;
+- in four builds, Game8 tables had problems: three printed the jewel list as a sixth "piece", and
+  one listed the arms twice. The builder now skips jewel-list rows and keeps the first piece of a
+  part.
+
