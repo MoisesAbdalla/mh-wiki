@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
@@ -19,8 +20,11 @@ class WeaponRow extends StatelessWidget {
     required this.onTap,
     this.selected = false,
     this.ruled = true,
+    this.language = NameLanguage.ptBr,
     super.key,
   });
+
+  final NameLanguage language;
 
   final Weapon weapon;
   final int depth;
@@ -35,7 +39,7 @@ class WeaponRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final muted = Theme.of(context).textTheme.bodySmall;
-    final name = weapon.name.ptBr ?? weapon.name.en;
+    final name = weapon.name.resolve(language);
     final rank = l10n.rankLabel(l10n.rankName(weapon.rank));
     final affinity = weapon.affinity;
 

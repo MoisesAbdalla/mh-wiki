@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 import 'package:mh_wiki/core/presentation/widgets/notebook_section.dart';
@@ -14,8 +15,11 @@ class WeaponTreeSection extends StatelessWidget {
     required this.catalog,
     required this.onOpenWeapon,
     this.number = 4,
+    this.language = NameLanguage.ptBr,
     super.key,
   });
+
+  final NameLanguage language;
 
   final Weapon weapon;
   final WeaponCatalog catalog;
@@ -38,7 +42,7 @@ class WeaponTreeSection extends StatelessWidget {
     return NotebookSection(
       number: number,
       title: l10n.weaponSectionTree,
-      note: weapon.treeName.ptBr ?? weapon.treeName.en,
+      note: weapon.treeName.resolve(language),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -47,6 +51,7 @@ class WeaponTreeSection extends StatelessWidget {
               weapon: w,
               caption: caption,
               current: w == weapon,
+              language: language,
               ruled: i < rows.length - 1,
               onTap: w == weapon ? null : () => onOpenWeapon(w),
             ),
@@ -61,10 +66,12 @@ class _TreeRow extends StatelessWidget {
     required this.weapon,
     required this.caption,
     required this.current,
+    required this.language,
     required this.ruled,
     required this.onTap,
   });
 
+  final NameLanguage language;
   final Weapon weapon;
   final String caption;
   final bool current;
@@ -73,7 +80,7 @@ class _TreeRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final name = weapon.name.ptBr ?? weapon.name.en;
+    final name = weapon.name.resolve(language);
     final row = RuledRow(
       ruled: ruled,
       label: Text(

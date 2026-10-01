@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
@@ -15,8 +16,11 @@ class MonsterWeaponsCard extends StatelessWidget {
     required this.weapons,
     required this.onOpenWeapon,
     required this.onSeeAll,
+    this.language = NameLanguage.ptBr,
     super.key,
   });
+
+  final NameLanguage language;
 
   /// How many rows show before "Ver todas".
   static const preview = 5;
@@ -51,10 +55,11 @@ class MonsterWeaponsCard extends StatelessWidget {
               weapon: weapon,
               ruled: i < shown.length - 1,
               caption: [
-                weapon.type.name.ptBr ?? weapon.type.name.en,
+                weapon.type.name.resolve(language),
                 l10n.rankLabel(l10n.rankName(weapon.rank)),
               ].join(' · '),
               captionStyle: muted,
+              language: language,
               onTap: () => onOpenWeapon(weapon),
             ),
           Align(
@@ -76,8 +81,11 @@ class _WeaponLink extends StatelessWidget {
     required this.ruled,
     required this.caption,
     required this.captionStyle,
+    required this.language,
     required this.onTap,
   });
+
+  final NameLanguage language;
 
   final Weapon weapon;
   final bool ruled;
@@ -87,7 +95,7 @@ class _WeaponLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final name = weapon.name.ptBr ?? weapon.name.en;
+    final name = weapon.name.resolve(language);
     return Semantics(
       button: true,
       label: '$name, $caption',

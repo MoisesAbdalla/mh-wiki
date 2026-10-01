@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
@@ -12,9 +13,11 @@ class WeaponTypePicker extends StatelessWidget {
     required this.types,
     required this.selectedId,
     required this.onChanged,
+    this.language = NameLanguage.ptBr,
     super.key,
   });
 
+  final NameLanguage language;
   final List<WeaponType> types;
 
   /// `null` when no type is selected (the "only these weapons" filter).
@@ -39,6 +42,7 @@ class WeaponTypePicker extends StatelessWidget {
             _TypeBlock(
               type: type,
               selected: type.id == selectedId,
+              language: language,
               onTap: () => onChanged(type.id),
             ),
           ],
@@ -52,9 +56,11 @@ class _TypeBlock extends StatelessWidget {
   const _TypeBlock({
     required this.type,
     required this.selected,
+    required this.language,
     required this.onTap,
   });
 
+  final NameLanguage language;
   final WeaponType type;
   final bool selected;
   final VoidCallback onTap;
@@ -62,7 +68,7 @@ class _TypeBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final name = type.name.ptBr ?? type.name.en;
+    final name = type.name.resolve(language);
     return Semantics(
       button: true,
       selected: selected,

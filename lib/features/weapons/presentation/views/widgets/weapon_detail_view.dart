@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
@@ -23,9 +24,11 @@ class WeaponDetailView extends StatelessWidget {
     required this.onSelectWeapon,
     this.sources = MaterialSourceLookup.empty,
     this.onOpenMonster,
+    this.language = NameLanguage.ptBr,
     super.key,
   });
 
+  final NameLanguage language;
   final Weapon weapon;
   final WeaponCatalog catalog;
   final ValueChanged<Weapon> onSelectWeapon;
@@ -44,7 +47,7 @@ class WeaponDetailView extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.fromLTRB(gutter, 18, gutter, Space.card),
-          child: WeaponHeader(weapon: weapon),
+          child: WeaponHeader(weapon: weapon, language: language),
         ),
         WeaponAttributesSection(weapon: weapon),
         if (weapon.sharpness case final sharpness?)
@@ -67,11 +70,13 @@ class WeaponDetailView extends StatelessWidget {
           weapon: weapon,
           sources: sources,
           onOpenMonster: onOpenMonster,
+          language: language,
         ),
         WeaponTreeSection(
           weapon: weapon,
           catalog: catalog,
           onOpenWeapon: onSelectWeapon,
+          language: language,
         ),
       ],
     );
@@ -81,15 +86,20 @@ class WeaponDetailView extends StatelessWidget {
 /// Name, "type · Raridade n · rank · n★ (estimado)", the tilted icon plate
 /// and the description.
 class WeaponHeader extends StatelessWidget {
-  const WeaponHeader({required this.weapon, super.key});
+  const WeaponHeader({
+    required this.weapon,
+    this.language = NameLanguage.ptBr,
+    super.key,
+  });
 
   final Weapon weapon;
+  final NameLanguage language;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final textTheme = Theme.of(context).textTheme;
-    final type = weapon.type.name.ptBr ?? weapon.type.name.en;
+    final type = weapon.type.name.resolve(language);
     final description = weapon.description.ptBr ?? weapon.description.en;
     final subtitle = [
       type,
@@ -113,7 +123,7 @@ class WeaponHeader extends StatelessWidget {
                   Semantics(
                     header: true,
                     child: Text(
-                      weapon.name.ptBr ?? weapon.name.en,
+                      weapon.name.resolve(language),
                       style: notebookTitle(size: 32, height: 1.05),
                     ),
                   ),

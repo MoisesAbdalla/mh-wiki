@@ -59,13 +59,19 @@ final class AppDependencies {
   );
 }
 
-/// Keeps the monster list in the name language chosen in settings, applied
+/// Keeps the monster and weapon lists in the name language chosen in settings, applied
 /// immediately on change (FR-022).
 void linkNameLanguage({
   required SettingsController settings,
   required MonsterListController monsters,
+  WeaponListController? weapons,
 }) {
-  void sync() => monsters.onLanguageChanged(settings.settings.nameLanguage);
+  void sync() {
+    final language = settings.settings.nameLanguage;
+    monsters.onLanguageChanged(language);
+    weapons?.onLanguageChanged(language);
+  }
+
   settings.addListener(sync);
   sync();
 }

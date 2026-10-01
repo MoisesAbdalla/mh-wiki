@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mh_wiki/core/domain/failure.dart';
 import 'package:mh_wiki/core/domain/game.dart';
+import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/features/weapons/presentation/controllers/weapon_list_controller.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_list_pane.dart';
@@ -184,5 +185,19 @@ void main() {
     await tester.tap(find.text('Tentar novamente'));
     await tester.pumpAndSettle();
     expect(find.byType(WeaponTreeCard), findsWidgets);
+  });
+
+  testWidgets('names follow the name language setting (FR-004)', (
+    tester,
+  ) async {
+    setWindowSize(tester, const Size(400, 2000));
+    await pumpPane(tester);
+    expect(find.text('Presardente Rangedora+'), findsOneWidget);
+    expect(find.text('Espadão'), findsOneWidget);
+
+    controller.onLanguageChanged(NameLanguage.en);
+    await tester.pumpAndSettle();
+    expect(find.text('Gnashing Flammenzahn+'), findsOneWidget);
+    expect(find.text('Great Sword'), findsOneWidget);
   });
 }

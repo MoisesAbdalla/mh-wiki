@@ -8,7 +8,8 @@ Future<void> main() async {
 
   final settings = dependencies.createSettingsController();
   final monsters = dependencies.createMonsterListController();
-  linkNameLanguage(settings: settings, monsters: monsters);
+  final weapons = dependencies.createWeaponListController();
+  linkNameLanguage(settings: settings, monsters: monsters, weapons: weapons);
 
   await settings.load();
   monsters.load();
@@ -17,7 +18,7 @@ Future<void> main() async {
     MhWikiApp(
       monsterListController: monsters,
       settingsController: settings,
-      weaponListController: dependencies.createWeaponListController(),
+      weaponListController: weapons,
     ),
   );
 }

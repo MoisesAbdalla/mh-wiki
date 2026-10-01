@@ -150,6 +150,7 @@ class _WeaponsPageState extends State<WeaponsPage> {
                           onSelectWeapon: _onSelect,
                           sources: widget.sources,
                           onOpenMonster: widget.onOpenMonster,
+                          language: _controller.language,
                         );
                       }
                       return NotebookSwitcher(child: child);

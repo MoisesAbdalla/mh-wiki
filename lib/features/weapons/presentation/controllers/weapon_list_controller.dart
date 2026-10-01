@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:mh_wiki/core/domain/game.dart';
+import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/core/domain/result.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
@@ -18,6 +19,7 @@ final class WeaponListController extends ChangeNotifier {
     required this._loadCatalog,
     this._filterFor = FilterWeapons.new,
     this.game = Game.riseSunbreak,
+    this._language = NameLanguage.ptBr,
   });
 
   final LoadWeaponCatalog _loadCatalog;
@@ -31,8 +33,18 @@ final class WeaponListController extends ChangeNotifier {
   WeaponQuery? _query;
   WeaponId? _selectedId;
   bool _started = false;
+  NameLanguage _language;
 
   WeaponListState get state => _state;
+
+  /// Names shown in the chosen language, as in Monstros (FR-004).
+  NameLanguage get language => _language;
+
+  void onLanguageChanged(NameLanguage language) {
+    if (language == _language) return;
+    _language = language;
+    notifyListeners();
+  }
 
   WeaponCatalog? get catalog => _filter?.catalog;
 

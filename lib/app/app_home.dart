@@ -91,6 +91,7 @@ class _AppHomeState extends State<AppHome> {
           return MonsterWeaponsCard(
             number: next,
             weapons: weapons,
+            language: widget.monsters.language,
             onOpenWeapon: (w) =>
                 _openWeapons(() => widget.weapons.select(w.id)),
             onSeeAll: () => _openWeapons(

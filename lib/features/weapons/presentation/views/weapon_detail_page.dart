@@ -47,6 +47,7 @@ class WeaponDetailPage extends StatelessWidget {
                     onSelectWeapon: (w) => controller.select(w.id),
                     sources: sources,
                     onOpenMonster: onOpenMonster,
+                    language: controller.language,
                   ),
                 ),
         );

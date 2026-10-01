@@ -94,6 +94,7 @@ class _LoadedList extends StatelessWidget {
               WeaponTypePicker(
                 types: state.catalog.types,
                 selectedId: query.onlyIds == null ? query.typeId : null,
+                language: controller.language,
                 onChanged: controller.setType,
               ),
               if (only != null)
@@ -150,6 +151,7 @@ class _LoadedList extends StatelessWidget {
                 key: ValueKey(state.trees[i].id),
                 tree: state.trees[i],
                 selectedId: highlightSelection ? state.selectedId : null,
+                language: controller.language,
                 onSelect: onSelect,
               ),
             ),

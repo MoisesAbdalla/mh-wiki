@@ -90,7 +90,7 @@ void main() {
     final settings = dependencies.createSettingsController();
     final monsters = dependencies.createMonsterListController();
     final weapons = dependencies.createWeaponListController();
-    linkNameLanguage(settings: settings, monsters: monsters);
+    linkNameLanguage(settings: settings, monsters: monsters, weapons: weapons);
     await settings.load();
     await monsters.load();
 

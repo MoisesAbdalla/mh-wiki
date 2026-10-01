@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
@@ -14,8 +15,11 @@ class WeaponTreeCard extends StatelessWidget {
     required this.tree,
     required this.onSelect,
     this.selectedId,
+    this.language = NameLanguage.ptBr,
     super.key,
   });
+
+  final NameLanguage language;
 
   final WeaponTree tree;
   final WeaponId? selectedId;
@@ -25,7 +29,7 @@ class WeaponTreeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final gutter = Space.gutter(MediaQuery.sizeOf(context).width);
-    final title = tree.name.ptBr ?? tree.name.en;
+    final title = tree.name.resolve(language);
     final count = tree.entries.length;
     return Padding(
       padding: EdgeInsets.fromLTRB(gutter - 10, 5, gutter - 10, 5),
@@ -76,6 +80,7 @@ class WeaponTreeCard extends StatelessWidget {
                 depth: entry.depth,
                 selected: entry.weapon.id == selectedId,
                 ruled: i < tree.entries.length - 1,
+                language: language,
                 onTap: () => onSelect(entry.weapon),
               ),
           ],

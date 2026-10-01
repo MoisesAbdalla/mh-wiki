@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 import 'package:mh_wiki/core/presentation/widgets/notebook_section.dart';
@@ -16,8 +17,11 @@ class WeaponMaterialsSection extends StatelessWidget {
     required this.sources,
     this.onOpenMonster,
     this.number = 3,
+    this.language = NameLanguage.ptBr,
     super.key,
   });
+
+  final NameLanguage language;
 
   final Weapon weapon;
   final MaterialSourceLookup sources;
@@ -52,6 +56,7 @@ class WeaponMaterialsSection extends StatelessWidget {
         droppers: sources.droppersOf(cost.material.id),
         onOpenMonster: onOpenMonster,
         ruled: i < costs.length - 1,
+        language: language,
       ),
   ];
 }
@@ -62,8 +67,10 @@ class _MaterialRow extends StatelessWidget {
     required this.droppers,
     required this.onOpenMonster,
     required this.ruled,
+    required this.language,
   });
 
+  final NameLanguage language;
   final MaterialCost cost;
   final List<MaterialDropper> droppers;
   final ValueChanged<MaterialDropper>? onOpenMonster;
@@ -72,7 +79,7 @@ class _MaterialRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final name = cost.material.name.ptBr ?? cost.material.name.en;
+    final name = cost.material.name.resolve(language);
     final points = cost.points;
     final amount = points != null
         ? l10n.materialPoints(points)
