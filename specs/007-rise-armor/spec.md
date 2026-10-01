@@ -55,15 +55,17 @@ forja com a origem (como nas armas).
 
 **Why this priority**: responde "vale fazer esse conjunto?" e "o que preciso caçar ou coletar?".
 
-**Independent Test**: abrir Rathalos X e conferir defesa 570, resistências (fogo 15, água 5,
-trovão 5, gelo −10, dragão −15), as habilidades somadas e os materiais do Elmo com a Kiranico.
+**Independent Test**: abrir Rathalos X e conferir defesa 570 (870 no máximo), resistências (fogo
+15, água 5, trovão −10, gelo 5, dragão −15), as habilidades somadas e os materiais do Elmo com a
+Kiranico.
 
 **Acceptance Scenarios**:
 
 1. **Given** o detalhe de um conjunto, **When** aberto, **Then** mostra o cabeçalho (nome, rank,
    raridade, número de peças) e os cards 1 Defesa, 2 Habilidades e 3 Peças.
-2. **Given** o card Defesa, **When** exibido, **Then** mostra a soma da defesa base e das cinco
-   resistências, com valores negativos destacados.
+2. **Given** o card Defesa, **When** exibido, **Then** mostra a soma da defesa base e a defesa
+   máxima com melhorias (quando a fonte informar) e as cinco resistências, com valores negativos
+   destacados.
 3. **Given** o card Habilidades, **When** exibido, **Then** cada habilidade mostra o nível somado
    como quadradinhos cheios até o máximo da habilidade; tocar abre o detalhe da habilidade.
 4. **Given** o card Peças, **When** o usuário toca numa peça, **Then** aparecem os materiais de forja
@@ -144,7 +146,8 @@ Rampage de nível até 3.
   Habilidades e Joias; o Assistente continua "em breve".
 - **FR-002**: O catálogo DEVE conter todas as peças de armadura obteníveis da Rise: Sunbreak
   (raridades 1 a 10), cada uma com: nome em pt-BR e inglês (seguindo a preferência de idioma dos
-  nomes), parte do corpo, raridade, rank, defesa base, as cinco resistências, slots com nível,
+  nomes), parte do corpo, raridade, rank, defesa base e máxima com melhorias (quando a fonte
+  informar), as cinco resistências, slots com nível,
   habilidades com nível, materiais de forja com quantidade e origem, ícone quando houver, e a qual
   conjunto pertence.
 - **FR-003**: O catálogo DEVE conter todas as habilidades (nome, descrição, nível máximo e efeito de
@@ -204,7 +207,9 @@ Rampage de nível até 3.
 
 - A fonte é a Kiranico da Rise: Sunbreak (páginas em inglês e pt-BR), a mesma da 006; as origens dos
   materiais reaproveitam o que a 006 já extrai das páginas de item.
-- A Kiranico dá só a defesa base de cada peça; a defesa máxima com melhorias fica de fora.
+- A Kiranico dá só a defesa base de cada peça; a defesa máxima com melhorias vem da wiki (página do
+  conjunto, "114 → 174"), que também informa o conjunto e a parte do corpo de cada peça. Revisto
+  no plano: o mockup dizia que a defesa máxima ficaria de fora.
 - Conjunto = peças com o mesmo nome base; quando o nome não permitir agrupar com segurança, a fonte
   de conjuntos da wiki é usada, e a regra fica documentada.
 - Fora do escopo: talismãs, montagem e otimização de builds (008–009), armaduras em camadas,
