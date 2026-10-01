@@ -8,6 +8,7 @@ import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_catalog.dart';
 import 'package:mh_wiki/features/weapons/presentation/material_sources.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/sharpness_bar.dart';
+import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_ammo_section.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_attributes_section.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_materials_section.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_tree_section.dart';
@@ -49,7 +50,9 @@ class WeaponDetailView extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(gutter, 18, gutter, Space.card),
           child: WeaponHeader(weapon: weapon, language: language),
         ),
-        WeaponAttributesSection(weapon: weapon),
+        WeaponAttributesSection(weapon: weapon, language: language),
+        if (weapon.traits.hasAmmo)
+          WeaponAmmoSection(traits: weapon.traits, language: language),
         if (weapon.sharpness case final sharpness?)
           NotebookSection(
             number: 2,

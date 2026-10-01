@@ -83,6 +83,23 @@ void main() {
     expect(plus.rank, Rank.master);
   });
 
+  test('every weapon has the traits of its type (FR-014)', () {
+    for (final w in catalog.weapons) {
+      final t = w.traits;
+      final ok = switch (w.type.id) {
+        'charge-blade' || 'switch-axe' => t.phial != null,
+        'gunlance' => t.shelling != null,
+        'insect-glaive' => t.kinsectLevel != null,
+        'hunting-horn' => t.songs.length == 3,
+        'bow' => t.arcShot != null && t.chargeShots.isNotEmpty,
+        'light-bowgun' ||
+        'heavy-bowgun' => t.deviation != null && t.ammo.isNotEmpty,
+        _ => t.isEmpty,
+      };
+      expect(ok, isTrue, reason: '${w.id}');
+    }
+  });
+
   test('at least 95% of the weapons have a bundled icon (SC-007)', () {
     final withIcon = catalog.weapons.where(
       (w) => w.imageAsset != null && File(w.imageAsset!).existsSync(),

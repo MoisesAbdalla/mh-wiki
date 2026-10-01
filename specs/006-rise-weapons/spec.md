@@ -112,13 +112,68 @@ as primeiras armas; tocar numa e chegar ao detalhe dela; voltar para Monstros pe
 
 ---
 
+### User Story 4 - Dados próprios de cada tipo de arma (Priority: P4)
+
+Adicionada após a revisão do usuário (2026-10-01, mockup `mockups/approved-sources.html`, opção B).
+O caçador vê no detalhe o que muda o jeito de jogar com aquele tipo: o frasco da Lâmina Dínamo e do
+Machado-Espada, os projéteis da Lançarma, o nível do inseto do Glaive, as músicas do Berrante, os
+disparos e revestimentos do Arco e as munições dos Fuzilarcos.
+
+**Why this priority**: decide entre armas parecidas (ex.: Lâmina Dínamo de Impacto ou de Elemento),
+mas o catálogo já é útil sem isso.
+
+**Independent Test**: abrir uma Lâmina Dínamo, uma Lançarma, um Berrante, um Arco e um Fuzilarco e
+conferir os valores com a Kiranico.
+
+**Acceptance Scenarios**:
+
+1. **Given** uma Lâmina Dínamo ou um Machado-Espada, **When** o usuário abre o detalhe, **Then** o
+   card Atributos mostra o frasco (ex.: "Frasco de Impacto") como mais um valor da grade.
+2. **Given** uma Lançarma, um Glaive Inseto ou um Berrante, **When** aberto, **Then** a grade mostra
+   os projéteis (tipo e nível), o nível do inseto ou as três músicas.
+3. **Given** um Arco ou um Fuzilarco, **When** aberto, **Then** um card próprio "Munição" mostra os
+   disparos por carga, o tiro de arco e os revestimentos (Arco), ou o desvio, o recuo, a recarga e a
+   tabela de munições com a capacidade por nível (Fuzilarcos).
+
+---
+
+### User Story 5 - De onde vem cada material (Priority: P5)
+
+Adicionada após a revisão do usuário (mesmo mockup, opção B). Além dos monstros grandes, o caçador
+vê onde coletar minérios e outros itens, de que monstro pequeno vem um material e que missão dá um
+ticket, no rank da arma.
+
+**Why this priority**: muitas armas pedem minérios e materiais de monstros pequenos; sem isso o
+caçador precisa sair do app para saber onde consegui-los.
+
+**Independent Test**: abrir a Lâmina D. Kamura V e conferir as origens de cada material com as
+páginas de item da Kiranico.
+
+**Acceptance Scenarios**:
+
+1. **Given** um material de coleta, **When** o detalhe é aberto, **Then** o material mostra um selo
+   "Coleta · N mapas" (ou o nome do mapa, se for um só) no rank da arma.
+2. **Given** um material de monstro, **When** aberto, **Then** monstros grandes aparecem como selo
+   com link para o monstro e monstros pequenos como selo "<monstro> · pequeno", sem link.
+3. **Given** um material que vem de missão, **When** aberto, **Then** um selo mostra o tipo e as
+   estrelas da missão (ex.: "Missão · Evento 8★").
+4. **Given** um material com origens, **When** o usuário toca nele, **Then** abre a lista completa:
+   mapas com a chance de coleta, monstros com o modo de obtenção e a chance, e missões, no rank da
+   arma.
+5. **Given** um material sem origem nas fontes (ex.: resíduos), **When** aberto, **Then** mostra
+   "Origem desconhecida" em vez de inventar uma.
+
+---
+
 ### Edge Cases
 
 - Itens que o jogo não permite obter (dados zerados, como "Stuffed Rathalos") não aparecem.
 - Arma sem elemento ou status: a lista e o detalhe não mostram esse campo, em vez de mostrar "0".
 - Arma com dois atributos especiais (ex.: elemento e status) mostra os dois.
 - Material sem monstro conhecido no app (minério, item de mercado, material de outra arma): aparece
-  sem link.
+  sem link, com as origens de coleta e missão quando houver.
+- Material que só existe em outro rank que o da arma: as origens desse rank aparecem, com o rank
+  indicado.
 - Ícone ausente: marcador padrão no mesmo espaço.
 - Árvore com ramificação (uma arma que leva a duas ou mais): todas as próximas aparecem no card
   Árvore, e a lista mostra os ramos com recuo.
@@ -167,6 +222,13 @@ as primeiras armas; tocar numa e chegar ao detalhe dela; voltar para Monstros pe
 - **FR-013**: O app DEVE manter a acessibilidade da constituição em todas as telas novas: sem cortes
   a 320 dp com texto a 200 %, contraste AA, alvos de toque de 48 dp e semântica para leitores de
   tela (navegação, abas, tipos de arma, atributos, slots, afiação).
+- **FR-014**: Cada arma DEVE ter os dados próprios do seu tipo, com os nomes oficiais em pt-BR e en:
+  frasco (Lâmina Dínamo, Machado-Espada), projéteis (Lançarma), nível do inseto (Glaive Inseto),
+  músicas (Berrante), tiro de arco, disparos por carga e revestimentos (Arco), desvio, recuo, recarga
+  e munições com capacidade por nível (Fuzilarcos).
+- **FR-015**: Cada material DEVE ter as origens registradas na fonte, por rank: coleta (mapa e
+  chance), monstros (grandes e pequenos, modo de obtenção e chance) e missões (tipo, estrelas e
+  nome). O detalhe mostra as do rank da arma; se não houver, as do rank mais próximo, indicado.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -179,6 +241,8 @@ as primeiras armas; tocar numa e chegar ao detalhe dela; voltar para Monstros pe
   ramificações.
 - **Custo de Material**: um material e a quantidade exigida para criar ou melhorar uma arma; liga-se
   ao material e aos monstros que o dropam, quando conhecidos.
+- **Origem de Material**: de onde um material vem num rank: um mapa de coleta, um monstro (grande ou
+  pequeno) ou uma missão, com a chance quando a fonte a informa.
 - **Área do App**: Monstros, Armas, Armaduras, Assistente; cada uma com seu próprio estado.
 
 ## Success Criteria *(mandatory)*
@@ -208,7 +272,6 @@ as primeiras armas; tocar numa e chegar ao detalhe dela; voltar para Monstros pe
 - Os nomes dos tipos de arma em português seguem os nomes oficiais do jogo em pt-BR quando a fonte os
   tiver; caso contrário, os usados pela comunidade.
 - Fora do escopo: habilidades Rampage de cada arma (entram na 007, junto com habilidades e joias);
-  dados específicos por tipo (munições, frascos, músicas, tipo de tiro, nível do inseto); armas de
-  World e Wilds; armaduras; o assistente e o otimizador (008–009); IA (010, opcional e adiada).
+  páginas de monstros pequenos; armas de World e Wilds; armaduras; o assistente e o otimizador (008–009); IA (010, opcional e adiada).
 - O visual segue a direção aprovada na feature 005 (cards discretos, nunca um dentro do outro,
   dourado como único destaque, IM Fell English SC, Averia Serif Libre, Atkinson Hyperlegible).

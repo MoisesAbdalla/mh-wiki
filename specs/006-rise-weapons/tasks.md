@@ -182,6 +182,26 @@ and the wide-screen rail (spec US3).
 
 ---
 
+## Phase 7: User Story 4 - Dados próprios de cada tipo (Priority: P4)
+
+**Goal**: phial, shelling, kinsect level, songs, bow shots and coatings, bowgun ammo (spec US4,
+FR-014; mockup `mockups/approved-sources.html`, option B).
+
+- [X] T039 [US4] Parse the type-specific cell of the Kiranico weapon lists (en + pt-BR, already cached) in `tool/data/build_rise_weapons.py` into a `traits` object per weapon: `phial`, `shelling`, `kinsectLevel`, `songs`, `arcShot`, `chargeShots`, `coatings`, `deviation`, `recoil`, `reload`, `ammo` (name + capacity per level). Record the rule in research.md R13.
+- [X] T040 [US4] Domain `WeaponTraits` and DTO/mapper validation (types only carry their own fields), with tests in `weapon_dataset_dto_test.dart` and the real-dataset test (every Charge Blade and Switch Axe has a phial, every bow has charge shots, every bowgun has ammo).
+- [X] T041 [US4] Detail: traits as extra cells of the Atributos grid (phial, shelling, kinsect, songs) and a "Munição" card for bows and bowguns; widget and accessibility tests.
+
+## Phase 8: User Story 5 - De onde vem cada material (Priority: P5)
+
+**Goal**: material sources beyond large monsters (spec US5, FR-015).
+
+- [ ] T042 [US5] `tool/data/fetch_rise_item_pages.py` caches the Kiranico item pages (en + pt-BR); `build_rise_weapons.py` adds `sources` per material: `gathering` (map, rank, best rate), `monsters` (name, slug when it is a large monster of the app, small flag, rank, method, rate) and `quests` (category, stars, name, rank). Record in research.md R13.
+- [ ] T043 [US5] Domain `MaterialSource` entities on `MonsterMaterial`'s weapon side (`WeaponMaterial.sources`), DTO/mapper with tests, and the rule "sources of the weapon's rank, else the nearest rank, labelled".
+- [ ] T044 [US5] Materials card option B: chips per material (gathering, large monster link, small monster, quest, unknown origin); tapping a material expands the full list with rates. Large monster links keep using the app layer (`onOpenMonster`). Widget, accessibility and app tests.
+- [ ] T045 Gates, spot check of the sources of 10 materials against Kiranico, commit; the user's manual check, then merge.
+
+---
+
 ## Dependencies & Execution Order
 
 - **Setup (T001–T004)**: T001 → T002 → T003. T004 runs in parallel.

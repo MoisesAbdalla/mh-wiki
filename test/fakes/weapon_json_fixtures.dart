@@ -10,6 +10,7 @@ Map<String, Object?> weaponJson({
   String? previous,
   List<String> next = const [],
   String material = 'anjanath-scale',
+  Map<String, Object?>? traits,
 }) => {
   'slug': slug,
   'kiranicoId': '123',
@@ -35,6 +36,7 @@ Map<String, Object?> weaponJson({
   'upgrade': [
     {'material': 'anjanath-material', 'points': 10},
   ],
+  'traits': ?traits,
   'stars': {'value': 4, 'estimated': true},
   'sources': [
     {'name': 'Kiranico', 'url': 'https://mhrise.kiranico.com'},

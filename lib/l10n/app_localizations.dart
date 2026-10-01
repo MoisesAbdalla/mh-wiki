@@ -915,6 +915,216 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'{tree}, {count}'**
   String weaponTreeSemantics(String tree, String count);
+
+  /// No description provided for @traitPhial.
+  ///
+  /// In pt, this message translates to:
+  /// **'Frasco'**
+  String get traitPhial;
+
+  /// No description provided for @traitShelling.
+  ///
+  /// In pt, this message translates to:
+  /// **'Projéteis'**
+  String get traitShelling;
+
+  /// No description provided for @traitKinsect.
+  ///
+  /// In pt, this message translates to:
+  /// **'Inseto'**
+  String get traitKinsect;
+
+  /// No description provided for @kinsectLevel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nível {level}'**
+  String kinsectLevel(int level);
+
+  /// No description provided for @traitSongs.
+  ///
+  /// In pt, this message translates to:
+  /// **'Músicas'**
+  String get traitSongs;
+
+  /// No description provided for @weaponSectionAmmo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Munição'**
+  String get weaponSectionAmmo;
+
+  /// No description provided for @arcShot.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tiro de arco'**
+  String get arcShot;
+
+  /// No description provided for @chargeShots.
+  ///
+  /// In pt, this message translates to:
+  /// **'Disparos por carga'**
+  String get chargeShots;
+
+  /// No description provided for @chargeLevel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Carga {level}'**
+  String chargeLevel(int level);
+
+  /// No description provided for @needsSkill.
+  ///
+  /// In pt, this message translates to:
+  /// **'precisa de habilidade'**
+  String get needsSkill;
+
+  /// No description provided for @coatings.
+  ///
+  /// In pt, this message translates to:
+  /// **'Revestimentos'**
+  String get coatings;
+
+  /// No description provided for @ammoLevels.
+  ///
+  /// In pt, this message translates to:
+  /// **'nível 1 · 2 · 3'**
+  String get ammoLevels;
+
+  /// No description provided for @ammoElementalLevels.
+  ///
+  /// In pt, this message translates to:
+  /// **'normal · perfurante'**
+  String get ammoElementalLevels;
+
+  /// No description provided for @ammoCapacitySemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'{ammo}: {capacity}'**
+  String ammoCapacitySemantics(String ammo, String capacity);
+
+  /// No description provided for @ammoNormal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Normal'**
+  String get ammoNormal;
+
+  /// No description provided for @ammoPierce.
+  ///
+  /// In pt, this message translates to:
+  /// **'Perfurante'**
+  String get ammoPierce;
+
+  /// No description provided for @ammoSpread.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dispersão'**
+  String get ammoSpread;
+
+  /// No description provided for @ammoShrapnel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Estilhaço'**
+  String get ammoShrapnel;
+
+  /// No description provided for @ammoSticky.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adesiva'**
+  String get ammoSticky;
+
+  /// No description provided for @ammoCluster.
+  ///
+  /// In pt, this message translates to:
+  /// **'Grupo'**
+  String get ammoCluster;
+
+  /// No description provided for @ammoFlaming.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fogo'**
+  String get ammoFlaming;
+
+  /// No description provided for @ammoWater.
+  ///
+  /// In pt, this message translates to:
+  /// **'Água'**
+  String get ammoWater;
+
+  /// No description provided for @ammoThunder.
+  ///
+  /// In pt, this message translates to:
+  /// **'Trovão'**
+  String get ammoThunder;
+
+  /// No description provided for @ammoFreeze.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gelo'**
+  String get ammoFreeze;
+
+  /// No description provided for @ammoDragon.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dragão'**
+  String get ammoDragon;
+
+  /// No description provided for @ammoPoison.
+  ///
+  /// In pt, this message translates to:
+  /// **'Veneno'**
+  String get ammoPoison;
+
+  /// No description provided for @ammoParalysis.
+  ///
+  /// In pt, this message translates to:
+  /// **'Paralisia'**
+  String get ammoParalysis;
+
+  /// No description provided for @ammoSleep.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sono'**
+  String get ammoSleep;
+
+  /// No description provided for @ammoExhaust.
+  ///
+  /// In pt, this message translates to:
+  /// **'Exaustão'**
+  String get ammoExhaust;
+
+  /// No description provided for @ammoRecover.
+  ///
+  /// In pt, this message translates to:
+  /// **'Recuperação'**
+  String get ammoRecover;
+
+  /// No description provided for @ammoDemon.
+  ///
+  /// In pt, this message translates to:
+  /// **'Demoníaca'**
+  String get ammoDemon;
+
+  /// No description provided for @ammoArmor.
+  ///
+  /// In pt, this message translates to:
+  /// **'Blindagem'**
+  String get ammoArmor;
+
+  /// No description provided for @ammoSlicing.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cortante'**
+  String get ammoSlicing;
+
+  /// No description provided for @ammoWyvern.
+  ///
+  /// In pt, this message translates to:
+  /// **'Serpe'**
+  String get ammoWyvern;
+
+  /// No description provided for @ammoTranq.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tranquilizante'**
+  String get ammoTranq;
 }
 
 class _AppLocalizationsDelegate

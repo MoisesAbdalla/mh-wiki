@@ -484,4 +484,115 @@ class AppLocalizationsPt extends AppLocalizations {
   String weaponTreeSemantics(String tree, String count) {
     return '$tree, $count';
   }
+
+  @override
+  String get traitPhial => 'Frasco';
+
+  @override
+  String get traitShelling => 'Projéteis';
+
+  @override
+  String get traitKinsect => 'Inseto';
+
+  @override
+  String kinsectLevel(int level) {
+    return 'Nível $level';
+  }
+
+  @override
+  String get traitSongs => 'Músicas';
+
+  @override
+  String get weaponSectionAmmo => 'Munição';
+
+  @override
+  String get arcShot => 'Tiro de arco';
+
+  @override
+  String get chargeShots => 'Disparos por carga';
+
+  @override
+  String chargeLevel(int level) {
+    return 'Carga $level';
+  }
+
+  @override
+  String get needsSkill => 'precisa de habilidade';
+
+  @override
+  String get coatings => 'Revestimentos';
+
+  @override
+  String get ammoLevels => 'nível 1 · 2 · 3';
+
+  @override
+  String get ammoElementalLevels => 'normal · perfurante';
+
+  @override
+  String ammoCapacitySemantics(String ammo, String capacity) {
+    return '$ammo: $capacity';
+  }
+
+  @override
+  String get ammoNormal => 'Normal';
+
+  @override
+  String get ammoPierce => 'Perfurante';
+
+  @override
+  String get ammoSpread => 'Dispersão';
+
+  @override
+  String get ammoShrapnel => 'Estilhaço';
+
+  @override
+  String get ammoSticky => 'Adesiva';
+
+  @override
+  String get ammoCluster => 'Grupo';
+
+  @override
+  String get ammoFlaming => 'Fogo';
+
+  @override
+  String get ammoWater => 'Água';
+
+  @override
+  String get ammoThunder => 'Trovão';
+
+  @override
+  String get ammoFreeze => 'Gelo';
+
+  @override
+  String get ammoDragon => 'Dragão';
+
+  @override
+  String get ammoPoison => 'Veneno';
+
+  @override
+  String get ammoParalysis => 'Paralisia';
+
+  @override
+  String get ammoSleep => 'Sono';
+
+  @override
+  String get ammoExhaust => 'Exaustão';
+
+  @override
+  String get ammoRecover => 'Recuperação';
+
+  @override
+  String get ammoDemon => 'Demoníaca';
+
+  @override
+  String get ammoArmor => 'Blindagem';
+
+  @override
+  String get ammoSlicing => 'Cortante';
+
+  @override
+  String get ammoWyvern => 'Serpe';
+
+  @override
+  String get ammoTranq => 'Tranquilizante';
 }

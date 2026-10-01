@@ -6,6 +6,7 @@ import 'package:mh_wiki/features/weapons/domain/entities/material_cost.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/sharpness.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_id.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_special.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_type.dart';
 
 /// A weapon of one game (006 data-model.md).
@@ -31,6 +32,7 @@ final class Weapon {
     this.upgrade = const [],
     this.imageAsset,
     this.sources = const [],
+    this.traits = WeaponTraits.none,
   });
 
   final WeaponId id;
@@ -61,6 +63,9 @@ final class Weapon {
   final EstimatedStars stars;
   final String? imageAsset;
   final List<SourceRef> sources;
+
+  /// Phial, shelling, kinsect, songs, shots or ammo (006 US4).
+  final WeaponTraits traits;
 
   /// Sunbreak ranks by rarity: 1–3 Low, 4–7 High, 8–10 Master (research R3).
   Rank get rank => rarity <= 3

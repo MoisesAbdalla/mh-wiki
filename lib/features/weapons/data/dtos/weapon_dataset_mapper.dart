@@ -66,6 +66,7 @@ abstract final class WeaponDatasetMapper {
             upgrade: costs(w.upgrade),
             stars: EstimatedStars(value: w.stars, estimated: w.starsEstimated),
             imageAsset: w.image,
+            traits: w.traits,
             sources: [
               for (final (name, url) in w.sources)
                 SourceRef(name: name, url: url),

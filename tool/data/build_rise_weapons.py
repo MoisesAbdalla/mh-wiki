@@ -182,6 +182,104 @@ def kiranico_detail(kid):
             'sharpness': sharp}
 
 
+# ---------------------------------------------------------------- type-specific traits
+
+# Kiranico's bowgun ammo abbreviations (the same on the pt-BR pages) → ammo ids.
+AMMO = {
+    'Nrm': 'normal', 'Prc': 'pierce', 'Spr': 'spread', 'Shr': 'shrapnel', 'Sti': 'sticky',
+    'Clu': 'cluster', 'Fir/P.': 'flaming', 'Wat/P.': 'water', 'Thn/P.': 'thunder',
+    'Ice/P.': 'freeze', 'Dra/P.': 'dragon', 'Poi': 'poison', 'Par': 'paralysis', 'Sle': 'sleep',
+    'Exh': 'exhaust', 'Rec': 'recover', 'Dem': 'demon', 'Amr': 'armor', 'Sli': 'slicing',
+    'Wyv': 'wyvern', 'Tra': 'tranq',
+}
+
+
+def _text(fragment):
+    return clean(re.sub(r'<[^>]+>', ' ', fragment))
+
+
+def list_traits(view, lang):
+    """{kiranico id: raw traits} from the type-specific cells of a cached weapon list.
+
+    The rows nest tables (bowgun ammo), so each weapon is the page slice between two weapon
+    icons rather than a regex over <tr> (006 research R13).
+    """
+    page = open(f'rise_weapons_v{view}.html' if lang == 'en' else f'rise_weapons_pt_v{view}.html',
+                encoding='utf8').read()
+    out = {}
+    for part in page.split('avatar/weapons/')[1:]:
+        kid = re.search(r'/data/weapons/(\d+)"', part)
+        if not kid:
+            continue
+        rare = part.find('Rare ')
+        body = part[:rare if rare > 0 else len(part)]
+        after_sharp = body[body.rfind('</svg>') + 6:] if '</svg>' in body else ''
+        raw = {}
+        if view in (5,):  # hunting horn: three songs
+            raw['songs'] = [_text(d) for d in re.findall(r'<div>([^<]+)</div>', after_sharp)]
+        elif view in (7, 8, 9, 10):  # gunlance, switch axe, charge blade, insect glaive
+            value = _text(after_sharp)
+            if value:
+                raw['value'] = value
+        elif view == 11:  # bow
+            arc = re.search(r'<div class="text-green-500">([^<]+)</div>', body)
+            charge_cell = body[arc.end():body.find('columns-3')] if arc else ''
+            raw['arcShot'] = _text(arc.group(1)) if arc else None
+            raw['chargeShots'] = [
+                {'name': _text(n), 'locked': 'gray' in (c or '')}
+                for c, n in re.findall(r'<div(?: class="([^"]*)")?>([^<]+)</div>', charge_cell)]
+            coat_cell = body[body.find('columns-3'):]
+            raw['coatings'] = [
+                {'name': _text(n), 'locked': 'gray' in (c or '')}
+                for c, n in re.findall(r'<div class="([^"]*)">([^<]+)</div>', coat_cell)]
+        elif view in (12, 13):  # bowguns
+            stats = re.findall(r'<div>\s*([^<]+?)\s*</div>', body[body.find('<table>'):])[:3]
+            raw['deviation'], raw['recoil'], raw['reload'] = [_text(x) for x in stats]
+            ammo = []
+            for name, cols in re.findall(r'<tr>\s*<td>([^<]+)</td>(.*?)</tr>', body, re.S):
+                levels = [int(n) for n in re.findall(r'<td[^>]*>(\d+)</td>', cols)]
+                if name.strip() in AMMO and any(levels):
+                    ammo.append({'ammo': AMMO[name.strip()], 'capacity': levels})
+            raw['ammo'] = ammo
+        out[kid.group(1)] = raw
+    return out
+
+
+def traits_of(view, en, pt):
+    """Joins the en and pt-BR raw traits of one weapon into the dataset's `traits`."""
+    if not en:
+        return None
+    def loc(a, b):
+        return {'en': a, **({'ptBr': b} if b else {})}
+    pt = pt or {}
+    if 'songs' in en:
+        songs = en['songs']
+        pts = pt.get('songs') or [None] * len(songs)
+        return {'songs': [loc(a, b) for a, b in zip(songs, pts)]}
+    if 'value' in en:
+        field = {7: 'shelling', 8: 'phial', 9: 'phial'}.get(view)
+        if view == 10:
+            return {'kinsectLevel': int(re.search(r'(\d+)', en['value']).group(1))}
+        if field == 'phial':
+            # The grid labels it "Frasco": keep "Impacto", "Veneno 23"...
+            short_en = re.sub(r' Phial', '', en['value'])
+            short_pt = re.sub(r'^Frasco d[eo] ', '', pt['value']) if pt.get('value') else None
+            return {field: loc(short_en, short_pt)}
+        return {field: loc(en['value'], pt.get('value'))}
+    if 'chargeShots' in en:
+        def pair(key):
+            a, b = en[key], pt.get(key) or [None] * len(en[key])
+            return [{'name': loc(x['name'], y['name'] if y else None),
+                     **({'locked': True} if x['locked'] else {})} for x, y in zip(a, b)]
+        out = {'chargeShots': pair('chargeShots'), 'coatings': pair('coatings')}
+        if en.get('arcShot'):
+            out['arcShot'] = loc(en['arcShot'], pt.get('arcShot'))
+        return out
+    if 'ammo' in en:
+        return {k: loc(en[k], pt.get(k)) for k in ('deviation', 'recoil', 'reload')} | {'ammo': en['ammo']}
+    return None
+
+
 def slots(f):
     out = []
     for level in (4, 3, 2, 1):
@@ -241,6 +339,7 @@ def main():
     for type_id, view, category, _icon, ranged in TYPES:
         en_rows, en_title = kiranico_list(view, 'en')
         pt_rows, pt_title = kiranico_list(view, 'pt')
+        en_traits, pt_traits = list_traits(view, 'en'), list_traits(view, 'pt')
         weapon_types.append({'id': type_id, 'name': {'en': en_title or category, 'ptBr': pt_title or category},
                              'ranged': ranged})
         kir_by_key = {key(r['name']): (kid, r) for kid, r in en_rows.items() if r['attack'] > 0}
@@ -320,6 +419,7 @@ def main():
                    if not ranged and ((detail or {}).get('sharpness') or sharpness(f)) else {}),
                 'previous': slug(f['Previous Name']) if f.get('Previous Name') else None,
                 'next': [slug(f[f'Next {i} Name']) for i in range(1, 6) if f.get(f'Next {i} Name')],
+                **({'traits': t} if (t := traits_of(view, en_traits.get(kid), pt_traits.get(kid))) else {}),
                 'forge': forge,
                 'upgrade': upgrade,
                 'stars': {'value': max(star_values) if star_values else FIRST_STAR[rank], 'estimated': True},

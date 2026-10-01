@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/presentation/widgets/notebook_section.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_catalog.dart';
 import 'package:mh_wiki/features/weapons/presentation/material_sources.dart';
@@ -69,6 +71,85 @@ void main() {
 
     await pumpDetail(tester, 'hunters-bow');
     expect(sectionNumbers(tester), [1, 3, 4]);
+  });
+
+  testWidgets('a bow gets the Munição card as number 2', (tester) async {
+    final bow = buildWeapon(
+      'traits-bow',
+      en: 'Traits Bow',
+      type: bowType,
+      tree: 'bone-tree',
+      treeEn: 'Bone Tree',
+      traits: const WeaponTraits(
+        arcShot: LocalizedText(en: 'Brace', ptBr: 'Defensivo'),
+        chargeShots: [
+          BowShot(
+            name: LocalizedText(en: 'Rapid Level 2', ptBr: 'Rápido nível 2'),
+          ),
+          BowShot(
+            name: LocalizedText(
+              en: 'Pierce Level 4',
+              ptBr: 'Perfurante nível 4',
+            ),
+            locked: true,
+          ),
+        ],
+        coatings: [
+          BowShot(
+            name: LocalizedText(en: 'Power Coating', ptBr: 'Revest. de Poder'),
+          ),
+          BowShot(name: LocalizedText(en: 'Para Coating'), locked: true),
+        ],
+      ),
+    );
+    catalog = weaponCatalog([...anjanathWeapons(), bow]);
+    await pumpDetail(tester, 'traits-bow');
+
+    expect(sectionNumbers(tester), [1, 2, 3, 4]);
+    expect(find.text('Munição'), findsOneWidget);
+    expect(find.text('Defensivo'), findsOneWidget);
+    expect(find.text('Rápido nível 2'), findsOneWidget);
+    expect(
+      find.text('Perfurante nível 4 (precisa de habilidade)'),
+      findsOneWidget,
+    );
+    expect(find.text('Revest. de Poder'), findsOneWidget);
+    expect(find.text('Para Coating'), findsNothing); // not usable
+  });
+
+  testWidgets('a bowgun lists its ammo; traits fill the Atributos grid', (
+    tester,
+  ) async {
+    final gun = buildWeapon(
+      'traits-gun',
+      en: 'Traits Gun',
+      type: bowType,
+      tree: 'bone-tree',
+      treeEn: 'Bone Tree',
+      traits: const WeaponTraits(
+        deviation: LocalizedText(en: 'Deviation None', ptBr: 'Desvio Nenhum'),
+        ammo: [
+          AmmoCapacity(kind: AmmoKind.normal, capacity: [6, 4, 0]),
+        ],
+      ),
+    );
+    final blade = buildWeapon(
+      'traits-blade',
+      en: 'Traits Blade',
+      traits: const WeaponTraits(
+        phial: LocalizedText(en: 'Impact', ptBr: 'Impacto'),
+      ),
+    );
+    catalog = weaponCatalog([...anjanathWeapons(), gun, blade]);
+
+    await pumpDetail(tester, 'traits-gun');
+    expect(find.text('Desvio Nenhum'), findsOneWidget);
+    expect(find.text('Normal'), findsOneWidget);
+    expect(find.text('6 · 4 · –'), findsOneWidget);
+
+    await pumpDetail(tester, 'traits-blade');
+    expect(find.text('Frasco'), findsOneWidget);
+    expect(find.text('Impacto'), findsOneWidget);
   });
 
   testWidgets('Atributos: values, slot badges and their semantics', (

@@ -9,6 +9,7 @@ import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_catalog.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_id.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_special.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_type.dart';
 
 const greatSword = WeaponType(
@@ -59,6 +60,7 @@ Weapon buildWeapon(
   List<MaterialCost> upgrade = const [],
   int stars = 1,
   String? imageAsset,
+  WeaponTraits traits = WeaponTraits.none,
 }) => Weapon(
   id: wid(slug),
   type: type,
@@ -79,6 +81,7 @@ Weapon buildWeapon(
   upgrade: upgrade,
   stars: EstimatedStars(value: stars),
   imageAsset: imageAsset,
+  traits: traits,
 );
 
 /// The Anjanath Great Sword tree of Rise (real values), plus a branch, a

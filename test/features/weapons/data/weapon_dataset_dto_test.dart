@@ -80,6 +80,51 @@ void main() {
     rejects([weaponJson(sharpness: null)]);
   });
 
+  test('reads the traits of a type and rejects foreign ones', () {
+    final bow = catalog(
+      weaponDatasetJson(
+        weapons: [
+          weaponJson(
+            slug: 'hunters-bow',
+            type: 'bow',
+            sharpness: null,
+            traits: {
+              'arcShot': {'en': 'Brace', 'ptBr': 'Defensivo'},
+              'chargeShots': [
+                {
+                  'name': {'en': 'Rapid Level 2', 'ptBr': 'Rápido nível 2'},
+                },
+                {
+                  'name': {
+                    'en': 'Pierce Level 3',
+                    'ptBr': 'Perfurante nível 3',
+                  },
+                  'locked': true,
+                },
+              ],
+              'coatings': [
+                {
+                  'name': {'en': 'Power Coating'},
+                },
+              ],
+            },
+          ),
+        ],
+      ),
+    ).weapons.single;
+    expect(bow.traits.arcShot!.ptBr, 'Defensivo');
+    expect(bow.traits.chargeShots.last.locked, isTrue);
+    expect(bow.traits.hasAmmo, isTrue);
+
+    rejects([
+      weaponJson(
+        traits: {
+          'phial': {'en': 'Impact'},
+        },
+      ),
+    ]);
+  });
+
   test('rejects out-of-range slots, rarity and attack', () {
     rejects([
       weaponJson(slots: [5]),

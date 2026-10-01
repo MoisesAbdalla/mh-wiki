@@ -3,6 +3,7 @@ import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/features/monsters/data/datasources/monster_datasource.dart';
 import 'package:mh_wiki/features/monsters/data/dtos/json_reader.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/special_kind.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
 
 const supportedWeaponSchemaVersion = 1;
 
@@ -139,6 +140,7 @@ final class WeaponDto {
     required this.stars,
     required this.starsEstimated,
     required this.image,
+    required this.traits,
     required this.sources,
   });
 
@@ -235,6 +237,7 @@ final class WeaponDto {
       stars: starValue,
       starsEstimated: stars.boolean('estimated'),
       image: r.optionalString('image'),
+      traits: _traits(r, typeId),
       sources: [
         for (final s in r.objects('sources'))
           (s.string('name'), s.string('url')),
@@ -262,6 +265,7 @@ final class WeaponDto {
   final int stars;
   final bool starsEstimated;
   final String? image;
+  final WeaponTraits traits;
   final List<(String, String)> sources;
 }
 
@@ -283,4 +287,53 @@ List<int> _ints(JsonReader r, String key) {
     for (final v in raw)
       if (v is num) v.toInt() else r.fail('"$key" must contain numbers'),
   ];
+}
+
+/// The fields each weapon type may carry in `traits` (006 data-model).
+const _traitsByType = {
+  'charge-blade': {'phial'},
+  'switch-axe': {'phial'},
+  'gunlance': {'shelling'},
+  'insect-glaive': {'kinsectLevel'},
+  'hunting-horn': {'songs'},
+  'bow': {'arcShot', 'chargeShots', 'coatings'},
+  'light-bowgun': {'deviation', 'recoil', 'reload', 'ammo'},
+  'heavy-bowgun': {'deviation', 'recoil', 'reload', 'ammo'},
+};
+
+WeaponTraits _traits(JsonReader weapon, String typeId) {
+  final r = weapon.optionalObject('traits');
+  if (r == null) return WeaponTraits.none;
+  final allowed = _traitsByType[typeId] ?? const <String>{};
+  for (final key in r.json.keys) {
+    if (!allowed.contains(key)) r.fail('"$key" is not a trait of $typeId');
+  }
+  LocalizedText? text(String key) =>
+      r.has(key) ? _localized(r.object(key)) : null;
+  List<BowShot> shots(String key) => [
+    for (final s in r.optionalObjects(key))
+      BowShot(
+        name: _localized(s.object('name')),
+        locked: s.has('locked') && s.boolean('locked'),
+      ),
+  ];
+  return WeaponTraits(
+    phial: text('phial'),
+    shelling: text('shelling'),
+    kinsectLevel: r.optionalNumber('kinsectLevel')?.toInt(),
+    songs: [for (final s in r.optionalObjects('songs')) _localized(s)],
+    arcShot: text('arcShot'),
+    chargeShots: shots('chargeShots'),
+    coatings: shots('coatings'),
+    deviation: text('deviation'),
+    recoil: text('recoil'),
+    reload: text('reload'),
+    ammo: [
+      for (final a in r.optionalObjects('ammo'))
+        AmmoCapacity(
+          kind: a.enumValue('ammo', AmmoKind.values),
+          capacity: _ints(a, 'capacity'),
+        ),
+    ],
+  );
 }
