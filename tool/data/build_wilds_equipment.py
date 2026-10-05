@@ -351,7 +351,12 @@ def main():
             'sources': [{'name': 'wilds.mhdb.io', 'url': API},
                         {'name': 'Monster Hunter Wiki (icons, renders)', 'url': 'https://monsterhunterwiki.org'},
                         {'name': 'Kiranico (Wilds armor renders)', 'url': 'https://mhwilds.kiranico.com'}]}
+    skills_all = {sk['id']: sk for sk in build_skills()}
+    used_skills = sorted({ref['skill'] for w in weapons for ref in w['skills']})
+    weapon_skills = [{'id': i, 'name': skills_all[i]['name'], 'max': len(skills_all[i]['levels'])}
+                     for i in used_skills]
     weapons_out = {**meta, 'starRule': 'rarity (estimated)', 'weaponTypes': types,
+                   'skills': weapon_skills,
                    'materials': sorted(weapon_mats.values(), key=lambda m: m['id']), 'weapons': weapons}
     armor_out = {**meta, 'skills': build_skills(), 'decorations': build_decorations(ids),
                  'materials': sorted(armor_mats.values(), key=lambda m: m['id']),

@@ -1,5 +1,6 @@
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
+import 'package:mh_wiki/core/domain/material_cost.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/features/armor/domain/entities/armor_piece.dart';
 import 'package:mh_wiki/features/armor/domain/entities/skill.dart';
@@ -11,6 +12,9 @@ final class ArmorSet {
     required this.name,
     required this.rarity,
     required this.pieces,
+    this.declaredRank,
+    this.bonus,
+    this.groupBonus,
   });
 
   final String id;
@@ -18,11 +22,22 @@ final class ArmorSet {
   final int rarity;
   final List<ArmorPiece> pieces;
 
-  Rank get rank => rarity <= 3
-      ? Rank.low
-      : rarity <= 7
-      ? Rank.high
-      : Rank.master;
+  /// The rank the dataset gives (Wilds); otherwise it follows the rarity.
+  final Rank? declaredRank;
+
+  /// The set bonus (Wilds): a skill with steps by piece count.
+  final SetBonus? bonus;
+
+  /// The group bonus (Wilds): usually one step of 3 pieces.
+  final SetBonus? groupBonus;
+
+  Rank get rank =>
+      declaredRank ??
+      (rarity <= 3
+          ? Rank.low
+          : rarity <= 7
+          ? Rank.high
+          : Rank.master);
 
   int get defense => pieces.fold(0, (sum, p) => sum + p.defense);
 
@@ -48,6 +63,7 @@ final class ArmorCatalog {
     required this.sets,
     required this.skills,
     required this.decorations,
+    this.talismans = const [],
   }) : _skills = {for (final s in skills) s.id: s},
        _sets = {for (final s in sets) s.id: s};
 
@@ -55,6 +71,9 @@ final class ArmorCatalog {
   final List<ArmorSet> sets;
   final List<Skill> skills;
   final List<ArmorDecoration> decorations;
+
+  /// Talismans with their ranks (Wilds, 010 FR-008).
+  final List<Talisman> talismans;
   final Map<String, Skill> _skills;
   final Map<String, ArmorSet> _sets;
 
@@ -63,4 +82,48 @@ final class ArmorCatalog {
   Skill? skill(String id) => _skills[id];
 
   ArmorSet? set(String id) => _sets[id];
+}
+
+/// A set or group bonus: [skill] and what each piece count gives.
+final class SetBonus {
+  const SetBonus({required this.skillId, required this.steps});
+
+  final String skillId;
+  final List<SetBonusStep> steps;
+}
+
+final class SetBonusStep {
+  const SetBonusStep({
+    required this.pieces,
+    required this.name,
+    required this.description,
+  });
+
+  final int pieces;
+  final LocalizedText name;
+  final LocalizedText description;
+}
+
+/// A talisman and its ranks (I, II, III…).
+final class Talisman {
+  const Talisman({required this.id, required this.ranks});
+
+  final String id;
+  final List<TalismanRank> ranks;
+}
+
+final class TalismanRank {
+  const TalismanRank({
+    required this.level,
+    required this.name,
+    required this.rarity,
+    required this.skills,
+    this.forge = const [],
+  });
+
+  final int level;
+  final LocalizedText name;
+  final int rarity;
+  final List<SkillLevel> skills;
+  final List<MaterialCost> forge;
 }

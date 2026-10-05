@@ -1,3 +1,4 @@
+import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/source_ref.dart';
@@ -35,6 +36,7 @@ final class Weapon {
     this.sources = const [],
     this.traits = WeaponTraits.none,
     this.rampageSkills = const [],
+    this.skills = const [],
   });
 
   final WeaponId id;
@@ -72,8 +74,14 @@ final class Weapon {
   /// The Rampage skills to choose from (Low/High Rank, 007 US4).
   final List<RampageSkill> rampageSkills;
 
-  /// Sunbreak ranks by rarity: 1–3 Low, 4–7 High, 8–10 Master (research R3).
-  Rank get rank => rarity <= 3
+  /// The weapon's own skills (Wilds, 010 FR-003); empty for Rise.
+  final List<WeaponSkill> skills;
+
+  /// Ranks by rarity: Sunbreak 1–3 Low, 4–7 High, 8–10 Master (006
+  /// research R3); Wilds 1–4 Low, 5–8 High.
+  Rank get rank => id.game == Game.wilds
+      ? (rarity <= 4 ? Rank.low : Rank.high)
+      : rarity <= 3
       ? Rank.low
       : rarity <= 7
       ? Rank.high
@@ -84,4 +92,19 @@ final class Weapon {
 
   @override
   int get hashCode => id.hashCode;
+}
+
+/// A skill a weapon carries, with its level and the skill's max.
+final class WeaponSkill {
+  const WeaponSkill({
+    required this.id,
+    required this.name,
+    required this.level,
+    required this.max,
+  });
+
+  final String id;
+  final LocalizedText name;
+  final int level;
+  final int max;
 }

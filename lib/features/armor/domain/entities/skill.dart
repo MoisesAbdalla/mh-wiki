@@ -1,6 +1,12 @@
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/material_cost.dart';
 
+/// What gives a skill in the Wilds (010 FR-006); Rise skills are armor.
+enum SkillKind { weapon, armor, set, group }
+
+/// Which slots a decoration fits in the Wilds (010 FR-007).
+enum DecorationKind { weapon, armor }
+
 /// An armor skill and what each of its levels does.
 final class Skill {
   const Skill({
@@ -8,7 +14,10 @@ final class Skill {
     required this.name,
     required this.description,
     required this.levels,
+    this.kind = SkillKind.armor,
   });
+
+  final SkillKind kind;
 
   final String id;
   final LocalizedText name;
@@ -42,6 +51,8 @@ final class ArmorDecoration {
     required this.slotLevel,
     required this.skills,
     this.forge = const [],
+    this.kind = DecorationKind.armor,
+    this.iconAsset,
   });
 
   final String id;
@@ -49,6 +60,10 @@ final class ArmorDecoration {
   final int slotLevel;
   final List<SkillLevel> skills;
   final List<MaterialCost> forge;
+  final DecorationKind kind;
+
+  /// The game's own decoration icon (Wilds); null for Rise.
+  final String? iconAsset;
 
   @override
   bool operator ==(Object other) => other is ArmorDecoration && other.id == id;

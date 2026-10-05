@@ -48,12 +48,12 @@ description: "Task list for 010 Armas e Armaduras da Wilds"
 
 ## Phase 2: Foundational
 
-- [ ] T006 [P] DTO tests (weapons and armor) for the optional fields: Wilds weapon skills, no
+- [X] T006 [P] DTO tests (weapons and armor) for the optional fields: Wilds weapon skills, no
   Rampage, `artian`; skill kind, decoration kind and two skills, set bonus steps, group bonus and
   talisman ranks. Rise files still parse unchanged.
-- [ ] T007 Implement the domain and DTO additions: `WeaponSkill`, the Artian entities, `SkillKind`,
+- [X] T007 Implement the domain and DTO additions: `WeaponSkill`, the Artian entities, `SkillKind`,
   `DecorationKind`, `SetBonus`, `Talisman`, and the readers.
-- [ ] T008 [P] Real-dataset tests `test/features/{weapons,armor}/data/real_wilds_*_test.dart`:
+- [X] T008 [P] Real-dataset tests `test/features/{weapons,armor}/data/real_wilds_*_test.dart`:
   - counts match the source (SC-001), with pt-BR names for at least 99%;
   - Sieglinde (1008, 15%, Veneno 300, ③②①, Prolongar Veneno 1, Status Crítico 3);
   - Arkveld α (bonus steps and group);
