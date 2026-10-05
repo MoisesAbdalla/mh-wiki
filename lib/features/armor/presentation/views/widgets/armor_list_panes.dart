@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
+import 'package:mh_wiki/core/presentation/game_icons.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 import 'package:mh_wiki/core/presentation/widgets/ruled_row.dart';
 import 'package:mh_wiki/core/presentation/widgets/underline_tabs.dart';
+import 'package:mh_wiki/features/armor/domain/entities/skill.dart';
 import 'package:mh_wiki/features/armor/presentation/armor_controller.dart';
 import 'package:mh_wiki/features/armor/presentation/views/widgets/armor_set_card.dart';
 import 'package:mh_wiki/features/armor/presentation/views/widgets/armor_widgets.dart';
@@ -56,6 +59,11 @@ class ArmorListPane extends StatelessWidget {
                     value: ArmorTab.decorations,
                     text: l10n.armorTabDecorations,
                   ),
+                  if (state.catalog.talismans.isNotEmpty)
+                    TabOption(
+                      value: ArmorTab.talismans,
+                      text: l10n.talismansTab,
+                    ),
                 ],
                 selected: state.tab,
                 onChanged: controller.setTab,
@@ -72,6 +80,7 @@ class ArmorListPane extends StatelessWidget {
                   ),
                   _SkillList(state: state, controller: controller),
                   _DecorationList(state: state, controller: controller),
+                  _TalismanList(state: state, controller: controller),
                 ],
               ),
             ),
@@ -243,9 +252,17 @@ class _SkillList extends StatelessWidget {
                     label: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          skill.name.resolve(language),
-                          style: notebookTitle(size: 16),
+                        Wrap(
+                          spacing: 8,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Text(
+                              skill.name.resolve(language),
+                              style: notebookTitle(size: 16),
+                            ),
+                            if (state.catalog.game == Game.wilds)
+                              SkillKindSeal(kind: skill.kind),
+                          ],
                         ),
                         Text(
                           skill.description.resolve(language),
@@ -298,7 +315,15 @@ class _DecorationList extends StatelessWidget {
                   textSize: 15,
                   options: [
                     TabOption(value: null, text: l10n.allSlots),
-                    for (var level = 1; level <= 4; level++)
+                    for (
+                      var level = 1;
+                      level <=
+                          state.catalog.decorations.fold<int>(
+                            1,
+                            (m, d) => d.slotLevel > m ? d.slotLevel : m,
+                          );
+                      level++
+                    )
                       TabOption(
                         value: level,
                         text: '$level',
@@ -309,6 +334,30 @@ class _DecorationList extends StatelessWidget {
                   onChanged: controller.setDecorationSlot,
                 ),
               ),
+              if (state.catalog.decorations.any(
+                (d) => d.kind == DecorationKind.weapon,
+              ))
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: gutter),
+                  child: UnderlineTabs<DecorationKind?>(
+                    key: const Key('decoration-kind'),
+                    textSize: 15,
+                    ruled: false,
+                    options: [
+                      TabOption(value: null, text: l10n.decoKindAll),
+                      TabOption(
+                        value: DecorationKind.weapon,
+                        text: l10n.decoKindWeapon,
+                      ),
+                      TabOption(
+                        value: DecorationKind.armor,
+                        text: l10n.decoKindArmor,
+                      ),
+                    ],
+                    selected: state.decorationKind,
+                    onChanged: controller.setDecorationKind,
+                  ),
+                ),
               SearchField(
                 text: state.decorationText,
                 hint: l10n.searchDecorationHint,
@@ -341,7 +390,10 @@ class _DecorationList extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: gutter),
                   child: RuledRow(
-                    leading: SlotGems(slots: [deco.slotLevel]),
+                    leading: DecorationIcon(
+                      decoration: deco,
+                      game: state.catalog.game,
+                    ),
                     label: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -397,3 +449,77 @@ class _Message extends StatelessWidget {
     );
   }
 }
+
+/// The talismans with their ranks (Wilds, 010 FR-008).
+class _TalismanList extends StatelessWidget {
+  const _TalismanList({required this.state, required this.controller});
+
+  final ArmorLoaded state;
+  final ArmorController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    final language = controller.language;
+    final gutter = Space.gutter(MediaQuery.sizeOf(context).width);
+    final muted = Theme.of(context).textTheme.bodySmall
+        ?.copyWith(color: HunterPalette.textMuted);
+    final talismans = state.catalog.talismans;
+    return ListView.builder(
+      key: const PageStorageKey('armor-talismans'),
+      itemCount: talismans.length,
+      itemBuilder: (context, i) {
+        final t = talismans[i];
+        final first = t.ranks.first;
+        final last = t.ranks.last;
+        final skill = first.skills.isEmpty
+            ? null
+            : state.catalog.skill(first.skills.first.skillId);
+        final icon = GameIcons.armorPart(
+          'talisman',
+          last.rarity,
+          state.catalog.game,
+        );
+        return InkWell(
+          onTap: () => controller.select(ArmorTab.talismans, t.id),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: gutter),
+            child: RuledRow(
+              leading: icon == null
+                  ? null
+                  : Image.asset(
+                      icon,
+                      width: 30,
+                      height: 30,
+                      excludeFromSemantics: true,
+                      errorBuilder: (_, _, _) => const SizedBox(width: 30),
+                    ),
+              label: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    talismanFamilyName(first.name.resolve(language)),
+                    style: notebookTitle(size: 16),
+                  ),
+                  Text(
+                    [
+                      ?skill?.name.resolve(language),
+                      '${_roman(first.level)}–${_roman(last.level)}',
+                    ].join(' · '),
+                    style: muted,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+/// "Amuleto da Fartura I" → "Amuleto da Fartura".
+String talismanFamilyName(String rankName) =>
+    rankName.replaceFirst(RegExp(r'\s+[IVX]+$'), '');
+
+String _roman(int n) =>
+    const ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'][n.clamp(0, 8)];

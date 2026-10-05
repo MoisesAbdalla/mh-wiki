@@ -180,6 +180,17 @@ Widget armorDetailFor(
       onOpenSet: (id) => controller.select(ArmorTab.sets, id),
     );
   }
+  if (controller.selectedTalisman case final talisman?) {
+    return TalismanDetailView(
+      key: ValueKey(('talisman', talisman.id)),
+      talisman: talisman,
+      catalog: catalog,
+      sources: sources,
+      onOpenMonster: onOpenMonster,
+      language: language,
+      onOpenSkill: (s) => controller.select(ArmorTab.skills, s.id),
+    );
+  }
   if (controller.selectedDecoration case final deco?) {
     return DecorationDetailView(
       key: ValueKey(('decoration', deco.id)),

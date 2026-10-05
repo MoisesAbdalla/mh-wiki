@@ -279,7 +279,8 @@ def build_armor(mats, ids):
             piece = {
                 'id': pid, 'set': set_id, 'part': p['kind'], 'name': text(p['name'], pp.get('name')),
                 'description': text(p.get('description') or '', pp.get('description')),
-                'rarity': p['rarity'], 'defense': p['defense']['base'], 'maxDefense': p['defense']['max'],
+                'rarity': p['rarity'], 'rank': p['rank'],
+                'defense': p['defense']['base'], 'maxDefense': p['defense']['max'],
                 'resistances': {k: p['resistances'][k] for k in ('fire', 'water', 'thunder', 'ice', 'dragon')},
                 'slots': [s for s in p.get('slots') or [] if s],
                 'skills': skill_refs(p.get('skills'), ids),

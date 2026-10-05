@@ -87,7 +87,7 @@ description: "Task list for 010 Armas e Armaduras da Wilds"
 
 ## Phase 4: User Story 2 - Armaduras da Wilds (P2)
 
-- [ ] T012 [P] [US2] Widget tests:
+- [X] T012 [P] [US2] Widget tests:
   - the Wilds tabs: Conjuntos, Habilidades, Joias, Talismãs;
   - set pieces with the Wilds part icons by rarity;
   - the "Bônus do conjunto" card (steps and group);
@@ -95,7 +95,7 @@ description: "Task list for 010 Armas e Armaduras da Wilds"
   - the skill kind seal;
   - the Joias kind and slot filters, with two-skill rows;
   - the Talismãs ranks.
-- [ ] T013 [US2] Implement them in the armor views and controller: a talismans tab only when the
+- [X] T013 [US2] Implement them in the armor views and controller: a talismans tab only when the
   catalog has talismans, and a decoration kind filter.
 
 ---

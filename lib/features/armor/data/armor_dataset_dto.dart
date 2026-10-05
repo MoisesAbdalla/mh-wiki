@@ -173,6 +173,7 @@ ArmorCatalog readArmorDataset(
         skills: skillLevels(r),
         forge: forge(r),
         imageAsset: r.optionalString('image'),
+        declaredRank: r.has('rank') ? r.enumValue('rank', Rank.values) : null,
         sources: [
           for (final s in r.optionalObjects('sources'))
             SourceRef(name: s.string('name'), url: s.string('url')),
