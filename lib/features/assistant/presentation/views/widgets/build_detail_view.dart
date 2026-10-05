@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
@@ -22,6 +23,10 @@ class BuildDetailView extends StatelessWidget {
     this.onSave,
     this.onRename,
     this.onDelete,
+    this.requested,
+    this.title,
+    this.seal,
+    this.top,
     super.key,
   });
 
@@ -39,6 +44,20 @@ class BuildDetailView extends StatelessWidget {
   final VoidCallback? onSave;
   final VoidCallback? onRename;
   final VoidCallback? onDelete;
+
+  /// Set for a Montar build result (009): skill id → wanted level. The page
+  /// then opens with "Habilidades pedidas" and "Também vem" instead of the
+  /// skills card.
+  final Map<String, int>? requested;
+
+  /// Replaces the build's name ("Opção 1").
+  final String? title;
+
+  /// Replaces the stage seal (the "completa" / "quase" seal).
+  final Widget? seal;
+
+  /// Shown above the header (the "‹ 1 de N ›" navigation).
+  final Widget? top;
 
   @override
   Widget build(BuildContext context) {
@@ -83,9 +102,13 @@ class BuildDetailView extends StatelessWidget {
           part: l10n.partTalisman,
           icon: partIcon('talisman', rarest),
           item: BuildItem(ref: t.skill, decorations: t.decorations),
-          label:
-              '${t.skill.name.resolve(language)} '
-              '${l10n.skillLevelShort(t.level)}',
+          label: [
+            '${t.skill.name.resolve(language)} '
+                '${l10n.skillLevelShort(t.level)}',
+            if (t.second case final s?)
+              '${s.skill.name.resolve(language)} '
+                  '${l10n.skillLevelShort(s.level)}',
+          ].join(' · '),
           language: language,
           onOpen: onOpen,
           last: last,
@@ -97,9 +120,12 @@ class BuildDetailView extends StatelessWidget {
     final decorations = [...curated.decorations]
       ..sort((a, b) => _slot(b.decoration).compareTo(_slot(a.decoration)));
 
+    final wanted = requested;
+    var n = 0;
     return ListView(
       padding: const EdgeInsets.only(top: 12, bottom: 32),
       children: [
+        ?top,
         Padding(
           padding: EdgeInsets.fromLTRB(gutter + 4, 4, gutter, 14),
           child: Column(
@@ -108,7 +134,7 @@ class BuildDetailView extends StatelessWidget {
               Semantics(
                 header: true,
                 child: Text(
-                  name ?? curated.name,
+                  title ?? name ?? curated.name,
                   style: notebookTitle(size: 26, height: 1.05),
                 ),
               ),
@@ -123,21 +149,37 @@ class BuildDetailView extends StatelessWidget {
                 runSpacing: 2,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  StageSeal(curated.stageLabel),
-                  Text('$type · ${curated.sourceName}', style: muted),
+                  seal ?? StageSeal(curated.stageLabel),
+                  Text(
+                    wanted == null
+                        ? '$type · ${curated.sourceName}'
+                        : '$type · ${curated.stageLabel}',
+                    style: muted,
+                  ),
                 ],
               ),
             ],
           ),
         ),
+        if (wanted != null)
+          NotebookSection(
+            number: ++n,
+            title: l10n.requestedSkills,
+            child: _RequestedSkills(
+              curated: curated,
+              wanted: wanted,
+              language: language,
+              onOpen: onOpen,
+            ),
+          ),
         NotebookSection(
-          number: 1,
+          number: ++n,
           title: l10n.buildSectionEquipment,
           child: Column(children: rows),
         ),
-        if (curated.skills.isNotEmpty)
+        if (wanted == null && curated.skills.isNotEmpty)
           NotebookSection(
-            number: 2,
+            number: ++n,
             title: l10n.buildSectionSkills,
             child: Column(
               children: [
@@ -161,7 +203,7 @@ class BuildDetailView extends StatelessWidget {
           ),
         if (decorations.isNotEmpty)
           NotebookSection(
-            number: 3,
+            number: ++n,
             title: l10n.buildSectionDecorations,
             child: Column(
               children: [
@@ -203,9 +245,11 @@ class BuildDetailView extends StatelessWidget {
                       ),
                   ],
                 ),
-              const SizedBox(height: 12),
-              Text(l10n.buildSourceNote(curated.sourceName), style: muted),
-              SelectableText(curated.sourceUrl, style: muted),
+              if (wanted == null) ...[
+                const SizedBox(height: 12),
+                Text(l10n.buildSourceNote(curated.sourceName), style: muted),
+                SelectableText(curated.sourceUrl, style: muted),
+              ],
             ],
           ),
         ),
@@ -216,6 +260,122 @@ class BuildDetailView extends StatelessWidget {
   /// The slot level of a decoration, from the digit its name ends with.
   static int _slot(CatalogRef d) =>
       int.tryParse(RegExp(r'(\d)$').firstMatch(d.name.en)?.group(1) ?? '') ?? 0;
+}
+
+/// "Habilidades pedidas": each wanted skill with pips up to the wanted
+/// level (short ones in red) and ✓ or "falta n"; then "Também vem".
+class _RequestedSkills extends StatelessWidget {
+  const _RequestedSkills({
+    required this.curated,
+    required this.wanted,
+    required this.language,
+    required this.onOpen,
+  });
+
+  final CuratedBuild curated;
+  final Map<String, int> wanted;
+  final NameLanguage language;
+  final ValueChanged<CatalogRef>? onOpen;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final small = Theme.of(context).textTheme.bodySmall;
+    final byId = {for (final s in curated.skills) s.skill.id: s};
+    final extras = [
+      for (final s in curated.skills)
+        if (!wanted.containsKey(s.skill.id))
+          '${s.skill.name.resolve(language)} ${s.level}',
+    ];
+    final entries = wanted.entries.toList();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        for (final (i, e) in entries.indexed)
+          () {
+            final s = byId[e.key];
+            final got = s?.level ?? 0;
+            final short = e.value - got;
+            final name = s?.skill.name.resolve(language) ?? e.key;
+            return _Tappable(
+              ref:
+                  s?.skill ??
+                  CatalogRef(
+                    id: e.key,
+                    name: LocalizedText(en: e.key),
+                    kind: RefKind.skill,
+                  ),
+              onOpen: onOpen,
+              semanticsLabel: short > 0
+                  ? l10n.skillMissingSemantics(name, got, e.value, short)
+                  : l10n.skillProgressSemantics(name, got, e.value),
+              child: RuledRow(
+                ruled: i < entries.length - 1,
+                label: Text(name),
+                trailing: Wrap(
+                  spacing: 6,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    WantedPips(got: got, want: e.value),
+                    if (short > 0)
+                      Text(
+                        l10n.missingN(short),
+                        style: small?.copyWith(color: HunterPalette.negative),
+                      )
+                    else
+                      const Text(
+                        '✓',
+                        style: TextStyle(color: HunterPalette.positive),
+                      ),
+                  ],
+                ),
+              ),
+            );
+          }(),
+        if (extras.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(
+              l10n.alsoComes(extras.join(' · ')),
+              style: small?.copyWith(color: HunterPalette.textMuted),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+/// Pips up to [want]: gold up to [got], red outlines for the levels short.
+class WantedPips extends StatelessWidget {
+  const WantedPips({required this.got, required this.want, super.key});
+
+  final int got;
+  final int want;
+
+  @override
+  Widget build(BuildContext context) => ExcludeSemantics(
+    child: Wrap(
+      spacing: 3,
+      runSpacing: 3,
+      children: [
+        for (var i = 1; i <= want; i++)
+          Container(
+            key: ValueKey(('wanted-pip', i, i <= got)),
+            width: 10,
+            height: 10,
+            decoration: BoxDecoration(
+              color: i <= got
+                  ? HunterPalette.gold
+                  : HunterPalette.negative.withValues(alpha: 0.25),
+              border: Border.all(
+                color: i <= got ? HunterPalette.gold : HunterPalette.negative,
+              ),
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+      ],
+    ),
+  );
 }
 
 /// The game's icon of an equipment part in its rarity colour (feature 008,

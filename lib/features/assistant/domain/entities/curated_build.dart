@@ -59,10 +59,19 @@ final class BuildTalisman {
     required this.level,
     required this.note,
     this.decorations = const [],
+    this.second,
+    this.slots = const [],
   });
 
   final CatalogRef skill;
   final int level;
+
+  /// A user talisman's second skill and level (009).
+  final ({CatalogRef skill, int level})? second;
+
+  /// A user talisman's slot levels, highest first (009); empty for a
+  /// guide's suggestion.
+  final List<int> slots;
 
   /// The guide's requirement, e.g. "Level 3 with desired slots or better".
   final String note;

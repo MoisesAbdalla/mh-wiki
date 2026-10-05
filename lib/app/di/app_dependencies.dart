@@ -5,6 +5,10 @@ import 'package:mh_wiki/features/armor/domain/repositories/armor_repository.dart
 import 'package:mh_wiki/features/armor/domain/usecases/load_armor_catalog.dart';
 import 'package:mh_wiki/features/armor/presentation/armor_controller.dart';
 import 'package:mh_wiki/features/assistant/data/assistant_repositories.dart';
+import 'package:mh_wiki/features/assistant/data/build_searcher.dart';
+import 'package:mh_wiki/features/assistant/data/optimizer_repositories.dart';
+import 'package:mh_wiki/features/assistant/domain/optimizer/optimizer_repositories.dart';
+import 'package:mh_wiki/features/assistant/presentation/optimizer_controller.dart';
 import 'package:mh_wiki/features/assistant/domain/assistant_domain.dart';
 import 'package:mh_wiki/features/assistant/presentation/assistant_controller.dart';
 import 'package:mh_wiki/features/monsters/data/datasources/asset_monster_datasource.dart';
@@ -39,6 +43,9 @@ final class AppDependencies {
     required this.buildRepository,
     required this.savedBuildsRepository,
     required this.assistantPrefsRepository,
+    required this.optimizerRepository,
+    required this.talismanRepository,
+    required this.requestRepository,
   });
 
   static Future<AppDependencies> create({AssetBundle? bundle}) async {
@@ -52,6 +59,9 @@ final class AppDependencies {
       buildRepository: AssetBuildRepository(assets),
       savedBuildsRepository: PrefsSavedBuildsRepository(prefs),
       assistantPrefsRepository: PrefsAssistantPrefsRepository(prefs),
+      optimizerRepository: AssetOptimizerRepository(assets),
+      talismanRepository: PrefsTalismanRepository(prefs),
+      requestRepository: PrefsRequestRepository(prefs),
     );
   }
 
@@ -62,6 +72,9 @@ final class AppDependencies {
   final BuildRepository buildRepository;
   final SavedBuildsRepository savedBuildsRepository;
   final AssistantPrefsRepository assistantPrefsRepository;
+  final OptimizerRepository optimizerRepository;
+  final TalismanRepository talismanRepository;
+  final RequestRepository requestRepository;
 
   MonsterListController createMonsterListController() => MonsterListController(
     loadCatalog: LoadMonsterCatalog(monsterRepository),
@@ -80,6 +93,16 @@ final class AppDependencies {
     loadCatalog: LoadBuildCatalog(buildRepository),
     saved: savedBuildsRepository,
     prefs: assistantPrefsRepository,
+  );
+
+  OptimizerController createOptimizerController(
+    AssistantController assistant,
+  ) => OptimizerController(
+    assistant: assistant,
+    loadCatalog: LoadOptimizerCatalog(optimizerRepository),
+    talismanRepository: talismanRepository,
+    requestRepository: requestRepository,
+    searcher: createBuildSearcher(),
   );
 
   SettingsController createSettingsController() => SettingsController(

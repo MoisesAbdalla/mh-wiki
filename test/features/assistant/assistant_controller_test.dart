@@ -73,11 +73,11 @@ void main() {
     expect(c.progress, Progress.first);
   });
 
-  test('Montar build cannot be opened', () async {
+  test('every tab opens, Montar build too (009)', () async {
     final c = controller();
     await c.load();
     c.selectTab(AssistantTab.build);
-    expect(c.tab, AssistantTab.recommended);
+    expect(c.tab, AssistantTab.build);
     c.selectTab(AssistantTab.saved);
     expect(c.tab, AssistantTab.saved);
   });

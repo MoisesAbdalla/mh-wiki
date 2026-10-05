@@ -33,7 +33,13 @@ Windows).
   - A build shows its weapon, five pieces with jewels and "ou …" alternatives, the suggested
     talisman, the skills with pips and the jewel totals. Each item opens in Armas or Armaduras.
   - **Minhas builds**: saved copies, renamed or deleted, kept on the device.
-  - **Montar build** (choose skills, get the best set) comes with feature 009.
+  - **Montar build** (feature 009): pick the skills and levels you want; the app finds, offline,
+    the weapon, five pieces, talisman and decorations that reach them within your progress (up to
+    10 sets, "completa" or "quase"), shown like a curated build and savable in Minhas builds.
+    - **Meus talismãs**: register your talismans (two skills, three slots); the search tries each.
+    - Pin a weapon you own, or let it pick any of the type.
+    - "Só peças do meu progresso" filters by rarity (Baixo ≤ 3, Alto 5–7, Mestre 8–10); within
+      rarity 10 the Master Rank gates (Risen, Afflicted) are not modelled.
 - Areas (Monstros, Armas, Armaduras, Assistente) in a bottom bar, or a side rail on wide screens; each keeps its
   filters and selection.
 - Game names shown in Portuguese (Brazil) or English (Configurações).
@@ -210,3 +216,13 @@ guide.
   are found. The rest (mostly two Rampage jewels) are kept by name and marked "não encontrado no
   catálogo".
 - 323 builds, 2.6 MB.
+
+### Optimizer data (Rise: Sunbreak)
+
+- `python tool/data/build_rise_optimizer.py` writes `assets/data/rise_sunbreak/optimizer.json`
+  (1.1 MB) from `armor.json` and `weapons.json`: skills with max levels, decorations (slot, skill,
+  points), pieces (part, rarity, slots, defense, skills) and weapons (type, rarity, slots, attack).
+- The search (`lib/features/assistant/domain/optimizer/`) prunes each part to its pareto front,
+  combines the parts by dynamic programming over the wanted-skill levels and free slots, places
+  decorations exactly, and ranks complete sets first, then free slots, then defense. It runs in a
+  background isolate; a 4–6 skill request takes well under a second on a desktop.

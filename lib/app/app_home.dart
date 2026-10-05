@@ -7,6 +7,7 @@ import 'package:mh_wiki/features/armor/presentation/armor_controller.dart';
 import 'package:mh_wiki/features/armor/presentation/views/armor_page.dart';
 import 'package:mh_wiki/features/assistant/domain/entities/curated_build.dart';
 import 'package:mh_wiki/features/assistant/presentation/assistant_controller.dart';
+import 'package:mh_wiki/features/assistant/presentation/optimizer_controller.dart';
 import 'package:mh_wiki/features/assistant/presentation/views/assistant_page.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_id.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_type_picker.dart';
@@ -29,6 +30,7 @@ class AppHome extends StatefulWidget {
     required this.weapons,
     this.armor,
     this.assistant,
+    this.optimizer,
     this.actions,
     super.key,
   });
@@ -37,6 +39,7 @@ class AppHome extends StatefulWidget {
   final WeaponListController weapons;
   final ArmorController? armor;
   final AssistantController? assistant;
+  final OptimizerController? optimizer;
   final List<Widget>? actions;
 
   @override
@@ -209,6 +212,7 @@ class _AppHomeState extends State<AppHome> {
     assistant: switch (widget.assistant) {
       final assistant? => AssistantPage(
         controller: assistant,
+        optimizer: widget.optimizer,
         actions: widget.actions,
         typePicker: _typePicker,
         typeName: _typeName,

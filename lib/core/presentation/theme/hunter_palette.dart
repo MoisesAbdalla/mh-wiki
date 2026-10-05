@@ -33,4 +33,7 @@ abstract final class HunterPalette {
 
   /// Negative values such as affinity (the theme's error colour).
   static const negative = Color(0xFFF2A08A);
+
+  /// A goal reached (Montar build's "completa").
+  static const positive = Color(0xFF9CC48A);
 }
