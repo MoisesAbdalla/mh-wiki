@@ -204,6 +204,7 @@ final class WeaponDto {
     this.rampageSkills = const [],
     required this.sources,
     this.skills = const [],
+    this.gogma,
   });
 
   factory WeaponDto.fromJson(
@@ -281,6 +282,7 @@ final class WeaponDto {
     if (starValue < 1 || starValue > 7) r.fail('stars must be 1-7');
 
     return WeaponDto(
+      gogma: r.has('gogma') ? r.enumValue('gogma', ArtianFocus.values) : null,
       slug: r.string('slug'),
       type: typeId,
       name: _localized(r.object('name')),
@@ -327,6 +329,7 @@ final class WeaponDto {
     );
   }
 
+  final ArtianFocus? gogma;
   final String slug;
   final String type;
   final LocalizedText name;

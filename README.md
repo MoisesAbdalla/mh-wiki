@@ -49,6 +49,9 @@ Windows).
     own. The simulator picks the element, the 3 parts (element, Attack or Affinity) and the 5
     reinforcement rolls. It shows attack, affinity, element with infusion, sharpness and slots
     live. Built Artian are saved on the device and can be renamed or deleted.
+  - **Gogma Artian** (Gogmazios): a subsection of the Artian group lists the three foci (Ataque,
+    Afinidade, Elemento) of each type. The detail compares them, explains how to get one (Tarred
+    Device from Gogmazios) and links to Gogmazios.
   - **Armaduras**: 183 sets and 714 pieces, 179 skills with their kind (arma, armadura,
     conjunto, grupo), and 361 decorations filtered by weapon or armor kind. A fourth tab lists
     64 talismans with their ranks. A set shows its set bonus ("2 peças", "4 peças") and its

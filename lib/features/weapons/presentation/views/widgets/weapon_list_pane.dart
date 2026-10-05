@@ -209,6 +209,11 @@ class _LoadedList extends StatelessWidget {
                   controller.clearSelection();
                   artians.openMine(mine);
                 },
+                gogma: state.catalog.gogmaOf(artianType.type),
+                onOpenGogma: (w) {
+                  controller.clearSelection();
+                  artians.openGogma(artianType.type, w.gogma!);
+                },
               ),
             ),
           ),

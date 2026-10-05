@@ -13,7 +13,12 @@ class FilterWeapons {
     BuildWeaponTrees build = const BuildWeaponTrees(),
   }) : _trees = {
          for (final type in catalog.types)
-           type.id: build(catalog.weapons.where((w) => w.type.id == type.id)),
+           type.id: build(
+             // Gogma Artian are shown in the Artian group (010).
+             catalog.weapons.where(
+               (w) => w.type.id == type.id && w.gogma == null,
+             ),
+           ),
        },
        _names = {
          for (final w in catalog.weapons)

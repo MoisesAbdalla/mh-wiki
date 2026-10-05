@@ -28,6 +28,10 @@ final class ArtianBase {
 
 enum ArtianBoost { attack, affinity, element, sharpness, ammo }
 
+/// The focus of a Gogma Artian (Gogmazios, Title Update 3): the Tarred
+/// Device used to upgrade a rarity 8 Artian.
+enum ArtianFocus { attack, affinity, element }
+
 /// What a reinforcement roll of one kind adds, and how many times it can.
 typedef ArtianBoostRule = ({ArtianBoost kind, int value, int max});
 

@@ -1362,4 +1362,60 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get wildsLoadFailed => 'Não foi possível carregar os dados da Wilds.';
+
+  @override
+  String get gogmaGroup => 'Gogma · do Gogmazios';
+
+  @override
+  String get gogmaTag => 'Gogma';
+
+  @override
+  String gogmaFocus(String focus) {
+    return 'Foco $focus';
+  }
+
+  @override
+  String get focusAttack => 'Ataque';
+
+  @override
+  String get focusAffinity => 'Afinidade';
+
+  @override
+  String get focusElement => 'Elemento';
+
+  @override
+  String gogmaSubtitle(String type) {
+    return '$type Artian Gogma';
+  }
+
+  @override
+  String get gogmaFoci => 'Os três focos';
+
+  @override
+  String get gogmaFocusColumn => 'Foco';
+
+  @override
+  String get gogmaFocusHint => 'Toque num foco para ver os atributos dele.';
+
+  @override
+  String get gogmaHowTo => 'Como obter';
+
+  @override
+  String gogmaUpgrade(String base) {
+    return 'Melhore uma Artian de Raridade 8 ($base)';
+  }
+
+  @override
+  String get gogmaDevice => 'com um Tarred Device do foco escolhido';
+
+  @override
+  String get gogmaSource =>
+      'O Tarred Device vem do Armamento Mutado, preso no corpo do Gogmazios: quebre as massas (sobretudo na fase gasosa). Só vem se você abater o monstro.';
+
+  @override
+  String get gogmaExtras =>
+      'Também ganha uma habilidade bônus, uma de grupo e reforços mais fortes, sorteados no jogo. Não são simulados aqui.';
+
+  @override
+  String get openInMonsters => 'Abrir em Monstros';
 }

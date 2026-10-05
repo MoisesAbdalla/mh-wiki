@@ -192,3 +192,27 @@ Dober α.
   - `wilds/weapons.json`: 1.6 MB;
   - `wilds/armor.json`: 1.3 MB;
   - `assets/images/wilds/`: 5.4 MB in 996 WebP files.
+
+## Gogma Artian (Gogmazios), 2026-10-05
+
+- mhdb lists the Gogma Artian of Title Update 3 as plain weapons:
+  - 14 types × 3, all rarity 8;
+  - each type's three share one name (e.g. Promised Abyss / Abismo Prometido);
+  - none has materials or a tree.
+
+  They are the three **foci** of the upgrade from the type's rarity 8 Artian with a Tarred Device.
+  The Tarred Device comes from the Mutated Armament (Armamento Mutado) on Gogmazios. Source:
+  [Gogma Artian Weapons (MHWilds)](https://monsterhunterwiki.org/wiki/Gogma_Artian_Weapons_(MHWilds)).
+- `mark_gogma` (in `build_wilds_equipment.py`) tags each one with `"gogma": attack | affinity |
+  element` by comparing it with the rarity 8 Artian:
+  - higher attack → attack;
+  - affinity raised to 15% → affinity;
+  - otherwise → element.
+- The app keeps them out of the trees and lists them in the Artian group under "Gogma · do
+  Gogmazios", as approved in [mockups/gogma.html](mockups/gogma.html), option A, read only.
+  - The detail shows the attributes and the three foci side by side; a tap switches the focus.
+  - It explains how to obtain one and links to Gogmazios.
+  - The bonus skill, the group skill and the stronger reinforcement are random in the game and
+    not simulated.
+- "Tarred Device" has no pt-BR name in mhdb, so it stays in English. "Armamento Mutado" comes from
+  mhdb pt-BR.

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
+import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/artian_simulator_page.dart';
 import 'package:mh_wiki/features/weapons/presentation/controllers/artian_controller.dart';
 import 'package:mh_wiki/core/presentation/breakpoints.dart';
@@ -102,7 +104,11 @@ class _WeaponsPageState extends State<WeaponsPage> {
     if (!_expanded && hasSelection && route == null) {
       final newRoute = MaterialPageRoute<void>(
         builder: (_) => artian
-            ? ArtianSimulatorPage(weapons: _controller, artians: artians!)
+            ? ArtianSimulatorPage(
+                weapons: _controller,
+                artians: artians!,
+                onOpenGogmazios: _openGogmazios,
+              )
             : WeaponDetailPage(
                 controller: _controller,
                 sources: widget.sources,
@@ -123,6 +129,17 @@ class _WeaponsPageState extends State<WeaponsPage> {
       if (route.isActive) Navigator.of(context).removeRoute(route);
     }
   }
+
+  /// Gogmazios in Monstros, through the "Dropado por" link.
+  VoidCallback? get _openGogmazios => switch (widget.onOpenMonster) {
+    final open? => () => open(
+      const MaterialDropper(
+        id: MonsterId(Game.wilds, 'gogmazios'),
+        name: 'Gogmazios',
+      ),
+    ),
+    null => null,
+  };
 
   void _onSelect(Weapon weapon) {
     _artians?.close();
@@ -166,7 +183,11 @@ class _WeaponsPageState extends State<WeaponsPage> {
                       final artians = _artians;
                       final simulator = artians == null
                           ? null
-                          : artianSimulatorFor(_controller, artians);
+                          : artianSimulatorFor(
+                              _controller,
+                              artians,
+                              onOpenGogmazios: _openGogmazios,
+                            );
                       final Widget child;
                       if (simulator != null) {
                         child = simulator;

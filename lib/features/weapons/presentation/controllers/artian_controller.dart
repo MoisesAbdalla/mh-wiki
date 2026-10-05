@@ -1,8 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/artian.dart';
 
-/// The Artian opened in the simulator: a base, or one of the user's.
-typedef ArtianSelection = ({String type, int rarity, String? myId});
+/// The Artian opened in the simulator: a base, one of the user's, or a
+/// Gogma Artian ([focus]).
+typedef ArtianSelection = ({
+  String type,
+  int rarity,
+  String? myId,
+  ArtianFocus? focus,
+});
 
 /// The user's saved Artian and the one open in the simulator (010 US3).
 final class ArtianController extends ChangeNotifier {
@@ -37,7 +43,13 @@ final class ArtianController extends ChangeNotifier {
   }
 
   void open(String type, int rarity) {
-    _selection = (type: type, rarity: rarity, myId: null);
+    _selection = (type: type, rarity: rarity, myId: null, focus: null);
+    notifyListeners();
+  }
+
+  /// A Gogma Artian, by its focus.
+  void openGogma(String type, ArtianFocus focus) {
+    _selection = (type: type, rarity: 8, myId: null, focus: focus);
     notifyListeners();
   }
 
@@ -46,6 +58,7 @@ final class ArtianController extends ChangeNotifier {
       type: artian.build.type,
       rarity: artian.build.rarity,
       myId: artian.id,
+      focus: null,
     );
     notifyListeners();
   }
@@ -86,7 +99,7 @@ final class ArtianController extends ChangeNotifier {
     ]);
     final s = _selection;
     if (ok && s != null && s.myId == id) {
-      _selection = (type: s.type, rarity: s.rarity, myId: null);
+      _selection = (type: s.type, rarity: s.rarity, myId: null, focus: null);
       notifyListeners();
     }
     return ok;

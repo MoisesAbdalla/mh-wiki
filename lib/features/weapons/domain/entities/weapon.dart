@@ -1,6 +1,7 @@
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/artian.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/source_ref.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/estimated_stars.dart';
 import 'package:mh_wiki/core/domain/material_cost.dart';
@@ -37,6 +38,7 @@ final class Weapon {
     this.traits = WeaponTraits.none,
     this.rampageSkills = const [],
     this.skills = const [],
+    this.gogma,
   });
 
   final WeaponId id;
@@ -76,6 +78,10 @@ final class Weapon {
 
   /// The weapon's own skills (Wilds, 010 FR-003); empty for Rise.
   final List<WeaponSkill> skills;
+
+  /// The focus of a Gogma Artian (Wilds); `null` for every other weapon.
+  /// Gogma Artian live in the Artian group, not in the trees.
+  final ArtianFocus? gogma;
 
   /// Ranks by rarity: Sunbreak 1–3 Low, 4–7 High, 8–10 Master (006
   /// research R3); Wilds 1–4 Low, 5–8 High.

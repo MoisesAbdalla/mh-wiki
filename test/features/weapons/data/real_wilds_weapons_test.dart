@@ -7,6 +7,8 @@ import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/features/weapons/data/dtos/weapon_dataset_dto.dart';
 import 'package:mh_wiki/features/weapons/data/dtos/weapon_dataset_mapper.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/artian.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/weapon_query.dart';
+import 'package:mh_wiki/features/weapons/domain/usecases/filter_weapons.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/special_kind.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_catalog.dart';
 
@@ -215,5 +217,29 @@ void main() {
       expect(none.elementValue, isNull);
       expect(none.infusion, isFalse);
     });
+  });
+
+  test('Gogma Artian: 14 types × 3 foci, out of the trees', () {
+    final gogma = catalog.weapons.where((w) => w.gogma != null).toList();
+    expect(gogma, hasLength(42));
+    for (final a in catalog.artian) {
+      expect(
+        catalog.gogmaOf(a.type).map((w) => w.gogma),
+        ArtianFocus.values,
+        reason: a.type,
+      );
+    }
+    final cb = catalog.gogmaOf('charge-blade');
+    expect(cb.map((w) => w.name.ptBr).toSet(), {'Abismo Prometido'});
+    expect(cb.map((w) => w.attack), [720, 648, 684]);
+    expect(cb.map((w) => w.affinity), [-10, 15, 0]);
+    expect(cb.first.traits.phial?.en, 'Impact');
+    final trees = FilterWeapons(catalog)(
+      const WeaponQuery(typeId: 'charge-blade'),
+    );
+    expect(
+      trees.expand((t) => t.entries).where((e) => e.weapon.gogma != null),
+      isEmpty,
+    );
   });
 }

@@ -19,7 +19,7 @@ import subprocess
 import sys
 import urllib.parse
 from collections import defaultdict
-from build_wilds_equipment import drop_artian_weapons
+from build_wilds_equipment import drop_artian_weapons, mark_gogma
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
@@ -178,6 +178,7 @@ def main():
         data = json.load(f)
     data['artian'] = artian
     drop_artian_weapons(data)
+    print('gogma artian', mark_gogma(data))
     print('weapons without the Artian', len(data['weapons']))
     with open(OUT, 'w', encoding='utf8', newline='\n') as f:
         json.dump(data, f, ensure_ascii=False, separators=(',', ':'))

@@ -346,6 +346,37 @@ def drop_artian_weapons(data):
                        if (w['type'], w['name']['en']) not in names]
 
 
+def mark_gogma(data):
+    """Marks the Gogma Artian (Gogmazios, Title Update 3) with their focus.
+
+    mhdb lists the three foci of each type as plain weapons with the same
+    name. Against the type's rarity 8 Artian:
+    - higher attack → attack;
+    - higher affinity → affinity;
+    - otherwise → element.
+    See 010 research R2.
+    """
+    base = {a['type']: next(b for b in a['weapons'] if b['rarity'] == 8)
+            for a in data.get('artian', [])}
+    count = 0
+    for w in data['weapons']:
+        b = base.get(w['type'])
+        if (b is None or w['rarity'] != 8 or w['forge'] or w['upgrade']
+                or w['previous'] or w['next'] or w['name']['en'] not in GOGMA):
+            continue
+        w['gogma'] = ('attack' if w['attack'] > b['attack']
+                      else 'affinity' if w['affinity'] > b['affinity']
+                      else 'element')
+        count += 1
+    return count
+
+
+GOGMA = {'Ostrak Oblivion', "Headsman's Hamus", 'Kyrie Verd', 'Eternal Cusp',
+         'Bound Admonition', 'Onyx Choros', 'Aether Pike', 'Auguring Omen',
+         'Wicked Regnum', 'Promised Abyss', 'Limbo Llor', 'Bethorned Agony',
+         'Trembling Hels', 'Calamitous Angel'}
+
+
 def main():
     ids = skill_ids()
     mats = Materials()
@@ -378,6 +409,7 @@ def main():
         if 'artian' in prev:
             weapons_out['artian'] = prev['artian']
             drop_artian_weapons(weapons_out)
+            mark_gogma(weapons_out)
     for name, data in (('weapons.json', weapons_out), ('armor.json', armor_out)):
         with open(os.path.join(DATA, name), 'w', encoding='utf8', newline='\n') as f:
             json.dump(data, f, ensure_ascii=False, separators=(',', ':'))

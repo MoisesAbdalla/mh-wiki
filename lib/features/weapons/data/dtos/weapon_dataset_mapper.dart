@@ -73,6 +73,7 @@ abstract final class WeaponDatasetMapper {
             traits: w.traits,
             rampageSkills: w.rampageSkills,
             skills: w.skills,
+            gogma: w.gogma,
             sources: [
               for (final (name, url) in w.sources)
                 SourceRef(name: name, url: url),

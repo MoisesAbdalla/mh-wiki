@@ -2325,6 +2325,102 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Não foi possível carregar os dados da Wilds.'**
   String get wildsLoadFailed;
+
+  /// No description provided for @gogmaGroup.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gogma · do Gogmazios'**
+  String get gogmaGroup;
+
+  /// No description provided for @gogmaTag.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gogma'**
+  String get gogmaTag;
+
+  /// No description provided for @gogmaFocus.
+  ///
+  /// In pt, this message translates to:
+  /// **'Foco {focus}'**
+  String gogmaFocus(String focus);
+
+  /// No description provided for @focusAttack.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ataque'**
+  String get focusAttack;
+
+  /// No description provided for @focusAffinity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Afinidade'**
+  String get focusAffinity;
+
+  /// No description provided for @focusElement.
+  ///
+  /// In pt, this message translates to:
+  /// **'Elemento'**
+  String get focusElement;
+
+  /// No description provided for @gogmaSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'{type} Artian Gogma'**
+  String gogmaSubtitle(String type);
+
+  /// No description provided for @gogmaFoci.
+  ///
+  /// In pt, this message translates to:
+  /// **'Os três focos'**
+  String get gogmaFoci;
+
+  /// No description provided for @gogmaFocusColumn.
+  ///
+  /// In pt, this message translates to:
+  /// **'Foco'**
+  String get gogmaFocusColumn;
+
+  /// No description provided for @gogmaFocusHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Toque num foco para ver os atributos dele.'**
+  String get gogmaFocusHint;
+
+  /// No description provided for @gogmaHowTo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Como obter'**
+  String get gogmaHowTo;
+
+  /// No description provided for @gogmaUpgrade.
+  ///
+  /// In pt, this message translates to:
+  /// **'Melhore uma Artian de Raridade 8 ({base})'**
+  String gogmaUpgrade(String base);
+
+  /// No description provided for @gogmaDevice.
+  ///
+  /// In pt, this message translates to:
+  /// **'com um Tarred Device do foco escolhido'**
+  String get gogmaDevice;
+
+  /// No description provided for @gogmaSource.
+  ///
+  /// In pt, this message translates to:
+  /// **'O Tarred Device vem do Armamento Mutado, preso no corpo do Gogmazios: quebre as massas (sobretudo na fase gasosa). Só vem se você abater o monstro.'**
+  String get gogmaSource;
+
+  /// No description provided for @gogmaExtras.
+  ///
+  /// In pt, this message translates to:
+  /// **'Também ganha uma habilidade bônus, uma de grupo e reforços mais fortes, sorteados no jogo. Não são simulados aqui.'**
+  String get gogmaExtras;
+
+  /// No description provided for @openInMonsters.
+  ///
+  /// In pt, this message translates to:
+  /// **'Abrir em Monstros'**
+  String get openInMonsters;
 }
 
 class _AppLocalizationsDelegate

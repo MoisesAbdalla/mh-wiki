@@ -69,6 +69,7 @@ void main() {
       type: 'great-sword',
       rarity: 8,
       myId: null,
+      focus: null,
     ), reason: 'back to the base');
     expect(await PrefsMyArtianRepository(prefs).load(), isEmpty);
   });

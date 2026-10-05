@@ -30,4 +30,13 @@ final class WeaponCatalog {
 
   ArtianType? artianOf(String type) =>
       artian.where((a) => a.type == type).firstOrNull;
+
+  /// The Gogma Artian of [type], one per focus, in focus order.
+  List<Weapon> gogmaOf(String type) => [
+    for (final w in weapons)
+      if (w.gogma != null && w.type.id == type) w,
+  ]..sort((a, b) => a.gogma!.index.compareTo(b.gogma!.index));
+
+  Weapon? gogma(String type, ArtianFocus focus) =>
+      gogmaOf(type).where((w) => w.gogma == focus).firstOrNull;
 }

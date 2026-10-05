@@ -3,6 +3,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mh_wiki/features/weapons/presentation/views/widgets/gogma_artian_view.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/artian.dart';
+import 'package:mh_wiki/core/presentation/material_droppers.dart';
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/features/weapons/data/dtos/weapon_dataset_dto.dart';
 import 'package:mh_wiki/features/weapons/data/dtos/weapon_dataset_mapper.dart';
@@ -160,5 +163,59 @@ void main() {
     expect(artians.mine, isEmpty);
     expect(find.text('minha'), findsNothing);
     expect(find.text('Salvar minha Artian'), findsOneWidget);
+  });
+
+  testWidgets('Gogma: a subsection, the three foci and the Gogmazios link', (
+    tester,
+  ) async {
+    final opened = <MaterialDropper>[];
+    setWindowSize(tester, const Size(1200, 2400));
+    await pumpApp(
+      tester,
+      WeaponsPage(
+        controller: weapons,
+        artians: artians,
+        onOpenMonster: opened.add,
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
+      find.byKey(const Key('gogma-group')),
+      600,
+      scrollable: find
+          .descendant(
+            of: find.byKey(const PageStorageKey('weapon-list')),
+            matching: find.byType(Scrollable),
+          )
+          .first,
+    );
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Foco Ataque'), findsOneWidget);
+
+    await tapIt(tester, find.textContaining('Foco Afinidade'));
+    expect(find.byType(GogmaArtianView), findsOneWidget);
+    expect(artians.selection?.focus, ArtianFocus.affinity);
+    expect(find.text('864'), findsWidgets); // Ostrak Oblivion, Afinidade
+
+    final foci = find.byKey(const Key('gogma-foci'));
+    await tapIt(
+      tester,
+      find.descendant(of: foci, matching: find.text('Ataque')).last,
+    );
+    expect(artians.selection?.focus, ArtianFocus.attack);
+
+    final link = find.text('Abrir em Monstros');
+    await tester.scrollUntilVisible(
+      link,
+      300,
+      scrollable: find
+          .descendant(
+            of: find.byType(GogmaArtianView),
+            matching: find.byType(Scrollable),
+          )
+          .first,
+    );
+    await tapIt(tester, link);
+    expect(opened.single.name, 'Gogmazios');
   });
 }
