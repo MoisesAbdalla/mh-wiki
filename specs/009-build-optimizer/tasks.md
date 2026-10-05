@@ -181,9 +181,9 @@ description: "Task list for 009 Otimizador de builds (Montar build)"
   element in `optimizer.json`, `BuildRequest.weaponTrait/weaponElement`, per-type filters in the
   stored request, chips in card 2, the "no weapon" warning, tests (domain, controller, widget, real
   data: Charge Blade Impact, Gunlance Wide).
-- [ ] T023 Measure the search on an Android device or emulator (release) for the 20 test requests,
+- [ ] T023 (deferred: no Android device or emulator on the dev machine; measure on the user's phone) Measure the search on an Android device or emulator (release) for the 20 test requests,
   and record the timings (SC-002).
-- [ ] T024 The user runs the quickstart checks 1–9. Fix the findings, then merge
+- [X] T024 The user runs the quickstart checks 1–9. Fix the findings, then merge
   `009-build-optimizer` into `main`.
 
 ---
