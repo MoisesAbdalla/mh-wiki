@@ -14,6 +14,7 @@ import 'package:mh_wiki/features/assistant/presentation/views/widgets/build_deta
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/monster_detail_view.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_id.dart';
 import 'package:mh_wiki/features/weapons/presentation/models/weapon_list_state.dart';
+import 'package:mh_wiki/features/weapons/presentation/views/widgets/artian_simulator_view.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_detail_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -222,6 +223,81 @@ void main() {
     await tester.tap(jewel);
     await tester.pumpAndSettle();
     expect(find.byType(DecorationDetailView), findsOneWidget);
+  });
+
+  // 010 T019: Armas → Wilds → Sieglinde → its skill in Armaduras (Wilds);
+  // then an Artian built and saved.
+  testWidgets('Wilds weapon to its skill, then save an Artian', (tester) async {
+    final dependencies = await AppDependencies.create();
+    final settings = dependencies.createSettingsController();
+    final monsters = dependencies.createMonsterListController();
+    final weapons = dependencies.createWeaponListController();
+    final wildsWeapons = dependencies.createWeaponListController(
+      game: Game.wilds,
+    );
+    final wildsArmor = dependencies.createArmorController(game: Game.wilds);
+    final artians = dependencies.createArtianController();
+    await settings.load();
+    await monsters.load();
+
+    await tester.pumpWidget(
+      MhWikiApp(
+        monsterListController: monsters,
+        settingsController: settings,
+        weaponListController: weapons,
+        armorController: dependencies.createArmorController(),
+        wildsWeaponController: wildsWeapons,
+        wildsArmorController: wildsArmor,
+        artianController: artians,
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Armas'));
+    await tester.pumpAndSettle();
+    await tester.tap(gameTab('Monster Hunter Wilds').first);
+    await tester.pumpAndSettle();
+    expect(wildsWeapons.state, isA<WeaponListLoaded>());
+
+    final sieglinde = wildsWeapons.catalog!.weapons.firstWhere(
+      (w) => w.name.en == 'Sieglinde',
+    );
+    await wildsWeapons.select(sieglinde.id);
+    await tester.pumpAndSettle();
+    final skill = find.text('Status Crítico').last;
+    await tester.ensureVisible(skill);
+    await tester.pumpAndSettle();
+    await tester.tap(skill);
+    await tester.pumpAndSettle();
+    expect(find.byType(SkillDetailView), findsOneWidget);
+    expect(wildsArmor.selectedSkill?.id, 'critical-status');
+
+    await tester.tap(find.text('Armas'));
+    await tester.pumpAndSettle();
+    wildsWeapons.clearSelection();
+    artians.open('great-sword', 8);
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(ChoiceChip, 'Gelo').last);
+    await tester.pumpAndSettle();
+    final save = find.text('Salvar minha Artian');
+    await tester.scrollUntilVisible(
+      save,
+      300,
+      scrollable: find
+          .descendant(
+            of: find.byType(ArtianSimulatorView),
+            matching: find.byType(Scrollable),
+          )
+          .first,
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(save);
+    await tester.pumpAndSettle();
+    if (!tester.testTextInput.isRegistered) tester.testTextInput.register();
+    await tester.enterText(find.byType(TextField).last, 'Gelo');
+    await tester.tap(find.widgetWithText(TextButton, 'Salvar'));
+    await tester.pumpAndSettle();
+    expect(artians.mine.single.build.element, 'ice');
   });
 
   // 008 T021: Assistente → Mestre M2★ → Espadão → a build → save it → it

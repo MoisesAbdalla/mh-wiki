@@ -258,7 +258,7 @@ class _BonusBlock extends StatelessWidget {
             InkWell(
               onTap: skill == null ? null : () => onOpenSkill(skill),
               child: ConstrainedBox(
-                constraints: const BoxConstraints(minHeight: 40),
+                constraints: const BoxConstraints(minHeight: 48),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text.rich(

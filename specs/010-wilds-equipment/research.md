@@ -152,3 +152,43 @@
   - 4 slot icons.
   - Images take 3.3 MB in total. The datasets take 1.6 MB (weapons, with Artian) and 1.3 MB (armor).
 
+
+## T020 — Spot check (SC-002), 2026-10-05
+
+Checked against sources independent of wilds.mhdb.io.
+
+**Weapons: 10/10 match** monsterhunterwiki.org on displayed attack, affinity, element or status, slots
+and rarity:
+- G. Renowned Tristram, Balahara Blade III, Queen Blaster I, Crashing Fulgur I, Uth Falarmata III;
+- Esperanza Bow, Hope Axe II, Chata Club I, Hope Sword III, Kummerklang I.
+
+**Sets: 4 sets (20 pieces) checked** against the wiki set pages: Rey Dau γ, Uth Duna β, Rathian β,
+Dober α.
+- Base defense, resistances, slot levels and counts, and skill totals all match, including the set
+  and group skills.
+- **Finding:** the maximum defense differs. mhdb's `maxDefense` is 2 per piece above the wiki's
+  "Upgraded" value: Uth Duna β is 410 against 400, Rey Dau γ 440 against 430. The wiki also lists a
+  higher "Transcended" value.
+- The app shows mhdb's value as "base → máx.". A third source to settle this was not reachable
+  (the Kiranico series page returned 404). It is left as is and noted for T023.
+
+**Decorations: 9/10 confirmed** against Kiranico on slot level and skills:
+- Rzr Sharp Jwl III, Flawless, Grinder/Expert, Fire Res, Charge Up/Attack, Rzr Sharp/Dragon,
+  Blaze/Guardian, Razor Sharp, Mighty.
+- Kiranico's list does not show skill levels.
+- Dragon/Rzr Sharp Jwl was not found on that page.
+
+## T022 — Gates, 2026-10-05
+
+- Gates passed:
+  - `dart format`: 0 files changed;
+  - `flutter analyze`: no issues;
+  - `flutter test`: 492 passed;
+  - integration on Windows: 7/7 passed. The Armas list opened in 1,169 ms and Armaduras in 425 ms.
+  - The Windows release and web builds both succeed.
+- The release APK (arm64) is 39.5 MB, up from 34.2 MB, which was last recorded at 007 (+5.3 MB
+  since then).
+- The 010 assets add 8.3 MB uncompressed:
+  - `wilds/weapons.json`: 1.6 MB;
+  - `wilds/armor.json`: 1.3 MB;
+  - `assets/images/wilds/`: 5.4 MB in 996 WebP files.

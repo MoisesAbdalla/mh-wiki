@@ -120,15 +120,15 @@ description: "Task list for 010 Armas e Armaduras da Wilds"
 
 ## Phase 6: Polish
 
-- [ ] T018 [P] Accessibility: 320 dp at 200% on the Wilds list, detail, set, Joias, Talismãs and
+- [X] T018 [P] Accessibility: 320 dp at 200% on the Wilds list, detail, set, Joias, Talismãs and
   simulator; tap targets; semantics.
-- [ ] T019 [P] Integration flow: Armas → Wilds → Sieglinde → skill → Armaduras (Wilds); then
+- [X] T019 [P] Integration flow: Armas → Wilds → Sieglinde → skill → Armaduras (Wilds); then
   Artian → save.
-- [ ] T020 SC-002 spot check: 10 weapons, 10 sets and 10 decorations against the wiki or game.
+- [X] T020 SC-002 spot check: 10 weapons, 10 sets and 10 decorations against the wiki or game.
   Record them in research.md.
-- [ ] T021 Update `README.md` and `tool/data/README.md` (Wilds equipment, icons, Artian, sources,
+- [X] T021 Update `README.md` and `tool/data/README.md` (Wilds equipment, icons, Artian, sources,
   sizes).
-- [ ] T022 Run the gates (analyze, format, test, integration on Windows, build Windows release,
+- [X] T022 Run the gates (analyze, format, test, integration on Windows, build Windows release,
   build web) and record the APK and asset size growth.
 - [ ] T023 The user runs the quickstart checks 1–9. Fix the findings, then merge into `main`.
 
