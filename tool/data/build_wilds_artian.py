@@ -19,6 +19,7 @@ import subprocess
 import sys
 import urllib.parse
 from collections import defaultdict
+from build_wilds_equipment import drop_artian_weapons
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
@@ -176,6 +177,8 @@ def main():
     with open(OUT, encoding='utf8') as f:
         data = json.load(f)
     data['artian'] = artian
+    drop_artian_weapons(data)
+    print('weapons without the Artian', len(data['weapons']))
     with open(OUT, 'w', encoding='utf8', newline='\n') as f:
         json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
     print('artian types', len(artian))

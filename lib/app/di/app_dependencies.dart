@@ -1,4 +1,7 @@
 import 'package:flutter/services.dart';
+import 'package:mh_wiki/features/weapons/presentation/controllers/artian_controller.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/artian.dart';
+import 'package:mh_wiki/features/weapons/data/repositories/prefs_my_artian_repository.dart';
 import 'package:mh_wiki/features/armor/data/armor_repository_impl.dart';
 import 'package:mh_wiki/features/armor/data/asset_armor_datasource.dart';
 import 'package:mh_wiki/features/armor/domain/repositories/armor_repository.dart';
@@ -47,6 +50,7 @@ final class AppDependencies {
     required this.optimizerRepository,
     required this.talismanRepository,
     required this.requestRepository,
+    required this.myArtianRepository,
   });
 
   static Future<AppDependencies> create({AssetBundle? bundle}) async {
@@ -63,6 +67,7 @@ final class AppDependencies {
       optimizerRepository: AssetOptimizerRepository(assets),
       talismanRepository: PrefsTalismanRepository(prefs),
       requestRepository: PrefsRequestRepository(prefs),
+      myArtianRepository: PrefsMyArtianRepository(prefs),
     );
   }
 
@@ -76,6 +81,7 @@ final class AppDependencies {
   final OptimizerRepository optimizerRepository;
   final TalismanRepository talismanRepository;
   final RequestRepository requestRepository;
+  final MyArtianRepository myArtianRepository;
 
   MonsterListController createMonsterListController() => MonsterListController(
     loadCatalog: LoadMonsterCatalog(monsterRepository),
@@ -96,6 +102,9 @@ final class AppDependencies {
         loadCatalog: LoadArmorCatalog(armorRepository),
         game: game,
       );
+
+  ArtianController createArtianController() =>
+      ArtianController(repository: myArtianRepository);
 
   AssistantController createAssistantController() => AssistantController(
     loadCatalog: LoadBuildCatalog(buildRepository),

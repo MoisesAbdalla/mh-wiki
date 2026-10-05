@@ -338,6 +338,14 @@ def build_talismans(mats, ids):
     return out
 
 
+def drop_artian_weapons(data):
+    """The Artian live in their own group (010 US3), not in the trees."""
+    names = {(a['type'], b['name']['en']) for a in data.get('artian', [])
+             for b in a['weapons']}
+    data['weapons'] = [w for w in data['weapons']
+                       if (w['type'], w['name']['en']) not in names]
+
+
 def main():
     ids = skill_ids()
     mats = Materials()
@@ -369,6 +377,7 @@ def main():
             prev = json.load(f)
         if 'artian' in prev:
             weapons_out['artian'] = prev['artian']
+            drop_artian_weapons(weapons_out)
     for name, data in (('weapons.json', weapons_out), ('armor.json', armor_out)):
         with open(os.path.join(DATA, name), 'w', encoding='utf8', newline='\n') as f:
             json.dump(data, f, ensure_ascii=False, separators=(',', ':'))

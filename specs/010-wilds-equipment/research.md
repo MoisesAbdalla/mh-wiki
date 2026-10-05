@@ -136,7 +136,8 @@
 
 ### R1/R3/R4 results (T001–T003)
 
-- **Weapons**: 1,188, all with pt-BR names. 1,138 have a render; the rest use the type icon by
+- **Weapons**: 1,146 after removing the 42 Artian that mhdb lists as plain weapons (they live in
+  the Artian group), all with pt-BR names. 1,095 have a render; the rest use the type icon by
   rarity.
 - **Armor**: 183 sets with pieces. The 11 skipped sets are cosmetic-only entries with no pieces.
   - 714 pieces, all with pt-BR names; 602 have a Kiranico render, and the rest use the part icon by

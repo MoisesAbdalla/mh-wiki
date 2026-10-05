@@ -17,6 +17,7 @@ Future<void> main() async {
   final wildsArmor = dependencies.createArmorController(game: Game.wilds);
   final assistant = dependencies.createAssistantController();
   final optimizer = dependencies.createOptimizerController(assistant);
+  final artians = dependencies.createArtianController();
   linkNameLanguage(
     settings: settings,
     monsters: monsters,
@@ -40,6 +41,7 @@ Future<void> main() async {
       wildsArmorController: wildsArmor,
       assistantController: assistant,
       optimizerController: optimizer,
+      artianController: artians,
     ),
   );
 }

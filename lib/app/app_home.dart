@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/features/weapons/presentation/controllers/artian_controller.dart';
 import 'package:mh_wiki/app/app_shell.dart';
 import 'package:mh_wiki/app/equipment_area.dart';
 import 'package:mh_wiki/app/monster_weapons_card.dart';
@@ -34,6 +35,7 @@ class AppHome extends StatefulWidget {
     this.wildsArmor,
     this.assistant,
     this.optimizer,
+    this.artians,
     this.actions,
     super.key,
   });
@@ -49,6 +51,9 @@ class AppHome extends StatefulWidget {
   final ArmorController? wildsArmor;
   final AssistantController? assistant;
   final OptimizerController? optimizer;
+
+  /// The user's Artian (Wilds weapons).
+  final ArtianController? artians;
   final List<Widget>? actions;
 
   @override
@@ -260,6 +265,7 @@ class _AppHomeState extends State<AppHome> {
     onOpenMonster: _openMonster,
     header: header,
     onOpenSkill: (id) => _openSkill(game, id),
+    artians: game == Game.wilds ? widget.artians : null,
   );
 
   Widget _armorPage(Game game, ArmorController controller, Widget header) =>

@@ -54,6 +54,12 @@ class SharpnessBar extends StatelessWidget {
           LayoutBuilder(
             builder: (context, constraints) {
               final width = constraints.maxWidth;
+              // A longer bar (an Artian with Sharpness rolls) widens the
+              // scale instead of overflowing.
+              final total = units.fold<int>(0, (a, b) => a + b);
+              final scale = total > Sharpness.maxUnits
+                  ? total
+                  : Sharpness.maxUnits;
               return ClipRRect(
                 borderRadius: BorderRadius.circular(2),
                 child: Container(
@@ -65,7 +71,7 @@ class SharpnessBar extends StatelessWidget {
                         if (u > 0)
                           SizedBox(
                             key: ValueKey('sharpness-$i'),
-                            width: width * u / Sharpness.maxUnits,
+                            width: width * u / scale,
                             // An explicit height: a childless box in a Row
                             // would collapse to zero.
                             height: 12,

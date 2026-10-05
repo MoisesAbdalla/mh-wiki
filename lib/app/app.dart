@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/features/weapons/presentation/controllers/artian_controller.dart';
 import 'package:mh_wiki/app/app_home.dart';
 import 'package:mh_wiki/features/armor/presentation/armor_controller.dart';
 import 'package:mh_wiki/features/assistant/presentation/assistant_controller.dart';
@@ -20,6 +21,7 @@ class MhWikiApp extends StatelessWidget {
     this.wildsArmorController,
     this.assistantController,
     this.optimizerController,
+    this.artianController,
     super.key,
   });
 
@@ -31,6 +33,7 @@ class MhWikiApp extends StatelessWidget {
   final ArmorController? wildsArmorController;
   final AssistantController? assistantController;
   final OptimizerController? optimizerController;
+  final ArtianController? artianController;
 
   static final _theme = buildHunterTheme();
 
@@ -54,6 +57,7 @@ class MhWikiApp extends StatelessWidget {
         wildsArmor: wildsArmorController,
         assistant: assistantController,
         optimizer: optimizerController,
+        artians: artianController,
         actions: [SettingsButton(controller: settingsController)],
       ),
     );

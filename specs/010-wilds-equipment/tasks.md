@@ -102,7 +102,7 @@ description: "Task list for 010 Armas e Armaduras da Wilds"
 
 ## Phase 5: User Story 3 - Artian (P3)
 
-- [ ] T014 [P] [US3] Simulator unit tests:
+- [X] T014 [P] [US3] Simulator unit tests:
   - limits (3 parts, 5 rolls, each maximum);
   - an element infusion only with 3 matching parts;
   - no element;
@@ -110,11 +110,11 @@ description: "Task list for 010 Armas e Armaduras da Wilds"
   - 5 combinations checked against Game8 (SC-004).
 
   Plus `MyArtian` repository tests (save, rename, delete, corrupt data).
-- [ ] T015 [US3] Implement `simulateArtian`, `ArtianController`, `PrefsMyArtianRepository` and the
+- [X] T015 [US3] Implement `simulateArtian`, `ArtianController`, `PrefsMyArtianRepository` and the
   wiring.
-- [ ] T016 [P] [US3] Widget tests: the Artian group in the list (bases and "minha"), the simulator
+- [X] T016 [P] [US3] Widget tests: the Artian group in the list (bases and "minha"), the simulator
   (element chips, part and roll steppers with "restam N", live result), and save, rename and delete.
-- [ ] T017 [US3] Implement the Artian group and the simulator page.
+- [X] T017 [US3] Implement the Artian group and the simulator page.
 
 ---
 

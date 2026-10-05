@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/features/weapons/presentation/views/widgets/artian_group_card.dart';
+import 'package:mh_wiki/features/weapons/presentation/controllers/artian_controller.dart';
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
@@ -23,8 +25,12 @@ class WeaponListPane extends StatelessWidget {
     required this.onSelect,
     this.highlightSelection = false,
     this.header,
+    this.artians,
     super.key,
   });
+
+  /// The user's Artian (Wilds); `null` hides the Artian group.
+  final ArtianController? artians;
 
   final WeaponListController controller;
   final ValueChanged<Weapon> onSelect;
@@ -40,7 +46,7 @@ class WeaponListPane extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final list = ListenableBuilder(
-      listenable: controller,
+      listenable: Listenable.merge([controller, ?artians]),
       builder: (context, _) => switch (controller.state) {
         WeaponListLoading() => const Center(child: CircularProgressIndicator()),
         WeaponListFailed() => _Message(
@@ -55,6 +61,7 @@ class WeaponListPane extends StatelessWidget {
           onSelect: onSelect,
           highlightSelection: highlightSelection,
           gameTabs: header == null,
+          artians: artians,
         ),
       },
     );
@@ -77,8 +84,10 @@ class _LoadedList extends StatelessWidget {
     required this.onSelect,
     required this.highlightSelection,
     this.gameTabs = true,
+    this.artians,
   });
 
+  final ArtianController? artians;
   final bool gameTabs;
   final WeaponListLoaded state;
   final WeaponListController controller;
@@ -91,6 +100,14 @@ class _LoadedList extends StatelessWidget {
     final query = state.query;
     final gutter = Space.gutter(MediaQuery.sizeOf(context).width);
     final only = query.onlyLabel;
+    final artians = this.artians;
+    // The Artian are High rank and have no tree; a search or "only these"
+    // hides them.
+    final artianType = artians == null || only != null || query.text.isNotEmpty
+        ? null
+        : query.rank == null || query.rank == Rank.high
+        ? state.catalog.artianOf(query.typeId)
+        : null;
 
     return CustomScrollView(
       key: const PageStorageKey('weapon-list'),
@@ -172,6 +189,26 @@ class _LoadedList extends StatelessWidget {
                 selectedId: highlightSelection ? state.selectedId : null,
                 language: controller.language,
                 onSelect: onSelect,
+              ),
+            ),
+          ),
+        if (artianType != null && artians != null)
+          SliverPadding(
+            padding: const EdgeInsets.only(bottom: 16),
+            sliver: SliverToBoxAdapter(
+              child: ArtianGroupCard(
+                type: artianType,
+                mine: artians.mineOf(artianType.type),
+                selection: highlightSelection ? artians.selection : null,
+                language: controller.language,
+                onOpen: (base) {
+                  controller.clearSelection();
+                  artians.open(artianType.type, base.rarity);
+                },
+                onOpenMine: (mine) {
+                  controller.clearSelection();
+                  artians.openMine(mine);
+                },
               ),
             ),
           ),

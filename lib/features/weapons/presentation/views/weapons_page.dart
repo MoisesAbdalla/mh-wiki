@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/features/weapons/presentation/views/artian_simulator_page.dart';
+import 'package:mh_wiki/features/weapons/presentation/controllers/artian_controller.dart';
 import 'package:mh_wiki/core/presentation/breakpoints.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
@@ -22,8 +24,12 @@ class WeaponsPage extends StatefulWidget {
     this.onOpenMonster,
     this.header,
     this.onOpenSkill,
+    this.artians,
     super.key,
   });
+
+  /// The user's Artian and the simulator (Wilds).
+  final ArtianController? artians;
 
   /// The area's game tabs, above the list.
   final Widget? header;
@@ -47,11 +53,14 @@ class _WeaponsPageState extends State<WeaponsPage> {
   bool _expanded = false;
 
   WeaponListController get _controller => widget.controller;
+  ArtianController? get _artians => widget.artians;
 
   @override
   void initState() {
     super.initState();
     _controller.addListener(_scheduleSync);
+    _artians?.addListener(_scheduleSync);
+    _artians?.ensureLoaded();
     // The page is built on the first visit to the area (AppShell), maybe
     // with a weapon already chosen from a monster (006 US3).
     _controller.ensureLoaded();
@@ -65,11 +74,17 @@ class _WeaponsPageState extends State<WeaponsPage> {
       oldWidget.controller.removeListener(_scheduleSync);
       widget.controller.addListener(_scheduleSync);
     }
+    if (oldWidget.artians != widget.artians) {
+      oldWidget.artians?.removeListener(_scheduleSync);
+      widget.artians?.addListener(_scheduleSync);
+      widget.artians?.ensureLoaded();
+    }
   }
 
   @override
   void dispose() {
     _controller.removeListener(_scheduleSync);
+    _artians?.removeListener(_scheduleSync);
     super.dispose();
   }
 
@@ -79,23 +94,28 @@ class _WeaponsPageState extends State<WeaponsPage> {
 
   void _syncDetailRoute() {
     if (!mounted) return;
-    final hasSelection = _controller.selectedWeapon != null;
+    final artians = _artians;
+    final artian = artians?.selection != null;
+    final hasSelection = _controller.selectedWeapon != null || artian;
     final route = _detailRoute;
 
     if (!_expanded && hasSelection && route == null) {
       final newRoute = MaterialPageRoute<void>(
-        builder: (_) => WeaponDetailPage(
-          controller: _controller,
-          sources: widget.sources,
-          onOpenMonster: widget.onOpenMonster,
-          onOpenSkill: widget.onOpenSkill,
-        ),
+        builder: (_) => artian
+            ? ArtianSimulatorPage(weapons: _controller, artians: artians!)
+            : WeaponDetailPage(
+                controller: _controller,
+                sources: widget.sources,
+                onOpenMonster: widget.onOpenMonster,
+                onOpenSkill: widget.onOpenSkill,
+              ),
       );
       _detailRoute = newRoute;
       Navigator.of(context).push(newRoute).then((_) {
         if (identical(_detailRoute, newRoute)) {
           _detailRoute = null;
           _controller.clearSelection();
+          _artians?.close();
         }
       });
     } else if (route != null && (_expanded || !hasSelection)) {
@@ -104,7 +124,10 @@ class _WeaponsPageState extends State<WeaponsPage> {
     }
   }
 
-  void _onSelect(Weapon weapon) => _controller.select(weapon.id);
+  void _onSelect(Weapon weapon) {
+    _artians?.close();
+    _controller.select(weapon.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,6 +143,7 @@ class _WeaponsPageState extends State<WeaponsPage> {
       onSelect: _onSelect,
       highlightSelection: expanded,
       header: widget.header,
+      artians: _artians,
     );
 
     return Scaffold(
@@ -135,12 +159,18 @@ class _WeaponsPageState extends State<WeaponsPage> {
                 const VerticalDivider(width: 1, color: HunterPalette.border),
                 Expanded(
                   child: ListenableBuilder(
-                    listenable: _controller,
+                    listenable: Listenable.merge([_controller, ?_artians]),
                     builder: (context, _) {
                       final weapon = _controller.selectedWeapon;
                       final catalog = _controller.catalog;
+                      final artians = _artians;
+                      final simulator = artians == null
+                          ? null
+                          : artianSimulatorFor(_controller, artians);
                       final Widget child;
-                      if (weapon == null || catalog == null) {
+                      if (simulator != null) {
+                        child = simulator;
+                      } else if (weapon == null || catalog == null) {
                         child = KeyedSubtree(
                           key: const ValueKey('no-selection'),
                           child: Center(

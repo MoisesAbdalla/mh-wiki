@@ -24,7 +24,7 @@ void main() {
   });
 
   test('every weapon of the 14 types, with pt-BR names (SC-001)', () {
-    expect(catalog.weapons, hasLength(1188));
+    expect(catalog.weapons, hasLength(1146)); // without the 42 Artian
     expect(catalog.types, hasLength(14));
     final pt = catalog.weapons.where((w) => w.name.ptBr != null).length;
     expect(pt / catalog.weapons.length, greaterThanOrEqualTo(0.99));
@@ -187,6 +187,33 @@ void main() {
       final bow = catalog.artianOf('bow')!;
       expect(bow.elementsByRarity[8]!.containsKey('poison'), isFalse);
       expect(bow.elementsByRarity[8]!['blast'], 60);
+    });
+
+    test('status values by rarity, parts in range, no element', () {
+      expect(gs.elementsByRarity[6]!['poison'], 150);
+      expect(gs.elementsByRarity[8]!['poison'], 300);
+      expect(gs.elementsByRarity[8]!['sleep'], 250);
+      expect(
+        validArtian(
+          gs,
+          const ArtianBuild(type: 'great-sword', rarity: 8, elementParts: 4),
+        ),
+        isFalse,
+      );
+      expect(
+        validArtian(
+          gs,
+          const ArtianBuild(type: 'great-sword', rarity: 8, attackParts: -1),
+        ),
+        isFalse,
+      );
+      final none = simulateArtian(
+        gs,
+        const ArtianBuild(type: 'great-sword', rarity: 8, elementParts: 3),
+      );
+      expect(none.element, isNull);
+      expect(none.elementValue, isNull);
+      expect(none.infusion, isFalse);
     });
   });
 }
