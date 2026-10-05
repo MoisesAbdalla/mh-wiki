@@ -130,7 +130,7 @@ description: "Task list for 010 Armas e Armaduras da Wilds"
   sizes).
 - [X] T022 Run the gates (analyze, format, test, integration on Windows, build Windows release,
   build web) and record the APK and asset size growth.
-- [ ] T023 The user runs the quickstart checks 1–9. Fix the findings, then merge into `main`.
+- [X] T023 The user runs the quickstart checks 1–9. Fix the findings, then merge into `main`.
 
 ---
 
