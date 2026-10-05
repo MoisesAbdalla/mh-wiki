@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/features/weapons/presentation/views/widgets/artian_group_card.dart';
+import 'package:mh_wiki/features/weapons/presentation/controllers/artian_controller.dart';
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
@@ -22,11 +24,20 @@ class WeaponListPane extends StatelessWidget {
     required this.controller,
     required this.onSelect,
     this.highlightSelection = false,
+    this.header,
+    this.artians,
     super.key,
   });
 
+  /// The user's Artian (Wilds); `null` hides the Artian group.
+  final ArtianController? artians;
+
   final WeaponListController controller;
   final ValueChanged<Weapon> onSelect;
+
+  /// Shown above the list in every state (the area's game tabs); replaces
+  /// the list's own game tabs.
+  final Widget? header;
 
   /// In the expanded layout the selected row stays highlighted.
   final bool highlightSelection;
@@ -34,8 +45,8 @@ class WeaponListPane extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    return ListenableBuilder(
-      listenable: controller,
+    final list = ListenableBuilder(
+      listenable: Listenable.merge([controller, ?artians]),
       builder: (context, _) => switch (controller.state) {
         WeaponListLoading() => const Center(child: CircularProgressIndicator()),
         WeaponListFailed() => _Message(
@@ -49,8 +60,19 @@ class WeaponListPane extends StatelessWidget {
           controller: controller,
           onSelect: onSelect,
           highlightSelection: highlightSelection,
+          gameTabs: header == null,
+          artians: artians,
         ),
       },
+    );
+    final top = header;
+    if (top == null) return list;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        top,
+        Expanded(child: list),
+      ],
     );
   }
 }
@@ -61,8 +83,12 @@ class _LoadedList extends StatelessWidget {
     required this.controller,
     required this.onSelect,
     required this.highlightSelection,
+    this.gameTabs = true,
+    this.artians,
   });
 
+  final ArtianController? artians;
+  final bool gameTabs;
   final WeaponListLoaded state;
   final WeaponListController controller;
   final ValueChanged<Weapon> onSelect;
@@ -74,6 +100,14 @@ class _LoadedList extends StatelessWidget {
     final query = state.query;
     final gutter = Space.gutter(MediaQuery.sizeOf(context).width);
     final only = query.onlyLabel;
+    final artians = this.artians;
+    // The Artian are High rank and have no tree; a search or "only these"
+    // hides them.
+    final artianType = artians == null || only != null || query.text.isNotEmpty
+        ? null
+        : query.rank == null || query.rank == Rank.high
+        ? state.catalog.artianOf(query.typeId)
+        : null;
 
     return CustomScrollView(
       key: const PageStorageKey('weapon-list'),
@@ -82,19 +116,21 @@ class _LoadedList extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: gutter),
-                child: GameTabs(
-                  selected: controller.game,
-                  includeAll: false,
-                  enabledGames: const {Game.riseSunbreak},
-                  onChanged: (_) {},
+              if (gameTabs)
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: gutter),
+                  child: GameTabs(
+                    selected: controller.game,
+                    includeAll: false,
+                    enabledGames: const {Game.riseSunbreak},
+                    onChanged: (_) {},
+                  ),
                 ),
-              ),
               WeaponTypePicker(
                 types: state.catalog.types,
                 selectedId: query.onlyIds == null ? query.typeId : null,
                 language: controller.language,
+                game: controller.game,
                 onChanged: controller.setType,
               ),
               if (only != null)
@@ -116,7 +152,7 @@ class _LoadedList extends StatelessWidget {
                     textSize: 15,
                     options: [
                       TabOption(value: null, text: l10n.rankAll),
-                      for (final rank in Rank.values)
+                      for (final rank in controller.game.allowedRanks)
                         TabOption(value: rank, text: l10n.rankName(rank)),
                     ],
                     selected: query.rank,
@@ -153,6 +189,31 @@ class _LoadedList extends StatelessWidget {
                 selectedId: highlightSelection ? state.selectedId : null,
                 language: controller.language,
                 onSelect: onSelect,
+              ),
+            ),
+          ),
+        if (artianType != null && artians != null)
+          SliverPadding(
+            padding: const EdgeInsets.only(bottom: 16),
+            sliver: SliverToBoxAdapter(
+              child: ArtianGroupCard(
+                type: artianType,
+                mine: artians.mineOf(artianType.type),
+                selection: highlightSelection ? artians.selection : null,
+                language: controller.language,
+                onOpen: (base) {
+                  controller.clearSelection();
+                  artians.open(artianType.type, base.rarity);
+                },
+                onOpenMine: (mine) {
+                  controller.clearSelection();
+                  artians.openMine(mine);
+                },
+                gogma: state.catalog.gogmaOf(artianType.type),
+                onOpenGogma: (w) {
+                  controller.clearSelection();
+                  artians.openGogma(artianType.type, w.gogma!);
+                },
               ),
             ),
           ),

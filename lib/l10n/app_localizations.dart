@@ -2079,6 +2079,348 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Nenhuma arma com esse filtro até {progress}.'**
   String noWeaponForFilter(String progress);
+
+  /// No description provided for @weaponSkills.
+  ///
+  /// In pt, this message translates to:
+  /// **'Habilidades da arma'**
+  String get weaponSkills;
+
+  /// No description provided for @setBonus.
+  ///
+  /// In pt, this message translates to:
+  /// **'Bônus do conjunto'**
+  String get setBonus;
+
+  /// No description provided for @groupBonusLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'grupo'**
+  String get groupBonusLabel;
+
+  /// No description provided for @piecesN.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 peça} other{{count} peças}}'**
+  String piecesN(int count);
+
+  /// No description provided for @setStepSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'{skill}, {pieces}: {name}'**
+  String setStepSemantics(String skill, String pieces, String name);
+
+  /// No description provided for @skillKindWeapon.
+  ///
+  /// In pt, this message translates to:
+  /// **'arma'**
+  String get skillKindWeapon;
+
+  /// No description provided for @skillKindArmor.
+  ///
+  /// In pt, this message translates to:
+  /// **'armadura'**
+  String get skillKindArmor;
+
+  /// No description provided for @skillKindSet.
+  ///
+  /// In pt, this message translates to:
+  /// **'conjunto'**
+  String get skillKindSet;
+
+  /// No description provided for @skillKindGroup.
+  ///
+  /// In pt, this message translates to:
+  /// **'grupo'**
+  String get skillKindGroup;
+
+  /// No description provided for @decoKindAll.
+  ///
+  /// In pt, this message translates to:
+  /// **'Todas'**
+  String get decoKindAll;
+
+  /// No description provided for @decoKindWeapon.
+  ///
+  /// In pt, this message translates to:
+  /// **'De arma'**
+  String get decoKindWeapon;
+
+  /// No description provided for @decoKindArmor.
+  ///
+  /// In pt, this message translates to:
+  /// **'De armadura'**
+  String get decoKindArmor;
+
+  /// No description provided for @talismansTab.
+  ///
+  /// In pt, this message translates to:
+  /// **'Talismãs'**
+  String get talismansTab;
+
+  /// No description provided for @talismanRanks.
+  ///
+  /// In pt, this message translates to:
+  /// **'Níveis'**
+  String get talismanRanks;
+
+  /// No description provided for @artianGroup.
+  ///
+  /// In pt, this message translates to:
+  /// **'Artian'**
+  String get artianGroup;
+
+  /// No description provided for @artianAnyElement.
+  ///
+  /// In pt, this message translates to:
+  /// **'elemento à escolha'**
+  String get artianAnyElement;
+
+  /// No description provided for @artianBuild.
+  ///
+  /// In pt, this message translates to:
+  /// **'Monte a sua'**
+  String get artianBuild;
+
+  /// No description provided for @artianElement.
+  ///
+  /// In pt, this message translates to:
+  /// **'Elemento'**
+  String get artianElement;
+
+  /// No description provided for @artianNoElement.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum'**
+  String get artianNoElement;
+
+  /// No description provided for @artianParts.
+  ///
+  /// In pt, this message translates to:
+  /// **'Peças ({count})'**
+  String artianParts(int count);
+
+  /// No description provided for @artianPartElement.
+  ///
+  /// In pt, this message translates to:
+  /// **'Elemento'**
+  String get artianPartElement;
+
+  /// No description provided for @artianPartAttack.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ataque'**
+  String get artianPartAttack;
+
+  /// No description provided for @artianPartAffinity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Afinidade'**
+  String get artianPartAffinity;
+
+  /// No description provided for @artianReinforcement.
+  ///
+  /// In pt, this message translates to:
+  /// **'Reforços ({count})'**
+  String artianReinforcement(int count);
+
+  /// No description provided for @artianBoostAttack.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ataque +{value}'**
+  String artianBoostAttack(int value);
+
+  /// No description provided for @artianBoostAffinity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Afinidade +{value}%'**
+  String artianBoostAffinity(int value);
+
+  /// No description provided for @artianBoostElement.
+  ///
+  /// In pt, this message translates to:
+  /// **'Elemento +{value}'**
+  String artianBoostElement(int value);
+
+  /// No description provided for @artianBoostSharpness.
+  ///
+  /// In pt, this message translates to:
+  /// **'Afiação +{value}'**
+  String artianBoostSharpness(int value);
+
+  /// No description provided for @artianBoostAmmo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Munição +{value}'**
+  String artianBoostAmmo(int value);
+
+  /// No description provided for @artianRemaining.
+  ///
+  /// In pt, this message translates to:
+  /// **'restam {count}'**
+  String artianRemaining(int count);
+
+  /// No description provided for @artianResult.
+  ///
+  /// In pt, this message translates to:
+  /// **'Resultado'**
+  String get artianResult;
+
+  /// No description provided for @artianInfusion.
+  ///
+  /// In pt, this message translates to:
+  /// **'com infusão'**
+  String get artianInfusion;
+
+  /// No description provided for @artianElementHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'O elemento vem de 2 peças iguais; 3 iguais dão infusão.'**
+  String get artianElementHint;
+
+  /// No description provided for @saveMyArtian.
+  ///
+  /// In pt, this message translates to:
+  /// **'Salvar minha Artian'**
+  String get saveMyArtian;
+
+  /// No description provided for @myArtianTag.
+  ///
+  /// In pt, this message translates to:
+  /// **'minha'**
+  String get myArtianTag;
+
+  /// No description provided for @artianName.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nome da Artian'**
+  String get artianName;
+
+  /// No description provided for @artianSaved.
+  ///
+  /// In pt, this message translates to:
+  /// **'Artian salva'**
+  String get artianSaved;
+
+  /// No description provided for @deleteArtianConfirm.
+  ///
+  /// In pt, this message translates to:
+  /// **'Excluir \"{name}\"?'**
+  String deleteArtianConfirm(String name);
+
+  /// No description provided for @increaseLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aumentar {name}'**
+  String increaseLabel(String name);
+
+  /// No description provided for @decreaseLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Diminuir {name}'**
+  String decreaseLabel(String name);
+
+  /// No description provided for @wildsLoadFailed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar os dados da Wilds.'**
+  String get wildsLoadFailed;
+
+  /// No description provided for @gogmaGroup.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gogma · do Gogmazios'**
+  String get gogmaGroup;
+
+  /// No description provided for @gogmaTag.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gogma'**
+  String get gogmaTag;
+
+  /// No description provided for @gogmaFocus.
+  ///
+  /// In pt, this message translates to:
+  /// **'Foco {focus}'**
+  String gogmaFocus(String focus);
+
+  /// No description provided for @focusAttack.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ataque'**
+  String get focusAttack;
+
+  /// No description provided for @focusAffinity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Afinidade'**
+  String get focusAffinity;
+
+  /// No description provided for @focusElement.
+  ///
+  /// In pt, this message translates to:
+  /// **'Elemento'**
+  String get focusElement;
+
+  /// No description provided for @gogmaSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'{type} Artian Gogma'**
+  String gogmaSubtitle(String type);
+
+  /// No description provided for @gogmaFoci.
+  ///
+  /// In pt, this message translates to:
+  /// **'Os três focos'**
+  String get gogmaFoci;
+
+  /// No description provided for @gogmaFocusColumn.
+  ///
+  /// In pt, this message translates to:
+  /// **'Foco'**
+  String get gogmaFocusColumn;
+
+  /// No description provided for @gogmaFocusHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Toque num foco para ver os atributos dele.'**
+  String get gogmaFocusHint;
+
+  /// No description provided for @gogmaHowTo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Como obter'**
+  String get gogmaHowTo;
+
+  /// No description provided for @gogmaUpgrade.
+  ///
+  /// In pt, this message translates to:
+  /// **'Melhore uma Artian de Raridade 8 ({base})'**
+  String gogmaUpgrade(String base);
+
+  /// No description provided for @gogmaDevice.
+  ///
+  /// In pt, this message translates to:
+  /// **'com um Tarred Device do foco escolhido'**
+  String get gogmaDevice;
+
+  /// No description provided for @gogmaSource.
+  ///
+  /// In pt, this message translates to:
+  /// **'O Tarred Device vem do Armamento Mutado, preso no corpo do Gogmazios: quebre as massas (sobretudo na fase gasosa). Só vem se você abater o monstro.'**
+  String get gogmaSource;
+
+  /// No description provided for @gogmaExtras.
+  ///
+  /// In pt, this message translates to:
+  /// **'Também ganha uma habilidade bônus, uma de grupo e reforços mais fortes, sorteados no jogo. Não são simulados aqui.'**
+  String get gogmaExtras;
+
+  /// No description provided for @openInMonsters.
+  ///
+  /// In pt, this message translates to:
+  /// **'Abrir em Monstros'**
+  String get openInMonsters;
 }
 
 class _AppLocalizationsDelegate

@@ -11,7 +11,7 @@ import 'package:mh_wiki/features/armor/domain/usecases/armor_queries.dart';
 import 'package:mh_wiki/features/armor/domain/usecases/load_armor_catalog.dart';
 
 /// The three tabs of the Armaduras area (007 FR-001).
-enum ArmorTab { sets, skills, decorations }
+enum ArmorTab { sets, skills, decorations, talismans }
 
 /// What is open in the detail: a set, a skill or a decoration.
 typedef ArmorSelection = ({ArmorTab kind, String id});
@@ -42,8 +42,12 @@ final class ArmorLoaded extends ArmorState {
     required this.decorationText,
     required this.decorationSlot,
     required this.decorations,
+    this.decorationKind,
     this.selection,
   });
+
+  /// `null` = every kind (Wilds weapon / armor decorations).
+  final DecorationKind? decorationKind;
 
   final ArmorCatalog catalog;
   final ArmorTab tab;
@@ -82,6 +86,7 @@ final class ArmorController extends ChangeNotifier {
   String _skillText = '';
   String _decorationText = '';
   int? _decorationSlot;
+  DecorationKind? _decorationKind;
   ArmorSelection? _selection;
 
   ArmorState get state => _state;
@@ -160,6 +165,9 @@ final class ArmorController extends ChangeNotifier {
 
   void setDecorationSlot(int? slot) => _update(() => _decorationSlot = slot);
 
+  void setDecorationKind(DecorationKind? kind) =>
+      _update(() => _decorationKind = kind);
+
   /// Opens a set, skill or decoration, switching to its tab.
   Future<void> select(ArmorTab kind, String id) async {
     await ensureLoaded();
@@ -181,6 +189,12 @@ final class ArmorController extends ChangeNotifier {
 
   Skill? get selectedSkill => switch (_selection) {
     (kind: ArmorTab.skills, :final id) => _catalog?.skill(id),
+    _ => null,
+  };
+
+  Talisman? get selectedTalisman => switch (_selection) {
+    (kind: ArmorTab.talismans, :final id) =>
+      _catalog?.talismans.where((t) => t.id == id).firstOrNull,
     _ => null,
   };
 
@@ -221,9 +235,11 @@ final class ArmorController extends ChangeNotifier {
           ),
       decorationText: _decorationText,
       decorationSlot: _decorationSlot,
+      decorationKind: _decorationKind,
       decorations: [
         for (final d in catalog.decorations)
           if ((_decorationSlot == null || d.slotLevel == _decorationSlot) &&
+              (_decorationKind == null || d.kind == _decorationKind) &&
               (matches(decoNeedle, d.name.en, d.name.ptBr) ||
                   d.skills.any((s) {
                     final skill = catalog.skill(s.skillId);

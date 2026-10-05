@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 import 'package:mh_wiki/core/presentation/widgets/element_icon.dart';
 import 'package:mh_wiki/core/presentation/widgets/slot_icon.dart';
 import 'package:mh_wiki/features/armor/domain/entities/armor_piece.dart';
+import 'package:mh_wiki/features/armor/domain/entities/skill.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/element_type.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
@@ -112,10 +114,16 @@ class ResistanceRow extends StatelessWidget {
 
 /// A row of slot gems (highest first).
 class SlotGems extends StatelessWidget {
-  const SlotGems({required this.slots, this.size = 20, super.key});
+  const SlotGems({
+    required this.slots,
+    this.size = 20,
+    this.game = Game.riseSunbreak,
+    super.key,
+  });
 
   final List<int> slots;
   final double size;
+  final Game game;
 
   @override
   Widget build(BuildContext context) => Row(
@@ -128,5 +136,67 @@ class SlotGems extends StatelessWidget {
     ],
   );
 
-  Widget _gem(int level) => SlotIcon(level: level, size: size);
+  Widget _gem(int level) => SlotIcon(level: level, size: size, game: game);
+}
+
+/// A decoration's own icon (Wilds), or its slot gem.
+class DecorationIcon extends StatelessWidget {
+  const DecorationIcon({
+    required this.decoration,
+    this.game = Game.riseSunbreak,
+    this.size = 26,
+    super.key,
+  });
+
+  final ArmorDecoration decoration;
+  final Game game;
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    final icon = decoration.iconAsset;
+    final gem = SlotGems(slots: [decoration.slotLevel], size: size, game: game);
+    if (icon == null) return gem;
+    return SizedBox.square(
+      dimension: size,
+      child: Image.asset(
+        icon,
+        fit: BoxFit.contain,
+        excludeFromSemantics: true,
+        errorBuilder: (_, _, _) => gem,
+      ),
+    );
+  }
+}
+
+/// The kind of a Wilds skill as a small seal ("arma", "conjunto"…).
+class SkillKindSeal extends StatelessWidget {
+  const SkillKindSeal({required this.kind, super.key});
+
+  final SkillKind kind;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final text = switch (kind) {
+      SkillKind.weapon => l10n.skillKindWeapon,
+      SkillKind.armor => l10n.skillKindArmor,
+      SkillKind.set => l10n.skillKindSet,
+      SkillKind.group => l10n.skillKindGroup,
+    };
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        border: Border.all(color: HunterPalette.border),
+        borderRadius: BorderRadius.circular(3),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Text(
+          text,
+          style: Theme.of(context).textTheme.bodySmall
+              ?.copyWith(color: HunterPalette.textMuted, fontSize: 11),
+        ),
+      ),
+    );
+  }
 }

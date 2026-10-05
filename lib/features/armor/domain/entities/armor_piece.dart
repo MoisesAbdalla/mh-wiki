@@ -50,6 +50,7 @@ final class ArmorPiece {
     this.skills = const [],
     this.forge = const [],
     this.imageAsset,
+    this.declaredRank,
     this.sources = const [],
   });
 
@@ -70,14 +71,20 @@ final class ArmorPiece {
   final List<SkillLevel> skills;
   final List<MaterialCost> forge;
   final String? imageAsset;
+
+  /// The rank the dataset gives (Wilds).
+  final Rank? declaredRank;
   final List<SourceRef> sources;
 
-  /// Sunbreak ranks by rarity: 1–3 Low, 4–7 High, 8–10 Master.
-  Rank get rank => rarity <= 3
-      ? Rank.low
-      : rarity <= 7
-      ? Rank.high
-      : Rank.master;
+  /// The dataset's rank, else Sunbreak's by rarity: 1–3 Low, 4–7 High,
+  /// 8–10 Master.
+  Rank get rank =>
+      declaredRank ??
+      (rarity <= 3
+          ? Rank.low
+          : rarity <= 7
+          ? Rank.high
+          : Rank.master);
 
   @override
   bool operator ==(Object other) => other is ArmorPiece && other.id == id;

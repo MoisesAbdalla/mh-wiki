@@ -1,4 +1,7 @@
 import 'package:flutter/services.dart';
+import 'package:mh_wiki/features/weapons/presentation/controllers/artian_controller.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/artian.dart';
+import 'package:mh_wiki/features/weapons/data/repositories/prefs_my_artian_repository.dart';
 import 'package:mh_wiki/features/armor/data/armor_repository_impl.dart';
 import 'package:mh_wiki/features/armor/data/asset_armor_datasource.dart';
 import 'package:mh_wiki/features/armor/domain/repositories/armor_repository.dart';
@@ -29,6 +32,7 @@ import 'package:mh_wiki/features/weapons/data/repositories/weapon_repository_imp
 import 'package:mh_wiki/features/weapons/domain/repositories/weapon_repository.dart';
 import 'package:mh_wiki/features/weapons/domain/usecases/load_weapon_catalog.dart';
 import 'package:mh_wiki/features/weapons/presentation/controllers/weapon_list_controller.dart';
+import 'package:mh_wiki/core/domain/game.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Composition root (constitution Principle III): the only place that knows
@@ -46,6 +50,7 @@ final class AppDependencies {
     required this.optimizerRepository,
     required this.talismanRepository,
     required this.requestRepository,
+    required this.myArtianRepository,
   });
 
   static Future<AppDependencies> create({AssetBundle? bundle}) async {
@@ -62,6 +67,7 @@ final class AppDependencies {
       optimizerRepository: AssetOptimizerRepository(assets),
       talismanRepository: PrefsTalismanRepository(prefs),
       requestRepository: PrefsRequestRepository(prefs),
+      myArtianRepository: PrefsMyArtianRepository(prefs),
     );
   }
 
@@ -75,6 +81,7 @@ final class AppDependencies {
   final OptimizerRepository optimizerRepository;
   final TalismanRepository talismanRepository;
   final RequestRepository requestRepository;
+  final MyArtianRepository myArtianRepository;
 
   MonsterListController createMonsterListController() => MonsterListController(
     loadCatalog: LoadMonsterCatalog(monsterRepository),
@@ -83,11 +90,21 @@ final class AppDependencies {
     getMonsterVersions: const GetMonsterVersions(),
   );
 
-  WeaponListController createWeaponListController() =>
-      WeaponListController(loadCatalog: LoadWeaponCatalog(weaponRepository));
+  WeaponListController createWeaponListController({
+    Game game = Game.riseSunbreak,
+  }) => WeaponListController(
+    loadCatalog: LoadWeaponCatalog(weaponRepository),
+    game: game,
+  );
 
-  ArmorController createArmorController() =>
-      ArmorController(loadCatalog: LoadArmorCatalog(armorRepository));
+  ArmorController createArmorController({Game game = Game.riseSunbreak}) =>
+      ArmorController(
+        loadCatalog: LoadArmorCatalog(armorRepository),
+        game: game,
+      );
+
+  ArtianController createArtianController() =>
+      ArtianController(repository: myArtianRepository);
 
   AssistantController createAssistantController() => AssistantController(
     loadCatalog: LoadBuildCatalog(buildRepository),
@@ -119,6 +136,8 @@ void linkNameLanguage({
   WeaponListController? weapons,
   ArmorController? armor,
   AssistantController? assistant,
+  List<WeaponListController> moreWeapons = const [],
+  List<ArmorController> moreArmor = const [],
 }) {
   void sync() {
     final language = settings.settings.nameLanguage;
@@ -126,6 +145,12 @@ void linkNameLanguage({
     weapons?.onLanguageChanged(language);
     armor?.onLanguageChanged(language);
     assistant?.onLanguageChanged(language);
+    for (final w in moreWeapons) {
+      w.onLanguageChanged(language);
+    }
+    for (final a in moreArmor) {
+      a.onLanguageChanged(language);
+    }
   }
 
   settings.addListener(sync);

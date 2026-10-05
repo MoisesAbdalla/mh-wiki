@@ -4,8 +4,11 @@ import 'package:mh_wiki/features/monsters/data/datasources/monster_datasource.da
 import 'package:mh_wiki/features/monsters/data/dtos/json_reader.dart';
 import 'package:mh_wiki/core/data/material_sources_json.dart';
 import 'package:mh_wiki/core/domain/material_sources.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/artian.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/rampage.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/sharpness.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/special_kind.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_traits.dart';
 
 const supportedWeaponSchemaVersion = 1;
@@ -20,6 +23,8 @@ final class WeaponDatasetDto {
     this.rampageDecorations = const [],
     this.sources = const {},
     required this.weapons,
+    this.skills = const {},
+    this.artian = const [],
   });
 
   factory WeaponDatasetDto.fromJson(
@@ -86,6 +91,12 @@ final class WeaponDatasetDto {
         ),
     ];
 
+    // Skills the weapons carry (Wilds): id → (name, max level).
+    final skills = <String, (LocalizedText, int)>{
+      for (final s in root.optionalObjects('skills'))
+        s.string('id'): (_localized(s.object('name')), _positive(s, 'max')),
+    };
+
     final readers = root.objects('weapons');
     final slugs = <String>{};
     for (final reader in readers) {
@@ -101,6 +112,7 @@ final class WeaponDatasetDto {
           materialIds: materials.keys.toSet(),
           slugs: slugs,
           rampageSkills: rampageSkills,
+          skills: skills,
         ),
     ];
 
@@ -127,6 +139,10 @@ final class WeaponDatasetDto {
       sources: sources,
       weapons: weapons,
       rampageDecorations: rampageDecorations,
+      skills: skills,
+      artian: [
+        for (final a in root.optionalObjects('artian')) _artian(a, types),
+      ],
     );
   }
 
@@ -138,6 +154,8 @@ final class WeaponDatasetDto {
   final Map<String, MaterialSources> sources;
   final List<WeaponDto> weapons;
   final List<RampageDecoration> rampageDecorations;
+  final Map<String, (LocalizedText, int)> skills;
+  final List<ArtianType> artian;
 }
 
 final class WeaponTypeDto {
@@ -185,6 +203,8 @@ final class WeaponDto {
     required this.traits,
     this.rampageSkills = const [],
     required this.sources,
+    this.skills = const [],
+    this.gogma,
   });
 
   factory WeaponDto.fromJson(
@@ -193,6 +213,7 @@ final class WeaponDto {
     required Set<String> materialIds,
     required Set<String> slugs,
     Map<String, RampageSkill> rampageSkills = const {},
+    Map<String, (LocalizedText, int)> skills = const {},
   }) {
     final typeId = r.string('type');
     final type = types[typeId] ?? r.fail('unknown type "$typeId"');
@@ -261,6 +282,7 @@ final class WeaponDto {
     if (starValue < 1 || starValue > 7) r.fail('stars must be 1-7');
 
     return WeaponDto(
+      gogma: r.has('gogma') ? r.enumValue('gogma', ArtianFocus.values) : null,
       slug: r.string('slug'),
       type: typeId,
       name: _localized(r.object('name')),
@@ -291,9 +313,23 @@ final class WeaponDto {
         for (final s in r.objects('sources'))
           (s.string('name'), s.string('url')),
       ],
+      skills: [
+        for (final s in r.optionalObjects('skills'))
+          () {
+            final id = s.string('skill');
+            final (name, max) = skills[id] ?? s.fail('unknown skill "$id"');
+            return WeaponSkill(
+              id: id,
+              name: name,
+              level: _positive(s, 'level'),
+              max: max,
+            );
+          }(),
+      ],
     );
   }
 
+  final ArtianFocus? gogma;
   final String slug;
   final String type;
   final LocalizedText name;
@@ -317,6 +353,7 @@ final class WeaponDto {
   final WeaponTraits traits;
   final List<RampageSkill> rampageSkills;
   final List<(String, String)> sources;
+  final List<WeaponSkill> skills;
 }
 
 LocalizedText _localized(JsonReader r, {bool allowEmpty = false}) {
@@ -385,5 +422,56 @@ WeaponTraits _traits(JsonReader weapon, String typeId) {
           capacity: _ints(a, 'capacity'),
         ),
     ],
+  );
+}
+
+/// One `artian` entry (010 data-model).
+ArtianType _artian(JsonReader r, Map<String, WeaponTypeDto> types) {
+  final type = r.string('type');
+  if (!types.containsKey(type)) r.fail('unknown type "$type"');
+  final production = r.object('production');
+  final bases = [
+    for (final w in r.objects('weapons'))
+      ArtianBase(
+        type: type,
+        rarity: w.number('rarity').toInt(),
+        name: _localized(w.object('name')),
+        attack: _positive(w, 'attack'),
+        affinity: w.number('affinity').toInt(),
+        slots: _ints(w, 'slots'),
+        sharpness: switch (w.optionalObject('sharpness')) {
+          final s? => Sharpness(
+            base: _ints(s, 'base'),
+            handicraft: _ints(s, 'handicraft'),
+          ),
+          null => null,
+        },
+        imageAsset: w.optionalString('image'),
+      ),
+  ];
+  final elements = r.object('elementsByRarity');
+  return ArtianType(
+    type: type,
+    bases: bases,
+    elementsByRarity: {
+      for (final e in elements.json.entries)
+        int.parse(e.key): {
+          for (final k in (e.value! as Map<String, Object?>).entries)
+            k.key: (k.value! as num).toInt(),
+        },
+    },
+    infusion: r.number('infusion').toInt(),
+    attackPart: production.number('attackDisplay').toInt(),
+    affinityPart: production.number('affinity').toInt(),
+    boosts: [
+      for (final b in r.objects('reinforcement'))
+        (
+          kind: b.enumValue('kind', ArtianBoost.values),
+          // Attack rolls are stored raw; the displayed value is what adds up.
+          value: (b.optionalNumber('display') ?? b.number('value')).toInt(),
+          max: _positive(b, 'max'),
+        ),
+    ],
+    rolls: _positive(r, 'rolls'),
   );
 }

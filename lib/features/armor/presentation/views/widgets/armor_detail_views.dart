@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/domain/rank.dart';
+import 'package:mh_wiki/core/presentation/game_icons.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
 import 'package:mh_wiki/core/presentation/material_droppers.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
@@ -98,7 +100,13 @@ class ArmorSetDetailView extends StatelessWidget {
             l10n.rarity(set.rarity),
             l10n.piecesCount(set.pieces.length),
           ].join(' · '),
-          image: (chest ?? set.pieces.first).imageAsset,
+          image:
+              (chest ?? set.pieces.first).imageAsset ??
+              GameIcons.armorPart(
+                (chest ?? set.pieces.first).part.name,
+                set.rarity,
+                catalog.game,
+              ),
         ),
         NotebookSection(
           number: 1,
@@ -132,11 +140,14 @@ class ArmorSetDetailView extends StatelessWidget {
                 for (final (i, t) in totals.indexed)
                   Semantics(
                     button: true,
-                    label: l10n.skillLevelOf(
-                      t.skill.name.resolve(language),
-                      t.level,
-                      t.skill.maxLevel,
-                    ),
+                    label: _counted(t.skill)
+                        ? '${t.skill.name.resolve(language)}, '
+                              '${l10n.piecesN(t.level)}'
+                        : l10n.skillLevelOf(
+                            t.skill.name.resolve(language),
+                            t.level,
+                            t.skill.maxLevel,
+                          ),
                     excludeSemantics: true,
                     child: InkWell(
                       onTap: () => onOpenSkill(t.skill),
@@ -145,10 +156,18 @@ class ArmorSetDetailView extends StatelessWidget {
                         child: RuledRow(
                           ruled: i < totals.length - 1,
                           label: Text(t.skill.name.resolve(language)),
-                          trailing: SkillPips(
-                            level: t.level,
-                            max: t.skill.maxLevel,
-                          ),
+                          trailing: _counted(t.skill)
+                              ? Text(
+                                  l10n.piecesN(t.level),
+                                  style: notebookNumber(
+                                    size: 13,
+                                    color: HunterPalette.textMuted,
+                                  ),
+                                )
+                              : SkillPips(
+                                  level: t.level,
+                                  max: t.skill.maxLevel,
+                                ),
                         ),
                       ),
                     ),
@@ -156,8 +175,29 @@ class ArmorSetDetailView extends StatelessWidget {
               ],
             ),
           ),
+        if (set.bonus != null || set.groupBonus != null)
+          NotebookSection(
+            number: 3,
+            title: l10n.setBonus,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                for (final (bonus, group) in [
+                  if (set.bonus case final b?) (b, false),
+                  if (set.groupBonus case final g?) (g, true),
+                ])
+                  _BonusBlock(
+                    bonus: bonus,
+                    group: group,
+                    catalog: catalog,
+                    language: language,
+                    onOpenSkill: onOpenSkill,
+                  ),
+              ],
+            ),
+          ),
         NotebookSection(
-          number: 3,
+          number: set.bonus != null || set.groupBonus != null ? 4 : 3,
           title: l10n.armorSectionPieces,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -169,11 +209,120 @@ class ArmorSetDetailView extends StatelessWidget {
                   sources: sources,
                   onOpenMonster: onOpenMonster,
                   language: language,
+                  game: catalog.game,
                 ),
             ],
           ),
         ),
       ],
+    );
+  }
+
+  /// Set and group skills count pieces, not levels.
+  static bool _counted(Skill s) =>
+      s.kind == SkillKind.set || s.kind == SkillKind.group;
+}
+
+/// One set or group bonus: the skill and each piece-count step.
+class _BonusBlock extends StatelessWidget {
+  const _BonusBlock({
+    required this.bonus,
+    required this.group,
+    required this.catalog,
+    required this.language,
+    required this.onOpenSkill,
+  });
+
+  final SetBonus bonus;
+  final bool group;
+  final ArmorCatalog catalog;
+  final NameLanguage language;
+  final ValueChanged<Skill> onOpenSkill;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final skill = catalog.skill(bonus.skillId);
+    final name = skill?.name.resolve(language) ?? bonus.skillId;
+    final muted = Theme.of(context).textTheme.bodySmall
+        ?.copyWith(color: HunterPalette.textMuted);
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        border: Border(bottom: BorderSide(color: HunterPalette.borderSubtle)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: Space.row),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            InkWell(
+              onTap: skill == null ? null : () => onOpenSkill(skill),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(minHeight: 48),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(text: name),
+                        if (group)
+                          TextSpan(
+                            text: '  (${l10n.groupBonusLabel})',
+                            style: muted,
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            for (final step in bonus.steps)
+              Semantics(
+                label: l10n.setStepSemantics(
+                  name,
+                  l10n.piecesN(step.pieces),
+                  step.name.resolve(language),
+                ),
+                excludeSemantics: true,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      DecoratedBox(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: HunterPalette.border),
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          child: Text(
+                            l10n.piecesN(step.pieces),
+                            style: notebookNumber(
+                              size: 12,
+                              color: HunterPalette.gold,
+                              bold: true,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          [
+                            step.name.resolve(language),
+                            step.description.resolve(language),
+                          ].where((t) => t.isNotEmpty).join(' — '),
+                          style: muted,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -185,6 +334,7 @@ class _PieceMaterials extends StatefulWidget {
     required this.sources,
     required this.onOpenMonster,
     required this.language,
+    this.game = Game.riseSunbreak,
     super.key,
   });
 
@@ -192,6 +342,7 @@ class _PieceMaterials extends StatefulWidget {
   final MaterialSourceLookup sources;
   final ValueChanged<MaterialDropper>? onOpenMonster;
   final NameLanguage language;
+  final Game game;
 
   @override
   State<_PieceMaterials> createState() => _PieceMaterialsState();
@@ -219,11 +370,25 @@ class _PieceMaterialsState extends State<_PieceMaterials> {
             child: ConstrainedBox(
               constraints: const BoxConstraints(minHeight: 48),
               child: RuledRow(
+                leading: switch (GameIcons.armorPart(
+                  piece.part.name,
+                  piece.rarity,
+                  widget.game,
+                )) {
+                  final icon? => Image.asset(
+                    icon,
+                    width: 26,
+                    height: 26,
+                    excludeFromSemantics: true,
+                    errorBuilder: (_, _, _) => const SizedBox(width: 26),
+                  ),
+                  null => null,
+                },
                 label: Text(name, style: notebookTitle(size: 16)),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SlotGems(slots: piece.slots, size: 18),
+                    SlotGems(slots: piece.slots, size: 18, game: widget.game),
                     Icon(
                       _open ? Icons.expand_less : Icons.expand_more,
                       size: 20,
@@ -309,6 +474,13 @@ class _SkillDetailViewState extends State<SkillDetailView> {
           title: skill.name.resolve(language),
           subtitle: [
             skill.description.resolve(language),
+            if (widget.catalog.game == Game.wilds)
+              switch (skill.kind) {
+                SkillKind.weapon => l10n.skillKindWeapon,
+                SkillKind.armor => l10n.skillKindArmor,
+                SkillKind.set => l10n.skillKindSet,
+                SkillKind.group => l10n.skillKindGroup,
+              },
             l10n.skillMaxLevel(skill.maxLevel),
           ].where((t) => t.isNotEmpty).join(' · '),
         ),
@@ -354,7 +526,10 @@ class _SkillDetailViewState extends State<SkillDetailView> {
                           '${d.decoration.name.resolve(language)} · '
                           '${l10n.skillLevelShort(d.level)}',
                         ),
-                        trailing: SlotGems(slots: [d.decoration.slotLevel]),
+                        trailing: DecorationIcon(
+                          decoration: d.decoration,
+                          game: widget.catalog.game,
+                        ),
                       ),
                     ),
                   ),
@@ -432,7 +607,13 @@ class DecorationDetailView extends StatelessWidget {
       children: [
         _Header(
           title: decoration.name.resolve(language),
-          subtitle: l10n.slotLevelTitle(decoration.slotLevel),
+          subtitle: [
+            l10n.slotLevelTitle(decoration.slotLevel),
+            if (catalog.game == Game.wilds)
+              decoration.kind == DecorationKind.weapon
+                  ? l10n.decoKindWeapon
+                  : l10n.decoKindArmor,
+          ].join(' · '),
         ),
         NotebookSection(
           number: 1,
@@ -480,6 +661,88 @@ class DecorationDetailView extends StatelessWidget {
                   ],
                 ),
         ),
+      ],
+    );
+  }
+}
+
+/// A talisman: each rank with its skill, rarity and materials (Wilds,
+/// 010 FR-008).
+class TalismanDetailView extends StatelessWidget {
+  const TalismanDetailView({
+    required this.talisman,
+    required this.catalog,
+    required this.onOpenSkill,
+    this.sources = MaterialSourceLookup.empty,
+    this.onOpenMonster,
+    this.language = NameLanguage.ptBr,
+    super.key,
+  });
+
+  final Talisman talisman;
+  final ArmorCatalog catalog;
+  final ValueChanged<Skill> onOpenSkill;
+  final MaterialSourceLookup sources;
+  final ValueChanged<MaterialDropper>? onOpenMonster;
+  final NameLanguage language;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final first = talisman.ranks.first;
+    final last = talisman.ranks.last;
+    return ListView(
+      key: PageStorageKey(('talisman', talisman.id)),
+      padding: const EdgeInsets.only(bottom: Space.section),
+      children: [
+        _Header(
+          title: first.name
+              .resolve(language)
+              .replaceFirst(RegExp(r'\s+[IVX]+$'), ''),
+          subtitle: first.rarity == last.rarity
+              ? l10n.rarity(first.rarity)
+              : '${l10n.rarity(first.rarity)}–${last.rarity}',
+          image: GameIcons.armorPart('talisman', last.rarity, catalog.game),
+        ),
+        for (final (i, rank) in talisman.ranks.indexed)
+          NotebookSection(
+            number: i + 1,
+            title: rank.name.resolve(language),
+            note: l10n.rarity(rank.rarity),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                for (final s in rank.skills)
+                  if (catalog.skill(s.skillId) case final skill?)
+                    InkWell(
+                      onTap: () => onOpenSkill(skill),
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(minHeight: 48),
+                        child: RuledRow(
+                          label: Text(skill.name.resolve(language)),
+                          trailing: SkillPips(
+                            level: s.level,
+                            max: skill.maxLevel,
+                          ),
+                        ),
+                      ),
+                    ),
+                if (rank.forge.isNotEmpty) ...[
+                  RuledCaption(l10n.forgeMaterials),
+                  for (final (j, cost) in rank.forge.indexed)
+                    MaterialCostRow(
+                      key: ValueKey((rank.level, cost.material.id)),
+                      cost: cost,
+                      droppers: sources.droppersOf(cost.material.id),
+                      ranked: cost.sources.forRank(Rank.high),
+                      onOpenMonster: onOpenMonster,
+                      ruled: j < rank.forge.length - 1,
+                      language: language,
+                    ),
+                ],
+              ],
+            ),
+          ),
       ],
     );
   }

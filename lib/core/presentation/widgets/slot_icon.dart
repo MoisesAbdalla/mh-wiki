@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/game.dart';
+import 'package:mh_wiki/core/presentation/game_icons.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 
@@ -8,6 +10,7 @@ class SlotIcon extends StatelessWidget {
     required this.level,
     this.rampage = false,
     this.size = 26,
+    this.game = Game.riseSunbreak,
     super.key,
   });
 
@@ -15,8 +18,11 @@ class SlotIcon extends StatelessWidget {
   final bool rampage;
   final double size;
 
-  static String iconAsset(int level) =>
-      'assets/images/weapons/slots/deco$level.webp';
+  /// Whose slot icons to use (010 FR-009).
+  final Game game;
+
+  static String iconAsset(int level, {Game game = Game.riseSunbreak}) =>
+      GameIcons.slot(level, game);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,7 @@ class SlotIcon extends StatelessWidget {
     return SizedBox.square(
       dimension: size,
       child: Image.asset(
-        SlotIcon.iconAsset(level),
+        SlotIcon.iconAsset(level, game: game),
         fit: BoxFit.contain,
         excludeFromSemantics: true,
         // The gem is white and grey: gold tints it for the Rampage slot.

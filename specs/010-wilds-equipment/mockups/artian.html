@@ -1,0 +1,124 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Caderninho — Artian (010)</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Averia+Serif+Libre:wght@700&family=Atkinson+Hyperlegible&display=swap" rel="stylesheet"><style>
+:root{--bg:#16120e;--panel:#1f1812;--raise:#2c2215;--ink:#efe4c8;--ink2:#b9a67f;--ink3:#8a7652;--rule:#3b2e1d;--rule2:#5a4526;--gold:#e0bd6a;--neg:#f2a08a;--ok:#9cc48a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0a08;color:var(--ink);font:15px/1.45 "Atkinson Hyperlegible",sans-serif;padding:28px 16px 60px}
+.intro{max-width:1640px;margin:0 auto 22px}.intro h1{font:400 30px/1 "IM Fell English SC"}.intro p{color:var(--ink2);margin-top:8px;max-width:100ch;font-size:14px}
+.wrap{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;max-width:1640px;margin:0 auto}
+.cap{font-size:12px;color:var(--ink2);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase}.cap b{color:var(--gold)}
+.phone{width:370px;max-width:100%;height:860px;background:var(--bg);border-radius:26px;display:flex;flex-direction:column;overflow:hidden}
+.scroll{flex:1;overflow-y:auto;padding-bottom:20px;scrollbar-width:none}
+.appbar{display:flex;justify-content:space-between;align-items:baseline;padding:18px 20px 6px}.brand{font:400 24px/1 "IM Fell English SC"}.gear{color:var(--ink2);font-size:13px}
+.tabs{display:flex;gap:16px;padding:4px 20px 0;border-bottom:1px solid var(--rule)}
+.tabs span{white-space:nowrap;padding:6px 0 8px;font:400 16px "IM Fell English SC";color:var(--ink2)}.tabs span.on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--gold)}
+.ctx{display:flex;justify-content:space-between;align-items:center;margin:10px 12px 8px;padding:8px 12px;border:1px solid var(--rule);border-radius:4px;font-size:13px;color:var(--ink2)}.ctx b{color:var(--ink);font-weight:400}
+.link{color:var(--gold);font-size:13px}
+.card{margin:0 12px 12px;background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:12px 14px 12px}
+.card h3{display:flex;gap:10px;align-items:baseline;font:400 19px "IM Fell English SC";margin-bottom:8px}.card h3 i{font:700 16px "Averia Serif Libre";color:var(--gold);font-style:normal}
+.search{border:1px solid var(--rule2);border-radius:4px;padding:8px 10px;color:var(--ink3);font-size:14px;margin-bottom:6px}
+.rr{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--rule);font-size:14px}.rr:last-child{border-bottom:0}
+.sk{font-size:14px}.sub{font-size:12px;color:var(--ink2)}
+.pips{display:inline-flex;gap:3px;vertical-align:middle}.pips i{width:9px;height:9px;border:1px solid var(--gold);border-radius:2px;display:inline-block}.pips i.f{background:var(--gold)}.pips i.o{border-color:var(--rule2)}.pips i.miss{border-color:var(--neg);background:rgba(242,160,138,.25)}
+.step{display:flex;align-items:center;gap:6px}.step b,.stepm b{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border:1px solid var(--rule2);border-radius:4px;color:var(--gold);font-weight:400}.step u{text-decoration:none;color:var(--ink3);margin-left:4px}
+.num{font:700 15px "Averia Serif Libre";min-width:14px;text-align:center}
+.sugg-cap{font-size:12px;color:var(--ink3);margin-top:10px}.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{font-size:12.5px;padding:3px 9px;border:1px solid var(--rule2);border-radius:12px;color:var(--ink2)}
+.opt{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--rule)}.opt.last{border-bottom:0}
+.tog{width:34px;height:18px;border-radius:9px;background:var(--rule2);position:relative}.tog.on{background:var(--gold)}.tog::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:7px;background:var(--bg)}.tog.on::after{left:18px}
+.pad{padding:0 12px}.btn{display:block;text-align:center;margin:4px 0 8px;padding:10px;border:1px solid var(--gold);color:var(--gold);border-radius:4px;font:400 16px "IM Fell English SC"}.btn.solid{background:var(--gold);color:#1c150d}
+.crumb{display:flex;justify-content:space-between;font-size:12px;color:var(--ink2);padding:18px 22px 0}
+.head{padding:10px 20px 12px}.head h2{font:400 25px/1.05 "IM Fell English SC"}.head .sub{margin-top:6px;font-size:13px}
+.tal{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--rule)}.tal:last-child{border-bottom:0}.ti{width:34px;height:34px}.tal .tx{flex:1}.nm{font:400 16px/1.15 "IM Fell English SC"}
+.slots{display:flex;gap:3px}.sl{width:16px;height:16px;vertical-align:middle}.sl0{color:var(--ink3);font-size:12px;width:16px;text-align:center}
+.field{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:10px}.field .sub{width:100%}.inp{flex:1;border:1px solid var(--rule2);border-radius:4px;padding:7px 10px;font-size:14px}.inp.muted{color:var(--ink3)}.stepm{display:flex;align-items:center;gap:6px}
+.slotsrow{display:grid;gap:6px;margin-bottom:10px}.seg2{display:flex;gap:4px;margin-top:3px}.seg2 span{flex:1;text-align:center;padding:4px 0;border:1px solid var(--rule2);border-radius:3px;font:700 13px "Averia Serif Libre";color:var(--ink2)}.seg2 span.on{border-color:var(--gold);color:var(--gold);background:var(--raise)}
+.sec{padding:8px 16px 2px;font:400 15px "IM Fell English SC";color:var(--ink2);display:flex;align-items:center;gap:10px}.sec::after{content:"";flex:1;border-bottom:1px solid var(--rule2)}
+.bc{margin:8px 12px 0;background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:10px 14px}.bc.sel{border-color:var(--gold)}
+.rtop{display:flex;justify-content:space-between;align-items:center}.bc h5{font:400 18px/1.15 "IM Fell English SC"}
+.seal{font:700 11px "Averia Serif Libre";padding:0 6px;border-radius:3px;border:1px solid}.seal.ok{color:var(--ok);border-color:var(--ok)}.seal.no{color:var(--neg);border-color:var(--neg)}
+.picons{display:flex;gap:4px;margin:6px 0 4px;align-items:center}.picons img{width:28px;height:28px;background:var(--raise);border-radius:3px;padding:2px}.picons .tal{border:0;padding:0;margin-left:6px}
+.sk2{font-size:12.5px;color:var(--ink);margin:4px 0}.sk2 .bad{color:var(--neg)}
+.ok{color:var(--ok);font-size:13px}.no{color:var(--neg);font-size:12px;margin-left:4px}
+.row{padding:8px 0;border-bottom:1px solid var(--rule)}.row.last{border-bottom:0}.top{display:flex;gap:12px;align-items:center}
+.ic{width:38px;height:38px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:4px;background:var(--raise)}.ic img{width:34px;height:34px;object-fit:contain}
+.part{font-size:12px;color:var(--ink2)}
+.note{font-size:12px;color:var(--ink3);padding:10px 16px}
+.nav{display:flex;border-top:1px solid var(--rule2);background:#120e0b}.nav a{flex:1;text-align:center;padding:8px 0 10px;font:400 14px "IM Fell English SC";color:var(--ink2)}.nav a i{display:block;font-style:normal;font-size:17px;line-height:1.2}.nav a.on{color:var(--gold)}
+.notes{max-width:1640px;margin:28px auto 0;color:var(--ink2);font-size:14px}.notes h2{font:400 22px "IM Fell English SC";color:var(--ink);margin-bottom:8px}.notes li{margin:5px 0 5px 18px}.notes b{color:var(--ink)}
+
+.games{display:flex;gap:14px;align-items:flex-end;padding:6px 20px 0;border-bottom:1px solid var(--rule)}
+.games span{padding:4px 0 6px;font:400 15px "IM Fell English SC";color:var(--ink2)}
+.games img{height:34px;opacity:.5;filter:grayscale(.5)}
+.games .on img{opacity:1;filter:none}.games .on{box-shadow:inset 0 -2px 0 var(--gold)}
+.games .soon{opacity:.45;font-size:11px}
+.types2{display:flex;gap:8px;padding:10px 12px 4px;overflow:hidden}
+.types2 span{flex:none;width:62px;text-align:center;padding:6px 2px;border:1px solid var(--rule);border-radius:4px;background:var(--panel);font-size:11px;color:var(--ink2)}
+.types2 span.on{border-color:var(--gold);color:var(--ink);background:var(--raise)}
+.types2 img{width:30px;height:30px;display:block;margin:0 auto 2px}
+.wr{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;margin:0 12px;border-bottom:1px solid var(--rule);font-size:14px}
+.wr .nm2{font:400 16px "IM Fell English SC"}
+.attr{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:13.5px}
+.attr b{font:700 15px "Averia Serif Libre";color:var(--ink)}
+.sharp{display:flex;height:12px;border-radius:2px;overflow:hidden;margin:6px 0 2px}
+.new{display:inline-block;font:700 10px "Averia Serif Libre";color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:0 4px;margin-left:6px;vertical-align:middle}
+.bon{padding:8px 0;border-bottom:1px solid var(--rule)}.bon:last-child{border-bottom:0}
+.bon .pc{font:700 12px "Averia Serif Libre";color:var(--gold);border:1px solid var(--rule2);border-radius:3px;padding:0 5px;margin-right:6px}
+.atabs{display:flex;gap:14px;padding:4px 20px 0;border-bottom:1px solid var(--rule);font:400 15px "IM Fell English SC";color:var(--ink2)}
+.atabs span{padding:6px 0 8px}.atabs span.on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--gold)}
+.seg4{display:flex;gap:6px;padding:8px 12px}
+.seg4 span{padding:4px 10px;border:1px solid var(--rule2);border-radius:14px;font-size:12.5px;color:var(--ink2)}
+.seg4 span.on{border-color:var(--gold);color:var(--gold);background:var(--raise)}
+.dr{display:flex;align-items:center;gap:8px;padding:8px 14px;margin:0 12px;border-bottom:1px solid var(--rule);font-size:14px}
+.dr img{width:18px;height:18px}.dr .sk{flex:1}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chips span{padding:4px 10px;border:1px solid var(--rule2);border-radius:14px;font-size:12.5px;color:var(--ink2)}
+.chips span.on{border-color:var(--gold);color:var(--gold);background:var(--raise)}
+.part{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--rule);font-size:14px}
+.cnt{display:flex;gap:6px;align-items:center}.cnt b{display:inline-flex;width:26px;height:26px;border:1px solid var(--rule2);border-radius:4px;align-items:center;justify-content:center;color:var(--gold);font-weight:400}
+.final{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:13.5px}.final b{font:700 15px "Averia Serif Libre";color:var(--gold)}
+</style></head><body>
+<div class="intro"><h1>010 · Armas Artian</h1>
+<p>As Artian não vêm da árvore de forja: o caçador escolhe o elemento e 3 peças (bônus de produção) e depois recebe reforços aleatórios. Dados reais da Game8 (Espadão: Artian Blade I 816, II 864, Varianza 912; elemento 450, ou 300 Veneno/Explosão e 250 Sono/Paralisia; slots ②②② / ③③③).</p></div>
+<div class="wrap">
+<div><div class="cap"><b>lista</b> · grupo Artian no tipo</div><div class="phone"><div class="scroll"><div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div>
+<div class="sec">Espadão · Raridade 8</div>
+<div class="wr"><div><div class="nm2">Sieglinde</div><div class="sub">Raridade 8 · Veneno 300</div></div><div class="sub">③②①</div></div>
+<div class="sec">Artian</div><div class="wr"><div><div class="nm2">Artian Blade I</div><div class="sub">Raridade 6 · Ataque 816 · elemento à escolha</div></div><div class="sub">②②②</div></div><div class="wr"><div><div class="nm2">Artian Blade II</div><div class="sub">Raridade 7 · Ataque 864 · elemento à escolha</div></div><div class="sub">②②②</div></div><div class="wr"><div><div class="nm2">Varianza</div><div class="sub">Raridade 8 · Ataque 912 · elemento à escolha</div></div><div class="sub">③③③</div></div>
+<p class="note">As Artian aparecem num grupo próprio no fim de cada tipo de arma (Raridade 6, 7 e 8).</p></div><nav class="nav"><a><i>❦</i>Monstros</a><a class="on"><i>⚔</i>Armas</a><a><i>⛨</i>Armaduras</a><a><i>✦</i>Assistente</a></nav></div></div>
+<div><div class="cap"><b>A</b> · referência (stats e regras)</div><div class="phone"><div class="scroll"><div class="crumb"><span>‹ Armas</span><span>Wilds · Artian</span></div><div class="head"><h2>Varianza</h2><div class="sub">Espadão Artian · Raridade 8</div></div>
+<div class="card"><h3><i>1</i>Atributos base</h3><div class="attr">
+<span>Ataque <b>912</b></span><span>Afinidade <b>5%</b></span>
+<span>Elemento <b>450</b></span><span>Slots <img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco3.webp" style="width:16px;height:16px;vertical-align:middle"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco3.webp" style="width:16px;height:16px;vertical-align:middle"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco3.webp" style="width:16px;height:16px;vertical-align:middle"></span></div>
+<p class="note" style="padding:6px 0 0">Elemento à escolha: Fogo, Água, Raio, Gelo, Dragão 450 · Veneno, Explosão 300 · Sono, Paralisia 250.</p></div>
+<div class="card"><h3><i>2</i>Bônus de produção</h3>
+<div class="rr"><span>3 peças do mesmo elemento</span><span class="sub">Infusão elemental</span></div>
+<div class="rr"><span>Peça de Ataque</span><span class="sub">+5 ataque cada</span></div>
+<div class="rr"><span>Peça de Afinidade</span><span class="sub">+5% afinidade cada</span></div></div>
+<div class="card"><h3><i>3</i>Reforço (aleatório)</h3>
+<div class="rr"><span>Ataque +5</span><span class="sub">até 5 vezes</span></div>
+<div class="rr"><span>Afinidade +5%</span><span class="sub">até 3 vezes</span></div>
+<div class="rr"><span>Elemento</span><span class="sub">até 4 vezes</span></div>
+<div class="rr"><span>Afiação +30</span><span class="sub">até 2 vezes</span></div></div>
+<div class="card"><h3><i>4</i>Materiais</h3><div class="rr"><span>Fragmento de Arma Antiga</span><span class="num">×1</span></div><div class="rr"><span>10.000 z</span><span></span></div></div></div><nav class="nav"><a><i>❦</i>Monstros</a><a class="on"><i>⚔</i>Armas</a><a><i>⛨</i>Armaduras</a><a><i>✦</i>Assistente</a></nav></div></div>
+<div><div class="cap"><b>B</b> · simulador (monte a sua)</div><div class="phone"><div class="scroll"><div class="crumb"><span>‹ Armas</span><span>Wilds · Artian</span></div><div class="head"><h2>Varianza</h2><div class="sub">Espadão Artian · Raridade 8</div></div>
+<div class="card"><h3><i>1</i>Monte a sua</h3>
+<div class="sk">Elemento</div><div class="chips"><span class="">Fogo</span><span class="">Água</span><span class="">Raio</span><span class="on">Gelo</span><span class="">Dragão</span><span class="">Veneno</span><span class="">Paralisia</span><span class="">Sono</span><span class="">Explosão</span></div>
+<div class="sk" style="margin-top:10px">Peças (3)</div>
+<div class="part"><span>Gelo</span><span class="cnt"><b>−</b><span class="num">3</span><b>+</b></span></div>
+<div class="part"><span>Ataque</span><span class="cnt"><b>−</b><span class="num">0</span><b>+</b></span></div>
+<div class="part"><span>Afinidade</span><span class="cnt"><b>−</b><span class="num">0</span><b>+</b></span></div>
+<div class="sk" style="margin-top:10px">Reforços (5)</div>
+<div class="part"><span>Ataque +5</span><span class="cnt"><b>−</b><span class="num">4</span><b>+</b></span></div>
+<div class="part"><span>Afinidade +5%</span><span class="cnt"><b>−</b><span class="num">1</span><b>+</b></span></div>
+<div class="part"><span>Elemento</span><span class="cnt"><b>−</b><span class="num">0</span><b>+</b></span></div>
+<div class="part"><span>Afiação +30</span><span class="cnt"><b>−</b><span class="num">0</span><b>+</b></span></div></div>
+<div class="card"><h3><i>2</i>Resultado</h3><div class="final">
+<span>Ataque <b>932</b></span><span>Afinidade <b>10%</b></span>
+<span>Gelo <b>450 + infusão</b></span><span>Slots <img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco3.webp" style="width:16px;height:16px;vertical-align:middle"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco3.webp" style="width:16px;height:16px;vertical-align:middle"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco3.webp" style="width:16px;height:16px;vertical-align:middle"></span></div>
+<p class="note" style="padding:6px 0 0">Os números exatos de infusão e reforço por tipo vêm da fonte na importação.</p></div></div><nav class="nav"><a><i>❦</i>Monstros</a><a class="on"><i>⚔</i>Armas</a><a><i>⛨</i>Armaduras</a><a><i>✦</i>Assistente</a></nav></div></div>
+</div>
+<div class="notes"><h2>Escolha</h2><ul>
+<li><b>A</b>: mostra a base, o que cada peça e reforço dá e o limite de cada um. Simples e certo.</li>
+<li><b>B</b>: além disso, deixa montar a sua (elemento, peças, reforços que você tirou) e mostra os números finais. Mais útil para quem já tem uma Artian, um pouco mais de trabalho. O Montar build (012) poderá usar a Artian que você montou.</li>
+</ul></div></body></html>

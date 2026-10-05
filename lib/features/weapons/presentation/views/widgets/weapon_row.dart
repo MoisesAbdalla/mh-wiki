@@ -1,6 +1,8 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/game.dart';
+import 'package:mh_wiki/core/presentation/game_icons.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
@@ -105,7 +107,7 @@ class WeaponRow extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(indent(depth), 8, 14, 8),
                 child: Row(
                   children: [
-                    MonsterImage(asset: weapon.imageAsset, size: 34),
+                    MonsterImage(asset: weaponImage(weapon), size: 34),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Column(
@@ -133,3 +135,15 @@ class WeaponRow extends StatelessWidget {
     );
   }
 }
+
+/// The weapon's picture, or for the Wilds its type icon in the rarity's
+/// colour (010 FR-009).
+String? weaponImage(Weapon weapon) =>
+    weapon.imageAsset ??
+    (weapon.id.game == Game.wilds
+        ? GameIcons.weaponType(
+            weapon.type.id,
+            Game.wilds,
+            rarity: weapon.rarity,
+          )
+        : null);

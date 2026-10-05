@@ -1,5 +1,6 @@
 import 'package:mh_wiki/core/data/material_sources_json.dart';
 import 'package:mh_wiki/core/domain/game.dart';
+import 'package:mh_wiki/core/domain/rank.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/material_cost.dart';
 import 'package:mh_wiki/core/domain/material_sources.dart';
@@ -49,6 +50,9 @@ ArmorCatalog readArmorDataset(
         name: readLocalized(r.object('name')),
         description: _text(r.object('description')),
         levels: levels,
+        kind: r.has('kind')
+            ? r.enumValue('kind', SkillKind.values)
+            : SkillKind.armor,
       ),
       r,
     );
@@ -124,6 +128,10 @@ ArmorCatalog readArmorDataset(
         slotLevel: level,
         skills: skillLevels(r, capped: false),
         forge: forge(r),
+        kind: r.has('kind')
+            ? r.enumValue('kind', DecorationKind.values)
+            : DecorationKind.armor,
+        iconAsset: r.optionalString('icon'),
       ),
       r,
     );
@@ -165,12 +173,34 @@ ArmorCatalog readArmorDataset(
         skills: skillLevels(r),
         forge: forge(r),
         imageAsset: r.optionalString('image'),
+        declaredRank: r.has('rank') ? r.enumValue('rank', Rank.values) : null,
         sources: [
           for (final s in r.optionalObjects('sources'))
             SourceRef(name: s.string('name'), url: s.string('url')),
         ],
       ),
       r,
+    );
+  }
+
+  SetBonus? bonus(JsonReader? b) {
+    if (b == null) return null;
+    final skill = b.string('skill');
+    if (!skills.containsKey(skill)) b.fail('unknown skill "$skill"');
+    return SetBonus(
+      skillId: skill,
+      steps: [
+        for (final s in b.objects('steps'))
+          SetBonusStep(
+            pieces: () {
+              final n = s.number('pieces').toInt();
+              if (n < 1 || n > 5) s.fail('pieces must be 1-5');
+              return n;
+            }(),
+            name: _text(s.object('name')),
+            description: _text(s.object('description')),
+          ),
+      ],
     );
   }
 
@@ -199,6 +229,9 @@ ArmorCatalog readArmorDataset(
         name: readLocalized(r.object('name')),
         rarity: r.number('rarity').toInt(),
         pieces: members,
+        declaredRank: r.has('rank') ? r.enumValue('rank', Rank.values) : null,
+        bonus: bonus(r.optionalObject('bonus')),
+        groupBonus: bonus(r.optionalObject('groupBonus')),
       ),
     );
   }
@@ -210,6 +243,22 @@ ArmorCatalog readArmorDataset(
     sets: sets,
     skills: skills.values.toList(),
     decorations: decorations.values.toList(),
+    talismans: [
+      for (final t in root.optionalObjects('talismans'))
+        Talisman(
+          id: t.string('id'),
+          ranks: [
+            for (final r in t.objects('ranks'))
+              TalismanRank(
+                level: r.number('level').toInt(),
+                name: readLocalized(r.object('name')),
+                rarity: r.number('rarity').toInt(),
+                skills: skillLevels(r),
+                forge: forge(r),
+              ),
+          ],
+        ),
+    ],
   );
 }
 

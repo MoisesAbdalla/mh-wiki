@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/game.dart';
+import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_row.dart';
+import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_skills_section.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
@@ -27,9 +30,12 @@ class WeaponDetailView extends StatelessWidget {
     this.sources = MaterialSourceLookup.empty,
     this.onOpenMonster,
     this.language = NameLanguage.ptBr,
+    this.onOpenSkill,
     super.key,
   });
 
+  /// Opens a weapon skill in Armaduras (Wilds).
+  final ValueChanged<String>? onOpenSkill;
   final NameLanguage language;
   final Weapon weapon;
   final WeaponCatalog catalog;
@@ -43,6 +49,8 @@ class WeaponDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final gutter = Space.gutter(MediaQuery.sizeOf(context).width);
+    // Sections after the skills card shift down by one when it shows.
+    final skills = weapon.skills.isNotEmpty ? 1 : 0;
     return ListView(
       key: PageStorageKey(('weapon-detail', weapon.id)),
       padding: const EdgeInsets.only(bottom: Space.section),
@@ -70,13 +78,22 @@ class WeaponDetailView extends StatelessWidget {
               ],
             ),
           ),
+        if (weapon.skills.isNotEmpty)
+          WeaponSkillsSection(
+            skills: weapon.skills,
+            number: 3,
+            onOpenSkill: onOpenSkill,
+            language: language,
+          ),
         WeaponMaterialsSection(
+          number: 3 + skills,
           weapon: weapon,
           sources: sources,
           onOpenMonster: onOpenMonster,
           language: language,
         ),
         WeaponTreeSection(
+          number: 4 + skills,
           weapon: weapon,
           catalog: catalog,
           onOpenWeapon: onSelectWeapon,
@@ -116,10 +133,12 @@ class WeaponHeader extends StatelessWidget {
       type,
       l10n.rarity(weapon.rarity),
       l10n.rankLabel(l10n.rankName(weapon.rank)),
-      if (weapon.stars.estimated)
-        l10n.starsEstimated(weapon.stars.value)
-      else
-        '${weapon.stars.value}★',
+      // Quest stars are a Rise estimate; the Wilds header stops at the rank.
+      if (weapon.id.game != Game.wilds)
+        if (weapon.stars.estimated)
+          l10n.starsEstimated(weapon.stars.value)
+        else
+          '${weapon.stars.value}★',
     ].join(' · ');
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -149,7 +168,11 @@ class WeaponHeader extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            MonsterImage(asset: weapon.imageAsset, size: 84, emphasized: true),
+            MonsterImage(
+              asset: weaponImage(weapon),
+              size: 84,
+              emphasized: true,
+            ),
           ],
         ),
         if (description.isNotEmpty) ...[

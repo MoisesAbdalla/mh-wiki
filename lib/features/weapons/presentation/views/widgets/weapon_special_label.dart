@@ -47,16 +47,28 @@ class WeaponSpecialLabel extends StatelessWidget {
             ElementIcon(element: element, size: size + 2),
             const SizedBox(width: 3),
             if (showName) ...[
-              Text(name, style: TextStyle(fontSize: size)),
+              Flexible(
+                child: Text(
+                  name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: size),
+                ),
+              ),
               const SizedBox(width: 4),
             ],
           ] else ...[
-            Text(
-              name,
-              style: TextStyle(
-                fontSize: size,
-                color: statusColor(special.kind),
-                fontWeight: FontWeight.w700,
+            // A long status name gives way in a narrow row.
+            Flexible(
+              child: Text(
+                name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: size,
+                  color: statusColor(special.kind),
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
             const SizedBox(width: 4),

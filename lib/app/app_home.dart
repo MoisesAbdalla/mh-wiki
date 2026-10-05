@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/features/weapons/presentation/controllers/artian_controller.dart';
 import 'package:mh_wiki/app/app_shell.dart';
+import 'package:mh_wiki/app/equipment_area.dart';
 import 'package:mh_wiki/app/monster_weapons_card.dart';
 import 'package:mh_wiki/app/weapons_of_monster.dart';
 import 'package:mh_wiki/core/domain/game.dart';
@@ -22,24 +24,36 @@ import 'package:mh_wiki/core/presentation/material_droppers.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/weapons_page.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
-/// The app's home: the area shell plus the links between monsters and
-/// weapons (006 US2/US3). Only this layer knows both features.
+/// The app's home: the area shell plus the links between monsters, weapons
+/// and armor (006 US2/US3, 010). Only this layer knows every feature.
 class AppHome extends StatefulWidget {
   const AppHome({
     required this.monsters,
     required this.weapons,
     this.armor,
+    this.wildsWeapons,
+    this.wildsArmor,
     this.assistant,
     this.optimizer,
+    this.artians,
     this.actions,
     super.key,
   });
 
   final MonsterListController monsters;
+
+  /// Rise: Sunbreak weapons and armor.
   final WeaponListController weapons;
   final ArmorController? armor;
+
+  /// Wilds weapons and armor (010); without them the Wilds tabs are off.
+  final WeaponListController? wildsWeapons;
+  final ArmorController? wildsArmor;
   final AssistantController? assistant;
   final OptimizerController? optimizer;
+
+  /// The user's Artian (Wilds weapons).
+  final ArtianController? artians;
   final List<Widget>? actions;
 
   @override
@@ -48,69 +62,93 @@ class AppHome extends StatefulWidget {
 
 class _AppHomeState extends State<AppHome> {
   final _shell = AppShellController();
-  MonsterMaterialIndex? _index;
-  Object? _indexedFrom;
+  final _weaponsGame = ValueNotifier(Game.riseSunbreak);
+  final _armorGame = ValueNotifier(Game.riseSunbreak);
+  final _indexes = <Game, (Object?, MonsterMaterialIndex)>{};
 
-  /// Built on first use and rebuilt when the monsters reload.
-  MonsterMaterialIndex get index {
+  /// A game's material index, rebuilt when the monsters reload.
+  MonsterMaterialIndex index(Game game) {
     final monsters = widget.monsters.monsters;
-    if (!identical(monsters, _indexedFrom)) {
-      _indexedFrom = monsters;
-      _index = MonsterMaterialIndex(monsters);
-    }
-    return _index!;
+    final cached = _indexes[game];
+    if (cached != null && identical(cached.$1, monsters)) return cached.$2;
+    final built = MonsterMaterialIndex(monsters, game: game);
+    _indexes[game] = (monsters, built);
+    return built;
   }
 
-  late final MaterialSourceLookup _sources = MaterialSourceLookup(
-    (id) => index.lookup(() => widget.monsters.language).droppersOf(id),
+  final _sources = <Game, MaterialSourceLookup>{};
+
+  MaterialSourceLookup sourcesOf(Game game) => _sources.putIfAbsent(
+    game,
+    () => MaterialSourceLookup(
+      (id) => index(game).lookup(() => widget.monsters.language).droppersOf(id),
+    ),
   );
+
+  WeaponListController? weaponsOf(Game game) => switch (game) {
+    Game.riseSunbreak => widget.weapons,
+    Game.wilds => widget.wildsWeapons,
+    Game.worldIceborne => null,
+  };
+
+  ArmorController? armorOf(Game game) => switch (game) {
+    Game.riseSunbreak => widget.armor,
+    Game.wilds => widget.wildsArmor,
+    Game.worldIceborne => null,
+  };
 
   @override
   void dispose() {
     _shell.dispose();
+    _weaponsGame.dispose();
+    _armorGame.dispose();
     super.dispose();
   }
 
   final _weaponsOf = <MonsterId, List<Weapon>>{};
-  WeaponCatalog? _weaponsFrom;
+  final _weaponsFrom = <Game, WeaponCatalog>{};
 
   /// The weapons made from [monster], cached per catalog.
   List<Weapon> _weaponsMadeFrom(Monster monster, WeaponCatalog catalog) {
-    if (!identical(catalog, _weaponsFrom)) {
-      _weaponsFrom = catalog;
-      _weaponsOf.clear();
+    final game = monster.id.game;
+    if (!identical(catalog, _weaponsFrom[game])) {
+      _weaponsFrom[game] = catalog;
+      _weaponsOf.removeWhere((id, _) => id.game == game);
     }
     return _weaponsOf.putIfAbsent(
       monster.id,
-      () => index.weaponsUsingMaterialsOf(monster, catalog.weapons),
+      () => index(game).weaponsUsingMaterialsOf(monster, catalog.weapons),
     );
   }
 
-  /// "Armas feitas com ele" after a Rise monster's own cards (006 US3).
+  /// "Armas feitas com ele" after a monster's own cards, for every game with
+  /// weapons (006 US3, 010 FR-004).
   List<Widget> _extraSections(BuildContext context, Monster monster, int next) {
-    if (monster.id.game != Game.riseSunbreak) return const [];
+    final game = monster.id.game;
+    final weapons = weaponsOf(game);
+    if (weapons == null) return const [];
     return [
       ListenableBuilder(
-        listenable: widget.weapons,
+        listenable: weapons,
         builder: (context, _) {
-          final catalog = widget.weapons.catalog;
+          final catalog = weapons.catalog;
           if (catalog == null) {
             // Weapons load on demand; the card appears once they do.
             WidgetsBinding.instance.addPostFrameCallback(
-              (_) => widget.weapons.ensureLoaded(),
+              (_) => weapons.ensureLoaded(),
             );
             return const SizedBox.shrink();
           }
-          final weapons = _weaponsMadeFrom(monster, catalog);
+          final made = _weaponsMadeFrom(monster, catalog);
           return MonsterWeaponsCard(
             number: next,
-            weapons: weapons,
+            weapons: made,
             language: widget.monsters.language,
-            onOpenWeapon: (w) =>
-                _openWeapons(() => widget.weapons.select(w.id)),
+            onOpenWeapon: (w) => _openWeapons(game, () => weapons.select(w.id)),
             onSeeAll: () => _openWeapons(
-              () => widget.weapons.showOnly(
-                {for (final w in weapons) w.id},
+              game,
+              () => weapons.showOnly(
+                {for (final w in made) w.id},
                 AppLocalizations.of(context).weaponsOfMonster(
                   monster.name.resolve(widget.monsters.language),
                 ),
@@ -122,12 +160,23 @@ class _AppHomeState extends State<AppHome> {
     ];
   }
 
-  /// Back to the list, then Armas with [change] applied. Monstros keeps its
-  /// state.
-  void _openWeapons(Future<void> Function() change) {
+  /// Back to the list, then Armas on [game] with [change] applied. Monstros
+  /// keeps its state.
+  void _openWeapons(Game game, Future<void> Function() change) {
     Navigator.of(context).popUntil((route) => route.isFirst);
     _shell.open(AppArea.weapons);
+    _weaponsGame.value = game;
     change();
+  }
+
+  /// A weapon skill (Wilds): its detail in Armaduras of that game.
+  Future<void> _openSkill(Game game, String skillId) async {
+    final armor = armorOf(game);
+    if (armor == null) return;
+    Navigator.of(context).popUntil((route) => route.isFirst);
+    _shell.open(AppArea.armor);
+    _armorGame.value = game;
+    await armor.select(ArmorTab.skills, skillId);
   }
 
   /// "Dropado por": back to the list, then the monster's detail in Monstros.
@@ -139,7 +188,7 @@ class _AppHomeState extends State<AppHome> {
   }
 
   /// A build item from the Assistente: the weapon in Armas; a piece (its
-  /// set), skill or decoration in Armaduras (008 US2).
+  /// set), skill or decoration in Armaduras (008 US2). Builds are Rise.
   Future<void> _openFromBuild(CatalogRef ref) async {
     final id = ref.id;
     final armor = widget.armor;
@@ -148,9 +197,11 @@ class _AppHomeState extends State<AppHome> {
     switch (ref.kind) {
       case RefKind.weapon:
         _shell.open(AppArea.weapons);
+        _weaponsGame.value = Game.riseSunbreak;
         await widget.weapons.select(WeaponId(Game.riseSunbreak, id));
       case RefKind.piece when armor != null:
         _shell.open(AppArea.armor);
+        _armorGame.value = Game.riseSunbreak;
         await armor.ensureLoaded();
         final set = armor.catalog?.sets.where(
           (s) => s.pieces.any((p) => p.id == id),
@@ -160,9 +211,11 @@ class _AppHomeState extends State<AppHome> {
         }
       case RefKind.skill when armor != null:
         _shell.open(AppArea.armor);
+        _armorGame.value = Game.riseSunbreak;
         await armor.select(ArmorTab.skills, id);
       case RefKind.decoration when armor != null:
         _shell.open(AppArea.armor);
+        _armorGame.value = Game.riseSunbreak;
         await armor.select(ArmorTab.decorations, id);
       case _:
         break;
@@ -201,39 +254,72 @@ class _AppHomeState extends State<AppHome> {
     return id;
   }
 
-  @override
-  Widget build(BuildContext context) => AppShell(
-    controller: _shell,
-    monsters: MonstersPage(
-      controller: widget.monsters,
-      actions: widget.actions,
-      extraSections: _extraSections,
-    ),
-    assistant: switch (widget.assistant) {
-      final assistant? => AssistantPage(
-        controller: assistant,
-        optimizer: widget.optimizer,
-        actions: widget.actions,
-        typePicker: _typePicker,
-        typeName: _typeName,
-        onOpen: _openFromBuild,
-      ),
-      null => const SizedBox.shrink(),
-    },
-    armor: switch (widget.armor) {
-      final armor? => ArmorPage(
-        controller: armor,
-        actions: widget.actions,
-        sources: _sources,
-        onOpenMonster: _openMonster,
-      ),
-      null => const SizedBox.shrink(),
-    },
-    weapons: WeaponsPage(
-      controller: widget.weapons,
-      actions: widget.actions,
-      sources: _sources,
-      onOpenMonster: _openMonster,
-    ),
+  Widget _weaponsPage(
+    Game game,
+    WeaponListController controller,
+    Widget header,
+  ) => WeaponsPage(
+    controller: controller,
+    actions: widget.actions,
+    sources: sourcesOf(game),
+    onOpenMonster: _openMonster,
+    header: header,
+    onOpenSkill: (id) => _openSkill(game, id),
+    artians: game == Game.wilds ? widget.artians : null,
   );
+
+  Widget _armorPage(Game game, ArmorController controller, Widget header) =>
+      ArmorPage(
+        controller: controller,
+        actions: widget.actions,
+        sources: sourcesOf(game),
+        onOpenMonster: _openMonster,
+        header: header,
+      );
+
+  @override
+  Widget build(BuildContext context) {
+    final armor = widget.armor;
+    final wildsWeapons = widget.wildsWeapons;
+    final wildsArmor = widget.wildsArmor;
+    return AppShell(
+      controller: _shell,
+      monsters: MonstersPage(
+        controller: widget.monsters,
+        actions: widget.actions,
+        extraSections: _extraSections,
+      ),
+      assistant: switch (widget.assistant) {
+        final assistant? => AssistantPage(
+          controller: assistant,
+          optimizer: widget.optimizer,
+          actions: widget.actions,
+          typePicker: _typePicker,
+          typeName: _typeName,
+          onOpen: _openFromBuild,
+        ),
+        null => const SizedBox.shrink(),
+      },
+      armor: armor == null
+          ? const SizedBox.shrink()
+          : EquipmentArea(
+              game: _armorGame,
+              pages: {
+                Game.riseSunbreak: (h) =>
+                    _armorPage(Game.riseSunbreak, armor, h),
+                if (wildsArmor != null)
+                  Game.wilds: (h) => _armorPage(Game.wilds, wildsArmor, h),
+              },
+            ),
+      weapons: EquipmentArea(
+        game: _weaponsGame,
+        pages: {
+          Game.riseSunbreak: (h) =>
+              _weaponsPage(Game.riseSunbreak, widget.weapons, h),
+          if (wildsWeapons != null)
+            Game.wilds: (h) => _weaponsPage(Game.wilds, wildsWeapons, h),
+        },
+      ),
+    );
+  }
 }

@@ -1,0 +1,123 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Caderninho — Wilds (010)</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Averia+Serif+Libre:wght@700&family=Atkinson+Hyperlegible&display=swap" rel="stylesheet"><style>
+:root{--bg:#16120e;--panel:#1f1812;--raise:#2c2215;--ink:#efe4c8;--ink2:#b9a67f;--ink3:#8a7652;--rule:#3b2e1d;--rule2:#5a4526;--gold:#e0bd6a;--neg:#f2a08a;--ok:#9cc48a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0a08;color:var(--ink);font:15px/1.45 "Atkinson Hyperlegible",sans-serif;padding:28px 16px 60px}
+.intro{max-width:1640px;margin:0 auto 22px}.intro h1{font:400 30px/1 "IM Fell English SC"}.intro p{color:var(--ink2);margin-top:8px;max-width:100ch;font-size:14px}
+.wrap{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;max-width:1640px;margin:0 auto}
+.cap{font-size:12px;color:var(--ink2);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase}.cap b{color:var(--gold)}
+.phone{width:370px;max-width:100%;height:860px;background:var(--bg);border-radius:26px;display:flex;flex-direction:column;overflow:hidden}
+.scroll{flex:1;overflow-y:auto;padding-bottom:20px;scrollbar-width:none}
+.appbar{display:flex;justify-content:space-between;align-items:baseline;padding:18px 20px 6px}.brand{font:400 24px/1 "IM Fell English SC"}.gear{color:var(--ink2);font-size:13px}
+.tabs{display:flex;gap:16px;padding:4px 20px 0;border-bottom:1px solid var(--rule)}
+.tabs span{white-space:nowrap;padding:6px 0 8px;font:400 16px "IM Fell English SC";color:var(--ink2)}.tabs span.on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--gold)}
+.ctx{display:flex;justify-content:space-between;align-items:center;margin:10px 12px 8px;padding:8px 12px;border:1px solid var(--rule);border-radius:4px;font-size:13px;color:var(--ink2)}.ctx b{color:var(--ink);font-weight:400}
+.link{color:var(--gold);font-size:13px}
+.card{margin:0 12px 12px;background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:12px 14px 12px}
+.card h3{display:flex;gap:10px;align-items:baseline;font:400 19px "IM Fell English SC";margin-bottom:8px}.card h3 i{font:700 16px "Averia Serif Libre";color:var(--gold);font-style:normal}
+.search{border:1px solid var(--rule2);border-radius:4px;padding:8px 10px;color:var(--ink3);font-size:14px;margin-bottom:6px}
+.rr{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--rule);font-size:14px}.rr:last-child{border-bottom:0}
+.sk{font-size:14px}.sub{font-size:12px;color:var(--ink2)}
+.pips{display:inline-flex;gap:3px;vertical-align:middle}.pips i{width:9px;height:9px;border:1px solid var(--gold);border-radius:2px;display:inline-block}.pips i.f{background:var(--gold)}.pips i.o{border-color:var(--rule2)}.pips i.miss{border-color:var(--neg);background:rgba(242,160,138,.25)}
+.step{display:flex;align-items:center;gap:6px}.step b,.stepm b{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border:1px solid var(--rule2);border-radius:4px;color:var(--gold);font-weight:400}.step u{text-decoration:none;color:var(--ink3);margin-left:4px}
+.num{font:700 15px "Averia Serif Libre";min-width:14px;text-align:center}
+.sugg-cap{font-size:12px;color:var(--ink3);margin-top:10px}.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{font-size:12.5px;padding:3px 9px;border:1px solid var(--rule2);border-radius:12px;color:var(--ink2)}
+.opt{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--rule)}.opt.last{border-bottom:0}
+.tog{width:34px;height:18px;border-radius:9px;background:var(--rule2);position:relative}.tog.on{background:var(--gold)}.tog::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:7px;background:var(--bg)}.tog.on::after{left:18px}
+.pad{padding:0 12px}.btn{display:block;text-align:center;margin:4px 0 8px;padding:10px;border:1px solid var(--gold);color:var(--gold);border-radius:4px;font:400 16px "IM Fell English SC"}.btn.solid{background:var(--gold);color:#1c150d}
+.crumb{display:flex;justify-content:space-between;font-size:12px;color:var(--ink2);padding:18px 22px 0}
+.head{padding:10px 20px 12px}.head h2{font:400 25px/1.05 "IM Fell English SC"}.head .sub{margin-top:6px;font-size:13px}
+.tal{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--rule)}.tal:last-child{border-bottom:0}.ti{width:34px;height:34px}.tal .tx{flex:1}.nm{font:400 16px/1.15 "IM Fell English SC"}
+.slots{display:flex;gap:3px}.sl{width:16px;height:16px;vertical-align:middle}.sl0{color:var(--ink3);font-size:12px;width:16px;text-align:center}
+.field{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:10px}.field .sub{width:100%}.inp{flex:1;border:1px solid var(--rule2);border-radius:4px;padding:7px 10px;font-size:14px}.inp.muted{color:var(--ink3)}.stepm{display:flex;align-items:center;gap:6px}
+.slotsrow{display:grid;gap:6px;margin-bottom:10px}.seg2{display:flex;gap:4px;margin-top:3px}.seg2 span{flex:1;text-align:center;padding:4px 0;border:1px solid var(--rule2);border-radius:3px;font:700 13px "Averia Serif Libre";color:var(--ink2)}.seg2 span.on{border-color:var(--gold);color:var(--gold);background:var(--raise)}
+.sec{padding:8px 16px 2px;font:400 15px "IM Fell English SC";color:var(--ink2);display:flex;align-items:center;gap:10px}.sec::after{content:"";flex:1;border-bottom:1px solid var(--rule2)}
+.bc{margin:8px 12px 0;background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:10px 14px}.bc.sel{border-color:var(--gold)}
+.rtop{display:flex;justify-content:space-between;align-items:center}.bc h5{font:400 18px/1.15 "IM Fell English SC"}
+.seal{font:700 11px "Averia Serif Libre";padding:0 6px;border-radius:3px;border:1px solid}.seal.ok{color:var(--ok);border-color:var(--ok)}.seal.no{color:var(--neg);border-color:var(--neg)}
+.picons{display:flex;gap:4px;margin:6px 0 4px;align-items:center}.picons img{width:28px;height:28px;background:var(--raise);border-radius:3px;padding:2px}.picons .tal{border:0;padding:0;margin-left:6px}
+.sk2{font-size:12.5px;color:var(--ink);margin:4px 0}.sk2 .bad{color:var(--neg)}
+.ok{color:var(--ok);font-size:13px}.no{color:var(--neg);font-size:12px;margin-left:4px}
+.row{padding:8px 0;border-bottom:1px solid var(--rule)}.row.last{border-bottom:0}.top{display:flex;gap:12px;align-items:center}
+.ic{width:38px;height:38px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:4px;background:var(--raise)}.ic img{width:34px;height:34px;object-fit:contain}
+.part{font-size:12px;color:var(--ink2)}
+.note{font-size:12px;color:var(--ink3);padding:10px 16px}
+.nav{display:flex;border-top:1px solid var(--rule2);background:#120e0b}.nav a{flex:1;text-align:center;padding:8px 0 10px;font:400 14px "IM Fell English SC";color:var(--ink2)}.nav a i{display:block;font-style:normal;font-size:17px;line-height:1.2}.nav a.on{color:var(--gold)}
+.notes{max-width:1640px;margin:28px auto 0;color:var(--ink2);font-size:14px}.notes h2{font:400 22px "IM Fell English SC";color:var(--ink);margin-bottom:8px}.notes li{margin:5px 0 5px 18px}.notes b{color:var(--ink)}
+
+.games{display:flex;gap:14px;align-items:flex-end;padding:6px 20px 0;border-bottom:1px solid var(--rule)}
+.games span{padding:4px 0 6px;font:400 15px "IM Fell English SC";color:var(--ink2)}
+.games img{height:34px;opacity:.5;filter:grayscale(.5)}
+.games .on img{opacity:1;filter:none}.games .on{box-shadow:inset 0 -2px 0 var(--gold)}
+.games .soon{opacity:.45;font-size:11px}
+.types2{display:flex;gap:8px;padding:10px 12px 4px;overflow:hidden}
+.types2 span{flex:none;width:62px;text-align:center;padding:6px 2px;border:1px solid var(--rule);border-radius:4px;background:var(--panel);font-size:11px;color:var(--ink2)}
+.types2 span.on{border-color:var(--gold);color:var(--ink);background:var(--raise)}
+.types2 img{width:30px;height:30px;display:block;margin:0 auto 2px}
+.wr{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;margin:0 12px;border-bottom:1px solid var(--rule);font-size:14px}
+.wr .nm2{font:400 16px "IM Fell English SC"}
+.attr{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:13.5px}
+.attr b{font:700 15px "Averia Serif Libre";color:var(--ink)}
+.sharp{display:flex;height:12px;border-radius:2px;overflow:hidden;margin:6px 0 2px}
+.new{display:inline-block;font:700 10px "Averia Serif Libre";color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:0 4px;margin-left:6px;vertical-align:middle}
+.bon{padding:8px 0;border-bottom:1px solid var(--rule)}.bon:last-child{border-bottom:0}
+.bon .pc{font:700 12px "Averia Serif Libre";color:var(--gold);border:1px solid var(--rule2);border-radius:3px;padding:0 5px;margin-right:6px}
+.atabs{display:flex;gap:14px;padding:4px 20px 0;border-bottom:1px solid var(--rule);font:400 15px "IM Fell English SC";color:var(--ink2)}
+.atabs span{padding:6px 0 8px}.atabs span.on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--gold)}
+.seg4{display:flex;gap:6px;padding:8px 12px}
+.seg4 span{padding:4px 10px;border:1px solid var(--rule2);border-radius:14px;font-size:12.5px;color:var(--ink2)}
+.seg4 span.on{border-color:var(--gold);color:var(--gold);background:var(--raise)}
+.dr{display:flex;align-items:center;gap:8px;padding:8px 14px;margin:0 12px;border-bottom:1px solid var(--rule);font-size:14px}
+.dr img{width:18px;height:18px}.dr .sk{flex:1}
+</style></head><body>
+<div class="intro"><h1>010 · Armas e Armaduras da Wilds</h1>
+<p>Mesmo Caderninho da Rise, com as abas de jogo (logos) em Armas e Armaduras e o que a Wilds tem de diferente: habilidades nas armas, bônus de conjunto (2 e 4 peças) e de grupo (3 peças), joias de arma e de armadura (algumas com duas habilidades) e talismãs com níveis. Dados reais da wilds.mhdb.io em pt-BR (Sieglinde, Arkveld α, joias e amuletos).</p></div>
+<div class="wrap">
+<div><div class="cap"><b>1</b> · Armas com a aba Wilds</div><div class="phone"><div class="scroll"><div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div><div class="games"><span class=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/games/world_iceborne.webp" alt="World"><div class="soon">em breve</div></span><span class=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/games/rise_sunbreak.webp" alt="Rise"></span><span class="on"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/games/wilds.webp" alt="Wilds"></span></div>
+<div class="types2"><span class="on"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/types/great-sword.webp">Espadão</span><span class=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/types/long-sword.webp">Espada Longa</span><span class=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/types/sword-and-shield.webp">Espada e Escudo</span><span class=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/types/dual-blades.webp">Lâminas Duplas</span><span class=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/types/hammer.webp">Martelo</span></div>
+<div class="sec">Raridade 8</div><div class="wr"><div><div class="nm2">Sieglinde</div><div class="sub">Raridade 8 · Veneno 300</div></div><div class="sub">③②①</div></div><div class="wr"><div><div class="nm2">Decapitador de Galo</div><div class="sub">Raridade 8 · Fogo 600</div></div><div class="sub">③②①</div></div>
+<p class="note">As abas de jogo (logos) chegam a Armas e Armaduras, como em Monstros. World fica "em breve" até a 011.</p></div><nav class="nav"><a class=""><i>❦</i>Monstros</a><a class="on"><i>⚔</i>Armas</a><a class=""><i>⛨</i>Armaduras</a><a class=""><i>✦</i>Assistente</a></nav></div></div>
+<div><div class="cap"><b>2</b> · detalhe da arma (Wilds)</div><div class="phone"><div class="scroll"><div class="crumb"><span>‹ Armas</span><span>Wilds</span></div>
+<div class="head"><h2>Sieglinde</h2><div class="sub">Espadão · Raridade 8</div></div>
+<div class="card"><h3><i>1</i>Atributos</h3><div class="attr">
+<span>Ataque <b>1008</b></span><span>Afinidade <b>15%</b></span>
+<span>Veneno <b>300</b></span><span>Slots <img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco3.webp" style="width:16px;height:16px;vertical-align:middle"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco2.webp" style="width:16px;height:16px;vertical-align:middle"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco1.webp" style="width:16px;height:16px;vertical-align:middle"></span></div>
+<div class="sub" style="margin-top:8px">Afiação</div><div class="sharp"><i style="flex:40;background:#c0392b"></i><i style="flex:80;background:#e67e22"></i><i style="flex:30;background:#f1c40f"></i><i style="flex:120;background:#27ae60"></i><i style="flex:40;background:#2e86de"></i><i style="flex:40;background:#ecf0f1"></i></div></div>
+<div class="card"><h3><i>2</i>Habilidades da arma <span class="new">novo</span></h3>
+<div class="rr"><span>Prolongar Veneno</span><span class="pips"><i class="f"></i><i class="o"></i><i class="o"></i></span></div>
+<div class="rr"><span>Status Crítico</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i></span></div>
+<p class="note" style="padding:6px 0 0">Na Wilds as armas já vêm com habilidades; tocar abre a habilidade em Armaduras.</p></div>
+<div class="card"><h3><i>3</i>Materiais</h3>
+<div class="rr"><span>Escama de Rathian+</span><span class="num">×5</span></div>
+<div class="rr"><span>Rubi de Rathian</span><span class="num">×1</span></div>
+<div class="rr"><span>Símbolo de Caçador I</span><span class="num">×5</span></div></div>
+<p class="note" style="padding:0 16px">Sem card de Rampage (não existe na Wilds). Árvore de melhoria igual à da Rise.</p></div><nav class="nav"><a class=""><i>❦</i>Monstros</a><a class="on"><i>⚔</i>Armas</a><a class=""><i>⛨</i>Armaduras</a><a class=""><i>✦</i>Assistente</a></nav></div></div>
+<div><div class="cap"><b>3</b> · conjunto com bônus</div><div class="phone"><div class="scroll"><div class="crumb"><span>‹ Armaduras</span><span>Wilds</span></div>
+<div class="head"><h2>Arkveld α</h2><div class="sub">Rank Alto · Raridade 8 · Defesa 86 por peça</div></div>
+<div class="card"><h3><i>1</i>Peças</h3><div class="row"><div class="top"><div class="ic"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/head-8.webp"></div><div class="tx"><div class="nm">Elmo de Arkveld α</div><div class="sub">Fome de Arkveld 1 · Absorção Elemental 2</div></div><div></div></div></div><div class="row"><div class="top"><div class="ic"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/chest-8.webp"></div><div class="tx"><div class="nm">Armadura de Arkveld α</div><div class="sub">Fome de Arkveld 1 · Exploração de Fraqueza 1</div></div><div><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco2.webp" style="width:16px;height:16px;vertical-align:middle"></div></div></div><div class="row"><div class="top"><div class="ic"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/arms-8.webp"></div><div class="tx"><div class="nm">Avambraços de Arkveld α</div><div class="sub">Vel. de Regeneração 1 · Fome de Arkveld 1</div></div><div><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco2.webp" style="width:16px;height:16px;vertical-align:middle"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco2.webp" style="width:16px;height:16px;vertical-align:middle"></div></div></div><div class="row"><div class="top"><div class="ic"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/waist-8.webp"></div><div class="tx"><div class="nm">Cinturão de Arkveld α</div><div class="sub">Vel. de Regeneração 2 · Exploração de Fraqueza 2</div></div><div><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco1.webp" style="width:16px;height:16px;vertical-align:middle"></div></div></div><div class="row"><div class="top"><div class="ic"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/legs-8.webp"></div><div class="tx"><div class="nm">Grevas de Arkveld α</div><div class="sub">Bainha Rápida 2 · Fome de Arkveld 1</div></div><div><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco2.webp" style="width:16px;height:16px;vertical-align:middle"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco1.webp" style="width:16px;height:16px;vertical-align:middle"></div></div></div></div>
+<div class="card"><h3><i>2</i>Bônus do conjunto <span class="new">novo</span></h3>
+<div class="bon"><div class="sk">Fome de Arkveld</div>
+<div class="sub" style="margin-top:4px"><span class="pc">2 peças</span>Regeneração Veloz I — regenera um pouco de vida ao atacar continuamente.</div>
+<div class="sub" style="margin-top:4px"><span class="pc">4 peças</span>Regeneração Veloz II — regenera vida ao atacar continuamente.</div></div>
+<div class="bon"><div class="sk">Pelica Fortificante <span class="sub">(grupo)</span></div>
+<div class="sub" style="margin-top:4px"><span class="pc">3 peças</span>Fortificar — aumenta ataque e defesa após desmaiar (até duas vezes).</div></div>
+</div>
+<div class="card"><h3><i>3</i>Habilidades somadas</h3>
+<div class="rr"><span>Fome de Arkveld</span><span class="sub">5 peças</span></div>
+<div class="rr"><span>Exploração de Fraqueza</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="o"></i><i class="o"></i></span></div>
+<div class="rr"><span>Vel. de Regeneração</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i></span></div></div></div><nav class="nav"><a class=""><i>❦</i>Monstros</a><a class=""><i>⚔</i>Armas</a><a class="on"><i>⛨</i>Armaduras</a><a class=""><i>✦</i>Assistente</a></nav></div></div>
+<div><div class="cap"><b>4</b> · Joias e Talismãs</div><div class="phone"><div class="scroll"><div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div><div class="games"><span class=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/games/world_iceborne.webp" alt="World"><div class="soon">em breve</div></span><span class=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/games/rise_sunbreak.webp" alt="Rise"></span><span class="on"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/games/wilds.webp" alt="Wilds"></span></div>
+<div class="atabs"><span>Conjuntos</span><span>Habilidades</span><span class="on">Joias</span><span>Talismãs <span class="new">novo</span></span></div>
+<div class="seg4"><span>Todas</span><span class="on">De arma</span><span>De armadura</span><span>Slot ③</span></div>
+<div class="dr"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco3.webp"><span class="sk">Joia Stat. Crít./Artesanato 3<br><span class="sub">Status Crítico 3 · Artesanato 1</span></span></div><div class="dr"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco3.webp"><span class="sk">Joia Relâmpago/Precisão 3<br><span class="sub">Ataque de Raio 3 · Balística 1</span></span></div><div class="dr"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco3.webp"><span class="sk">Joia de Drenagem III 3<br><span class="sub">Ladrão de Vigor 3</span></span></div><div class="dr"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco1.webp"><span class="sk">Joia Veneno 1<br><span class="sub">Ataque de Veneno 1</span></span></div>
+<div class="sec">Talismãs (aba nova)</div><div class="dr"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/talisman-5.webp" style="width:26px;height:26px"><span class="sk">Amuleto da Fartura I–III<br><span class="sub">Refeição Grátis · rar. 4–6</span></span></div><div class="dr"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/talisman-5.webp" style="width:26px;height:26px"><span class="sk">Amuleto Antivento I–II<br><span class="sub">Antivento · rar. 4–5</span></span></div>
+<p class="note">Joias da Wilds podem dar duas habilidades; o filtro separa joias de arma e de armadura. Habilidades ganham o tipo: arma, armadura, conjunto ou grupo.</p></div><nav class="nav"><a class=""><i>❦</i>Monstros</a><a class=""><i>⚔</i>Armas</a><a class="on"><i>⛨</i>Armaduras</a><a class=""><i>✦</i>Assistente</a></nav></div></div>
+</div>
+<div class="notes"><h2>O que muda</h2><ul>
+<li><b>Abas de jogo</b> em Armas e Armaduras (World "em breve" até a 011). Cada jogo guarda seus filtros e seleção.</li>
+<li><b>Arma</b>: card novo "Habilidades da arma"; sem Rampage. Afiação, slots, materiais e árvore como na Rise. "Dropado por" usa os monstros da Wilds que já temos.</li>
+<li><b>Conjunto</b>: card novo "Bônus do conjunto" com as etapas (2 e 4 peças) e a habilidade de grupo (3 peças).</li>
+<li><b>Joias</b>: filtro "de arma / de armadura"; joias com duas habilidades mostram as duas. <b>Talismãs</b>: aba nova com os níveis (I, II, III…).</li>
+<li>Ícones das partes: os da Wilds seguem outra tabela de cores por raridade; no app vou buscar os ícones da Wilds (aqui uso os da Rise só para ilustrar).</li>
+</ul></div></body></html>

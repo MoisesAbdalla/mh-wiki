@@ -18,8 +18,12 @@ class ArmorPage extends StatefulWidget {
     this.actions,
     this.sources = MaterialSourceLookup.empty,
     this.onOpenMonster,
+    this.header,
     super.key,
   });
+
+  /// The area's game tabs, above the list.
+  final Widget? header;
 
   final ArmorController controller;
   final List<Widget>? actions;
@@ -102,6 +106,7 @@ class _ArmorPageState extends State<ArmorPage> {
     final list = ArmorListPane(
       controller: _controller,
       highlightSelection: expanded,
+      header: widget.header,
     );
     return Scaffold(
       appBar: AppBar(
@@ -173,6 +178,17 @@ Widget armorDetailFor(
       language: language,
       onOpenDecoration: (d) => controller.select(ArmorTab.decorations, d.id),
       onOpenSet: (id) => controller.select(ArmorTab.sets, id),
+    );
+  }
+  if (controller.selectedTalisman case final talisman?) {
+    return TalismanDetailView(
+      key: ValueKey(('talisman', talisman.id)),
+      talisman: talisman,
+      catalog: catalog,
+      sources: sources,
+      onOpenMonster: onOpenMonster,
+      language: language,
+      onOpenSkill: (s) => controller.select(ArmorTab.skills, s.id),
     );
   }
   if (controller.selectedDecoration case final deco?) {

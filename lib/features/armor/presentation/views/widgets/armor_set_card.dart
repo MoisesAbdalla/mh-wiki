@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
+import 'package:mh_wiki/core/presentation/game_icons.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
 import 'package:mh_wiki/core/presentation/widgets/monster_image.dart';
@@ -157,7 +158,16 @@ class _PieceRow extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(14, 7, 14, 7),
         child: Row(
           children: [
-            MonsterImage(asset: piece.imageAsset, size: 28),
+            MonsterImage(
+              asset:
+                  piece.imageAsset ??
+                  GameIcons.armorPart(
+                    piece.part.name,
+                    piece.rarity,
+                    catalog.game,
+                  ),
+              size: 28,
+            ),
             const SizedBox(width: 10),
             Expanded(
               child: Column(
@@ -173,7 +183,7 @@ class _PieceRow extends StatelessWidget {
             ),
             if (piece.slots.isNotEmpty) ...[
               const SizedBox(width: 8),
-              SlotGems(slots: piece.slots, size: 18),
+              SlotGems(slots: piece.slots, size: 18, game: catalog.game),
             ],
           ],
         ),

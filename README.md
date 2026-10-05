@@ -16,7 +16,7 @@ Windows).
   type, rank and name, one card per upgrade tree. The detail shows attack, element or status,
   affinity, slots and Rampage slot, sharpness with and without Handicraft, forge and upgrade
   materials with the monsters that drop them, and the upgrade tree. A Rise monster lists the
-  weapons made from it. World and Wilds weapons come later.
+  weapons made from it. Wilds weapons are in a game tab (feature 010, below).
 - **Armaduras** (feature 007): the Rise: Sunbreak armor, with three tabs.
   - **Conjuntos**: 292 sets and 1,371 pieces, filtered by rank, by name or by a chosen skill.
   - **Habilidades**: 147 skills with the effect of each level, the jewels that give them and the
@@ -40,6 +40,22 @@ Windows).
     - Pin a weapon you own, or let it pick any of the type.
     - "Só peças do meu progresso" filters by rarity (Baixo ≤ 3, Alto 5–7, Mestre 8–10); within
       rarity 10 the Master Rank gates (Risen, Afflicted) are not modelled.
+- **Wilds in Armas and Armaduras** (feature 010): game logos at the top of both areas switch
+  between Rise: Sunbreak and Wilds (World says "em breve"). Each game keeps its own filters and
+  selection. The Wilds content uses the Wilds icons.
+  - **Armas**: 1,146 weapons of the 14 types, with the weapon skills (a tap opens the skill in
+    Armaduras), sharpness with Handicraft, materials and the upgrade tree. There is no Rampage.
+  - **Artian**: a group after each type's trees lists the three Artian (rarity 6, 7, 8) and your
+    own. The simulator picks the element, the 3 parts (element, Attack or Affinity) and the 5
+    reinforcement rolls. It shows attack, affinity, element with infusion, sharpness and slots
+    live. Built Artian are saved on the device and can be renamed or deleted.
+  - **Gogma Artian** (Gogmazios): a subsection of the Artian group lists the three foci (Ataque,
+    Afinidade, Elemento) of each type. The detail compares them, explains how to get one (Tarred
+    Device from Gogmazios) and links to Gogmazios.
+  - **Armaduras**: 183 sets and 714 pieces, 179 skills with their kind (arma, armadura,
+    conjunto, grupo), and 361 decorations filtered by weapon or armor kind. A fourth tab lists
+    64 talismans with their ranks. A set shows its set bonus ("2 peças", "4 peças") and its
+    group bonus.
 - Areas (Monstros, Armas, Armaduras, Assistente) in a bottom bar, or a side rail on wide screens; each keeps its
   filters and selection.
 - Game names shown in Portuguese (Brazil) or English (Configurações).
@@ -76,6 +92,13 @@ Windows).
   `assets/images/armor/SOURCES.md`).
 - **Data**: Kiranico, Monster Hunter Wiki, mhw-db.com and Fextralife (see each dataset's `sources`).
 - **Builds**: the Game8 Monster Hunter Rise build guides; each build links to its source page.
+- **Wilds equipment**:
+  - data from [wilds.mhdb.io](https://wilds.mhdb.io) (en + pt-BR);
+  - Artian rules from the Monster Hunter Wiki, checked against Game8;
+  - icons (equipment by rarity, decorations, weapon renders) from the Monster Hunter Wiki, and
+    piece renders from Kiranico.
+
+  This is Capcom artwork used locally, like the monster icons.
 
 > Fan-made, non-commercial study project. Not affiliated with or endorsed by Capcom.
 > Monster Hunter and all related names are trademarks of Capcom.
@@ -204,7 +227,7 @@ guide.
     whose Kiranico list has no level text take it from the wiki, in English only.
 - 220 rows with no defense and no skills (cosmetic armor) are left out.
 - 1,282 pieces (93.5 %) have an icon.
-- The release APK (arm64) is 34.2 MB.
+- The release APK (arm64) was 34.2 MB at 007; with the Wilds equipment (010) it is 39.5 MB.
 
 ### Builds (Rise: Sunbreak)
 

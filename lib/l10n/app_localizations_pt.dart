@@ -1206,4 +1206,216 @@ class AppLocalizationsPt extends AppLocalizations {
   String noWeaponForFilter(String progress) {
     return 'Nenhuma arma com esse filtro até $progress.';
   }
+
+  @override
+  String get weaponSkills => 'Habilidades da arma';
+
+  @override
+  String get setBonus => 'Bônus do conjunto';
+
+  @override
+  String get groupBonusLabel => 'grupo';
+
+  @override
+  String piecesN(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count peças',
+      one: '1 peça',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String setStepSemantics(String skill, String pieces, String name) {
+    return '$skill, $pieces: $name';
+  }
+
+  @override
+  String get skillKindWeapon => 'arma';
+
+  @override
+  String get skillKindArmor => 'armadura';
+
+  @override
+  String get skillKindSet => 'conjunto';
+
+  @override
+  String get skillKindGroup => 'grupo';
+
+  @override
+  String get decoKindAll => 'Todas';
+
+  @override
+  String get decoKindWeapon => 'De arma';
+
+  @override
+  String get decoKindArmor => 'De armadura';
+
+  @override
+  String get talismansTab => 'Talismãs';
+
+  @override
+  String get talismanRanks => 'Níveis';
+
+  @override
+  String get artianGroup => 'Artian';
+
+  @override
+  String get artianAnyElement => 'elemento à escolha';
+
+  @override
+  String get artianBuild => 'Monte a sua';
+
+  @override
+  String get artianElement => 'Elemento';
+
+  @override
+  String get artianNoElement => 'Nenhum';
+
+  @override
+  String artianParts(int count) {
+    return 'Peças ($count)';
+  }
+
+  @override
+  String get artianPartElement => 'Elemento';
+
+  @override
+  String get artianPartAttack => 'Ataque';
+
+  @override
+  String get artianPartAffinity => 'Afinidade';
+
+  @override
+  String artianReinforcement(int count) {
+    return 'Reforços ($count)';
+  }
+
+  @override
+  String artianBoostAttack(int value) {
+    return 'Ataque +$value';
+  }
+
+  @override
+  String artianBoostAffinity(int value) {
+    return 'Afinidade +$value%';
+  }
+
+  @override
+  String artianBoostElement(int value) {
+    return 'Elemento +$value';
+  }
+
+  @override
+  String artianBoostSharpness(int value) {
+    return 'Afiação +$value';
+  }
+
+  @override
+  String artianBoostAmmo(int value) {
+    return 'Munição +$value';
+  }
+
+  @override
+  String artianRemaining(int count) {
+    return 'restam $count';
+  }
+
+  @override
+  String get artianResult => 'Resultado';
+
+  @override
+  String get artianInfusion => 'com infusão';
+
+  @override
+  String get artianElementHint =>
+      'O elemento vem de 2 peças iguais; 3 iguais dão infusão.';
+
+  @override
+  String get saveMyArtian => 'Salvar minha Artian';
+
+  @override
+  String get myArtianTag => 'minha';
+
+  @override
+  String get artianName => 'Nome da Artian';
+
+  @override
+  String get artianSaved => 'Artian salva';
+
+  @override
+  String deleteArtianConfirm(String name) {
+    return 'Excluir \"$name\"?';
+  }
+
+  @override
+  String increaseLabel(String name) {
+    return 'Aumentar $name';
+  }
+
+  @override
+  String decreaseLabel(String name) {
+    return 'Diminuir $name';
+  }
+
+  @override
+  String get wildsLoadFailed => 'Não foi possível carregar os dados da Wilds.';
+
+  @override
+  String get gogmaGroup => 'Gogma · do Gogmazios';
+
+  @override
+  String get gogmaTag => 'Gogma';
+
+  @override
+  String gogmaFocus(String focus) {
+    return 'Foco $focus';
+  }
+
+  @override
+  String get focusAttack => 'Ataque';
+
+  @override
+  String get focusAffinity => 'Afinidade';
+
+  @override
+  String get focusElement => 'Elemento';
+
+  @override
+  String gogmaSubtitle(String type) {
+    return '$type Artian Gogma';
+  }
+
+  @override
+  String get gogmaFoci => 'Os três focos';
+
+  @override
+  String get gogmaFocusColumn => 'Foco';
+
+  @override
+  String get gogmaFocusHint => 'Toque num foco para ver os atributos dele.';
+
+  @override
+  String get gogmaHowTo => 'Como obter';
+
+  @override
+  String gogmaUpgrade(String base) {
+    return 'Melhore uma Artian de Raridade 8 ($base)';
+  }
+
+  @override
+  String get gogmaDevice => 'com um Tarred Device do foco escolhido';
+
+  @override
+  String get gogmaSource =>
+      'O Tarred Device vem do Armamento Mutado, preso no corpo do Gogmazios: quebre as massas (sobretudo na fase gasosa). Só vem se você abater o monstro.';
+
+  @override
+  String get gogmaExtras =>
+      'Também ganha uma habilidade bônus, uma de grupo e reforços mais fortes, sorteados no jogo. Não são simulados aqui.';
+
+  @override
+  String get openInMonsters => 'Abrir em Monstros';
 }

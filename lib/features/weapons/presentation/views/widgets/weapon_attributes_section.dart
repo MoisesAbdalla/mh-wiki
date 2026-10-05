@@ -123,7 +123,11 @@ class WeaponAttributesSection extends StatelessWidget {
             },
           ),
           const SizedBox(height: 12),
-          SlotBadges(slots: weapon.slots, rampageSlot: weapon.rampageSlot),
+          SlotBadges(
+            slots: weapon.slots,
+            rampageSlot: weapon.rampageSlot,
+            game: weapon.id.game,
+          ),
           if (traits.songs.isNotEmpty) ...[
             const SizedBox(height: 12),
             Text(
