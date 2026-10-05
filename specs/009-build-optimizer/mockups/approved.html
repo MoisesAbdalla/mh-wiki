@@ -1,0 +1,117 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Caderninho — Montar build (009)</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Averia+Serif+Libre:wght@700&family=Atkinson+Hyperlegible&display=swap" rel="stylesheet"><style>
+:root{--bg:#16120e;--panel:#1f1812;--raise:#2c2215;--ink:#efe4c8;--ink2:#b9a67f;--ink3:#8a7652;--rule:#3b2e1d;--rule2:#5a4526;--gold:#e0bd6a;--neg:#f2a08a;--ok:#9cc48a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0a08;color:var(--ink);font:15px/1.45 "Atkinson Hyperlegible",sans-serif;padding:28px 16px 60px}
+.intro{max-width:1640px;margin:0 auto 22px}.intro h1{font:400 30px/1 "IM Fell English SC"}.intro p{color:var(--ink2);margin-top:8px;max-width:100ch;font-size:14px}
+.wrap{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;max-width:1640px;margin:0 auto}
+.cap{font-size:12px;color:var(--ink2);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase}.cap b{color:var(--gold)}
+.phone{width:370px;max-width:100%;height:860px;background:var(--bg);border-radius:26px;display:flex;flex-direction:column;overflow:hidden}
+.scroll{flex:1;overflow-y:auto;padding-bottom:20px;scrollbar-width:none}
+.appbar{display:flex;justify-content:space-between;align-items:baseline;padding:18px 20px 6px}.brand{font:400 24px/1 "IM Fell English SC"}.gear{color:var(--ink2);font-size:13px}
+.tabs{display:flex;gap:16px;padding:4px 20px 0;border-bottom:1px solid var(--rule)}
+.tabs span{white-space:nowrap;padding:6px 0 8px;font:400 16px "IM Fell English SC";color:var(--ink2)}.tabs span.on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--gold)}
+.ctx{display:flex;justify-content:space-between;align-items:center;margin:10px 12px 8px;padding:8px 12px;border:1px solid var(--rule);border-radius:4px;font-size:13px;color:var(--ink2)}.ctx b{color:var(--ink);font-weight:400}
+.link{color:var(--gold);font-size:13px}
+.card{margin:0 12px 12px;background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:12px 14px 12px}
+.card h3{display:flex;gap:10px;align-items:baseline;font:400 19px "IM Fell English SC";margin-bottom:8px}.card h3 i{font:700 16px "Averia Serif Libre";color:var(--gold);font-style:normal}
+.search{border:1px solid var(--rule2);border-radius:4px;padding:8px 10px;color:var(--ink3);font-size:14px;margin-bottom:6px}
+.rr{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--rule);font-size:14px}.rr:last-child{border-bottom:0}
+.sk{font-size:14px}.sub{font-size:12px;color:var(--ink2)}
+.pips{display:inline-flex;gap:3px;vertical-align:middle}.pips i{width:9px;height:9px;border:1px solid var(--gold);border-radius:2px;display:inline-block}.pips i.f{background:var(--gold)}.pips i.o{border-color:var(--rule2)}.pips i.miss{border-color:var(--neg);background:rgba(242,160,138,.25)}
+.step{display:flex;align-items:center;gap:6px}.step b,.stepm b{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border:1px solid var(--rule2);border-radius:4px;color:var(--gold);font-weight:400}.step u{text-decoration:none;color:var(--ink3);margin-left:4px}
+.num{font:700 15px "Averia Serif Libre";min-width:14px;text-align:center}
+.sugg-cap{font-size:12px;color:var(--ink3);margin-top:10px}.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{font-size:12.5px;padding:3px 9px;border:1px solid var(--rule2);border-radius:12px;color:var(--ink2)}
+.opt{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--rule)}.opt.last{border-bottom:0}
+.tog{width:34px;height:18px;border-radius:9px;background:var(--rule2);position:relative}.tog.on{background:var(--gold)}.tog::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:7px;background:var(--bg)}.tog.on::after{left:18px}
+.pad{padding:0 12px}.btn{display:block;text-align:center;margin:4px 0 8px;padding:10px;border:1px solid var(--gold);color:var(--gold);border-radius:4px;font:400 16px "IM Fell English SC"}.btn.solid{background:var(--gold);color:#1c150d}
+.crumb{display:flex;justify-content:space-between;font-size:12px;color:var(--ink2);padding:18px 22px 0}
+.head{padding:10px 20px 12px}.head h2{font:400 25px/1.05 "IM Fell English SC"}.head .sub{margin-top:6px;font-size:13px}
+.tal{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--rule)}.tal:last-child{border-bottom:0}.ti{width:34px;height:34px}.tal .tx{flex:1}.nm{font:400 16px/1.15 "IM Fell English SC"}
+.slots{display:flex;gap:3px}.sl{width:16px;height:16px;vertical-align:middle}.sl0{color:var(--ink3);font-size:12px;width:16px;text-align:center}
+.field{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:10px}.field .sub{width:100%}.inp{flex:1;border:1px solid var(--rule2);border-radius:4px;padding:7px 10px;font-size:14px}.inp.muted{color:var(--ink3)}.stepm{display:flex;align-items:center;gap:6px}
+.slotsrow{display:grid;gap:6px;margin-bottom:10px}.seg2{display:flex;gap:4px;margin-top:3px}.seg2 span{flex:1;text-align:center;padding:4px 0;border:1px solid var(--rule2);border-radius:3px;font:700 13px "Averia Serif Libre";color:var(--ink2)}.seg2 span.on{border-color:var(--gold);color:var(--gold);background:var(--raise)}
+.sec{padding:8px 16px 2px;font:400 15px "IM Fell English SC";color:var(--ink2);display:flex;align-items:center;gap:10px}.sec::after{content:"";flex:1;border-bottom:1px solid var(--rule2)}
+.bc{margin:8px 12px 0;background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:10px 14px}.bc.sel{border-color:var(--gold)}
+.rtop{display:flex;justify-content:space-between;align-items:center}.bc h5{font:400 18px/1.15 "IM Fell English SC"}
+.seal{font:700 11px "Averia Serif Libre";padding:0 6px;border-radius:3px;border:1px solid}.seal.ok{color:var(--ok);border-color:var(--ok)}.seal.no{color:var(--neg);border-color:var(--neg)}
+.picons{display:flex;gap:4px;margin:6px 0 4px;align-items:center}.picons img{width:28px;height:28px;background:var(--raise);border-radius:3px;padding:2px}.picons .tal{border:0;padding:0;margin-left:6px}
+.sk2{font-size:12.5px;color:var(--ink);margin:4px 0}.sk2 .bad{color:var(--neg)}
+.ok{color:var(--ok);font-size:13px}.no{color:var(--neg);font-size:12px;margin-left:4px}
+.row{padding:8px 0;border-bottom:1px solid var(--rule)}.row.last{border-bottom:0}.top{display:flex;gap:12px;align-items:center}
+.ic{width:38px;height:38px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:4px;background:var(--raise)}.ic img{width:34px;height:34px;object-fit:contain}
+.part{font-size:12px;color:var(--ink2)}
+.note{font-size:12px;color:var(--ink3);padding:10px 16px}
+.nav{display:flex;border-top:1px solid var(--rule2);background:#120e0b}.nav a{flex:1;text-align:center;padding:8px 0 10px;font:400 14px "IM Fell English SC";color:var(--ink2)}.nav a i{display:block;font-style:normal;font-size:17px;line-height:1.2}.nav a.on{color:var(--gold)}
+.notes{max-width:1640px;margin:28px auto 0;color:var(--ink2);font-size:14px}.notes h2{font:400 22px "IM Fell English SC";color:var(--ink);margin-bottom:8px}.notes li{margin:5px 0 5px 18px}.notes b{color:var(--ink)}
+</style></head><body>
+<div class="intro"><h1>009 · Montar build (otimizador)</h1>
+<p>Você escolhe as habilidades e os níveis; o app procura, só com peças do seu progresso, armas do tipo escolhido, joias e os seus talismãs, os conjuntos que atingem tudo. Nomes, peças e ícones reais; os resultados aqui são ilustrativos (montados a partir de builds reais de Espadão).</p></div>
+<div class="wrap">
+<div><div class="cap"><b>1</b> · escolher habilidades</div><div class="phone"><div class="scroll"><div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div><div class="tabs"><span class="">Recomendadas</span><span class="">Minhas builds</span><span class="on">Montar build</span></div>
+<div class="ctx"><div><b>Mestre · M6★</b> · Espadão</div><span class="link">alterar</span></div>
+<div class="card"><h3><i>1</i>Habilidades que você quer</h3>
+  <div class="search">⌕ Buscar habilidade…</div>
+  <div class="rr"><div><div class="sk">Reforço de Ataque</div><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="step"><b>−</b><span class="num">7</span><b>+</b><u>✕</u></div></div><div class="rr"><div><div class="sk">Olho Crítico</div><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="step"><b>−</b><span class="num">7</span><b>+</b><u>✕</u></div></div><div class="rr"><div><div class="sk">Reforço Crítico</div><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="step"><b>−</b><span class="num">3</span><b>+</b><u>✕</u></div></div><div class="rr"><div><div class="sk">Explor. de Fraqueza</div><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="step"><b>−</b><span class="num">3</span><b>+</b><u>✕</u></div></div>
+  <div class="sugg-cap">Comuns para Espadão</div><div class="chips"><span class="chip">+ Agitador</span><span class="chip">+ Abandono</span><span class="chip">+ Artesanato</span><span class="chip">+ Bloqueio Ofensivo</span><span class="chip">+ Mestre da Energia</span></div>
+</div>
+<div class="card"><h3><i>2</i>Arma e talismãs</h3>
+  <div class="opt"><div><div class="sk">Arma</div><div class="sub">Qualquer Espadão até M6★</div></div><span class="link">escolher</span></div>
+  <div class="opt"><div><div class="sk">Meus talismãs</div><div class="sub">3 cadastrados · usar todos</div></div><span class="link">gerenciar</span></div>
+  <div class="opt last"><div><div class="sk">Só peças do meu progresso</div><div class="sub">até M6★ (raridade 10)</div></div><span class="tog on"></span></div>
+</div>
+<div class="pad"><span class="btn solid">Montar build</span></div></div><nav class="nav"><a><i>❦</i>Monstros</a><a><i>⚔</i>Armas</a><a><i>⛨</i>Armaduras</a><a class="on"><i>✦</i>Assistente</a></nav></div></div>
+<div><div class="cap"><b>2</b> · meus talismãs</div><div class="phone"><div class="scroll"><div class="crumb">‹ Montar build</div>
+<div class="head"><h2>Meus talismãs</h2><div class="sub">Usados pelo Montar build. Ficam no aparelho.</div></div>
+<div class="card"><h3>Cadastrados</h3><div class="tal"><img class="ti" src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/talisman-10.webp" alt=""><div class="tx"><div class="nm">Olho Crítico 3</div></div><div class="slots"><img class="sl" src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco2.webp" alt=""><img class="sl" src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco1.webp" alt=""><span class="sl0">–</span></div></div><div class="tal"><img class="ti" src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/talisman-10.webp" alt=""><div class="tx"><div class="nm">Reforço de Ataque 2</div><div class=sub>Explor. de Fraqueza 1</div></div><div class="slots"><img class="sl" src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco3.webp" alt=""><span class="sl0">–</span><span class="sl0">–</span></div></div><div class="tal"><img class="ti" src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/talisman-10.webp" alt=""><div class="tx"><div class="nm">Artesanato 2</div></div><div class="slots"><img class="sl" src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco1.webp" alt=""><img class="sl" src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco1.webp" alt=""><span class="sl0">–</span></div></div></div>
+<div class="card"><h3>Novo talismã</h3>
+  <div class="field"><div class="sub">Habilidade 1</div><div class="inp">Olho Crítico ▾</div><div class="stepm"><b>−</b><span class="num">3</span><b>+</b></div></div>
+  <div class="field"><div class="sub">Habilidade 2 (opcional)</div><div class="inp muted">nenhuma ▾</div></div>
+  <div class="slotsrow"><div class="spick"><div class="sub">Slot 1</div><div class="seg2"><span class="">–</span><span class="">1</span><span class="on">2</span><span class="">3</span><span class="">4</span></div></div><div class="spick"><div class="sub">Slot 2</div><div class="seg2"><span class="">–</span><span class="on">1</span><span class="">2</span><span class="">3</span><span class="">4</span></div></div><div class="spick"><div class="sub">Slot 3</div><div class="seg2"><span class="on">–</span><span class="">1</span><span class="">2</span><span class="">3</span><span class="">4</span></div></div></div>
+  <span class="btn">Salvar talismã</span>
+</div></div></div></div>
+<div><div class="cap"><b>3</b> · resultados</div><div class="phone"><div class="scroll"><div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div><div class="tabs"><span class="">Recomendadas</span><span class="">Minhas builds</span><span class="on">Montar build</span></div>
+<div class="ctx"><div><b>4 habilidades</b> · Mestre · M6★ · Espadão</div><span class="link">editar</span></div>
+<div class="sec">3 conjuntos encontrados</div>
+<div class="bc sel">
+  <div class="rtop"><h5>Opção 1</h5><span class="seal ok">completa</span></div>
+  <div class="picons"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/head-10.webp" alt=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/chest-10.webp" alt=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/arms-10.webp" alt=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/waist-10.webp" alt=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/legs-10.webp" alt=""><span class="tal"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/talisman-10.webp" alt=""></span></div>
+  <div class="sub">Ótimo Cutelo Kamura · talismã Olho Crítico 3 ②①</div>
+  <div class="sk2"><span class="">Reforço de Ataque 7/7</span> · <span class="">Olho Crítico 7/7</span> · <span class="">Reforço Crítico 3/3</span> · <span class="">Explor. de Fraqueza 3/3</span></div>
+  <div class="sub">Defesa máx. 890 · sobram <img class="sl" src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco1.webp" alt=""><img class="sl" src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco1.webp" alt=""></div>
+</div><div class="bc">
+  <div class="rtop"><h5>Opção 2</h5><span class="seal ok">completa</span></div>
+  <div class="picons"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/head-9.webp" alt=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/chest-10.webp" alt=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/arms-8.webp" alt=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/waist-8.webp" alt=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/legs-9.webp" alt=""><span class="tal"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/talisman-10.webp" alt=""></span></div>
+  <div class="sub">Ótimo Cutelo Kamura · talismã Olho Crítico 3 ②①</div>
+  <div class="sk2"><span class="">Reforço de Ataque 7/7</span> · <span class="">Olho Crítico 7/7</span> · <span class="">Reforço Crítico 3/3</span> · <span class="">Explor. de Fraqueza 3/3</span></div>
+  <div class="sub">Defesa máx. 860 · sobram <img class="sl" src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/slots/deco2.webp" alt=""></div>
+</div><div class="bc">
+  <div class="rtop"><h5>Opção 3</h5><span class="seal no">quase</span></div>
+  <div class="picons"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/head-8.webp" alt=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/chest-8.webp" alt=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/arms-8.webp" alt=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/waist-8.webp" alt=""><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/legs-8.webp" alt=""><span class="tal"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/talisman-10.webp" alt=""></span></div>
+  <div class="sub">Cutelo Guerreiro Kamura · talismã Reforço de Ataque 2 · Explor. de Fraqueza 1 ③</div>
+  <div class="sk2"><span class="">Reforço de Ataque 7/7</span> · <span class="bad">Olho Crítico 5/7</span> · <span class="">Reforço Crítico 3/3</span> · <span class="">Explor. de Fraqueza 3/3</span></div>
+  <div class="sub">Defesa máx. 742</div>
+</div>
+<p class="note">Ordenados por: atinge tudo, depois mais slots livres, depois defesa. Tocar abre o conjunto inteiro.</p></div><nav class="nav"><a><i>❦</i>Monstros</a><a><i>⚔</i>Armas</a><a><i>⛨</i>Armaduras</a><a class="on"><i>✦</i>Assistente</a></nav></div></div>
+<div><div class="cap"><b>4</b> · um resultado</div><div class="phone"><div class="scroll"><div class="crumb"><span>‹ Resultados</span><span>1 de 3 ›</span></div>
+<div class="head"><h2>Opção 1</h2><div class="sub"><span class="seal ok">completa</span> Espadão · Mestre M6★</div></div>
+<div class="card"><h3><i>1</i>Habilidades pedidas</h3><div class="rr"><span>Reforço de Ataque</span><span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span> <span class="ok">✓</span></span></div><div class="rr"><span>Olho Crítico</span><span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span> <span class="ok">✓</span></span></div><div class="rr"><span>Reforço Crítico</span><span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i></span> <span class="ok">✓</span></span></div><div class="rr"><span>Explor. de Fraqueza</span><span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i></span> <span class="ok">✓</span></span></div>
+  <div class="sub" style="margin-top:6px">Também vem: Indignação 3 · Fio da Navalha 3 · Abandono 1</div></div>
+<div class="card"><h3><i>2</i>Equipamento</h3>
+  <div class="row"><div class="top"><div class="ic"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/weapons/rise_sunbreak/fine-kamura-cleaver.webp" alt=""></div><div class="tx"><div class="part">Arma</div><div class="nm">Ótimo Cutelo Kamura</div></div></div></div>
+  <div class="row"><div class="top"><div class="ic"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/head-10.webp" alt=""></div><div class="tx"><div class="part">Cabeça</div><div class="nm">Cérebro Espinas F</div></div></div></div><div class="row"><div class="top"><div class="ic"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/chest-10.webp" alt=""></div><div class="tx"><div class="part">Tronco</div><div class="nm">Músculo de Espinas F</div></div></div></div><div class="row"><div class="top"><div class="ic"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/arms-10.webp" alt=""></div><div class="tx"><div class="part">Braços</div><div class="nm">Garra de Espinas F</div></div></div></div><div class="row"><div class="top"><div class="ic"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/waist-10.webp" alt=""></div><div class="tx"><div class="part">Cintura</div><div class="nm">Escarcela Caótica</div></div></div></div><div class="row"><div class="top"><div class="ic"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/legs-10.webp" alt=""></div><div class="tx"><div class="part">Pernas</div><div class="nm">Ar. Arquidem. Sceros</div></div></div></div>
+  <div class="row last"><div class="top"><div class="ic"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/armor/parts/talisman-10.webp" alt=""></div><div class="tx"><div class="part">Talismã (seu)</div><div class="nm">Olho Crítico 3</div></div></div></div>
+  <div class="sub">(joias em botões como no detalhe da 008)</div>
+</div>
+<div class="card"><h3><i>3</i>Joias</h3><div class="rr"><span>Joia Crítica 2</span><span class="num">×3</span></div><div class="rr"><span>Joia Guardiã 3</span><span class="num">×3</span></div><div class="rr"><span>…</span><span></span></div></div>
+<div class="pad"><span class="btn">Salvar em Minhas builds</span></div></div></div></div>
+</div>
+<div class="notes"><h2>Como funciona</h2><ul>
+<li><b>1 · Montar build</b> fica habilitada. O progresso e o tipo de arma são os mesmos de Recomendadas (o quadro do topo mostra, com "alterar"). Você busca habilidades, ajusta o nível com − / + e as mais comuns para o tipo aparecem como sugestão.</li>
+<li><b>Arma</b>: "qualquer do tipo até o seu progresso" (o app escolhe pelos slots e habilidades) ou uma arma fixa que você já tem.</li>
+<li><b>2 · Meus talismãs</b>: cadastro de até 2 habilidades com nível e 3 slots (0 a 4). Ficam no aparelho. O otimizador testa cada um, e também "sem talismã".</li>
+<li><b>3 · Resultados</b>: até 10 conjuntos. "completa" (verde) quando atinge tudo; senão "quase", com o que falta em vermelho. Ordem: atinge tudo → mais slots livres → mais defesa. Cada card mostra os ícones das peças na cor da raridade.</li>
+<li><b>4 · Um resultado</b>: abre como o detalhe da 008 (mesmo card de Equipamento com joias em botões), mais o card das habilidades pedidas com os quadradinhos — os que faltam em vermelho — e "Também vem". Dá para passar entre os resultados (1 de 3 ›) e salvar em Minhas builds.</li>
+<li>Tudo offline, no próprio aparelho. Se a busca demorar, aparece "procurando…" com o número de combinações testadas e dá para cancelar.</li>
+</ul></div></body></html>
