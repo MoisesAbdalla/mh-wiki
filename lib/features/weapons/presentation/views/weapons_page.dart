@@ -20,8 +20,16 @@ class WeaponsPage extends StatefulWidget {
     this.actions,
     this.sources = MaterialSourceLookup.empty,
     this.onOpenMonster,
+    this.header,
+    this.onOpenSkill,
     super.key,
   });
+
+  /// The area's game tabs, above the list.
+  final Widget? header;
+
+  /// Opens a weapon skill in Armaduras (Wilds).
+  final ValueChanged<String>? onOpenSkill;
 
   final WeaponListController controller;
   final List<Widget>? actions;
@@ -80,6 +88,7 @@ class _WeaponsPageState extends State<WeaponsPage> {
           controller: _controller,
           sources: widget.sources,
           onOpenMonster: widget.onOpenMonster,
+          onOpenSkill: widget.onOpenSkill,
         ),
       );
       _detailRoute = newRoute;
@@ -110,6 +119,7 @@ class _WeaponsPageState extends State<WeaponsPage> {
       controller: _controller,
       onSelect: _onSelect,
       highlightSelection: expanded,
+      header: widget.header,
     );
 
     return Scaffold(
@@ -150,6 +160,7 @@ class _WeaponsPageState extends State<WeaponsPage> {
                           onSelectWeapon: _onSelect,
                           sources: widget.sources,
                           onOpenMonster: widget.onOpenMonster,
+                          onOpenSkill: widget.onOpenSkill,
                           language: _controller.language,
                         );
                       }

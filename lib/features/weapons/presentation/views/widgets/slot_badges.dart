@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/presentation/widgets/slot_icon.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
@@ -7,10 +8,16 @@ import 'package:mh_wiki/l10n/app_localizations.dart';
 /// pips), and the Rampage slot as the same gem in gold (006 ui-contract
 /// "Atributos").
 class SlotBadges extends StatelessWidget {
-  const SlotBadges({required this.slots, required this.rampageSlot, super.key});
+  const SlotBadges({
+    required this.slots,
+    required this.rampageSlot,
+    this.game = Game.riseSunbreak,
+    super.key,
+  });
 
   final List<int> slots;
   final int rampageSlot;
+  final Game game;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +44,11 @@ class SlotBadges extends StatelessWidget {
             Text(l10n.noSlots, style: muted)
           else
             for (final (i, level) in slots.indexed)
-              SlotIcon(key: ValueKey('slot-$i-$level'), level: level),
+              SlotIcon(
+                key: ValueKey('slot-$i-$level'),
+                level: level,
+                game: game,
+              ),
           if (rampageSlot > 0) ...[
             const SizedBox(width: 10),
             Text(l10n.rampageSlot, style: muted),

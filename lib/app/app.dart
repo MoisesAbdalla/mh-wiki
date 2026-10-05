@@ -16,6 +16,8 @@ class MhWikiApp extends StatelessWidget {
     required this.settingsController,
     required this.weaponListController,
     this.armorController,
+    this.wildsWeaponController,
+    this.wildsArmorController,
     this.assistantController,
     this.optimizerController,
     super.key,
@@ -25,6 +27,8 @@ class MhWikiApp extends StatelessWidget {
   final SettingsController settingsController;
   final WeaponListController weaponListController;
   final ArmorController? armorController;
+  final WeaponListController? wildsWeaponController;
+  final ArmorController? wildsArmorController;
   final AssistantController? assistantController;
   final OptimizerController? optimizerController;
 
@@ -46,6 +50,8 @@ class MhWikiApp extends StatelessWidget {
         monsters: monsterListController,
         weapons: weaponListController,
         armor: armorController,
+        wildsWeapons: wildsWeaponController,
+        wildsArmor: wildsArmorController,
         assistant: assistantController,
         optimizer: optimizerController,
         actions: [SettingsButton(controller: settingsController)],

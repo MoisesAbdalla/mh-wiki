@@ -14,12 +14,14 @@ class WeaponDetailPage extends StatelessWidget {
     required this.controller,
     this.sources = MaterialSourceLookup.empty,
     this.onOpenMonster,
+    this.onOpenSkill,
     super.key,
   });
 
   final WeaponListController controller;
   final MaterialSourceLookup sources;
   final ValueChanged<MaterialDropper>? onOpenMonster;
+  final ValueChanged<String>? onOpenSkill;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,7 @@ class WeaponDetailPage extends StatelessWidget {
                     onSelectWeapon: (w) => controller.select(w.id),
                     sources: sources,
                     onOpenMonster: onOpenMonster,
+                    onOpenSkill: onOpenSkill,
                     language: controller.language,
                   ),
                 ),

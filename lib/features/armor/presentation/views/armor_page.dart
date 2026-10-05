@@ -18,8 +18,12 @@ class ArmorPage extends StatefulWidget {
     this.actions,
     this.sources = MaterialSourceLookup.empty,
     this.onOpenMonster,
+    this.header,
     super.key,
   });
+
+  /// The area's game tabs, above the list.
+  final Widget? header;
 
   final ArmorController controller;
   final List<Widget>? actions;
@@ -102,6 +106,7 @@ class _ArmorPageState extends State<ArmorPage> {
     final list = ArmorListPane(
       controller: _controller,
       highlightSelection: expanded,
+      header: widget.header,
     );
     return Scaffold(
       appBar: AppBar(

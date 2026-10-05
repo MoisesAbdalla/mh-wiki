@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/game.dart';
+import 'package:mh_wiki/core/presentation/game_icons.dart';
 import 'package:mh_wiki/core/domain/name_language.dart';
 import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
@@ -17,9 +19,12 @@ class WeaponTypePicker extends StatefulWidget {
     required this.selectedId,
     required this.onChanged,
     this.language = NameLanguage.ptBr,
+    this.game = Game.riseSunbreak,
     super.key,
   });
 
+  /// Whose type icons to use (010 FR-009).
+  final Game game;
   final NameLanguage language;
   final List<WeaponType> types;
 
@@ -27,8 +32,8 @@ class WeaponTypePicker extends StatefulWidget {
   final String? selectedId;
   final ValueChanged<String> onChanged;
 
-  static String iconAsset(String typeId) =>
-      'assets/images/weapons/types/$typeId.webp';
+  static String iconAsset(String typeId, {Game game = Game.riseSunbreak}) =>
+      GameIcons.weaponType(typeId, game);
 
   @override
   State<WeaponTypePicker> createState() => _WeaponTypePickerState();
@@ -84,6 +89,7 @@ class _WeaponTypePickerState extends State<WeaponTypePicker> {
                     type: type,
                     selected: type.id == widget.selectedId,
                     language: widget.language,
+                    game: widget.game,
                     onTap: () => widget.onChanged(type.id),
                   ),
                 ],
@@ -102,8 +108,10 @@ class _TypeBlock extends StatelessWidget {
     required this.selected,
     required this.language,
     required this.onTap,
+    required this.game,
   });
 
+  final Game game;
   final NameLanguage language;
   final WeaponType type;
   final bool selected;
@@ -143,7 +151,7 @@ class _TypeBlock extends StatelessWidget {
                       child: Opacity(
                         opacity: selected ? 1 : 0.7,
                         child: Image.asset(
-                          WeaponTypePicker.iconAsset(type.id),
+                          WeaponTypePicker.iconAsset(type.id, game: game),
                           fit: BoxFit.contain,
                           excludeFromSemantics: true,
                           errorBuilder: (_, _, _) => Center(

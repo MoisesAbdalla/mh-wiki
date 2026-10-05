@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/core/presentation/labels.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_palette.dart';
 import 'package:mh_wiki/core/presentation/theme/notebook_tokens.dart';
@@ -112,10 +113,16 @@ class ResistanceRow extends StatelessWidget {
 
 /// A row of slot gems (highest first).
 class SlotGems extends StatelessWidget {
-  const SlotGems({required this.slots, this.size = 20, super.key});
+  const SlotGems({
+    required this.slots,
+    this.size = 20,
+    this.game = Game.riseSunbreak,
+    super.key,
+  });
 
   final List<int> slots;
   final double size;
+  final Game game;
 
   @override
   Widget build(BuildContext context) => Row(
@@ -128,5 +135,5 @@ class SlotGems extends StatelessWidget {
     ],
   );
 
-  Widget _gem(int level) => SlotIcon(level: level, size: size);
+  Widget _gem(int level) => SlotIcon(level: level, size: size, game: game);
 }

@@ -61,7 +61,7 @@ description: "Task list for 010 Armas e Armaduras da Wilds"
   - Amuleto da Fartura I–III;
   - at least 95% of the images resolve (SC-003);
   - the material and monster match rate is printed.
-- [ ] T009 `lib/app/equipment_area.dart`: the `GameTabs` over an `IndexedStack` of per-game pages,
+- [X] T009 `lib/app/equipment_area.dart`: the `GameTabs` over an `IndexedStack` of per-game pages,
   built on each tab's first visit, with World disabled. Add the per-game repositories and
   controllers in `AppDependencies`, and wire Armas and Armaduras in `app_home.dart`. Write the
   tests: tabs, state kept per game, failure isolation.
@@ -72,14 +72,14 @@ description: "Task list for 010 Armas e Armaduras da Wilds"
 
 ## Phase 3: User Story 1 - Armas da Wilds (P1) 🎯 MVP
 
-- [ ] T010 [P] [US1] Widget tests:
+- [X] T010 [P] [US1] Widget tests:
   - the Wilds list (rarity groups, Wilds icons);
   - the detail: attributes, sharpness, slots, the "Habilidades da arma" card, materials with
     "Dropado por", the tree;
   - no Rampage card;
   - a skill tap opens Armaduras (Wilds);
   - Monstros (Wilds) shows "Armas feitas com ele".
-- [ ] T011 [US1] Implement the Wilds icons in the weapon list and detail, the weapon skills card,
+- [X] T011 [US1] Implement the Wilds icons in the weapon list and detail, the weapon skills card,
   hiding Rampage for Wilds, and the skill links. Turn on `_extraSections` for Wilds monsters in
   `app_home.dart`.
 

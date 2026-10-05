@@ -17,16 +17,21 @@ class ArmorListPane extends StatelessWidget {
   const ArmorListPane({
     required this.controller,
     this.highlightSelection = false,
+    this.header,
     super.key,
   });
 
   final ArmorController controller;
   final bool highlightSelection;
 
+  /// Shown above the list in every state (the area's game tabs).
+  final Widget? header;
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    return ListenableBuilder(
+    final top = header;
+    final list = ListenableBuilder(
       listenable: controller,
       builder: (context, _) => switch (controller.state) {
         ArmorLoading() => const Center(child: CircularProgressIndicator()),
@@ -74,6 +79,14 @@ class ArmorListPane extends StatelessWidget {
         ),
       },
     );
+    if (top == null) return list;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        top,
+        Expanded(child: list),
+      ],
+    );
   }
 }
 
@@ -115,7 +128,7 @@ class _SetList extends StatelessWidget {
                   textSize: 15,
                   options: [
                     TabOption(value: null, text: l10n.rankAll),
-                    for (final rank in Rank.values)
+                    for (final rank in controller.game.allowedRanks)
                       TabOption(value: rank, text: l10n.rankName(rank)),
                   ],
                   selected: query.rank,

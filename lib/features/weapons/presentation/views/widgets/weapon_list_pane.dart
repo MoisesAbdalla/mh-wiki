@@ -22,11 +22,16 @@ class WeaponListPane extends StatelessWidget {
     required this.controller,
     required this.onSelect,
     this.highlightSelection = false,
+    this.header,
     super.key,
   });
 
   final WeaponListController controller;
   final ValueChanged<Weapon> onSelect;
+
+  /// Shown above the list in every state (the area's game tabs); replaces
+  /// the list's own game tabs.
+  final Widget? header;
 
   /// In the expanded layout the selected row stays highlighted.
   final bool highlightSelection;
@@ -34,7 +39,7 @@ class WeaponListPane extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    return ListenableBuilder(
+    final list = ListenableBuilder(
       listenable: controller,
       builder: (context, _) => switch (controller.state) {
         WeaponListLoading() => const Center(child: CircularProgressIndicator()),
@@ -49,8 +54,18 @@ class WeaponListPane extends StatelessWidget {
           controller: controller,
           onSelect: onSelect,
           highlightSelection: highlightSelection,
+          gameTabs: header == null,
         ),
       },
+    );
+    final top = header;
+    if (top == null) return list;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        top,
+        Expanded(child: list),
+      ],
     );
   }
 }
@@ -61,8 +76,10 @@ class _LoadedList extends StatelessWidget {
     required this.controller,
     required this.onSelect,
     required this.highlightSelection,
+    this.gameTabs = true,
   });
 
+  final bool gameTabs;
   final WeaponListLoaded state;
   final WeaponListController controller;
   final ValueChanged<Weapon> onSelect;
@@ -82,19 +99,21 @@ class _LoadedList extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: gutter),
-                child: GameTabs(
-                  selected: controller.game,
-                  includeAll: false,
-                  enabledGames: const {Game.riseSunbreak},
-                  onChanged: (_) {},
+              if (gameTabs)
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: gutter),
+                  child: GameTabs(
+                    selected: controller.game,
+                    includeAll: false,
+                    enabledGames: const {Game.riseSunbreak},
+                    onChanged: (_) {},
+                  ),
                 ),
-              ),
               WeaponTypePicker(
                 types: state.catalog.types,
                 selectedId: query.onlyIds == null ? query.typeId : null,
                 language: controller.language,
+                game: controller.game,
                 onChanged: controller.setType,
               ),
               if (only != null)
@@ -116,7 +135,7 @@ class _LoadedList extends StatelessWidget {
                     textSize: 15,
                     options: [
                       TabOption(value: null, text: l10n.rankAll),
-                      for (final rank in Rank.values)
+                      for (final rank in controller.game.allowedRanks)
                         TabOption(value: rank, text: l10n.rankName(rank)),
                     ],
                     selected: query.rank,
