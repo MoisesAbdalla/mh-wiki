@@ -109,6 +109,18 @@ CuratedBuild readBuild(JsonReader r) {
             level: talisman.number('level').toInt(),
             note: talisman.optionalString('note') ?? '',
             decorations: _refs(talisman, 'decorations'),
+            second: switch (talisman.optionalObject('second')) {
+              final s? => (
+                skill: _ref(s.object('skill')),
+                level: s.number('level').toInt(),
+              ),
+              null => null,
+            },
+            slots: [
+              for (final v
+                  in (talisman.json['slots'] as List<Object?>?) ?? const [])
+                if (v is num) v.toInt(),
+            ],
           ),
     skills: [
       for (final s in r.optionalObjects('skills'))
@@ -174,6 +186,9 @@ Map<String, Object?> writeBuild(CuratedBuild b) => {
       'level': t.level,
       'note': t.note,
       'decorations': [for (final d in t.decorations) _writeRef(d)],
+      if (t.second case final s?)
+        'second': {'skill': _writeRef(s.skill), 'level': s.level},
+      if (t.slots.isNotEmpty) 'slots': t.slots,
     },
   'skills': [
     for (final s in b.skills)

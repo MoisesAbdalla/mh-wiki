@@ -71,6 +71,9 @@ final class AssistantController extends ChangeNotifier {
 
   AssistantState get state => _state;
 
+  /// Every curated build, once loaded (Montar build's suggestions).
+  List<CuratedBuild> get curatedBuilds => _catalog?.builds ?? const [];
+
   AssistantTab get tab => _tab;
 
   Progress get progress => _progress;
@@ -123,7 +126,7 @@ final class AssistantController extends ChangeNotifier {
   }
 
   void selectTab(AssistantTab tab) {
-    if (tab == AssistantTab.build || tab == _tab) return;
+    if (tab == _tab) return;
     _tab = tab;
     _selection = null;
     notifyListeners();

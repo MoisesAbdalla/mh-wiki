@@ -162,3 +162,27 @@ The parts are combined in this order: weapon, talisman, head, chest, arms, waist
 - **SC-003 test**: for each Master and Post curated build, request its skill levels with its weapon
   and no talisman; at least 95% must give a "complete" result.
 - **Widget, accessibility and integration tests**, like 008.
+
+## R8. Results on the real data (T007, 2026-10-05)
+
+- **First run (too slow)**: ranking planned the decorations and built the whole set for every path of
+  every final state (35,000 states for 6 skills), so it took 13–20 s on the heaviest requests.
+- **Fixes**:
+  - **Bound first**: each final state gets a cheap optimistic key, `DecorationPlanner.bound`. It is
+    the fewest levels that must stay short and the most slot levels that can stay free. States go
+    in that order, and planning stops once 10 results beat every remaining bound. Results are
+    unchanged, because the bound is optimistic.
+  - **Lazy sets**: only the shown results are assembled.
+  - **Caches**: jewel mixes per (skill, need) and plans per (deficit, slots).
+- **SC-002**, measured on the development machine with 20 requests of 2–6 skills:
+  - the slowest takes about 0.3 s (6 skills at MR 180+);
+  - most take under 100 ms.
+
+  The phone measurement is task T023.
+- **SC-003 revised**: a curated build lists 11–17 skills, most of them extras. The request is the
+  build's **five main skills**, highest level first, without the talisman's part. With that
+  request, **185 of 185** Master and Post builds give a complete set, in at most 0.2 s.
+  - Asking for all of a build's skills still finds 99% of them, but takes up to 10–20 s with 15+
+    skills.
+  - **UI limit**: Montar build accepts at most **10 skills**.
+

@@ -31,7 +31,7 @@ description: "Task list for 009 Otimizador de builds (Montar build)"
 
 ## Phase 2: Foundational (domain and data)
 
-- [ ] T003 [P] Write the domain tests in `test/features/assistant/optimizer/domain/`, with small
+- [X] T003 [P] Write the domain tests in `test/features/assistant/optimizer/domain/`, with small
   fixtures in `test/fakes/optimizer_fixtures.dart`:
   - `maxRarityFor` for every progress step (research R3);
   - capped skill sums;
@@ -53,26 +53,26 @@ description: "Task list for 009 Otimizador de builds (Montar build)"
     - only-my-progress on and off;
   - `suggestSkills` (top 8, excludes chosen skills);
   - `BuildSet.toCuratedBuild` (name, stage, decorations per item, skills, source).
-- [ ] T004 Implement the domain in `lib/features/assistant/domain/optimizer/` so that T003 passes:
+- [X] T004 Implement the domain in `lib/features/assistant/domain/optimizer/` so that T003 passes:
   - the entities;
   - `BuildRequest`, `UserTalisman`, `maxRarityFor`;
   - pruning, the DP search, the decoration check and ranking (research R4), with an `onProgress`
     callback and a cooperative cancel check;
   - `suggestSkills`, `toCuratedBuild`;
   - the repository and `BuildSearcher` interfaces.
-- [ ] T005 [P] Write the data tests:
+- [X] T005 [P] Write the data tests:
   - the DTO: version and game, unique ids, known references, slots 0–4, parts and types;
   - the repositories, with `SharedPreferences.setMockInitialValues`:
     - talismans save, edit and delete, and survive a new instance;
     - the request survives too;
     - corrupt values fall back to empty or the defaults;
   - the searcher returns the same results as `SearchBuilds` and can be cancelled.
-- [ ] T006 Implement the data layer:
+- [X] T006 Implement the data layer:
   - `optimizer_json.dart` (`readOptimizerDataset`);
   - `AssetOptimizerRepository` (lazy, `compute`, cached);
   - `PrefsTalismanRepository`, `PrefsRequestRepository`;
   - `IsolateBuildSearcher` (spawn, progress stream, kill), with a main-isolate fallback for web.
-- [ ] T007 [P] Write the real-data tests in `test/features/assistant/optimizer/real_optimizer_test.dart`:
+- [X] T007 [P] Write the real-data tests in `test/features/assistant/optimizer/real_optimizer_test.dart`:
   - the dataset loads, with the counts of R1;
   - **SC-001**: 20 requests (types, ranks, 2–6 skills), where every result's skills are recomputed
     from pieces, talisman and decorations and must match, and every decoration must fit its slot;

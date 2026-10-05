@@ -204,9 +204,10 @@ O caçador que já tem uma arma escolhe essa arma; o app monta o resto em volta 
   teste, mais 5 conferidos à mão no jogo ou na wiki).
 - **SC-002**: Um pedido de até 5 habilidades mostra os resultados em até 10 segundos num celular
   intermediário, com a tela respondendo durante a busca.
-- **SC-003**: Para os pedidos das builds prontas de Mestre e Pós-jogo da 008 (as habilidades e
-  níveis que cada uma atinge, com a mesma arma e sem talismã), o otimizador encontra um conjunto
-  "completa" em ao menos 95 % dos casos.
+- **SC-003**: Para os pedidos das builds prontas de Mestre e Pós-jogo da 008 (as 5 habilidades
+  principais de cada uma, nos níveis que ela atinge sem o talismã, com a mesma arma), o otimizador
+  encontra um conjunto "completa" em ao menos 95 % dos casos. As outras habilidades da build vêm de
+  brinde e não fazem parte do pedido; um pedido real tem poucas habilidades.
 - **SC-004**: Do toque na aba até ver os resultados de um pedido de 4 habilidades, o usuário leva
   menos de 1 minuto.
 - **SC-005**: Os talismãs e as escolhas persistem em 100 % dos reinícios do app.
