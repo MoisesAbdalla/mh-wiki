@@ -186,3 +186,21 @@ The parts are combined in this order: weapon, talisman, head, chest, arms, waist
     skills.
   - **UI limit**: Montar build accepts at most **10 skills**.
 
+### Spot check (T020)
+
+- **Automatic (SC-001)**: every result of the 20 test requests is recomputed from its pieces,
+  talisman and decorations, and must match what the result shows. Each decoration must also fit its
+  slot. All pass.
+- **The data underneath**:
+  - piece skills, slots and decoration points come from `armor.json`, spot-checked against the wiki
+    in 007;
+  - `optimizer.json` is a straight projection of it, and its builder asserts every reference.
+- **Rendered check** of the Montar build screens with the real data. M6★ Espadão with Reforço de
+  Ataque 7, Olho Crítico 7, Reforço Crítico 3 and Explor. de Fraqueza 3 returns 10 complete sets.
+  - Option 1 places Joia Ataque+ 4 and Joia Especialista+ 4 in the weapon's level-4 slots.
+  - The by-hand sums match.
+- **Observation**: the 10 sets often differ in one piece only. They are correct, but alike. Making
+  the results more varied is a possible follow-up.
+- **Integration (Windows release, real data)**: 4 skills at M6★ took 140 ms in the background
+  isolate.
+

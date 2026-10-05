@@ -8,6 +8,7 @@ import 'package:mh_wiki/core/presentation/widgets/game_tabs.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/monster_detail_page.dart';
 import 'package:mh_wiki/features/armor/presentation/armor_controller.dart';
 import 'package:mh_wiki/features/armor/presentation/views/widgets/armor_detail_views.dart';
+import 'package:mh_wiki/features/assistant/domain/entities/progress.dart';
 import 'package:mh_wiki/features/assistant/presentation/assistant_controller.dart';
 import 'package:mh_wiki/features/assistant/presentation/views/widgets/build_detail_view.dart';
 import 'package:mh_wiki/features/monsters/presentation/views/widgets/monster_detail_view.dart';
@@ -21,6 +22,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// back keeps filter and search.
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+
+  // Every flow starts from default settings, not this machine's saved ones.
+  setUp(() => SharedPreferences.setMockInitialValues({}));
 
   /// A game tab by its spoken name; the tabs are logos since 005.
   Finder gameTab(String name) => find.descendant(
@@ -296,6 +300,75 @@ void main() {
       ..selectTab(AssistantTab.saved);
     await tester.pumpAndSettle();
     expect(build, findsOneWidget);
+  });
+
+  // 009 T019: Montar build → M6★ Espadão → 4 skills → results → open → save.
+  testWidgets('build a set from skills and save it', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final dependencies = await AppDependencies.create();
+    final settings = dependencies.createSettingsController();
+    final monsters = dependencies.createMonsterListController();
+    final weapons = dependencies.createWeaponListController();
+    final armor = dependencies.createArmorController();
+    final assistant = dependencies.createAssistantController();
+    final optimizer = dependencies.createOptimizerController(assistant);
+    await settings.load();
+    await monsters.load();
+
+    await tester.pumpWidget(
+      MhWikiApp(
+        monsterListController: monsters,
+        settingsController: settings,
+        weaponListController: weapons,
+        armorController: armor,
+        assistantController: assistant,
+        optimizerController: optimizer,
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Assistente'));
+    await tester.pumpAndSettle();
+    assistant.setProgress(const Progress(ProgressRank.master, 'M6'));
+    assistant.selectTab(AssistantTab.build);
+    await tester.pumpAndSettle();
+    await optimizer.ensureLoaded();
+    await tester.pumpAndSettle();
+    expect(find.text('Habilidades que você quer'), findsOneWidget);
+
+    optimizer
+      ..addSkill('attack-boost')
+      ..addSkill('critical-eye')
+      ..addSkill('critical-boost')
+      ..addSkill('weakness-exploit');
+    await tester.pumpAndSettle();
+    final watch = Stopwatch()..start();
+    await optimizer.build();
+    watch.stop();
+    // ignore: avoid_print
+    print('montar build (4 skills, M6) took ${watch.elapsedMilliseconds} ms');
+    await tester.pumpAndSettle();
+    expect(find.text('Opção 1'), findsOneWidget);
+    expect(find.text('completa'), findsWidgets);
+
+    optimizer.select(0);
+    await tester.pumpAndSettle();
+    expect(find.text('Habilidades pedidas'), findsOneWidget);
+
+    final save = find.text('Salvar em Minhas builds');
+    await tester.scrollUntilVisible(
+      save,
+      300,
+      scrollable: find
+          .descendant(
+            of: find.byType(BuildDetailView),
+            matching: find.byType(Scrollable),
+          )
+          .first,
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(save);
+    await tester.pumpAndSettle();
+    expect(assistant.savedBuilds, hasLength(1));
   });
 
   // 004 T038 / SC-004: time to load every dataset and show the list, and to

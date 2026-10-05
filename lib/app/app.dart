@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mh_wiki/app/app_home.dart';
 import 'package:mh_wiki/features/armor/presentation/armor_controller.dart';
 import 'package:mh_wiki/features/assistant/presentation/assistant_controller.dart';
+import 'package:mh_wiki/features/assistant/presentation/optimizer_controller.dart';
 import 'package:mh_wiki/core/presentation/theme/hunter_theme.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
 import 'package:mh_wiki/features/settings/presentation/settings_controller.dart';
@@ -16,6 +17,7 @@ class MhWikiApp extends StatelessWidget {
     required this.weaponListController,
     this.armorController,
     this.assistantController,
+    this.optimizerController,
     super.key,
   });
 
@@ -24,6 +26,7 @@ class MhWikiApp extends StatelessWidget {
   final WeaponListController weaponListController;
   final ArmorController? armorController;
   final AssistantController? assistantController;
+  final OptimizerController? optimizerController;
 
   static final _theme = buildHunterTheme();
 
@@ -44,6 +47,7 @@ class MhWikiApp extends StatelessWidget {
         weapons: weaponListController,
         armor: armorController,
         assistant: assistantController,
+        optimizer: optimizerController,
         actions: [SettingsButton(controller: settingsController)],
       ),
     );

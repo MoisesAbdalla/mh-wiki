@@ -24,6 +24,8 @@ fetch fresh pages. Running the build again on the same cache gives the same data
 | `fetch_rise_weapon_pages.py`, `fetch_rise_armor_pages.py`, `fetch_rise_item_pages.py` | Cache the Kiranico weapon, armor, decoration and item pages (en + pt-BR), 4 requests at a time | [006 R12/R13](../../specs/006-rise-weapons/research.md), [007 R1](../../specs/007-rise-armor/research.md) |
 | `build_rise_armor.py [--icons]` | Rise armor → `assets/data/rise_sunbreak/armor.json`: pieces (Kiranico lists), sets, body parts and max defense (wiki set pages), forge materials (Kiranico pages), skills and decorations; `--icons` fetches the piece renders | [007 research R1–R7](../../specs/007-rise-armor/research.md) |
 | `build_rise_builds.py` | Curated builds → `assets/data/rise_sunbreak/builds.json` from the Game8 build pages of the 14 weapon types (Master, High and Low Rank), matched to our weapons and armor datasets; report of unmatched items | [008 research R1–R4](../../specs/008-build-assistant/research.md) |
+| `build_rise_optimizer.py` | Compact optimizer view → `assets/data/rise_sunbreak/optimizer.json` (skills, decorations, pieces, weapons) from `armor.json` and `weapons.json` | [009 research R2](../../specs/009-build-optimizer/research.md) |
+| `fetch_part_icons.py` | Equipment part icons by rarity (helmet … talisman) → `assets/images/armor/parts/` from the Monster Hunter Fandom wiki | 008 equipment card |
 | `kiranico_items.py` | Shared: slugs, name keys and material sources from the Kiranico item pages | [007 research R5](../../specs/007-rise-armor/research.md) |
 | `common.py` | Paths (repo, cache), game selection, helpers | |
 

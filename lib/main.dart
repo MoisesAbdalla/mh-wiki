@@ -11,6 +11,7 @@ Future<void> main() async {
   final weapons = dependencies.createWeaponListController();
   final armor = dependencies.createArmorController();
   final assistant = dependencies.createAssistantController();
+  final optimizer = dependencies.createOptimizerController(assistant);
   linkNameLanguage(
     settings: settings,
     monsters: monsters,
@@ -29,6 +30,7 @@ Future<void> main() async {
       weaponListController: weapons,
       armorController: armor,
       assistantController: assistant,
+      optimizerController: optimizer,
     ),
   );
 }

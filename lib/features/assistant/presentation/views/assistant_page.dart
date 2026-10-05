@@ -6,8 +6,10 @@ import 'package:mh_wiki/core/presentation/widgets/notebook_switcher.dart';
 import 'package:mh_wiki/core/presentation/widgets/underline_tabs.dart';
 import 'package:mh_wiki/features/assistant/domain/entities/curated_build.dart';
 import 'package:mh_wiki/features/assistant/presentation/assistant_controller.dart';
+import 'package:mh_wiki/features/assistant/presentation/optimizer_controller.dart';
 import 'package:mh_wiki/features/assistant/presentation/views/widgets/assistant_lists.dart';
 import 'package:mh_wiki/features/assistant/presentation/views/widgets/build_detail_view.dart';
+import 'package:mh_wiki/features/assistant/presentation/views/widgets/optimizer_views.dart';
 import 'package:mh_wiki/l10n/app_localizations.dart';
 
 /// The Assistente area (008). Like Armaduras: compact → list with a pushed
@@ -16,6 +18,7 @@ import 'package:mh_wiki/l10n/app_localizations.dart';
 class AssistantPage extends StatefulWidget {
   const AssistantPage({
     required this.controller,
+    this.optimizer,
     this.actions,
     this.typePicker,
     this.typeName,
@@ -24,6 +27,9 @@ class AssistantPage extends StatefulWidget {
   });
 
   final AssistantController controller;
+
+  /// Montar build (009); without it the tab stays "em breve".
+  final OptimizerController? optimizer;
   final List<Widget>? actions;
   final TypePickerBuilder? typePicker;
   final String Function(String typeId)? typeName;
@@ -41,10 +47,16 @@ class _AssistantPageState extends State<AssistantPage> {
 
   AssistantController get _controller => widget.controller;
 
+  OptimizerController? get _optimizer => widget.optimizer;
+
+  late Listenable _both = _listenable();
+
+  Listenable _listenable() => Listenable.merge([_controller, ?_optimizer]);
+
   @override
   void initState() {
     super.initState();
-    _controller.addListener(_scheduleSync);
+    _both.addListener(_onChange);
     // Built on the first visit to the area (AppShell).
     _controller.ensureLoaded();
     _scheduleSync();
@@ -53,18 +65,40 @@ class _AssistantPageState extends State<AssistantPage> {
   @override
   void didUpdateWidget(AssistantPage oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.controller != widget.controller) {
-      oldWidget.controller.removeListener(_scheduleSync);
-      widget.controller
-        ..addListener(_scheduleSync)
-        ..ensureLoaded();
+    if (oldWidget.controller != widget.controller ||
+        oldWidget.optimizer != widget.optimizer) {
+      _both.removeListener(_onChange);
+      _both = _listenable()..addListener(_onChange);
+      _controller.ensureLoaded();
+      _onChange();
     }
   }
 
   @override
   void dispose() {
-    _controller.removeListener(_scheduleSync);
+    _both.removeListener(_onChange);
     super.dispose();
+  }
+
+  void _onChange() {
+    // Montar build loads its catalog on the tab's first visit.
+    if (_controller.tab == AssistantTab.build) _optimizer?.ensureLoaded();
+    _scheduleSync();
+  }
+
+  bool get _onOptimizer =>
+      _controller.tab == AssistantTab.build && _optimizer != null;
+
+  bool get _hasSelection => _onOptimizer
+      ? _optimizer!.selected != null
+      : _controller.selection != null;
+
+  void _clearSelection() {
+    if (_onOptimizer) {
+      _optimizer!.select(null);
+    } else {
+      _controller.clearSelection();
+    }
   }
 
   void _scheduleSync() {
@@ -73,12 +107,12 @@ class _AssistantPageState extends State<AssistantPage> {
 
   void _syncDetailRoute() {
     if (!mounted) return;
-    final hasSelection = _controller.selection != null;
+    final hasSelection = _hasSelection;
     final route = _detailRoute;
     if (!_expanded && hasSelection && route == null) {
       final newRoute = MaterialPageRoute<void>(
         builder: (_) => ListenableBuilder(
-          listenable: _controller,
+          listenable: _both,
           builder: (context, _) => Scaffold(
             appBar: AppBar(),
             body: NotebookSwitcher(
@@ -91,7 +125,7 @@ class _AssistantPageState extends State<AssistantPage> {
       Navigator.of(context).push(newRoute).then((_) {
         if (identical(_detailRoute, newRoute)) {
           _detailRoute = null;
-          _controller.clearSelection();
+          _clearSelection();
         }
       });
     } else if (route != null && (_expanded || !hasSelection)) {
@@ -101,6 +135,18 @@ class _AssistantPageState extends State<AssistantPage> {
   }
 
   Widget _detail(BuildContext context, {required Widget empty}) {
+    final optimizer = _optimizer;
+    if (_onOptimizer) {
+      final index = optimizer!.selected;
+      if (index == null) return empty;
+      return OptimizerResultDetail(
+        controller: optimizer,
+        index: index,
+        typeName: widget.typeName,
+        onOpen: widget.onOpen,
+        onSave: (build) => _save(context, build),
+      );
+    }
     final selection = _controller.selection;
     if (selection == null) return empty;
     final saved = selection.saved;
@@ -170,8 +216,9 @@ class _AssistantPageState extends State<AssistantPage> {
       _scheduleSync();
     }
     final gutter = Space.gutter(MediaQuery.sizeOf(context).width);
+    final optimizer = _optimizer;
     final list = ListenableBuilder(
-      listenable: _controller,
+      listenable: _both,
       builder: (context, _) => Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -190,8 +237,10 @@ class _AssistantPageState extends State<AssistantPage> {
                 TabOption(
                   value: AssistantTab.build,
                   text: l10n.assistantTabBuild,
-                  semanticsLabel: l10n.areaComingSoon(l10n.assistantTabBuild),
-                  enabled: false,
+                  semanticsLabel: optimizer == null
+                      ? l10n.areaComingSoon(l10n.assistantTabBuild)
+                      : null,
+                  enabled: optimizer != null,
                 ),
               ],
               selected: _controller.tab,
@@ -202,6 +251,11 @@ class _AssistantPageState extends State<AssistantPage> {
             child: switch (_controller.tab) {
               AssistantTab.saved => SavedBuildsList(
                 controller: _controller,
+                highlightSelection: expanded,
+              ),
+              AssistantTab.build when optimizer != null => OptimizerTab(
+                controller: optimizer,
+                typeName: widget.typeName,
                 highlightSelection: expanded,
               ),
               _ => RecommendedList(
@@ -227,7 +281,7 @@ class _AssistantPageState extends State<AssistantPage> {
                 const VerticalDivider(width: 1, color: HunterPalette.border),
                 Expanded(
                   child: ListenableBuilder(
-                    listenable: _controller,
+                    listenable: _both,
                     builder: (context, _) => NotebookSwitcher(
                       child: _detail(
                         context,
