@@ -5,6 +5,11 @@ import 'package:mh_wiki/app/weapons_of_monster.dart';
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/features/armor/presentation/armor_controller.dart';
 import 'package:mh_wiki/features/armor/presentation/views/armor_page.dart';
+import 'package:mh_wiki/features/assistant/domain/entities/curated_build.dart';
+import 'package:mh_wiki/features/assistant/presentation/assistant_controller.dart';
+import 'package:mh_wiki/features/assistant/presentation/views/assistant_page.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/weapon_id.dart';
+import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_type_picker.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster.dart';
 import 'package:mh_wiki/features/monsters/domain/entities/monster_id.dart';
 import 'package:mh_wiki/features/monsters/presentation/controllers/monster_list_controller.dart';
@@ -23,6 +28,7 @@ class AppHome extends StatefulWidget {
     required this.monsters,
     required this.weapons,
     this.armor,
+    this.assistant,
     this.actions,
     super.key,
   });
@@ -30,6 +36,7 @@ class AppHome extends StatefulWidget {
   final MonsterListController monsters;
   final WeaponListController weapons;
   final ArmorController? armor;
+  final AssistantController? assistant;
   final List<Widget>? actions;
 
   @override
@@ -128,6 +135,69 @@ class _AppHomeState extends State<AppHome> {
     widget.monsters.select(monsterIdOf(dropper));
   }
 
+  /// A build item from the Assistente: the weapon in Armas; a piece (its
+  /// set), skill or decoration in Armaduras (008 US2).
+  Future<void> _openFromBuild(CatalogRef ref) async {
+    final id = ref.id;
+    final armor = widget.armor;
+    if (id == null) return;
+    Navigator.of(context).popUntil((route) => route.isFirst);
+    switch (ref.kind) {
+      case RefKind.weapon:
+        _shell.open(AppArea.weapons);
+        await widget.weapons.select(WeaponId(Game.riseSunbreak, id));
+      case RefKind.piece when armor != null:
+        _shell.open(AppArea.armor);
+        await armor.ensureLoaded();
+        final set = armor.catalog?.sets.where(
+          (s) => s.pieces.any((p) => p.id == id),
+        );
+        if (set != null && set.isNotEmpty) {
+          await armor.select(ArmorTab.sets, set.first.id);
+        }
+      case RefKind.skill when armor != null:
+        _shell.open(AppArea.armor);
+        await armor.select(ArmorTab.skills, id);
+      case RefKind.decoration when armor != null:
+        _shell.open(AppArea.armor);
+        await armor.select(ArmorTab.decorations, id);
+      case _:
+        break;
+    }
+  }
+
+  /// The 006 type picker over the weapon catalog, which loads on demand.
+  Widget _typePicker(
+    BuildContext context,
+    String selected,
+    ValueChanged<String> onChanged,
+  ) => ListenableBuilder(
+    listenable: widget.weapons,
+    builder: (context, _) {
+      final catalog = widget.weapons.catalog;
+      if (catalog == null) {
+        WidgetsBinding.instance.addPostFrameCallback(
+          (_) => widget.weapons.ensureLoaded(),
+        );
+        return const SizedBox(height: 88);
+      }
+      return WeaponTypePicker(
+        types: catalog.types,
+        selectedId: selected,
+        language: widget.weapons.language,
+        onChanged: onChanged,
+      );
+    },
+  );
+
+  String _typeName(String id) {
+    final types = widget.weapons.catalog?.types ?? const [];
+    for (final t in types) {
+      if (t.id == id) return t.name.resolve(widget.weapons.language);
+    }
+    return id;
+  }
+
   @override
   Widget build(BuildContext context) => AppShell(
     controller: _shell,
@@ -136,6 +206,16 @@ class _AppHomeState extends State<AppHome> {
       actions: widget.actions,
       extraSections: _extraSections,
     ),
+    assistant: switch (widget.assistant) {
+      final assistant? => AssistantPage(
+        controller: assistant,
+        actions: widget.actions,
+        typePicker: _typePicker,
+        typeName: _typeName,
+        onOpen: _openFromBuild,
+      ),
+      null => const SizedBox.shrink(),
+    },
     armor: switch (widget.armor) {
       final armor? => ArmorPage(
         controller: armor,

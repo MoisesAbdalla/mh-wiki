@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caderninho — Assistente (008)</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Averia+Serif+Libre:wght@400;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #16120e; --panel: #1f1812; --bg-raise: #2c2215;
+    --ink: #efe4c8; --ink-2: #b9a67f; --ink-3: #8a7652;
+    --rule: #3b2e1d; --rule-strong: #5a4526; --gold: #e0bd6a; --neg: #f2a08a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d0a08; color: var(--ink); font: 15px/1.5 "Atkinson Hyperlegible", sans-serif; padding: 28px 16px 60px; }
+  .intro { max-width: 1400px; margin: 0 auto 22px; }
+  .intro h1 { font: 400 32px/1 "IM Fell English SC"; }
+  .intro p { color: var(--ink-2); margin-top: 8px; max-width: 92ch; font-size: 14px; }
+  .row { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; max-width: 1400px; margin: 0 auto; }
+  .cap { font-size: 12px; color: var(--ink-2); margin-bottom: 8px; letter-spacing: .06em; text-transform: uppercase; }
+  .cap b { color: var(--gold); }
+  .phone { width: 360px; max-width: 100%; height: 840px; background: var(--bg); border-radius: 26px; display: flex; flex-direction: column; overflow: hidden; }
+  .scroll { flex: 1; overflow-y: auto; }
+  .num { font-family: "Averia Serif Libre"; font-weight: 700; }
+  .appbar { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 20px 6px; }
+  .brand { font: 400 24px/1 "IM Fell English SC"; }
+  .appbar .gear { color: var(--ink-2); font-size: 13px; }
+  .tabs { display: flex; gap: 16px; padding: 4px 20px 0; border-bottom: 1px solid var(--rule); }
+  .tabs span { padding: 6px 0 8px; font: 400 17px "IM Fell English SC"; color: var(--ink-2); }
+  .tabs span.on { color: var(--ink); box-shadow: inset 0 -2px 0 var(--gold); }
+  .prog { margin: 10px 12px 4px; background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 14px 12px; }
+  .prog h4 { font: 400 17px "IM Fell English SC"; display: flex; justify-content: space-between; align-items: baseline; }
+  .prog h4 small { font: 12px "Atkinson Hyperlegible"; color: var(--gold); }
+  .seg { display: flex; gap: 12px; margin-top: 6px; font-size: 13px; color: var(--ink-2); }
+  .seg b { color: var(--ink); box-shadow: inset 0 -2px 0 var(--gold); font-weight: 400; }
+  .stars { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .st { min-width: 38px; text-align: center; padding: 3px 6px; border: 1px solid var(--rule-strong); border-radius: 3px; font: 700 13px "Averia Serif Libre"; color: var(--ink-2); }
+  .st.on { border-color: var(--gold); color: var(--gold); background: var(--bg-raise); }
+  .types { display: flex; gap: 8px; padding: 8px 12px 4px; overflow-x: auto; }
+  .types span { flex: none; width: 60px; text-align: center; padding: 6px 2px; border: 1px solid var(--rule); border-radius: 4px; background: var(--panel); font-size: 11px; color: var(--ink-2); }
+  .types span.on { border-color: var(--gold); color: var(--ink); background: var(--bg-raise); }
+  .sec { padding: 12px 16px 2px; font: 400 15px "IM Fell English SC"; color: var(--ink-2); display: flex; align-items: center; gap: 10px; }
+  .sec::after { content: ""; flex: 1; border-bottom: 1px solid var(--rule-strong); }
+  .bc { margin: 8px 12px 0; background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 14px; }
+  .bc.dim { opacity: .55; }
+  .bc h5 { font: 400 17px/1.15 "IM Fell English SC"; }
+  .bc .sub { font-size: 12px; color: var(--ink-2); margin-top: 2px; }
+  .badge { display: inline-block; font: 700 11px "Averia Serif Libre"; padding: 0 6px; border: 1px solid var(--gold); color: var(--gold); border-radius: 3px; margin-right: 6px; }
+  .badge.off { border-color: var(--rule-strong); color: var(--ink-3); }
+  .sk { font-size: 12px; color: var(--ink-2); margin-top: 6px; }
+  .sk b { color: var(--ink); font-weight: 400; }
+  .avail { font-size: 12px; margin-top: 6px; color: var(--gold); }
+  .avail.no { color: var(--ink-3); }
+  .d { padding: 18px 12px 30px; }
+  .crumb { font-size: 12px; color: var(--ink-2); padding: 0 10px; display: flex; justify-content: space-between; }
+  .head { padding: 12px 10px 14px; }
+  .head h2 { font: 400 26px/1.05 "IM Fell English SC"; }
+  .head .sub { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+  .card { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 14px 16px 16px; margin-bottom: 12px; }
+  .card h3 { display: flex; gap: 10px; align-items: baseline; font: 400 21px "IM Fell English SC"; margin-bottom: 8px; }
+  .card h3 i { font: 700 18px "Averia Serif Libre"; color: var(--gold); font-style: normal; }
+  .card h3 small { margin-left: auto; font: 12px "Atkinson Hyperlegible"; color: var(--ink-2); }
+  .eq { padding: 7px 0; border-bottom: 1px solid var(--rule); }
+  .eq:last-child { border-bottom: 0; }
+  .eq .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .eq .part { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .05em; }
+  .eq .nm { font: 400 15px "IM Fell English SC"; }
+  .eq .alt { font-size: 12px; color: var(--ink-2); }
+  .jw { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+  .jw span { font-size: 11.5px; padding: 0 7px; border: 1px solid var(--rule-strong); border-radius: 10px; color: var(--ink-2); }
+  .rr { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--rule); font-size: 14px; }
+  .rr:last-child { border-bottom: 0; }
+  .pips { display: inline-flex; gap: 3px; }
+  .pips i { width: 9px; height: 9px; border: 1px solid var(--gold); border-radius: 2px; display: inline-block; }
+  .pips i.f { background: var(--gold); }
+  .pips i.o { border-color: var(--rule-strong); }
+  .btn { display: block; text-align: center; margin: 4px 0 12px; padding: 10px; border: 1px solid var(--gold); color: var(--gold); border-radius: 4px; font: 400 16px "IM Fell English SC"; }
+  .note { font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+  .nav { display: flex; border-top: 1px solid var(--rule-strong); background: #120e0b; }
+  .nav a { flex: 1; text-align: center; padding: 8px 0 10px; font: 400 15px "IM Fell English SC"; color: var(--ink-2); text-decoration: none; }
+  .nav a i { display: block; font-style: normal; font-size: 18px; line-height: 1.2; }
+  .nav a.on { color: var(--gold); }
+  .notes { max-width: 1400px; margin: 30px auto 0; font-size: 14px; color: var(--ink-2); }
+  .notes h2 { font: 400 22px "IM Fell English SC"; color: var(--ink); margin-bottom: 8px; }
+  .notes li { margin: 5px 0 5px 18px; }
+  .notes b { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="intro">
+  <h1>Assistente — proposta (008)</h1>
+  <p>Builds reais da Game8 (Espadão, Rank Mestre), com nomes pt-BR do nosso catálogo. Você diz onde está no jogo e
+  qual arma usa; o Assistente mostra as builds para agora e as próximas. Compare duas listas: <b>A</b> separa
+  "Para agora" e "Próximas"; <b>B</b> é uma lista única marcando o que já dá para fazer.</p>
+</div>
+
+<div class="row">
+  <!-- LIST A -->
+  <div>
+    <div class="cap"><b>A</b> · "Para agora" e "Próximas"</div>
+    <div class="phone">
+      <div class="scroll">
+        <div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div>
+        <div class="tabs"><span class="on">Recomendadas</span><span>Minhas builds</span></div>
+        <div class="prog">
+          <h4>Onde você está? <small>alterar</small></h4>
+          <div class="seg"><span>Baixo</span><span>Alto</span><b>Mestre</b><span>Pós-jogo</span></div>
+          <div class="stars"><span class="st">M1★</span><span class="st on">M2★</span><span class="st">M3★</span><span class="st">M4★</span><span class="st">M5★</span><span class="st">M6★</span></div>
+        </div>
+        <div class="types"><span class="on">Espadão</span><span>Espada Longa</span><span>Espada e Escudo</span><span>Duplas-Lâminas</span><span>Martelo</span></div>
+        <div class="sec">Para agora</div>
+        <div class="bc">
+          <h5>Kamura Warrior Cleaver Raw Affinity</h5>
+          <div class="sub"><span class="badge">MR 1–2</span>Cutelo Guerreiro Kamura · Caçador X, Lingote X, Liga Leve X</div>
+          <div class="sk"><b>Reforço de Ataque 6</b> · <b>Olho Crítico 6</b> · Reforço Crítico 3 · Explor. de Fraqueza 3</div>
+          <div class="avail">✓ Tudo disponível no seu progresso</div>
+        </div>
+        <div class="sec">Próximas</div>
+        <div class="bc dim">
+          <h5>Royal Order Strongarm</h5>
+          <div class="sub"><span class="badge off">MR 3–6</span>…</div>
+          <div class="avail no">A partir de M3★</div>
+        </div>
+        <div class="bc dim">
+          <h5>Fine Kamura Cleaver Dereliction Strongarm</h5>
+          <div class="sub"><span class="badge off">MR 6+</span>Ótimo Cutelo Kamura · Espinas F, Arquidem.</div>
+          <div class="avail no">Depois da história (MR 6+)</div>
+        </div>
+      </div>
+      <nav class="nav"><a><i>❦</i>Monstros</a><a><i>⚔</i>Armas</a><a><i>⛨</i>Armaduras</a><a class="on"><i>✦</i>Assistente</a></nav>
+    </div>
+  </div>
+
+  <!-- LIST B -->
+  <div>
+    <div class="cap"><b>B</b> · lista única com o que já dá</div>
+    <div class="phone">
+      <div class="scroll">
+        <div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div>
+        <div class="tabs"><span class="on">Recomendadas</span><span>Minhas builds</span></div>
+        <div class="prog" style="display:flex;justify-content:space-between;align-items:center">
+          <div><h4 style="display:block">Mestre · M2★</h4><div style="font-size:12px;color:var(--ink-2)">Espadão</div></div>
+          <span class="badge">alterar</span>
+        </div>
+        <div class="bc">
+          <h5>Kamura Warrior Cleaver Raw Affinity</h5>
+          <div class="sub"><span class="badge">MR 1–2</span>✓ dá para fazer</div>
+          <div class="sk"><b>Reforço de Ataque 6</b> · <b>Olho Crítico 6</b> · Reforço Crítico 3</div>
+        </div>
+        <div class="bc">
+          <h5>Royal Order Strongarm</h5>
+          <div class="sub"><span class="badge off">MR 3–6</span>falta chegar em M3★</div>
+          <div class="sk">…</div>
+        </div>
+        <div class="bc">
+          <h5>Fine Kamura Cleaver Dereliction Strongarm</h5>
+          <div class="sub"><span class="badge off">MR 6+</span>depois da história</div>
+          <div class="sk"><b>Reforço de Ataque 7</b> · <b>Olho Crítico 7</b> · Indignação 3 · Abandono 1</div>
+        </div>
+        <p class="note" style="padding:10px 16px">Mais compacta; o progresso fica num resumo que abre o seletor.</p>
+      </div>
+      <nav class="nav"><a><i>❦</i>Monstros</a><a><i>⚔</i>Armas</a><a><i>⛨</i>Armaduras</a><a class="on"><i>✦</i>Assistente</a></nav>
+    </div>
+  </div>
+
+  <!-- DETAIL -->
+  <div>
+    <div class="cap">Detalhe da build</div>
+    <div class="phone">
+      <div class="scroll d">
+        <div class="crumb"><span>‹ Recomendadas</span><span>Game8</span></div>
+        <div class="head"><h2>Fine Kamura Cleaver Dereliction Strongarm</h2><div class="sub"><span class="badge">MR 6+</span>Espadão · fonte: Game8</div></div>
+        <div class="card">
+          <h3><i>1</i>Equipamento</h3>
+          <div class="eq"><div class="part">Arma</div><div class="top"><span class="nm">Ótimo Cutelo Kamura</span></div><div class="jw"><span>Joia Guardiã 3</span><span>Joia do Ataque 2</span></div></div>
+          <div class="eq"><div class="part">Cabeça</div><div class="top"><span class="nm">Cérebro Espinas F</span></div><div class="jw"><span>Joia do Ataque 2</span><span>Joia Crítica 2</span></div></div>
+          <div class="eq"><div class="part">Tronco</div><div class="top"><span class="nm">Músculo de Espinas F</span></div><div class="jw"><span>Joia Crítica 2</span><span>Joia Crítica 2</span></div></div>
+          <div class="eq"><div class="part">Braços</div><div class="top"><span class="nm">Garra de Espinas F</span></div><div class="jw"><span>Joia Guardiã 3</span><span>Joia do Perito 2</span></div></div>
+          <div class="eq"><div class="part">Cintura</div><div class="top"><span class="nm">Escarcela Caótica</span><span class="alt">ou Nephilim Tassets</span></div><div class="jw"><span>Joia Atenuadora 2</span><span>Joia de Escora 1</span><span>Joia Resoluto 1</span></div></div>
+          <div class="eq"><div class="part">Pernas</div><div class="top"><span class="nm">Ar. Arquidem. Sceros</span></div><div class="jw"><span>Joia Guardiã 3</span><span>Joia Atenuadora 2</span><span>Joia Atenuadora 2</span></div></div>
+          <div class="eq"><div class="part">Talismã</div><div class="top"><span class="nm">Olho Crítico 3</span><span class="alt">com slots ②① ou melhor</span></div><div class="jw"><span>Joia do Perito 2</span><span>Joia Resoluto 1</span></div></div>
+        </div>
+        <div class="card">
+          <h3><i>2</i>Habilidades</h3>
+          <div class="rr"><span>Reforço de Ataque</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span></div>
+          <div class="rr"><span>Olho Crítico</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span></div>
+          <div class="rr"><span>Indignação</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="o"></i><i class="o"></i></span></div>
+          <div class="rr"><span>Reforço Crítico</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i></span></div>
+          <div class="rr"><span>Abandono</span><span class="pips"><i class="f"></i><i class="o"></i><i class="o"></i></span></div>
+        </div>
+        <div class="card">
+          <h3><i>3</i>Joias <small>total</small></h3>
+          <div class="rr"><span>Joia Guardiã 3</span><span class="num">×3</span></div>
+          <div class="rr"><span>Joia Crítica 2</span><span class="num">×3</span></div>
+          <div class="rr"><span>Joia Atenuadora 2</span><span class="num">×3</span></div>
+        </div>
+        <span class="btn">Salvar em Minhas builds</span>
+        <p class="note">Fonte: Game8 (link). Aprimoramentos (Qurious) da guia não entram; a habilidade do talismã é a sugerida pela guia.</p>
+      </div>
+      <nav class="nav"><a><i>❦</i>Monstros</a><a><i>⚔</i>Armas</a><a><i>⛨</i>Armaduras</a><a class="on"><i>✦</i>Assistente</a></nav>
+    </div>
+  </div>
+
+  <!-- MY BUILDS -->
+  <div>
+    <div class="cap">Minhas builds</div>
+    <div class="phone">
+      <div class="scroll">
+        <div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div>
+        <div class="tabs"><span>Recomendadas</span><span class="on">Minhas builds</span></div>
+        <div class="bc">
+          <h5>Meu Espadão de fim de história</h5>
+          <div class="sub"><span class="badge">MR 6+</span>baseada em: Fine Kamura Cleaver Dereliction</div>
+          <div class="sk"><b>Reforço de Ataque 7</b> · <b>Olho Crítico 7</b> · Indignação 3</div>
+        </div>
+        <div class="bc">
+          <h5>Kamura Warrior Cleaver Raw Affinity</h5>
+          <div class="sub"><span class="badge">MR 1–2</span>salva em 01/10</div>
+        </div>
+        <p class="note" style="padding:10px 16px">Salvar copia a build; renomear e excluir ficam aqui. Trocar peças e joias e usar os seus talismãs entra na 009 (otimizador).</p>
+      </div>
+      <nav class="nav"><a><i>❦</i>Monstros</a><a><i>⚔</i>Armas</a><a><i>⛨</i>Armaduras</a><a class="on"><i>✦</i>Assistente</a></nav>
+    </div>
+  </div>
+</div>
+
+<div class="notes">
+  <h2>Pontos para decidir</h2>
+  <ul>
+    <li><b>Lista</b>: A ("Para agora" e "Próximas", com o seletor de progresso sempre visível) ou B (lista única, seletor resumido). Recomendo <b>A</b>: responde direto "o que eu faço agora?" e mostra o próximo passo.</li>
+    <li><b>Progresso</b>: Baixo (1–3★), Alto (4–7★), Mestre (M1–M6★) e Pós-jogo (MR 10+, 50+, 100+, 140+, 180+). Fica salvo no aparelho, junto com a arma escolhida.</li>
+    <li><b>Disponibilidade</b>: usa o estágio que a própria Game8 indica (MR 1–2, MR 6+…), que é mais confiável que estimar pelas peças.</li>
+    <li><b>Nomes</b>: o nome da build fica como na Game8 (inglês); peças, joias e habilidades aparecem em pt-BR pelo nosso catálogo, com link para cada uma.</li>
+    <li>Rank Alto vem das páginas da Game8 da Rise base; para Rank Baixo a Game8 quase não tem builds, então essa faixa pode ficar vazia ou com poucas.</li>
+  </ul>
+</div>
+</body>
+</html>

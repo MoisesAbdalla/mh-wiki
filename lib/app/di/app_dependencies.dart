@@ -4,6 +4,9 @@ import 'package:mh_wiki/features/armor/data/asset_armor_datasource.dart';
 import 'package:mh_wiki/features/armor/domain/repositories/armor_repository.dart';
 import 'package:mh_wiki/features/armor/domain/usecases/load_armor_catalog.dart';
 import 'package:mh_wiki/features/armor/presentation/armor_controller.dart';
+import 'package:mh_wiki/features/assistant/data/assistant_repositories.dart';
+import 'package:mh_wiki/features/assistant/domain/assistant_domain.dart';
+import 'package:mh_wiki/features/assistant/presentation/assistant_controller.dart';
 import 'package:mh_wiki/features/monsters/data/datasources/asset_monster_datasource.dart';
 import 'package:mh_wiki/features/monsters/data/repositories/monster_repository_impl.dart';
 import 'package:mh_wiki/features/monsters/domain/repositories/monster_repository.dart';
@@ -33,6 +36,9 @@ final class AppDependencies {
     required this.settingsRepository,
     required this.weaponRepository,
     required this.armorRepository,
+    required this.buildRepository,
+    required this.savedBuildsRepository,
+    required this.assistantPrefsRepository,
   });
 
   static Future<AppDependencies> create({AssetBundle? bundle}) async {
@@ -43,6 +49,9 @@ final class AppDependencies {
       settingsRepository: SharedPrefsSettingsRepository(prefs),
       weaponRepository: WeaponRepositoryImpl(AssetWeaponDatasource(assets)),
       armorRepository: ArmorRepositoryImpl(AssetArmorDatasource(assets)),
+      buildRepository: AssetBuildRepository(assets),
+      savedBuildsRepository: PrefsSavedBuildsRepository(prefs),
+      assistantPrefsRepository: PrefsAssistantPrefsRepository(prefs),
     );
   }
 
@@ -50,6 +59,9 @@ final class AppDependencies {
   final SettingsRepository settingsRepository;
   final WeaponRepository weaponRepository;
   final ArmorRepository armorRepository;
+  final BuildRepository buildRepository;
+  final SavedBuildsRepository savedBuildsRepository;
+  final AssistantPrefsRepository assistantPrefsRepository;
 
   MonsterListController createMonsterListController() => MonsterListController(
     loadCatalog: LoadMonsterCatalog(monsterRepository),
@@ -64,6 +76,12 @@ final class AppDependencies {
   ArmorController createArmorController() =>
       ArmorController(loadCatalog: LoadArmorCatalog(armorRepository));
 
+  AssistantController createAssistantController() => AssistantController(
+    loadCatalog: LoadBuildCatalog(buildRepository),
+    saved: savedBuildsRepository,
+    prefs: assistantPrefsRepository,
+  );
+
   SettingsController createSettingsController() => SettingsController(
     loadSettings: LoadSettings(settingsRepository),
     setNameLanguage: SetNameLanguage(settingsRepository),
@@ -77,12 +95,14 @@ void linkNameLanguage({
   required MonsterListController monsters,
   WeaponListController? weapons,
   ArmorController? armor,
+  AssistantController? assistant,
 }) {
   void sync() {
     final language = settings.settings.nameLanguage;
     monsters.onLanguageChanged(language);
     weapons?.onLanguageChanged(language);
     armor?.onLanguageChanged(language);
+    assistant?.onLanguageChanged(language);
   }
 
   settings.addListener(sync);

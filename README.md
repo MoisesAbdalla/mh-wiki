@@ -16,7 +16,7 @@ Windows).
   type, rank and name, one card per upgrade tree. The detail shows attack, element or status,
   affinity, slots and Rampage slot, sharpness with and without Handicraft, forge and upgrade
   materials with the monsters that drop them, and the upgrade tree. A Rise monster lists the
-  weapons made from it. World and Wilds weapons, Armaduras and the build Assistente come later.
+  weapons made from it. World and Wilds weapons come later.
 - **Armaduras** (feature 007): the Rise: Sunbreak armor, with three tabs.
   - **Conjuntos**: 292 sets and 1,371 pieces, filtered by rank, by name or by a chosen skill.
   - **Habilidades**: 147 skills with the effect of each level, the jewels that give them and the
@@ -26,7 +26,15 @@ Windows).
     piece's forge materials with their sources.
   - Weapons gain a Rampage card: the Rampage skills to choose from (Low and High Rank), or the
     Rampage slot and the Rampage jewels that fit it (Master Rank).
-- Areas (Monstros, Armas, Armaduras) in a bottom bar, or a side rail on wide screens; each keeps its
+- **Assistente** (feature 008): 323 ready-made Rise: Sunbreak builds from Game8 guides.
+  - **Recomendadas**: pick where you are ("Onde você está?": Baixo 1–3★, Alto 4–7★, Mestre
+    M1–M6★, Pós-jogo MR 10+ to 180+) and a weapon type; builds are split into "Para agora" and
+    "Próximas".
+  - A build shows its weapon, five pieces with jewels and "ou …" alternatives, the suggested
+    talisman, the skills with pips and the jewel totals. Each item opens in Armas or Armaduras.
+  - **Minhas builds**: saved copies, renamed or deleted, kept on the device.
+  - **Montar build** (choose skills, get the best set) comes with feature 009.
+- Areas (Monstros, Armas, Armaduras, Assistente) in a bottom bar, or a side rail on wide screens; each keeps its
   filters and selection.
 - Game names shown in Portuguese (Brazil) or English (Configurações).
 - Side-by-side list and detail on wide screens (≥ 840 dp).
@@ -61,6 +69,7 @@ Windows).
 - **Armor icons**: each piece's male render from Kiranico, as 96 px WebP (see
   `assets/images/armor/SOURCES.md`).
 - **Data**: Kiranico, Monster Hunter Wiki, mhw-db.com and Fextralife (see each dataset's `sources`).
+- **Builds**: the Game8 Monster Hunter Rise build guides; each build links to its source page.
 
 > Fan-made, non-commercial study project. Not affiliated with or endorsed by Capcom.
 > Monster Hunter and all related names are trademarks of Capcom.
@@ -190,3 +199,14 @@ guide.
 - 220 rows with no defense and no skills (cosmetic armor) are left out.
 - 1,282 pieces (93.5 %) have an icon.
 - The release APK (arm64) is 34.2 MB.
+
+### Builds (Rise: Sunbreak)
+
+- `python tool/data/build_rise_builds.py` reads the Game8 build pages per weapon type (Master
+  Rank for Sunbreak, High and Low Rank for base Rise) and writes
+  `assets/data/rise_sunbreak/builds.json`.
+- Each build gets a stage from the guide (the Master Rank progression table gives the MR level).
+- Weapons, pieces, skills and decorations are matched to our catalog: 99.2 % of the references
+  are found. The rest (mostly two Rampage jewels) are kept by name and marked "não encontrado no
+  catálogo".
+- 323 builds, 2.6 MB.

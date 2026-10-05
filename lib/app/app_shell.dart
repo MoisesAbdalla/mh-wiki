@@ -13,6 +13,7 @@ class AppShell extends StatefulWidget {
     required this.monsters,
     required this.weapons,
     this.armor = const SizedBox.shrink(),
+    this.assistant = const SizedBox.shrink(),
     this.controller,
     super.key,
   });
@@ -20,6 +21,7 @@ class AppShell extends StatefulWidget {
   final Widget monsters;
   final Widget weapons;
   final Widget armor;
+  final Widget assistant;
 
   /// Lets other parts of the app switch areas (e.g. "Dropado por").
   final AppShellController? controller;
@@ -28,8 +30,8 @@ class AppShell extends StatefulWidget {
   State<AppShell> createState() => _AppShellState();
 }
 
-/// The areas that can be opened; Armaduras and Assistente come later.
-enum AppArea { monsters, weapons, armor }
+/// The areas of the app, in the order of the bar.
+enum AppArea { monsters, weapons, armor, assistant }
 
 /// The selected area, shared by the shell and whoever navigates between
 /// areas.
@@ -85,8 +87,7 @@ class _AppShellState extends State<AppShell> {
     (glyph: '❦', label: l10n.areaMonsters, enabled: true),
     (glyph: '⚔', label: l10n.areaWeapons, enabled: true),
     (glyph: '⛨', label: l10n.areaArmor, enabled: true),
-    // The Assistente arrives in 008.
-    (glyph: '✦', label: l10n.areaAssistant, enabled: false),
+    (glyph: '✦', label: l10n.areaAssistant, enabled: true),
   ];
 
   @override
@@ -99,6 +100,7 @@ class _AppShellState extends State<AppShell> {
         widget.monsters,
         if (_visited.contains(1)) widget.weapons else const SizedBox.shrink(),
         if (_visited.contains(2)) widget.armor else const SizedBox.shrink(),
+        if (_visited.contains(3)) widget.assistant else const SizedBox.shrink(),
       ],
     );
 

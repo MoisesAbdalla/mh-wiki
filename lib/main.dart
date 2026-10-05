@@ -10,11 +10,13 @@ Future<void> main() async {
   final monsters = dependencies.createMonsterListController();
   final weapons = dependencies.createWeaponListController();
   final armor = dependencies.createArmorController();
+  final assistant = dependencies.createAssistantController();
   linkNameLanguage(
     settings: settings,
     monsters: monsters,
     weapons: weapons,
     armor: armor,
+    assistant: assistant,
   );
 
   await settings.load();
@@ -26,6 +28,7 @@ Future<void> main() async {
       settingsController: settings,
       weaponListController: weapons,
       armorController: armor,
+      assistantController: assistant,
     ),
   );
 }
