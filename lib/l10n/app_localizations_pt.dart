@@ -1189,4 +1189,21 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get optimizerSource => 'Caderninho · Montar build';
+
+  @override
+  String get phialLabel => 'Frasco';
+
+  @override
+  String get shellingLabel => 'Bombardeio';
+
+  @override
+  String get elementOrStatus => 'Elemento ou status';
+
+  @override
+  String get noElement => 'Sem elemento';
+
+  @override
+  String noWeaponForFilter(String progress) {
+    return 'Nenhuma arma com esse filtro até $progress.';
+  }
 }

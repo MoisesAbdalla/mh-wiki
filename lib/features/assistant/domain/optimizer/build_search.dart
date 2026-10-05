@@ -188,7 +188,7 @@ final class _Search {
             for (final w
                 in catalog.weaponsByType[request.weaponType] ??
                     const <OptimizerWeapon>[])
-              if (w.rarity <= request.maxRarity) w,
+              if (w.rarity <= request.maxRarity && request.allows(w)) w,
           ];
     if (all.isEmpty) {
       return [_Cand(null, _pointsOf(const {}), _pad(const []), 0)];

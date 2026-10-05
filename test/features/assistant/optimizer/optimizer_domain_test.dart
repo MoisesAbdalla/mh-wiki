@@ -163,6 +163,31 @@ void main() {
       expect(sets.map((s) => s.signature).toSet(), hasLength(sets.length));
     });
 
+    test('weapon filters: phial and element', () {
+      BuildRequest cb({String? trait, String? element}) => BuildRequest(
+        skills: const {'attack': 3},
+        weaponType: 'charge-blade',
+        progress: const Progress(ProgressRank.post, '10'),
+        weaponTrait: trait,
+        weaponElement: element,
+      );
+      // Unfiltered, the best slots win (the fire Element blade).
+      expect(
+        searchBuilds(catalog, cb(), const []).first.weapon?.id,
+        'cb-element',
+      );
+      final impact = searchBuilds(catalog, cb(trait: 'impact'), const []);
+      expect(impact.every((s) => s.weapon?.id == 'cb-impact'), isTrue);
+      final ice = searchBuilds(catalog, cb(element: 'ice'), const []);
+      expect(ice.every((s) => s.weapon?.id == 'cb-ice'), isTrue);
+      final raw = searchBuilds(
+        catalog,
+        cb(element: BuildRequest.noElement),
+        const [],
+      );
+      expect(raw.every((s) => s.weapon?.id == 'cb-impact'), isTrue);
+    });
+
     test('a fixed weapon is always used', () {
       final sets = searchBuilds(
         catalog,

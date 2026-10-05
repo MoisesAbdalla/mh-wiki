@@ -1,4 +1,5 @@
 import 'package:mh_wiki/features/assistant/domain/entities/progress.dart';
+import 'package:mh_wiki/features/assistant/domain/optimizer/optimizer_catalog.dart';
 
 /// A talisman the user owns (009 US3): up to two skills and three slots.
 final class UserTalisman {
@@ -34,6 +35,8 @@ final class BuildRequest {
     this.fixedWeaponId,
     this.useTalismans = true,
     this.onlyMyProgress = true,
+    this.weaponTrait,
+    this.weaponElement,
   });
 
   /// Skill id → wanted level, in the order chosen.
@@ -43,6 +46,26 @@ final class BuildRequest {
   final String? fixedWeaponId;
   final bool useTalismans;
   final bool onlyMyProgress;
+
+  /// With any weapon: only weapons of this phial or shelling kind.
+  final String? weaponTrait;
+
+  /// With any weapon: only weapons with this element or status kind, or
+  /// [noElement] for raw weapons.
+  final String? weaponElement;
+
+  static const noElement = 'none';
+
+  /// Whether [w] passes the weapon filters.
+  bool allows(OptimizerWeapon w) {
+    final trait = weaponTrait;
+    if (trait != null && w.trait?.key != trait) return false;
+    return switch (weaponElement) {
+      null => true,
+      noElement => w.elements.isEmpty,
+      final kind => w.elements.contains(kind),
+    };
+  }
 
   /// The highest rarity of the pieces and weapons searched.
   int get maxRarity => onlyMyProgress ? maxRarityFor(progress) : 10;

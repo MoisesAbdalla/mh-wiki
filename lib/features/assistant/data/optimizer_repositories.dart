@@ -102,6 +102,7 @@ class PrefsRequestRepository implements RequestRepository {
     fixedWeaponId: null,
     useTalismans: true,
     onlyMyProgress: true,
+    weaponFilters: <String, WeaponFilter>{},
   );
 
   final SharedPreferences _prefs;
@@ -117,6 +118,15 @@ class PrefsRequestRepository implements RequestRepository {
         fixedWeaponId: m['fixedWeapon'] as String?,
         useTalismans: m['useTalismans'] as bool? ?? true,
         onlyMyProgress: m['onlyMyProgress'] as bool? ?? true,
+        weaponFilters: {
+          for (final e
+              in ((m['weaponFilters'] as Map<String, Object?>?) ?? const {})
+                  .entries)
+            e.key: (
+              trait: (e.value! as Map<String, Object?>)['trait'] as String?,
+              element: (e.value! as Map<String, Object?>)['element'] as String?,
+            ),
+        },
       );
     } on Object {
       return empty;
@@ -131,6 +141,11 @@ class PrefsRequestRepository implements RequestRepository {
       'fixedWeapon': ?request.fixedWeaponId,
       'useTalismans': request.useTalismans,
       'onlyMyProgress': request.onlyMyProgress,
+      'weaponFilters': {
+        for (final e in request.weaponFilters.entries)
+          if (e.value.trait != null || e.value.element != null)
+            e.key: {'trait': ?e.value.trait, 'element': ?e.value.element},
+      },
     }),
   );
 }

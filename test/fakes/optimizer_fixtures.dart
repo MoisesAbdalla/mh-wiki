@@ -44,6 +44,8 @@ OptimizerWeapon weapon(
   int rarity = 10,
   List<int> slots = const [],
   int attack = 200,
+  String? trait,
+  List<String> elements = const [],
 }) => OptimizerWeapon(
   id: id,
   name: _n(id),
@@ -51,6 +53,8 @@ OptimizerWeapon weapon(
   rarity: rarity,
   slots: slots,
   attack: attack,
+  trait: trait == null ? null : (key: trait, name: _n(trait)),
+  elements: elements,
 );
 
 /// A tiny catalog where "attack" reaches 7 only with the right pieces and
@@ -117,5 +121,20 @@ OptimizerCatalog fixtureCatalog() => OptimizerCatalog(
     weapon('sword-weak', slots: [1], attack: 100),
     weapon('sword-low', rarity: 7, slots: [3]),
     weapon('bow', type: 'bow', slots: [4, 4, 4]),
+    weapon('cb-impact', type: 'charge-blade', slots: [4], trait: 'impact'),
+    weapon(
+      'cb-element',
+      type: 'charge-blade',
+      slots: [4, 4],
+      trait: 'element',
+      elements: ['fire'],
+    ),
+    weapon(
+      'cb-ice',
+      type: 'charge-blade',
+      slots: [2],
+      trait: 'element',
+      elements: ['ice'],
+    ),
   ],
 );

@@ -69,6 +69,8 @@ final class OptimizerWeapon {
     required this.slots,
     required this.attack,
     this.image,
+    this.trait,
+    this.elements = const [],
   });
 
   final String id;
@@ -80,6 +82,13 @@ final class OptimizerWeapon {
   final List<int> slots;
   final int attack;
   final String? image;
+
+  /// The phial (Charge Blade, Switch Axe) or shelling (Gunlance) kind, e.g.
+  /// `impact` / "Impacto"; null for the other types.
+  final ({String key, LocalizedText name})? trait;
+
+  /// Element and status kinds (`fire`, `poison`…); empty for raw weapons.
+  final List<String> elements;
 }
 
 /// Everything the build search needs for one game.

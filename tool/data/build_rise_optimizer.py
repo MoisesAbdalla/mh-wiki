@@ -62,6 +62,17 @@ def main():
                   'slots': slots(w.get('slots') or []), 'attack': w.get('attack') or 0}
         if w.get('image'):
             weapon['image'] = w['image']
+        # The weapon filter (009): the phial or shelling kind without its
+        # level ("Exhaust 20" → exhaust), and the element / status kinds.
+        traits = w.get('traits') or {}
+        kind = traits.get('phial') or traits.get('shelling')
+        if kind:
+            en = kind['en'].split(' ')[0]
+            weapon['trait'] = {'key': en.lower(), 'name': {
+                'en': en, 'ptBr': (kind.get('ptBr') or en).split(' ')[0]}}
+        elements = [e['kind'] for e in w.get('special') or []]
+        if elements:
+            weapon['elements'] = elements
         out_weapons.append(weapon)
 
     for kind, items in (('decorations', decorations), ('pieces', pieces), ('weapons', out_weapons)):

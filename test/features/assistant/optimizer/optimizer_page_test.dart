@@ -243,6 +243,31 @@ void main() {
     expect(talismans.talismans, isEmpty);
   });
 
+  testWidgets('phial and element chips for a Charge Blade', (tester) async {
+    assistant.setWeaponType('charge-blade');
+    await pumpPage(tester);
+    expect(find.text('Frasco'), findsOneWidget);
+    expect(find.text('Elemento ou status'), findsOneWidget);
+    await tester.tap(find.text('impact (pt)'));
+    await tester.pumpAndSettle();
+    expect(optimizer.weaponTrait, 'impact');
+    await tester.tap(find.text('Gelo'));
+    await tester.pumpAndSettle();
+    expect(optimizer.weaponElement, 'ice');
+    expect(find.textContaining('Nenhuma arma com esse filtro'), findsOneWidget);
+    await scrollTo(tester, find.byKey(const Key('build-it')));
+    expect(
+      tester.widget<FilledButton>(find.byKey(const Key('build-it'))).onPressed,
+      isNull,
+    );
+  });
+
+  testWidgets('a Great Sword has no phial row', (tester) async {
+    await pumpPage(tester);
+    expect(find.text('Frasco'), findsNothing);
+    expect(find.text('Bombardeio'), findsNothing);
+  });
+
   testWidgets('fix a weapon', (tester) async {
     await pumpPage(tester);
     await tester.tap(find.byKey(const Key('choose-weapon')));

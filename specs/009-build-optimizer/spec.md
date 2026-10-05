@@ -179,6 +179,12 @@ O caçador que já tem uma arma escolhe essa arma; o app monta o resto em volta 
 - **FR-014**: Com "usar meus talismãs" ligado, o sistema MUST testar cada talismã cadastrado e também
   nenhum talismã.
 - **FR-015**: Users MUST be able to fixar uma arma do tipo escolhido ou deixar "qualquer".
+- **FR-015a**: Com a arma em "qualquer", Users MUST be able to exigir o tipo de frasco (Charge
+  Blade: Impacto ou Elemento; Switch Axe: Poder, Elemento, Dragão, Veneno, Paralisia, Exaustão) ou de
+  bombardeio (Gunlance: Normal, Longo, Amplo), e o elemento ou status da arma (ou "Sem elemento").
+  O otimizador escolhe só entre as armas que batem; o filtro fica salvo por tipo de arma e some com
+  uma arma fixa. Sem nenhuma arma que bata, um aviso aparece e "Montar build" fica desligado
+  (pedido do usuário em 2026-10-05, opção A do mockup `mockups/weapon-filter.html`).
 - **FR-016**: As habilidades escolhidas, a arma fixa e as opções MUST continuar como estavam ao
   voltar à aba e ao reabrir o app.
 - **FR-017**: Nomes de habilidades, peças, armas e joias MUST seguir a preferência de idioma.

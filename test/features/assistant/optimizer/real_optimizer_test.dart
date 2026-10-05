@@ -101,6 +101,30 @@ void main() {
     }
   });
 
+  test('Charge Blade with Impact phial and Gunlance with Wide shelling', () {
+    for (final (type, trait, skills) in [
+      (
+        'charge-blade',
+        'impact',
+        {'artillery': 3, 'critical-eye': 7, 'attack-boost': 7},
+      ),
+      ('gunlance', 'wide', {'artillery': 3, 'load-shells': 2, 'guard': 3}),
+    ]) {
+      final request = BuildRequest(
+        skills: skills,
+        weaponType: type,
+        progress: const Progress(ProgressRank.master, 'M6'),
+        weaponTrait: trait,
+      );
+      final sets = searchBuilds(catalog, request, const []);
+      expect(sets.first.complete, isTrue, reason: type);
+      for (final s in sets) {
+        expect(s.weapon?.trait?.key, trait);
+        verify(s, request);
+      }
+    }
+  });
+
   test('SC-001 and SC-002: 20 requests, every result checks out', () {
     final requests = [
       req({

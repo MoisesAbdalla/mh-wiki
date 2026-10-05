@@ -177,6 +177,10 @@ description: "Task list for 009 Otimizador de builds (Montar build)"
   and `tool/data/README.md`.
 - [X] T022 Run the gates (analyze, format, test, integration on Windows, build Windows release) and
   commit.
+- [X] T022a Weapon filters (user request after the checks, mockup option A): phial / shelling and
+  element in `optimizer.json`, `BuildRequest.weaponTrait/weaponElement`, per-type filters in the
+  stored request, chips in card 2, the "no weapon" warning, tests (domain, controller, widget, real
+  data: Charge Blade Impact, Gunlance Wide).
 - [ ] T023 Measure the search on an Android device or emulator (release) for the 20 test requests,
   and record the timings (SC-002).
 - [ ] T024 The user runs the quickstart checks 1–9. Fix the findings, then merge

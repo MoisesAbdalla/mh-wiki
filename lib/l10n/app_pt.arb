@@ -431,5 +431,11 @@
   "@skillProgressSemantics": { "placeholders": { "skill": { "type": "String" }, "got": { "type": "int" }, "want": { "type": "int" } } },
   "skillMissingSemantics": "{skill}, {got} de {want}, faltam {missing}",
   "@skillMissingSemantics": { "placeholders": { "skill": { "type": "String" }, "got": { "type": "int" }, "want": { "type": "int" }, "missing": { "type": "int" } } },
-  "optimizerSource": "Caderninho · Montar build"
+  "optimizerSource": "Caderninho · Montar build",
+  "phialLabel": "Frasco",
+  "shellingLabel": "Bombardeio",
+  "elementOrStatus": "Elemento ou status",
+  "noElement": "Sem elemento",
+  "noWeaponForFilter": "Nenhuma arma com esse filtro até {progress}.",
+  "@noWeaponForFilter": { "placeholders": { "progress": { "type": "String" } } }
 }

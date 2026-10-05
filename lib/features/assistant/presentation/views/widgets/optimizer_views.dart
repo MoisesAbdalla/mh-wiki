@@ -238,6 +238,9 @@ class _OptimizerRequestViewState extends State<OptimizerRequestView> {
                   children: [
                     for (final s in sugg)
                       ActionChip(
+                        labelStyle: small?.copyWith(
+                          color: HunterPalette.textMuted,
+                        ),
                         label: Text('+ ${s.name.resolve(language)}'),
                         tooltip: l10n.addSkill(s.name.resolve(language)),
                         onPressed: () => _add(s.id),
@@ -265,6 +268,43 @@ class _OptimizerRequestViewState extends State<OptimizerRequestView> {
                   child: Text(l10n.chooseWeapon),
                 ),
               ),
+              if (c.fixedWeaponId == null) ...[
+                if (c.traitOptions case final traits when traits.isNotEmpty)
+                  _FilterRow(
+                    key: const Key('trait-filter'),
+                    label: c.assistant.weaponType == 'gunlance'
+                        ? l10n.shellingLabel
+                        : l10n.phialLabel,
+                    options: [
+                      (value: null, text: l10n.anyWeapon),
+                      for (final t in traits)
+                        (value: t.key, text: t.name.resolve(language)),
+                    ],
+                    selected: c.weaponTrait,
+                    onSelected: c.setWeaponTrait,
+                  ),
+                if (c.elementOptions case final elements
+                    when elements.length > 1)
+                  _FilterRow(
+                    key: const Key('element-filter'),
+                    label: l10n.elementOrStatus,
+                    options: [
+                      (value: null, text: l10n.anyWeapon),
+                      for (final e in elements)
+                        (value: e, text: elementName(l10n, e)),
+                    ],
+                    selected: c.weaponElement,
+                    onSelected: c.setWeaponElement,
+                  ),
+                if (c.matchingWeaponCount == 0)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: Text(
+                      l10n.noWeaponForFilter(progress),
+                      style: small?.copyWith(color: HunterPalette.negative),
+                    ),
+                  ),
+              ],
               RuledRow(
                 label: _TwoLines(
                   l10n.myTalismans,
@@ -322,7 +362,9 @@ class _OptimizerRequestViewState extends State<OptimizerRequestView> {
                       borderRadius: BorderRadius.circular(4),
                     ),
                   ),
-                  onPressed: chosen.isEmpty ? null : c.build,
+                  onPressed: chosen.isEmpty || c.matchingWeaponCount == 0
+                      ? null
+                      : c.build,
                   child: Text(
                     l10n.buildIt,
                     style: notebookTitle(
@@ -340,6 +382,77 @@ class _OptimizerRequestViewState extends State<OptimizerRequestView> {
       ],
     );
   }
+}
+
+/// An element or status kind's name ("Fogo", "Veneno", "Sem elemento").
+String elementName(AppLocalizations l10n, String kind) => switch (kind) {
+  'fire' => l10n.elementFire,
+  'water' => l10n.elementWater,
+  'thunder' => l10n.elementThunder,
+  'ice' => l10n.elementIce,
+  'dragon' => l10n.elementDragon,
+  'poison' => l10n.statusPoison,
+  'sleep' => l10n.statusSleep,
+  'paralysis' => l10n.statusParalysis,
+  'blast' => l10n.statusBlast,
+  _ => l10n.noElement,
+};
+
+/// A weapon filter: its label and one choice chip per option.
+class _FilterRow extends StatelessWidget {
+  const _FilterRow({
+    required this.label,
+    required this.options,
+    required this.selected,
+    required this.onSelected,
+    super.key,
+  });
+
+  final String label;
+  final List<({String? value, String text})> options;
+  final String? selected;
+  final ValueChanged<String?> onSelected;
+
+  @override
+  Widget build(BuildContext context) => DecoratedBox(
+    decoration: const BoxDecoration(
+      border: Border(bottom: BorderSide(color: HunterPalette.borderSubtle)),
+    ),
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: Space.row),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Semantics(header: true, child: Text(label)),
+          const SizedBox(height: 6),
+          Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            children: [
+              for (final o in options)
+                ChoiceChip(
+                  label: Text(o.text),
+                  selected: o.value == selected,
+                  showCheckmark: false,
+                  selectedColor: HunterPalette.panelHighlight,
+                  side: BorderSide(
+                    color: o.value == selected
+                        ? HunterPalette.gold
+                        : HunterPalette.border,
+                  ),
+                  labelStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: o.value == selected
+                        ? HunterPalette.gold
+                        : HunterPalette.textMuted,
+                  ),
+                  onSelected: (_) => onSelected(o.value),
+                ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
 }
 
 class _TwoLines extends StatelessWidget {
@@ -711,7 +824,14 @@ class ResultCard extends StatelessWidget {
       (r, p) => p.rarity > r ? p.rarity : r,
     );
     final skills = c.skills.entries.toList();
-    final weapon = set.weapon?.name.resolve(language) ?? '—';
+    final w = set.weapon;
+    final weapon = w == null
+        ? '—'
+        : [
+            w.name.resolve(language),
+            ?w.trait?.name.resolve(language),
+            for (final e in w.elements) elementName(l10n, e),
+          ].join(' · ');
 
     return Padding(
       padding: EdgeInsets.fromLTRB(gutter, Space.row, gutter, 0),

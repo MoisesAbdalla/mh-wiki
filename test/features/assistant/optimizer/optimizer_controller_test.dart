@@ -213,6 +213,35 @@ void main() {
     },
   );
 
+  test('weapon filters are per type, stored, and count matches', () async {
+    final c = controller();
+    await c.load();
+    expect(c.traitOptions, isEmpty);
+    assistant.setWeaponType('charge-blade');
+    expect(c.traitOptions.map((t) => t.key), ['element', 'impact']);
+    expect(c.elementOptions, ['none', 'fire', 'ice']);
+    c.setWeaponTrait('impact');
+    expect(c.request.weaponTrait, 'impact');
+    expect(c.matchingWeaponCount, 1);
+    c.setWeaponElement('fire');
+    expect(c.matchingWeaponCount, 0);
+    c.addSkill('attack');
+    await c.build();
+    expect(c.phase, isA<OptimizerIdle>(), reason: 'no weapon fits');
+    expect(requests.stored.weaponFilters['charge-blade'], (
+      trait: 'impact',
+      element: 'fire',
+    ));
+    // Another type has its own (empty) filters.
+    assistant.setWeaponType('great-sword');
+    expect(c.weaponTrait, isNull);
+    // A fixed weapon ignores the filters.
+    assistant.setWeaponType('charge-blade');
+    c.setFixedWeapon('cb-ice');
+    expect(c.request.weaponTrait, isNull);
+    expect(c.matchingWeaponCount, 1);
+  });
+
   test('suggestions come from the curated builds of the type', () async {
     final c = controller();
     await c.load();

@@ -22,6 +22,13 @@ the part icon in its rarity colour, and decoration tiles.
 - **Card 2 "Arma e talismãs"**, three rows:
   - **Arma**: "Qualquer {tipo} até {progresso}" or the fixed weapon's name, with "escolher". It
     opens a searchable list of weapons of the type; the list includes "Qualquer".
+  - **Weapon filters** (only with "Qualquer"), as choice chips under Arma:
+    - "Frasco" (Charge Blade, Switch Axe) or "Bombardeio" (Gunlance): Qualquer plus the kinds the
+      type has, most common first;
+    - "Elemento ou status": Qualquer, Sem elemento and the kinds the type has, in game order;
+    - "Nenhuma arma com esse filtro até {progresso}." in red when nothing fits, and the button
+      disabled. Result cards name the weapon's phial or shelling and element ("Grande Gordlock ·
+      Impacto").
   - **Meus talismãs**: "{n} cadastrados · usar todos", with a switch, and "gerenciar".
   - **Só peças do meu progresso**: "até {progresso} (raridade {r})", with a switch, on by default.
 - **"Montar build"**: a full-width solid gold button, disabled while no skill is chosen.

@@ -2049,6 +2049,36 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Caderninho · Montar build'**
   String get optimizerSource;
+
+  /// No description provided for @phialLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Frasco'**
+  String get phialLabel;
+
+  /// No description provided for @shellingLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Bombardeio'**
+  String get shellingLabel;
+
+  /// No description provided for @elementOrStatus.
+  ///
+  /// In pt, this message translates to:
+  /// **'Elemento ou status'**
+  String get elementOrStatus;
+
+  /// No description provided for @noElement.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sem elemento'**
+  String get noElement;
+
+  /// No description provided for @noWeaponForFilter.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma arma com esse filtro até {progress}.'**
+  String noWeaponForFilter(String progress);
 }
 
 class _AppLocalizationsDelegate

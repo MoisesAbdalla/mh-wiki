@@ -78,6 +78,17 @@ OptimizerCatalog readOptimizerDataset(
         slots: _slots(w),
         attack: w.number('attack').toInt(),
         image: w.optionalString('image'),
+        trait: switch (w.optionalObject('trait')) {
+          final t? => (
+            key: t.string('key'),
+            name: readLocalized(t.object('name')),
+          ),
+          null => null,
+        },
+        elements: [
+          for (final e in (w.json['elements'] as List<Object?>?) ?? const [])
+            if (e is String) e,
+        ],
       ),
   ];
   _unique(root, 'weapons', [for (final w in weapons) w.id]);

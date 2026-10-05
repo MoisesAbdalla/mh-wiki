@@ -21,6 +21,8 @@
   "weapons": [
     { "id": "fine-kamura-cleaver", "name": { "en": "Fine Kamura Cleaver", "ptBr": "Ótimo Cutelo Kamura" },
       "type": "great-sword", "rarity": 10, "slots": [4, 2], "attack": 330,
+      "trait": { "key": "impact", "name": { "en": "Impact", "ptBr": "Impacto" } },
+      "elements": ["fire"],
       "image": "assets/images/weapons/rise_sunbreak/fine-kamura-cleaver.webp" }
   ]
 }

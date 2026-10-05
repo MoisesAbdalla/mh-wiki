@@ -24,7 +24,12 @@ typedef StoredRequest = ({
   String? fixedWeaponId,
   bool useTalismans,
   bool onlyMyProgress,
+  Map<String, WeaponFilter> weaponFilters,
 });
+
+/// The weapon filters chosen for one weapon type (phial or shelling, and
+/// element); kept per type.
+typedef WeaponFilter = ({String? trait, String? element});
 
 abstract interface class RequestRepository {
   Future<StoredRequest> load();

@@ -209,12 +209,14 @@ void main() {
         fixedWeaponId: 'fine-kamura-cleaver',
         useTalismans: false,
         onlyMyProgress: false,
+        weaponFilters: {'charge-blade': (trait: 'impact', element: null)},
       ));
       final back = await PrefsRequestRepository(prefs).load();
       expect(back.skills.keys, ['weakness-exploit', 'attack-boost']);
       expect(back.fixedWeaponId, 'fine-kamura-cleaver');
       expect(back.useTalismans, isFalse);
       expect(back.onlyMyProgress, isFalse);
+      expect(back.weaponFilters['charge-blade']?.trait, 'impact');
       await prefs.setString(PrefsRequestRepository.key, 'nope');
       expect((await repo.load()).onlyMyProgress, isTrue);
     });

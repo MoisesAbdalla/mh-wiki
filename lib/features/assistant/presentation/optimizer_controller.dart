@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:mh_wiki/core/domain/failure.dart';
 import 'package:mh_wiki/core/domain/game.dart';
+import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/result.dart';
 import 'package:mh_wiki/core/domain/search_normalizer.dart';
 import 'package:mh_wiki/features/assistant/domain/entities/curated_build.dart';
@@ -67,6 +68,7 @@ final class OptimizerController extends ChangeNotifier {
   String? _fixedWeaponId;
   bool _useTalismans = true;
   bool _onlyMyProgress = true;
+  Map<String, WeaponFilter> _filters = {};
   List<UserTalisman> _talismans = const [];
 
   OptimizerPhase _phase = const OptimizerIdle();
@@ -105,7 +107,82 @@ final class OptimizerController extends ChangeNotifier {
     fixedWeaponId: _fixedWeaponId,
     useTalismans: _useTalismans,
     onlyMyProgress: _onlyMyProgress,
+    // A fixed weapon decides for itself.
+    weaponTrait: _fixedWeaponId == null ? weaponTrait : null,
+    weaponElement: _fixedWeaponId == null ? weaponElement : null,
   );
+
+  /// The phial or shelling kind required for the current weapon type.
+  String? get weaponTrait => _filters[assistant.weaponType]?.trait;
+
+  /// The element or status required for the current weapon type, or
+  /// [BuildRequest.noElement].
+  String? get weaponElement => _filters[assistant.weaponType]?.element;
+
+  /// The phial or shelling kinds of the current type, most common first;
+  /// empty for types without them.
+  List<({String key, LocalizedText name})> get traitOptions {
+    final counts = <String, ({String key, LocalizedText name})>{};
+    final n = <String, int>{};
+    for (final w
+        in _catalog?.weaponsByType[assistant.weaponType] ??
+            const <OptimizerWeapon>[]) {
+      final t = w.trait;
+      if (t == null) continue;
+      counts[t.key] = t;
+      n[t.key] = (n[t.key] ?? 0) + 1;
+    }
+    return counts.values.toList()..sort((a, b) => n[b.key]! - n[a.key]!);
+  }
+
+  /// The element and status kinds the current type has, in game order, plus
+  /// [BuildRequest.noElement] when raw weapons exist.
+  List<String> get elementOptions {
+    final seen = <String>{};
+    var raw = false;
+    for (final w
+        in _catalog?.weaponsByType[assistant.weaponType] ??
+            const <OptimizerWeapon>[]) {
+      if (w.elements.isEmpty) raw = true;
+      seen.addAll(w.elements);
+    }
+    return [
+      if (raw) BuildRequest.noElement,
+      for (final k in elementOrder)
+        if (seen.contains(k)) k,
+    ];
+  }
+
+  static const elementOrder = [
+    'fire', 'water', 'thunder', 'ice', 'dragon', //
+    'poison', 'sleep', 'paralysis', 'blast',
+  ];
+
+  void setWeaponTrait(String? key) =>
+      _setFilter((trait: key, element: weaponElement));
+
+  void setWeaponElement(String? kind) =>
+      _setFilter((trait: weaponTrait, element: kind));
+
+  void _setFilter(WeaponFilter f) {
+    final current = _filters[assistant.weaponType];
+    if (current?.trait == f.trait && current?.element == f.element) return;
+    _filters = {..._filters, assistant.weaponType: f};
+    _changed();
+  }
+
+  /// How many weapons of the type pass the filters within the rarity limit;
+  /// zero means the search cannot run.
+  int get matchingWeaponCount {
+    if (_fixedWeaponId != null) return 1;
+    final r = request;
+    return [
+      for (final w
+          in _catalog?.weaponsByType[assistant.weaponType] ??
+              const <OptimizerWeapon>[])
+        if (w.rarity <= r.maxRarity && r.allows(w)) w,
+    ].length;
+  }
 
   int get maxRarity => request.maxRarity;
 
@@ -146,6 +223,7 @@ final class OptimizerController extends ChangeNotifier {
     _fixedWeaponId = stored.fixedWeaponId;
     _useTalismans = stored.useTalismans;
     _onlyMyProgress = stored.onlyMyProgress;
+    _filters = {...stored.weaponFilters};
     _talismans = await _talismanRepository.load();
     switch (await _loadCatalog(game)) {
       case Success(:final value):
@@ -266,6 +344,7 @@ final class OptimizerController extends ChangeNotifier {
     fixedWeaponId: _fixedWeaponId,
     useTalismans: _useTalismans,
     onlyMyProgress: _onlyMyProgress,
+    weaponFilters: _filters,
   ));
 
   void _reset() {
@@ -279,7 +358,12 @@ final class OptimizerController extends ChangeNotifier {
 
   Future<void> build() async {
     final c = _catalog;
-    if (c == null || _skills.isEmpty || _phase is OptimizerSearching) return;
+    if (c == null ||
+        _skills.isEmpty ||
+        _phase is OptimizerSearching ||
+        matchingWeaponCount == 0) {
+      return;
+    }
     final key = (assistant.progress, assistant.weaponType);
     _phase = const OptimizerSearching(0);
     _selected = null;
