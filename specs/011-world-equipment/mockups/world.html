@@ -1,0 +1,158 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Caderninho — World (011)</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Averia+Serif+Libre:wght@700&family=Atkinson+Hyperlegible&display=swap" rel="stylesheet"><style>
+:root{--bg:#16120e;--panel:#1f1812;--raise:#2c2215;--ink:#efe4c8;--ink2:#b9a67f;--ink3:#8a7652;--rule:#3b2e1d;--rule2:#5a4526;--gold:#e0bd6a;--neg:#f2a08a;--ok:#9cc48a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0a08;color:var(--ink);font:15px/1.45 "Atkinson Hyperlegible",sans-serif;padding:28px 16px 60px}
+.intro{max-width:1640px;margin:0 auto 22px}.intro h1{font:400 30px/1 "IM Fell English SC"}.intro p{color:var(--ink2);margin-top:8px;max-width:100ch;font-size:14px}
+.wrap{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;max-width:1640px;margin:0 auto}
+.cap{font-size:12px;color:var(--ink2);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase}.cap b{color:var(--gold)}
+.phone{width:370px;max-width:100%;height:860px;background:var(--bg);border-radius:26px;display:flex;flex-direction:column;overflow:hidden}
+.scroll{flex:1;overflow-y:auto;padding-bottom:20px;scrollbar-width:none}
+.appbar{display:flex;justify-content:space-between;align-items:baseline;padding:18px 20px 6px}.brand{font:400 24px/1 "IM Fell English SC"}.gear{color:var(--ink2);font-size:13px}
+.tabs{display:flex;gap:16px;padding:4px 20px 0;border-bottom:1px solid var(--rule)}
+.tabs span{white-space:nowrap;padding:6px 0 8px;font:400 16px "IM Fell English SC";color:var(--ink2)}.tabs span.on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--gold)}
+.ctx{display:flex;justify-content:space-between;align-items:center;margin:10px 12px 8px;padding:8px 12px;border:1px solid var(--rule);border-radius:4px;font-size:13px;color:var(--ink2)}.ctx b{color:var(--ink);font-weight:400}
+.link{color:var(--gold);font-size:13px}
+.card{margin:0 12px 12px;background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:12px 14px 12px}
+.card h3{display:flex;gap:10px;align-items:baseline;font:400 19px "IM Fell English SC";margin-bottom:8px}.card h3 i{font:700 16px "Averia Serif Libre";color:var(--gold);font-style:normal}
+.search{border:1px solid var(--rule2);border-radius:4px;padding:8px 10px;color:var(--ink3);font-size:14px;margin-bottom:6px}
+.rr{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--rule);font-size:14px}.rr:last-child{border-bottom:0}
+.sk{font-size:14px}.sub{font-size:12px;color:var(--ink2)}
+.pips{display:inline-flex;gap:3px;vertical-align:middle}.pips i{width:9px;height:9px;border:1px solid var(--gold);border-radius:2px;display:inline-block}.pips i.f{background:var(--gold)}.pips i.o{border-color:var(--rule2)}.pips i.miss{border-color:var(--neg);background:rgba(242,160,138,.25)}
+.step{display:flex;align-items:center;gap:6px}.step b,.stepm b{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border:1px solid var(--rule2);border-radius:4px;color:var(--gold);font-weight:400}.step u{text-decoration:none;color:var(--ink3);margin-left:4px}
+.num{font:700 15px "Averia Serif Libre";min-width:14px;text-align:center}
+.sugg-cap{font-size:12px;color:var(--ink3);margin-top:10px}.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{font-size:12.5px;padding:3px 9px;border:1px solid var(--rule2);border-radius:12px;color:var(--ink2)}
+.opt{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--rule)}.opt.last{border-bottom:0}
+.tog{width:34px;height:18px;border-radius:9px;background:var(--rule2);position:relative}.tog.on{background:var(--gold)}.tog::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:7px;background:var(--bg)}.tog.on::after{left:18px}
+.pad{padding:0 12px}.btn{display:block;text-align:center;margin:4px 0 8px;padding:10px;border:1px solid var(--gold);color:var(--gold);border-radius:4px;font:400 16px "IM Fell English SC"}.btn.solid{background:var(--gold);color:#1c150d}
+.crumb{display:flex;justify-content:space-between;font-size:12px;color:var(--ink2);padding:18px 22px 0}
+.head{padding:10px 20px 12px}.head h2{font:400 25px/1.05 "IM Fell English SC"}.head .sub{margin-top:6px;font-size:13px}
+.tal{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--rule)}.tal:last-child{border-bottom:0}.ti{width:34px;height:34px}.tal .tx{flex:1}.nm{font:400 16px/1.15 "IM Fell English SC"}
+.slots{display:flex;gap:3px}.sl{width:16px;height:16px;vertical-align:middle}.sl0{color:var(--ink3);font-size:12px;width:16px;text-align:center}
+.field{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:10px}.field .sub{width:100%}.inp{flex:1;border:1px solid var(--rule2);border-radius:4px;padding:7px 10px;font-size:14px}.inp.muted{color:var(--ink3)}.stepm{display:flex;align-items:center;gap:6px}
+.slotsrow{display:grid;gap:6px;margin-bottom:10px}.seg2{display:flex;gap:4px;margin-top:3px}.seg2 span{flex:1;text-align:center;padding:4px 0;border:1px solid var(--rule2);border-radius:3px;font:700 13px "Averia Serif Libre";color:var(--ink2)}.seg2 span.on{border-color:var(--gold);color:var(--gold);background:var(--raise)}
+.sec{padding:8px 16px 2px;font:400 15px "IM Fell English SC";color:var(--ink2);display:flex;align-items:center;gap:10px}.sec::after{content:"";flex:1;border-bottom:1px solid var(--rule2)}
+.bc{margin:8px 12px 0;background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:10px 14px}.bc.sel{border-color:var(--gold)}
+.rtop{display:flex;justify-content:space-between;align-items:center}.bc h5{font:400 18px/1.15 "IM Fell English SC"}
+.seal{font:700 11px "Averia Serif Libre";padding:0 6px;border-radius:3px;border:1px solid}.seal.ok{color:var(--ok);border-color:var(--ok)}.seal.no{color:var(--neg);border-color:var(--neg)}
+.picons{display:flex;gap:4px;margin:6px 0 4px;align-items:center}.picons img{width:28px;height:28px;background:var(--raise);border-radius:3px;padding:2px}.picons .tal{border:0;padding:0;margin-left:6px}
+.sk2{font-size:12.5px;color:var(--ink);margin:4px 0}.sk2 .bad{color:var(--neg)}
+.ok{color:var(--ok);font-size:13px}.no{color:var(--neg);font-size:12px;margin-left:4px}
+.row{padding:8px 0;border-bottom:1px solid var(--rule)}.row.last{border-bottom:0}.top{display:flex;gap:12px;align-items:center}
+.ic{width:38px;height:38px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:4px;background:var(--raise)}.ic img{width:34px;height:34px;object-fit:contain}
+.part{font-size:12px;color:var(--ink2)}
+.note{font-size:12px;color:var(--ink3);padding:10px 16px}
+.nav{display:flex;border-top:1px solid var(--rule2);background:#120e0b}.nav a{flex:1;text-align:center;padding:8px 0 10px;font:400 14px "IM Fell English SC";color:var(--ink2)}.nav a i{display:block;font-style:normal;font-size:17px;line-height:1.2}.nav a.on{color:var(--gold)}
+.notes{max-width:1640px;margin:28px auto 0;color:var(--ink2);font-size:14px}.notes h2{font:400 22px "IM Fell English SC";color:var(--ink);margin-bottom:8px}.notes li{margin:5px 0 5px 18px}.notes b{color:var(--ink)}
+
+.games{display:flex;gap:14px;align-items:flex-end;padding:6px 20px 0;border-bottom:1px solid var(--rule)}
+.games span{padding:4px 0 6px;font:400 15px "IM Fell English SC";color:var(--ink2)}
+.games img{height:34px;opacity:.5;filter:grayscale(.5)}
+.games .on img{opacity:1;filter:none}.games .on{box-shadow:inset 0 -2px 0 var(--gold)}
+.games .soon{opacity:.45;font-size:11px}
+.types2{display:flex;gap:8px;padding:10px 12px 4px;overflow:hidden}
+.types2 span{flex:none;width:62px;text-align:center;padding:6px 2px;border:1px solid var(--rule);border-radius:4px;background:var(--panel);font-size:11px;color:var(--ink2)}
+.types2 span.on{border-color:var(--gold);color:var(--ink);background:var(--raise)}
+.types2 img{width:30px;height:30px;display:block;margin:0 auto 2px}
+.wr{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;margin:0 12px;border-bottom:1px solid var(--rule);font-size:14px}
+.wr .nm2{font:400 16px "IM Fell English SC"}
+.attr{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:13.5px}
+.attr b{font:700 15px "Averia Serif Libre";color:var(--ink)}
+.sharp{display:flex;height:12px;border-radius:2px;overflow:hidden;margin:6px 0 2px}
+.new{display:inline-block;font:700 10px "Averia Serif Libre";color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:0 4px;margin-left:6px;vertical-align:middle}
+.bon{padding:8px 0;border-bottom:1px solid var(--rule)}.bon:last-child{border-bottom:0}
+.bon .pc{font:700 12px "Averia Serif Libre";color:var(--gold);border:1px solid var(--rule2);border-radius:3px;padding:0 5px;margin-right:6px}
+.atabs{display:flex;gap:14px;padding:4px 20px 0;border-bottom:1px solid var(--rule);font:400 15px "IM Fell English SC";color:var(--ink2)}
+.atabs span{padding:6px 0 8px}.atabs span.on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--gold)}
+.seg4{display:flex;gap:6px;padding:8px 12px}
+.seg4 span{padding:4px 10px;border:1px solid var(--rule2);border-radius:14px;font-size:12.5px;color:var(--ink2)}
+.seg4 span.on{border-color:var(--gold);color:var(--gold);background:var(--raise)}
+.dr{display:flex;align-items:center;gap:8px;padding:8px 14px;margin:0 12px;border-bottom:1px solid var(--rule);font-size:14px}
+.dr img{width:18px;height:18px}.dr .sk{flex:1}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chips span{padding:4px 10px;border:1px solid var(--rule2);border-radius:14px;font-size:12.5px;color:var(--ink2)}
+.chips span.on{border-color:var(--gold);color:var(--gold);background:var(--raise)}
+.part{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--rule);font-size:14px}
+.cnt{display:flex;gap:6px;align-items:center}.cnt b{display:inline-flex;width:26px;height:26px;border:1px solid var(--rule2);border-radius:4px;align-items:center;justify-content:center;color:var(--gold);font-weight:400}
+.final{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:13.5px}.final b{font:700 15px "Averia Serif Libre";color:var(--gold)}
+
+.wrow{display:flex;gap:10px;align-items:center;padding:8px 14px;border-bottom:1px solid var(--rule)}.wrow img{width:32px;height:32px}.wrow .tx{flex:1}.wrow .st{text-align:right}
+.wrow.d1{padding-left:30px}.wrow.d2{padding-left:46px}
+.tc{margin:8px 12px;background:var(--panel);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.tc h4{display:flex;justify-content:space-between;align-items:center;font:400 18px "IM Fell English SC";padding:10px 14px 6px;border-bottom:1px solid var(--rule)}.tc h4 span{font:400 13px "Averia Serif Libre";color:var(--ink2)}
+.hid{color:var(--ink2)}.tip{font-size:11.5px;color:var(--ink3)}
+.games img{height:30px}
+.pc2{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--rule)}.pc2 img.p{width:30px;height:30px}.pc2 .tx{flex:1}
+.res{display:flex;gap:8px;flex-wrap:wrap;font:700 13px "Averia Serif Libre";margin-top:6px}.res span{color:var(--ink2);font-weight:400}
+.que{font:700 10px "Averia Serif Libre";color:#9ad0ff;border:1px solid #4f7ea6;border-radius:3px;padding:0 4px;margin-left:6px}
+</style></head><body>
+<div class="intro"><h1>011 · Armas e Armaduras do World: Iceborne</h1><p>Mesma estrutura da Wilds, com os ícones do World (por raridade), três ranks (Baixo, Alto, Mestre) e o que é próprio do World: elemento oculto, Selo do Ancião, bônus de defesa, slots nível 1–4, joias combinadas de nível 4, talismãs I–V e bônus de conjunto.</p></div>
+<div class="wrap">
+<div><div class="cap"><b>Armas</b> · lista World</div><div class="phone"><div class="scroll"><div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div>
+<div class="games"><span class="on"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/games/world_iceborne.webp" alt="World"></span><span><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/games/rise_sunbreak.webp" alt="Rise"></span><span><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/games/wilds.webp" alt="Wilds"></span></div><div class="types2"><span class="on"><img src="img/MHWI-Great_Sword_Icon_Rare_12.png">Espadão</span><span><img src="img/MHWI-Long_Sword_Icon_Rare_12.png">Esp. Longa</span><span><img src="img/MHWI-Hammer_Icon_Rare_12.png">Martelo</span><span><img src="img/MHWI-Bow_Icon_Rare_12.png">Arco</span></div>
+<div class="atabs"><span>Todos</span><span>Baixo</span><span>Alto</span><span class="on">Mestre</span></div>
+<div class="search" style="margin:8px 12px">Buscar arma…</div>
+<div class="tc"><h4>Árvore Dragosso <span>4 armas</span></h4>
+<div class="wrow d0"><img src="img/MHWI-Great_Sword_Icon_Rare_8.png"><div class="tx"><div class="nm2">Cutelo Dragosso III</div><div class="sub">Rank Alto</div></div><div class="st"><div class="num">768</div><div class="sub">Dragão 420</div></div></div>
+<div class="wrow d1"><img src="img/MHWI-Great_Sword_Icon_Rare_10.png"><div class="tx"><div class="nm2">Espada Selo Dragão I</div><div class="sub">Rank Mestre</div></div><div class="st"><div class="num">1008</div><div class="sub">Dragão 600</div></div></div>
+<div class="wrow d2"><img src="img/MHWI-Great_Sword_Icon_Rare_11.png"><div class="tx"><div class="nm2">Espada Selo Dragão II</div><div class="sub">Rank Mestre</div></div><div class="st"><div class="num">1152</div><div class="sub">Dragão 720</div></div></div>
+<div class="wrow d2"><img src="img/MHWI-Great_Sword_Icon_Rare_12.png"><div class="tx"><div class="nm2">Dharma Inabalável</div><div class="sub">Rank Mestre</div></div><div class="st"><div class="num">1344</div><div class="sub"><span class="hid">(Dragão 540)</span></div></div></div>
+</div>
+<div class="tc"><h4>Especiais <span>só consulta</span></h4>
+<div class="wrow"><img src="img/MHWI-Great_Sword_Icon_Rare_12.png"><div class="tx"><div class="nm2">Flama Taroth Água</div><div class="sub">Kulve Taroth · sorteada</div></div></div>
+<div class="wrow"><img src="img/MHWI-Great_Sword_Icon_Rare_12.png"><div class="tx"><div class="nm2">Espadão Kjárr Gelo</div><div class="sub">Kulve Taroth · sorteada</div></div></div>
+<div class="wrow"><img src="img/MHWI-Great_Sword_Icon_Rare_12.png"><div class="tx"><div class="nm2">Safi'jiiva</div><div class="sub">despertar · habilidades à escolha</div></div></div>
+</div>
+<p class="note">Lista como na Rise e na Wilds, com os ícones do World por raridade e três ranks (Baixo, Alto, Mestre). Elemento oculto entre parênteses.</p>
+</div></div></div>
+<div><div class="cap"><b>Armas</b> · detalhe</div><div class="phone"><div class="scroll"><div class="crumb"><span>‹ Armas</span><span>World · Mestre</span></div>
+<div class="head" style="display:flex;justify-content:space-between;gap:10px"><div><h2>Dharma Inabalável</h2><div class="sub">Espadão · Raridade 12 · Rank Mestre</div></div><img src="img/MHWI-Immovable_Dharma_Render.png" style="width:72px;height:72px;object-fit:contain;border:1px solid var(--rule2);transform:rotate(-3deg);padding:4px"></div>
+<div class="card"><h3><i>1</i>Atributos</h3><div class="attr">
+<span>Ataque <b>1344</b></span><span>Afinidade <b>0%</b></span>
+<span>Dragão <b class="hid">(540)</b></span><span>Selo do Ancião <b>Alto</b></span>
+<span>Defesa <b>+30</b></span><span>Slots <img class="sl" src="img/MHWI-Decoration_Level_1_Icon_Base.webp"><img class="sl" src="img/MHWI-Decoration_Level_1_Icon_Base.webp"></span></div>
+<p class="tip" style="margin-top:6px">Elemento entre parênteses é oculto: só age com a habilidade Liberar Elemento.</p>
+<div class="rr" style="margin-top:6px"><span>Aumentos (Iceborne)</span><span class="sub">1 espaço · Raridade 12</span></div></div>
+<div class="card"><h3><i>2</i>Afiação</h3><div class="sub">Normal</div><div class="sharp"><span style="flex:170;background:#d9534f"></span><span style="flex:30;background:#e8902f"></span><span style="flex:30;background:#e5cf3a"></span><span style="flex:60;background:#6bb84a"></span><span style="flex:50;background:#4a86d9"></span><span style="flex:10;background:#eee"></span><span style="flex:50;background:#141008"></span></div><div class="sub" style="margin-top:6px">Com Artesanato (nível 5)</div><div class="sharp"><span style="flex:170;background:#d9534f"></span><span style="flex:30;background:#e8902f"></span><span style="flex:30;background:#e5cf3a"></span><span style="flex:60;background:#6bb84a"></span><span style="flex:50;background:#4a86d9"></span><span style="flex:30;background:#eee"></span><span style="flex:30;background:#b56bd6"></span><span style="flex:0;background:#141008"></span></div></div>
+<div class="card"><h3><i>3</i>Materiais</h3>
+<div class="rr"><span>Melhorar de Espada Selo Dragão I</span><span class="sub"></span></div>
+<div class="rr"><span>Córtex de Shara Ishvalda <span class="sub">· Dropado por Shara Ishvalda ›</span></span><span class="num">×2</span></div>
+<div class="rr"><span>Joia de Shara Ishvalda</span><span class="num">×1</span></div></div>
+<div class="card"><h3><i>4</i>Árvore</h3>
+<div class="rr"><span>Cutelo Dragosso III</span><span class="sub">R8</span></div>
+<div class="rr"><span style="padding-left:16px">Espada Selo Dragão I</span><span class="sub">R10</span></div>
+<div class="rr"><span style="padding-left:32px;color:var(--gold)">Dharma Inabalável</span><span class="sub">esta</span></div></div>
+</div></div></div>
+<div><div class="cap"><b>Armaduras</b> · conjunto</div><div class="phone"><div class="scroll"><div class="crumb"><span>‹ Armaduras</span><span>World · Mestre</span></div>
+<div class="head"><h2>Fatalis α+</h2><div class="sub">Rank Mestre · Raridade 12 · 5 peças</div></div>
+<div class="card"><h3><i>1</i>Defesa</h3><div class="attr"><span>Defesa <b>900 → 990</b></span></div>
+<div class="res"><span>Fogo</span>−5 <span>Água</span>10 <span>Raio</span>10 <span>Gelo</span>0 <span>Dragão</span>−20</div></div>
+<div class="card"><h3><i>2</i>Habilidades</h3>
+<div class="rr"><span>Exploração de Fraqueza</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i></span></div>
+<div class="rr"><span>Artesanato</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span></div>
+<div class="rr"><span>Olho Crítico</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="o"></i><i class="o"></i><i class="o"></i><i class="o"></i></span></div>
+<div class="rr"><span>Lenda de Fatalis</span><span class="sub">5 peças</span></div></div>
+<div class="card"><h3><i>3</i>Bônus do conjunto</h3><div class="sk">Lenda de Fatalis</div>
+<div class="bon"><span class="pc">2 peças</span>Remove o limite de nível dos segredos de habilidade.</div>
+<div class="bon"><span class="pc">4 peças</span>Confere Fio Navalha / Tiro Extra Real. +100 Vida/Vigor no início ou após desmaiar.</div></div>
+<div class="card"><h3><i>4</i>Peças</h3><div class="pc2"><img class="p" src="img/MHWI-Helmet_Icon_Rare_12.png"><div class="tx"><div class="nm2" style="font:400 15px 'IM Fell English SC'">Cabeça Dragão α+</div><div class="sub">Atordoamento 3 · Guarda 3</div></div><div class="slots"><img class="sl" src="img/MHWI-Decoration_Level_3_Icon_Base.webp"><img class="sl" src="img/MHWI-Decoration_Level_2_Icon_Base.webp"><img class="sl" src="img/MHWI-Decoration_Level_2_Icon_Base.webp"></div></div><div class="pc2"><img class="p" src="img/MHWI-Chestplate_Icon_Rare_12.png"><div class="tx"><div class="nm2" style="font:400 15px 'IM Fell English SC'">Couro Dragão α+</div><div class="sub">Expl. de Fraqueza 1 · Janela de Esquiva 2</div></div><div class="slots"><img class="sl" src="img/MHWI-Decoration_Level_4_Icon_Base.webp"><img class="sl" src="img/MHWI-Decoration_Level_4_Icon_Base.webp"><img class="sl" src="img/MHWI-Decoration_Level_3_Icon_Base.webp"></div></div><div class="pc2"><img class="p" src="img/MHWI-Armguards_Icon_Rare_12.png"><div class="tx"><div class="nm2" style="font:400 15px 'IM Fell English SC'">Garras Dragão α+</div><div class="sub">Expl. de Fraqueza 1 · Artesanato 3</div></div><div class="slots"><img class="sl" src="img/MHWI-Decoration_Level_4_Icon_Base.webp"><img class="sl" src="img/MHWI-Decoration_Level_1_Icon_Base.webp"></div></div><div class="pc2"><img class="p" src="img/MHWI-Waist_Icon_Rare_12.png"><div class="tx"><div class="nm2" style="font:400 15px 'IM Fell English SC'">Farpas Dragão α+</div><div class="sub">Olho Crítico 3 · Expl. de Fraqueza 1</div></div><div class="slots"><img class="sl" src="img/MHWI-Decoration_Level_4_Icon_Base.webp"><img class="sl" src="img/MHWI-Decoration_Level_3_Icon_Base.webp"><img class="sl" src="img/MHWI-Decoration_Level_3_Icon_Base.webp"></div></div><div class="pc2"><img class="p" src="img/MHWI-Leggings_Icon_Rare_12.png"><div class="tx"><div class="nm2" style="font:400 15px 'IM Fell English SC'">Pés Dragão α+</div><div class="sub">Artesanato 2 · Janela de Esquiva 1</div></div><div class="slots"><img class="sl" src="img/MHWI-Decoration_Level_4_Icon_Base.webp"><img class="sl" src="img/MHWI-Decoration_Level_4_Icon_Base.webp"></div></div></div>
+</div></div></div>
+<div><div class="cap"><b>Armaduras</b> · Joias e Talismãs</div><div class="phone"><div class="scroll"><div class="appbar"><div class="brand">Caderninho</div><div class="gear">Ajustes</div></div><div class="games"><span class="on"><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/games/world_iceborne.webp" alt="World"></span><span><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/games/rise_sunbreak.webp" alt="Rise"></span><span><img src="file:///C:/Users/Admin/Desktop/monsterhunterflutter/assets/images/games/wilds.webp" alt="Wilds"></span></div>
+<div class="atabs"><span>Conjuntos</span><span>Habilidades</span><span class="on">Joias</span><span>Talismãs</span></div>
+<div class="seg4"><span>Todas</span><span>1</span><span>2</span><span>3</span><span class="on">4</span></div>
+<div class="dr"><img src="img/MHWI-Decoration_Level_4_Icon_Red.png" style="width:24px;height:24px"><span class="sk">Joia Ataque+ 4<br><span class="sub">Reforço de Ataque 2</span></span></div>
+<div class="dr"><img src="img/MHWI-Decoration_Level_4_Icon_Red.png" style="width:24px;height:24px"><span class="sk">Joia Ataque/Fortitude 4<br><span class="sub">Reforço de Ataque 1 · Fortitude 1</span></span></div>
+<div class="dr"><img src="img/MHWI-Decoration_Level_4_Icon_Green.png" style="width:24px;height:24px"><span class="sk">Joia Biotipo/Drenagem 4<br><span class="sub">Biotipo 1 · Drenagem de Vigor 1</span></span></div>
+<div class="sec" style="margin-top:12px">Talismãs</div>
+<div class="tal" style="margin:0 12px"><img class="ti" src="img/MHWI-Talisman_Icon_Rare_12.png"><div class="tx"><div class="nm">Amuleto de Ataque</div><div class="sub">Reforço de Ataque · I–V</div></div></div>
+<div class="card" style="margin-top:10px"><h3><i>1</i>Amuleto de Ataque V</h3><div class="rr"><span>Reforço de Ataque</span><span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="o"></i><i class="o"></i></span></div><div class="sub">Raridade 12 · melhora do Amuleto de Ataque IV</div></div>
+<p class="note">Habilidades ganham o selo "conjunto" (bônus) e "segredo" (as que sobem o limite, ex.: Segredo de Agitador).</p>
+</div></div></div>
+</div>
+<div class="notes"><h2>Decidido</h2><ul>
+<li><b>Especiais</b> (Kulve Taroth, Kjárr e Safi'jiiva): têm atributos sorteados ou despertar. Escolhido: um grupo "Especiais" no fim de cada tipo, só consulta, com "como obter" (como as Gogma da Wilds).</li>
+<li><b>Aumentos (Iceborne)</b>: escolhido mostrar só o número de espaços de aumento por raridade (R10: 3, R11: 2, R12: 1), sem simular os aumentos.</li>
+<li>Melhorias customizadas (Safi/Kulve), armaduras de camada e ferramentas especiais ficam fora.</li>
+</ul></div></body></html>
