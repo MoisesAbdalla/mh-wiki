@@ -17,10 +17,10 @@ description: "Task list for 010 Armas e Armaduras da Wilds"
 
 ## Phase 1: Setup (data)
 
-- [ ] T001 Write `tool/data/fetch_wilds_equipment.py`. It caches the wilds.mhdb.io endpoints in
+- [X] T001 Write `tool/data/fetch_wilds_equipment.py`. It caches the wilds.mhdb.io endpoints in
   `en` and `pt-BR` into `tool/data/.cache/`: weapons, armor/sets, skills, decorations, charms and
   items. Fetches are slow and resumable. Run it.
-- [ ] T002 Write `tool/data/fetch_wilds_icons.py` per research R3:
+- [X] T002 Write `tool/data/fetch_wilds_icons.py` per research R3:
   - the wiki's `MHWA-<Kind>_Icon_Rare_<1..8>`: Helmet, Chestplate, Armguards, Waist, Leggings,
     Talisman, the 14 weapon types and the Relic parts;
   - `MHWilds-Decoration_Level_<1..3>-Sword|Armor_Icon_<Color>` for the colours mhdb uses;
@@ -28,7 +28,7 @@ description: "Task list for 010 Armas e Armaduras da Wilds"
   - the Kiranico Wilds piece thumbnails.
 
   Save everything as WebP in `assets/images/wilds/`, with a SOURCES.md. Report the coverage. Run it.
-- [ ] T003 Write `tool/data/build_wilds_equipment.py`. It writes `assets/data/wilds/weapons.json`
+- [X] T003 Write `tool/data/build_wilds_equipment.py`. It writes `assets/data/wilds/weapons.json`
   and `armor.json` per data-model.md, in the 006/007 schemas plus the optional fields:
   - material ids as slugs of the English item names (R4), with Wilds monster drops in
     `sources.monsters`;
@@ -38,11 +38,11 @@ description: "Task list for 010 Armas e Armaduras da Wilds"
 
   Report the counts, missing pt-BR names, unmatched materials and image coverage. Register the
   assets in `pubspec.yaml`. Run it.
-- [ ] T004 Artian data (R2): read the wiki's `Module:MHWilds/data/Weapons.json` (Artian tree) and
+- [X] T004 Artian data (R2): read the wiki's `Module:MHWilds/data/Weapons.json` (Artian tree) and
   the Game8 Artian page of each type. Add the `artian` section per data-model: bases by rarity,
   element values by rarity, production values, reinforcement values and limits, and materials.
   Record the per-type infusion and element-boost values in research.md, with sources.
-- [ ] T005 [P] Add the ARB strings of data-model.md › Localisation, then run `flutter gen-l10n`.
+- [X] T005 [P] Add the ARB strings of data-model.md › Localisation, then run `flutter gen-l10n`.
 
 ---
 
