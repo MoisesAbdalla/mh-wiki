@@ -1683,6 +1683,372 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Depois da história'**
   String get afterStory;
+
+  /// No description provided for @skillsWanted.
+  ///
+  /// In pt, this message translates to:
+  /// **'Habilidades que você quer'**
+  String get skillsWanted;
+
+  /// No description provided for @searchSkill.
+  ///
+  /// In pt, this message translates to:
+  /// **'Buscar habilidade…'**
+  String get searchSkill;
+
+  /// No description provided for @commonForType.
+  ///
+  /// In pt, this message translates to:
+  /// **'Comuns para {type}'**
+  String commonForType(String type);
+
+  /// No description provided for @addSkill.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adicionar {skill}'**
+  String addSkill(String skill);
+
+  /// No description provided for @increaseSkill.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aumentar {skill}'**
+  String increaseSkill(String skill);
+
+  /// No description provided for @decreaseSkill.
+  ///
+  /// In pt, this message translates to:
+  /// **'Diminuir {skill}'**
+  String decreaseSkill(String skill);
+
+  /// No description provided for @removeSkill.
+  ///
+  /// In pt, this message translates to:
+  /// **'Remover {skill}'**
+  String removeSkill(String skill);
+
+  /// No description provided for @weaponAndTalismans.
+  ///
+  /// In pt, this message translates to:
+  /// **'Arma e talismãs'**
+  String get weaponAndTalismans;
+
+  /// No description provided for @weaponLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Arma'**
+  String get weaponLabel;
+
+  /// No description provided for @anyWeaponUpTo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Qualquer {type} até {progress}'**
+  String anyWeaponUpTo(String type, String progress);
+
+  /// No description provided for @anyWeapon.
+  ///
+  /// In pt, this message translates to:
+  /// **'Qualquer'**
+  String get anyWeapon;
+
+  /// No description provided for @chooseWeapon.
+  ///
+  /// In pt, this message translates to:
+  /// **'escolher'**
+  String get chooseWeapon;
+
+  /// No description provided for @searchWeapon.
+  ///
+  /// In pt, this message translates to:
+  /// **'Buscar arma…'**
+  String get searchWeapon;
+
+  /// No description provided for @myTalismans.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meus talismãs'**
+  String get myTalismans;
+
+  /// No description provided for @talismansCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =0{nenhum cadastrado} =1{1 cadastrado} other{{count} cadastrados}}'**
+  String talismansCount(int count);
+
+  /// No description provided for @useTalismans.
+  ///
+  /// In pt, this message translates to:
+  /// **'usar todos'**
+  String get useTalismans;
+
+  /// No description provided for @manage.
+  ///
+  /// In pt, this message translates to:
+  /// **'gerenciar'**
+  String get manage;
+
+  /// No description provided for @onlyMyProgress.
+  ///
+  /// In pt, this message translates to:
+  /// **'Só peças do meu progresso'**
+  String get onlyMyProgress;
+
+  /// No description provided for @upToRarity.
+  ///
+  /// In pt, this message translates to:
+  /// **'até {progress} (raridade {rarity})'**
+  String upToRarity(String progress, int rarity);
+
+  /// No description provided for @buildIt.
+  ///
+  /// In pt, this message translates to:
+  /// **'Montar build'**
+  String get buildIt;
+
+  /// No description provided for @alter.
+  ///
+  /// In pt, this message translates to:
+  /// **'alterar'**
+  String get alter;
+
+  /// No description provided for @edit.
+  ///
+  /// In pt, this message translates to:
+  /// **'editar'**
+  String get edit;
+
+  /// No description provided for @searching.
+  ///
+  /// In pt, this message translates to:
+  /// **'procurando…'**
+  String get searching;
+
+  /// No description provided for @searchingChecked.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count} combinações'**
+  String searchingChecked(int count);
+
+  /// No description provided for @skillsCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 habilidade} other{{count} habilidades}}'**
+  String skillsCount(int count);
+
+  /// No description provided for @setsFound.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 conjunto encontrado} other{{count} conjuntos encontrados}}'**
+  String setsFound(int count);
+
+  /// No description provided for @optionN.
+  ///
+  /// In pt, this message translates to:
+  /// **'Opção {n}'**
+  String optionN(int n);
+
+  /// No description provided for @setComplete.
+  ///
+  /// In pt, this message translates to:
+  /// **'completa'**
+  String get setComplete;
+
+  /// No description provided for @setAlmost.
+  ///
+  /// In pt, this message translates to:
+  /// **'quase'**
+  String get setAlmost;
+
+  /// No description provided for @missingN.
+  ///
+  /// In pt, this message translates to:
+  /// **'falta {n}'**
+  String missingN(int n);
+
+  /// No description provided for @skillGot.
+  ///
+  /// In pt, this message translates to:
+  /// **'{skill} {got}/{want}'**
+  String skillGot(String skill, int got, int want);
+
+  /// No description provided for @maxDefense.
+  ///
+  /// In pt, this message translates to:
+  /// **'Defesa máx. {defense}'**
+  String maxDefense(int defense);
+
+  /// No description provided for @freeSlots.
+  ///
+  /// In pt, this message translates to:
+  /// **'sobram'**
+  String get freeSlots;
+
+  /// No description provided for @noTalisman.
+  ///
+  /// In pt, this message translates to:
+  /// **'nenhum'**
+  String get noTalisman;
+
+  /// No description provided for @weaponWithTalisman.
+  ///
+  /// In pt, this message translates to:
+  /// **'{weapon} · talismã {talisman}'**
+  String weaponWithTalisman(String weapon, String talisman);
+
+  /// No description provided for @alsoComes.
+  ///
+  /// In pt, this message translates to:
+  /// **'Também vem: {skills}'**
+  String alsoComes(String skills);
+
+  /// No description provided for @requestedSkills.
+  ///
+  /// In pt, this message translates to:
+  /// **'Habilidades pedidas'**
+  String get requestedSkills;
+
+  /// No description provided for @resultOf.
+  ///
+  /// In pt, this message translates to:
+  /// **'{n} de {total}'**
+  String resultOf(int n, int total);
+
+  /// No description provided for @resultsBack.
+  ///
+  /// In pt, this message translates to:
+  /// **'Resultados'**
+  String get resultsBack;
+
+  /// No description provided for @yourTalisman.
+  ///
+  /// In pt, this message translates to:
+  /// **'Talismã (seu)'**
+  String get yourTalisman;
+
+  /// No description provided for @noBuildSets.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum conjunto chega perto. Tente baixar níveis ou desligar \"Só peças do meu progresso\".'**
+  String get noBuildSets;
+
+  /// No description provided for @rankingNote.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ordenados por: atinge tudo, depois mais slots livres, depois defesa.'**
+  String get rankingNote;
+
+  /// No description provided for @chooseSkills.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha ao menos uma habilidade.'**
+  String get chooseSkills;
+
+  /// No description provided for @optimizerLoadFailed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar os dados do Montar build.'**
+  String get optimizerLoadFailed;
+
+  /// No description provided for @talismansTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meus talismãs'**
+  String get talismansTitle;
+
+  /// No description provided for @talismansNote.
+  ///
+  /// In pt, this message translates to:
+  /// **'Usados pelo Montar build. Ficam no aparelho.'**
+  String get talismansNote;
+
+  /// No description provided for @registered.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cadastrados'**
+  String get registered;
+
+  /// No description provided for @newTalisman.
+  ///
+  /// In pt, this message translates to:
+  /// **'Novo talismã'**
+  String get newTalisman;
+
+  /// No description provided for @editTalisman.
+  ///
+  /// In pt, this message translates to:
+  /// **'Editar talismã'**
+  String get editTalisman;
+
+  /// No description provided for @skillOne.
+  ///
+  /// In pt, this message translates to:
+  /// **'Habilidade 1'**
+  String get skillOne;
+
+  /// No description provided for @skillTwoOptional.
+  ///
+  /// In pt, this message translates to:
+  /// **'Habilidade 2 (opcional)'**
+  String get skillTwoOptional;
+
+  /// No description provided for @noneSkill.
+  ///
+  /// In pt, this message translates to:
+  /// **'nenhuma'**
+  String get noneSkill;
+
+  /// No description provided for @slotN.
+  ///
+  /// In pt, this message translates to:
+  /// **'Slot {n}'**
+  String slotN(int n);
+
+  /// No description provided for @emptySlot.
+  ///
+  /// In pt, this message translates to:
+  /// **'vazio'**
+  String get emptySlot;
+
+  /// No description provided for @saveTalisman.
+  ///
+  /// In pt, this message translates to:
+  /// **'Salvar talismã'**
+  String get saveTalisman;
+
+  /// No description provided for @deleteTalisman.
+  ///
+  /// In pt, this message translates to:
+  /// **'Excluir talismã'**
+  String get deleteTalisman;
+
+  /// No description provided for @deleteTalismanConfirm.
+  ///
+  /// In pt, this message translates to:
+  /// **'Excluir \"{name}\"?'**
+  String deleteTalismanConfirm(String name);
+
+  /// No description provided for @noTalismans.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum talismã cadastrado.'**
+  String get noTalismans;
+
+  /// No description provided for @skillProgressSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'{skill}, {got} de {want}'**
+  String skillProgressSemantics(String skill, int got, int want);
+
+  /// No description provided for @skillMissingSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'{skill}, {got} de {want}, faltam {missing}'**
+  String skillMissingSemantics(String skill, int got, int want, int missing);
+
+  /// No description provided for @optimizerSource.
+  ///
+  /// In pt, this message translates to:
+  /// **'Caderninho · Montar build'**
+  String get optimizerSource;
 }
 
 class _AppLocalizationsDelegate

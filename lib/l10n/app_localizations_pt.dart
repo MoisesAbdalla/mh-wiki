@@ -940,4 +940,253 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get afterStory => 'Depois da história';
+
+  @override
+  String get skillsWanted => 'Habilidades que você quer';
+
+  @override
+  String get searchSkill => 'Buscar habilidade…';
+
+  @override
+  String commonForType(String type) {
+    return 'Comuns para $type';
+  }
+
+  @override
+  String addSkill(String skill) {
+    return 'Adicionar $skill';
+  }
+
+  @override
+  String increaseSkill(String skill) {
+    return 'Aumentar $skill';
+  }
+
+  @override
+  String decreaseSkill(String skill) {
+    return 'Diminuir $skill';
+  }
+
+  @override
+  String removeSkill(String skill) {
+    return 'Remover $skill';
+  }
+
+  @override
+  String get weaponAndTalismans => 'Arma e talismãs';
+
+  @override
+  String get weaponLabel => 'Arma';
+
+  @override
+  String anyWeaponUpTo(String type, String progress) {
+    return 'Qualquer $type até $progress';
+  }
+
+  @override
+  String get anyWeapon => 'Qualquer';
+
+  @override
+  String get chooseWeapon => 'escolher';
+
+  @override
+  String get searchWeapon => 'Buscar arma…';
+
+  @override
+  String get myTalismans => 'Meus talismãs';
+
+  @override
+  String talismansCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count cadastrados',
+      one: '1 cadastrado',
+      zero: 'nenhum cadastrado',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get useTalismans => 'usar todos';
+
+  @override
+  String get manage => 'gerenciar';
+
+  @override
+  String get onlyMyProgress => 'Só peças do meu progresso';
+
+  @override
+  String upToRarity(String progress, int rarity) {
+    return 'até $progress (raridade $rarity)';
+  }
+
+  @override
+  String get buildIt => 'Montar build';
+
+  @override
+  String get alter => 'alterar';
+
+  @override
+  String get edit => 'editar';
+
+  @override
+  String get searching => 'procurando…';
+
+  @override
+  String searchingChecked(int count) {
+    return '$count combinações';
+  }
+
+  @override
+  String skillsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count habilidades',
+      one: '1 habilidade',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String setsFound(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count conjuntos encontrados',
+      one: '1 conjunto encontrado',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String optionN(int n) {
+    return 'Opção $n';
+  }
+
+  @override
+  String get setComplete => 'completa';
+
+  @override
+  String get setAlmost => 'quase';
+
+  @override
+  String missingN(int n) {
+    return 'falta $n';
+  }
+
+  @override
+  String skillGot(String skill, int got, int want) {
+    return '$skill $got/$want';
+  }
+
+  @override
+  String maxDefense(int defense) {
+    return 'Defesa máx. $defense';
+  }
+
+  @override
+  String get freeSlots => 'sobram';
+
+  @override
+  String get noTalisman => 'nenhum';
+
+  @override
+  String weaponWithTalisman(String weapon, String talisman) {
+    return '$weapon · talismã $talisman';
+  }
+
+  @override
+  String alsoComes(String skills) {
+    return 'Também vem: $skills';
+  }
+
+  @override
+  String get requestedSkills => 'Habilidades pedidas';
+
+  @override
+  String resultOf(int n, int total) {
+    return '$n de $total';
+  }
+
+  @override
+  String get resultsBack => 'Resultados';
+
+  @override
+  String get yourTalisman => 'Talismã (seu)';
+
+  @override
+  String get noBuildSets =>
+      'Nenhum conjunto chega perto. Tente baixar níveis ou desligar \"Só peças do meu progresso\".';
+
+  @override
+  String get rankingNote =>
+      'Ordenados por: atinge tudo, depois mais slots livres, depois defesa.';
+
+  @override
+  String get chooseSkills => 'Escolha ao menos uma habilidade.';
+
+  @override
+  String get optimizerLoadFailed =>
+      'Não foi possível carregar os dados do Montar build.';
+
+  @override
+  String get talismansTitle => 'Meus talismãs';
+
+  @override
+  String get talismansNote => 'Usados pelo Montar build. Ficam no aparelho.';
+
+  @override
+  String get registered => 'Cadastrados';
+
+  @override
+  String get newTalisman => 'Novo talismã';
+
+  @override
+  String get editTalisman => 'Editar talismã';
+
+  @override
+  String get skillOne => 'Habilidade 1';
+
+  @override
+  String get skillTwoOptional => 'Habilidade 2 (opcional)';
+
+  @override
+  String get noneSkill => 'nenhuma';
+
+  @override
+  String slotN(int n) {
+    return 'Slot $n';
+  }
+
+  @override
+  String get emptySlot => 'vazio';
+
+  @override
+  String get saveTalisman => 'Salvar talismã';
+
+  @override
+  String get deleteTalisman => 'Excluir talismã';
+
+  @override
+  String deleteTalismanConfirm(String name) {
+    return 'Excluir \"$name\"?';
+  }
+
+  @override
+  String get noTalismans => 'Nenhum talismã cadastrado.';
+
+  @override
+  String skillProgressSemantics(String skill, int got, int want) {
+    return '$skill, $got de $want';
+  }
+
+  @override
+  String skillMissingSemantics(String skill, int got, int want, int missing) {
+    return '$skill, $got de $want, faltam $missing';
+  }
+
+  @override
+  String get optimizerSource => 'Caderninho · Montar build';
 }

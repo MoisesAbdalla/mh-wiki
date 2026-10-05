@@ -17,7 +17,7 @@ description: "Task list for 009 Otimizador de builds (Montar build)"
 
 ## Phase 1: Setup (data)
 
-- [ ] T001 Write `tool/data/build_rise_optimizer.py` per research R2 and data-model.md.
+- [X] T001 Write `tool/data/build_rise_optimizer.py` per research R2 and data-model.md.
   - It reads `assets/data/rise_sunbreak/armor.json` and `weapons.json`.
   - It writes `assets/data/rise_sunbreak/optimizer.json` with skills (max), decorations (slot,
     skill, points), pieces (part, rarity, slots, defense, skills) and weapons (type, rarity, slots,
@@ -25,7 +25,7 @@ description: "Task list for 009 Otimizador de builds (Montar build)"
   - It checks the references, and prints counts and the file size.
 
   Register the asset in `pubspec.yaml` and run the script.
-- [ ] T002 [P] Add the ARB strings of data-model.md › Localisation, then run `flutter gen-l10n`.
+- [X] T002 [P] Add the ARB strings of data-model.md › Localisation, then run `flutter gen-l10n`.
 
 ---
 
