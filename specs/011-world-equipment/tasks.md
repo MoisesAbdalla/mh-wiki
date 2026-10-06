@@ -87,12 +87,12 @@ description: "Task list for 011 Armas e Armaduras do World: Iceborne"
 
 ## Phase 3: User Story 1 - Armas do World (P1) 🎯 MVP
 
-- [ ] T009 [P] [US1] Widget tests:
+- [X] T009 [P] [US1] Widget tests:
   - the World list: World icons, Mestre rank, a hidden element in parentheses in a row;
   - the Dharma detail: hidden note, Selo do Ancião, Defesa, augments, sharpness with Handicraft,
     materials with "Dropado por", the tree; no Rampage or skills card;
   - the Especiais group: a row opens the detail with "Como obter".
-- [ ] T010 [US1] Implement:
+- [X] T010 [US1] Implement:
   - the attribute rows (hidden in parentheses, Selo do Ancião, Defesa, Aumentos) in
     `WeaponAttributesSection` and `WeaponRow`;
   - the "Com Artesanato (nível 5)" label for World;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/features/weapons/presentation/views/widgets/world_specials_card.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/artian_group_card.dart';
 import 'package:mh_wiki/features/weapons/presentation/controllers/artian_controller.dart';
 import 'package:mh_wiki/core/domain/game.dart';
@@ -100,6 +101,13 @@ class _LoadedList extends StatelessWidget {
     final query = state.query;
     final gutter = Space.gutter(MediaQuery.sizeOf(context).width);
     final only = query.onlyLabel;
+    // World specials (011): their own card, hidden by a search or "only".
+    final specials = only != null || query.text.isNotEmpty
+        ? const <Weapon>[]
+        : [
+            for (final w in state.catalog.specialsOf(query.typeId))
+              if (query.rank == null || w.rank == query.rank) w,
+          ];
     final artians = this.artians;
     // The Artian are High rank and have no tree; a search or "only these"
     // hides them.
@@ -186,6 +194,18 @@ class _LoadedList extends StatelessWidget {
               itemBuilder: (context, i) => WeaponTreeCard(
                 key: ValueKey(state.trees[i].id),
                 tree: state.trees[i],
+                selectedId: highlightSelection ? state.selectedId : null,
+                language: controller.language,
+                onSelect: onSelect,
+              ),
+            ),
+          ),
+        if (specials.isNotEmpty)
+          SliverPadding(
+            padding: const EdgeInsets.only(bottom: 16),
+            sliver: SliverToBoxAdapter(
+              child: WorldSpecialsCard(
+                weapons: specials,
                 selectedId: highlightSelection ? state.selectedId : null,
                 language: controller.language,
                 onSelect: onSelect,

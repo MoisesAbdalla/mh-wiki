@@ -23,10 +23,14 @@ class WeaponRow extends StatelessWidget {
     this.selected = false,
     this.ruled = true,
     this.language = NameLanguage.ptBr,
+    this.subtitle,
     super.key,
   });
 
   final NameLanguage language;
+
+  /// Replaces the rank line (World specials).
+  final String? subtitle;
 
   final Weapon weapon;
   final int depth;
@@ -42,7 +46,7 @@ class WeaponRow extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final muted = Theme.of(context).textTheme.bodySmall;
     final name = weapon.name.resolve(language);
-    final rank = l10n.rankLabel(l10n.rankName(weapon.rank));
+    final rank = subtitle ?? l10n.rankLabel(l10n.rankName(weapon.rank));
     final affinity = weapon.affinity;
 
     final stats = Column(
@@ -80,7 +84,9 @@ class WeaponRow extends StatelessWidget {
         rank,
         '${l10n.attack} ${weapon.attack}',
         for (final s in weapon.special)
-          '${l10n.specialName(s.kind)} ${s.value}',
+          s.hidden
+              ? l10n.hiddenSpecialSemantics(l10n.specialName(s.kind), s.value)
+              : '${l10n.specialName(s.kind)} ${s.value}',
         if (affinity != 0) '${l10n.affinity} ${l10n.signedPercent(affinity)}',
       ].join(', '),
       excludeSemantics: true,

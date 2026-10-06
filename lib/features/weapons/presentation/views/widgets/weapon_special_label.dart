@@ -38,7 +38,9 @@ class WeaponSpecialLabel extends StatelessWidget {
     final element = special.kind.element;
     final name = l10n.specialName(special.kind);
     return Semantics(
-      label: '$name ${special.value}',
+      label: special.hidden
+          ? l10n.hiddenSpecialSemantics(name, special.value)
+          : '$name ${special.value}',
       excludeSemantics: true,
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -73,7 +75,15 @@ class WeaponSpecialLabel extends StatelessWidget {
             ),
             const SizedBox(width: 4),
           ],
-          Text('${special.value}', style: notebookNumber(size: size + 1)),
+          Text(
+            special.hidden ? '(${special.value})' : '${special.value}',
+            style: notebookNumber(
+              size: size + 1,
+              color: special.hidden
+                  ? HunterPalette.textMuted
+                  : HunterPalette.text,
+            ),
+          ),
         ],
       ),
     );

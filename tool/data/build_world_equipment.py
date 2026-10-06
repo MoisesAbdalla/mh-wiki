@@ -58,8 +58,11 @@ KINSECT = {'Sever Boost': 'Bônus de Corte', 'Blunt Boost': 'Bônus de Impacto',
            'Stamina Upgrade & Healing': 'Vigor e Cura', 'Spirit & Strength Boost': 'Espírito e Força'}
 NOTES = {'White': 'Branco', 'Purple': 'Roxo', 'Red': 'Vermelho', 'Blue': 'Azul', 'Green': 'Verde',
          'Yellow': 'Amarelo', 'Light Blue': 'Azul-claro', 'Dark Blue': 'Azul-escuro', 'Orange': 'Laranja', 'Cyan': 'Ciano'}
-COATINGS = {'Close Range': 'Curto Alcance', 'Power': 'Força', 'Poison': 'Veneno',
-            'Paralysis': 'Paralisia', 'Sleep': 'Sono', 'Blast': 'Explosão'}
+# Same wording as the Rise data (Kiranico pt-BR).
+COATINGS = {'Close Range': ('Close-range Coating', 'Revestimento de Imediação'),
+            'Power': ('Power Coating', 'Revest. de Poder'), 'Poison': ('Poison Coating', 'Revest. de Veneno'),
+            'Paralysis': ('Paralysis Coating', 'Revest. de Paralisia'),
+            'Sleep': ('Sleep Coating', 'Revest. de Sono'), 'Blast': ('Blast Coating', 'Revest. Explosivo')}
 DEVIATION = {'None': 'Nenhum', 'Low': 'Baixo', 'Average': 'Médio', 'High': 'Alto',
              'Very High': 'Muito Alto'}
 SPECIAL_AMMO = {'Wyvernblast': 'Explosão Wyvern', 'Wyvernheart': 'Coração Wyvern',
@@ -278,12 +281,13 @@ def traits(w, type_id, ammo):
         for c in w['BoCoatings'].split(','):
             c = c.strip()
             plus = c.endswith('+')
-            base = c.rstrip('+')
-            shots.append({'name': text(c, COATINGS.get(base, base) + ('+' if plus else ''))})
+            en, pt = COATINGS.get(c.rstrip('+'), (c.rstrip('+'), None))
+            mark = '+' if plus else ''
+            shots.append({'name': text(en + mark, pt + mark if pt else None)})
         t['coatings'] = shots
     dev = w.get('LbgDeviation') or w.get('HbgDeviation')
     if dev:
-        t['deviation'] = text(dev, DEVIATION.get(dev))
+        t['deviation'] = text(f'Deviation {dev}', f'Desvio {DEVIATION[dev]}' if dev in DEVIATION else None)
     special = w.get('LbgSpecialAmmoType') or w.get('HbgSpecialAmmoType')
     if special:
         t['specialAmmo'] = text(special, SPECIAL_AMMO.get(special))
