@@ -15,6 +15,7 @@ additions in 011 data-model.md:
 import glob
 import html
 import json
+import math
 import os
 import re
 import sys
@@ -151,6 +152,19 @@ def kiranico_series_names():
             tp = re.search(r'<title>([^<]+?) - MH:World', fp.read())
         if te and tp:
             out[html.unescape(te.group(1)).strip()] = html.unescape(tp.group(1)).strip()
+    return out
+
+
+def kiranico_piece_slots():
+    out = {}
+    rx = (r'justify-content-between">\s*<span>([^<]+)</span>.*?</td>\s*'
+          r'<td class="text-center">[^<]*</td>\s*<td class="text-center">\d+ ~ \d+</td>'
+          r'(?:\s*<td class="text-center">[+-]?\d*</td>){5}\s*<td class="text-center">(.*?)</td>')
+    for f in glob.glob(os.path.join(CACHE, 'world_kiranico_series_*_en.html')):
+        with open(f, encoding='utf8') as fe:
+            for m in re.finditer(rx, html.unescape(fe.read()), re.S):
+                out[m.group(1).strip()] = sorted((int(x) for x in re.findall(r'slot_size_(\d)', m.group(2))),
+                                                 reverse=True)
     return out
 
 
@@ -332,7 +346,8 @@ def build_weapons(mats, pt_names, monster_pt):
             'rarity': rarity,
             'tree': slugs[name] if special else slug(tree),
             'treeName': text(name, pt_names.get(norm(name))) if special else text(tree, tree_pt),
-            'attack': round(int(w['Attack']) * mult),
+            # The game shows the displayed attack rounded down (655.5 → 655).
+            'attack': math.floor(int(w['Attack']) * mult + 1e-9),
             'affinity': int(w.get('Affinity') or 0),
             'special': [special_of(w[f'Element{i}'], w[f'ElementDmg{i}'])
                         for i in (1, 2) if w.get(f'Element{i}') and w.get(f'ElementDmg{i}')
@@ -439,9 +454,19 @@ def refs(skills, entries):
     return [{'skill': k, 'level': v} for k, v in out.items()]
 
 
+def mhwdb_name(name):
+    return name.replace(' α+', ' Alpha +').replace(' β+', ' Beta +').replace(' γ+', ' Gamma +')         .replace(' α', ' Alpha').replace(' β', ' Beta').replace(' γ', ' Gamma')
+
+
 def build_armor(mats, skills, bonuses, pt_pieces, pt_sets):
     wiki = load('world_wiki_armor.json')
     renders = load('world_set_renders.json')
+    # Slots: Kiranico (game data), else mhw-db, else the wiki, which has a few
+    # wrong (SC-002: the Butterfly pieces).
+    db_slots = {p['name']: sorted((x['rank'] for x in p['slots']), reverse=True)
+                for s in load('world_mhwdb_armor-sets.json') for p in s['pieces']}
+    kir_slots = kiranico_piece_slots()
+    fixed = 0
     sets, pieces = [], []
     piece_ids, set_ids = Counter(), Counter()
     for s in wiki.values():
@@ -464,6 +489,12 @@ def build_armor(mats, skills, bonuses, pt_pieces, pt_sets):
             slots = []
             for level in (4, 3, 2, 1):
                 slots += [level] * int(p.get(f'Decos{level}') or 0)
+            better = kir_slots.get(p['Name'])
+            if better is None:
+                better = db_slots.get(mhwdb_name(p['Name']))
+            if better is not None and better != slots:
+                slots = better
+                fixed += 1
             entries = [(k['Name'], k['Level']) for k in p.get('Skills') or []]
             if bonus_name in bonuses:
                 entries.append((bonus_name, 1))
@@ -493,6 +524,7 @@ def build_armor(mats, skills, bonuses, pt_pieces, pt_sets):
         if name in renders:
             out['image'] = renders[name]
         sets.append(out)
+    print(f'  piece slots taken from Kiranico or mhw-db where the wiki differs: {fixed}')
     return sets, pieces
 
 

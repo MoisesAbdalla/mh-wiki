@@ -300,6 +300,85 @@ void main() {
     expect(artians.mine.single.build.element, 'ice');
   });
 
+  // 011 T014: Armas → World → Dharma Inabalável → a material's monster;
+  // then Armaduras → World → Fatalis α+.
+  testWidgets('World weapon to its monster, then a World set', (tester) async {
+    final dependencies = await AppDependencies.create();
+    final settings = dependencies.createSettingsController();
+    final monsters = dependencies.createMonsterListController();
+    final worldWeapons = dependencies.createWeaponListController(
+      game: Game.worldIceborne,
+    );
+    final worldArmor = dependencies.createArmorController(
+      game: Game.worldIceborne,
+    );
+    await settings.load();
+    await monsters.load();
+
+    await tester.pumpWidget(
+      MhWikiApp(
+        monsterListController: monsters,
+        settingsController: settings,
+        weaponListController: dependencies.createWeaponListController(),
+        armorController: dependencies.createArmorController(),
+        worldWeaponController: worldWeapons,
+        worldArmorController: worldArmor,
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Armas'));
+    await tester.pumpAndSettle();
+    await tester.tap(gameTab('Monster Hunter World: Iceborne').first);
+    await tester.pumpAndSettle();
+    expect(worldWeapons.state, isA<WeaponListLoaded>());
+
+    final dharma = worldWeapons.catalog!.weapons.firstWhere(
+      (w) => w.name.en == 'Immovable Dharma',
+    );
+    await worldWeapons.select(dharma.id);
+    await tester.pumpAndSettle();
+    expect(find.text('(540)'), findsOneWidget);
+
+    final link = find.textContaining('Shara Ishvalda ›').first;
+    await tester.scrollUntilVisible(
+      link,
+      200,
+      scrollable: find
+          .descendant(
+            of: find.byType(WeaponDetailView),
+            matching: find.byType(Scrollable),
+          )
+          .first,
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(link);
+    await tester.pumpAndSettle();
+    expect(monsters.selectedMonster?.id.slug, 'shara-ishvalda');
+
+    await tester.tap(find.text('Armaduras'));
+    await tester.pumpAndSettle();
+    await tester.tap(gameTab('Monster Hunter World: Iceborne').first);
+    await tester.pumpAndSettle();
+    final fatalis = (worldArmor.state as ArmorLoaded).catalog.sets.firstWhere(
+      (s) => s.name.en == 'Fatalis α+',
+    );
+    await worldArmor.select(ArmorTab.sets, fatalis.id);
+    await tester.pumpAndSettle();
+    expect(find.byType(ArmorSetDetailView), findsOneWidget);
+    await tester.scrollUntilVisible(
+      find.text('Bônus do conjunto'),
+      200,
+      scrollable: find
+          .descendant(
+            of: find.byType(ArmorSetDetailView),
+            matching: find.byType(Scrollable),
+          )
+          .first,
+    );
+    expect(find.text('Bônus do conjunto'), findsOneWidget);
+  });
+
   // 008 T021: Assistente → Mestre M2★ → Espadão → a build → save it → it
   // shows in Minhas builds. Preferences are mocked so the real ones stay.
   testWidgets('pick the progress, open a build and save it', (tester) async {

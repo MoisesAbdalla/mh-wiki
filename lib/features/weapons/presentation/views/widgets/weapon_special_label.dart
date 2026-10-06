@@ -75,13 +75,19 @@ class WeaponSpecialLabel extends StatelessWidget {
             ),
             const SizedBox(width: 4),
           ],
-          Text(
-            special.hidden ? '(${special.value})' : '${special.value}',
-            style: notebookNumber(
-              size: size + 1,
-              color: special.hidden
-                  ? HunterPalette.textMuted
-                  : HunterPalette.text,
+          // Scales down rather than overflow a narrow row at large text.
+          Flexible(
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                special.hidden ? '(${special.value})' : '${special.value}',
+                style: notebookNumber(
+                  size: size + 1,
+                  color: special.hidden
+                      ? HunterPalette.textMuted
+                      : HunterPalette.text,
+                ),
+              ),
             ),
           ),
         ],

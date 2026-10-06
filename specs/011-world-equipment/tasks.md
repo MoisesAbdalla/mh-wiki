@@ -121,13 +121,13 @@ description: "Task list for 011 Armas e Armaduras do World: Iceborne"
 
 ## Phase 5: Polish
 
-- [ ] T013 [P] Accessibility: 320 dp at 200 % on the World list, detail, Especiais, set, Joias and
+- [X] T013 [P] Accessibility: 320 dp at 200 % on the World list, detail, Especiais, set, Joias and
   Talismãs; tap targets and semantics.
-- [ ] T014 [P] Integration flow: Armas → World → Dharma Inabalável → a material → its monster in
+- [X] T014 [P] Integration flow: Armas → World → Dharma Inabalável → a material → its monster in
   Monstros; then Armaduras → World → Fatalis α+.
-- [ ] T015 SC-002 spot check: 10 weapons, 10 sets and 10 decorations against another source.
+- [X] T015 SC-002 spot check: 10 weapons, 10 sets and 10 decorations against another source.
   Record it in research.md.
-- [ ] T016 Update `README.md` and `tool/data/README.md`: World equipment, sources, icons, sizes.
+- [X] T016 Update `README.md` and `tool/data/README.md`: World equipment, sources, icons, sizes.
 - [ ] T017 Gates: analyze, format, test, integration on Windows, Windows release build, web build,
   and APK size (R8 budget).
 - [ ] T018 The user runs the quickstart checks 1–9. Fix the findings, then merge into `main`.

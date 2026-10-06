@@ -140,3 +140,35 @@
   and the set bonus card.
 - **Accessibility**: 320 dp at 200 %. **Integration**: Armas → World → Dharma → material →
   Shara Ishvalda; then Armaduras → World → Fatalis α+.
+
+## T015 — Cross-check (SC-002), 2026-10-05
+
+Instead of 10 items of each kind, the whole dataset was compared by script with Kiranico World, a
+source independent of the wiki and mhw-db.
+
+- **Weapons: 3,105 of 3,119 match** the displayed attack, the element or status, and the hidden
+  flag. Four weapons are not on Kiranico. The other 14 are not data errors:
+  - the Kjárr weapons, whose values are random;
+  - the dual-element dual blades, which Kiranico shows on another scale (21 against 210);
+  - two rows the script misread because Kiranico prints a decimal attack (655.5).
+- **Fixed after the check: displayed attack is rounded down.** The game shows 655 for raw 285 on a
+  Gunlance (285 × 2.3 = 655.5); the builder had rounded it to 656.
+- **Pieces: 1,243 of 1,243 match** base defense, the five resistances and slots. The 395 others
+  are not on Kiranico's series pages.
+  - Kiranico lists resistances as Fire, Water, Ice, Thunder, Dragon.
+  - **Fixed after the check: slots.** The wiki had 7 pieces wrong (the Butterfly set and others).
+    The builder now takes slots from Kiranico, else mhw-db, else the wiki.
+- **Decorations: 400 of 400 found** match the slot level. Five are not on Kiranico's list.
+- **pt-BR names**:
+  - weapons 3,123 / 3,123;
+  - pieces 1,595 / 1,638 (the 43 missing are sets Kiranico only has as layered armor);
+  - sets 355 / 360;
+  - decorations 400 / 405;
+  - skills 198 / 198;
+  - talisman ranks 310 / 314.
+- **Notes**:
+  - Weapon descriptions exist in English only, as in Rise.
+  - Set-bonus step names (Inheritance, Agitator Secret…) have no pt-BR name, so the set card
+    shows each step's pt-BR description.
+  - The pt-BR wording for traits not on Kiranico (kinsect bonus, notes, special ammo) is our own
+    translation.

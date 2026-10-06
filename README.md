@@ -41,7 +41,7 @@ Windows).
     - "Só peças do meu progresso" filters by rarity (Baixo ≤ 3, Alto 5–7, Mestre 8–10); within
       rarity 10 the Master Rank gates (Risen, Afflicted) are not modelled.
 - **Wilds in Armas and Armaduras** (feature 010): game logos at the top of both areas switch
-  between Rise: Sunbreak and Wilds (World says "em breve"). Each game keeps its own filters and
+  between World, Rise: Sunbreak and Wilds. Each game keeps its own filters and
   selection. The Wilds content uses the Wilds icons.
   - **Armas**: 1,146 weapons of the 14 types, with the weapon skills (a tap opens the skill in
     Armaduras), sharpness with Handicraft, materials and the upgrade tree. There is no Rampage.
@@ -56,6 +56,20 @@ Windows).
     conjunto, grupo), and 361 decorations filtered by weapon or armor kind. A fourth tab lists
     64 talismans with their ranks. A set shows its set bonus ("2 peças", "4 peças") and its
     group bonus.
+- **World: Iceborne in Armas and Armaduras** (feature 011), with the World icons by rarity.
+  - **Armas**: 3,123 weapons of the 14 types, rarity 1–12 and ranks Baixo, Alto and Mestre. The
+    detail shows:
+    - the displayed attack, affinity, and element or status. A hidden element is shown in
+      parentheses, with the Liberar Elemento note;
+    - Selo do Ancião, the defense bonus, slots of level 1–4, and the Iceborne augment slots;
+    - sharpness with and without Handicraft, the type traits, materials with "Dropado por", and
+      the tree.
+
+    Kulve Taroth, Kjárr and Safi'jiiva weapons are in an "Especiais" card with "Como obter".
+  - **Armaduras**: 360 sets and 1,638 pieces. Each set shows defense base → max, the summed skills
+    and the set bonus (e.g. Lenda de Fatalis, 2 and 4 peças). There are also 198 skills (seals
+    "conjunto" and "segredo"), 405 decorations of level 1–4 (two skills on many level 4 jewels)
+    and 109 talismans I–V.
 - Areas (Monstros, Armas, Armaduras, Assistente) in a bottom bar, or a side rail on wide screens; each keeps its
   filters and selection.
 - Game names shown in Portuguese (Brazil) or English (Configurações).
@@ -92,6 +106,11 @@ Windows).
   `assets/images/armor/SOURCES.md`).
 - **Data**: Kiranico, Monster Hunter Wiki, mhw-db.com and Fextralife (see each dataset's `sources`).
 - **Builds**: the Game8 Monster Hunter Rise build guides; each build links to its source page.
+- **World equipment**:
+  - weapon and armor data from the Monster Hunter Wiki data modules (`Module:MHWI/data`);
+  - set bonuses, skills, decorations and talismans from [mhw-db.com](https://mhw-db.com);
+  - pt-BR names and the slot check from Kiranico World;
+  - MHWI icons and renders from the Monster Hunter Wiki.
 - **Wilds equipment**:
   - data from [wilds.mhdb.io](https://wilds.mhdb.io) (en + pt-BR);
   - Artian rules from the Monster Hunter Wiki, checked against Game8;
