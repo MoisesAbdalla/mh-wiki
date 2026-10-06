@@ -14,9 +14,12 @@ class FilterWeapons {
   }) : _trees = {
          for (final type in catalog.types)
            type.id: build(
-             // Gogma Artian are shown in the Artian group (010).
+             // Gogma Artian (010) and World specials (011) have their own groups.
              catalog.weapons.where(
-               (w) => w.type.id == type.id && w.gogma == null,
+               (w) =>
+                   w.type.id == type.id &&
+                   w.gogma == null &&
+                   w.worldSpecial == null,
              ),
            ),
        },

@@ -183,6 +183,7 @@ class SkillKindSeal extends StatelessWidget {
       SkillKind.armor => l10n.skillKindArmor,
       SkillKind.set => l10n.skillKindSet,
       SkillKind.group => l10n.skillKindGroup,
+      SkillKind.secret => l10n.skillKindSecret,
     };
     return DecoratedBox(
       decoration: BoxDecoration(

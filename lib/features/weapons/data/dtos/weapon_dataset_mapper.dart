@@ -52,8 +52,8 @@ abstract final class WeaponDatasetMapper {
             attack: w.attack,
             affinity: w.affinity,
             special: [
-              for (final (kind, value) in w.special)
-                WeaponSpecial(kind: kind, value: value),
+              for (final (kind, value, hidden) in w.special)
+                WeaponSpecial(kind: kind, value: value, hidden: hidden),
             ],
             slots: w.slots,
             rampageSlot: w.rampageSlot,
@@ -74,6 +74,9 @@ abstract final class WeaponDatasetMapper {
             rampageSkills: w.rampageSkills,
             skills: w.skills,
             gogma: w.gogma,
+            elderseal: w.elderseal,
+            defenseBonus: w.defenseBonus,
+            worldSpecial: w.worldSpecial,
             sources: [
               for (final (name, url) in w.sources)
                 SourceRef(name: name, url: url),

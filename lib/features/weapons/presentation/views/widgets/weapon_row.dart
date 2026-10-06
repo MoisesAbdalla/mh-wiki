@@ -136,14 +136,14 @@ class WeaponRow extends StatelessWidget {
   }
 }
 
-/// The weapon's picture, or for the Wilds its type icon in the rarity's
-/// colour (010 FR-009).
+/// The weapon's picture, or for Wilds and World its type icon in the
+/// rarity's colour (010 FR-009, 011 FR-010).
 String? weaponImage(Weapon weapon) =>
     weapon.imageAsset ??
-    (weapon.id.game == Game.wilds
-        ? GameIcons.weaponType(
+    (weapon.id.game == Game.riseSunbreak
+        ? null
+        : GameIcons.weaponType(
             weapon.type.id,
-            Game.wilds,
+            weapon.id.game,
             rarity: weapon.rarity,
-          )
-        : null);
+          ));

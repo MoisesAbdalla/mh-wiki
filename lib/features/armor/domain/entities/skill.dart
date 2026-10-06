@@ -2,7 +2,7 @@ import 'package:mh_wiki/core/domain/localized_text.dart';
 import 'package:mh_wiki/core/domain/material_cost.dart';
 
 /// What gives a skill in the Wilds (010 FR-006); Rise skills are armor.
-enum SkillKind { weapon, armor, set, group }
+enum SkillKind { weapon, armor, set, group, secret }
 
 /// Which slots a decoration fits in the Wilds (010 FR-007).
 enum DecorationKind { weapon, armor }

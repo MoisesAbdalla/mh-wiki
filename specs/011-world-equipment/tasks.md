@@ -56,27 +56,27 @@ description: "Task list for 011 Armas e Armaduras do World: Iceborne"
 
 ## Phase 2: Foundational
 
-- [ ] T005 [P] DTO tests for the optional fields:
+- [X] T005 [P] DTO tests for the optional fields:
   - weapons: `special[].hidden`, `elderseal`, `defenseBonus`, `worldSpecial`, two elements;
   - armor: skill kind `secret`, level 4 decorations, 5 charm ranks.
 
   Rise and Wilds files still parse unchanged.
-- [ ] T006 Implement the domain and DTO additions:
+- [X] T006 Implement the domain and DTO additions:
   - `WeaponSpecial.hidden`, `Weapon.elderseal`, `defenseBonus` and `worldSpecial`;
   - `augmentSlots` (R7), `WeaponCatalog.specialsOf`;
   - `FilterWeapons` leaves the specials out of the trees;
   - `SkillKind.secret`, and the readers.
-- [ ] T007 [P] Real-dataset tests in `test/features/{weapons,armor}/data/real_world_*_test.dart`:
+- [X] T007 [P] Real-dataset tests in `test/features/{weapons,armor}/data/real_world_*_test.dart`:
   - counts (SC-001), with ≥ 99 % pt-BR;
   - **Dharma Inabalável**: 1344, (Dragão 540) hidden, Alto, +30, slots [1, 1], 1 augment, upgrades
     from Espada Selo Dragão I;
   - the Especiais of Espadão;
   - **Fatalis α+**: 5 pieces of rarity 12, bonus steps 2 and 4;
-  - Joia Ataque/Fortitude 4 with two skills;
+  - Joia Ataque/Fortitude 4 (Fortitude/Attack Jewel 4) with two skills;
   - Amuleto de Ataque I–V;
   - ≥ 95 % with an image or icon (SC-003);
   - the material and monster match rate is printed.
-- [ ] T008 `GameIcons` for `Game.worldIceborne`: type, part, slot and decoration. Enable World in
+- [X] T008 `GameIcons` for `Game.worldIceborne`: type, part, slot and decoration. Enable World in
   `EquipmentArea`, add the World controllers in `AppDependencies` and `main.dart`, and wire
   `app_home.dart`, including the World monster "Armas feitas com ele". Update the
   `equipment_area` test, since World is no longer "em breve".

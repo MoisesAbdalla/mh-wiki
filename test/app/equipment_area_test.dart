@@ -59,4 +59,34 @@ void main() {
     expect(find.text('rath'), findsOneWidget);
     handle.dispose();
   });
+
+  testWidgets('a game with a page is enabled (World, 011)', (tester) async {
+    final handle = tester.ensureSemantics();
+    final game = ValueNotifier(Game.riseSunbreak);
+    addTearDown(game.dispose);
+    await pumpApp(
+      tester,
+      Scaffold(
+        body: EquipmentArea(
+          game: game,
+          pages: {
+            Game.worldIceborne: (header) =>
+                Column(children: [header, const Text('world-page')]),
+            Game.riseSunbreak: (header) => header,
+          },
+        ),
+      ),
+    );
+    expect(
+      find.bySemanticsLabel(RegExp('Monster Hunter World.*em breve')),
+      findsNothing,
+    );
+    await tester.tap(
+      find.bySemanticsLabel(RegExp('Monster Hunter World')).first,
+    );
+    await tester.pumpAndSettle();
+    expect(game.value, Game.worldIceborne);
+    expect(find.text('world-page'), findsOneWidget);
+    handle.dispose();
+  });
 }

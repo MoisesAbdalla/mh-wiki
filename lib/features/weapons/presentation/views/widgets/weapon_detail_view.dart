@@ -133,8 +133,8 @@ class WeaponHeader extends StatelessWidget {
       type,
       l10n.rarity(weapon.rarity),
       l10n.rankLabel(l10n.rankName(weapon.rank)),
-      // Quest stars are a Rise estimate; the Wilds header stops at the rank.
-      if (weapon.id.game != Game.wilds)
+      // Quest stars are a Rise estimate; other headers stop at the rank.
+      if (weapon.id.game == Game.riseSunbreak)
         if (weapon.stars.estimated)
           l10n.starsEstimated(weapon.stars.value)
         else

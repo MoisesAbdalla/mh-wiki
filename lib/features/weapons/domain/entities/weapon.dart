@@ -39,6 +39,9 @@ final class Weapon {
     this.rampageSkills = const [],
     this.skills = const [],
     this.gogma,
+    this.elderseal,
+    this.defenseBonus = 0,
+    this.worldSpecial,
   });
 
   final WeaponId id;
@@ -83,15 +86,45 @@ final class Weapon {
   /// Gogma Artian live in the Artian group, not in the trees.
   final ArtianFocus? gogma;
 
+  /// World: Elderseal strength; `null` when the weapon has none.
+  final Elderseal? elderseal;
+
+  /// World: defense the weapon adds; 0 when none.
+  final int defenseBonus;
+
+  /// World: Kulve Taroth, Kjárr and Safi'jiiva weapons, listed apart from
+  /// the trees (011 FR-004).
+  final WorldSpecial? worldSpecial;
+
+  /// Iceborne augment slots by rarity (011 research R7): 10 → 3, 11 → 2,
+  /// 12 → 1; none elsewhere.
+  int get augmentSlots => id.game != Game.worldIceborne
+      ? 0
+      : switch (rarity) {
+          10 => 3,
+          11 => 2,
+          12 => 1,
+          _ => 0,
+        };
+
   /// Ranks by rarity: Sunbreak 1–3 Low, 4–7 High, 8–10 Master (006
-  /// research R3); Wilds 1–4 Low, 5–8 High.
-  Rank get rank => id.game == Game.wilds
-      ? (rarity <= 4 ? Rank.low : Rank.high)
-      : rarity <= 3
-      ? Rank.low
-      : rarity <= 7
-      ? Rank.high
-      : Rank.master;
+  /// research R3); Wilds 1–4 Low, 5–8 High; World 1–4 Low, 5–8 High,
+  /// 9–12 Master.
+  Rank get rank => switch (id.game) {
+    Game.wilds => rarity <= 4 ? Rank.low : Rank.high,
+    Game.worldIceborne =>
+      rarity <= 4
+          ? Rank.low
+          : rarity <= 8
+          ? Rank.high
+          : Rank.master,
+    Game.riseSunbreak =>
+      rarity <= 3
+          ? Rank.low
+          : rarity <= 7
+          ? Rank.high
+          : Rank.master,
+  };
 
   @override
   bool operator ==(Object other) => other is Weapon && other.id == id;
@@ -114,3 +147,9 @@ final class WeaponSkill {
   final int level;
   final int max;
 }
+
+/// Elderseal strength of a World weapon.
+enum Elderseal { low, average, high }
+
+/// How a World special weapon is obtained.
+enum WorldSpecial { kulve, kjarr, safi }

@@ -220,7 +220,9 @@ class ArmorSetDetailView extends StatelessWidget {
 
   /// Set and group skills count pieces, not levels.
   static bool _counted(Skill s) =>
-      s.kind == SkillKind.set || s.kind == SkillKind.group;
+      s.kind == SkillKind.set ||
+      s.kind == SkillKind.group ||
+      s.kind == SkillKind.secret;
 }
 
 /// One set or group bonus: the skill and each piece-count step.
@@ -474,12 +476,13 @@ class _SkillDetailViewState extends State<SkillDetailView> {
           title: skill.name.resolve(language),
           subtitle: [
             skill.description.resolve(language),
-            if (widget.catalog.game == Game.wilds)
+            if (widget.catalog.game != Game.riseSunbreak)
               switch (skill.kind) {
                 SkillKind.weapon => l10n.skillKindWeapon,
                 SkillKind.armor => l10n.skillKindArmor,
                 SkillKind.set => l10n.skillKindSet,
                 SkillKind.group => l10n.skillKindGroup,
+                SkillKind.secret => l10n.skillKindSecret,
               },
             l10n.skillMaxLevel(skill.maxLevel),
           ].where((t) => t.isNotEmpty).join(' · '),
