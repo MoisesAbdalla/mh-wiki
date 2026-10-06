@@ -246,7 +246,8 @@ guide.
     whose Kiranico list has no level text take it from the wiki, in English only.
 - 220 rows with no defense and no skills (cosmetic armor) are left out.
 - 1,282 pieces (93.5 %) have an icon.
-- The release APK (arm64) was 34.2 MB at 007; with the Wilds equipment (010) it is 39.5 MB.
+- The release APK (arm64) was 34.2 MB at 007, 39.5 MB with the Wilds equipment (010) and 43.4 MB
+  with the World equipment (011).
 
 ### Builds (Rise: Sunbreak)
 

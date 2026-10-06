@@ -172,3 +172,18 @@ source independent of the wiki and mhw-db.
     shows each step's pt-BR description.
   - The pt-BR wording for traits not on Kiranico (kinsect bonus, notes, special ammo) is our own
     translation.
+
+## T017 — Gates, 2026-10-05
+
+- **Gates passed**:
+  - `dart format`: 0 files changed;
+  - `flutter analyze`: no issues;
+  - `flutter test`: 516 passed;
+  - integration on Windows: 8/8 passed;
+  - Windows release and web builds succeed.
+- **APK size**: the arm64 release APK is 43.4 MB. That is +3.9 MB over 010 (39.5 MB), within the
+  R8 budget of 20 MB.
+- **011 assets** add 8.7 MB uncompressed:
+  - `world_iceborne/weapons.json`: 3.4 MB;
+  - `armor.json`: 2.2 MB;
+  - `assets/images/world/`: 3.1 MB.

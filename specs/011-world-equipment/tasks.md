@@ -128,7 +128,7 @@ description: "Task list for 011 Armas e Armaduras do World: Iceborne"
 - [X] T015 SC-002 spot check: 10 weapons, 10 sets and 10 decorations against another source.
   Record it in research.md.
 - [X] T016 Update `README.md` and `tool/data/README.md`: World equipment, sources, icons, sizes.
-- [ ] T017 Gates: analyze, format, test, integration on Windows, Windows release build, web build,
+- [X] T017 Gates: analyze, format, test, integration on Windows, Windows release build, web build,
   and APK size (R8 budget).
 - [ ] T018 The user runs the quickstart checks 1–9. Fix the findings, then merge into `main`.
 
