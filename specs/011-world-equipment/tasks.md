@@ -17,14 +17,14 @@ description: "Task list for 011 Armas e Armaduras do World: Iceborne"
 
 ## Phase 1: Setup (data)
 
-- [ ] T001 Write `tool/data/fetch_world_equipment.py` and run it. It caches in `tool/data/.cache/`:
+- [X] T001 Write `tool/data/fetch_world_equipment.py` and run it. It caches in `tool/data/.cache/`:
   - the wiki modules `Module:MHWI/data/{Weapons,Armor,Decorations}.json` (`action=raw`);
   - mhw-db.com `armor/sets`, `skills`, `decorations` and `charms`;
   - the Kiranico World lists in `/en/` and `/pt-BR/`: `weapons?type=0..13`, `armorseries`,
     `skilltrees`, `decorations` and `items`.
 
   The script reuses cached files.
-- [ ] T002 Write `tool/data/fetch_world_icons.py` (research R6) and run it. Everything goes to
+- [X] T002 Write `tool/data/fetch_world_icons.py` (research R6) and run it. Everything goes to
   `assets/images/world/` as WebP, with a SOURCES.md:
   - the MHWI rarity icons 0–12 for the 14 weapon types, the 5 armor parts and Talisman →
     `icons/<kind>-<rarity>.webp`;
@@ -32,7 +32,7 @@ description: "Task list for 011 Armas e Armaduras do World: Iceborne"
   - the slot icons, tinted gold → `slots/slot<N>.webp`;
   - weapon renders → `weapons/`, and armor male renders → `armor/`, both at 96 px. The R8 budget
     is checked and the coverage reported.
-- [ ] T003 Write `tool/data/build_world_equipment.py` and run it. It writes
+- [X] T003 Write `tool/data/build_world_equipment.py` and run it. It writes
   `assets/data/world_iceborne/weapons.json` and `armor.json` per data-model.md.
   - **Weapons**:
     - displayed attack = raw × the type multiplier;
@@ -50,7 +50,7 @@ description: "Task list for 011 Armas e Armaduras do World: Iceborne"
   - **pt-BR names** from the Kiranico ID match (R5) and the World monster materials.
   - It reports counts, pt-BR misses, unmatched materials and image coverage, and registers the
     assets in `pubspec.yaml`.
-- [ ] T004 [P] Add the ARB strings of data-model.md › Strings, then run `flutter gen-l10n`.
+- [X] T004 [P] Add the ARB strings of data-model.md › Strings, then run `flutter gen-l10n`.
 
 ---
 

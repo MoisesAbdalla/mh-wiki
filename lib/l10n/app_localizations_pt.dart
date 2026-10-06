@@ -1418,4 +1418,84 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get openInMonsters => 'Abrir em Monstros';
+
+  @override
+  String get elderseal => 'Selo do Ancião';
+
+  @override
+  String get eldersealLow => 'Baixo';
+
+  @override
+  String get eldersealAverage => 'Médio';
+
+  @override
+  String get eldersealHigh => 'Alto';
+
+  @override
+  String get defenseBonus => 'Defesa';
+
+  @override
+  String get hiddenElementNote =>
+      'Elemento entre parênteses é oculto: só age com a habilidade Liberar Elemento.';
+
+  @override
+  String hiddenSpecialSemantics(String name, int value) {
+    return '$name $value, oculto';
+  }
+
+  @override
+  String get augmentSlots => 'Aumentos (Iceborne)';
+
+  @override
+  String augmentSlotsValue(int count, int rarity) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count espaços',
+      one: '1 espaço',
+    );
+    return '$_temp0 · Raridade $rarity';
+  }
+
+  @override
+  String get worldSpecials => 'Especiais';
+
+  @override
+  String get worldSpecialsNote => 'só consulta';
+
+  @override
+  String get specialKulve => 'Kulve Taroth · sorteada';
+
+  @override
+  String get specialKjarr => 'Kjárr · sorteada';
+
+  @override
+  String get specialSafi => 'Safi\'jiiva · despertar';
+
+  @override
+  String get howToGet => 'Como obter';
+
+  @override
+  String get specialHowToKulve =>
+      'Recompensa sorteada do Cerco a Kulve Taroth. Os atributos variam de uma cópia para outra; os números aqui são os da fonte.';
+
+  @override
+  String get specialHowToKjarr =>
+      'Recompensa sorteada do Cerco a Kulve Taroth (Rank Mestre). Os atributos variam de uma cópia para outra; os números aqui são os da fonte.';
+
+  @override
+  String get specialHowToSafi =>
+      'Forjada com materiais de Safi\'jiiva e despertada com Cristais de Veia Dracônica de Safi\'jiiva. As habilidades despertadas são à escolha e não são simuladas aqui.';
+
+  @override
+  String get skillKindSecret => 'segredo';
+
+  @override
+  String get traitKinsectBonus => 'Bônus de Kinseto';
+
+  @override
+  String get traitNotes => 'Notas';
+
+  @override
+  String get traitSpecialAmmo => 'Munição especial';
 }

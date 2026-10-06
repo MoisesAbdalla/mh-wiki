@@ -2421,6 +2421,138 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Abrir em Monstros'**
   String get openInMonsters;
+
+  /// No description provided for @elderseal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Selo do Ancião'**
+  String get elderseal;
+
+  /// No description provided for @eldersealLow.
+  ///
+  /// In pt, this message translates to:
+  /// **'Baixo'**
+  String get eldersealLow;
+
+  /// No description provided for @eldersealAverage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Médio'**
+  String get eldersealAverage;
+
+  /// No description provided for @eldersealHigh.
+  ///
+  /// In pt, this message translates to:
+  /// **'Alto'**
+  String get eldersealHigh;
+
+  /// No description provided for @defenseBonus.
+  ///
+  /// In pt, this message translates to:
+  /// **'Defesa'**
+  String get defenseBonus;
+
+  /// No description provided for @hiddenElementNote.
+  ///
+  /// In pt, this message translates to:
+  /// **'Elemento entre parênteses é oculto: só age com a habilidade Liberar Elemento.'**
+  String get hiddenElementNote;
+
+  /// No description provided for @hiddenSpecialSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'{name} {value}, oculto'**
+  String hiddenSpecialSemantics(String name, int value);
+
+  /// No description provided for @augmentSlots.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aumentos (Iceborne)'**
+  String get augmentSlots;
+
+  /// No description provided for @augmentSlotsValue.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 espaço} other{{count} espaços}} · Raridade {rarity}'**
+  String augmentSlotsValue(int count, int rarity);
+
+  /// No description provided for @worldSpecials.
+  ///
+  /// In pt, this message translates to:
+  /// **'Especiais'**
+  String get worldSpecials;
+
+  /// No description provided for @worldSpecialsNote.
+  ///
+  /// In pt, this message translates to:
+  /// **'só consulta'**
+  String get worldSpecialsNote;
+
+  /// No description provided for @specialKulve.
+  ///
+  /// In pt, this message translates to:
+  /// **'Kulve Taroth · sorteada'**
+  String get specialKulve;
+
+  /// No description provided for @specialKjarr.
+  ///
+  /// In pt, this message translates to:
+  /// **'Kjárr · sorteada'**
+  String get specialKjarr;
+
+  /// No description provided for @specialSafi.
+  ///
+  /// In pt, this message translates to:
+  /// **'Safi\'jiiva · despertar'**
+  String get specialSafi;
+
+  /// No description provided for @howToGet.
+  ///
+  /// In pt, this message translates to:
+  /// **'Como obter'**
+  String get howToGet;
+
+  /// No description provided for @specialHowToKulve.
+  ///
+  /// In pt, this message translates to:
+  /// **'Recompensa sorteada do Cerco a Kulve Taroth. Os atributos variam de uma cópia para outra; os números aqui são os da fonte.'**
+  String get specialHowToKulve;
+
+  /// No description provided for @specialHowToKjarr.
+  ///
+  /// In pt, this message translates to:
+  /// **'Recompensa sorteada do Cerco a Kulve Taroth (Rank Mestre). Os atributos variam de uma cópia para outra; os números aqui são os da fonte.'**
+  String get specialHowToKjarr;
+
+  /// No description provided for @specialHowToSafi.
+  ///
+  /// In pt, this message translates to:
+  /// **'Forjada com materiais de Safi\'jiiva e despertada com Cristais de Veia Dracônica de Safi\'jiiva. As habilidades despertadas são à escolha e não são simuladas aqui.'**
+  String get specialHowToSafi;
+
+  /// No description provided for @skillKindSecret.
+  ///
+  /// In pt, this message translates to:
+  /// **'segredo'**
+  String get skillKindSecret;
+
+  /// No description provided for @traitKinsectBonus.
+  ///
+  /// In pt, this message translates to:
+  /// **'Bônus de Kinseto'**
+  String get traitKinsectBonus;
+
+  /// No description provided for @traitNotes.
+  ///
+  /// In pt, this message translates to:
+  /// **'Notas'**
+  String get traitNotes;
+
+  /// No description provided for @traitSpecialAmmo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Munição especial'**
+  String get traitSpecialAmmo;
 }
 
 class _AppLocalizationsDelegate
