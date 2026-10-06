@@ -104,14 +104,14 @@ description: "Task list for 011 Armas e Armaduras do World: Iceborne"
 
 ## Phase 4: User Story 2 - Armaduras do World (P2)
 
-- [ ] T011 [P] [US2] Widget tests:
+- [X] T011 [P] [US2] Widget tests:
   - the World tabs (Conjuntos, Habilidades, Joias, Talismãs);
   - Fatalis α+ with World part icons, slots 1–4, defense base → max and the bonus card with 2 and
     4 pieces;
   - the "segredo" seal;
   - the Joias level 4 filter and two-skill rows with World colour icons;
   - Talismãs I–V.
-- [ ] T012 [US2] Implement what remains in the armor views:
+- [X] T012 [US2] Implement what remains in the armor views:
   - World part, decoration and slot icons;
   - the secret seal;
   - the slot filter up to 4;
