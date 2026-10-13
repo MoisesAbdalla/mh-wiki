@@ -37,6 +37,20 @@ final class WeaponCatalog {
       if (w.gogma != null && w.type.id == type) w,
   ]..sort((a, b) => a.gogma!.index.compareTo(b.gogma!.index));
 
+  /// The World specials of [type]: Kulve Taroth, then Kjárr, then
+  /// Safi'jiiva, each by rarity and name.
+  List<Weapon> specialsOf(String type) =>
+      [
+        for (final w in weapons)
+          if (w.worldSpecial != null && w.type.id == type) w,
+      ]..sort(
+        (a, b) => a.worldSpecial!.index != b.worldSpecial!.index
+            ? a.worldSpecial!.index.compareTo(b.worldSpecial!.index)
+            : a.rarity != b.rarity
+            ? a.rarity.compareTo(b.rarity)
+            : a.name.en.compareTo(b.name.en),
+      );
+
   Weapon? gogma(String type, ArtianFocus focus) =>
       gogmaOf(type).where((w) => w.gogma == focus).firstOrNull;
 }

@@ -44,6 +44,11 @@ flutter:
     - assets/images/wilds/slots/
     - assets/images/wilds/weapons/
     - assets/images/wilds/armor/
+    - assets/images/world/icons/
+    - assets/images/world/decorations/
+    - assets/images/world/slots/
+    - assets/images/world/weapons/
+    - assets/images/world/sets/
 
   # Bundled so they work offline (SIL Open Font License, see assets/fonts/*/OFL.txt).
   fonts:

@@ -15,6 +15,12 @@ Future<void> main() async {
     game: Game.wilds,
   );
   final wildsArmor = dependencies.createArmorController(game: Game.wilds);
+  final worldWeapons = dependencies.createWeaponListController(
+    game: Game.worldIceborne,
+  );
+  final worldArmor = dependencies.createArmorController(
+    game: Game.worldIceborne,
+  );
   final assistant = dependencies.createAssistantController();
   final optimizer = dependencies.createOptimizerController(assistant);
   final artians = dependencies.createArtianController();
@@ -24,8 +30,8 @@ Future<void> main() async {
     weapons: weapons,
     armor: armor,
     assistant: assistant,
-    moreWeapons: [wildsWeapons],
-    moreArmor: [wildsArmor],
+    moreWeapons: [wildsWeapons, worldWeapons],
+    moreArmor: [wildsArmor, worldArmor],
   );
 
   await settings.load();
@@ -39,6 +45,8 @@ Future<void> main() async {
       armorController: armor,
       wildsWeaponController: wildsWeapons,
       wildsArmorController: wildsArmor,
+      worldWeaponController: worldWeapons,
+      worldArmorController: worldArmor,
       assistantController: assistant,
       optimizerController: optimizer,
       artianController: artians,

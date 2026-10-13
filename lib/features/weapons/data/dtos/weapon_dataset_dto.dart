@@ -205,6 +205,9 @@ final class WeaponDto {
     required this.sources,
     this.skills = const [],
     this.gogma,
+    this.elderseal,
+    this.defenseBonus = 0,
+    this.worldSpecial,
   });
 
   factory WeaponDto.fromJson(
@@ -218,13 +221,18 @@ final class WeaponDto {
     final typeId = r.string('type');
     final type = types[typeId] ?? r.fail('unknown type "$typeId"');
     final rarity = r.number('rarity').toInt();
-    if (rarity < 1 || rarity > 10) r.fail('rarity must be 1-10');
+    // World goes up to rarity 12 (011).
+    if (rarity < 1 || rarity > 12) r.fail('rarity must be 1-12');
     final attack = r.number('attack').toInt();
     if (attack <= 0) r.fail('attack must be > 0');
 
     final special = [
       for (final s in r.objects('special'))
-        (s.enumValue('kind', SpecialKind.values), _positive(s, 'value')),
+        (
+          s.enumValue('kind', SpecialKind.values),
+          _positive(s, 'value'),
+          s.has('hidden') && s.boolean('hidden'),
+        ),
     ];
     if (special.length > 2) r.fail('at most 2 special values');
 
@@ -283,6 +291,13 @@ final class WeaponDto {
 
     return WeaponDto(
       gogma: r.has('gogma') ? r.enumValue('gogma', ArtianFocus.values) : null,
+      elderseal: r.has('elderseal')
+          ? r.enumValue('elderseal', Elderseal.values)
+          : null,
+      defenseBonus: r.has('defenseBonus') ? _positive(r, 'defenseBonus') : 0,
+      worldSpecial: r.has('worldSpecial')
+          ? r.enumValue('worldSpecial', WorldSpecial.values)
+          : null,
       slug: r.string('slug'),
       type: typeId,
       name: _localized(r.object('name')),
@@ -330,6 +345,9 @@ final class WeaponDto {
   }
 
   final ArtianFocus? gogma;
+  final Elderseal? elderseal;
+  final int defenseBonus;
+  final WorldSpecial? worldSpecial;
   final String slug;
   final String type;
   final LocalizedText name;
@@ -339,7 +357,7 @@ final class WeaponDto {
   final LocalizedText treeName;
   final int attack;
   final int affinity;
-  final List<(SpecialKind, int)> special;
+  final List<(SpecialKind, int, bool)> special;
   final List<int> slots;
   final int rampageSlot;
   final (List<int>, List<int>)? sharpness;
@@ -381,11 +399,11 @@ const _traitsByType = {
   'charge-blade': {'phial'},
   'switch-axe': {'phial'},
   'gunlance': {'shelling'},
-  'insect-glaive': {'kinsectLevel'},
-  'hunting-horn': {'songs'},
+  'insect-glaive': {'kinsectLevel', 'kinsectBonus'},
+  'hunting-horn': {'songs', 'notes'},
   'bow': {'arcShot', 'chargeShots', 'coatings'},
-  'light-bowgun': {'deviation', 'recoil', 'reload', 'ammo'},
-  'heavy-bowgun': {'deviation', 'recoil', 'reload', 'ammo'},
+  'light-bowgun': {'deviation', 'recoil', 'reload', 'ammo', 'specialAmmo'},
+  'heavy-bowgun': {'deviation', 'recoil', 'reload', 'ammo', 'specialAmmo'},
 };
 
 WeaponTraits _traits(JsonReader weapon, String typeId) {
@@ -422,6 +440,9 @@ WeaponTraits _traits(JsonReader weapon, String typeId) {
           capacity: _ints(a, 'capacity'),
         ),
     ],
+    kinsectBonus: text('kinsectBonus'),
+    notes: [for (final n in r.optionalObjects('notes')) _localized(n)],
+    specialAmmo: text('specialAmmo'),
   );
 }
 

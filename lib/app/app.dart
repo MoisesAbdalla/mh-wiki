@@ -19,6 +19,8 @@ class MhWikiApp extends StatelessWidget {
     this.armorController,
     this.wildsWeaponController,
     this.wildsArmorController,
+    this.worldWeaponController,
+    this.worldArmorController,
     this.assistantController,
     this.optimizerController,
     this.artianController,
@@ -31,6 +33,8 @@ class MhWikiApp extends StatelessWidget {
   final ArmorController? armorController;
   final WeaponListController? wildsWeaponController;
   final ArmorController? wildsArmorController;
+  final WeaponListController? worldWeaponController;
+  final ArmorController? worldArmorController;
   final AssistantController? assistantController;
   final OptimizerController? optimizerController;
   final ArtianController? artianController;
@@ -55,6 +59,8 @@ class MhWikiApp extends StatelessWidget {
         armor: armorController,
         wildsWeapons: wildsWeaponController,
         wildsArmor: wildsArmorController,
+        worldWeapons: worldWeaponController,
+        worldArmor: worldArmorController,
         assistant: assistantController,
         optimizer: optimizerController,
         artians: artianController,

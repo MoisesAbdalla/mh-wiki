@@ -15,6 +15,9 @@ final class WeaponTraits {
     this.recoil,
     this.reload,
     this.ammo = const [],
+    this.kinsectBonus,
+    this.notes = const [],
+    this.specialAmmo,
   });
 
   static const none = WeaponTraits();
@@ -42,6 +45,15 @@ final class WeaponTraits {
   final LocalizedText? reload;
   final List<AmmoCapacity> ammo;
 
+  /// World Insect Glaive: the kinsect bonus ("Bônus de Corte").
+  final LocalizedText? kinsectBonus;
+
+  /// World Hunting Horn: its three notes.
+  final List<LocalizedText> notes;
+
+  /// World bowguns: Wyvernblast, Wyvernheart or Wyvernsnipe.
+  final LocalizedText? specialAmmo;
+
   bool get isEmpty =>
       phial == null &&
       shelling == null &&
@@ -51,7 +63,10 @@ final class WeaponTraits {
       chargeShots.isEmpty &&
       coatings.isEmpty &&
       deviation == null &&
-      ammo.isEmpty;
+      ammo.isEmpty &&
+      kinsectBonus == null &&
+      notes.isEmpty &&
+      specialAmmo == null;
 
   /// Bows and bowguns get their own "Munição" card.
   bool get hasAmmo => chargeShots.isNotEmpty || ammo.isNotEmpty;

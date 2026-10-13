@@ -260,7 +260,7 @@ class _SkillList extends StatelessWidget {
                               skill.name.resolve(language),
                               style: notebookTitle(size: 16),
                             ),
-                            if (state.catalog.game == Game.wilds)
+                            if (state.catalog.game != Game.riseSunbreak)
                               SkillKindSeal(kind: skill.kind),
                           ],
                         ),

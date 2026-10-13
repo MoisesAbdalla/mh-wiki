@@ -5,6 +5,7 @@ import 'package:mh_wiki/features/monsters/data/datasources/monster_datasource.da
 import 'package:mh_wiki/features/weapons/data/dtos/weapon_dataset_dto.dart';
 import 'package:mh_wiki/features/weapons/data/dtos/weapon_dataset_mapper.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/special_kind.dart';
+import 'package:mh_wiki/features/weapons/domain/entities/weapon.dart';
 import 'package:mh_wiki/features/weapons/domain/entities/weapon_catalog.dart';
 
 import '../../../fakes/weapon_json_fixtures.dart';
@@ -204,7 +205,38 @@ void main() {
       weaponJson(slots: [1, 1, 1, 1]),
     ]);
     rejects([weaponJson(rampageSlot: 4)]);
-    rejects([weaponJson(rarity: 11)]);
+    rejects([weaponJson(rarity: 13)]);
     rejects([weaponJson(attack: 0)]);
+  });
+
+  test('reads the World fields (011): hidden element, Elderseal, defense, '
+      'special', () {
+    final world = {
+      ...weaponJson(slug: 'dharma'),
+      'special': [
+        {'kind': 'dragon', 'value': 540, 'hidden': true},
+        {'kind': 'fire', 'value': 120},
+      ],
+      'elderseal': 'high',
+      'defenseBonus': 30,
+      'worldSpecial': 'safi',
+    };
+    final plain = weaponJson(slug: 'plain');
+    final c = catalog(weaponDatasetJson(weapons: [world, plain]));
+    final w = c.weapons.first;
+    expect(w.special.first.hidden, isTrue);
+    expect(w.special.last.hidden, isFalse);
+    expect(w.elderseal, Elderseal.high);
+    expect(w.defenseBonus, 30);
+    expect(w.worldSpecial, WorldSpecial.safi);
+    expect(c.weapons.last.elderseal, isNull);
+    expect(c.weapons.last.defenseBonus, 0);
+    expect(c.weapons.last.worldSpecial, isNull);
+    // Augments are an Iceborne rule; this dataset is Rise.
+    expect(w.augmentSlots, 0);
+
+    rejects([
+      {...weaponJson(), 'elderseal': 'huge'},
+    ]);
   });
 }

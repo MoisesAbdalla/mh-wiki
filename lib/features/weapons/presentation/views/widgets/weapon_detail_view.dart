@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mh_wiki/features/weapons/presentation/views/widgets/world_specials_card.dart';
 import 'package:mh_wiki/core/domain/game.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_row.dart';
 import 'package:mh_wiki/features/weapons/presentation/views/widgets/weapon_skills_section.dart';
@@ -85,20 +86,31 @@ class WeaponDetailView extends StatelessWidget {
             onOpenSkill: onOpenSkill,
             language: language,
           ),
-        WeaponMaterialsSection(
-          number: 3 + skills,
-          weapon: weapon,
-          sources: sources,
-          onOpenMonster: onOpenMonster,
-          language: language,
-        ),
-        WeaponTreeSection(
-          number: 4 + skills,
-          weapon: weapon,
-          catalog: catalog,
-          onOpenWeapon: onSelectWeapon,
-          language: language,
-        ),
+        if (weapon.worldSpecial case final special?)
+          NotebookSection(
+            number: 3,
+            title: l10n.howToGet,
+            child: Text(
+              worldSpecialHowTo(l10n, special),
+              key: const Key('world-special-how-to'),
+            ),
+          )
+        else ...[
+          WeaponMaterialsSection(
+            number: 3 + skills,
+            weapon: weapon,
+            sources: sources,
+            onOpenMonster: onOpenMonster,
+            language: language,
+          ),
+          WeaponTreeSection(
+            number: 4 + skills,
+            weapon: weapon,
+            catalog: catalog,
+            onOpenWeapon: onSelectWeapon,
+            language: language,
+          ),
+        ],
         if (WeaponRampageSection.shows(weapon))
           WeaponRampageSection(
             weapon: weapon,
@@ -128,13 +140,13 @@ class WeaponHeader extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final textTheme = Theme.of(context).textTheme;
     final type = weapon.type.name.resolve(language);
-    final description = weapon.description.ptBr ?? weapon.description.en;
+    final description = weapon.description.resolve(language);
     final subtitle = [
       type,
       l10n.rarity(weapon.rarity),
       l10n.rankLabel(l10n.rankName(weapon.rank)),
-      // Quest stars are a Rise estimate; the Wilds header stops at the rank.
-      if (weapon.id.game != Game.wilds)
+      // Quest stars are a Rise estimate; other headers stop at the rank.
+      if (weapon.id.game == Game.riseSunbreak)
         if (weapon.stars.estimated)
           l10n.starsEstimated(weapon.stars.value)
         else

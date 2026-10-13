@@ -147,7 +147,8 @@ ArmorCatalog readArmorDataset(
     }
     final res = r.object('resistances');
     final rarity = r.number('rarity').toInt();
-    if (rarity < 1 || rarity > 10) r.fail('rarity must be 1-10');
+    // World goes up to rarity 12 (011).
+    if (rarity < 1 || rarity > 12) r.fail('rarity must be 1-12');
     unique(
       pieces,
       r.string('id'),

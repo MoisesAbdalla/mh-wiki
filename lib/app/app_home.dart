@@ -33,6 +33,8 @@ class AppHome extends StatefulWidget {
     this.armor,
     this.wildsWeapons,
     this.wildsArmor,
+    this.worldWeapons,
+    this.worldArmor,
     this.assistant,
     this.optimizer,
     this.artians,
@@ -49,6 +51,8 @@ class AppHome extends StatefulWidget {
   /// Wilds weapons and armor (010); without them the Wilds tabs are off.
   final WeaponListController? wildsWeapons;
   final ArmorController? wildsArmor;
+  final WeaponListController? worldWeapons;
+  final ArmorController? worldArmor;
   final AssistantController? assistant;
   final OptimizerController? optimizer;
 
@@ -88,13 +92,13 @@ class _AppHomeState extends State<AppHome> {
   WeaponListController? weaponsOf(Game game) => switch (game) {
     Game.riseSunbreak => widget.weapons,
     Game.wilds => widget.wildsWeapons,
-    Game.worldIceborne => null,
+    Game.worldIceborne => widget.worldWeapons,
   };
 
   ArmorController? armorOf(Game game) => switch (game) {
     Game.riseSunbreak => widget.armor,
     Game.wilds => widget.wildsArmor,
-    Game.worldIceborne => null,
+    Game.worldIceborne => widget.worldArmor,
   };
 
   @override
@@ -282,6 +286,8 @@ class _AppHomeState extends State<AppHome> {
     final armor = widget.armor;
     final wildsWeapons = widget.wildsWeapons;
     final wildsArmor = widget.wildsArmor;
+    final worldWeapons = widget.worldWeapons;
+    final worldArmor = widget.worldArmor;
     return AppShell(
       controller: _shell,
       monsters: MonstersPage(
@@ -305,6 +311,9 @@ class _AppHomeState extends State<AppHome> {
           : EquipmentArea(
               game: _armorGame,
               pages: {
+                if (worldArmor != null)
+                  Game.worldIceborne: (h) =>
+                      _armorPage(Game.worldIceborne, worldArmor, h),
                 Game.riseSunbreak: (h) =>
                     _armorPage(Game.riseSunbreak, armor, h),
                 if (wildsArmor != null)
@@ -314,6 +323,9 @@ class _AppHomeState extends State<AppHome> {
       weapons: EquipmentArea(
         game: _weaponsGame,
         pages: {
+          if (worldWeapons != null)
+            Game.worldIceborne: (h) =>
+                _weaponsPage(Game.worldIceborne, worldWeapons, h),
           Game.riseSunbreak: (h) =>
               _weaponsPage(Game.riseSunbreak, widget.weapons, h),
           if (wildsWeapons != null)

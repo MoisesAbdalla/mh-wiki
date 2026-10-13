@@ -47,13 +47,24 @@ class WeaponAttributesSection extends StatelessWidget {
                 ElementIcon(element: element, size: 20),
                 const SizedBox(width: 6),
               ],
-              Text(
-                '${special.value}',
-                style: notebookNumber(
-                  size: 26,
-                  color: special.kind.element == null
-                      ? statusColor(special.kind)
-                      : HunterPalette.text,
+              Semantics(
+                label: special.hidden
+                    ? l10n.hiddenSpecialSemantics(
+                        l10n.specialName(special.kind),
+                        special.value,
+                      )
+                    : null,
+                excludeSemantics: special.hidden,
+                child: Text(
+                  special.hidden ? '(${special.value})' : '${special.value}',
+                  style: notebookNumber(
+                    size: 26,
+                    color: special.hidden
+                        ? HunterPalette.textMuted
+                        : special.kind.element == null
+                        ? statusColor(special.kind)
+                        : HunterPalette.text,
+                  ),
                 ),
               ),
             ],
@@ -75,6 +86,22 @@ class WeaponAttributesSection extends StatelessWidget {
         (l10n.traitShelling, word(shelling.resolve(language))),
       if (traits.kinsectLevel case final level?)
         (l10n.traitKinsect, word(l10n.kinsectLevel(level))),
+      if (traits.kinsectBonus case final bonus?)
+        (l10n.traitKinsectBonus, word(bonus.resolve(language))),
+      if (weapon.elderseal case final seal?)
+        (
+          l10n.elderseal,
+          word(switch (seal) {
+            Elderseal.low => l10n.eldersealLow,
+            Elderseal.average => l10n.eldersealAverage,
+            Elderseal.high => l10n.eldersealHigh,
+          }),
+        ),
+      if (weapon.defenseBonus > 0)
+        (
+          l10n.defenseBonus,
+          Text('+${weapon.defenseBonus}', style: notebookNumber(size: 26)),
+        ),
     ];
 
     return NotebookSection(
@@ -128,6 +155,36 @@ class WeaponAttributesSection extends StatelessWidget {
             rampageSlot: weapon.rampageSlot,
             game: weapon.id.game,
           ),
+          if (weapon.special.any((s) => s.hidden)) ...[
+            const SizedBox(height: 8),
+            Text(
+              l10n.hiddenElementNote,
+              style: Theme.of(context).textTheme.bodySmall
+                  ?.copyWith(color: HunterPalette.textMuted),
+            ),
+          ],
+          if (weapon.augmentSlots > 0) ...[
+            const SizedBox(height: 4),
+            RuledRow(
+              ruled: false,
+              label: Text(l10n.augmentSlots),
+              trailing: Text(
+                l10n.augmentSlotsValue(weapon.augmentSlots, weapon.rarity),
+                style: Theme.of(context).textTheme.bodySmall
+                    ?.copyWith(color: HunterPalette.textMuted),
+              ),
+            ),
+          ],
+          if (traits.notes.isNotEmpty) ...[
+            const SizedBox(height: 12),
+            Text(
+              l10n.traitNotes,
+              style: Theme.of(context).textTheme.bodySmall
+                  ?.copyWith(color: HunterPalette.textMuted),
+            ),
+            const SizedBox(height: 4),
+            Text(traits.notes.map((n) => n.resolve(language)).join(' · ')),
+          ],
           if (traits.songs.isNotEmpty) ...[
             const SizedBox(height: 12),
             Text(

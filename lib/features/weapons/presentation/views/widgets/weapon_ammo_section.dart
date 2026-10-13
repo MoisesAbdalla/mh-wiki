@@ -98,6 +98,11 @@ class WeaponAmmoSection extends StatelessWidget {
           ],
           for (final stat in [traits.deviation, traits.recoil, traits.reload])
             if (stat != null) RuledRow(label: Text(stat.resolve(language))),
+          if (traits.specialAmmo case final special?)
+            RuledRow(
+              label: Text(l10n.traitSpecialAmmo, style: muted),
+              trailing: Text(special.resolve(language)),
+            ),
           if (traits.ammo.isNotEmpty) ...[
             RuledCaption(l10n.weaponSectionAmmo),
             for (final (i, ammo) in traits.ammo.indexed)
