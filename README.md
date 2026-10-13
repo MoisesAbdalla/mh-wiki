@@ -4,6 +4,10 @@ Offline wiki of large monsters from **Monster Hunter World: Iceborne**, **Monste
 Rise: Sunbreak** and **Monster Hunter Wilds**, built with Flutter (Android, tablet, web and
 Windows).
 
+> Built with **Spec-Driven Development** (Spec Kit + Claude Code): 11 features, each with its own
+> spec, plan, research, data model, UI contract and tasks in [`specs/`](specs/). Flutter · Dart ·
+> Clean Architecture + MVC · fully offline.
+
 - List monsters by game, with accent- and case-insensitive search (pt-BR and English names).
 - Detail view: elemental weaknesses (including per-state variations), habitats, breakable
   parts, and materials by rank with acquisition method and drop rate.
